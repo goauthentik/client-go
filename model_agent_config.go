@@ -17,22 +17,23 @@ import (
 
 // AgentConfig Base serializer class which doesn't implement create/update methods
 type AgentConfig struct {
-	DeviceId                     string                 `json:"device_id"`
-	RefreshInterval              int32                  `json:"refresh_interval"`
-	AuthorizationFlow            NullableString         `json:"authorization_flow"`
-	JwksAuth                     map[string]interface{} `json:"jwks_auth"`
-	JwksChallenge                map[string]interface{} `json:"jwks_challenge"`
-	NssUidOffset                 int32                  `json:"nss_uid_offset"`
-	NssGidOffset                 int32                  `json:"nss_gid_offset"`
-	AuthTerminateSessionOnExpiry bool                   `json:"auth_terminate_session_on_expiry"`
-	SystemConfig                 Config                 `json:"system_config"`
+	DeviceId                     string                    `json:"device_id"`
+	RefreshInterval              int32                     `json:"refresh_interval"`
+	AuthorizationFlow            NullableString            `json:"authorization_flow"`
+	JwksAuth                     map[string]interface{}    `json:"jwks_auth"`
+	JwksChallenge                map[string]interface{}    `json:"jwks_challenge"`
+	NssUidOffset                 int32                     `json:"nss_uid_offset"`
+	NssGidOffset                 int32                     `json:"nss_gid_offset"`
+	AuthTerminateSessionOnExpiry bool                      `json:"auth_terminate_session_on_expiry"`
+	SystemConfig                 Config                    `json:"system_config"`
+	LicenseStatus                NullableLicenseStatusEnum `json:"license_status"`
 }
 
 // NewAgentConfig instantiates a new AgentConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwksAuth map[string]interface{}, jwksChallenge map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config) *AgentConfig {
+func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwksAuth map[string]interface{}, jwksChallenge map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, licenseStatus NullableLicenseStatusEnum) *AgentConfig {
 	this := AgentConfig{}
 	this.DeviceId = deviceId
 	this.RefreshInterval = refreshInterval
@@ -43,6 +44,7 @@ func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow Nu
 	this.NssGidOffset = nssGidOffset
 	this.AuthTerminateSessionOnExpiry = authTerminateSessionOnExpiry
 	this.SystemConfig = systemConfig
+	this.LicenseStatus = licenseStatus
 	return &this
 }
 
@@ -274,6 +276,32 @@ func (o *AgentConfig) SetSystemConfig(v Config) {
 	o.SystemConfig = v
 }
 
+// GetLicenseStatus returns the LicenseStatus field value
+// If the value is explicit nil, the zero value for LicenseStatusEnum will be returned
+func (o *AgentConfig) GetLicenseStatus() LicenseStatusEnum {
+	if o == nil || o.LicenseStatus.Get() == nil {
+		var ret LicenseStatusEnum
+		return ret
+	}
+
+	return *o.LicenseStatus.Get()
+}
+
+// GetLicenseStatusOk returns a tuple with the LicenseStatus field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgentConfig) GetLicenseStatusOk() (*LicenseStatusEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LicenseStatus.Get(), o.LicenseStatus.IsSet()
+}
+
+// SetLicenseStatus sets field value
+func (o *AgentConfig) SetLicenseStatus(v LicenseStatusEnum) {
+	o.LicenseStatus.Set(&v)
+}
+
 func (o AgentConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -302,6 +330,9 @@ func (o AgentConfig) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["system_config"] = o.SystemConfig
+	}
+	if true {
+		toSerialize["license_status"] = o.LicenseStatus.Get()
 	}
 	return json.Marshal(toSerialize)
 }

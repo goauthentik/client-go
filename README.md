@@ -1403,6 +1403,7 @@ Class | Method | HTTP request | Description
  - [LicenseFlagsEnum](docs/LicenseFlagsEnum.md)
  - [LicenseForecast](docs/LicenseForecast.md)
  - [LicenseRequest](docs/LicenseRequest.md)
+ - [LicenseStatusEnum](docs/LicenseStatusEnum.md)
  - [LicenseSummary](docs/LicenseSummary.md)
  - [LicenseSummaryStatusEnum](docs/LicenseSummaryStatusEnum.md)
  - [Link](docs/Link.md)
