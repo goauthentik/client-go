@@ -54114,11 +54114,16 @@ components:
           nullable: true
           readOnly: true
           type: string
+        vendor:
+          allOf:
+          - $ref: '#/components/schemas/VendorEnum'
+          readOnly: true
       required:
       - connection
       - created
       - data
       - expires
+      - vendor
       type: object
     DeviceFacts:
       properties:
@@ -87294,6 +87299,11 @@ components:
         code:
           type: string
       type: object
+    VendorEnum:
+      enum:
+      - goauthentik.io/@merged
+      - goauthentik.io/platform
+      type: string
     Version:
       description: Get running and latest version.
       example:

@@ -1960,6 +1960,7 @@ Class | Method | HTTP request | Description
  - [UserWriteStage](docs/UserWriteStage.md)
  - [UserWriteStageRequest](docs/UserWriteStageRequest.md)
  - [ValidationError](docs/ValidationError.md)
+ - [VendorEnum](docs/VendorEnum.md)
  - [Version](docs/Version.md)
  - [VersionHistory](docs/VersionHistory.md)
  - [WebAuthnDevice](docs/WebAuthnDevice.md)

@@ -885,6 +885,7 @@ docs/UserVerificationEnum.md
 docs/UserWriteStage.md
 docs/UserWriteStageRequest.md
 docs/ValidationError.md
+docs/VendorEnum.md
 docs/Version.md
 docs/VersionHistory.md
 docs/WebAuthnDevice.md
@@ -1728,6 +1729,7 @@ model_user_verification_enum.go
 model_user_write_stage.go
 model_user_write_stage_request.go
 model_validation_error.go
+model_vendor_enum.go
 model_version.go
 model_version_history.go
 model_web_authn_device.go

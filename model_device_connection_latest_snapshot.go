@@ -22,18 +22,20 @@ type DeviceConnectionLatestSnapshot struct {
 	Connection string       `json:"connection"`
 	Created    time.Time    `json:"created"`
 	Expires    NullableTime `json:"expires"`
+	Vendor     VendorEnum   `json:"vendor"`
 }
 
 // NewDeviceConnectionLatestSnapshot instantiates a new DeviceConnectionLatestSnapshot object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceConnectionLatestSnapshot(data DeviceFacts, connection string, created time.Time, expires NullableTime) *DeviceConnectionLatestSnapshot {
+func NewDeviceConnectionLatestSnapshot(data DeviceFacts, connection string, created time.Time, expires NullableTime, vendor VendorEnum) *DeviceConnectionLatestSnapshot {
 	this := DeviceConnectionLatestSnapshot{}
 	this.Data = data
 	this.Connection = connection
 	this.Created = created
 	this.Expires = expires
+	this.Vendor = vendor
 	return &this
 }
 
@@ -143,6 +145,30 @@ func (o *DeviceConnectionLatestSnapshot) SetExpires(v time.Time) {
 	o.Expires.Set(&v)
 }
 
+// GetVendor returns the Vendor field value
+func (o *DeviceConnectionLatestSnapshot) GetVendor() VendorEnum {
+	if o == nil {
+		var ret VendorEnum
+		return ret
+	}
+
+	return o.Vendor
+}
+
+// GetVendorOk returns a tuple with the Vendor field value
+// and a boolean to check if the value has been set.
+func (o *DeviceConnectionLatestSnapshot) GetVendorOk() (*VendorEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Vendor, true
+}
+
+// SetVendor sets field value
+func (o *DeviceConnectionLatestSnapshot) SetVendor(v VendorEnum) {
+	o.Vendor = v
+}
+
 func (o DeviceConnectionLatestSnapshot) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -156,6 +182,9 @@ func (o DeviceConnectionLatestSnapshot) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["expires"] = o.Expires.Get()
+	}
+	if true {
+		toSerialize["vendor"] = o.Vendor
 	}
 	return json.Marshal(toSerialize)
 }

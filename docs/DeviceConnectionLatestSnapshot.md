@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **Connection** | **string** |  | 
 **Created** | **time.Time** |  | [readonly] 
 **Expires** | **NullableTime** |  | [readonly] 
+**Vendor** | [**VendorEnum**](VendorEnum.md) |  | [readonly] 
 
 ## Methods
 
 ### NewDeviceConnectionLatestSnapshot
 
-`func NewDeviceConnectionLatestSnapshot(data DeviceFacts, connection string, created time.Time, expires NullableTime, ) *DeviceConnectionLatestSnapshot`
+`func NewDeviceConnectionLatestSnapshot(data DeviceFacts, connection string, created time.Time, expires NullableTime, vendor VendorEnum, ) *DeviceConnectionLatestSnapshot`
 
 NewDeviceConnectionLatestSnapshot instantiates a new DeviceConnectionLatestSnapshot object
 This constructor will assign default values to properties that have it defined,
@@ -118,6 +119,26 @@ SetExpires sets Expires field to given value.
 `func (o *DeviceConnectionLatestSnapshot) UnsetExpires()`
 
 UnsetExpires ensures that no value is present for Expires, not even an explicit nil
+### GetVendor
+
+`func (o *DeviceConnectionLatestSnapshot) GetVendor() VendorEnum`
+
+GetVendor returns the Vendor field if non-nil, zero value otherwise.
+
+### GetVendorOk
+
+`func (o *DeviceConnectionLatestSnapshot) GetVendorOk() (*VendorEnum, bool)`
+
+GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendor
+
+`func (o *DeviceConnectionLatestSnapshot) SetVendor(v VendorEnum)`
+
+SetVendor sets Vendor field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
