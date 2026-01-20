@@ -33751,7 +33751,6 @@ paths:
           enum:
           - Heimdal
           - MIT
-          - other
           type: string
         style: form
       - explode: true
@@ -58975,7 +58974,6 @@ components:
       enum:
       - MIT
       - Heimdal
-      - other
       type: string
     KerberosSource:
       description: Kerberos Source Serializer
