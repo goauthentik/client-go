@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**CoreApplicationsRetrieve**](CoreApi.md#CoreApplicationsRetrieve) | **Get** /core/applications/{slug}/ | 
 [**CoreApplicationsUpdate**](CoreApi.md#CoreApplicationsUpdate) | **Put** /core/applications/{slug}/ | 
 [**CoreApplicationsUsedByList**](CoreApi.md#CoreApplicationsUsedByList) | **Get** /core/applications/{slug}/used_by/ | 
+[**CoreAuthenticatedSessionsBulkDelete**](CoreApi.md#CoreAuthenticatedSessionsBulkDelete) | **Delete** /core/authenticated_sessions/bulk_delete/ | 
 [**CoreAuthenticatedSessionsDestroy**](CoreApi.md#CoreAuthenticatedSessionsDestroy) | **Delete** /core/authenticated_sessions/{uuid}/ | 
 [**CoreAuthenticatedSessionsList**](CoreApi.md#CoreAuthenticatedSessionsList) | **Get** /core/authenticated_sessions/ | 
 [**CoreAuthenticatedSessionsRetrieve**](CoreApi.md#CoreAuthenticatedSessionsRetrieve) | **Get** /core/authenticated_sessions/{uuid}/ | 
@@ -1134,6 +1135,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreAuthenticatedSessionsBulkDelete
+
+> SessionDeleteResponse CoreAuthenticatedSessionsBulkDelete(ctx).UserPks(userPks).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userPks := []int32{int32(123)} // []int32 | List of user IDs to revoke all sessions for
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CoreApi.CoreAuthenticatedSessionsBulkDelete(context.Background()).UserPks(userPks).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreAuthenticatedSessionsBulkDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CoreAuthenticatedSessionsBulkDelete`: SessionDeleteResponse
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreAuthenticatedSessionsBulkDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreAuthenticatedSessionsBulkDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userPks** | **[]int32** | List of user IDs to revoke all sessions for | 
+
+### Return type
+
+[**SessionDeleteResponse**](SessionDeleteResponse.md)
 
 ### Authorization
 

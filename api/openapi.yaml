@@ -4728,6 +4728,44 @@ paths:
       - authentik: []
       tags:
       - core
+  /core/authenticated_sessions/bulk_delete/:
+    delete:
+      description: Bulk revoke all sessions for multiple users
+      operationId: core_authenticated_sessions_bulk_delete
+      parameters:
+      - description: List of user IDs to revoke all sessions for
+        explode: true
+        in: query
+        name: user_pks
+        required: true
+        schema:
+          items:
+            type: integer
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionDeleteResponse'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - core
   /core/authenticated_sessions/{uuid}/:
     delete:
       description: AuthenticatedSession Viewset
@@ -52452,6 +52490,17 @@ components:
       - orphaned
       - unknown
       type: string
+    BulkDeleteSession:
+      description: Serializer for bulk deleting authenticated sessions by user
+      properties:
+        user_ids:
+          description: List of user IDs to revoke all sessions for
+          items:
+            type: integer
+          type: array
+      required:
+      - user_pks
+      type: object
     Brand:
       description: Brand Serializer
       example:
@@ -83631,6 +83680,17 @@ components:
       required:
       - healthy
       - version
+      type: object
+    SessionDeleteResponse:
+      description: Response for bulk session deletion
+      example:
+        deleted: 0
+      properties:
+        deleted:
+          description: Number of sessions deleted
+          type: integer
+      required:
+      - deleted
       type: object
     SessionEndChallenge:
       description: Challenge for ending a session
