@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**CoreApplicationsRetrieve**](CoreApi.md#CoreApplicationsRetrieve) | **Get** /core/applications/{slug}/ | 
 [**CoreApplicationsUpdate**](CoreApi.md#CoreApplicationsUpdate) | **Put** /core/applications/{slug}/ | 
 [**CoreApplicationsUsedByList**](CoreApi.md#CoreApplicationsUsedByList) | **Get** /core/applications/{slug}/used_by/ | 
-[**CoreAuthenticatedSessionsBulkDelete**](CoreApi.md#CoreAuthenticatedSessionsBulkDelete) | **Delete** /core/authenticated_sessions/bulk_delete/ | 
+[**CoreAuthenticatedSessionsBulkDeleteDestroy**](CoreApi.md#CoreAuthenticatedSessionsBulkDeleteDestroy) | **Delete** /core/authenticated_sessions/bulk_delete/ | 
 [**CoreAuthenticatedSessionsDestroy**](CoreApi.md#CoreAuthenticatedSessionsDestroy) | **Delete** /core/authenticated_sessions/{uuid}/ | 
 [**CoreAuthenticatedSessionsList**](CoreApi.md#CoreAuthenticatedSessionsList) | **Get** /core/authenticated_sessions/ | 
 [**CoreAuthenticatedSessionsRetrieve**](CoreApi.md#CoreAuthenticatedSessionsRetrieve) | **Get** /core/authenticated_sessions/{uuid}/ | 
@@ -1150,9 +1150,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CoreAuthenticatedSessionsBulkDelete
+## CoreAuthenticatedSessionsBulkDeleteDestroy
 
-> SessionDeleteResponse CoreAuthenticatedSessionsBulkDelete(ctx).UserPks(userPks).Execute()
+> BulkDeleteSessionResponse CoreAuthenticatedSessionsBulkDeleteDestroy(ctx).UserPks(userPks).Execute()
 
 
 
@@ -1175,13 +1175,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CoreApi.CoreAuthenticatedSessionsBulkDelete(context.Background()).UserPks(userPks).Execute()
+    resp, r, err := apiClient.CoreApi.CoreAuthenticatedSessionsBulkDeleteDestroy(context.Background()).UserPks(userPks).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreAuthenticatedSessionsBulkDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CoreApi.CoreAuthenticatedSessionsBulkDeleteDestroy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CoreAuthenticatedSessionsBulkDelete`: SessionDeleteResponse
-    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreAuthenticatedSessionsBulkDelete`: %v\n", resp)
+    // response from `CoreAuthenticatedSessionsBulkDeleteDestroy`: BulkDeleteSessionResponse
+    fmt.Fprintf(os.Stdout, "Response from `CoreApi.CoreAuthenticatedSessionsBulkDeleteDestroy`: %v\n", resp)
 }
 ```
 
@@ -1191,7 +1191,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCoreAuthenticatedSessionsBulkDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCoreAuthenticatedSessionsBulkDeleteDestroyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1200,7 +1200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SessionDeleteResponse**](SessionDeleteResponse.md)
+[**BulkDeleteSessionResponse**](BulkDeleteSessionResponse.md)
 
 ### Authorization
 

@@ -101,7 +101,7 @@ docs/BlueprintInstanceRequest.md
 docs/BlueprintInstanceStatusEnum.md
 docs/Brand.md
 docs/BrandRequest.md
-docs/BulkDeleteSession.md
+docs/BulkDeleteSessionResponse.md
 docs/Cache.md
 docs/CapabilitiesEnum.md
 docs/CaptchaChallenge.md
@@ -779,7 +779,6 @@ docs/ScopeMappingRequest.md
 docs/SelectableStage.md
 docs/ServiceConnection.md
 docs/ServiceConnectionState.md
-docs/SessionDeleteResponse.md
 docs/SessionEndChallenge.md
 docs/SessionUser.md
 docs/Settings.md
@@ -969,7 +968,7 @@ model_blueprint_instance_request.go
 model_blueprint_instance_status_enum.go
 model_brand.go
 model_brand_request.go
-model_bulk_delete_session.go
+model_bulk_delete_session_response.go
 model_cache.go
 model_capabilities_enum.go
 model_captcha_challenge.go
@@ -1625,7 +1624,6 @@ model_scope_mapping_request.go
 model_selectable_stage.go
 model_service_connection.go
 model_service_connection_state.go
-model_session_delete_response.go
 model_session_end_challenge.go
 model_session_user.go
 model_settings.go

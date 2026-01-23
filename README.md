@@ -149,7 +149,7 @@ Class | Method | HTTP request | Description
 *CoreApi* | [**CoreApplicationsRetrieve**](docs/CoreApi.md#coreapplicationsretrieve) | **Get** /core/applications/{slug}/ | 
 *CoreApi* | [**CoreApplicationsUpdate**](docs/CoreApi.md#coreapplicationsupdate) | **Put** /core/applications/{slug}/ | 
 *CoreApi* | [**CoreApplicationsUsedByList**](docs/CoreApi.md#coreapplicationsusedbylist) | **Get** /core/applications/{slug}/used_by/ | 
-*CoreApi* | [**CoreAuthenticatedSessionsBulkDelete**](docs/CoreApi.md#coreauthenticatedsessionsbulkdelete) | **Delete** /core/authenticated_sessions/bulk_delete/ | 
+*CoreApi* | [**CoreAuthenticatedSessionsBulkDeleteDestroy**](docs/CoreApi.md#coreauthenticatedsessionsbulkdeletedestroy) | **Delete** /core/authenticated_sessions/bulk_delete/ | 
 *CoreApi* | [**CoreAuthenticatedSessionsDestroy**](docs/CoreApi.md#coreauthenticatedsessionsdestroy) | **Delete** /core/authenticated_sessions/{uuid}/ | 
 *CoreApi* | [**CoreAuthenticatedSessionsList**](docs/CoreApi.md#coreauthenticatedsessionslist) | **Get** /core/authenticated_sessions/ | 
 *CoreApi* | [**CoreAuthenticatedSessionsRetrieve**](docs/CoreApi.md#coreauthenticatedsessionsretrieve) | **Get** /core/authenticated_sessions/{uuid}/ | 
@@ -1199,7 +1199,7 @@ Class | Method | HTTP request | Description
  - [BlueprintInstanceStatusEnum](docs/BlueprintInstanceStatusEnum.md)
  - [Brand](docs/Brand.md)
  - [BrandRequest](docs/BrandRequest.md)
- - [BulkDeleteSession](docs/BulkDeleteSession.md)
+ - [BulkDeleteSessionResponse](docs/BulkDeleteSessionResponse.md)
  - [Cache](docs/Cache.md)
  - [CapabilitiesEnum](docs/CapabilitiesEnum.md)
  - [CaptchaChallenge](docs/CaptchaChallenge.md)
@@ -1860,7 +1860,6 @@ Class | Method | HTTP request | Description
  - [SelectableStage](docs/SelectableStage.md)
  - [ServiceConnection](docs/ServiceConnection.md)
  - [ServiceConnectionState](docs/ServiceConnectionState.md)
- - [SessionDeleteResponse](docs/SessionDeleteResponse.md)
  - [SessionEndChallenge](docs/SessionEndChallenge.md)
  - [SessionUser](docs/SessionUser.md)
  - [Settings](docs/Settings.md)

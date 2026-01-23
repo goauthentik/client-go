@@ -2087,32 +2087,32 @@ func (a *CoreApiService) CoreApplicationsUsedByListExecute(r ApiCoreApplications
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCoreAuthenticatedSessionsBulkDeleteRequest struct {
+type ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest struct {
 	ctx        context.Context
 	ApiService *CoreApiService
 	userPks    *[]int32
 }
 
 // List of user IDs to revoke all sessions for
-func (r ApiCoreAuthenticatedSessionsBulkDeleteRequest) UserPks(userPks []int32) ApiCoreAuthenticatedSessionsBulkDeleteRequest {
+func (r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) UserPks(userPks []int32) ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest {
 	r.userPks = &userPks
 	return r
 }
 
-func (r ApiCoreAuthenticatedSessionsBulkDeleteRequest) Execute() (*SessionDeleteResponse, *http.Response, error) {
-	return r.ApiService.CoreAuthenticatedSessionsBulkDeleteExecute(r)
+func (r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) Execute() (*BulkDeleteSessionResponse, *http.Response, error) {
+	return r.ApiService.CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r)
 }
 
 /*
-CoreAuthenticatedSessionsBulkDelete Method for CoreAuthenticatedSessionsBulkDelete
+CoreAuthenticatedSessionsBulkDeleteDestroy Method for CoreAuthenticatedSessionsBulkDeleteDestroy
 
 Bulk revoke all sessions for multiple users
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreAuthenticatedSessionsBulkDeleteRequest
+	@return ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest
 */
-func (a *CoreApiService) CoreAuthenticatedSessionsBulkDelete(ctx context.Context) ApiCoreAuthenticatedSessionsBulkDeleteRequest {
-	return ApiCoreAuthenticatedSessionsBulkDeleteRequest{
+func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroy(ctx context.Context) ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest {
+	return ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -2120,16 +2120,16 @@ func (a *CoreApiService) CoreAuthenticatedSessionsBulkDelete(ctx context.Context
 
 // Execute executes the request
 //
-//	@return SessionDeleteResponse
-func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteExecute(r ApiCoreAuthenticatedSessionsBulkDeleteRequest) (*SessionDeleteResponse, *http.Response, error) {
+//	@return BulkDeleteSessionResponse
+func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) (*BulkDeleteSessionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SessionDeleteResponse
+		localVarReturnValue *BulkDeleteSessionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreAuthenticatedSessionsBulkDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreAuthenticatedSessionsBulkDeleteDestroy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
