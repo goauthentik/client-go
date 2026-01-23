@@ -86,6 +86,7 @@ const (
 	APPENUM_BLUEPRINTS                                    AppEnum = "authentik.blueprints"
 	APPENUM_ENTERPRISE_AUDIT                              AppEnum = "authentik.enterprise.audit"
 	APPENUM_ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT         AppEnum = "authentik.enterprise.endpoints.connectors.agent"
+	APPENUM_ENTERPRISE_ENDPOINTS_CONNECTORS_FLEET         AppEnum = "authentik.enterprise.endpoints.connectors.fleet"
 	APPENUM_ENTERPRISE_POLICIES_UNIQUE_PASSWORD           AppEnum = "authentik.enterprise.policies.unique_password"
 	APPENUM_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE         AppEnum = "authentik.enterprise.providers.google_workspace"
 	APPENUM_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA          AppEnum = "authentik.enterprise.providers.microsoft_entra"
@@ -166,6 +167,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.blueprints",
 	"authentik.enterprise.audit",
 	"authentik.enterprise.endpoints.connectors.agent",
+	"authentik.enterprise.endpoints.connectors.fleet",
 	"authentik.enterprise.policies.unique_password",
 	"authentik.enterprise.providers.google_workspace",
 	"authentik.enterprise.providers.microsoft_entra",

@@ -17,10 +17,12 @@ import (
 
 // DeviceFactsOs struct for DeviceFactsOs
 type DeviceFactsOs struct {
-	Family  DeviceFactsOSFamily `json:"family"`
-	Name    *string             `json:"name,omitempty"`
-	Version *string             `json:"version,omitempty"`
-	Arch    string              `json:"arch"`
+	Family DeviceFactsOSFamily `json:"family"`
+	// Operating System name, such as 'Server 2022' or 'Ubuntu'
+	Name *string `json:"name,omitempty"`
+	// Operating System version, must always be the version number but may contain build name
+	Version *string `json:"version,omitempty"`
+	Arch    string  `json:"arch"`
 }
 
 // NewDeviceFactsOs instantiates a new DeviceFactsOs object

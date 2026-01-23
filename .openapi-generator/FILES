@@ -221,6 +221,8 @@ docs/ExpressionPolicy.md
 docs/ExpressionPolicyRequest.md
 docs/ExtraRoleObjectPermission.md
 docs/FileList.md
+docs/FleetConnector.md
+docs/FleetConnectorRequest.md
 docs/Flow.md
 docs/FlowChallengeResponseRequest.md
 docs/FlowDesignationEnum.md
@@ -419,6 +421,7 @@ docs/PaginatedEventMatcherPolicyList.md
 docs/PaginatedExpiringBaseGrantModelList.md
 docs/PaginatedExpressionPolicyList.md
 docs/PaginatedExtraRoleObjectPermissionList.md
+docs/PaginatedFleetConnectorList.md
 docs/PaginatedFlowList.md
 docs/PaginatedFlowStageBindingList.md
 docs/PaginatedGeoIPPolicyList.md
@@ -574,6 +577,7 @@ docs/PatchedEnrollmentTokenRequest.md
 docs/PatchedEventMatcherPolicyRequest.md
 docs/PatchedEventRequest.md
 docs/PatchedExpressionPolicyRequest.md
+docs/PatchedFleetConnectorRequest.md
 docs/PatchedFlowRequest.md
 docs/PatchedFlowStageBindingRequest.md
 docs/PatchedGeoIPPolicyRequest.md
@@ -1083,6 +1087,8 @@ model_expression_policy.go
 model_expression_policy_request.go
 model_extra_role_object_permission.go
 model_file_list.go
+model_fleet_connector.go
+model_fleet_connector_request.go
 model_flow.go
 model_flow_challenge_response_request.go
 model_flow_designation_enum.go
@@ -1276,6 +1282,7 @@ model_paginated_event_matcher_policy_list.go
 model_paginated_expiring_base_grant_model_list.go
 model_paginated_expression_policy_list.go
 model_paginated_extra_role_object_permission_list.go
+model_paginated_fleet_connector_list.go
 model_paginated_flow_list.go
 model_paginated_flow_stage_binding_list.go
 model_paginated_geo_ip_policy_list.go
@@ -1431,6 +1438,7 @@ model_patched_enrollment_token_request.go
 model_patched_event_matcher_policy_request.go
 model_patched_event_request.go
 model_patched_expression_policy_request.go
+model_patched_fleet_connector_request.go
 model_patched_flow_request.go
 model_patched_flow_stage_binding_request.go
 model_patched_geo_ip_policy_request.go

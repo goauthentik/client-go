@@ -53,6 +53,13 @@ Method | HTTP request | Description
 [**EndpointsDevicesSummaryRetrieve**](EndpointsApi.md#EndpointsDevicesSummaryRetrieve) | **Get** /endpoints/devices/summary/ | 
 [**EndpointsDevicesUpdate**](EndpointsApi.md#EndpointsDevicesUpdate) | **Put** /endpoints/devices/{device_uuid}/ | 
 [**EndpointsDevicesUsedByList**](EndpointsApi.md#EndpointsDevicesUsedByList) | **Get** /endpoints/devices/{device_uuid}/used_by/ | 
+[**EndpointsFleetConnectorsCreate**](EndpointsApi.md#EndpointsFleetConnectorsCreate) | **Post** /endpoints/fleet/connectors/ | 
+[**EndpointsFleetConnectorsDestroy**](EndpointsApi.md#EndpointsFleetConnectorsDestroy) | **Delete** /endpoints/fleet/connectors/{connector_uuid}/ | 
+[**EndpointsFleetConnectorsList**](EndpointsApi.md#EndpointsFleetConnectorsList) | **Get** /endpoints/fleet/connectors/ | 
+[**EndpointsFleetConnectorsPartialUpdate**](EndpointsApi.md#EndpointsFleetConnectorsPartialUpdate) | **Patch** /endpoints/fleet/connectors/{connector_uuid}/ | 
+[**EndpointsFleetConnectorsRetrieve**](EndpointsApi.md#EndpointsFleetConnectorsRetrieve) | **Get** /endpoints/fleet/connectors/{connector_uuid}/ | 
+[**EndpointsFleetConnectorsUpdate**](EndpointsApi.md#EndpointsFleetConnectorsUpdate) | **Put** /endpoints/fleet/connectors/{connector_uuid}/ | 
+[**EndpointsFleetConnectorsUsedByList**](EndpointsApi.md#EndpointsFleetConnectorsUsedByList) | **Get** /endpoints/fleet/connectors/{connector_uuid}/used_by/ | 
 
 
 
@@ -3436,6 +3443,498 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiEndpointsDevicesUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsFleetConnectorsCreate
+
+> FleetConnector EndpointsFleetConnectorsCreate(ctx).FleetConnectorRequest(fleetConnectorRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    fleetConnectorRequest := *openapiclient.NewFleetConnectorRequest("Name_example", "Url_example", "Token_example") // FleetConnectorRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsFleetConnectorsCreate(context.Background()).FleetConnectorRequest(fleetConnectorRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsFleetConnectorsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsFleetConnectorsCreate`: FleetConnector
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsFleetConnectorsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsFleetConnectorsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fleetConnectorRequest** | [**FleetConnectorRequest**](FleetConnectorRequest.md) |  | 
+
+### Return type
+
+[**FleetConnector**](FleetConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsFleetConnectorsDestroy
+
+> EndpointsFleetConnectorsDestroy(ctx, connectorUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Fleet Connector.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsFleetConnectorsDestroy(context.Background(), connectorUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsFleetConnectorsDestroy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Fleet Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsFleetConnectorsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsFleetConnectorsList
+
+> PaginatedFleetConnectorList EndpointsFleetConnectorsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string |  (optional)
+    ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+    page := int32(56) // int32 | A page number within the paginated result set. (optional)
+    pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+    search := "search_example" // string | A search term. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsFleetConnectorsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsFleetConnectorsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsFleetConnectorsList`: PaginatedFleetConnectorList
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsFleetConnectorsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsFleetConnectorsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedFleetConnectorList**](PaginatedFleetConnectorList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsFleetConnectorsPartialUpdate
+
+> FleetConnector EndpointsFleetConnectorsPartialUpdate(ctx, connectorUuid).PatchedFleetConnectorRequest(patchedFleetConnectorRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Fleet Connector.
+    patchedFleetConnectorRequest := *openapiclient.NewPatchedFleetConnectorRequest() // PatchedFleetConnectorRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsFleetConnectorsPartialUpdate(context.Background(), connectorUuid).PatchedFleetConnectorRequest(patchedFleetConnectorRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsFleetConnectorsPartialUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsFleetConnectorsPartialUpdate`: FleetConnector
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsFleetConnectorsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Fleet Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsFleetConnectorsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedFleetConnectorRequest** | [**PatchedFleetConnectorRequest**](PatchedFleetConnectorRequest.md) |  | 
+
+### Return type
+
+[**FleetConnector**](FleetConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsFleetConnectorsRetrieve
+
+> FleetConnector EndpointsFleetConnectorsRetrieve(ctx, connectorUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Fleet Connector.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsFleetConnectorsRetrieve(context.Background(), connectorUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsFleetConnectorsRetrieve``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsFleetConnectorsRetrieve`: FleetConnector
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsFleetConnectorsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Fleet Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsFleetConnectorsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**FleetConnector**](FleetConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsFleetConnectorsUpdate
+
+> FleetConnector EndpointsFleetConnectorsUpdate(ctx, connectorUuid).FleetConnectorRequest(fleetConnectorRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Fleet Connector.
+    fleetConnectorRequest := *openapiclient.NewFleetConnectorRequest("Name_example", "Url_example", "Token_example") // FleetConnectorRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsFleetConnectorsUpdate(context.Background(), connectorUuid).FleetConnectorRequest(fleetConnectorRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsFleetConnectorsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsFleetConnectorsUpdate`: FleetConnector
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsFleetConnectorsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Fleet Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsFleetConnectorsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **fleetConnectorRequest** | [**FleetConnectorRequest**](FleetConnectorRequest.md) |  | 
+
+### Return type
+
+[**FleetConnector**](FleetConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsFleetConnectorsUsedByList
+
+> []UsedBy EndpointsFleetConnectorsUsedByList(ctx, connectorUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Fleet Connector.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndpointsApi.EndpointsFleetConnectorsUsedByList(context.Background(), connectorUuid).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndpointsApi.EndpointsFleetConnectorsUsedByList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndpointsFleetConnectorsUsedByList`: []UsedBy
+    fmt.Fprintf(os.Stdout, "Response from `EndpointsApi.EndpointsFleetConnectorsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Fleet Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsFleetConnectorsUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

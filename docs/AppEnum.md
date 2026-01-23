@@ -133,6 +133,8 @@
 
 * `ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT` (value: `"authentik.enterprise.endpoints.connectors.agent"`)
 
+* `ENTERPRISE_ENDPOINTS_CONNECTORS_FLEET` (value: `"authentik.enterprise.endpoints.connectors.fleet"`)
+
 * `ENTERPRISE_POLICIES_UNIQUE_PASSWORD` (value: `"authentik.enterprise.policies.unique_password"`)
 
 * `ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE` (value: `"authentik.enterprise.providers.google_workspace"`)

@@ -260,6 +260,13 @@ Class | Method | HTTP request | Description
 *EndpointsApi* | [**EndpointsDevicesSummaryRetrieve**](docs/EndpointsApi.md#endpointsdevicessummaryretrieve) | **Get** /endpoints/devices/summary/ | 
 *EndpointsApi* | [**EndpointsDevicesUpdate**](docs/EndpointsApi.md#endpointsdevicesupdate) | **Put** /endpoints/devices/{device_uuid}/ | 
 *EndpointsApi* | [**EndpointsDevicesUsedByList**](docs/EndpointsApi.md#endpointsdevicesusedbylist) | **Get** /endpoints/devices/{device_uuid}/used_by/ | 
+*EndpointsApi* | [**EndpointsFleetConnectorsCreate**](docs/EndpointsApi.md#endpointsfleetconnectorscreate) | **Post** /endpoints/fleet/connectors/ | 
+*EndpointsApi* | [**EndpointsFleetConnectorsDestroy**](docs/EndpointsApi.md#endpointsfleetconnectorsdestroy) | **Delete** /endpoints/fleet/connectors/{connector_uuid}/ | 
+*EndpointsApi* | [**EndpointsFleetConnectorsList**](docs/EndpointsApi.md#endpointsfleetconnectorslist) | **Get** /endpoints/fleet/connectors/ | 
+*EndpointsApi* | [**EndpointsFleetConnectorsPartialUpdate**](docs/EndpointsApi.md#endpointsfleetconnectorspartialupdate) | **Patch** /endpoints/fleet/connectors/{connector_uuid}/ | 
+*EndpointsApi* | [**EndpointsFleetConnectorsRetrieve**](docs/EndpointsApi.md#endpointsfleetconnectorsretrieve) | **Get** /endpoints/fleet/connectors/{connector_uuid}/ | 
+*EndpointsApi* | [**EndpointsFleetConnectorsUpdate**](docs/EndpointsApi.md#endpointsfleetconnectorsupdate) | **Put** /endpoints/fleet/connectors/{connector_uuid}/ | 
+*EndpointsApi* | [**EndpointsFleetConnectorsUsedByList**](docs/EndpointsApi.md#endpointsfleetconnectorsusedbylist) | **Get** /endpoints/fleet/connectors/{connector_uuid}/used_by/ | 
 *EnterpriseApi* | [**EnterpriseLicenseCreate**](docs/EnterpriseApi.md#enterpriselicensecreate) | **Post** /enterprise/license/ | 
 *EnterpriseApi* | [**EnterpriseLicenseDestroy**](docs/EnterpriseApi.md#enterpriselicensedestroy) | **Delete** /enterprise/license/{license_uuid}/ | 
 *EnterpriseApi* | [**EnterpriseLicenseForecastRetrieve**](docs/EnterpriseApi.md#enterpriselicenseforecastretrieve) | **Get** /enterprise/license/forecast/ | 
@@ -1314,6 +1321,8 @@ Class | Method | HTTP request | Description
  - [ExpressionPolicyRequest](docs/ExpressionPolicyRequest.md)
  - [ExtraRoleObjectPermission](docs/ExtraRoleObjectPermission.md)
  - [FileList](docs/FileList.md)
+ - [FleetConnector](docs/FleetConnector.md)
+ - [FleetConnectorRequest](docs/FleetConnectorRequest.md)
  - [Flow](docs/Flow.md)
  - [FlowChallengeResponseRequest](docs/FlowChallengeResponseRequest.md)
  - [FlowDesignationEnum](docs/FlowDesignationEnum.md)
@@ -1508,6 +1517,7 @@ Class | Method | HTTP request | Description
  - [PaginatedExpiringBaseGrantModelList](docs/PaginatedExpiringBaseGrantModelList.md)
  - [PaginatedExpressionPolicyList](docs/PaginatedExpressionPolicyList.md)
  - [PaginatedExtraRoleObjectPermissionList](docs/PaginatedExtraRoleObjectPermissionList.md)
+ - [PaginatedFleetConnectorList](docs/PaginatedFleetConnectorList.md)
  - [PaginatedFlowList](docs/PaginatedFlowList.md)
  - [PaginatedFlowStageBindingList](docs/PaginatedFlowStageBindingList.md)
  - [PaginatedGeoIPPolicyList](docs/PaginatedGeoIPPolicyList.md)
@@ -1663,6 +1673,7 @@ Class | Method | HTTP request | Description
  - [PatchedEventMatcherPolicyRequest](docs/PatchedEventMatcherPolicyRequest.md)
  - [PatchedEventRequest](docs/PatchedEventRequest.md)
  - [PatchedExpressionPolicyRequest](docs/PatchedExpressionPolicyRequest.md)
+ - [PatchedFleetConnectorRequest](docs/PatchedFleetConnectorRequest.md)
  - [PatchedFlowRequest](docs/PatchedFlowRequest.md)
  - [PatchedFlowStageBindingRequest](docs/PatchedFlowStageBindingRequest.md)
  - [PatchedGeoIPPolicyRequest](docs/PatchedGeoIPPolicyRequest.md)

@@ -9852,6 +9852,296 @@ paths:
       - authentik: []
       tags:
       - endpoints
+  /endpoints/fleet/connectors/:
+    get:
+      description: FleetConnector Viewset
+      operationId: endpoints_fleet_connectors_list
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedFleetConnectorList'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    post:
+      description: FleetConnector Viewset
+      operationId: endpoints_fleet_connectors_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FleetConnectorRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FleetConnector'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/fleet/connectors/{connector_uuid}/:
+    delete:
+      description: FleetConnector Viewset
+      operationId: endpoints_fleet_connectors_destroy
+      parameters:
+      - description: A UUID string identifying this Fleet Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    get:
+      description: FleetConnector Viewset
+      operationId: endpoints_fleet_connectors_retrieve
+      parameters:
+      - description: A UUID string identifying this Fleet Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FleetConnector'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    patch:
+      description: FleetConnector Viewset
+      operationId: endpoints_fleet_connectors_partial_update
+      parameters:
+      - description: A UUID string identifying this Fleet Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFleetConnectorRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FleetConnector'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+    put:
+      description: FleetConnector Viewset
+      operationId: endpoints_fleet_connectors_update
+      parameters:
+      - description: A UUID string identifying this Fleet Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FleetConnectorRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FleetConnector'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
+  /endpoints/fleet/connectors/{connector_uuid}/used_by/:
+    get:
+      description: Get a list of all objects that use this object
+      operationId: endpoints_fleet_connectors_used_by_list
+      parameters:
+      - description: A UUID string identifying this Fleet Connector.
+        explode: false
+        in: path
+        name: connector_uuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+                type: array
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - endpoints
   /enterprise/license/:
     get:
       description: License Viewset
@@ -30437,6 +30727,7 @@ paths:
           - authentik_endpoints_connectors_agent.agentconnector
           - authentik_endpoints_connectors_agent.agentdeviceuserbinding
           - authentik_endpoints_connectors_agent.enrollmenttoken
+          - authentik_endpoints_connectors_fleet.fleetconnector
           - authentik_enterprise.license
           - authentik_events.event
           - authentik_events.notification
@@ -50439,6 +50730,7 @@ components:
       - authentik.blueprints
       - authentik.enterprise.audit
       - authentik.enterprise.endpoints.connectors.agent
+      - authentik.enterprise.endpoints.connectors.fleet
       - authentik.enterprise.policies.unique_password
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
@@ -54048,6 +54340,8 @@ components:
       example:
         pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        attributes:
+          key: ""
       properties:
         pbm_uuid:
           format: uuid
@@ -54055,6 +54349,9 @@ components:
           type: string
         name:
           type: string
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - name
       - pbm_uuid
@@ -54062,10 +54359,15 @@ components:
     DeviceAccessGroupRequest:
       example:
         name: name
+        attributes:
+          key: ""
       properties:
         name:
           minLength: 1
           type: string
+        attributes:
+          additionalProperties: {}
+          type: object
       required:
       - name
       type: object
@@ -55386,6 +55688,8 @@ components:
         access_group_obj:
           pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          attributes:
+            key: ""
         facts: ""
         device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -55446,6 +55750,8 @@ components:
         access_group_obj:
           pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          attributes:
+            key: ""
         facts: ""
         device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         connections:
@@ -55514,6 +55820,8 @@ components:
         access_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_group_obj:
           name: name
+          attributes:
+            key: ""
         device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         device_uuid:
@@ -56398,6 +56706,110 @@ components:
           type: string
       required:
       - file
+      type: object
+    FleetConnector:
+      description: FleetConnector Serializer
+      example:
+        component: component
+        verbose_name: verbose_name
+        headers_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        verbose_name_plural: verbose_name_plural
+        meta_model_name: meta_model_name
+        map_users: true
+        map_teams_access_group: true
+        connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        enabled: true
+        url: https://openapi-generator.tech
+      properties:
+        connector_uuid:
+          format: uuid
+          type: string
+        name:
+          type: string
+        enabled:
+          type: boolean
+        component:
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+          type: string
+        verbose_name:
+          description: Return object's verbose_name
+          readOnly: true
+          type: string
+        verbose_name_plural:
+          description: Return object's plural verbose_name
+          readOnly: true
+          type: string
+        meta_model_name:
+          description: Return internal model name
+          readOnly: true
+          type: string
+        url:
+          format: uri
+          maxLength: 200
+          type: string
+        headers_mapping:
+          description: Configure additional headers to be sent. Mapping should return
+            a dictionary of key-value pairs
+          format: uuid
+          nullable: true
+          type: string
+        map_users:
+          type: boolean
+        map_teams_access_group:
+          type: boolean
+      required:
+      - component
+      - meta_model_name
+      - name
+      - url
+      - verbose_name
+      - verbose_name_plural
+      type: object
+    FleetConnectorRequest:
+      description: FleetConnector Serializer
+      example:
+        headers_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        map_users: true
+        map_teams_access_group: true
+        connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        enabled: true
+        url: https://openapi-generator.tech
+        token: token
+      properties:
+        connector_uuid:
+          format: uuid
+          type: string
+        name:
+          minLength: 1
+          type: string
+        enabled:
+          type: boolean
+        url:
+          format: uri
+          maxLength: 200
+          minLength: 1
+          type: string
+        token:
+          minLength: 1
+          type: string
+          writeOnly: true
+        headers_mapping:
+          description: Configure additional headers to be sent. Mapping should return
+            a dictionary of key-value pairs
+          format: uuid
+          nullable: true
+          type: string
+        map_users:
+          type: boolean
+        map_teams_access_group:
+          type: boolean
+      required:
+      - name
+      - token
+      - url
       type: object
     Flow:
       description: Flow Serializer
@@ -61135,6 +61547,7 @@ components:
       - authentik_tasks_schedules.schedule
       - authentik_brands.brand
       - authentik_blueprints.blueprintinstance
+      - authentik_endpoints_connectors_fleet.fleetconnector
       - authentik_policies_unique_password.uniquepasswordpolicy
       - authentik_providers_google_workspace.googleworkspaceprovider
       - authentik_providers_google_workspace.googleworkspaceprovidermapping
@@ -62630,12 +63043,21 @@ components:
       - userinfo_endpoint
       type: object
     OperatingSystem:
+      description: |-
+        For example:
+        {"family":"linux","name":"Ubuntu","version":"24.04.3 LTS (Noble Numbat)","arch":"amd64"}
+        {"family": "windows","name":"Server 2022 Datacenter","version":"10.0.20348.4405","arch":"amd64"}
+        {"family": "windows","name":"Server 2022 Datacenter","version":"10.0.20348.4405","arch":"amd64"}
+        {"family": "mac_os", "name": "", "version": "26.2", "arch": "arm64"}
       properties:
         family:
           $ref: '#/components/schemas/DeviceFactsOSFamily'
         name:
+          description: "Operating System name, such as 'Server 2022' or 'Ubuntu'"
           type: string
         version:
+          description: "Operating System version, must always be the version number\
+            \ but may contain build name"
           type: string
         arch:
           type: string
@@ -62644,13 +63066,22 @@ components:
       - family
       type: object
     OperatingSystemRequest:
+      description: |-
+        For example:
+        {"family":"linux","name":"Ubuntu","version":"24.04.3 LTS (Noble Numbat)","arch":"amd64"}
+        {"family": "windows","name":"Server 2022 Datacenter","version":"10.0.20348.4405","arch":"amd64"}
+        {"family": "windows","name":"Server 2022 Datacenter","version":"10.0.20348.4405","arch":"amd64"}
+        {"family": "mac_os", "name": "", "version": "26.2", "arch": "arm64"}
       properties:
         family:
           $ref: '#/components/schemas/DeviceFactsOSFamily'
         name:
+          description: "Operating System name, such as 'Server 2022' or 'Ubuntu'"
           minLength: 1
           type: string
         version:
+          description: "Operating System version, must always be the version number\
+            \ but may contain build name"
           minLength: 1
           type: string
         arch:
@@ -64715,8 +65146,12 @@ components:
         results:
         - pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          attributes:
+            key: ""
         - pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          attributes:
+            key: ""
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -65229,6 +65664,8 @@ components:
           access_group_obj:
             pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            attributes:
+              key: ""
           facts: ""
           device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - expiring: true
@@ -65241,6 +65678,8 @@ components:
           access_group_obj:
             pbm_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            attributes:
+              key: ""
           facts: ""
           device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -65847,6 +66286,56 @@ components:
             $ref: '#/components/schemas/ExtraRoleObjectPermission'
           type: array
       required:
+      - pagination
+      - results
+      type: object
+    PaginatedFleetConnectorList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - component: component
+          verbose_name: verbose_name
+          headers_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          map_users: true
+          map_teams_access_group: true
+          connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          enabled: true
+          url: https://openapi-generator.tech
+        - component: component
+          verbose_name: verbose_name
+          headers_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          verbose_name_plural: verbose_name_plural
+          meta_model_name: meta_model_name
+          map_users: true
+          map_teams_access_group: true
+          connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          enabled: true
+          url: https://openapi-generator.tech
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          items:
+            $ref: '#/components/schemas/FleetConnector'
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
       - pagination
       - results
       type: object
@@ -74439,10 +74928,15 @@ components:
     PatchedDeviceAccessGroupRequest:
       example:
         name: name
+        attributes:
+          key: ""
       properties:
         name:
           minLength: 1
           type: string
+        attributes:
+          additionalProperties: {}
+          type: object
       type: object
     PatchedDeviceUserBindingRequest:
       description: PolicyBinding Serializer
@@ -74691,6 +75185,8 @@ components:
         access_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         access_group_obj:
           name: name
+          attributes:
+            key: ""
         device_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         device_uuid:
@@ -74892,6 +75388,46 @@ components:
         expression:
           minLength: 1
           type: string
+      type: object
+    PatchedFleetConnectorRequest:
+      description: FleetConnector Serializer
+      example:
+        headers_mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        map_users: true
+        map_teams_access_group: true
+        connector_uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        enabled: true
+        url: https://openapi-generator.tech
+        token: token
+      properties:
+        connector_uuid:
+          format: uuid
+          type: string
+        name:
+          minLength: 1
+          type: string
+        enabled:
+          type: boolean
+        url:
+          format: uri
+          maxLength: 200
+          minLength: 1
+          type: string
+        token:
+          minLength: 1
+          type: string
+          writeOnly: true
+        headers_mapping:
+          description: Configure additional headers to be sent. Mapping should return
+            a dictionary of key-value pairs
+          format: uuid
+          nullable: true
+          type: string
+        map_users:
+          type: boolean
+        map_teams_access_group:
+          type: boolean
       type: object
     PatchedFlowRequest:
       description: Flow Serializer
@@ -87348,6 +87884,7 @@ components:
       enum:
       - goauthentik.io/@merged
       - goauthentik.io/platform
+      - fleetdm.com
       type: string
     Version:
       description: Get running and latest version.
