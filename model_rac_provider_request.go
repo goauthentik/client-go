@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -26,9 +26,9 @@ type RACProviderRequest struct {
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow used when authorizing this provider.
-	AuthorizationFlow string                 `json:"authorization_flow"`
-	PropertyMappings  []string               `json:"property_mappings,omitempty"`
-	Settings          map[string]interface{} `json:"settings,omitempty"`
+	AuthorizationFlow string      `json:"authorization_flow"`
+	PropertyMappings  []string    `json:"property_mappings,omitempty"`
+	Settings          interface{} `json:"settings,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	ConnectionExpiry *string `json:"connection_expiry,omitempty"`
 	// When set to true, connection tokens will be deleted upon disconnect.
@@ -179,10 +179,10 @@ func (o *RACProviderRequest) SetPropertyMappings(v []string) {
 	o.PropertyMappings = v
 }
 
-// GetSettings returns the Settings field value if set, zero value otherwise.
-func (o *RACProviderRequest) GetSettings() map[string]interface{} {
-	if o == nil || IsNil(o.Settings) {
-		var ret map[string]interface{}
+// GetSettings returns the Settings field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RACProviderRequest) GetSettings() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Settings
@@ -190,11 +190,12 @@ func (o *RACProviderRequest) GetSettings() map[string]interface{} {
 
 // GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RACProviderRequest) GetSettingsOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RACProviderRequest) GetSettingsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Settings) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Settings, true
+	return &o.Settings, true
 }
 
 // HasSettings returns a boolean if a field has been set.
@@ -206,8 +207,8 @@ func (o *RACProviderRequest) HasSettings() bool {
 	return false
 }
 
-// SetSettings gets a reference to the given map[string]interface{} and assigns it to the Settings field.
-func (o *RACProviderRequest) SetSettings(v map[string]interface{}) {
+// SetSettings gets a reference to the given interface{} and assigns it to the Settings field.
+func (o *RACProviderRequest) SetSettings(v interface{}) {
 	o.Settings = v
 }
 
@@ -293,7 +294,7 @@ func (o RACProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if !IsNil(o.Settings) {
+	if o.Settings != nil {
 		toSerialize["settings"] = o.Settings
 	}
 	if !IsNil(o.ConnectionExpiry) {

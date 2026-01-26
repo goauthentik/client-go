@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **Source** | **string** |  | 
 **ResumeTimeout** | Pointer to **string** | Amount of time a user can take to return from the source to continue the flow (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewSourceStage
 
-`func NewSourceStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, source string, ) *SourceStage`
+`func NewSourceStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, source string, ) *SourceStage`
 
 NewSourceStage instantiates a new SourceStage object
 This constructor will assign default values to properties that have it defined,
@@ -172,6 +172,11 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
+### HasFlowSet
+
+`func (o *SourceStage) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetSource
 

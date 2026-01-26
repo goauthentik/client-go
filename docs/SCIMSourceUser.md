@@ -4,18 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**ExternalId** | **string** |  | 
+**Id** | **string** |  | 
 **User** | **int32** |  | 
-**UserObj** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 **Source** | **string** |  | 
-**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Attributes** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewSCIMSourceUser
 
-`func NewSCIMSourceUser(externalId string, user int32, userObj PartialUser, source string, ) *SCIMSourceUser`
+`func NewSCIMSourceUser(id string, user int32, userObj GroupMember, source string, ) *SCIMSourceUser`
 
 NewSCIMSourceUser instantiates a new SCIMSourceUser object
 This constructor will assign default values to properties that have it defined,
@@ -49,31 +48,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *SCIMSourceUser) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetExternalId
-
-`func (o *SCIMSourceUser) GetExternalId() string`
-
-GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
-
-### GetExternalIdOk
-
-`func (o *SCIMSourceUser) GetExternalIdOk() (*string, bool)`
-
-GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExternalId
-
-`func (o *SCIMSourceUser) SetExternalId(v string)`
-
-SetExternalId sets ExternalId field to given value.
-
 
 ### GetUser
 
@@ -97,20 +71,20 @@ SetUser sets User field to given value.
 
 ### GetUserObj
 
-`func (o *SCIMSourceUser) GetUserObj() PartialUser`
+`func (o *SCIMSourceUser) GetUserObj() GroupMember`
 
 GetUserObj returns the UserObj field if non-nil, zero value otherwise.
 
 ### GetUserObjOk
 
-`func (o *SCIMSourceUser) GetUserObjOk() (*PartialUser, bool)`
+`func (o *SCIMSourceUser) GetUserObjOk() (*GroupMember, bool)`
 
 GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserObj
 
-`func (o *SCIMSourceUser) SetUserObj(v PartialUser)`
+`func (o *SCIMSourceUser) SetUserObj(v GroupMember)`
 
 SetUserObj sets UserObj field to given value.
 
@@ -137,20 +111,20 @@ SetSource sets Source field to given value.
 
 ### GetAttributes
 
-`func (o *SCIMSourceUser) GetAttributes() map[string]interface{}`
+`func (o *SCIMSourceUser) GetAttributes() interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *SCIMSourceUser) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *SCIMSourceUser) GetAttributesOk() (*interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *SCIMSourceUser) SetAttributes(v map[string]interface{})`
+`func (o *SCIMSourceUser) SetAttributes(v interface{})`
 
 SetAttributes sets Attributes field to given value.
 
@@ -160,6 +134,16 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### SetAttributesNil
+
+`func (o *SCIMSourceUser) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *SCIMSourceUser) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

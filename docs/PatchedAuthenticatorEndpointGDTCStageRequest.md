@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
-**FriendlyName** | Pointer to **string** |  | [optional] 
-**Credentials** | Pointer to **map[string]interface{}** |  | [optional] 
+**FriendlyName** | Pointer to **NullableString** |  | [optional] 
+**Credentials** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -52,6 +53,31 @@ SetName sets Name field to given value.
 `func (o *PatchedAuthenticatorEndpointGDTCStageRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetFlowSet
+
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetFlowSet() []FlowSetRequest`
+
+GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
+
+### GetFlowSetOk
+
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
+
+GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowSet
+
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetFlowSet(v []FlowSetRequest)`
+
+SetFlowSet sets FlowSet field to given value.
+
+### HasFlowSet
+
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetConfigureFlow
 
@@ -113,22 +139,32 @@ SetFriendlyName sets FriendlyName field to given value.
 
 HasFriendlyName returns a boolean if a field has been set.
 
+### SetFriendlyNameNil
+
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetFriendlyNameNil(b bool)`
+
+ SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+
+### UnsetFriendlyName
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) UnsetFriendlyName()`
+
+UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
 ### GetCredentials
 
-`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentials() map[string]interface{}`
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentials() interface{}`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentialsOk() (*map[string]interface{}, bool)`
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentialsOk() (*interface{}, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetCredentials(v map[string]interface{})`
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetCredentials(v interface{})`
 
 SetCredentials sets Credentials field to given value.
 
@@ -138,6 +174,16 @@ SetCredentials sets Credentials field to given value.
 
 HasCredentials returns a boolean if a field has been set.
 
+### SetCredentialsNil
+
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetCredentialsNil(b bool)`
+
+ SetCredentialsNil sets the value for Credentials to be an explicit nil
+
+### UnsetCredentials
+`func (o *PatchedAuthenticatorEndpointGDTCStageRequest) UnsetCredentials()`
+
+UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

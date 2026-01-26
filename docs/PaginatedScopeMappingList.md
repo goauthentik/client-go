@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]ScopeMapping**](ScopeMapping.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedScopeMappingList
 
-`func NewPaginatedScopeMappingList(pagination Pagination, results []ScopeMapping, autocomplete map[string]interface{}, ) *PaginatedScopeMappingList`
+`func NewPaginatedScopeMappingList(pagination Pagination, results []ScopeMapping, ) *PaginatedScopeMappingList`
 
 NewPaginatedScopeMappingList instantiates a new PaginatedScopeMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedScopeMappingList) SetResults(v []ScopeMapping)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedScopeMappingList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedScopeMappingList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedScopeMappingList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

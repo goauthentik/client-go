@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,9 +22,10 @@ var _ MappedNullable = &PromptStageRequest{}
 
 // PromptStageRequest PromptStage Serializer
 type PromptStageRequest struct {
-	Name               string   `json:"name"`
-	Fields             []string `json:"fields"`
-	ValidationPolicies []string `json:"validation_policies,omitempty"`
+	Name               string           `json:"name"`
+	FlowSet            []FlowSetRequest `json:"flow_set,omitempty"`
+	Fields             []string         `json:"fields"`
+	ValidationPolicies []string         `json:"validation_policies,omitempty"`
 }
 
 type _PromptStageRequest PromptStageRequest
@@ -70,6 +71,38 @@ func (o *PromptStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *PromptStageRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *PromptStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PromptStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *PromptStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PromptStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetFields returns the Fields field value
@@ -139,6 +172,9 @@ func (o PromptStageRequest) MarshalJSON() ([]byte, error) {
 func (o PromptStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	toSerialize["fields"] = o.Fields
 	if !IsNil(o.ValidationPolicies) {
 		toSerialize["validation_policies"] = o.ValidationPolicies

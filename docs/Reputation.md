@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Pk** | Pointer to **string** |  | [optional] 
 **Identifier** | **string** |  | 
 **Ip** | **string** |  | 
-**IpGeoData** | Pointer to **map[string]interface{}** |  | [optional] 
-**IpAsnData** | Pointer to **map[string]interface{}** |  | [optional] 
+**IpGeoData** | Pointer to **interface{}** |  | [optional] 
+**IpAsnData** | Pointer to **interface{}** |  | [optional] 
 **Score** | Pointer to **int64** |  | [optional] 
 **Updated** | **time.Time** |  | [readonly] 
 
@@ -98,20 +98,20 @@ SetIp sets Ip field to given value.
 
 ### GetIpGeoData
 
-`func (o *Reputation) GetIpGeoData() map[string]interface{}`
+`func (o *Reputation) GetIpGeoData() interface{}`
 
 GetIpGeoData returns the IpGeoData field if non-nil, zero value otherwise.
 
 ### GetIpGeoDataOk
 
-`func (o *Reputation) GetIpGeoDataOk() (*map[string]interface{}, bool)`
+`func (o *Reputation) GetIpGeoDataOk() (*interface{}, bool)`
 
 GetIpGeoDataOk returns a tuple with the IpGeoData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpGeoData
 
-`func (o *Reputation) SetIpGeoData(v map[string]interface{})`
+`func (o *Reputation) SetIpGeoData(v interface{})`
 
 SetIpGeoData sets IpGeoData field to given value.
 
@@ -121,22 +121,32 @@ SetIpGeoData sets IpGeoData field to given value.
 
 HasIpGeoData returns a boolean if a field has been set.
 
+### SetIpGeoDataNil
+
+`func (o *Reputation) SetIpGeoDataNil(b bool)`
+
+ SetIpGeoDataNil sets the value for IpGeoData to be an explicit nil
+
+### UnsetIpGeoData
+`func (o *Reputation) UnsetIpGeoData()`
+
+UnsetIpGeoData ensures that no value is present for IpGeoData, not even an explicit nil
 ### GetIpAsnData
 
-`func (o *Reputation) GetIpAsnData() map[string]interface{}`
+`func (o *Reputation) GetIpAsnData() interface{}`
 
 GetIpAsnData returns the IpAsnData field if non-nil, zero value otherwise.
 
 ### GetIpAsnDataOk
 
-`func (o *Reputation) GetIpAsnDataOk() (*map[string]interface{}, bool)`
+`func (o *Reputation) GetIpAsnDataOk() (*interface{}, bool)`
 
 GetIpAsnDataOk returns a tuple with the IpAsnData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpAsnData
 
-`func (o *Reputation) SetIpAsnData(v map[string]interface{})`
+`func (o *Reputation) SetIpAsnData(v interface{})`
 
 SetIpAsnData sets IpAsnData field to given value.
 
@@ -146,6 +156,16 @@ SetIpAsnData sets IpAsnData field to given value.
 
 HasIpAsnData returns a boolean if a field has been set.
 
+### SetIpAsnDataNil
+
+`func (o *Reputation) SetIpAsnDataNil(b bool)`
+
+ SetIpAsnDataNil sets the value for IpAsnData to be an explicit nil
+
+### UnsetIpAsnData
+`func (o *Reputation) UnsetIpAsnData()`
+
+UnsetIpAsnData ensures that no value is present for IpAsnData, not even an explicit nil
 ### GetScore
 
 `func (o *Reputation) GetScore() int64`

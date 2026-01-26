@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **ProviderObj** | [**RACProvider**](RACProvider.md) |  | [readonly] 
 **Protocol** | [**ProtocolEnum**](ProtocolEnum.md) |  | 
 **Host** | **string** |  | 
-**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
+**Settings** | Pointer to **interface{}** |  | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**AuthMode** | [**EndpointAuthModeEnum**](EndpointAuthModeEnum.md) |  | 
+**AuthMode** | [**AuthModeEnum**](AuthModeEnum.md) |  | 
 **LaunchUrl** | **NullableString** | Build actual launch URL (the provider itself does not have one, just individual endpoints) | [readonly] 
 **MaximumConnections** | Pointer to **int32** |  | [optional] 
 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewEndpoint
 
-`func NewEndpoint(pk string, name string, provider int32, providerObj RACProvider, protocol ProtocolEnum, host string, authMode EndpointAuthModeEnum, launchUrl NullableString, ) *Endpoint`
+`func NewEndpoint(pk string, name string, provider int32, providerObj RACProvider, protocol ProtocolEnum, host string, authMode AuthModeEnum, launchUrl NullableString, ) *Endpoint`
 
 NewEndpoint instantiates a new Endpoint object
 This constructor will assign default values to properties that have it defined,
@@ -157,20 +157,20 @@ SetHost sets Host field to given value.
 
 ### GetSettings
 
-`func (o *Endpoint) GetSettings() map[string]interface{}`
+`func (o *Endpoint) GetSettings() interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *Endpoint) GetSettingsOk() (*map[string]interface{}, bool)`
+`func (o *Endpoint) GetSettingsOk() (*interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *Endpoint) SetSettings(v map[string]interface{})`
+`func (o *Endpoint) SetSettings(v interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -180,6 +180,16 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
+### SetSettingsNil
+
+`func (o *Endpoint) SetSettingsNil(b bool)`
+
+ SetSettingsNil sets the value for Settings to be an explicit nil
+
+### UnsetSettings
+`func (o *Endpoint) UnsetSettings()`
+
+UnsetSettings ensures that no value is present for Settings, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *Endpoint) GetPropertyMappings() []string`
@@ -207,20 +217,20 @@ HasPropertyMappings returns a boolean if a field has been set.
 
 ### GetAuthMode
 
-`func (o *Endpoint) GetAuthMode() EndpointAuthModeEnum`
+`func (o *Endpoint) GetAuthMode() AuthModeEnum`
 
 GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
 
 ### GetAuthModeOk
 
-`func (o *Endpoint) GetAuthModeOk() (*EndpointAuthModeEnum, bool)`
+`func (o *Endpoint) GetAuthModeOk() (*AuthModeEnum, bool)`
 
 GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthMode
 
-`func (o *Endpoint) SetAuthMode(v EndpointAuthModeEnum)`
+`func (o *Endpoint) SetAuthMode(v AuthModeEnum)`
 
 SetAuthMode sets AuthMode field to given value.
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &GoogleWorkspaceProviderGroup{}
 
 // GoogleWorkspaceProviderGroup GoogleWorkspaceProviderGroup Serializer
 type GoogleWorkspaceProviderGroup struct {
-	Id         string                 `json:"id"`
-	GoogleId   string                 `json:"google_id"`
-	Group      string                 `json:"group"`
-	GroupObj   PartialGroup           `json:"group_obj"`
-	Provider   int32                  `json:"provider"`
-	Attributes map[string]interface{} `json:"attributes"`
+	Id         string      `json:"id"`
+	GoogleId   string      `json:"google_id"`
+	Group      string      `json:"group"`
+	GroupObj   UserGroup   `json:"group_obj"`
+	Provider   int32       `json:"provider"`
+	Attributes interface{} `json:"attributes"`
 }
 
 type _GoogleWorkspaceProviderGroup GoogleWorkspaceProviderGroup
@@ -36,7 +36,7 @@ type _GoogleWorkspaceProviderGroup GoogleWorkspaceProviderGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}) *GoogleWorkspaceProviderGroup {
+func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj UserGroup, provider int32, attributes interface{}) *GoogleWorkspaceProviderGroup {
 	this := GoogleWorkspaceProviderGroup{}
 	this.Id = id
 	this.GoogleId = googleId
@@ -128,9 +128,9 @@ func (o *GoogleWorkspaceProviderGroup) SetGroup(v string) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *GoogleWorkspaceProviderGroup) GetGroupObj() PartialGroup {
+func (o *GoogleWorkspaceProviderGroup) GetGroupObj() UserGroup {
 	if o == nil {
-		var ret PartialGroup
+		var ret UserGroup
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *GoogleWorkspaceProviderGroup) GetGroupObj() PartialGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
+func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*UserGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *GoogleWorkspaceProviderGroup) SetGroupObj(v PartialGroup) {
+func (o *GoogleWorkspaceProviderGroup) SetGroupObj(v UserGroup) {
 	o.GroupObj = v
 }
 
@@ -176,9 +176,10 @@ func (o *GoogleWorkspaceProviderGroup) SetProvider(v int32) {
 }
 
 // GetAttributes returns the Attributes field value
-func (o *GoogleWorkspaceProviderGroup) GetAttributes() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *GoogleWorkspaceProviderGroup) GetAttributes() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -187,15 +188,16 @@ func (o *GoogleWorkspaceProviderGroup) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *GoogleWorkspaceProviderGroup) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleWorkspaceProviderGroup) GetAttributesOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Attributes) {
+		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // SetAttributes sets field value
-func (o *GoogleWorkspaceProviderGroup) SetAttributes(v map[string]interface{}) {
+func (o *GoogleWorkspaceProviderGroup) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 
@@ -214,7 +216,9 @@ func (o GoogleWorkspaceProviderGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize["group"] = o.Group
 	toSerialize["group_obj"] = o.GroupObj
 	toSerialize["provider"] = o.Provider
-	toSerialize["attributes"] = o.Attributes
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
+	}
 	return toSerialize, nil
 }
 

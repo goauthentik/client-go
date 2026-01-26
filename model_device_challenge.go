@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &DeviceChallenge{}
 
 // DeviceChallenge Single device challenge
 type DeviceChallenge struct {
-	DeviceClass DeviceClassesEnum      `json:"device_class"`
+	DeviceClass string                 `json:"device_class"`
 	DeviceUid   string                 `json:"device_uid"`
 	Challenge   map[string]interface{} `json:"challenge"`
 	LastUsed    NullableTime           `json:"last_used"`
@@ -35,7 +35,7 @@ type _DeviceChallenge DeviceChallenge
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceChallenge(deviceClass DeviceClassesEnum, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime) *DeviceChallenge {
+func NewDeviceChallenge(deviceClass string, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime) *DeviceChallenge {
 	this := DeviceChallenge{}
 	this.DeviceClass = deviceClass
 	this.DeviceUid = deviceUid
@@ -53,9 +53,9 @@ func NewDeviceChallengeWithDefaults() *DeviceChallenge {
 }
 
 // GetDeviceClass returns the DeviceClass field value
-func (o *DeviceChallenge) GetDeviceClass() DeviceClassesEnum {
+func (o *DeviceChallenge) GetDeviceClass() string {
 	if o == nil {
-		var ret DeviceClassesEnum
+		var ret string
 		return ret
 	}
 
@@ -64,7 +64,7 @@ func (o *DeviceChallenge) GetDeviceClass() DeviceClassesEnum {
 
 // GetDeviceClassOk returns a tuple with the DeviceClass field value
 // and a boolean to check if the value has been set.
-func (o *DeviceChallenge) GetDeviceClassOk() (*DeviceClassesEnum, bool) {
+func (o *DeviceChallenge) GetDeviceClassOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -72,7 +72,7 @@ func (o *DeviceChallenge) GetDeviceClassOk() (*DeviceClassesEnum, bool) {
 }
 
 // SetDeviceClass sets field value
-func (o *DeviceChallenge) SetDeviceClass(v DeviceClassesEnum) {
+func (o *DeviceChallenge) SetDeviceClass(v string) {
 	o.DeviceClass = v
 }
 

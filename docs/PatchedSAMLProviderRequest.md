@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **InvalidationFlow** | Pointer to **string** | Flow used ending the session from a provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **AcsUrl** | Pointer to **string** |  | [optional] 
-**SlsUrl** | Pointer to **string** | Single Logout Service URL where the logout response should be sent. | [optional] 
 **Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
 **Issuer** | Pointer to **string** | Also known as EntityID | [optional] 
 **AssertionValidNotBefore** | Pointer to **string** | Assertion valid not before current time + this value (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3). | [optional] 
@@ -25,12 +24,8 @@ Name | Type | Description | Notes
 **EncryptionKp** | Pointer to **NullableString** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] 
 **SignAssertion** | Pointer to **bool** |  | [optional] 
 **SignResponse** | Pointer to **bool** |  | [optional] 
-**SignLogoutRequest** | Pointer to **bool** |  | [optional] 
-**SpBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
-**SlsBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the logout response back to the Service Provider. | [optional] 
-**LogoutMethod** | Pointer to [**SAMLProviderLogoutMethodEnum**](SAMLProviderLogoutMethodEnum.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] 
+**SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
 **DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
-**DefaultNameIdPolicy** | Pointer to [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -210,31 +205,6 @@ SetAcsUrl sets AcsUrl field to given value.
 `func (o *PatchedSAMLProviderRequest) HasAcsUrl() bool`
 
 HasAcsUrl returns a boolean if a field has been set.
-
-### GetSlsUrl
-
-`func (o *PatchedSAMLProviderRequest) GetSlsUrl() string`
-
-GetSlsUrl returns the SlsUrl field if non-nil, zero value otherwise.
-
-### GetSlsUrlOk
-
-`func (o *PatchedSAMLProviderRequest) GetSlsUrlOk() (*string, bool)`
-
-GetSlsUrlOk returns a tuple with the SlsUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlsUrl
-
-`func (o *PatchedSAMLProviderRequest) SetSlsUrl(v string)`
-
-SetSlsUrl sets SlsUrl field to given value.
-
-### HasSlsUrl
-
-`func (o *PatchedSAMLProviderRequest) HasSlsUrl() bool`
-
-HasSlsUrl returns a boolean if a field has been set.
 
 ### GetAudience
 
@@ -636,47 +606,22 @@ SetSignResponse sets SignResponse field to given value.
 
 HasSignResponse returns a boolean if a field has been set.
 
-### GetSignLogoutRequest
-
-`func (o *PatchedSAMLProviderRequest) GetSignLogoutRequest() bool`
-
-GetSignLogoutRequest returns the SignLogoutRequest field if non-nil, zero value otherwise.
-
-### GetSignLogoutRequestOk
-
-`func (o *PatchedSAMLProviderRequest) GetSignLogoutRequestOk() (*bool, bool)`
-
-GetSignLogoutRequestOk returns a tuple with the SignLogoutRequest field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSignLogoutRequest
-
-`func (o *PatchedSAMLProviderRequest) SetSignLogoutRequest(v bool)`
-
-SetSignLogoutRequest sets SignLogoutRequest field to given value.
-
-### HasSignLogoutRequest
-
-`func (o *PatchedSAMLProviderRequest) HasSignLogoutRequest() bool`
-
-HasSignLogoutRequest returns a boolean if a field has been set.
-
 ### GetSpBinding
 
-`func (o *PatchedSAMLProviderRequest) GetSpBinding() SAMLBindingsEnum`
+`func (o *PatchedSAMLProviderRequest) GetSpBinding() SpBindingEnum`
 
 GetSpBinding returns the SpBinding field if non-nil, zero value otherwise.
 
 ### GetSpBindingOk
 
-`func (o *PatchedSAMLProviderRequest) GetSpBindingOk() (*SAMLBindingsEnum, bool)`
+`func (o *PatchedSAMLProviderRequest) GetSpBindingOk() (*SpBindingEnum, bool)`
 
 GetSpBindingOk returns a tuple with the SpBinding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpBinding
 
-`func (o *PatchedSAMLProviderRequest) SetSpBinding(v SAMLBindingsEnum)`
+`func (o *PatchedSAMLProviderRequest) SetSpBinding(v SpBindingEnum)`
 
 SetSpBinding sets SpBinding field to given value.
 
@@ -685,56 +630,6 @@ SetSpBinding sets SpBinding field to given value.
 `func (o *PatchedSAMLProviderRequest) HasSpBinding() bool`
 
 HasSpBinding returns a boolean if a field has been set.
-
-### GetSlsBinding
-
-`func (o *PatchedSAMLProviderRequest) GetSlsBinding() SAMLBindingsEnum`
-
-GetSlsBinding returns the SlsBinding field if non-nil, zero value otherwise.
-
-### GetSlsBindingOk
-
-`func (o *PatchedSAMLProviderRequest) GetSlsBindingOk() (*SAMLBindingsEnum, bool)`
-
-GetSlsBindingOk returns a tuple with the SlsBinding field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlsBinding
-
-`func (o *PatchedSAMLProviderRequest) SetSlsBinding(v SAMLBindingsEnum)`
-
-SetSlsBinding sets SlsBinding field to given value.
-
-### HasSlsBinding
-
-`func (o *PatchedSAMLProviderRequest) HasSlsBinding() bool`
-
-HasSlsBinding returns a boolean if a field has been set.
-
-### GetLogoutMethod
-
-`func (o *PatchedSAMLProviderRequest) GetLogoutMethod() SAMLProviderLogoutMethodEnum`
-
-GetLogoutMethod returns the LogoutMethod field if non-nil, zero value otherwise.
-
-### GetLogoutMethodOk
-
-`func (o *PatchedSAMLProviderRequest) GetLogoutMethodOk() (*SAMLProviderLogoutMethodEnum, bool)`
-
-GetLogoutMethodOk returns a tuple with the LogoutMethod field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLogoutMethod
-
-`func (o *PatchedSAMLProviderRequest) SetLogoutMethod(v SAMLProviderLogoutMethodEnum)`
-
-SetLogoutMethod sets LogoutMethod field to given value.
-
-### HasLogoutMethod
-
-`func (o *PatchedSAMLProviderRequest) HasLogoutMethod() bool`
-
-HasLogoutMethod returns a boolean if a field has been set.
 
 ### GetDefaultRelayState
 
@@ -760,31 +655,6 @@ SetDefaultRelayState sets DefaultRelayState field to given value.
 `func (o *PatchedSAMLProviderRequest) HasDefaultRelayState() bool`
 
 HasDefaultRelayState returns a boolean if a field has been set.
-
-### GetDefaultNameIdPolicy
-
-`func (o *PatchedSAMLProviderRequest) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum`
-
-GetDefaultNameIdPolicy returns the DefaultNameIdPolicy field if non-nil, zero value otherwise.
-
-### GetDefaultNameIdPolicyOk
-
-`func (o *PatchedSAMLProviderRequest) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool)`
-
-GetDefaultNameIdPolicyOk returns a tuple with the DefaultNameIdPolicy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultNameIdPolicy
-
-`func (o *PatchedSAMLProviderRequest) SetDefaultNameIdPolicy(v SAMLNameIDPolicyEnum)`
-
-SetDefaultNameIdPolicy sets DefaultNameIdPolicy field to given value.
-
-### HasDefaultNameIdPolicy
-
-`func (o *PatchedSAMLProviderRequest) HasDefaultNameIdPolicy() bool`
-
-HasDefaultNameIdPolicy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **Fields** | **[]string** |  | 
 **ValidationPolicies** | Pointer to **[]string** |  | [optional] 
 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewPromptStage
 
-`func NewPromptStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, fields []string, ) *PromptStage`
+`func NewPromptStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, fields []string, ) *PromptStage`
 
 NewPromptStage instantiates a new PromptStage object
 This constructor will assign default values to properties that have it defined,
@@ -172,6 +172,11 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
+### HasFlowSet
+
+`func (o *PromptStage) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetFields
 

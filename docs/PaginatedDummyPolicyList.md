@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]DummyPolicy**](DummyPolicy.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedDummyPolicyList
 
-`func NewPaginatedDummyPolicyList(pagination Pagination, results []DummyPolicy, autocomplete map[string]interface{}, ) *PaginatedDummyPolicyList`
+`func NewPaginatedDummyPolicyList(pagination Pagination, results []DummyPolicy, ) *PaginatedDummyPolicyList`
 
 NewPaginatedDummyPolicyList instantiates a new PaginatedDummyPolicyList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedDummyPolicyList) SetResults(v []DummyPolicy)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedDummyPolicyList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedDummyPolicyList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedDummyPolicyList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

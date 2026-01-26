@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]SAMLPropertyMapping**](SAMLPropertyMapping.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedSAMLPropertyMappingList
 
-`func NewPaginatedSAMLPropertyMappingList(pagination Pagination, results []SAMLPropertyMapping, autocomplete map[string]interface{}, ) *PaginatedSAMLPropertyMappingList`
+`func NewPaginatedSAMLPropertyMappingList(pagination Pagination, results []SAMLPropertyMapping, ) *PaginatedSAMLPropertyMappingList`
 
 NewPaginatedSAMLPropertyMappingList instantiates a new PaginatedSAMLPropertyMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedSAMLPropertyMappingList) SetResults(v []SAMLPropertyMapping)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedSAMLPropertyMappingList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedSAMLPropertyMappingList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedSAMLPropertyMappingList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

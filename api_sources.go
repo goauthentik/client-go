@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -17,6 +17,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"reflect"
 	"strings"
 )
@@ -457,6 +458,251 @@ func (a *SourcesAPIService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSourcesAllSetIconCreateRequest struct {
+	ctx        context.Context
+	ApiService *SourcesAPIService
+	slug       string
+	file       *os.File
+	clear      *bool
+}
+
+func (r ApiSourcesAllSetIconCreateRequest) File(file *os.File) ApiSourcesAllSetIconCreateRequest {
+	r.file = file
+	return r
+}
+
+func (r ApiSourcesAllSetIconCreateRequest) Clear(clear bool) ApiSourcesAllSetIconCreateRequest {
+	r.clear = &clear
+	return r
+}
+
+func (r ApiSourcesAllSetIconCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.SourcesAllSetIconCreateExecute(r)
+}
+
+/*
+SourcesAllSetIconCreate Method for SourcesAllSetIconCreate
+
+Set source icon
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesAllSetIconCreateRequest
+*/
+func (a *SourcesAPIService) SourcesAllSetIconCreate(ctx context.Context, slug string) ApiSourcesAllSetIconCreateRequest {
+	return ApiSourcesAllSetIconCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		slug:       slug,
+	}
+}
+
+// Execute executes the request
+func (a *SourcesAPIService) SourcesAllSetIconCreateExecute(r ApiSourcesAllSetIconCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesAllSetIconCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/all/{slug}/set_icon/"
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName string
+	var fileLocalVarFileBytes []byte
+
+	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
+
+	if fileLocalVarFile != nil {
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	}
+	if r.clear != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "clear", r.clear, "", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSourcesAllSetIconUrlCreateRequest struct {
+	ctx             context.Context
+	ApiService      *SourcesAPIService
+	slug            string
+	filePathRequest *FilePathRequest
+}
+
+func (r ApiSourcesAllSetIconUrlCreateRequest) FilePathRequest(filePathRequest FilePathRequest) ApiSourcesAllSetIconUrlCreateRequest {
+	r.filePathRequest = &filePathRequest
+	return r
+}
+
+func (r ApiSourcesAllSetIconUrlCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.SourcesAllSetIconUrlCreateExecute(r)
+}
+
+/*
+SourcesAllSetIconUrlCreate Method for SourcesAllSetIconUrlCreate
+
+Set source icon (as URL)
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiSourcesAllSetIconUrlCreateRequest
+*/
+func (a *SourcesAPIService) SourcesAllSetIconUrlCreate(ctx context.Context, slug string) ApiSourcesAllSetIconUrlCreateRequest {
+	return ApiSourcesAllSetIconUrlCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		slug:       slug,
+	}
+}
+
+// Execute executes the request
+func (a *SourcesAPIService) SourcesAllSetIconUrlCreateExecute(r ApiSourcesAllSetIconUrlCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesAllSetIconUrlCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sources/all/{slug}/set_icon_url/"
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.filePathRequest == nil {
+		return nil, reportError("filePathRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.filePathRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiSourcesAllTypesListRequest struct {
@@ -6352,949 +6598,6 @@ func (a *SourcesAPIService) SourcesGroupConnectionsSamlUsedByListExecute(r ApiSo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSourcesGroupConnectionsTelegramCreateRequest struct {
-	ctx                                  context.Context
-	ApiService                           *SourcesAPIService
-	groupTelegramSourceConnectionRequest *GroupTelegramSourceConnectionRequest
-}
-
-func (r ApiSourcesGroupConnectionsTelegramCreateRequest) GroupTelegramSourceConnectionRequest(groupTelegramSourceConnectionRequest GroupTelegramSourceConnectionRequest) ApiSourcesGroupConnectionsTelegramCreateRequest {
-	r.groupTelegramSourceConnectionRequest = &groupTelegramSourceConnectionRequest
-	return r
-}
-
-func (r ApiSourcesGroupConnectionsTelegramCreateRequest) Execute() (*GroupTelegramSourceConnection, *http.Response, error) {
-	return r.ApiService.SourcesGroupConnectionsTelegramCreateExecute(r)
-}
-
-/*
-SourcesGroupConnectionsTelegramCreate Method for SourcesGroupConnectionsTelegramCreate
-
-Group-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSourcesGroupConnectionsTelegramCreateRequest
-*/
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramCreate(ctx context.Context) ApiSourcesGroupConnectionsTelegramCreateRequest {
-	return ApiSourcesGroupConnectionsTelegramCreateRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return GroupTelegramSourceConnection
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramCreateExecute(r ApiSourcesGroupConnectionsTelegramCreateRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GroupTelegramSourceConnection
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramCreate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/group_connections/telegram/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.groupTelegramSourceConnectionRequest == nil {
-		return localVarReturnValue, nil, reportError("groupTelegramSourceConnectionRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.groupTelegramSourceConnectionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesGroupConnectionsTelegramDestroyRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	id         int32
-}
-
-func (r ApiSourcesGroupConnectionsTelegramDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.SourcesGroupConnectionsTelegramDestroyExecute(r)
-}
-
-/*
-SourcesGroupConnectionsTelegramDestroy Method for SourcesGroupConnectionsTelegramDestroy
-
-Group-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Group Telegram Source Connection.
-	@return ApiSourcesGroupConnectionsTelegramDestroyRequest
-*/
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramDestroyRequest {
-	return ApiSourcesGroupConnectionsTelegramDestroyRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramDestroyExecute(r ApiSourcesGroupConnectionsTelegramDestroyRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramDestroy")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSourcesGroupConnectionsTelegramListRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	group      *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
-	sourceSlug *string
-}
-
-func (r ApiSourcesGroupConnectionsTelegramListRequest) Group(group string) ApiSourcesGroupConnectionsTelegramListRequest {
-	r.group = &group
-	return r
-}
-
-// Which field to use when ordering the results.
-func (r ApiSourcesGroupConnectionsTelegramListRequest) Ordering(ordering string) ApiSourcesGroupConnectionsTelegramListRequest {
-	r.ordering = &ordering
-	return r
-}
-
-// A page number within the paginated result set.
-func (r ApiSourcesGroupConnectionsTelegramListRequest) Page(page int32) ApiSourcesGroupConnectionsTelegramListRequest {
-	r.page = &page
-	return r
-}
-
-// Number of results to return per page.
-func (r ApiSourcesGroupConnectionsTelegramListRequest) PageSize(pageSize int32) ApiSourcesGroupConnectionsTelegramListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// A search term.
-func (r ApiSourcesGroupConnectionsTelegramListRequest) Search(search string) ApiSourcesGroupConnectionsTelegramListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiSourcesGroupConnectionsTelegramListRequest) SourceSlug(sourceSlug string) ApiSourcesGroupConnectionsTelegramListRequest {
-	r.sourceSlug = &sourceSlug
-	return r
-}
-
-func (r ApiSourcesGroupConnectionsTelegramListRequest) Execute() (*PaginatedGroupTelegramSourceConnectionList, *http.Response, error) {
-	return r.ApiService.SourcesGroupConnectionsTelegramListExecute(r)
-}
-
-/*
-SourcesGroupConnectionsTelegramList Method for SourcesGroupConnectionsTelegramList
-
-Group-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSourcesGroupConnectionsTelegramListRequest
-*/
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramList(ctx context.Context) ApiSourcesGroupConnectionsTelegramListRequest {
-	return ApiSourcesGroupConnectionsTelegramListRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return PaginatedGroupTelegramSourceConnectionList
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramListExecute(r ApiSourcesGroupConnectionsTelegramListRequest) (*PaginatedGroupTelegramSourceConnectionList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PaginatedGroupTelegramSourceConnectionList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/group_connections/telegram/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.group != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group", r.group, "form", "")
-	}
-	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
-	}
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
-	}
-	if r.sourceSlug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesGroupConnectionsTelegramPartialUpdateRequest struct {
-	ctx                                         context.Context
-	ApiService                                  *SourcesAPIService
-	id                                          int32
-	patchedGroupTelegramSourceConnectionRequest *PatchedGroupTelegramSourceConnectionRequest
-}
-
-func (r ApiSourcesGroupConnectionsTelegramPartialUpdateRequest) PatchedGroupTelegramSourceConnectionRequest(patchedGroupTelegramSourceConnectionRequest PatchedGroupTelegramSourceConnectionRequest) ApiSourcesGroupConnectionsTelegramPartialUpdateRequest {
-	r.patchedGroupTelegramSourceConnectionRequest = &patchedGroupTelegramSourceConnectionRequest
-	return r
-}
-
-func (r ApiSourcesGroupConnectionsTelegramPartialUpdateRequest) Execute() (*GroupTelegramSourceConnection, *http.Response, error) {
-	return r.ApiService.SourcesGroupConnectionsTelegramPartialUpdateExecute(r)
-}
-
-/*
-SourcesGroupConnectionsTelegramPartialUpdate Method for SourcesGroupConnectionsTelegramPartialUpdate
-
-Group-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Group Telegram Source Connection.
-	@return ApiSourcesGroupConnectionsTelegramPartialUpdateRequest
-*/
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramPartialUpdateRequest {
-	return ApiSourcesGroupConnectionsTelegramPartialUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return GroupTelegramSourceConnection
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramPartialUpdateExecute(r ApiSourcesGroupConnectionsTelegramPartialUpdateRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GroupTelegramSourceConnection
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramPartialUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.patchedGroupTelegramSourceConnectionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesGroupConnectionsTelegramRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	id         int32
-}
-
-func (r ApiSourcesGroupConnectionsTelegramRetrieveRequest) Execute() (*GroupTelegramSourceConnection, *http.Response, error) {
-	return r.ApiService.SourcesGroupConnectionsTelegramRetrieveExecute(r)
-}
-
-/*
-SourcesGroupConnectionsTelegramRetrieve Method for SourcesGroupConnectionsTelegramRetrieve
-
-Group-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Group Telegram Source Connection.
-	@return ApiSourcesGroupConnectionsTelegramRetrieveRequest
-*/
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramRetrieveRequest {
-	return ApiSourcesGroupConnectionsTelegramRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return GroupTelegramSourceConnection
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramRetrieveExecute(r ApiSourcesGroupConnectionsTelegramRetrieveRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GroupTelegramSourceConnection
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesGroupConnectionsTelegramUpdateRequest struct {
-	ctx                                  context.Context
-	ApiService                           *SourcesAPIService
-	id                                   int32
-	groupTelegramSourceConnectionRequest *GroupTelegramSourceConnectionRequest
-}
-
-func (r ApiSourcesGroupConnectionsTelegramUpdateRequest) GroupTelegramSourceConnectionRequest(groupTelegramSourceConnectionRequest GroupTelegramSourceConnectionRequest) ApiSourcesGroupConnectionsTelegramUpdateRequest {
-	r.groupTelegramSourceConnectionRequest = &groupTelegramSourceConnectionRequest
-	return r
-}
-
-func (r ApiSourcesGroupConnectionsTelegramUpdateRequest) Execute() (*GroupTelegramSourceConnection, *http.Response, error) {
-	return r.ApiService.SourcesGroupConnectionsTelegramUpdateExecute(r)
-}
-
-/*
-SourcesGroupConnectionsTelegramUpdate Method for SourcesGroupConnectionsTelegramUpdate
-
-Group-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Group Telegram Source Connection.
-	@return ApiSourcesGroupConnectionsTelegramUpdateRequest
-*/
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramUpdateRequest {
-	return ApiSourcesGroupConnectionsTelegramUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return GroupTelegramSourceConnection
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramUpdateExecute(r ApiSourcesGroupConnectionsTelegramUpdateRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GroupTelegramSourceConnection
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.groupTelegramSourceConnectionRequest == nil {
-		return localVarReturnValue, nil, reportError("groupTelegramSourceConnectionRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.groupTelegramSourceConnectionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesGroupConnectionsTelegramUsedByListRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	id         int32
-}
-
-func (r ApiSourcesGroupConnectionsTelegramUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
-	return r.ApiService.SourcesGroupConnectionsTelegramUsedByListExecute(r)
-}
-
-/*
-SourcesGroupConnectionsTelegramUsedByList Method for SourcesGroupConnectionsTelegramUsedByList
-
-Get a list of all objects that use this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this Group Telegram Source Connection.
-	@return ApiSourcesGroupConnectionsTelegramUsedByListRequest
-*/
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramUsedByListRequest {
-	return ApiSourcesGroupConnectionsTelegramUsedByListRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return []UsedBy
-func (a *SourcesAPIService) SourcesGroupConnectionsTelegramUsedByListExecute(r ApiSourcesGroupConnectionsTelegramUsedByListRequest) ([]UsedBy, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []UsedBy
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramUsedByList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiSourcesKerberosCreateRequest struct {
 	ctx                   context.Context
 	ApiService            *SourcesAPIService
@@ -8065,14 +7368,14 @@ type ApiSourcesKerberosSyncStatusRetrieveRequest struct {
 	slug       string
 }
 
-func (r ApiSourcesKerberosSyncStatusRetrieveRequest) Execute() (*SyncStatus, *http.Response, error) {
+func (r ApiSourcesKerberosSyncStatusRetrieveRequest) Execute() (*KerberosSyncStatus, *http.Response, error) {
 	return r.ApiService.SourcesKerberosSyncStatusRetrieveExecute(r)
 }
 
 /*
 SourcesKerberosSyncStatusRetrieve Method for SourcesKerberosSyncStatusRetrieve
 
-Get provider's sync status
+Get source's sync status
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param slug
@@ -8088,13 +7391,13 @@ func (a *SourcesAPIService) SourcesKerberosSyncStatusRetrieve(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return SyncStatus
-func (a *SourcesAPIService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSourcesKerberosSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
+//	@return KerberosSyncStatus
+func (a *SourcesAPIService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSourcesKerberosSyncStatusRetrieveRequest) (*KerberosSyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SyncStatus
+		localVarReturnValue *KerberosSyncStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesKerberosSyncStatusRetrieve")
@@ -8823,7 +8126,6 @@ type ApiSourcesLdapListRequest struct {
 	baseDn                              *string
 	bindCn                              *string
 	clientCertificate                   *string
-	deleteNotFoundObjects               *bool
 	enabled                             *bool
 	groupMembershipField                *string
 	groupObjectFilter                   *string
@@ -8846,7 +8148,6 @@ type ApiSourcesLdapListRequest struct {
 	syncParentGroup                     *string
 	syncUsers                           *bool
 	syncUsersPassword                   *bool
-	userMembershipAttribute             *string
 	userObjectFilter                    *string
 	userPropertyMappings                *[]string
 }
@@ -8873,11 +8174,6 @@ func (r ApiSourcesLdapListRequest) BindCn(bindCn string) ApiSourcesLdapListReque
 
 func (r ApiSourcesLdapListRequest) ClientCertificate(clientCertificate string) ApiSourcesLdapListRequest {
 	r.clientCertificate = &clientCertificate
-	return r
-}
-
-func (r ApiSourcesLdapListRequest) DeleteNotFoundObjects(deleteNotFoundObjects bool) ApiSourcesLdapListRequest {
-	r.deleteNotFoundObjects = &deleteNotFoundObjects
 	return r
 }
 
@@ -8995,11 +8291,6 @@ func (r ApiSourcesLdapListRequest) SyncUsersPassword(syncUsersPassword bool) Api
 	return r
 }
 
-func (r ApiSourcesLdapListRequest) UserMembershipAttribute(userMembershipAttribute string) ApiSourcesLdapListRequest {
-	r.userMembershipAttribute = &userMembershipAttribute
-	return r
-}
-
 func (r ApiSourcesLdapListRequest) UserObjectFilter(userObjectFilter string) ApiSourcesLdapListRequest {
 	r.userObjectFilter = &userObjectFilter
 	return r
@@ -9065,9 +8356,6 @@ func (a *SourcesAPIService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.clientCertificate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "client_certificate", r.clientCertificate, "form", "")
-	}
-	if r.deleteNotFoundObjects != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "delete_not_found_objects", r.deleteNotFoundObjects, "form", "")
 	}
 	if r.enabled != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
@@ -9142,9 +8430,6 @@ func (a *SourcesAPIService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	}
 	if r.syncUsersPassword != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_users_password", r.syncUsersPassword, "form", "")
-	}
-	if r.userMembershipAttribute != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user_membership_attribute", r.userMembershipAttribute, "form", "")
 	}
 	if r.userObjectFilter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "user_object_filter", r.userObjectFilter, "form", "")
@@ -9506,7 +8791,7 @@ func (r ApiSourcesLdapSyncStatusRetrieveRequest) Execute() (*SyncStatus, *http.R
 /*
 SourcesLdapSyncStatusRetrieve Method for SourcesLdapSyncStatusRetrieve
 
-Get provider's sync status
+Get source's sync status
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param slug
@@ -12612,8 +11897,6 @@ type ApiSourcesSamlListRequest struct {
 	preAuthenticationFlow    *string
 	search                   *string
 	signatureAlgorithm       *string
-	signedAssertion          *bool
-	signedResponse           *bool
 	signingKp                *string
 	sloUrl                   *string
 	slug                     *string
@@ -12715,16 +11998,6 @@ func (r ApiSourcesSamlListRequest) Search(search string) ApiSourcesSamlListReque
 
 func (r ApiSourcesSamlListRequest) SignatureAlgorithm(signatureAlgorithm string) ApiSourcesSamlListRequest {
 	r.signatureAlgorithm = &signatureAlgorithm
-	return r
-}
-
-func (r ApiSourcesSamlListRequest) SignedAssertion(signedAssertion bool) ApiSourcesSamlListRequest {
-	r.signedAssertion = &signedAssertion
-	return r
-}
-
-func (r ApiSourcesSamlListRequest) SignedResponse(signedResponse bool) ApiSourcesSamlListRequest {
-	r.signedResponse = &signedResponse
 	return r
 }
 
@@ -12858,12 +12131,6 @@ func (a *SourcesAPIService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 	}
 	if r.signatureAlgorithm != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "signature_algorithm", r.signatureAlgorithm, "form", "")
-	}
-	if r.signedAssertion != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "signed_assertion", r.signedAssertion, "form", "")
-	}
-	if r.signedResponse != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "signed_response", r.signedResponse, "form", "")
 	}
 	if r.signingKp != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "signing_kp", r.signingKp, "form", "")
@@ -16381,1157 +15648,6 @@ func (a *SourcesAPIService) SourcesScimUsersUsedByListExecute(r ApiSourcesScimUs
 
 	localVarPath := localBasePath + "/sources/scim_users/{id}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesTelegramConnectUserCreateRequest struct {
-	ctx                 context.Context
-	ApiService          *SourcesAPIService
-	slug                string
-	telegramAuthRequest *TelegramAuthRequest
-}
-
-func (r ApiSourcesTelegramConnectUserCreateRequest) TelegramAuthRequest(telegramAuthRequest TelegramAuthRequest) ApiSourcesTelegramConnectUserCreateRequest {
-	r.telegramAuthRequest = &telegramAuthRequest
-	return r
-}
-
-func (r ApiSourcesTelegramConnectUserCreateRequest) Execute() (*UserTelegramSourceConnection, *http.Response, error) {
-	return r.ApiService.SourcesTelegramConnectUserCreateExecute(r)
-}
-
-/*
-SourcesTelegramConnectUserCreate Method for SourcesTelegramConnectUserCreate
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiSourcesTelegramConnectUserCreateRequest
-*/
-func (a *SourcesAPIService) SourcesTelegramConnectUserCreate(ctx context.Context, slug string) ApiSourcesTelegramConnectUserCreateRequest {
-	return ApiSourcesTelegramConnectUserCreateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		slug:       slug,
-	}
-}
-
-// Execute executes the request
-//
-//	@return UserTelegramSourceConnection
-func (a *SourcesAPIService) SourcesTelegramConnectUserCreateExecute(r ApiSourcesTelegramConnectUserCreateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserTelegramSourceConnection
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramConnectUserCreate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/telegram/{slug}/connect_user/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.telegramAuthRequest == nil {
-		return localVarReturnValue, nil, reportError("telegramAuthRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.telegramAuthRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesTelegramCreateRequest struct {
-	ctx                   context.Context
-	ApiService            *SourcesAPIService
-	telegramSourceRequest *TelegramSourceRequest
-}
-
-func (r ApiSourcesTelegramCreateRequest) TelegramSourceRequest(telegramSourceRequest TelegramSourceRequest) ApiSourcesTelegramCreateRequest {
-	r.telegramSourceRequest = &telegramSourceRequest
-	return r
-}
-
-func (r ApiSourcesTelegramCreateRequest) Execute() (*TelegramSource, *http.Response, error) {
-	return r.ApiService.SourcesTelegramCreateExecute(r)
-}
-
-/*
-SourcesTelegramCreate Method for SourcesTelegramCreate
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSourcesTelegramCreateRequest
-*/
-func (a *SourcesAPIService) SourcesTelegramCreate(ctx context.Context) ApiSourcesTelegramCreateRequest {
-	return ApiSourcesTelegramCreateRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return TelegramSource
-func (a *SourcesAPIService) SourcesTelegramCreateExecute(r ApiSourcesTelegramCreateRequest) (*TelegramSource, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TelegramSource
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramCreate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/telegram/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.telegramSourceRequest == nil {
-		return localVarReturnValue, nil, reportError("telegramSourceRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.telegramSourceRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesTelegramDestroyRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	slug       string
-}
-
-func (r ApiSourcesTelegramDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.SourcesTelegramDestroyExecute(r)
-}
-
-/*
-SourcesTelegramDestroy Method for SourcesTelegramDestroy
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiSourcesTelegramDestroyRequest
-*/
-func (a *SourcesAPIService) SourcesTelegramDestroy(ctx context.Context, slug string) ApiSourcesTelegramDestroyRequest {
-	return ApiSourcesTelegramDestroyRequest{
-		ApiService: a,
-		ctx:        ctx,
-		slug:       slug,
-	}
-}
-
-// Execute executes the request
-func (a *SourcesAPIService) SourcesTelegramDestroyExecute(r ApiSourcesTelegramDestroyRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramDestroy")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/telegram/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSourcesTelegramListRequest struct {
-	ctx                  context.Context
-	ApiService           *SourcesAPIService
-	authenticationFlow   *string
-	botUsername          *string
-	enabled              *bool
-	enrollmentFlow       *string
-	groupMatchingMode    *string
-	name                 *string
-	ordering             *string
-	page                 *int32
-	pageSize             *int32
-	pbmUuid              *string
-	policyEngineMode     *string
-	requestMessageAccess *bool
-	search               *string
-	slug                 *string
-	userMatchingMode     *string
-}
-
-func (r ApiSourcesTelegramListRequest) AuthenticationFlow(authenticationFlow string) ApiSourcesTelegramListRequest {
-	r.authenticationFlow = &authenticationFlow
-	return r
-}
-
-func (r ApiSourcesTelegramListRequest) BotUsername(botUsername string) ApiSourcesTelegramListRequest {
-	r.botUsername = &botUsername
-	return r
-}
-
-func (r ApiSourcesTelegramListRequest) Enabled(enabled bool) ApiSourcesTelegramListRequest {
-	r.enabled = &enabled
-	return r
-}
-
-func (r ApiSourcesTelegramListRequest) EnrollmentFlow(enrollmentFlow string) ApiSourcesTelegramListRequest {
-	r.enrollmentFlow = &enrollmentFlow
-	return r
-}
-
-// How the source determines if an existing group should be used or a new group created.
-func (r ApiSourcesTelegramListRequest) GroupMatchingMode(groupMatchingMode string) ApiSourcesTelegramListRequest {
-	r.groupMatchingMode = &groupMatchingMode
-	return r
-}
-
-func (r ApiSourcesTelegramListRequest) Name(name string) ApiSourcesTelegramListRequest {
-	r.name = &name
-	return r
-}
-
-// Which field to use when ordering the results.
-func (r ApiSourcesTelegramListRequest) Ordering(ordering string) ApiSourcesTelegramListRequest {
-	r.ordering = &ordering
-	return r
-}
-
-// A page number within the paginated result set.
-func (r ApiSourcesTelegramListRequest) Page(page int32) ApiSourcesTelegramListRequest {
-	r.page = &page
-	return r
-}
-
-// Number of results to return per page.
-func (r ApiSourcesTelegramListRequest) PageSize(pageSize int32) ApiSourcesTelegramListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-func (r ApiSourcesTelegramListRequest) PbmUuid(pbmUuid string) ApiSourcesTelegramListRequest {
-	r.pbmUuid = &pbmUuid
-	return r
-}
-
-func (r ApiSourcesTelegramListRequest) PolicyEngineMode(policyEngineMode string) ApiSourcesTelegramListRequest {
-	r.policyEngineMode = &policyEngineMode
-	return r
-}
-
-func (r ApiSourcesTelegramListRequest) RequestMessageAccess(requestMessageAccess bool) ApiSourcesTelegramListRequest {
-	r.requestMessageAccess = &requestMessageAccess
-	return r
-}
-
-// A search term.
-func (r ApiSourcesTelegramListRequest) Search(search string) ApiSourcesTelegramListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiSourcesTelegramListRequest) Slug(slug string) ApiSourcesTelegramListRequest {
-	r.slug = &slug
-	return r
-}
-
-// How the source determines if an existing user should be authenticated or a new user enrolled.
-func (r ApiSourcesTelegramListRequest) UserMatchingMode(userMatchingMode string) ApiSourcesTelegramListRequest {
-	r.userMatchingMode = &userMatchingMode
-	return r
-}
-
-func (r ApiSourcesTelegramListRequest) Execute() (*PaginatedTelegramSourceList, *http.Response, error) {
-	return r.ApiService.SourcesTelegramListExecute(r)
-}
-
-/*
-SourcesTelegramList Method for SourcesTelegramList
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSourcesTelegramListRequest
-*/
-func (a *SourcesAPIService) SourcesTelegramList(ctx context.Context) ApiSourcesTelegramListRequest {
-	return ApiSourcesTelegramListRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return PaginatedTelegramSourceList
-func (a *SourcesAPIService) SourcesTelegramListExecute(r ApiSourcesTelegramListRequest) (*PaginatedTelegramSourceList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PaginatedTelegramSourceList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/telegram/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.authenticationFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "form", "")
-	}
-	if r.botUsername != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bot_username", r.botUsername, "form", "")
-	}
-	if r.enabled != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
-	}
-	if r.enrollmentFlow != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enrollment_flow", r.enrollmentFlow, "form", "")
-	}
-	if r.groupMatchingMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group_matching_mode", r.groupMatchingMode, "form", "")
-	}
-	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
-	}
-	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
-	}
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
-	}
-	if r.pbmUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
-	}
-	if r.policyEngineMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_engine_mode", r.policyEngineMode, "form", "")
-	}
-	if r.requestMessageAccess != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "request_message_access", r.requestMessageAccess, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
-	}
-	if r.slug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
-	}
-	if r.userMatchingMode != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user_matching_mode", r.userMatchingMode, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesTelegramPartialUpdateRequest struct {
-	ctx                          context.Context
-	ApiService                   *SourcesAPIService
-	slug                         string
-	patchedTelegramSourceRequest *PatchedTelegramSourceRequest
-}
-
-func (r ApiSourcesTelegramPartialUpdateRequest) PatchedTelegramSourceRequest(patchedTelegramSourceRequest PatchedTelegramSourceRequest) ApiSourcesTelegramPartialUpdateRequest {
-	r.patchedTelegramSourceRequest = &patchedTelegramSourceRequest
-	return r
-}
-
-func (r ApiSourcesTelegramPartialUpdateRequest) Execute() (*TelegramSource, *http.Response, error) {
-	return r.ApiService.SourcesTelegramPartialUpdateExecute(r)
-}
-
-/*
-SourcesTelegramPartialUpdate Method for SourcesTelegramPartialUpdate
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiSourcesTelegramPartialUpdateRequest
-*/
-func (a *SourcesAPIService) SourcesTelegramPartialUpdate(ctx context.Context, slug string) ApiSourcesTelegramPartialUpdateRequest {
-	return ApiSourcesTelegramPartialUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		slug:       slug,
-	}
-}
-
-// Execute executes the request
-//
-//	@return TelegramSource
-func (a *SourcesAPIService) SourcesTelegramPartialUpdateExecute(r ApiSourcesTelegramPartialUpdateRequest) (*TelegramSource, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TelegramSource
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramPartialUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/telegram/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.patchedTelegramSourceRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesTelegramRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	slug       string
-}
-
-func (r ApiSourcesTelegramRetrieveRequest) Execute() (*TelegramSource, *http.Response, error) {
-	return r.ApiService.SourcesTelegramRetrieveExecute(r)
-}
-
-/*
-SourcesTelegramRetrieve Method for SourcesTelegramRetrieve
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiSourcesTelegramRetrieveRequest
-*/
-func (a *SourcesAPIService) SourcesTelegramRetrieve(ctx context.Context, slug string) ApiSourcesTelegramRetrieveRequest {
-	return ApiSourcesTelegramRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-		slug:       slug,
-	}
-}
-
-// Execute executes the request
-//
-//	@return TelegramSource
-func (a *SourcesAPIService) SourcesTelegramRetrieveExecute(r ApiSourcesTelegramRetrieveRequest) (*TelegramSource, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TelegramSource
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/telegram/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesTelegramUpdateRequest struct {
-	ctx                   context.Context
-	ApiService            *SourcesAPIService
-	slug                  string
-	telegramSourceRequest *TelegramSourceRequest
-}
-
-func (r ApiSourcesTelegramUpdateRequest) TelegramSourceRequest(telegramSourceRequest TelegramSourceRequest) ApiSourcesTelegramUpdateRequest {
-	r.telegramSourceRequest = &telegramSourceRequest
-	return r
-}
-
-func (r ApiSourcesTelegramUpdateRequest) Execute() (*TelegramSource, *http.Response, error) {
-	return r.ApiService.SourcesTelegramUpdateExecute(r)
-}
-
-/*
-SourcesTelegramUpdate Method for SourcesTelegramUpdate
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiSourcesTelegramUpdateRequest
-*/
-func (a *SourcesAPIService) SourcesTelegramUpdate(ctx context.Context, slug string) ApiSourcesTelegramUpdateRequest {
-	return ApiSourcesTelegramUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		slug:       slug,
-	}
-}
-
-// Execute executes the request
-//
-//	@return TelegramSource
-func (a *SourcesAPIService) SourcesTelegramUpdateExecute(r ApiSourcesTelegramUpdateRequest) (*TelegramSource, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TelegramSource
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/telegram/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.telegramSourceRequest == nil {
-		return localVarReturnValue, nil, reportError("telegramSourceRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.telegramSourceRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesTelegramUsedByListRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	slug       string
-}
-
-func (r ApiSourcesTelegramUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
-	return r.ApiService.SourcesTelegramUsedByListExecute(r)
-}
-
-/*
-SourcesTelegramUsedByList Method for SourcesTelegramUsedByList
-
-Get a list of all objects that use this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param slug
-	@return ApiSourcesTelegramUsedByListRequest
-*/
-func (a *SourcesAPIService) SourcesTelegramUsedByList(ctx context.Context, slug string) ApiSourcesTelegramUsedByListRequest {
-	return ApiSourcesTelegramUsedByListRequest{
-		ApiService: a,
-		ctx:        ctx,
-		slug:       slug,
-	}
-}
-
-// Execute executes the request
-//
-//	@return []UsedBy
-func (a *SourcesAPIService) SourcesTelegramUsedByListExecute(r ApiSourcesTelegramUsedByListRequest) ([]UsedBy, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []UsedBy
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramUsedByList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/telegram/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23057,949 +21173,6 @@ func (a *SourcesAPIService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesUserConnectionsTelegramCreateRequest struct {
-	ctx                                 context.Context
-	ApiService                          *SourcesAPIService
-	userTelegramSourceConnectionRequest *UserTelegramSourceConnectionRequest
-}
-
-func (r ApiSourcesUserConnectionsTelegramCreateRequest) UserTelegramSourceConnectionRequest(userTelegramSourceConnectionRequest UserTelegramSourceConnectionRequest) ApiSourcesUserConnectionsTelegramCreateRequest {
-	r.userTelegramSourceConnectionRequest = &userTelegramSourceConnectionRequest
-	return r
-}
-
-func (r ApiSourcesUserConnectionsTelegramCreateRequest) Execute() (*UserTelegramSourceConnection, *http.Response, error) {
-	return r.ApiService.SourcesUserConnectionsTelegramCreateExecute(r)
-}
-
-/*
-SourcesUserConnectionsTelegramCreate Method for SourcesUserConnectionsTelegramCreate
-
-User-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSourcesUserConnectionsTelegramCreateRequest
-*/
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramCreate(ctx context.Context) ApiSourcesUserConnectionsTelegramCreateRequest {
-	return ApiSourcesUserConnectionsTelegramCreateRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return UserTelegramSourceConnection
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramCreateExecute(r ApiSourcesUserConnectionsTelegramCreateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserTelegramSourceConnection
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramCreate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/user_connections/telegram/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.userTelegramSourceConnectionRequest == nil {
-		return localVarReturnValue, nil, reportError("userTelegramSourceConnectionRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.userTelegramSourceConnectionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesUserConnectionsTelegramDestroyRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	id         int32
-}
-
-func (r ApiSourcesUserConnectionsTelegramDestroyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.SourcesUserConnectionsTelegramDestroyExecute(r)
-}
-
-/*
-SourcesUserConnectionsTelegramDestroy Method for SourcesUserConnectionsTelegramDestroy
-
-User-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User Telegram Source Connection.
-	@return ApiSourcesUserConnectionsTelegramDestroyRequest
-*/
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramDestroyRequest {
-	return ApiSourcesUserConnectionsTelegramDestroyRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramDestroyExecute(r ApiSourcesUserConnectionsTelegramDestroyRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramDestroy")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSourcesUserConnectionsTelegramListRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
-	sourceSlug *string
-	user       *int32
-}
-
-// Which field to use when ordering the results.
-func (r ApiSourcesUserConnectionsTelegramListRequest) Ordering(ordering string) ApiSourcesUserConnectionsTelegramListRequest {
-	r.ordering = &ordering
-	return r
-}
-
-// A page number within the paginated result set.
-func (r ApiSourcesUserConnectionsTelegramListRequest) Page(page int32) ApiSourcesUserConnectionsTelegramListRequest {
-	r.page = &page
-	return r
-}
-
-// Number of results to return per page.
-func (r ApiSourcesUserConnectionsTelegramListRequest) PageSize(pageSize int32) ApiSourcesUserConnectionsTelegramListRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// A search term.
-func (r ApiSourcesUserConnectionsTelegramListRequest) Search(search string) ApiSourcesUserConnectionsTelegramListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiSourcesUserConnectionsTelegramListRequest) SourceSlug(sourceSlug string) ApiSourcesUserConnectionsTelegramListRequest {
-	r.sourceSlug = &sourceSlug
-	return r
-}
-
-func (r ApiSourcesUserConnectionsTelegramListRequest) User(user int32) ApiSourcesUserConnectionsTelegramListRequest {
-	r.user = &user
-	return r
-}
-
-func (r ApiSourcesUserConnectionsTelegramListRequest) Execute() (*PaginatedUserTelegramSourceConnectionList, *http.Response, error) {
-	return r.ApiService.SourcesUserConnectionsTelegramListExecute(r)
-}
-
-/*
-SourcesUserConnectionsTelegramList Method for SourcesUserConnectionsTelegramList
-
-User-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSourcesUserConnectionsTelegramListRequest
-*/
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramList(ctx context.Context) ApiSourcesUserConnectionsTelegramListRequest {
-	return ApiSourcesUserConnectionsTelegramListRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return PaginatedUserTelegramSourceConnectionList
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramListExecute(r ApiSourcesUserConnectionsTelegramListRequest) (*PaginatedUserTelegramSourceConnectionList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PaginatedUserTelegramSourceConnectionList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/user_connections/telegram/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
-	}
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
-	}
-	if r.sourceSlug != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
-	}
-	if r.user != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesUserConnectionsTelegramPartialUpdateRequest struct {
-	ctx                                        context.Context
-	ApiService                                 *SourcesAPIService
-	id                                         int32
-	patchedUserTelegramSourceConnectionRequest *PatchedUserTelegramSourceConnectionRequest
-}
-
-func (r ApiSourcesUserConnectionsTelegramPartialUpdateRequest) PatchedUserTelegramSourceConnectionRequest(patchedUserTelegramSourceConnectionRequest PatchedUserTelegramSourceConnectionRequest) ApiSourcesUserConnectionsTelegramPartialUpdateRequest {
-	r.patchedUserTelegramSourceConnectionRequest = &patchedUserTelegramSourceConnectionRequest
-	return r
-}
-
-func (r ApiSourcesUserConnectionsTelegramPartialUpdateRequest) Execute() (*UserTelegramSourceConnection, *http.Response, error) {
-	return r.ApiService.SourcesUserConnectionsTelegramPartialUpdateExecute(r)
-}
-
-/*
-SourcesUserConnectionsTelegramPartialUpdate Method for SourcesUserConnectionsTelegramPartialUpdate
-
-User-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User Telegram Source Connection.
-	@return ApiSourcesUserConnectionsTelegramPartialUpdateRequest
-*/
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramPartialUpdateRequest {
-	return ApiSourcesUserConnectionsTelegramPartialUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return UserTelegramSourceConnection
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramPartialUpdateExecute(r ApiSourcesUserConnectionsTelegramPartialUpdateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserTelegramSourceConnection
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramPartialUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.patchedUserTelegramSourceConnectionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesUserConnectionsTelegramRetrieveRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	id         int32
-}
-
-func (r ApiSourcesUserConnectionsTelegramRetrieveRequest) Execute() (*UserTelegramSourceConnection, *http.Response, error) {
-	return r.ApiService.SourcesUserConnectionsTelegramRetrieveExecute(r)
-}
-
-/*
-SourcesUserConnectionsTelegramRetrieve Method for SourcesUserConnectionsTelegramRetrieve
-
-User-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User Telegram Source Connection.
-	@return ApiSourcesUserConnectionsTelegramRetrieveRequest
-*/
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramRetrieveRequest {
-	return ApiSourcesUserConnectionsTelegramRetrieveRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return UserTelegramSourceConnection
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramRetrieveExecute(r ApiSourcesUserConnectionsTelegramRetrieveRequest) (*UserTelegramSourceConnection, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserTelegramSourceConnection
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramRetrieve")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesUserConnectionsTelegramUpdateRequest struct {
-	ctx                                 context.Context
-	ApiService                          *SourcesAPIService
-	id                                  int32
-	userTelegramSourceConnectionRequest *UserTelegramSourceConnectionRequest
-}
-
-func (r ApiSourcesUserConnectionsTelegramUpdateRequest) UserTelegramSourceConnectionRequest(userTelegramSourceConnectionRequest UserTelegramSourceConnectionRequest) ApiSourcesUserConnectionsTelegramUpdateRequest {
-	r.userTelegramSourceConnectionRequest = &userTelegramSourceConnectionRequest
-	return r
-}
-
-func (r ApiSourcesUserConnectionsTelegramUpdateRequest) Execute() (*UserTelegramSourceConnection, *http.Response, error) {
-	return r.ApiService.SourcesUserConnectionsTelegramUpdateExecute(r)
-}
-
-/*
-SourcesUserConnectionsTelegramUpdate Method for SourcesUserConnectionsTelegramUpdate
-
-User-source connection Viewset
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User Telegram Source Connection.
-	@return ApiSourcesUserConnectionsTelegramUpdateRequest
-*/
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramUpdateRequest {
-	return ApiSourcesUserConnectionsTelegramUpdateRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return UserTelegramSourceConnection
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramUpdateExecute(r ApiSourcesUserConnectionsTelegramUpdateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserTelegramSourceConnection
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramUpdate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.userTelegramSourceConnectionRequest == nil {
-		return localVarReturnValue, nil, reportError("userTelegramSourceConnectionRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.userTelegramSourceConnectionRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiSourcesUserConnectionsTelegramUsedByListRequest struct {
-	ctx        context.Context
-	ApiService *SourcesAPIService
-	id         int32
-}
-
-func (r ApiSourcesUserConnectionsTelegramUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
-	return r.ApiService.SourcesUserConnectionsTelegramUsedByListExecute(r)
-}
-
-/*
-SourcesUserConnectionsTelegramUsedByList Method for SourcesUserConnectionsTelegramUsedByList
-
-Get a list of all objects that use this object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id A unique integer value identifying this User Telegram Source Connection.
-	@return ApiSourcesUserConnectionsTelegramUsedByListRequest
-*/
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramUsedByListRequest {
-	return ApiSourcesUserConnectionsTelegramUsedByListRequest{
-		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-	}
-}
-
-// Execute executes the request
-//
-//	@return []UsedBy
-func (a *SourcesAPIService) SourcesUserConnectionsTelegramUsedByListExecute(r ApiSourcesUserConnectionsTelegramUsedByListRequest) ([]UsedBy, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []UsedBy
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramUsedByList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)

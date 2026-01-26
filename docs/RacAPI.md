@@ -1,6 +1,6 @@
 # \RacAPI
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -471,7 +471,7 @@ import (
 )
 
 func main() {
-	endpointRequest := *openapiclient.NewEndpointRequest("Name_example", int32(123), openapiclient.ProtocolEnum("rdp"), "Host_example", openapiclient.EndpointAuthModeEnum("static")) // EndpointRequest | 
+	endpointRequest := *openapiclient.NewEndpointRequest("Name_example", int32(123), openapiclient.ProtocolEnum("rdp"), "Host_example", openapiclient.AuthModeEnum("static")) // EndpointRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -610,7 +610,7 @@ func main() {
 	page := int32(56) // int32 | A page number within the paginated result set. (optional)
 	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
 	provider := int32(56) // int32 |  (optional)
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string |  (optional)
 	superuserFullList := true // bool |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **provider** | **int32** |  | 
- **search** | **string** | A search term. | 
+ **search** | **string** |  | 
  **superuserFullList** | **bool** |  | 
 
 ### Return type
@@ -826,7 +826,7 @@ import (
 
 func main() {
 	pbmUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this RAC Endpoint.
-	endpointRequest := *openapiclient.NewEndpointRequest("Name_example", int32(123), openapiclient.ProtocolEnum("rdp"), "Host_example", openapiclient.EndpointAuthModeEnum("static")) // EndpointRequest | 
+	endpointRequest := *openapiclient.NewEndpointRequest("Name_example", int32(123), openapiclient.ProtocolEnum("rdp"), "Host_example", openapiclient.AuthModeEnum("static")) // EndpointRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

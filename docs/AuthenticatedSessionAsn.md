@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Asn** | **NullableInt32** |  | 
+**Asn** | **int32** |  | 
 **AsOrg** | **NullableString** |  | 
 **Network** | **NullableString** |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatedSessionAsn
 
-`func NewAuthenticatedSessionAsn(asn NullableInt32, asOrg NullableString, network NullableString, ) *AuthenticatedSessionAsn`
+`func NewAuthenticatedSessionAsn(asn int32, asOrg NullableString, network NullableString, ) *AuthenticatedSessionAsn`
 
 NewAuthenticatedSessionAsn instantiates a new AuthenticatedSessionAsn object
 This constructor will assign default values to properties that have it defined,
@@ -47,16 +47,6 @@ and a boolean to check if the value has been set.
 SetAsn sets Asn field to given value.
 
 
-### SetAsnNil
-
-`func (o *AuthenticatedSessionAsn) SetAsnNil(b bool)`
-
- SetAsnNil sets the value for Asn to be an explicit nil
-
-### UnsetAsn
-`func (o *AuthenticatedSessionAsn) UnsetAsn()`
-
-UnsetAsn ensures that no value is present for Asn, not even an explicit nil
 ### GetAsOrg
 
 `func (o *AuthenticatedSessionAsn) GetAsOrg() string`

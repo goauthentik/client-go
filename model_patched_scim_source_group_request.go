@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -20,11 +20,10 @@ var _ MappedNullable = &PatchedSCIMSourceGroupRequest{}
 
 // PatchedSCIMSourceGroupRequest SCIMSourceGroup Serializer
 type PatchedSCIMSourceGroupRequest struct {
-	Id         *string                `json:"id,omitempty"`
-	ExternalId *string                `json:"external_id,omitempty"`
-	Group      *string                `json:"group,omitempty"`
-	Source     *string                `json:"source,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Id         *string     `json:"id,omitempty"`
+	Group      *string     `json:"group,omitempty"`
+	Source     *string     `json:"source,omitempty"`
+	Attributes interface{} `json:"attributes,omitempty"`
 }
 
 // NewPatchedSCIMSourceGroupRequest instantiates a new PatchedSCIMSourceGroupRequest object
@@ -74,38 +73,6 @@ func (o *PatchedSCIMSourceGroupRequest) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *PatchedSCIMSourceGroupRequest) SetId(v string) {
 	o.Id = &v
-}
-
-// GetExternalId returns the ExternalId field value if set, zero value otherwise.
-func (o *PatchedSCIMSourceGroupRequest) GetExternalId() string {
-	if o == nil || IsNil(o.ExternalId) {
-		var ret string
-		return ret
-	}
-	return *o.ExternalId
-}
-
-// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSCIMSourceGroupRequest) GetExternalIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ExternalId) {
-		return nil, false
-	}
-	return o.ExternalId, true
-}
-
-// HasExternalId returns a boolean if a field has been set.
-func (o *PatchedSCIMSourceGroupRequest) HasExternalId() bool {
-	if o != nil && !IsNil(o.ExternalId) {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
-func (o *PatchedSCIMSourceGroupRequest) SetExternalId(v string) {
-	o.ExternalId = &v
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise.
@@ -172,10 +139,10 @@ func (o *PatchedSCIMSourceGroupRequest) SetSource(v string) {
 	o.Source = &v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *PatchedSCIMSourceGroupRequest) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]interface{}
+// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedSCIMSourceGroupRequest) GetAttributes() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Attributes
@@ -183,11 +150,12 @@ func (o *PatchedSCIMSourceGroupRequest) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedSCIMSourceGroupRequest) GetAttributesOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedSCIMSourceGroupRequest) GetAttributesOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
@@ -199,8 +167,8 @@ func (o *PatchedSCIMSourceGroupRequest) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *PatchedSCIMSourceGroupRequest) SetAttributes(v map[string]interface{}) {
+// SetAttributes gets a reference to the given interface{} and assigns it to the Attributes field.
+func (o *PatchedSCIMSourceGroupRequest) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 
@@ -217,16 +185,13 @@ func (o PatchedSCIMSourceGroupRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.ExternalId) {
-		toSerialize["external_id"] = o.ExternalId
-	}
 	if !IsNil(o.Group) {
 		toSerialize["group"] = o.Group
 	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !IsNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
 	return toSerialize, nil

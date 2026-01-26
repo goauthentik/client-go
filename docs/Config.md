@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **CacheTimeout** | **int32** |  | 
 **CacheTimeoutFlows** | **int32** |  | 
 **CacheTimeoutPolicies** | **int32** |  | 
+**CacheTimeoutReputation** | **int32** |  | 
 
 ## Methods
 
 ### NewConfig
 
-`func NewConfig(errorReporting ErrorReportingConfig, capabilities []CapabilitiesEnum, cacheTimeout int32, cacheTimeoutFlows int32, cacheTimeoutPolicies int32, ) *Config`
+`func NewConfig(errorReporting ErrorReportingConfig, capabilities []CapabilitiesEnum, cacheTimeout int32, cacheTimeoutFlows int32, cacheTimeoutPolicies int32, cacheTimeoutReputation int32, ) *Config`
 
 NewConfig instantiates a new Config object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +128,26 @@ and a boolean to check if the value has been set.
 `func (o *Config) SetCacheTimeoutPolicies(v int32)`
 
 SetCacheTimeoutPolicies sets CacheTimeoutPolicies field to given value.
+
+
+### GetCacheTimeoutReputation
+
+`func (o *Config) GetCacheTimeoutReputation() int32`
+
+GetCacheTimeoutReputation returns the CacheTimeoutReputation field if non-nil, zero value otherwise.
+
+### GetCacheTimeoutReputationOk
+
+`func (o *Config) GetCacheTimeoutReputationOk() (*int32, bool)`
+
+GetCacheTimeoutReputationOk returns a tuple with the CacheTimeoutReputation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCacheTimeoutReputation
+
+`func (o *Config) SetCacheTimeoutReputation(v int32)`
+
+SetCacheTimeoutReputation sets CacheTimeoutReputation field to given value.
 
 
 

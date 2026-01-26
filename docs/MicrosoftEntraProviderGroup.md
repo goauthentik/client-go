@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **MicrosoftId** | **string** |  | 
 **Group** | **string** |  | 
-**GroupObj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] 
+**GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Provider** | **int32** |  | 
-**Attributes** | **map[string]interface{}** |  | [readonly] 
+**Attributes** | **interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewMicrosoftEntraProviderGroup
 
-`func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}, ) *MicrosoftEntraProviderGroup`
+`func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj UserGroup, provider int32, attributes interface{}, ) *MicrosoftEntraProviderGroup`
 
 NewMicrosoftEntraProviderGroup instantiates a new MicrosoftEntraProviderGroup object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetGroup sets Group field to given value.
 
 ### GetGroupObj
 
-`func (o *MicrosoftEntraProviderGroup) GetGroupObj() PartialGroup`
+`func (o *MicrosoftEntraProviderGroup) GetGroupObj() UserGroup`
 
 GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
 ### GetGroupObjOk
 
-`func (o *MicrosoftEntraProviderGroup) GetGroupObjOk() (*PartialGroup, bool)`
+`func (o *MicrosoftEntraProviderGroup) GetGroupObjOk() (*UserGroup, bool)`
 
 GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupObj
 
-`func (o *MicrosoftEntraProviderGroup) SetGroupObj(v PartialGroup)`
+`func (o *MicrosoftEntraProviderGroup) SetGroupObj(v UserGroup)`
 
 SetGroupObj sets GroupObj field to given value.
 
@@ -132,24 +132,34 @@ SetProvider sets Provider field to given value.
 
 ### GetAttributes
 
-`func (o *MicrosoftEntraProviderGroup) GetAttributes() map[string]interface{}`
+`func (o *MicrosoftEntraProviderGroup) GetAttributes() interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *MicrosoftEntraProviderGroup) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *MicrosoftEntraProviderGroup) GetAttributesOk() (*interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *MicrosoftEntraProviderGroup) SetAttributes(v map[string]interface{})`
+`func (o *MicrosoftEntraProviderGroup) SetAttributes(v interface{})`
 
 SetAttributes sets Attributes field to given value.
 
 
+### SetAttributesNil
+
+`func (o *MicrosoftEntraProviderGroup) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *MicrosoftEntraProviderGroup) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

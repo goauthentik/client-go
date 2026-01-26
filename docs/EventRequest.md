@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**User** | Pointer to **map[string]interface{}** |  | [optional] 
+**User** | Pointer to **interface{}** |  | [optional] 
 **Action** | [**EventActions**](EventActions.md) |  | 
 **App** | **string** |  | 
-**Context** | Pointer to **map[string]interface{}** |  | [optional] 
+**Context** | Pointer to **interface{}** |  | [optional] 
 **ClientIp** | Pointer to **NullableString** |  | [optional] 
 **Expires** | Pointer to **time.Time** |  | [optional] 
-**Brand** | Pointer to **map[string]interface{}** |  | [optional] 
+**Brand** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetUser
 
-`func (o *EventRequest) GetUser() map[string]interface{}`
+`func (o *EventRequest) GetUser() interface{}`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *EventRequest) GetUserOk() (*map[string]interface{}, bool)`
+`func (o *EventRequest) GetUserOk() (*interface{}, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *EventRequest) SetUser(v map[string]interface{})`
+`func (o *EventRequest) SetUser(v interface{})`
 
 SetUser sets User field to given value.
 
@@ -56,6 +56,16 @@ SetUser sets User field to given value.
 
 HasUser returns a boolean if a field has been set.
 
+### SetUserNil
+
+`func (o *EventRequest) SetUserNil(b bool)`
+
+ SetUserNil sets the value for User to be an explicit nil
+
+### UnsetUser
+`func (o *EventRequest) UnsetUser()`
+
+UnsetUser ensures that no value is present for User, not even an explicit nil
 ### GetAction
 
 `func (o *EventRequest) GetAction() EventActions`
@@ -98,20 +108,20 @@ SetApp sets App field to given value.
 
 ### GetContext
 
-`func (o *EventRequest) GetContext() map[string]interface{}`
+`func (o *EventRequest) GetContext() interface{}`
 
 GetContext returns the Context field if non-nil, zero value otherwise.
 
 ### GetContextOk
 
-`func (o *EventRequest) GetContextOk() (*map[string]interface{}, bool)`
+`func (o *EventRequest) GetContextOk() (*interface{}, bool)`
 
 GetContextOk returns a tuple with the Context field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContext
 
-`func (o *EventRequest) SetContext(v map[string]interface{})`
+`func (o *EventRequest) SetContext(v interface{})`
 
 SetContext sets Context field to given value.
 
@@ -121,6 +131,16 @@ SetContext sets Context field to given value.
 
 HasContext returns a boolean if a field has been set.
 
+### SetContextNil
+
+`func (o *EventRequest) SetContextNil(b bool)`
+
+ SetContextNil sets the value for Context to be an explicit nil
+
+### UnsetContext
+`func (o *EventRequest) UnsetContext()`
+
+UnsetContext ensures that no value is present for Context, not even an explicit nil
 ### GetClientIp
 
 `func (o *EventRequest) GetClientIp() string`
@@ -183,20 +203,20 @@ HasExpires returns a boolean if a field has been set.
 
 ### GetBrand
 
-`func (o *EventRequest) GetBrand() map[string]interface{}`
+`func (o *EventRequest) GetBrand() interface{}`
 
 GetBrand returns the Brand field if non-nil, zero value otherwise.
 
 ### GetBrandOk
 
-`func (o *EventRequest) GetBrandOk() (*map[string]interface{}, bool)`
+`func (o *EventRequest) GetBrandOk() (*interface{}, bool)`
 
 GetBrandOk returns a tuple with the Brand field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBrand
 
-`func (o *EventRequest) SetBrand(v map[string]interface{})`
+`func (o *EventRequest) SetBrand(v interface{})`
 
 SetBrand sets Brand field to given value.
 
@@ -206,6 +226,16 @@ SetBrand sets Brand field to given value.
 
 HasBrand returns a boolean if a field has been set.
 
+### SetBrandNil
+
+`func (o *EventRequest) SetBrandNil(b bool)`
+
+ SetBrandNil sets the value for Brand to be an explicit nil
+
+### UnsetBrand
+`func (o *EventRequest) UnsetBrand()`
+
+UnsetBrand ensures that no value is present for Brand, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

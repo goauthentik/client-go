@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,9 +22,8 @@ var _ MappedNullable = &PaginatedPasswordExpiryPolicyList{}
 
 // PaginatedPasswordExpiryPolicyList struct for PaginatedPasswordExpiryPolicyList
 type PaginatedPasswordExpiryPolicyList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []PasswordExpiryPolicy `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination Pagination             `json:"pagination"`
+	Results    []PasswordExpiryPolicy `json:"results"`
 }
 
 type _PaginatedPasswordExpiryPolicyList PaginatedPasswordExpiryPolicyList
@@ -33,11 +32,10 @@ type _PaginatedPasswordExpiryPolicyList PaginatedPasswordExpiryPolicyList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedPasswordExpiryPolicyList(pagination Pagination, results []PasswordExpiryPolicy, autocomplete map[string]interface{}) *PaginatedPasswordExpiryPolicyList {
+func NewPaginatedPasswordExpiryPolicyList(pagination Pagination, results []PasswordExpiryPolicy) *PaginatedPasswordExpiryPolicyList {
 	this := PaginatedPasswordExpiryPolicyList{}
 	this.Pagination = pagination
 	this.Results = results
-	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -97,30 +95,6 @@ func (o *PaginatedPasswordExpiryPolicyList) SetResults(v []PasswordExpiryPolicy)
 	o.Results = v
 }
 
-// GetAutocomplete returns the Autocomplete field value
-func (o *PaginatedPasswordExpiryPolicyList) GetAutocomplete() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.Autocomplete
-}
-
-// GetAutocompleteOk returns a tuple with the Autocomplete field value
-// and a boolean to check if the value has been set.
-func (o *PaginatedPasswordExpiryPolicyList) GetAutocompleteOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
-	}
-	return o.Autocomplete, true
-}
-
-// SetAutocomplete sets field value
-func (o *PaginatedPasswordExpiryPolicyList) SetAutocomplete(v map[string]interface{}) {
-	o.Autocomplete = v
-}
-
 func (o PaginatedPasswordExpiryPolicyList) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -133,7 +107,6 @@ func (o PaginatedPasswordExpiryPolicyList) ToMap() (map[string]interface{}, erro
 	toSerialize := map[string]interface{}{}
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
-	toSerialize["autocomplete"] = o.Autocomplete
 	return toSerialize, nil
 }
 
@@ -144,7 +117,6 @@ func (o *PaginatedPasswordExpiryPolicyList) UnmarshalJSON(data []byte) (err erro
 	requiredProperties := []string{
 		"pagination",
 		"results",
-		"autocomplete",
 	}
 
 	allProperties := make(map[string]interface{})

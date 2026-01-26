@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -24,7 +24,6 @@ const (
 	COMPATIBILITYMODEENUM_DEFAULT CompatibilityModeEnum = "default"
 	COMPATIBILITYMODEENUM_AWS     CompatibilityModeEnum = "aws"
 	COMPATIBILITYMODEENUM_SLACK   CompatibilityModeEnum = "slack"
-	COMPATIBILITYMODEENUM_SFDC    CompatibilityModeEnum = "sfdc"
 )
 
 // All allowed values of CompatibilityModeEnum enum
@@ -32,7 +31,6 @@ var AllowedCompatibilityModeEnumEnumValues = []CompatibilityModeEnum{
 	"default",
 	"aws",
 	"slack",
-	"sfdc",
 }
 
 func (v *CompatibilityModeEnum) UnmarshalJSON(src []byte) error {

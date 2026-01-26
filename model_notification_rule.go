@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -29,10 +29,8 @@ type NotificationRule struct {
 	// Controls which severity level the created notifications will have.
 	Severity *SeverityEnum `json:"severity,omitempty"`
 	// Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
-	DestinationGroup    NullableString `json:"destination_group,omitempty"`
-	DestinationGroupObj Group          `json:"destination_group_obj"`
-	// When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both.
-	DestinationEventUser *bool `json:"destination_event_user,omitempty"`
+	Group    NullableString `json:"group,omitempty"`
+	GroupObj Group          `json:"group_obj"`
 }
 
 type _NotificationRule NotificationRule
@@ -41,11 +39,11 @@ type _NotificationRule NotificationRule
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationRule(pk string, name string, destinationGroupObj Group) *NotificationRule {
+func NewNotificationRule(pk string, name string, groupObj Group) *NotificationRule {
 	this := NotificationRule{}
 	this.Pk = pk
 	this.Name = name
-	this.DestinationGroupObj = destinationGroupObj
+	this.GroupObj = groupObj
 	return &this
 }
 
@@ -169,103 +167,71 @@ func (o *NotificationRule) SetSeverity(v SeverityEnum) {
 	o.Severity = &v
 }
 
-// GetDestinationGroup returns the DestinationGroup field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *NotificationRule) GetDestinationGroup() string {
-	if o == nil || IsNil(o.DestinationGroup.Get()) {
+// GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *NotificationRule) GetGroup() string {
+	if o == nil || IsNil(o.Group.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DestinationGroup.Get()
+	return *o.Group.Get()
 }
 
-// GetDestinationGroupOk returns a tuple with the DestinationGroup field value if set, nil otherwise
+// GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *NotificationRule) GetDestinationGroupOk() (*string, bool) {
+func (o *NotificationRule) GetGroupOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.DestinationGroup.Get(), o.DestinationGroup.IsSet()
+	return o.Group.Get(), o.Group.IsSet()
 }
 
-// HasDestinationGroup returns a boolean if a field has been set.
-func (o *NotificationRule) HasDestinationGroup() bool {
-	if o != nil && o.DestinationGroup.IsSet() {
+// HasGroup returns a boolean if a field has been set.
+func (o *NotificationRule) HasGroup() bool {
+	if o != nil && o.Group.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationGroup gets a reference to the given NullableString and assigns it to the DestinationGroup field.
-func (o *NotificationRule) SetDestinationGroup(v string) {
-	o.DestinationGroup.Set(&v)
+// SetGroup gets a reference to the given NullableString and assigns it to the Group field.
+func (o *NotificationRule) SetGroup(v string) {
+	o.Group.Set(&v)
 }
 
-// SetDestinationGroupNil sets the value for DestinationGroup to be an explicit nil
-func (o *NotificationRule) SetDestinationGroupNil() {
-	o.DestinationGroup.Set(nil)
+// SetGroupNil sets the value for Group to be an explicit nil
+func (o *NotificationRule) SetGroupNil() {
+	o.Group.Set(nil)
 }
 
-// UnsetDestinationGroup ensures that no value is present for DestinationGroup, not even an explicit nil
-func (o *NotificationRule) UnsetDestinationGroup() {
-	o.DestinationGroup.Unset()
+// UnsetGroup ensures that no value is present for Group, not even an explicit nil
+func (o *NotificationRule) UnsetGroup() {
+	o.Group.Unset()
 }
 
-// GetDestinationGroupObj returns the DestinationGroupObj field value
-func (o *NotificationRule) GetDestinationGroupObj() Group {
+// GetGroupObj returns the GroupObj field value
+func (o *NotificationRule) GetGroupObj() Group {
 	if o == nil {
 		var ret Group
 		return ret
 	}
 
-	return o.DestinationGroupObj
+	return o.GroupObj
 }
 
-// GetDestinationGroupObjOk returns a tuple with the DestinationGroupObj field value
+// GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *NotificationRule) GetDestinationGroupObjOk() (*Group, bool) {
+func (o *NotificationRule) GetGroupObjOk() (*Group, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.DestinationGroupObj, true
+	return &o.GroupObj, true
 }
 
-// SetDestinationGroupObj sets field value
-func (o *NotificationRule) SetDestinationGroupObj(v Group) {
-	o.DestinationGroupObj = v
-}
-
-// GetDestinationEventUser returns the DestinationEventUser field value if set, zero value otherwise.
-func (o *NotificationRule) GetDestinationEventUser() bool {
-	if o == nil || IsNil(o.DestinationEventUser) {
-		var ret bool
-		return ret
-	}
-	return *o.DestinationEventUser
-}
-
-// GetDestinationEventUserOk returns a tuple with the DestinationEventUser field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationRule) GetDestinationEventUserOk() (*bool, bool) {
-	if o == nil || IsNil(o.DestinationEventUser) {
-		return nil, false
-	}
-	return o.DestinationEventUser, true
-}
-
-// HasDestinationEventUser returns a boolean if a field has been set.
-func (o *NotificationRule) HasDestinationEventUser() bool {
-	if o != nil && !IsNil(o.DestinationEventUser) {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationEventUser gets a reference to the given bool and assigns it to the DestinationEventUser field.
-func (o *NotificationRule) SetDestinationEventUser(v bool) {
-	o.DestinationEventUser = &v
+// SetGroupObj sets field value
+func (o *NotificationRule) SetGroupObj(v Group) {
+	o.GroupObj = v
 }
 
 func (o NotificationRule) MarshalJSON() ([]byte, error) {
@@ -286,13 +252,10 @@ func (o NotificationRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Severity) {
 		toSerialize["severity"] = o.Severity
 	}
-	if o.DestinationGroup.IsSet() {
-		toSerialize["destination_group"] = o.DestinationGroup.Get()
+	if o.Group.IsSet() {
+		toSerialize["group"] = o.Group.Get()
 	}
-	toSerialize["destination_group_obj"] = o.DestinationGroupObj
-	if !IsNil(o.DestinationEventUser) {
-		toSerialize["destination_event_user"] = o.DestinationEventUser
-	}
+	toSerialize["group_obj"] = o.GroupObj
 	return toSerialize, nil
 }
 
@@ -303,7 +266,7 @@ func (o *NotificationRule) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"pk",
 		"name",
-		"destination_group_obj",
+		"group_obj",
 	}
 
 	allProperties := make(map[string]interface{})

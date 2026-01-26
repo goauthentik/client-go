@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]ApplicationEntitlement**](ApplicationEntitlement.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedApplicationEntitlementList
 
-`func NewPaginatedApplicationEntitlementList(pagination Pagination, results []ApplicationEntitlement, autocomplete map[string]interface{}, ) *PaginatedApplicationEntitlementList`
+`func NewPaginatedApplicationEntitlementList(pagination Pagination, results []ApplicationEntitlement, ) *PaginatedApplicationEntitlementList`
 
 NewPaginatedApplicationEntitlementList instantiates a new PaginatedApplicationEntitlementList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedApplicationEntitlementList) SetResults(v []ApplicationEntitlement)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedApplicationEntitlementList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedApplicationEntitlementList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedApplicationEntitlementList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

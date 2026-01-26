@@ -8,15 +8,14 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Transports** | Pointer to **[]string** | Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI. | [optional] 
 **Severity** | Pointer to [**SeverityEnum**](SeverityEnum.md) | Controls which severity level the created notifications will have. | [optional] 
-**DestinationGroup** | Pointer to **NullableString** | Define which group of users this notification should be sent and shown to. If left empty, Notification won&#39;t ben sent. | [optional] 
-**DestinationGroupObj** | [**Group**](Group.md) |  | [readonly] 
-**DestinationEventUser** | Pointer to **bool** | When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both. | [optional] 
+**Group** | Pointer to **NullableString** | Define which group of users this notification should be sent and shown to. If left empty, Notification won&#39;t ben sent. | [optional] 
+**GroupObj** | [**Group**](Group.md) |  | [readonly] 
 
 ## Methods
 
 ### NewNotificationRule
 
-`func NewNotificationRule(pk string, name string, destinationGroupObj Group, ) *NotificationRule`
+`func NewNotificationRule(pk string, name string, groupObj Group, ) *NotificationRule`
 
 NewNotificationRule instantiates a new NotificationRule object
 This constructor will assign default values to properties that have it defined,
@@ -121,85 +120,60 @@ SetSeverity sets Severity field to given value.
 
 HasSeverity returns a boolean if a field has been set.
 
-### GetDestinationGroup
+### GetGroup
 
-`func (o *NotificationRule) GetDestinationGroup() string`
+`func (o *NotificationRule) GetGroup() string`
 
-GetDestinationGroup returns the DestinationGroup field if non-nil, zero value otherwise.
+GetGroup returns the Group field if non-nil, zero value otherwise.
 
-### GetDestinationGroupOk
+### GetGroupOk
 
-`func (o *NotificationRule) GetDestinationGroupOk() (*string, bool)`
+`func (o *NotificationRule) GetGroupOk() (*string, bool)`
 
-GetDestinationGroupOk returns a tuple with the DestinationGroup field if it's non-nil, zero value otherwise
+GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDestinationGroup
+### SetGroup
 
-`func (o *NotificationRule) SetDestinationGroup(v string)`
+`func (o *NotificationRule) SetGroup(v string)`
 
-SetDestinationGroup sets DestinationGroup field to given value.
+SetGroup sets Group field to given value.
 
-### HasDestinationGroup
+### HasGroup
 
-`func (o *NotificationRule) HasDestinationGroup() bool`
+`func (o *NotificationRule) HasGroup() bool`
 
-HasDestinationGroup returns a boolean if a field has been set.
+HasGroup returns a boolean if a field has been set.
 
-### SetDestinationGroupNil
+### SetGroupNil
 
-`func (o *NotificationRule) SetDestinationGroupNil(b bool)`
+`func (o *NotificationRule) SetGroupNil(b bool)`
 
- SetDestinationGroupNil sets the value for DestinationGroup to be an explicit nil
+ SetGroupNil sets the value for Group to be an explicit nil
 
-### UnsetDestinationGroup
-`func (o *NotificationRule) UnsetDestinationGroup()`
+### UnsetGroup
+`func (o *NotificationRule) UnsetGroup()`
 
-UnsetDestinationGroup ensures that no value is present for DestinationGroup, not even an explicit nil
-### GetDestinationGroupObj
+UnsetGroup ensures that no value is present for Group, not even an explicit nil
+### GetGroupObj
 
-`func (o *NotificationRule) GetDestinationGroupObj() Group`
+`func (o *NotificationRule) GetGroupObj() Group`
 
-GetDestinationGroupObj returns the DestinationGroupObj field if non-nil, zero value otherwise.
+GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
-### GetDestinationGroupObjOk
+### GetGroupObjOk
 
-`func (o *NotificationRule) GetDestinationGroupObjOk() (*Group, bool)`
+`func (o *NotificationRule) GetGroupObjOk() (*Group, bool)`
 
-GetDestinationGroupObjOk returns a tuple with the DestinationGroupObj field if it's non-nil, zero value otherwise
+GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDestinationGroupObj
+### SetGroupObj
 
-`func (o *NotificationRule) SetDestinationGroupObj(v Group)`
+`func (o *NotificationRule) SetGroupObj(v Group)`
 
-SetDestinationGroupObj sets DestinationGroupObj field to given value.
+SetGroupObj sets GroupObj field to given value.
 
-
-### GetDestinationEventUser
-
-`func (o *NotificationRule) GetDestinationEventUser() bool`
-
-GetDestinationEventUser returns the DestinationEventUser field if non-nil, zero value otherwise.
-
-### GetDestinationEventUserOk
-
-`func (o *NotificationRule) GetDestinationEventUserOk() (*bool, bool)`
-
-GetDestinationEventUserOk returns a tuple with the DestinationEventUser field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDestinationEventUser
-
-`func (o *NotificationRule) SetDestinationEventUser(v bool)`
-
-SetDestinationEventUser sets DestinationEventUser field to given value.
-
-### HasDestinationEventUser
-
-`func (o *NotificationRule) HasDestinationEventUser() bool`
-
-HasDestinationEventUser returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

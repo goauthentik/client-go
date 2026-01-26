@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &SCIMProviderGroup{}
 
 // SCIMProviderGroup SCIMProviderGroup Serializer
 type SCIMProviderGroup struct {
-	Id         string                 `json:"id"`
-	ScimId     string                 `json:"scim_id"`
-	Group      string                 `json:"group"`
-	GroupObj   PartialGroup           `json:"group_obj"`
-	Provider   int32                  `json:"provider"`
-	Attributes map[string]interface{} `json:"attributes"`
+	Id         string      `json:"id"`
+	ScimId     string      `json:"scim_id"`
+	Group      string      `json:"group"`
+	GroupObj   UserGroup   `json:"group_obj"`
+	Provider   int32       `json:"provider"`
+	Attributes interface{} `json:"attributes"`
 }
 
 type _SCIMProviderGroup SCIMProviderGroup
@@ -36,7 +36,7 @@ type _SCIMProviderGroup SCIMProviderGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProviderGroup(id string, scimId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}) *SCIMProviderGroup {
+func NewSCIMProviderGroup(id string, scimId string, group string, groupObj UserGroup, provider int32, attributes interface{}) *SCIMProviderGroup {
 	this := SCIMProviderGroup{}
 	this.Id = id
 	this.ScimId = scimId
@@ -128,9 +128,9 @@ func (o *SCIMProviderGroup) SetGroup(v string) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *SCIMProviderGroup) GetGroupObj() PartialGroup {
+func (o *SCIMProviderGroup) GetGroupObj() UserGroup {
 	if o == nil {
-		var ret PartialGroup
+		var ret UserGroup
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *SCIMProviderGroup) GetGroupObj() PartialGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
+func (o *SCIMProviderGroup) GetGroupObjOk() (*UserGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *SCIMProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *SCIMProviderGroup) SetGroupObj(v PartialGroup) {
+func (o *SCIMProviderGroup) SetGroupObj(v UserGroup) {
 	o.GroupObj = v
 }
 
@@ -176,9 +176,10 @@ func (o *SCIMProviderGroup) SetProvider(v int32) {
 }
 
 // GetAttributes returns the Attributes field value
-func (o *SCIMProviderGroup) GetAttributes() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SCIMProviderGroup) GetAttributes() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -187,15 +188,16 @@ func (o *SCIMProviderGroup) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *SCIMProviderGroup) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMProviderGroup) GetAttributesOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Attributes) {
+		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // SetAttributes sets field value
-func (o *SCIMProviderGroup) SetAttributes(v map[string]interface{}) {
+func (o *SCIMProviderGroup) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 
@@ -214,7 +216,9 @@ func (o SCIMProviderGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize["group"] = o.Group
 	toSerialize["group_obj"] = o.GroupObj
 	toSerialize["provider"] = o.Provider
-	toSerialize["attributes"] = o.Attributes
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
+	}
 	return toSerialize, nil
 }
 

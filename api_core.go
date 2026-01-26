@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -17,6 +17,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"reflect"
 	"strings"
 	"time"
@@ -1598,6 +1599,131 @@ func (a *CoreAPIService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCoreApplicationsMetricsListRequest struct {
+	ctx        context.Context
+	ApiService *CoreAPIService
+	slug       string
+}
+
+func (r ApiCoreApplicationsMetricsListRequest) Execute() ([]Coordinate, *http.Response, error) {
+	return r.ApiService.CoreApplicationsMetricsListExecute(r)
+}
+
+/*
+CoreApplicationsMetricsList Method for CoreApplicationsMetricsList
+
+Metrics for application logins
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiCoreApplicationsMetricsListRequest
+*/
+func (a *CoreAPIService) CoreApplicationsMetricsList(ctx context.Context, slug string) ApiCoreApplicationsMetricsListRequest {
+	return ApiCoreApplicationsMetricsListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		slug:       slug,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []Coordinate
+func (a *CoreAPIService) CoreApplicationsMetricsListExecute(r ApiCoreApplicationsMetricsListRequest) ([]Coordinate, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Coordinate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsMetricsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/applications/{slug}/metrics/"
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCoreApplicationsPartialUpdateRequest struct {
 	ctx                       context.Context
 	ApiService                *CoreAPIService
@@ -1856,6 +1982,251 @@ func (a *CoreAPIService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCoreApplicationsSetIconCreateRequest struct {
+	ctx        context.Context
+	ApiService *CoreAPIService
+	slug       string
+	file       *os.File
+	clear      *bool
+}
+
+func (r ApiCoreApplicationsSetIconCreateRequest) File(file *os.File) ApiCoreApplicationsSetIconCreateRequest {
+	r.file = file
+	return r
+}
+
+func (r ApiCoreApplicationsSetIconCreateRequest) Clear(clear bool) ApiCoreApplicationsSetIconCreateRequest {
+	r.clear = &clear
+	return r
+}
+
+func (r ApiCoreApplicationsSetIconCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CoreApplicationsSetIconCreateExecute(r)
+}
+
+/*
+CoreApplicationsSetIconCreate Method for CoreApplicationsSetIconCreate
+
+Set application icon
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiCoreApplicationsSetIconCreateRequest
+*/
+func (a *CoreAPIService) CoreApplicationsSetIconCreate(ctx context.Context, slug string) ApiCoreApplicationsSetIconCreateRequest {
+	return ApiCoreApplicationsSetIconCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		slug:       slug,
+	}
+}
+
+// Execute executes the request
+func (a *CoreAPIService) CoreApplicationsSetIconCreateExecute(r ApiCoreApplicationsSetIconCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsSetIconCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/applications/{slug}/set_icon/"
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName string
+	var fileLocalVarFileBytes []byte
+
+	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
+
+	if fileLocalVarFile != nil {
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	}
+	if r.clear != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "clear", r.clear, "", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiCoreApplicationsSetIconUrlCreateRequest struct {
+	ctx             context.Context
+	ApiService      *CoreAPIService
+	slug            string
+	filePathRequest *FilePathRequest
+}
+
+func (r ApiCoreApplicationsSetIconUrlCreateRequest) FilePathRequest(filePathRequest FilePathRequest) ApiCoreApplicationsSetIconUrlCreateRequest {
+	r.filePathRequest = &filePathRequest
+	return r
+}
+
+func (r ApiCoreApplicationsSetIconUrlCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CoreApplicationsSetIconUrlCreateExecute(r)
+}
+
+/*
+CoreApplicationsSetIconUrlCreate Method for CoreApplicationsSetIconUrlCreate
+
+Set application icon (as URL)
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiCoreApplicationsSetIconUrlCreateRequest
+*/
+func (a *CoreAPIService) CoreApplicationsSetIconUrlCreate(ctx context.Context, slug string) ApiCoreApplicationsSetIconUrlCreateRequest {
+	return ApiCoreApplicationsSetIconUrlCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		slug:       slug,
+	}
+}
+
+// Execute executes the request
+func (a *CoreAPIService) CoreApplicationsSetIconUrlCreateExecute(r ApiCoreApplicationsSetIconUrlCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsSetIconUrlCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/applications/{slug}/set_icon_url/"
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.filePathRequest == nil {
+		return nil, reportError("filePathRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.filePathRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiCoreApplicationsUpdateRequest struct {
 	ctx                context.Context
 	ApiService         *CoreAPIService
@@ -2042,148 +2413,6 @@ func (a *CoreAPIService) CoreApplicationsUsedByListExecute(r ApiCoreApplications
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest struct {
-	ctx        context.Context
-	ApiService *CoreAPIService
-	userPks    *[]int32
-}
-
-// List of user IDs to revoke all sessions for
-func (r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) UserPks(userPks []int32) ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest {
-	r.userPks = &userPks
-	return r
-}
-
-func (r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) Execute() (*BulkDeleteSessionResponse, *http.Response, error) {
-	return r.ApiService.CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r)
-}
-
-/*
-CoreAuthenticatedSessionsBulkDeleteDestroy Method for CoreAuthenticatedSessionsBulkDeleteDestroy
-
-Bulk revoke all sessions for multiple users
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest
-*/
-func (a *CoreAPIService) CoreAuthenticatedSessionsBulkDeleteDestroy(ctx context.Context) ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest {
-	return ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return BulkDeleteSessionResponse
-func (a *CoreAPIService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) (*BulkDeleteSessionResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BulkDeleteSessionResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreAuthenticatedSessionsBulkDeleteDestroy")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/core/authenticated_sessions/bulk_delete/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.userPks == nil {
-		return localVarReturnValue, nil, reportError("userPks is required and must be specified")
-	}
-
-	{
-		t := *r.userPks
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "user_pks", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "user_pks", t, "form", "multi")
-		}
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3184,7 +3413,6 @@ type ApiCoreBrandsListRequest struct {
 	brandingFavicon               *string
 	brandingLogo                  *string
 	brandingTitle                 *string
-	clientCertificates            *[]string
 	default_                      *bool
 	domain                        *string
 	flowAuthentication            *string
@@ -3222,11 +3450,6 @@ func (r ApiCoreBrandsListRequest) BrandingLogo(brandingLogo string) ApiCoreBrand
 
 func (r ApiCoreBrandsListRequest) BrandingTitle(brandingTitle string) ApiCoreBrandsListRequest {
 	r.brandingTitle = &brandingTitle
-	return r
-}
-
-func (r ApiCoreBrandsListRequest) ClientCertificates(clientCertificates []string) ApiCoreBrandsListRequest {
-	r.clientCertificates = &clientCertificates
 	return r
 }
 
@@ -3354,17 +3577,6 @@ func (a *CoreAPIService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*Pag
 	}
 	if r.brandingTitle != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "branding_title", r.brandingTitle, "form", "")
-	}
-	if r.clientCertificates != nil {
-		t := *r.clientCertificates
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "client_certificates", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "client_certificates", t, "form", "multi")
-		}
 	}
 	if r.default_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "default", r.default_, "form", "")
@@ -4369,41 +4581,23 @@ func (a *CoreAPIService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 }
 
 type ApiCoreGroupsListRequest struct {
-	ctx                   context.Context
-	ApiService            *CoreAPIService
-	attributes            *string
-	includeChildren       *bool
-	includeInheritedRoles *bool
-	includeParents        *bool
-	includeUsers          *bool
-	isSuperuser           *bool
-	membersByPk           *[]int32
-	membersByUsername     *[]string
-	name                  *string
-	ordering              *string
-	page                  *int32
-	pageSize              *int32
-	search                *string
+	ctx               context.Context
+	ApiService        *CoreAPIService
+	attributes        *string
+	includeUsers      *bool
+	isSuperuser       *bool
+	membersByPk       *[]int32
+	membersByUsername *[]string
+	name              *string
+	ordering          *string
+	page              *int32
+	pageSize          *int32
+	search            *string
 }
 
 // Attributes
 func (r ApiCoreGroupsListRequest) Attributes(attributes string) ApiCoreGroupsListRequest {
 	r.attributes = &attributes
-	return r
-}
-
-func (r ApiCoreGroupsListRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsListRequest {
-	r.includeChildren = &includeChildren
-	return r
-}
-
-func (r ApiCoreGroupsListRequest) IncludeInheritedRoles(includeInheritedRoles bool) ApiCoreGroupsListRequest {
-	r.includeInheritedRoles = &includeInheritedRoles
-	return r
-}
-
-func (r ApiCoreGroupsListRequest) IncludeParents(includeParents bool) ApiCoreGroupsListRequest {
-	r.includeParents = &includeParents
 	return r
 }
 
@@ -4500,27 +4694,6 @@ func (a *CoreAPIService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 
 	if r.attributes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "attributes", r.attributes, "form", "")
-	}
-	if r.includeChildren != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", r.includeChildren, "form", "")
-	} else {
-		var defaultValue bool = false
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", defaultValue, "form", "")
-		r.includeChildren = &defaultValue
-	}
-	if r.includeInheritedRoles != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", r.includeInheritedRoles, "form", "")
-	} else {
-		var defaultValue bool = false
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", defaultValue, "form", "")
-		r.includeInheritedRoles = &defaultValue
-	}
-	if r.includeParents != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", r.includeParents, "form", "")
-	} else {
-		var defaultValue bool = false
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", defaultValue, "form", "")
-		r.includeParents = &defaultValue
 	}
 	if r.includeUsers != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_users", r.includeUsers, "form", "")
@@ -4796,7 +4969,7 @@ func (r ApiCoreGroupsRemoveUserCreateRequest) Execute() (*http.Response, error) 
 /*
 CoreGroupsRemoveUserCreate Method for CoreGroupsRemoveUserCreate
 
-Remove user from group
+Add user to group
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupUuid A UUID string identifying this Group.
@@ -4902,28 +5075,10 @@ func (a *CoreAPIService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 }
 
 type ApiCoreGroupsRetrieveRequest struct {
-	ctx                   context.Context
-	ApiService            *CoreAPIService
-	groupUuid             string
-	includeChildren       *bool
-	includeInheritedRoles *bool
-	includeParents        *bool
-	includeUsers          *bool
-}
-
-func (r ApiCoreGroupsRetrieveRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsRetrieveRequest {
-	r.includeChildren = &includeChildren
-	return r
-}
-
-func (r ApiCoreGroupsRetrieveRequest) IncludeInheritedRoles(includeInheritedRoles bool) ApiCoreGroupsRetrieveRequest {
-	r.includeInheritedRoles = &includeInheritedRoles
-	return r
-}
-
-func (r ApiCoreGroupsRetrieveRequest) IncludeParents(includeParents bool) ApiCoreGroupsRetrieveRequest {
-	r.includeParents = &includeParents
-	return r
+	ctx          context.Context
+	ApiService   *CoreAPIService
+	groupUuid    string
+	includeUsers *bool
 }
 
 func (r ApiCoreGroupsRetrieveRequest) IncludeUsers(includeUsers bool) ApiCoreGroupsRetrieveRequest {
@@ -4975,27 +5130,6 @@ func (a *CoreAPIService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.includeChildren != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", r.includeChildren, "form", "")
-	} else {
-		var defaultValue bool = false
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", defaultValue, "form", "")
-		r.includeChildren = &defaultValue
-	}
-	if r.includeInheritedRoles != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", r.includeInheritedRoles, "form", "")
-	} else {
-		var defaultValue bool = false
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", defaultValue, "form", "")
-		r.includeInheritedRoles = &defaultValue
-	}
-	if r.includeParents != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", r.includeParents, "form", "")
-	} else {
-		var defaultValue bool = false
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", defaultValue, "form", "")
-		r.includeParents = &defaultValue
-	}
 	if r.includeUsers != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_users", r.includeUsers, "form", "")
 	} else {
@@ -7485,408 +7619,6 @@ func (a *CoreAPIService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiCoreUsersExportCreateRequest struct {
-	ctx             context.Context
-	ApiService      *CoreAPIService
-	attributes      *string
-	dateJoined      *time.Time
-	dateJoinedGt    *time.Time
-	dateJoinedLt    *time.Time
-	email           *string
-	groupsByName    *[]string
-	groupsByPk      *[]string
-	isActive        *bool
-	isSuperuser     *bool
-	lastLogin       *time.Time
-	lastLoginGt     *time.Time
-	lastLoginIsnull *bool
-	lastLoginLt     *time.Time
-	lastUpdated     *time.Time
-	lastUpdatedGt   *time.Time
-	lastUpdatedLt   *time.Time
-	name            *string
-	ordering        *string
-	path            *string
-	pathStartswith  *string
-	rolesByName     *[]string
-	rolesByPk       *[]string
-	search          *string
-	type_           *[]string
-	username        *string
-	uuid            *string
-}
-
-// Attributes
-func (r ApiCoreUsersExportCreateRequest) Attributes(attributes string) ApiCoreUsersExportCreateRequest {
-	r.attributes = &attributes
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) DateJoined(dateJoined time.Time) ApiCoreUsersExportCreateRequest {
-	r.dateJoined = &dateJoined
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) DateJoinedGt(dateJoinedGt time.Time) ApiCoreUsersExportCreateRequest {
-	r.dateJoinedGt = &dateJoinedGt
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) DateJoinedLt(dateJoinedLt time.Time) ApiCoreUsersExportCreateRequest {
-	r.dateJoinedLt = &dateJoinedLt
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) Email(email string) ApiCoreUsersExportCreateRequest {
-	r.email = &email
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) GroupsByName(groupsByName []string) ApiCoreUsersExportCreateRequest {
-	r.groupsByName = &groupsByName
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) GroupsByPk(groupsByPk []string) ApiCoreUsersExportCreateRequest {
-	r.groupsByPk = &groupsByPk
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) IsActive(isActive bool) ApiCoreUsersExportCreateRequest {
-	r.isActive = &isActive
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) IsSuperuser(isSuperuser bool) ApiCoreUsersExportCreateRequest {
-	r.isSuperuser = &isSuperuser
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastLogin(lastLogin time.Time) ApiCoreUsersExportCreateRequest {
-	r.lastLogin = &lastLogin
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastLoginGt(lastLoginGt time.Time) ApiCoreUsersExportCreateRequest {
-	r.lastLoginGt = &lastLoginGt
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastLoginIsnull(lastLoginIsnull bool) ApiCoreUsersExportCreateRequest {
-	r.lastLoginIsnull = &lastLoginIsnull
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastLoginLt(lastLoginLt time.Time) ApiCoreUsersExportCreateRequest {
-	r.lastLoginLt = &lastLoginLt
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastUpdated(lastUpdated time.Time) ApiCoreUsersExportCreateRequest {
-	r.lastUpdated = &lastUpdated
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastUpdatedGt(lastUpdatedGt time.Time) ApiCoreUsersExportCreateRequest {
-	r.lastUpdatedGt = &lastUpdatedGt
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastUpdatedLt(lastUpdatedLt time.Time) ApiCoreUsersExportCreateRequest {
-	r.lastUpdatedLt = &lastUpdatedLt
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) Name(name string) ApiCoreUsersExportCreateRequest {
-	r.name = &name
-	return r
-}
-
-// Which field to use when ordering the results.
-func (r ApiCoreUsersExportCreateRequest) Ordering(ordering string) ApiCoreUsersExportCreateRequest {
-	r.ordering = &ordering
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) Path(path string) ApiCoreUsersExportCreateRequest {
-	r.path = &path
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) PathStartswith(pathStartswith string) ApiCoreUsersExportCreateRequest {
-	r.pathStartswith = &pathStartswith
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) RolesByName(rolesByName []string) ApiCoreUsersExportCreateRequest {
-	r.rolesByName = &rolesByName
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) RolesByPk(rolesByPk []string) ApiCoreUsersExportCreateRequest {
-	r.rolesByPk = &rolesByPk
-	return r
-}
-
-// A search term.
-func (r ApiCoreUsersExportCreateRequest) Search(search string) ApiCoreUsersExportCreateRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) Type_(type_ []string) ApiCoreUsersExportCreateRequest {
-	r.type_ = &type_
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) Username(username string) ApiCoreUsersExportCreateRequest {
-	r.username = &username
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) Uuid(uuid string) ApiCoreUsersExportCreateRequest {
-	r.uuid = &uuid
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) Execute() (*DataExport, *http.Response, error) {
-	return r.ApiService.CoreUsersExportCreateExecute(r)
-}
-
-/*
-CoreUsersExportCreate Method for CoreUsersExportCreate
-
-Create a data export for this data type. Note that the export is generated asynchronously:
-this method returns a `DataExport` object that will initially have `completed=false` as well
-as the permanent URL to that object in the `Location` header.
-You can poll that URL until `completed=true`, at which point the `file_url` property will
-contain a URL to download
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreUsersExportCreateRequest
-*/
-func (a *CoreAPIService) CoreUsersExportCreate(ctx context.Context) ApiCoreUsersExportCreateRequest {
-	return ApiCoreUsersExportCreateRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return DataExport
-func (a *CoreAPIService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreateRequest) (*DataExport, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DataExport
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersExportCreate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/core/users/export/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.attributes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attributes", r.attributes, "form", "")
-	}
-	if r.dateJoined != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined", r.dateJoined, "form", "")
-	}
-	if r.dateJoinedGt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined__gt", r.dateJoinedGt, "form", "")
-	}
-	if r.dateJoinedLt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined__lt", r.dateJoinedLt, "form", "")
-	}
-	if r.email != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "email", r.email, "form", "")
-	}
-	if r.groupsByName != nil {
-		t := *r.groupsByName
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_name", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_name", t, "form", "multi")
-		}
-	}
-	if r.groupsByPk != nil {
-		t := *r.groupsByPk
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_pk", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_pk", t, "form", "multi")
-		}
-	}
-	if r.isActive != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "is_active", r.isActive, "form", "")
-	}
-	if r.isSuperuser != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "is_superuser", r.isSuperuser, "form", "")
-	}
-	if r.lastLogin != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login", r.lastLogin, "form", "")
-	}
-	if r.lastLoginGt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__gt", r.lastLoginGt, "form", "")
-	}
-	if r.lastLoginIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__isnull", r.lastLoginIsnull, "form", "")
-	}
-	if r.lastLoginLt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__lt", r.lastLoginLt, "form", "")
-	}
-	if r.lastUpdated != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "form", "")
-	}
-	if r.lastUpdatedGt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated__gt", r.lastUpdatedGt, "form", "")
-	}
-	if r.lastUpdatedLt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated__lt", r.lastUpdatedLt, "form", "")
-	}
-	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
-	}
-	if r.ordering != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
-	}
-	if r.path != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "path", r.path, "form", "")
-	}
-	if r.pathStartswith != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "path_startswith", r.pathStartswith, "form", "")
-	}
-	if r.rolesByName != nil {
-		t := *r.rolesByName
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_name", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_name", t, "form", "multi")
-		}
-	}
-	if r.rolesByPk != nil {
-		t := *r.rolesByPk
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_pk", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_pk", t, "form", "multi")
-		}
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
-	}
-	if r.type_ != nil {
-		t := *r.type_
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "type", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "type", t, "form", "multi")
-		}
-	}
-	if r.username != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "form", "")
-	}
-	if r.uuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "uuid", r.uuid, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiCoreUsersImpersonateCreateRequest struct {
 	ctx                  context.Context
 	ApiService           *CoreAPIService
@@ -8121,58 +7853,30 @@ func (a *CoreAPIService) CoreUsersImpersonateEndRetrieveExecute(r ApiCoreUsersIm
 }
 
 type ApiCoreUsersListRequest struct {
-	ctx             context.Context
-	ApiService      *CoreAPIService
-	attributes      *string
-	dateJoined      *time.Time
-	dateJoinedGt    *time.Time
-	dateJoinedLt    *time.Time
-	email           *string
-	groupsByName    *[]string
-	groupsByPk      *[]string
-	includeGroups   *bool
-	includeRoles    *bool
-	isActive        *bool
-	isSuperuser     *bool
-	lastLogin       *time.Time
-	lastLoginGt     *time.Time
-	lastLoginIsnull *bool
-	lastLoginLt     *time.Time
-	lastUpdated     *time.Time
-	lastUpdatedGt   *time.Time
-	lastUpdatedLt   *time.Time
-	name            *string
-	ordering        *string
-	page            *int32
-	pageSize        *int32
-	path            *string
-	pathStartswith  *string
-	rolesByName     *[]string
-	rolesByPk       *[]string
-	search          *string
-	type_           *[]string
-	username        *string
-	uuid            *string
+	ctx            context.Context
+	ApiService     *CoreAPIService
+	attributes     *string
+	email          *string
+	groupsByName   *[]string
+	groupsByPk     *[]string
+	includeGroups  *bool
+	isActive       *bool
+	isSuperuser    *bool
+	name           *string
+	ordering       *string
+	page           *int32
+	pageSize       *int32
+	path           *string
+	pathStartswith *string
+	search         *string
+	type_          *[]string
+	username       *string
+	uuid           *string
 }
 
 // Attributes
 func (r ApiCoreUsersListRequest) Attributes(attributes string) ApiCoreUsersListRequest {
 	r.attributes = &attributes
-	return r
-}
-
-func (r ApiCoreUsersListRequest) DateJoined(dateJoined time.Time) ApiCoreUsersListRequest {
-	r.dateJoined = &dateJoined
-	return r
-}
-
-func (r ApiCoreUsersListRequest) DateJoinedGt(dateJoinedGt time.Time) ApiCoreUsersListRequest {
-	r.dateJoinedGt = &dateJoinedGt
-	return r
-}
-
-func (r ApiCoreUsersListRequest) DateJoinedLt(dateJoinedLt time.Time) ApiCoreUsersListRequest {
-	r.dateJoinedLt = &dateJoinedLt
 	return r
 }
 
@@ -8196,11 +7900,6 @@ func (r ApiCoreUsersListRequest) IncludeGroups(includeGroups bool) ApiCoreUsersL
 	return r
 }
 
-func (r ApiCoreUsersListRequest) IncludeRoles(includeRoles bool) ApiCoreUsersListRequest {
-	r.includeRoles = &includeRoles
-	return r
-}
-
 func (r ApiCoreUsersListRequest) IsActive(isActive bool) ApiCoreUsersListRequest {
 	r.isActive = &isActive
 	return r
@@ -8208,41 +7907,6 @@ func (r ApiCoreUsersListRequest) IsActive(isActive bool) ApiCoreUsersListRequest
 
 func (r ApiCoreUsersListRequest) IsSuperuser(isSuperuser bool) ApiCoreUsersListRequest {
 	r.isSuperuser = &isSuperuser
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastLogin(lastLogin time.Time) ApiCoreUsersListRequest {
-	r.lastLogin = &lastLogin
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastLoginGt(lastLoginGt time.Time) ApiCoreUsersListRequest {
-	r.lastLoginGt = &lastLoginGt
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastLoginIsnull(lastLoginIsnull bool) ApiCoreUsersListRequest {
-	r.lastLoginIsnull = &lastLoginIsnull
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastLoginLt(lastLoginLt time.Time) ApiCoreUsersListRequest {
-	r.lastLoginLt = &lastLoginLt
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastUpdated(lastUpdated time.Time) ApiCoreUsersListRequest {
-	r.lastUpdated = &lastUpdated
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastUpdatedGt(lastUpdatedGt time.Time) ApiCoreUsersListRequest {
-	r.lastUpdatedGt = &lastUpdatedGt
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastUpdatedLt(lastUpdatedLt time.Time) ApiCoreUsersListRequest {
-	r.lastUpdatedLt = &lastUpdatedLt
 	return r
 }
 
@@ -8276,16 +7940,6 @@ func (r ApiCoreUsersListRequest) Path(path string) ApiCoreUsersListRequest {
 
 func (r ApiCoreUsersListRequest) PathStartswith(pathStartswith string) ApiCoreUsersListRequest {
 	r.pathStartswith = &pathStartswith
-	return r
-}
-
-func (r ApiCoreUsersListRequest) RolesByName(rolesByName []string) ApiCoreUsersListRequest {
-	r.rolesByName = &rolesByName
-	return r
-}
-
-func (r ApiCoreUsersListRequest) RolesByPk(rolesByPk []string) ApiCoreUsersListRequest {
-	r.rolesByPk = &rolesByPk
 	return r
 }
 
@@ -8354,15 +8008,6 @@ func (a *CoreAPIService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	if r.attributes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "attributes", r.attributes, "form", "")
 	}
-	if r.dateJoined != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined", r.dateJoined, "form", "")
-	}
-	if r.dateJoinedGt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined__gt", r.dateJoinedGt, "form", "")
-	}
-	if r.dateJoinedLt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined__lt", r.dateJoinedLt, "form", "")
-	}
 	if r.email != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "email", r.email, "form", "")
 	}
@@ -8395,39 +8040,11 @@ func (a *CoreAPIService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_groups", defaultValue, "form", "")
 		r.includeGroups = &defaultValue
 	}
-	if r.includeRoles != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_roles", r.includeRoles, "form", "")
-	} else {
-		var defaultValue bool = true
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_roles", defaultValue, "form", "")
-		r.includeRoles = &defaultValue
-	}
 	if r.isActive != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "is_active", r.isActive, "form", "")
 	}
 	if r.isSuperuser != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "is_superuser", r.isSuperuser, "form", "")
-	}
-	if r.lastLogin != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login", r.lastLogin, "form", "")
-	}
-	if r.lastLoginGt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__gt", r.lastLoginGt, "form", "")
-	}
-	if r.lastLoginIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__isnull", r.lastLoginIsnull, "form", "")
-	}
-	if r.lastLoginLt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__lt", r.lastLoginLt, "form", "")
-	}
-	if r.lastUpdated != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "form", "")
-	}
-	if r.lastUpdatedGt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated__gt", r.lastUpdatedGt, "form", "")
-	}
-	if r.lastUpdatedLt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated__lt", r.lastUpdatedLt, "form", "")
 	}
 	if r.name != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
@@ -8446,28 +8063,6 @@ func (a *CoreAPIService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	}
 	if r.pathStartswith != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "path_startswith", r.pathStartswith, "form", "")
-	}
-	if r.rolesByName != nil {
-		t := *r.rolesByName
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_name", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_name", t, "form", "multi")
-		}
-	}
-	if r.rolesByPk != nil {
-		t := *r.rolesByPk
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_pk", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_pk", t, "form", "multi")
-		}
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
@@ -8605,6 +8200,131 @@ func (a *CoreAPIService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequ
 	}
 
 	localVarPath := localBasePath + "/core/users/me/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCoreUsersMetricsRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *CoreAPIService
+	id         int32
+}
+
+func (r ApiCoreUsersMetricsRetrieveRequest) Execute() (*UserMetrics, *http.Response, error) {
+	return r.ApiService.CoreUsersMetricsRetrieveExecute(r)
+}
+
+/*
+CoreUsersMetricsRetrieve Method for CoreUsersMetricsRetrieve
+
+User metrics per 1h
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this User.
+	@return ApiCoreUsersMetricsRetrieveRequest
+*/
+func (a *CoreAPIService) CoreUsersMetricsRetrieve(ctx context.Context, id int32) ApiCoreUsersMetricsRetrieveRequest {
+	return ApiCoreUsersMetricsRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return UserMetrics
+func (a *CoreAPIService) CoreUsersMetricsRetrieveExecute(r ApiCoreUsersMetricsRetrieveRequest) (*UserMetrics, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserMetrics
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersMetricsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/core/users/{id}/metrics/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8824,7 +8544,6 @@ type ApiCoreUsersPathsRetrieveRequest struct {
 	search     *string
 }
 
-// A search term.
 func (r ApiCoreUsersPathsRetrieveRequest) Search(search string) ApiCoreUsersPathsRetrieveRequest {
 	r.search = &search
 	return r
@@ -8962,7 +8681,7 @@ func (r ApiCoreUsersRecoveryCreateRequest) Execute() (*Link, *http.Response, err
 /*
 CoreUsersRecoveryCreate Method for CoreUsersRecoveryCreate
 
-Create a temporary link that a user can use to recover their account
+Create a temporary link that a user can use to recover their accounts
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User.
@@ -9093,7 +8812,7 @@ func (r ApiCoreUsersRecoveryEmailCreateRequest) Execute() (*http.Response, error
 /*
 CoreUsersRecoveryEmailCreate Method for CoreUsersRecoveryEmailCreate
 
-Send an email with a temporary link that a user can use to recover their account
+Create a temporary link that a user can use to recover their accounts
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id A unique integer value identifying this User.

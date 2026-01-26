@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -20,7 +20,8 @@ var _ MappedNullable = &PatchedEmailStageRequest{}
 
 // PatchedEmailStageRequest EmailStage Serializer
 type PatchedEmailStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name    *string          `json:"name,omitempty"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// When enabled, global Email connection settings will be used and connection settings below will be ignored.
 	UseGlobalSettings *bool   `json:"use_global_settings,omitempty"`
 	Host              *string `json:"host,omitempty"`
@@ -36,10 +37,7 @@ type PatchedEmailStageRequest struct {
 	Subject     *string `json:"subject,omitempty"`
 	Template    *string `json:"template,omitempty"`
 	// Activate users upon completion of stage.
-	ActivateUserOnSuccess *bool  `json:"activate_user_on_success,omitempty"`
-	RecoveryMaxAttempts   *int32 `json:"recovery_max_attempts,omitempty"`
-	// The time window used to count recent account recovery attempts. If the number of attempts exceed recovery_max_attempts within this period, further attempts will be rate-limited. (Format: hours=1;minutes=2;seconds=3).
-	RecoveryCacheTimeout *string `json:"recovery_cache_timeout,omitempty"`
+	ActivateUserOnSuccess *bool `json:"activate_user_on_success,omitempty"`
 }
 
 // NewPatchedEmailStageRequest instantiates a new PatchedEmailStageRequest object
@@ -89,6 +87,38 @@ func (o *PatchedEmailStageRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchedEmailStageRequest) SetName(v string) {
 	o.Name = &v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *PatchedEmailStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedEmailStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *PatchedEmailStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedEmailStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetUseGlobalSettings returns the UseGlobalSettings field value if set, zero value otherwise.
@@ -507,70 +537,6 @@ func (o *PatchedEmailStageRequest) SetActivateUserOnSuccess(v bool) {
 	o.ActivateUserOnSuccess = &v
 }
 
-// GetRecoveryMaxAttempts returns the RecoveryMaxAttempts field value if set, zero value otherwise.
-func (o *PatchedEmailStageRequest) GetRecoveryMaxAttempts() int32 {
-	if o == nil || IsNil(o.RecoveryMaxAttempts) {
-		var ret int32
-		return ret
-	}
-	return *o.RecoveryMaxAttempts
-}
-
-// GetRecoveryMaxAttemptsOk returns a tuple with the RecoveryMaxAttempts field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedEmailStageRequest) GetRecoveryMaxAttemptsOk() (*int32, bool) {
-	if o == nil || IsNil(o.RecoveryMaxAttempts) {
-		return nil, false
-	}
-	return o.RecoveryMaxAttempts, true
-}
-
-// HasRecoveryMaxAttempts returns a boolean if a field has been set.
-func (o *PatchedEmailStageRequest) HasRecoveryMaxAttempts() bool {
-	if o != nil && !IsNil(o.RecoveryMaxAttempts) {
-		return true
-	}
-
-	return false
-}
-
-// SetRecoveryMaxAttempts gets a reference to the given int32 and assigns it to the RecoveryMaxAttempts field.
-func (o *PatchedEmailStageRequest) SetRecoveryMaxAttempts(v int32) {
-	o.RecoveryMaxAttempts = &v
-}
-
-// GetRecoveryCacheTimeout returns the RecoveryCacheTimeout field value if set, zero value otherwise.
-func (o *PatchedEmailStageRequest) GetRecoveryCacheTimeout() string {
-	if o == nil || IsNil(o.RecoveryCacheTimeout) {
-		var ret string
-		return ret
-	}
-	return *o.RecoveryCacheTimeout
-}
-
-// GetRecoveryCacheTimeoutOk returns a tuple with the RecoveryCacheTimeout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedEmailStageRequest) GetRecoveryCacheTimeoutOk() (*string, bool) {
-	if o == nil || IsNil(o.RecoveryCacheTimeout) {
-		return nil, false
-	}
-	return o.RecoveryCacheTimeout, true
-}
-
-// HasRecoveryCacheTimeout returns a boolean if a field has been set.
-func (o *PatchedEmailStageRequest) HasRecoveryCacheTimeout() bool {
-	if o != nil && !IsNil(o.RecoveryCacheTimeout) {
-		return true
-	}
-
-	return false
-}
-
-// SetRecoveryCacheTimeout gets a reference to the given string and assigns it to the RecoveryCacheTimeout field.
-func (o *PatchedEmailStageRequest) SetRecoveryCacheTimeout(v string) {
-	o.RecoveryCacheTimeout = &v
-}
-
 func (o PatchedEmailStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -583,6 +549,9 @@ func (o PatchedEmailStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
 	}
 	if !IsNil(o.UseGlobalSettings) {
 		toSerialize["use_global_settings"] = o.UseGlobalSettings
@@ -622,12 +591,6 @@ func (o PatchedEmailStageRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ActivateUserOnSuccess) {
 		toSerialize["activate_user_on_success"] = o.ActivateUserOnSuccess
-	}
-	if !IsNil(o.RecoveryMaxAttempts) {
-		toSerialize["recovery_max_attempts"] = o.RecoveryMaxAttempts
-	}
-	if !IsNil(o.RecoveryCacheTimeout) {
-		toSerialize["recovery_cache_timeout"] = o.RecoveryCacheTimeout
 	}
 	return toSerialize, nil
 }

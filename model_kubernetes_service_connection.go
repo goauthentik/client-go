@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -34,7 +34,7 @@ type KubernetesServiceConnection struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	// Paste your kubeconfig here. authentik will automatically use the currently selected context.
-	Kubeconfig map[string]interface{} `json:"kubeconfig,omitempty"`
+	Kubeconfig interface{} `json:"kubeconfig,omitempty"`
 	// Verify SSL Certificates of the Kubernetes API endpoint
 	VerifySsl *bool `json:"verify_ssl,omitempty"`
 }
@@ -240,10 +240,10 @@ func (o *KubernetesServiceConnection) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetKubeconfig returns the Kubeconfig field value if set, zero value otherwise.
-func (o *KubernetesServiceConnection) GetKubeconfig() map[string]interface{} {
-	if o == nil || IsNil(o.Kubeconfig) {
-		var ret map[string]interface{}
+// GetKubeconfig returns the Kubeconfig field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *KubernetesServiceConnection) GetKubeconfig() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Kubeconfig
@@ -251,11 +251,12 @@ func (o *KubernetesServiceConnection) GetKubeconfig() map[string]interface{} {
 
 // GetKubeconfigOk returns a tuple with the Kubeconfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KubernetesServiceConnection) GetKubeconfigOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *KubernetesServiceConnection) GetKubeconfigOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Kubeconfig) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Kubeconfig, true
+	return &o.Kubeconfig, true
 }
 
 // HasKubeconfig returns a boolean if a field has been set.
@@ -267,8 +268,8 @@ func (o *KubernetesServiceConnection) HasKubeconfig() bool {
 	return false
 }
 
-// SetKubeconfig gets a reference to the given map[string]interface{} and assigns it to the Kubeconfig field.
-func (o *KubernetesServiceConnection) SetKubeconfig(v map[string]interface{}) {
+// SetKubeconfig gets a reference to the given interface{} and assigns it to the Kubeconfig field.
+func (o *KubernetesServiceConnection) SetKubeconfig(v interface{}) {
 	o.Kubeconfig = v
 }
 
@@ -323,7 +324,7 @@ func (o KubernetesServiceConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	if !IsNil(o.Kubeconfig) {
+	if o.Kubeconfig != nil {
 		toSerialize["kubeconfig"] = o.Kubeconfig
 	}
 	if !IsNil(o.VerifySsl) {

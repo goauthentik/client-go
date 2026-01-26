@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -12,7 +12,9 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IdentificationChallengeResponseRequest type satisfies the MappedNullable interface at compile time
@@ -20,21 +22,23 @@ var _ MappedNullable = &IdentificationChallengeResponseRequest{}
 
 // IdentificationChallengeResponseRequest Identification challenge
 type IdentificationChallengeResponseRequest struct {
-	Component    *string                `json:"component,omitempty"`
-	UidField     NullableString         `json:"uid_field,omitempty"`
-	Password     NullableString         `json:"password,omitempty"`
-	CaptchaToken NullableString         `json:"captcha_token,omitempty"`
-	Passkey      map[string]interface{} `json:"passkey,omitempty"`
+	Component    *string        `json:"component,omitempty"`
+	UidField     string         `json:"uid_field"`
+	Password     NullableString `json:"password,omitempty"`
+	CaptchaToken NullableString `json:"captcha_token,omitempty"`
 }
+
+type _IdentificationChallengeResponseRequest IdentificationChallengeResponseRequest
 
 // NewIdentificationChallengeResponseRequest instantiates a new IdentificationChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentificationChallengeResponseRequest() *IdentificationChallengeResponseRequest {
+func NewIdentificationChallengeResponseRequest(uidField string) *IdentificationChallengeResponseRequest {
 	this := IdentificationChallengeResponseRequest{}
 	var component string = "ak-stage-identification"
 	this.Component = &component
+	this.UidField = uidField
 	return &this
 }
 
@@ -80,47 +84,28 @@ func (o *IdentificationChallengeResponseRequest) SetComponent(v string) {
 	o.Component = &v
 }
 
-// GetUidField returns the UidField field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUidField returns the UidField field value
 func (o *IdentificationChallengeResponseRequest) GetUidField() string {
-	if o == nil || IsNil(o.UidField.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.UidField.Get()
+
+	return o.UidField
 }
 
-// GetUidFieldOk returns a tuple with the UidField field value if set, nil otherwise
+// GetUidFieldOk returns a tuple with the UidField field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentificationChallengeResponseRequest) GetUidFieldOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.UidField.Get(), o.UidField.IsSet()
+	return &o.UidField, true
 }
 
-// HasUidField returns a boolean if a field has been set.
-func (o *IdentificationChallengeResponseRequest) HasUidField() bool {
-	if o != nil && o.UidField.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUidField gets a reference to the given NullableString and assigns it to the UidField field.
+// SetUidField sets field value
 func (o *IdentificationChallengeResponseRequest) SetUidField(v string) {
-	o.UidField.Set(&v)
-}
-
-// SetUidFieldNil sets the value for UidField to be an explicit nil
-func (o *IdentificationChallengeResponseRequest) SetUidFieldNil() {
-	o.UidField.Set(nil)
-}
-
-// UnsetUidField ensures that no value is present for UidField, not even an explicit nil
-func (o *IdentificationChallengeResponseRequest) UnsetUidField() {
-	o.UidField.Unset()
+	o.UidField = v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -209,39 +194,6 @@ func (o *IdentificationChallengeResponseRequest) UnsetCaptchaToken() {
 	o.CaptchaToken.Unset()
 }
 
-// GetPasskey returns the Passkey field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IdentificationChallengeResponseRequest) GetPasskey() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Passkey
-}
-
-// GetPasskeyOk returns a tuple with the Passkey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IdentificationChallengeResponseRequest) GetPasskeyOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Passkey) {
-		return map[string]interface{}{}, false
-	}
-	return o.Passkey, true
-}
-
-// HasPasskey returns a boolean if a field has been set.
-func (o *IdentificationChallengeResponseRequest) HasPasskey() bool {
-	if o != nil && !IsNil(o.Passkey) {
-		return true
-	}
-
-	return false
-}
-
-// SetPasskey gets a reference to the given map[string]interface{} and assigns it to the Passkey field.
-func (o *IdentificationChallengeResponseRequest) SetPasskey(v map[string]interface{}) {
-	o.Passkey = v
-}
-
 func (o IdentificationChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -255,19 +207,51 @@ func (o IdentificationChallengeResponseRequest) ToMap() (map[string]interface{},
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
-	if o.UidField.IsSet() {
-		toSerialize["uid_field"] = o.UidField.Get()
-	}
+	toSerialize["uid_field"] = o.UidField
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
 	if o.CaptchaToken.IsSet() {
 		toSerialize["captcha_token"] = o.CaptchaToken.Get()
 	}
-	if o.Passkey != nil {
-		toSerialize["passkey"] = o.Passkey
-	}
 	return toSerialize, nil
+}
+
+func (o *IdentificationChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"uid_field",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIdentificationChallengeResponseRequest := _IdentificationChallengeResponseRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varIdentificationChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IdentificationChallengeResponseRequest(varIdentificationChallengeResponseRequest)
+
+	return err
 }
 
 type NullableIdentificationChallengeResponseRequest struct {

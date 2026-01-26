@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Source** | Pointer to **string** |  | [optional] 
 **Identifier** | Pointer to **string** |  | [optional] 
 **AccessToken** | Pointer to **NullableString** |  | [optional] 
-**Expires** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -139,31 +138,6 @@ HasAccessToken returns a boolean if a field has been set.
 `func (o *PatchedUserOAuthSourceConnectionRequest) UnsetAccessToken()`
 
 UnsetAccessToken ensures that no value is present for AccessToken, not even an explicit nil
-### GetExpires
-
-`func (o *PatchedUserOAuthSourceConnectionRequest) GetExpires() time.Time`
-
-GetExpires returns the Expires field if non-nil, zero value otherwise.
-
-### GetExpiresOk
-
-`func (o *PatchedUserOAuthSourceConnectionRequest) GetExpiresOk() (*time.Time, bool)`
-
-GetExpiresOk returns a tuple with the Expires field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExpires
-
-`func (o *PatchedUserOAuthSourceConnectionRequest) SetExpires(v time.Time)`
-
-SetExpires sets Expires field to given value.
-
-### HasExpires
-
-`func (o *PatchedUserOAuthSourceConnectionRequest) HasExpires() bool`
-
-HasExpires returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

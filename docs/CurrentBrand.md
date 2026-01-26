@@ -18,13 +18,12 @@ Name | Type | Description | Notes
 **FlowUserSettings** | Pointer to **string** |  | [optional] 
 **FlowDeviceCode** | Pointer to **string** |  | [optional] 
 **DefaultLocale** | **string** |  | [readonly] 
-**Flags** | [**CurrentBrandFlags**](CurrentBrandFlags.md) |  | 
 
 ## Methods
 
 ### NewCurrentBrand
 
-`func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags, ) *CurrentBrand`
+`func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, ) *CurrentBrand`
 
 NewCurrentBrand instantiates a new CurrentBrand object
 This constructor will assign default values to properties that have it defined,
@@ -347,26 +346,6 @@ and a boolean to check if the value has been set.
 `func (o *CurrentBrand) SetDefaultLocale(v string)`
 
 SetDefaultLocale sets DefaultLocale field to given value.
-
-
-### GetFlags
-
-`func (o *CurrentBrand) GetFlags() CurrentBrandFlags`
-
-GetFlags returns the Flags field if non-nil, zero value otherwise.
-
-### GetFlagsOk
-
-`func (o *CurrentBrand) GetFlagsOk() (*CurrentBrandFlags, bool)`
-
-GetFlagsOk returns a tuple with the Flags field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFlags
-
-`func (o *CurrentBrand) SetFlags(v CurrentBrandFlags)`
-
-SetFlags sets Flags field to given value.
 
 
 

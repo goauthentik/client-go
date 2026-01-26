@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**Kubeconfig** | Pointer to **map[string]interface{}** | Paste your kubeconfig here. authentik will automatically use the currently selected context. | [optional] 
+**Kubeconfig** | Pointer to **interface{}** | Paste your kubeconfig here. authentik will automatically use the currently selected context. | [optional] 
 **VerifySsl** | Pointer to **bool** | Verify SSL Certificates of the Kubernetes API endpoint | [optional] 
 
 ## Methods
@@ -180,20 +180,20 @@ SetMetaModelName sets MetaModelName field to given value.
 
 ### GetKubeconfig
 
-`func (o *KubernetesServiceConnection) GetKubeconfig() map[string]interface{}`
+`func (o *KubernetesServiceConnection) GetKubeconfig() interface{}`
 
 GetKubeconfig returns the Kubeconfig field if non-nil, zero value otherwise.
 
 ### GetKubeconfigOk
 
-`func (o *KubernetesServiceConnection) GetKubeconfigOk() (*map[string]interface{}, bool)`
+`func (o *KubernetesServiceConnection) GetKubeconfigOk() (*interface{}, bool)`
 
 GetKubeconfigOk returns a tuple with the Kubeconfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKubeconfig
 
-`func (o *KubernetesServiceConnection) SetKubeconfig(v map[string]interface{})`
+`func (o *KubernetesServiceConnection) SetKubeconfig(v interface{})`
 
 SetKubeconfig sets Kubeconfig field to given value.
 
@@ -203,6 +203,16 @@ SetKubeconfig sets Kubeconfig field to given value.
 
 HasKubeconfig returns a boolean if a field has been set.
 
+### SetKubeconfigNil
+
+`func (o *KubernetesServiceConnection) SetKubeconfigNil(b bool)`
+
+ SetKubeconfigNil sets the value for Kubeconfig to be an explicit nil
+
+### UnsetKubeconfig
+`func (o *KubernetesServiceConnection) UnsetKubeconfig()`
+
+UnsetKubeconfig ensures that no value is present for Kubeconfig, not even an explicit nil
 ### GetVerifySsl
 
 `func (o *KubernetesServiceConnection) GetVerifySsl() bool`

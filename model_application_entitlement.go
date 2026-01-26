@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &ApplicationEntitlement{}
 
 // ApplicationEntitlement ApplicationEntitlement Serializer
 type ApplicationEntitlement struct {
-	PbmUuid    string                 `json:"pbm_uuid"`
-	Name       string                 `json:"name"`
-	App        string                 `json:"app"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	PbmUuid    string      `json:"pbm_uuid"`
+	Name       string      `json:"name"`
+	App        string      `json:"app"`
+	Attributes interface{} `json:"attributes,omitempty"`
 }
 
 type _ApplicationEntitlement ApplicationEntitlement
@@ -122,10 +122,10 @@ func (o *ApplicationEntitlement) SetApp(v string) {
 	o.App = v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *ApplicationEntitlement) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]interface{}
+// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationEntitlement) GetAttributes() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Attributes
@@ -133,11 +133,12 @@ func (o *ApplicationEntitlement) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEntitlement) GetAttributesOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationEntitlement) GetAttributesOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
@@ -149,8 +150,8 @@ func (o *ApplicationEntitlement) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *ApplicationEntitlement) SetAttributes(v map[string]interface{}) {
+// SetAttributes gets a reference to the given interface{} and assigns it to the Attributes field.
+func (o *ApplicationEntitlement) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 
@@ -167,7 +168,7 @@ func (o ApplicationEntitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize["pbm_uuid"] = o.PbmUuid
 	toSerialize["name"] = o.Name
 	toSerialize["app"] = o.App
-	if !IsNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
 	return toSerialize, nil

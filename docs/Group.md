@@ -8,22 +8,19 @@ Name | Type | Description | Notes
 **NumPk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
 **IsSuperuser** | Pointer to **bool** | Users added to this group will be superusers. | [optional] 
-**Parents** | Pointer to **[]string** |  | [optional] 
-**ParentsObj** | [**[]RelatedGroup**](RelatedGroup.md) |  | [readonly] 
+**Parent** | Pointer to **NullableString** |  | [optional] 
+**ParentName** | **NullableString** |  | [readonly] 
 **Users** | Pointer to **[]int32** |  | [optional] 
-**UsersObj** | [**[]PartialUser**](PartialUser.md) |  | [readonly] 
+**UsersObj** | [**[]GroupMember**](GroupMember.md) |  | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Roles** | Pointer to **[]string** |  | [optional] 
 **RolesObj** | [**[]Role**](Role.md) |  | [readonly] 
-**InheritedRolesObj** | [**[]Role**](Role.md) |  | [readonly] 
-**Children** | **[]string** |  | [readonly] 
-**ChildrenObj** | [**[]RelatedGroup**](RelatedGroup.md) |  | [readonly] 
 
 ## Methods
 
 ### NewGroup
 
-`func NewGroup(pk string, numPk int32, name string, parentsObj []RelatedGroup, usersObj []PartialUser, rolesObj []Role, inheritedRolesObj []Role, children []string, childrenObj []RelatedGroup, ) *Group`
+`func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []GroupMember, rolesObj []Role, ) *Group`
 
 NewGroup instantiates a new Group object
 This constructor will assign default values to properties that have it defined,
@@ -123,61 +120,71 @@ SetIsSuperuser sets IsSuperuser field to given value.
 
 HasIsSuperuser returns a boolean if a field has been set.
 
-### GetParents
+### GetParent
 
-`func (o *Group) GetParents() []string`
+`func (o *Group) GetParent() string`
 
-GetParents returns the Parents field if non-nil, zero value otherwise.
+GetParent returns the Parent field if non-nil, zero value otherwise.
 
-### GetParentsOk
+### GetParentOk
 
-`func (o *Group) GetParentsOk() (*[]string, bool)`
+`func (o *Group) GetParentOk() (*string, bool)`
 
-GetParentsOk returns a tuple with the Parents field if it's non-nil, zero value otherwise
+GetParentOk returns a tuple with the Parent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetParents
+### SetParent
 
-`func (o *Group) SetParents(v []string)`
+`func (o *Group) SetParent(v string)`
 
-SetParents sets Parents field to given value.
+SetParent sets Parent field to given value.
 
-### HasParents
+### HasParent
 
-`func (o *Group) HasParents() bool`
+`func (o *Group) HasParent() bool`
 
-HasParents returns a boolean if a field has been set.
+HasParent returns a boolean if a field has been set.
 
-### GetParentsObj
+### SetParentNil
 
-`func (o *Group) GetParentsObj() []RelatedGroup`
+`func (o *Group) SetParentNil(b bool)`
 
-GetParentsObj returns the ParentsObj field if non-nil, zero value otherwise.
+ SetParentNil sets the value for Parent to be an explicit nil
 
-### GetParentsObjOk
+### UnsetParent
+`func (o *Group) UnsetParent()`
 
-`func (o *Group) GetParentsObjOk() (*[]RelatedGroup, bool)`
+UnsetParent ensures that no value is present for Parent, not even an explicit nil
+### GetParentName
 
-GetParentsObjOk returns a tuple with the ParentsObj field if it's non-nil, zero value otherwise
+`func (o *Group) GetParentName() string`
+
+GetParentName returns the ParentName field if non-nil, zero value otherwise.
+
+### GetParentNameOk
+
+`func (o *Group) GetParentNameOk() (*string, bool)`
+
+GetParentNameOk returns a tuple with the ParentName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetParentsObj
+### SetParentName
 
-`func (o *Group) SetParentsObj(v []RelatedGroup)`
+`func (o *Group) SetParentName(v string)`
 
-SetParentsObj sets ParentsObj field to given value.
+SetParentName sets ParentName field to given value.
 
 
-### SetParentsObjNil
+### SetParentNameNil
 
-`func (o *Group) SetParentsObjNil(b bool)`
+`func (o *Group) SetParentNameNil(b bool)`
 
- SetParentsObjNil sets the value for ParentsObj to be an explicit nil
+ SetParentNameNil sets the value for ParentName to be an explicit nil
 
-### UnsetParentsObj
-`func (o *Group) UnsetParentsObj()`
+### UnsetParentName
+`func (o *Group) UnsetParentName()`
 
-UnsetParentsObj ensures that no value is present for ParentsObj, not even an explicit nil
+UnsetParentName ensures that no value is present for ParentName, not even an explicit nil
 ### GetUsers
 
 `func (o *Group) GetUsers() []int32`
@@ -205,20 +212,20 @@ HasUsers returns a boolean if a field has been set.
 
 ### GetUsersObj
 
-`func (o *Group) GetUsersObj() []PartialUser`
+`func (o *Group) GetUsersObj() []GroupMember`
 
 GetUsersObj returns the UsersObj field if non-nil, zero value otherwise.
 
 ### GetUsersObjOk
 
-`func (o *Group) GetUsersObjOk() (*[]PartialUser, bool)`
+`func (o *Group) GetUsersObjOk() (*[]GroupMember, bool)`
 
 GetUsersObjOk returns a tuple with the UsersObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsersObj
 
-`func (o *Group) SetUsersObj(v []PartialUser)`
+`func (o *Group) SetUsersObj(v []GroupMember)`
 
 SetUsersObj sets UsersObj field to given value.
 
@@ -303,86 +310,6 @@ and a boolean to check if the value has been set.
 SetRolesObj sets RolesObj field to given value.
 
 
-### GetInheritedRolesObj
-
-`func (o *Group) GetInheritedRolesObj() []Role`
-
-GetInheritedRolesObj returns the InheritedRolesObj field if non-nil, zero value otherwise.
-
-### GetInheritedRolesObjOk
-
-`func (o *Group) GetInheritedRolesObjOk() (*[]Role, bool)`
-
-GetInheritedRolesObjOk returns a tuple with the InheritedRolesObj field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInheritedRolesObj
-
-`func (o *Group) SetInheritedRolesObj(v []Role)`
-
-SetInheritedRolesObj sets InheritedRolesObj field to given value.
-
-
-### SetInheritedRolesObjNil
-
-`func (o *Group) SetInheritedRolesObjNil(b bool)`
-
- SetInheritedRolesObjNil sets the value for InheritedRolesObj to be an explicit nil
-
-### UnsetInheritedRolesObj
-`func (o *Group) UnsetInheritedRolesObj()`
-
-UnsetInheritedRolesObj ensures that no value is present for InheritedRolesObj, not even an explicit nil
-### GetChildren
-
-`func (o *Group) GetChildren() []string`
-
-GetChildren returns the Children field if non-nil, zero value otherwise.
-
-### GetChildrenOk
-
-`func (o *Group) GetChildrenOk() (*[]string, bool)`
-
-GetChildrenOk returns a tuple with the Children field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChildren
-
-`func (o *Group) SetChildren(v []string)`
-
-SetChildren sets Children field to given value.
-
-
-### GetChildrenObj
-
-`func (o *Group) GetChildrenObj() []RelatedGroup`
-
-GetChildrenObj returns the ChildrenObj field if non-nil, zero value otherwise.
-
-### GetChildrenObjOk
-
-`func (o *Group) GetChildrenObjOk() (*[]RelatedGroup, bool)`
-
-GetChildrenObjOk returns a tuple with the ChildrenObj field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChildrenObj
-
-`func (o *Group) SetChildrenObj(v []RelatedGroup)`
-
-SetChildrenObj sets ChildrenObj field to given value.
-
-
-### SetChildrenObjNil
-
-`func (o *Group) SetChildrenObjNil(b bool)`
-
- SetChildrenObjNil sets the value for ChildrenObj to be an explicit nil
-
-### UnsetChildrenObj
-`func (o *Group) UnsetChildrenObj()`
-
-UnsetChildrenObj ensures that no value is present for ChildrenObj, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

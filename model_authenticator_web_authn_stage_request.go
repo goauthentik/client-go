@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,15 +22,15 @@ var _ MappedNullable = &AuthenticatorWebAuthnStageRequest{}
 
 // AuthenticatorWebAuthnStageRequest AuthenticatorWebAuthnStage Serializer
 type AuthenticatorWebAuthnStageRequest struct {
-	Name string `json:"name"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow           NullableString                      `json:"configure_flow,omitempty"`
-	FriendlyName            *string                             `json:"friendly_name,omitempty"`
+	FriendlyName            NullableString                      `json:"friendly_name,omitempty"`
 	UserVerification        *UserVerificationEnum               `json:"user_verification,omitempty"`
 	AuthenticatorAttachment NullableAuthenticatorAttachmentEnum `json:"authenticator_attachment,omitempty"`
 	ResidentKeyRequirement  *ResidentKeyRequirementEnum         `json:"resident_key_requirement,omitempty"`
 	DeviceTypeRestrictions  []string                            `json:"device_type_restrictions,omitempty"`
-	MaxAttempts             *int32                              `json:"max_attempts,omitempty"`
 }
 
 type _AuthenticatorWebAuthnStageRequest AuthenticatorWebAuthnStageRequest
@@ -77,6 +77,38 @@ func (o *AuthenticatorWebAuthnStageRequest) SetName(v string) {
 	o.Name = v
 }
 
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *AuthenticatorWebAuthnStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorWebAuthnStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *AuthenticatorWebAuthnStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *AuthenticatorWebAuthnStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
+}
+
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorWebAuthnStageRequest) GetConfigureFlow() string {
 	if o == nil || IsNil(o.ConfigureFlow.Get()) {
@@ -120,36 +152,47 @@ func (o *AuthenticatorWebAuthnStageRequest) UnsetConfigureFlow() {
 	o.ConfigureFlow.Unset()
 }
 
-// GetFriendlyName returns the FriendlyName field value if set, zero value otherwise.
+// GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorWebAuthnStageRequest) GetFriendlyName() string {
-	if o == nil || IsNil(o.FriendlyName) {
+	if o == nil || IsNil(o.FriendlyName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FriendlyName
+	return *o.FriendlyName.Get()
 }
 
 // GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorWebAuthnStageRequest) GetFriendlyNameOk() (*string, bool) {
-	if o == nil || IsNil(o.FriendlyName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FriendlyName, true
+	return o.FriendlyName.Get(), o.FriendlyName.IsSet()
 }
 
 // HasFriendlyName returns a boolean if a field has been set.
 func (o *AuthenticatorWebAuthnStageRequest) HasFriendlyName() bool {
-	if o != nil && !IsNil(o.FriendlyName) {
+	if o != nil && o.FriendlyName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFriendlyName gets a reference to the given string and assigns it to the FriendlyName field.
+// SetFriendlyName gets a reference to the given NullableString and assigns it to the FriendlyName field.
 func (o *AuthenticatorWebAuthnStageRequest) SetFriendlyName(v string) {
-	o.FriendlyName = &v
+	o.FriendlyName.Set(&v)
+}
+
+// SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+func (o *AuthenticatorWebAuthnStageRequest) SetFriendlyNameNil() {
+	o.FriendlyName.Set(nil)
+}
+
+// UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
+func (o *AuthenticatorWebAuthnStageRequest) UnsetFriendlyName() {
+	o.FriendlyName.Unset()
 }
 
 // GetUserVerification returns the UserVerification field value if set, zero value otherwise.
@@ -291,38 +334,6 @@ func (o *AuthenticatorWebAuthnStageRequest) SetDeviceTypeRestrictions(v []string
 	o.DeviceTypeRestrictions = v
 }
 
-// GetMaxAttempts returns the MaxAttempts field value if set, zero value otherwise.
-func (o *AuthenticatorWebAuthnStageRequest) GetMaxAttempts() int32 {
-	if o == nil || IsNil(o.MaxAttempts) {
-		var ret int32
-		return ret
-	}
-	return *o.MaxAttempts
-}
-
-// GetMaxAttemptsOk returns a tuple with the MaxAttempts field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthenticatorWebAuthnStageRequest) GetMaxAttemptsOk() (*int32, bool) {
-	if o == nil || IsNil(o.MaxAttempts) {
-		return nil, false
-	}
-	return o.MaxAttempts, true
-}
-
-// HasMaxAttempts returns a boolean if a field has been set.
-func (o *AuthenticatorWebAuthnStageRequest) HasMaxAttempts() bool {
-	if o != nil && !IsNil(o.MaxAttempts) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxAttempts gets a reference to the given int32 and assigns it to the MaxAttempts field.
-func (o *AuthenticatorWebAuthnStageRequest) SetMaxAttempts(v int32) {
-	o.MaxAttempts = &v
-}
-
 func (o AuthenticatorWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -334,11 +345,14 @@ func (o AuthenticatorWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
 func (o AuthenticatorWebAuthnStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if !IsNil(o.FriendlyName) {
-		toSerialize["friendly_name"] = o.FriendlyName
+	if o.FriendlyName.IsSet() {
+		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
 	if !IsNil(o.UserVerification) {
 		toSerialize["user_verification"] = o.UserVerification
@@ -351,9 +365,6 @@ func (o AuthenticatorWebAuthnStageRequest) ToMap() (map[string]interface{}, erro
 	}
 	if !IsNil(o.DeviceTypeRestrictions) {
 		toSerialize["device_type_restrictions"] = o.DeviceTypeRestrictions
-	}
-	if !IsNil(o.MaxAttempts) {
-		toSerialize["max_attempts"] = o.MaxAttempts
 	}
 	return toSerialize, nil
 }

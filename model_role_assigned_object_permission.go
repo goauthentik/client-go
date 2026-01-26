@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,10 +22,9 @@ var _ MappedNullable = &RoleAssignedObjectPermission{}
 
 // RoleAssignedObjectPermission Roles assigned object permission serializer
 type RoleAssignedObjectPermission struct {
-	RolePk            string                 `json:"role_pk"`
-	Name              string                 `json:"name"`
-	ObjectPermissions []RoleObjectPermission `json:"object_permissions"`
-	ModelPermissions  []RoleModelPermission  `json:"model_permissions"`
+	RolePk      string                 `json:"role_pk"`
+	Name        string                 `json:"name"`
+	Permissions []RoleObjectPermission `json:"permissions"`
 }
 
 type _RoleAssignedObjectPermission RoleAssignedObjectPermission
@@ -34,12 +33,11 @@ type _RoleAssignedObjectPermission RoleAssignedObjectPermission
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRoleAssignedObjectPermission(rolePk string, name string, objectPermissions []RoleObjectPermission, modelPermissions []RoleModelPermission) *RoleAssignedObjectPermission {
+func NewRoleAssignedObjectPermission(rolePk string, name string, permissions []RoleObjectPermission) *RoleAssignedObjectPermission {
 	this := RoleAssignedObjectPermission{}
 	this.RolePk = rolePk
 	this.Name = name
-	this.ObjectPermissions = objectPermissions
-	this.ModelPermissions = modelPermissions
+	this.Permissions = permissions
 	return &this
 }
 
@@ -99,52 +97,28 @@ func (o *RoleAssignedObjectPermission) SetName(v string) {
 	o.Name = v
 }
 
-// GetObjectPermissions returns the ObjectPermissions field value
-func (o *RoleAssignedObjectPermission) GetObjectPermissions() []RoleObjectPermission {
+// GetPermissions returns the Permissions field value
+func (o *RoleAssignedObjectPermission) GetPermissions() []RoleObjectPermission {
 	if o == nil {
 		var ret []RoleObjectPermission
 		return ret
 	}
 
-	return o.ObjectPermissions
+	return o.Permissions
 }
 
-// GetObjectPermissionsOk returns a tuple with the ObjectPermissions field value
+// GetPermissionsOk returns a tuple with the Permissions field value
 // and a boolean to check if the value has been set.
-func (o *RoleAssignedObjectPermission) GetObjectPermissionsOk() ([]RoleObjectPermission, bool) {
+func (o *RoleAssignedObjectPermission) GetPermissionsOk() ([]RoleObjectPermission, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ObjectPermissions, true
+	return o.Permissions, true
 }
 
-// SetObjectPermissions sets field value
-func (o *RoleAssignedObjectPermission) SetObjectPermissions(v []RoleObjectPermission) {
-	o.ObjectPermissions = v
-}
-
-// GetModelPermissions returns the ModelPermissions field value
-func (o *RoleAssignedObjectPermission) GetModelPermissions() []RoleModelPermission {
-	if o == nil {
-		var ret []RoleModelPermission
-		return ret
-	}
-
-	return o.ModelPermissions
-}
-
-// GetModelPermissionsOk returns a tuple with the ModelPermissions field value
-// and a boolean to check if the value has been set.
-func (o *RoleAssignedObjectPermission) GetModelPermissionsOk() ([]RoleModelPermission, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ModelPermissions, true
-}
-
-// SetModelPermissions sets field value
-func (o *RoleAssignedObjectPermission) SetModelPermissions(v []RoleModelPermission) {
-	o.ModelPermissions = v
+// SetPermissions sets field value
+func (o *RoleAssignedObjectPermission) SetPermissions(v []RoleObjectPermission) {
+	o.Permissions = v
 }
 
 func (o RoleAssignedObjectPermission) MarshalJSON() ([]byte, error) {
@@ -159,8 +133,7 @@ func (o RoleAssignedObjectPermission) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["role_pk"] = o.RolePk
 	toSerialize["name"] = o.Name
-	toSerialize["object_permissions"] = o.ObjectPermissions
-	toSerialize["model_permissions"] = o.ModelPermissions
+	toSerialize["permissions"] = o.Permissions
 	return toSerialize, nil
 }
 
@@ -171,8 +144,7 @@ func (o *RoleAssignedObjectPermission) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"role_pk",
 		"name",
-		"object_permissions",
-		"model_permissions",
+		"permissions",
 	}
 
 	allProperties := make(map[string]interface{})

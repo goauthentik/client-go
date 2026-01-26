@@ -4,17 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**ExternalId** | **string** |  | 
+**Id** | **string** |  | 
 **Group** | **string** |  | 
 **Source** | **string** |  | 
-**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Attributes** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewSCIMSourceGroupRequest
 
-`func NewSCIMSourceGroupRequest(externalId string, group string, source string, ) *SCIMSourceGroupRequest`
+`func NewSCIMSourceGroupRequest(id string, group string, source string, ) *SCIMSourceGroupRequest`
 
 NewSCIMSourceGroupRequest instantiates a new SCIMSourceGroupRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,31 +46,6 @@ and a boolean to check if the value has been set.
 `func (o *SCIMSourceGroupRequest) SetId(v string)`
 
 SetId sets Id field to given value.
-
-### HasId
-
-`func (o *SCIMSourceGroupRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetExternalId
-
-`func (o *SCIMSourceGroupRequest) GetExternalId() string`
-
-GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
-
-### GetExternalIdOk
-
-`func (o *SCIMSourceGroupRequest) GetExternalIdOk() (*string, bool)`
-
-GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExternalId
-
-`func (o *SCIMSourceGroupRequest) SetExternalId(v string)`
-
-SetExternalId sets ExternalId field to given value.
 
 
 ### GetGroup
@@ -116,20 +90,20 @@ SetSource sets Source field to given value.
 
 ### GetAttributes
 
-`func (o *SCIMSourceGroupRequest) GetAttributes() map[string]interface{}`
+`func (o *SCIMSourceGroupRequest) GetAttributes() interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *SCIMSourceGroupRequest) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *SCIMSourceGroupRequest) GetAttributesOk() (*interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *SCIMSourceGroupRequest) SetAttributes(v map[string]interface{})`
+`func (o *SCIMSourceGroupRequest) SetAttributes(v interface{})`
 
 SetAttributes sets Attributes field to given value.
 
@@ -139,6 +113,16 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### SetAttributesNil
+
+`func (o *SCIMSourceGroupRequest) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *SCIMSourceGroupRequest) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

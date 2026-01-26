@@ -1,6 +1,6 @@
 # \FlowsAPI
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -25,6 +25,8 @@ Method | HTTP request | Description
 [**FlowsInstancesList**](FlowsAPI.md#FlowsInstancesList) | **Get** /flows/instances/ | 
 [**FlowsInstancesPartialUpdate**](FlowsAPI.md#FlowsInstancesPartialUpdate) | **Patch** /flows/instances/{slug}/ | 
 [**FlowsInstancesRetrieve**](FlowsAPI.md#FlowsInstancesRetrieve) | **Get** /flows/instances/{slug}/ | 
+[**FlowsInstancesSetBackgroundCreate**](FlowsAPI.md#FlowsInstancesSetBackgroundCreate) | **Post** /flows/instances/{slug}/set_background/ | 
+[**FlowsInstancesSetBackgroundUrlCreate**](FlowsAPI.md#FlowsInstancesSetBackgroundUrlCreate) | **Post** /flows/instances/{slug}/set_background_url/ | 
 [**FlowsInstancesUpdate**](FlowsAPI.md#FlowsInstancesUpdate) | **Put** /flows/instances/{slug}/ | 
 [**FlowsInstancesUsedByList**](FlowsAPI.md#FlowsInstancesUsedByList) | **Get** /flows/instances/{slug}/used_by/ | 
 
@@ -1505,6 +1507,148 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FlowsInstancesSetBackgroundCreate
+
+> FlowsInstancesSetBackgroundCreate(ctx, slug).File(file).Clear(clear).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	slug := "slug_example" // string | 
+	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+	clear := true // bool |  (optional) (default to false)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.FlowsAPI.FlowsInstancesSetBackgroundCreate(context.Background(), slug).File(file).Clear(clear).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesSetBackgroundCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFlowsInstancesSetBackgroundCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** |  | 
+ **clear** | **bool** |  | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FlowsInstancesSetBackgroundUrlCreate
+
+> FlowsInstancesSetBackgroundUrlCreate(ctx, slug).FilePathRequest(filePathRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	slug := "slug_example" // string | 
+	filePathRequest := *openapiclient.NewFilePathRequest("Url_example") // FilePathRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.FlowsAPI.FlowsInstancesSetBackgroundUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FlowsAPI.FlowsInstancesSetBackgroundUrlCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFlowsInstancesSetBackgroundUrlCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **filePathRequest** | [**FilePathRequest**](FilePathRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,7 @@ type EmailStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// When enabled, global Email connection settings will be used and connection settings below will be ignored.
 	UseGlobalSettings *bool   `json:"use_global_settings,omitempty"`
 	Host              *string `json:"host,omitempty"`
@@ -47,10 +47,7 @@ type EmailStage struct {
 	Subject     *string `json:"subject,omitempty"`
 	Template    *string `json:"template,omitempty"`
 	// Activate users upon completion of stage.
-	ActivateUserOnSuccess *bool  `json:"activate_user_on_success,omitempty"`
-	RecoveryMaxAttempts   *int32 `json:"recovery_max_attempts,omitempty"`
-	// The time window used to count recent account recovery attempts. If the number of attempts exceed recovery_max_attempts within this period, further attempts will be rate-limited. (Format: hours=1;minutes=2;seconds=3).
-	RecoveryCacheTimeout *string `json:"recovery_cache_timeout,omitempty"`
+	ActivateUserOnSuccess *bool `json:"activate_user_on_success,omitempty"`
 }
 
 type _EmailStage EmailStage
@@ -59,7 +56,7 @@ type _EmailStage EmailStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEmailStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet) *EmailStage {
+func NewEmailStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *EmailStage {
 	this := EmailStage{}
 	this.Pk = pk
 	this.Name = name
@@ -67,7 +64,6 @@ func NewEmailStage(pk string, name string, component string, verboseName string,
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	return &this
 }
 
@@ -223,26 +219,34 @@ func (o *EmailStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *EmailStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *EmailStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *EmailStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -631,70 +635,6 @@ func (o *EmailStage) SetActivateUserOnSuccess(v bool) {
 	o.ActivateUserOnSuccess = &v
 }
 
-// GetRecoveryMaxAttempts returns the RecoveryMaxAttempts field value if set, zero value otherwise.
-func (o *EmailStage) GetRecoveryMaxAttempts() int32 {
-	if o == nil || IsNil(o.RecoveryMaxAttempts) {
-		var ret int32
-		return ret
-	}
-	return *o.RecoveryMaxAttempts
-}
-
-// GetRecoveryMaxAttemptsOk returns a tuple with the RecoveryMaxAttempts field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EmailStage) GetRecoveryMaxAttemptsOk() (*int32, bool) {
-	if o == nil || IsNil(o.RecoveryMaxAttempts) {
-		return nil, false
-	}
-	return o.RecoveryMaxAttempts, true
-}
-
-// HasRecoveryMaxAttempts returns a boolean if a field has been set.
-func (o *EmailStage) HasRecoveryMaxAttempts() bool {
-	if o != nil && !IsNil(o.RecoveryMaxAttempts) {
-		return true
-	}
-
-	return false
-}
-
-// SetRecoveryMaxAttempts gets a reference to the given int32 and assigns it to the RecoveryMaxAttempts field.
-func (o *EmailStage) SetRecoveryMaxAttempts(v int32) {
-	o.RecoveryMaxAttempts = &v
-}
-
-// GetRecoveryCacheTimeout returns the RecoveryCacheTimeout field value if set, zero value otherwise.
-func (o *EmailStage) GetRecoveryCacheTimeout() string {
-	if o == nil || IsNil(o.RecoveryCacheTimeout) {
-		var ret string
-		return ret
-	}
-	return *o.RecoveryCacheTimeout
-}
-
-// GetRecoveryCacheTimeoutOk returns a tuple with the RecoveryCacheTimeout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EmailStage) GetRecoveryCacheTimeoutOk() (*string, bool) {
-	if o == nil || IsNil(o.RecoveryCacheTimeout) {
-		return nil, false
-	}
-	return o.RecoveryCacheTimeout, true
-}
-
-// HasRecoveryCacheTimeout returns a boolean if a field has been set.
-func (o *EmailStage) HasRecoveryCacheTimeout() bool {
-	if o != nil && !IsNil(o.RecoveryCacheTimeout) {
-		return true
-	}
-
-	return false
-}
-
-// SetRecoveryCacheTimeout gets a reference to the given string and assigns it to the RecoveryCacheTimeout field.
-func (o *EmailStage) SetRecoveryCacheTimeout(v string) {
-	o.RecoveryCacheTimeout = &v
-}
-
 func (o EmailStage) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -711,7 +651,9 @@ func (o EmailStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.UseGlobalSettings) {
 		toSerialize["use_global_settings"] = o.UseGlobalSettings
 	}
@@ -748,12 +690,6 @@ func (o EmailStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActivateUserOnSuccess) {
 		toSerialize["activate_user_on_success"] = o.ActivateUserOnSuccess
 	}
-	if !IsNil(o.RecoveryMaxAttempts) {
-		toSerialize["recovery_max_attempts"] = o.RecoveryMaxAttempts
-	}
-	if !IsNil(o.RecoveryCacheTimeout) {
-		toSerialize["recovery_cache_timeout"] = o.RecoveryCacheTimeout
-	}
 	return toSerialize, nil
 }
 
@@ -768,7 +704,6 @@ func (o *EmailStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 	}
 
 	allProperties := make(map[string]interface{})

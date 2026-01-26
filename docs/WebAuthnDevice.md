@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **CreatedOn** | **time.Time** |  | [readonly] 
 **DeviceType** | [**NullableWebAuthnDeviceType**](WebAuthnDeviceType.md) |  | [readonly] 
 **Aaguid** | **string** |  | [readonly] 
-**User** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**User** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 
 ## Methods
 
 ### NewWebAuthnDevice
 
-`func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceType, aaguid string, user PartialUser, ) *WebAuthnDevice`
+`func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceType, aaguid string, user GroupMember, ) *WebAuthnDevice`
 
 NewWebAuthnDevice instantiates a new WebAuthnDevice object
 This constructor will assign default values to properties that have it defined,
@@ -142,20 +142,20 @@ SetAaguid sets Aaguid field to given value.
 
 ### GetUser
 
-`func (o *WebAuthnDevice) GetUser() PartialUser`
+`func (o *WebAuthnDevice) GetUser() GroupMember`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *WebAuthnDevice) GetUserOk() (*PartialUser, bool)`
+`func (o *WebAuthnDevice) GetUserOk() (*GroupMember, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *WebAuthnDevice) SetUser(v PartialUser)`
+`func (o *WebAuthnDevice) SetUser(v GroupMember)`
 
 SetUser sets User field to given value.
 

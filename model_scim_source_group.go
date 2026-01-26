@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,12 +22,11 @@ var _ MappedNullable = &SCIMSourceGroup{}
 
 // SCIMSourceGroup SCIMSourceGroup Serializer
 type SCIMSourceGroup struct {
-	Id         *string                `json:"id,omitempty"`
-	ExternalId string                 `json:"external_id"`
-	Group      string                 `json:"group"`
-	GroupObj   PartialGroup           `json:"group_obj"`
-	Source     string                 `json:"source"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Id         string      `json:"id"`
+	Group      string      `json:"group"`
+	GroupObj   UserGroup   `json:"group_obj"`
+	Source     string      `json:"source"`
+	Attributes interface{} `json:"attributes,omitempty"`
 }
 
 type _SCIMSourceGroup SCIMSourceGroup
@@ -36,9 +35,9 @@ type _SCIMSourceGroup SCIMSourceGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSourceGroup(externalId string, group string, groupObj PartialGroup, source string) *SCIMSourceGroup {
+func NewSCIMSourceGroup(id string, group string, groupObj UserGroup, source string) *SCIMSourceGroup {
 	this := SCIMSourceGroup{}
-	this.ExternalId = externalId
+	this.Id = id
 	this.Group = group
 	this.GroupObj = groupObj
 	this.Source = source
@@ -53,60 +52,28 @@ func NewSCIMSourceGroupWithDefaults() *SCIMSourceGroup {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *SCIMSourceGroup) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *SCIMSourceGroup) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *SCIMSourceGroup) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *SCIMSourceGroup) SetId(v string) {
-	o.Id = &v
-}
-
-// GetExternalId returns the ExternalId field value
-func (o *SCIMSourceGroup) GetExternalId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ExternalId
-}
-
-// GetExternalIdOk returns a tuple with the ExternalId field value
-// and a boolean to check if the value has been set.
-func (o *SCIMSourceGroup) GetExternalIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ExternalId, true
-}
-
-// SetExternalId sets field value
-func (o *SCIMSourceGroup) SetExternalId(v string) {
-	o.ExternalId = v
+	o.Id = v
 }
 
 // GetGroup returns the Group field value
@@ -134,9 +101,9 @@ func (o *SCIMSourceGroup) SetGroup(v string) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *SCIMSourceGroup) GetGroupObj() PartialGroup {
+func (o *SCIMSourceGroup) GetGroupObj() UserGroup {
 	if o == nil {
-		var ret PartialGroup
+		var ret UserGroup
 		return ret
 	}
 
@@ -145,7 +112,7 @@ func (o *SCIMSourceGroup) GetGroupObj() PartialGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMSourceGroup) GetGroupObjOk() (*PartialGroup, bool) {
+func (o *SCIMSourceGroup) GetGroupObjOk() (*UserGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -153,7 +120,7 @@ func (o *SCIMSourceGroup) GetGroupObjOk() (*PartialGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *SCIMSourceGroup) SetGroupObj(v PartialGroup) {
+func (o *SCIMSourceGroup) SetGroupObj(v UserGroup) {
 	o.GroupObj = v
 }
 
@@ -181,10 +148,10 @@ func (o *SCIMSourceGroup) SetSource(v string) {
 	o.Source = v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *SCIMSourceGroup) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]interface{}
+// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SCIMSourceGroup) GetAttributes() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Attributes
@@ -192,11 +159,12 @@ func (o *SCIMSourceGroup) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SCIMSourceGroup) GetAttributesOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMSourceGroup) GetAttributesOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
@@ -208,8 +176,8 @@ func (o *SCIMSourceGroup) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *SCIMSourceGroup) SetAttributes(v map[string]interface{}) {
+// SetAttributes gets a reference to the given interface{} and assigns it to the Attributes field.
+func (o *SCIMSourceGroup) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 
@@ -223,14 +191,11 @@ func (o SCIMSourceGroup) MarshalJSON() ([]byte, error) {
 
 func (o SCIMSourceGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	toSerialize["external_id"] = o.ExternalId
+	toSerialize["id"] = o.Id
 	toSerialize["group"] = o.Group
 	toSerialize["group_obj"] = o.GroupObj
 	toSerialize["source"] = o.Source
-	if !IsNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
 	return toSerialize, nil
@@ -241,7 +206,7 @@ func (o *SCIMSourceGroup) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"external_id",
+		"id",
 		"group",
 		"group_obj",
 		"source",

@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]KubernetesServiceConnection**](KubernetesServiceConnection.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedKubernetesServiceConnectionList
 
-`func NewPaginatedKubernetesServiceConnectionList(pagination Pagination, results []KubernetesServiceConnection, autocomplete map[string]interface{}, ) *PaginatedKubernetesServiceConnectionList`
+`func NewPaginatedKubernetesServiceConnectionList(pagination Pagination, results []KubernetesServiceConnection, ) *PaginatedKubernetesServiceConnectionList`
 
 NewPaginatedKubernetesServiceConnectionList instantiates a new PaginatedKubernetesServiceConnectionList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedKubernetesServiceConnectionList) SetResults(v []KubernetesServiceConnection)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedKubernetesServiceConnectionList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedKubernetesServiceConnectionList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedKubernetesServiceConnectionList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]PlexSourcePropertyMapping**](PlexSourcePropertyMapping.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedPlexSourcePropertyMappingList
 
-`func NewPaginatedPlexSourcePropertyMappingList(pagination Pagination, results []PlexSourcePropertyMapping, autocomplete map[string]interface{}, ) *PaginatedPlexSourcePropertyMappingList`
+`func NewPaginatedPlexSourcePropertyMappingList(pagination Pagination, results []PlexSourcePropertyMapping, ) *PaginatedPlexSourcePropertyMappingList`
 
 NewPaginatedPlexSourcePropertyMappingList instantiates a new PaginatedPlexSourcePropertyMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedPlexSourcePropertyMappingList) SetResults(v []PlexSourcePropertyMapping)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedPlexSourcePropertyMappingList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedPlexSourcePropertyMappingList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedPlexSourcePropertyMappingList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

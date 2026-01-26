@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,11 +22,11 @@ var _ MappedNullable = &AuthenticatedSessionGeoIp{}
 
 // AuthenticatedSessionGeoIp Get GeoIP Data
 type AuthenticatedSessionGeoIp struct {
-	Continent NullableString  `json:"continent"`
-	Country   NullableString  `json:"country"`
-	Lat       NullableFloat64 `json:"lat"`
-	Long      NullableFloat64 `json:"long"`
-	City      string          `json:"city"`
+	Continent string  `json:"continent"`
+	Country   string  `json:"country"`
+	Lat       float64 `json:"lat"`
+	Long      float64 `json:"long"`
+	City      string  `json:"city"`
 }
 
 type _AuthenticatedSessionGeoIp AuthenticatedSessionGeoIp
@@ -35,7 +35,7 @@ type _AuthenticatedSessionGeoIp AuthenticatedSessionGeoIp
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatedSessionGeoIp(continent NullableString, country NullableString, lat NullableFloat64, long NullableFloat64, city string) *AuthenticatedSessionGeoIp {
+func NewAuthenticatedSessionGeoIp(continent string, country string, lat float64, long float64, city string) *AuthenticatedSessionGeoIp {
 	this := AuthenticatedSessionGeoIp{}
 	this.Continent = continent
 	this.Country = country
@@ -54,107 +54,99 @@ func NewAuthenticatedSessionGeoIpWithDefaults() *AuthenticatedSessionGeoIp {
 }
 
 // GetContinent returns the Continent field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *AuthenticatedSessionGeoIp) GetContinent() string {
-	if o == nil || o.Continent.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Continent.Get()
+	return o.Continent
 }
 
 // GetContinentOk returns a tuple with the Continent field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatedSessionGeoIp) GetContinentOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Continent.Get(), o.Continent.IsSet()
+	return &o.Continent, true
 }
 
 // SetContinent sets field value
 func (o *AuthenticatedSessionGeoIp) SetContinent(v string) {
-	o.Continent.Set(&v)
+	o.Continent = v
 }
 
 // GetCountry returns the Country field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *AuthenticatedSessionGeoIp) GetCountry() string {
-	if o == nil || o.Country.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Country.Get()
+	return o.Country
 }
 
 // GetCountryOk returns a tuple with the Country field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatedSessionGeoIp) GetCountryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Country.Get(), o.Country.IsSet()
+	return &o.Country, true
 }
 
 // SetCountry sets field value
 func (o *AuthenticatedSessionGeoIp) SetCountry(v string) {
-	o.Country.Set(&v)
+	o.Country = v
 }
 
 // GetLat returns the Lat field value
-// If the value is explicit nil, the zero value for float64 will be returned
 func (o *AuthenticatedSessionGeoIp) GetLat() float64 {
-	if o == nil || o.Lat.Get() == nil {
+	if o == nil {
 		var ret float64
 		return ret
 	}
 
-	return *o.Lat.Get()
+	return o.Lat
 }
 
 // GetLatOk returns a tuple with the Lat field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatedSessionGeoIp) GetLatOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Lat.Get(), o.Lat.IsSet()
+	return &o.Lat, true
 }
 
 // SetLat sets field value
 func (o *AuthenticatedSessionGeoIp) SetLat(v float64) {
-	o.Lat.Set(&v)
+	o.Lat = v
 }
 
 // GetLong returns the Long field value
-// If the value is explicit nil, the zero value for float64 will be returned
 func (o *AuthenticatedSessionGeoIp) GetLong() float64 {
-	if o == nil || o.Long.Get() == nil {
+	if o == nil {
 		var ret float64
 		return ret
 	}
 
-	return *o.Long.Get()
+	return o.Long
 }
 
 // GetLongOk returns a tuple with the Long field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatedSessionGeoIp) GetLongOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Long.Get(), o.Long.IsSet()
+	return &o.Long, true
 }
 
 // SetLong sets field value
 func (o *AuthenticatedSessionGeoIp) SetLong(v float64) {
-	o.Long.Set(&v)
+	o.Long = v
 }
 
 // GetCity returns the City field value
@@ -191,10 +183,10 @@ func (o AuthenticatedSessionGeoIp) MarshalJSON() ([]byte, error) {
 
 func (o AuthenticatedSessionGeoIp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["continent"] = o.Continent.Get()
-	toSerialize["country"] = o.Country.Get()
-	toSerialize["lat"] = o.Lat.Get()
-	toSerialize["long"] = o.Long.Get()
+	toSerialize["continent"] = o.Continent
+	toSerialize["country"] = o.Country
+	toSerialize["lat"] = o.Lat
+	toSerialize["long"] = o.Long
 	toSerialize["city"] = o.City
 	return toSerialize, nil
 }

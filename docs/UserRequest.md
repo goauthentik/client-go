@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **IsActive** | Pointer to **bool** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [optional] 
 **LastLogin** | Pointer to **NullableTime** |  | [optional] 
 **Groups** | Pointer to **[]string** |  | [optional] 
-**Roles** | Pointer to **[]string** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
@@ -158,31 +157,6 @@ SetGroups sets Groups field to given value.
 `func (o *UserRequest) HasGroups() bool`
 
 HasGroups returns a boolean if a field has been set.
-
-### GetRoles
-
-`func (o *UserRequest) GetRoles() []string`
-
-GetRoles returns the Roles field if non-nil, zero value otherwise.
-
-### GetRolesOk
-
-`func (o *UserRequest) GetRolesOk() (*[]string, bool)`
-
-GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRoles
-
-`func (o *UserRequest) SetRoles(v []string)`
-
-SetRoles sets Roles field to given value.
-
-### HasRoles
-
-`func (o *UserRequest) HasRoles() bool`
-
-HasRoles returns a boolean if a field has been set.
 
 ### GetEmail
 

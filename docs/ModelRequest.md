@@ -8,15 +8,13 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **DelegatedSubject** | **string** |  | 
-**Credentials** | **map[string]map[string]interface{}** |  | 
+**Credentials** | **interface{}** |  | 
 **Scopes** | Pointer to **string** |  | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
 **UserDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **GroupDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **DefaultGroupEmailDomain** | **string** |  | 
-**SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
-**SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
@@ -36,13 +34,10 @@ Name | Type | Description | Notes
 **AccessCodeValidity** | Pointer to **string** | Access codes not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **AccessTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **RefreshTokenValidity** | Pointer to **string** | Tokens not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
-**RefreshTokenThreshold** | Pointer to **string** | When refreshing a token, if the refresh token is valid for less than this duration, it will be renewed. When set to seconds&#x3D;0, token will always be renewed. (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **IncludeClaimsInIdToken** | Pointer to **bool** | Include User claims from scopes in the id_token, for applications that don&#39;t access the userinfo endpoint. | [optional] 
 **SigningKey** | **string** | Key used to sign the SSF Events. | 
 **EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
 **RedirectUris** | [**[]RedirectURIRequest**](RedirectURIRequest.md) |  | 
-**LogoutUri** | Pointer to **string** |  | [optional] 
-**LogoutMethod** | Pointer to [**SAMLProviderLogoutMethodEnum**](SAMLProviderLogoutMethodEnum.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
 **JwtFederationSources** | Pointer to **[]string** |  | [optional] 
@@ -57,13 +52,12 @@ Name | Type | Description | Notes
 **Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
-**Settings** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Settings** | Pointer to **interface{}** |  | [optional] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **DeleteTokenOnDisconnect** | Pointer to **bool** | When set to true, connection tokens will be deleted upon disconnect. | [optional] 
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
 **SharedSecret** | Pointer to **string** | Shared secret between clients and server to hash packets. | [optional] 
 **AcsUrl** | **string** |  | 
-**SlsUrl** | Pointer to **string** | Single Logout Service URL where the logout response should be sent. | [optional] 
 **Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
 **Issuer** | Pointer to **string** | Also known as EntityID | [optional] 
 **AssertionValidNotBefore** | Pointer to **string** | Assertion valid not before current time + this value (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3). | [optional] 
@@ -78,19 +72,12 @@ Name | Type | Description | Notes
 **EncryptionKp** | Pointer to **NullableString** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] 
 **SignAssertion** | Pointer to **bool** |  | [optional] 
 **SignResponse** | Pointer to **bool** |  | [optional] 
-**SignLogoutRequest** | Pointer to **bool** |  | [optional] 
-**SpBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
-**SlsBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the logout response back to the Service Provider. | [optional] 
+**SpBinding** | Pointer to [**SpBindingEnum**](SpBindingEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
 **DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
-**DefaultNameIdPolicy** | Pointer to [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] 
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
 **VerifyCertificates** | Pointer to **bool** |  | [optional] 
-**Token** | Pointer to **string** | Authentication token | [optional] 
-**AuthMode** | Pointer to [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] 
-**AuthOauth** | Pointer to **NullableString** | OAuth Source used for authentication | [optional] 
-**AuthOauthParams** | Pointer to **map[string]map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
+**Token** | **string** | Authentication token | 
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
-**ServiceProviderConfigCacheTimeout** | Pointer to **string** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] 
 **OidcAuthProviders** | Pointer to **[]int32** |  | [optional] 
 **EventRetention** | Pointer to **string** |  | [optional] 
 
@@ -98,7 +85,7 @@ Name | Type | Description | Notes
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials map[string]map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, token string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -205,24 +192,34 @@ SetDelegatedSubject sets DelegatedSubject field to given value.
 
 ### GetCredentials
 
-`func (o *ModelRequest) GetCredentials() map[string]map[string]interface{}`
+`func (o *ModelRequest) GetCredentials() interface{}`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *ModelRequest) GetCredentialsOk() (*map[string]map[string]interface{}, bool)`
+`func (o *ModelRequest) GetCredentialsOk() (*interface{}, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *ModelRequest) SetCredentials(v map[string]map[string]interface{})`
+`func (o *ModelRequest) SetCredentials(v interface{})`
 
 SetCredentials sets Credentials field to given value.
 
 
+### SetCredentialsNil
+
+`func (o *ModelRequest) SetCredentialsNil(b bool)`
+
+ SetCredentialsNil sets the value for Credentials to be an explicit nil
+
+### UnsetCredentials
+`func (o *ModelRequest) UnsetCredentials()`
+
+UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
 ### GetScopes
 
 `func (o *ModelRequest) GetScopes() string`
@@ -377,56 +374,6 @@ and a boolean to check if the value has been set.
 
 SetDefaultGroupEmailDomain sets DefaultGroupEmailDomain field to given value.
 
-
-### GetSyncPageSize
-
-`func (o *ModelRequest) GetSyncPageSize() int32`
-
-GetSyncPageSize returns the SyncPageSize field if non-nil, zero value otherwise.
-
-### GetSyncPageSizeOk
-
-`func (o *ModelRequest) GetSyncPageSizeOk() (*int32, bool)`
-
-GetSyncPageSizeOk returns a tuple with the SyncPageSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageSize
-
-`func (o *ModelRequest) SetSyncPageSize(v int32)`
-
-SetSyncPageSize sets SyncPageSize field to given value.
-
-### HasSyncPageSize
-
-`func (o *ModelRequest) HasSyncPageSize() bool`
-
-HasSyncPageSize returns a boolean if a field has been set.
-
-### GetSyncPageTimeout
-
-`func (o *ModelRequest) GetSyncPageTimeout() string`
-
-GetSyncPageTimeout returns the SyncPageTimeout field if non-nil, zero value otherwise.
-
-### GetSyncPageTimeoutOk
-
-`func (o *ModelRequest) GetSyncPageTimeoutOk() (*string, bool)`
-
-GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageTimeout
-
-`func (o *ModelRequest) SetSyncPageTimeout(v string)`
-
-SetSyncPageTimeout sets SyncPageTimeout field to given value.
-
-### HasSyncPageTimeout
-
-`func (o *ModelRequest) HasSyncPageTimeout() bool`
-
-HasSyncPageTimeout returns a boolean if a field has been set.
 
 ### GetDryRun
 
@@ -898,31 +845,6 @@ SetRefreshTokenValidity sets RefreshTokenValidity field to given value.
 
 HasRefreshTokenValidity returns a boolean if a field has been set.
 
-### GetRefreshTokenThreshold
-
-`func (o *ModelRequest) GetRefreshTokenThreshold() string`
-
-GetRefreshTokenThreshold returns the RefreshTokenThreshold field if non-nil, zero value otherwise.
-
-### GetRefreshTokenThresholdOk
-
-`func (o *ModelRequest) GetRefreshTokenThresholdOk() (*string, bool)`
-
-GetRefreshTokenThresholdOk returns a tuple with the RefreshTokenThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRefreshTokenThreshold
-
-`func (o *ModelRequest) SetRefreshTokenThreshold(v string)`
-
-SetRefreshTokenThreshold sets RefreshTokenThreshold field to given value.
-
-### HasRefreshTokenThreshold
-
-`func (o *ModelRequest) HasRefreshTokenThreshold() bool`
-
-HasRefreshTokenThreshold returns a boolean if a field has been set.
-
 ### GetIncludeClaimsInIdToken
 
 `func (o *ModelRequest) GetIncludeClaimsInIdToken() bool`
@@ -1022,56 +944,6 @@ and a boolean to check if the value has been set.
 
 SetRedirectUris sets RedirectUris field to given value.
 
-
-### GetLogoutUri
-
-`func (o *ModelRequest) GetLogoutUri() string`
-
-GetLogoutUri returns the LogoutUri field if non-nil, zero value otherwise.
-
-### GetLogoutUriOk
-
-`func (o *ModelRequest) GetLogoutUriOk() (*string, bool)`
-
-GetLogoutUriOk returns a tuple with the LogoutUri field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLogoutUri
-
-`func (o *ModelRequest) SetLogoutUri(v string)`
-
-SetLogoutUri sets LogoutUri field to given value.
-
-### HasLogoutUri
-
-`func (o *ModelRequest) HasLogoutUri() bool`
-
-HasLogoutUri returns a boolean if a field has been set.
-
-### GetLogoutMethod
-
-`func (o *ModelRequest) GetLogoutMethod() SAMLProviderLogoutMethodEnum`
-
-GetLogoutMethod returns the LogoutMethod field if non-nil, zero value otherwise.
-
-### GetLogoutMethodOk
-
-`func (o *ModelRequest) GetLogoutMethodOk() (*SAMLProviderLogoutMethodEnum, bool)`
-
-GetLogoutMethodOk returns a tuple with the LogoutMethod field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLogoutMethod
-
-`func (o *ModelRequest) SetLogoutMethod(v SAMLProviderLogoutMethodEnum)`
-
-SetLogoutMethod sets LogoutMethod field to given value.
-
-### HasLogoutMethod
-
-`func (o *ModelRequest) HasLogoutMethod() bool`
-
-HasLogoutMethod returns a boolean if a field has been set.
 
 ### GetSubMode
 
@@ -1420,20 +1292,20 @@ HasCookieDomain returns a boolean if a field has been set.
 
 ### GetSettings
 
-`func (o *ModelRequest) GetSettings() map[string]map[string]interface{}`
+`func (o *ModelRequest) GetSettings() interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *ModelRequest) GetSettingsOk() (*map[string]map[string]interface{}, bool)`
+`func (o *ModelRequest) GetSettingsOk() (*interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *ModelRequest) SetSettings(v map[string]map[string]interface{})`
+`func (o *ModelRequest) SetSettings(v interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -1443,6 +1315,16 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
+### SetSettingsNil
+
+`func (o *ModelRequest) SetSettingsNil(b bool)`
+
+ SetSettingsNil sets the value for Settings to be an explicit nil
+
+### UnsetSettings
+`func (o *ModelRequest) UnsetSettings()`
+
+UnsetSettings ensures that no value is present for Settings, not even an explicit nil
 ### GetConnectionExpiry
 
 `func (o *ModelRequest) GetConnectionExpiry() string`
@@ -1562,31 +1444,6 @@ and a boolean to check if the value has been set.
 
 SetAcsUrl sets AcsUrl field to given value.
 
-
-### GetSlsUrl
-
-`func (o *ModelRequest) GetSlsUrl() string`
-
-GetSlsUrl returns the SlsUrl field if non-nil, zero value otherwise.
-
-### GetSlsUrlOk
-
-`func (o *ModelRequest) GetSlsUrlOk() (*string, bool)`
-
-GetSlsUrlOk returns a tuple with the SlsUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlsUrl
-
-`func (o *ModelRequest) SetSlsUrl(v string)`
-
-SetSlsUrl sets SlsUrl field to given value.
-
-### HasSlsUrl
-
-`func (o *ModelRequest) HasSlsUrl() bool`
-
-HasSlsUrl returns a boolean if a field has been set.
 
 ### GetAudience
 
@@ -1988,47 +1845,22 @@ SetSignResponse sets SignResponse field to given value.
 
 HasSignResponse returns a boolean if a field has been set.
 
-### GetSignLogoutRequest
-
-`func (o *ModelRequest) GetSignLogoutRequest() bool`
-
-GetSignLogoutRequest returns the SignLogoutRequest field if non-nil, zero value otherwise.
-
-### GetSignLogoutRequestOk
-
-`func (o *ModelRequest) GetSignLogoutRequestOk() (*bool, bool)`
-
-GetSignLogoutRequestOk returns a tuple with the SignLogoutRequest field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSignLogoutRequest
-
-`func (o *ModelRequest) SetSignLogoutRequest(v bool)`
-
-SetSignLogoutRequest sets SignLogoutRequest field to given value.
-
-### HasSignLogoutRequest
-
-`func (o *ModelRequest) HasSignLogoutRequest() bool`
-
-HasSignLogoutRequest returns a boolean if a field has been set.
-
 ### GetSpBinding
 
-`func (o *ModelRequest) GetSpBinding() SAMLBindingsEnum`
+`func (o *ModelRequest) GetSpBinding() SpBindingEnum`
 
 GetSpBinding returns the SpBinding field if non-nil, zero value otherwise.
 
 ### GetSpBindingOk
 
-`func (o *ModelRequest) GetSpBindingOk() (*SAMLBindingsEnum, bool)`
+`func (o *ModelRequest) GetSpBindingOk() (*SpBindingEnum, bool)`
 
 GetSpBindingOk returns a tuple with the SpBinding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpBinding
 
-`func (o *ModelRequest) SetSpBinding(v SAMLBindingsEnum)`
+`func (o *ModelRequest) SetSpBinding(v SpBindingEnum)`
 
 SetSpBinding sets SpBinding field to given value.
 
@@ -2037,31 +1869,6 @@ SetSpBinding sets SpBinding field to given value.
 `func (o *ModelRequest) HasSpBinding() bool`
 
 HasSpBinding returns a boolean if a field has been set.
-
-### GetSlsBinding
-
-`func (o *ModelRequest) GetSlsBinding() SAMLBindingsEnum`
-
-GetSlsBinding returns the SlsBinding field if non-nil, zero value otherwise.
-
-### GetSlsBindingOk
-
-`func (o *ModelRequest) GetSlsBindingOk() (*SAMLBindingsEnum, bool)`
-
-GetSlsBindingOk returns a tuple with the SlsBinding field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlsBinding
-
-`func (o *ModelRequest) SetSlsBinding(v SAMLBindingsEnum)`
-
-SetSlsBinding sets SlsBinding field to given value.
-
-### HasSlsBinding
-
-`func (o *ModelRequest) HasSlsBinding() bool`
-
-HasSlsBinding returns a boolean if a field has been set.
 
 ### GetDefaultRelayState
 
@@ -2087,31 +1894,6 @@ SetDefaultRelayState sets DefaultRelayState field to given value.
 `func (o *ModelRequest) HasDefaultRelayState() bool`
 
 HasDefaultRelayState returns a boolean if a field has been set.
-
-### GetDefaultNameIdPolicy
-
-`func (o *ModelRequest) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum`
-
-GetDefaultNameIdPolicy returns the DefaultNameIdPolicy field if non-nil, zero value otherwise.
-
-### GetDefaultNameIdPolicyOk
-
-`func (o *ModelRequest) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool)`
-
-GetDefaultNameIdPolicyOk returns a tuple with the DefaultNameIdPolicy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultNameIdPolicy
-
-`func (o *ModelRequest) SetDefaultNameIdPolicy(v SAMLNameIDPolicyEnum)`
-
-SetDefaultNameIdPolicy sets DefaultNameIdPolicy field to given value.
-
-### HasDefaultNameIdPolicy
-
-`func (o *ModelRequest) HasDefaultNameIdPolicy() bool`
-
-HasDefaultNameIdPolicy returns a boolean if a field has been set.
 
 ### GetUrl
 
@@ -2177,96 +1959,6 @@ and a boolean to check if the value has been set.
 
 SetToken sets Token field to given value.
 
-### HasToken
-
-`func (o *ModelRequest) HasToken() bool`
-
-HasToken returns a boolean if a field has been set.
-
-### GetAuthMode
-
-`func (o *ModelRequest) GetAuthMode() SCIMAuthenticationModeEnum`
-
-GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
-
-### GetAuthModeOk
-
-`func (o *ModelRequest) GetAuthModeOk() (*SCIMAuthenticationModeEnum, bool)`
-
-GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthMode
-
-`func (o *ModelRequest) SetAuthMode(v SCIMAuthenticationModeEnum)`
-
-SetAuthMode sets AuthMode field to given value.
-
-### HasAuthMode
-
-`func (o *ModelRequest) HasAuthMode() bool`
-
-HasAuthMode returns a boolean if a field has been set.
-
-### GetAuthOauth
-
-`func (o *ModelRequest) GetAuthOauth() string`
-
-GetAuthOauth returns the AuthOauth field if non-nil, zero value otherwise.
-
-### GetAuthOauthOk
-
-`func (o *ModelRequest) GetAuthOauthOk() (*string, bool)`
-
-GetAuthOauthOk returns a tuple with the AuthOauth field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthOauth
-
-`func (o *ModelRequest) SetAuthOauth(v string)`
-
-SetAuthOauth sets AuthOauth field to given value.
-
-### HasAuthOauth
-
-`func (o *ModelRequest) HasAuthOauth() bool`
-
-HasAuthOauth returns a boolean if a field has been set.
-
-### SetAuthOauthNil
-
-`func (o *ModelRequest) SetAuthOauthNil(b bool)`
-
- SetAuthOauthNil sets the value for AuthOauth to be an explicit nil
-
-### UnsetAuthOauth
-`func (o *ModelRequest) UnsetAuthOauth()`
-
-UnsetAuthOauth ensures that no value is present for AuthOauth, not even an explicit nil
-### GetAuthOauthParams
-
-`func (o *ModelRequest) GetAuthOauthParams() map[string]map[string]interface{}`
-
-GetAuthOauthParams returns the AuthOauthParams field if non-nil, zero value otherwise.
-
-### GetAuthOauthParamsOk
-
-`func (o *ModelRequest) GetAuthOauthParamsOk() (*map[string]map[string]interface{}, bool)`
-
-GetAuthOauthParamsOk returns a tuple with the AuthOauthParams field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthOauthParams
-
-`func (o *ModelRequest) SetAuthOauthParams(v map[string]map[string]interface{})`
-
-SetAuthOauthParams sets AuthOauthParams field to given value.
-
-### HasAuthOauthParams
-
-`func (o *ModelRequest) HasAuthOauthParams() bool`
-
-HasAuthOauthParams returns a boolean if a field has been set.
 
 ### GetCompatibilityMode
 
@@ -2292,31 +1984,6 @@ SetCompatibilityMode sets CompatibilityMode field to given value.
 `func (o *ModelRequest) HasCompatibilityMode() bool`
 
 HasCompatibilityMode returns a boolean if a field has been set.
-
-### GetServiceProviderConfigCacheTimeout
-
-`func (o *ModelRequest) GetServiceProviderConfigCacheTimeout() string`
-
-GetServiceProviderConfigCacheTimeout returns the ServiceProviderConfigCacheTimeout field if non-nil, zero value otherwise.
-
-### GetServiceProviderConfigCacheTimeoutOk
-
-`func (o *ModelRequest) GetServiceProviderConfigCacheTimeoutOk() (*string, bool)`
-
-GetServiceProviderConfigCacheTimeoutOk returns a tuple with the ServiceProviderConfigCacheTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServiceProviderConfigCacheTimeout
-
-`func (o *ModelRequest) SetServiceProviderConfigCacheTimeout(v string)`
-
-SetServiceProviderConfigCacheTimeout sets ServiceProviderConfigCacheTimeout field to given value.
-
-### HasServiceProviderConfigCacheTimeout
-
-`func (o *ModelRequest) HasServiceProviderConfigCacheTimeout() bool`
-
-HasServiceProviderConfigCacheTimeout returns a boolean if a field has been set.
 
 ### GetOidcAuthProviders
 

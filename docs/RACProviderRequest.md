@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
+**Settings** | Pointer to **interface{}** |  | [optional] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **DeleteTokenOnDisconnect** | Pointer to **bool** | When set to true, connection tokens will be deleted upon disconnect. | [optional] 
 
@@ -133,20 +133,20 @@ HasPropertyMappings returns a boolean if a field has been set.
 
 ### GetSettings
 
-`func (o *RACProviderRequest) GetSettings() map[string]interface{}`
+`func (o *RACProviderRequest) GetSettings() interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *RACProviderRequest) GetSettingsOk() (*map[string]interface{}, bool)`
+`func (o *RACProviderRequest) GetSettingsOk() (*interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *RACProviderRequest) SetSettings(v map[string]interface{})`
+`func (o *RACProviderRequest) SetSettings(v interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -156,6 +156,16 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
+### SetSettingsNil
+
+`func (o *RACProviderRequest) SetSettingsNil(b bool)`
+
+ SetSettingsNil sets the value for Settings to be an explicit nil
+
+### UnsetSettings
+`func (o *RACProviderRequest) UnsetSettings()`
+
+UnsetSettings ensures that no value is present for Settings, not even an explicit nil
 ### GetConnectionExpiry
 
 `func (o *RACProviderRequest) GetConnectionExpiry() string`

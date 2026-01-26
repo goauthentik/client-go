@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &MicrosoftEntraProviderGroup{}
 
 // MicrosoftEntraProviderGroup MicrosoftEntraProviderGroup Serializer
 type MicrosoftEntraProviderGroup struct {
-	Id          string                 `json:"id"`
-	MicrosoftId string                 `json:"microsoft_id"`
-	Group       string                 `json:"group"`
-	GroupObj    PartialGroup           `json:"group_obj"`
-	Provider    int32                  `json:"provider"`
-	Attributes  map[string]interface{} `json:"attributes"`
+	Id          string      `json:"id"`
+	MicrosoftId string      `json:"microsoft_id"`
+	Group       string      `json:"group"`
+	GroupObj    UserGroup   `json:"group_obj"`
+	Provider    int32       `json:"provider"`
+	Attributes  interface{} `json:"attributes"`
 }
 
 type _MicrosoftEntraProviderGroup MicrosoftEntraProviderGroup
@@ -36,7 +36,7 @@ type _MicrosoftEntraProviderGroup MicrosoftEntraProviderGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}) *MicrosoftEntraProviderGroup {
+func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj UserGroup, provider int32, attributes interface{}) *MicrosoftEntraProviderGroup {
 	this := MicrosoftEntraProviderGroup{}
 	this.Id = id
 	this.MicrosoftId = microsoftId
@@ -128,9 +128,9 @@ func (o *MicrosoftEntraProviderGroup) SetGroup(v string) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *MicrosoftEntraProviderGroup) GetGroupObj() PartialGroup {
+func (o *MicrosoftEntraProviderGroup) GetGroupObj() UserGroup {
 	if o == nil {
-		var ret PartialGroup
+		var ret UserGroup
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *MicrosoftEntraProviderGroup) GetGroupObj() PartialGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *MicrosoftEntraProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
+func (o *MicrosoftEntraProviderGroup) GetGroupObjOk() (*UserGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *MicrosoftEntraProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *MicrosoftEntraProviderGroup) SetGroupObj(v PartialGroup) {
+func (o *MicrosoftEntraProviderGroup) SetGroupObj(v UserGroup) {
 	o.GroupObj = v
 }
 
@@ -176,9 +176,10 @@ func (o *MicrosoftEntraProviderGroup) SetProvider(v int32) {
 }
 
 // GetAttributes returns the Attributes field value
-func (o *MicrosoftEntraProviderGroup) GetAttributes() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *MicrosoftEntraProviderGroup) GetAttributes() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -187,15 +188,16 @@ func (o *MicrosoftEntraProviderGroup) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *MicrosoftEntraProviderGroup) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MicrosoftEntraProviderGroup) GetAttributesOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Attributes) {
+		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // SetAttributes sets field value
-func (o *MicrosoftEntraProviderGroup) SetAttributes(v map[string]interface{}) {
+func (o *MicrosoftEntraProviderGroup) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 
@@ -214,7 +216,9 @@ func (o MicrosoftEntraProviderGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize["group"] = o.Group
 	toSerialize["group_obj"] = o.GroupObj
 	toSerialize["provider"] = o.Provider
-	toSerialize["attributes"] = o.Attributes
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
+	}
 	return toSerialize, nil
 }
 

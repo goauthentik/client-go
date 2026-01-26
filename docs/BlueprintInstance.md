@@ -7,20 +7,20 @@ Name | Type | Description | Notes
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
 **Path** | Pointer to **string** |  | [optional] [default to ""]
-**Context** | Pointer to **map[string]interface{}** |  | [optional] 
+**Context** | Pointer to **interface{}** |  | [optional] 
 **LastApplied** | **time.Time** |  | [readonly] 
 **LastAppliedHash** | **string** |  | [readonly] 
 **Status** | [**BlueprintInstanceStatusEnum**](BlueprintInstanceStatusEnum.md) |  | [readonly] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **ManagedModels** | **[]string** |  | [readonly] 
-**Metadata** | **map[string]interface{}** |  | [readonly] 
+**Metadata** | **interface{}** |  | [readonly] 
 **Content** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewBlueprintInstance
 
-`func NewBlueprintInstance(pk string, name string, lastApplied time.Time, lastAppliedHash string, status BlueprintInstanceStatusEnum, managedModels []string, metadata map[string]interface{}, ) *BlueprintInstance`
+`func NewBlueprintInstance(pk string, name string, lastApplied time.Time, lastAppliedHash string, status BlueprintInstanceStatusEnum, managedModels []string, metadata interface{}, ) *BlueprintInstance`
 
 NewBlueprintInstance instantiates a new BlueprintInstance object
 This constructor will assign default values to properties that have it defined,
@@ -102,20 +102,20 @@ HasPath returns a boolean if a field has been set.
 
 ### GetContext
 
-`func (o *BlueprintInstance) GetContext() map[string]interface{}`
+`func (o *BlueprintInstance) GetContext() interface{}`
 
 GetContext returns the Context field if non-nil, zero value otherwise.
 
 ### GetContextOk
 
-`func (o *BlueprintInstance) GetContextOk() (*map[string]interface{}, bool)`
+`func (o *BlueprintInstance) GetContextOk() (*interface{}, bool)`
 
 GetContextOk returns a tuple with the Context field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContext
 
-`func (o *BlueprintInstance) SetContext(v map[string]interface{})`
+`func (o *BlueprintInstance) SetContext(v interface{})`
 
 SetContext sets Context field to given value.
 
@@ -125,6 +125,16 @@ SetContext sets Context field to given value.
 
 HasContext returns a boolean if a field has been set.
 
+### SetContextNil
+
+`func (o *BlueprintInstance) SetContextNil(b bool)`
+
+ SetContextNil sets the value for Context to be an explicit nil
+
+### UnsetContext
+`func (o *BlueprintInstance) UnsetContext()`
+
+UnsetContext ensures that no value is present for Context, not even an explicit nil
 ### GetLastApplied
 
 `func (o *BlueprintInstance) GetLastApplied() time.Time`
@@ -232,24 +242,34 @@ SetManagedModels sets ManagedModels field to given value.
 
 ### GetMetadata
 
-`func (o *BlueprintInstance) GetMetadata() map[string]interface{}`
+`func (o *BlueprintInstance) GetMetadata() interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *BlueprintInstance) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *BlueprintInstance) GetMetadataOk() (*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *BlueprintInstance) SetMetadata(v map[string]interface{})`
+`func (o *BlueprintInstance) SetMetadata(v interface{})`
 
 SetMetadata sets Metadata field to given value.
 
 
+### SetMetadataNil
+
+`func (o *BlueprintInstance) SetMetadataNil(b bool)`
+
+ SetMetadataNil sets the value for Metadata to be an explicit nil
+
+### UnsetMetadata
+`func (o *BlueprintInstance) UnsetMetadata()`
+
+UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetContent
 
 `func (o *BlueprintInstance) GetContent() string`

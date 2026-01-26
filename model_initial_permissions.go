@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,11 +22,12 @@ var _ MappedNullable = &InitialPermissions{}
 
 // InitialPermissions InitialPermissions serializer
 type InitialPermissions struct {
-	Pk             int32        `json:"pk"`
-	Name           string       `json:"name"`
-	Role           string       `json:"role"`
-	Permissions    []int32      `json:"permissions,omitempty"`
-	PermissionsObj []Permission `json:"permissions_obj"`
+	Pk             int32                      `json:"pk"`
+	Name           string                     `json:"name"`
+	Mode           InitialPermissionsModeEnum `json:"mode"`
+	Role           string                     `json:"role"`
+	Permissions    []int32                    `json:"permissions,omitempty"`
+	PermissionsObj []Permission               `json:"permissions_obj"`
 }
 
 type _InitialPermissions InitialPermissions
@@ -35,10 +36,11 @@ type _InitialPermissions InitialPermissions
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitialPermissions(pk int32, name string, role string, permissionsObj []Permission) *InitialPermissions {
+func NewInitialPermissions(pk int32, name string, mode InitialPermissionsModeEnum, role string, permissionsObj []Permission) *InitialPermissions {
 	this := InitialPermissions{}
 	this.Pk = pk
 	this.Name = name
+	this.Mode = mode
 	this.Role = role
 	this.PermissionsObj = permissionsObj
 	return &this
@@ -98,6 +100,30 @@ func (o *InitialPermissions) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *InitialPermissions) SetName(v string) {
 	o.Name = v
+}
+
+// GetMode returns the Mode field value
+func (o *InitialPermissions) GetMode() InitialPermissionsModeEnum {
+	if o == nil {
+		var ret InitialPermissionsModeEnum
+		return ret
+	}
+
+	return o.Mode
+}
+
+// GetModeOk returns a tuple with the Mode field value
+// and a boolean to check if the value has been set.
+func (o *InitialPermissions) GetModeOk() (*InitialPermissionsModeEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Mode, true
+}
+
+// SetMode sets field value
+func (o *InitialPermissions) SetMode(v InitialPermissionsModeEnum) {
+	o.Mode = v
 }
 
 // GetRole returns the Role field value
@@ -192,6 +218,7 @@ func (o InitialPermissions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["pk"] = o.Pk
 	toSerialize["name"] = o.Name
+	toSerialize["mode"] = o.Mode
 	toSerialize["role"] = o.Role
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
@@ -207,6 +234,7 @@ func (o *InitialPermissions) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"pk",
 		"name",
+		"mode",
 		"role",
 		"permissions_obj",
 	}

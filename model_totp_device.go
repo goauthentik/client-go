@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type TOTPDevice struct {
 	// The human-readable name of this device.
 	Name string      `json:"name"`
 	Pk   int32       `json:"pk"`
-	User PartialUser `json:"user"`
+	User GroupMember `json:"user"`
 }
 
 type _TOTPDevice TOTPDevice
@@ -34,7 +34,7 @@ type _TOTPDevice TOTPDevice
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTOTPDevice(name string, pk int32, user PartialUser) *TOTPDevice {
+func NewTOTPDevice(name string, pk int32, user GroupMember) *TOTPDevice {
 	this := TOTPDevice{}
 	this.Name = name
 	this.Pk = pk
@@ -99,9 +99,9 @@ func (o *TOTPDevice) SetPk(v int32) {
 }
 
 // GetUser returns the User field value
-func (o *TOTPDevice) GetUser() PartialUser {
+func (o *TOTPDevice) GetUser() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -110,7 +110,7 @@ func (o *TOTPDevice) GetUser() PartialUser {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *TOTPDevice) GetUserOk() (*PartialUser, bool) {
+func (o *TOTPDevice) GetUserOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *TOTPDevice) GetUserOk() (*PartialUser, bool) {
 }
 
 // SetUser sets field value
-func (o *TOTPDevice) SetUser(v PartialUser) {
+func (o *TOTPDevice) SetUser(v GroupMember) {
 	o.User = v
 }
 

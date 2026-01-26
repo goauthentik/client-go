@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]SAMLSource**](SAMLSource.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedSAMLSourceList
 
-`func NewPaginatedSAMLSourceList(pagination Pagination, results []SAMLSource, autocomplete map[string]interface{}, ) *PaginatedSAMLSourceList`
+`func NewPaginatedSAMLSourceList(pagination Pagination, results []SAMLSource, ) *PaginatedSAMLSourceList`
 
 NewPaginatedSAMLSourceList instantiates a new PaginatedSAMLSourceList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedSAMLSourceList) SetResults(v []SAMLSource)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedSAMLSourceList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedSAMLSourceList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedSAMLSourceList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

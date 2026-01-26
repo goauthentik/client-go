@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,11 +22,12 @@ var _ MappedNullable = &AuthenticatorEndpointGDTCStageRequest{}
 
 // AuthenticatorEndpointGDTCStageRequest AuthenticatorEndpointGDTCStage Serializer
 type AuthenticatorEndpointGDTCStageRequest struct {
-	Name string `json:"name"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString         `json:"configure_flow,omitempty"`
-	FriendlyName  *string                `json:"friendly_name,omitempty"`
-	Credentials   map[string]interface{} `json:"credentials"`
+	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
+	FriendlyName  NullableString `json:"friendly_name,omitempty"`
+	Credentials   interface{}    `json:"credentials"`
 }
 
 type _AuthenticatorEndpointGDTCStageRequest AuthenticatorEndpointGDTCStageRequest
@@ -35,7 +36,7 @@ type _AuthenticatorEndpointGDTCStageRequest AuthenticatorEndpointGDTCStageReques
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorEndpointGDTCStageRequest(name string, credentials map[string]interface{}) *AuthenticatorEndpointGDTCStageRequest {
+func NewAuthenticatorEndpointGDTCStageRequest(name string, credentials interface{}) *AuthenticatorEndpointGDTCStageRequest {
 	this := AuthenticatorEndpointGDTCStageRequest{}
 	this.Name = name
 	this.Credentials = credentials
@@ -72,6 +73,38 @@ func (o *AuthenticatorEndpointGDTCStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *AuthenticatorEndpointGDTCStageRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *AuthenticatorEndpointGDTCStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorEndpointGDTCStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *AuthenticatorEndpointGDTCStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *AuthenticatorEndpointGDTCStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -117,42 +150,54 @@ func (o *AuthenticatorEndpointGDTCStageRequest) UnsetConfigureFlow() {
 	o.ConfigureFlow.Unset()
 }
 
-// GetFriendlyName returns the FriendlyName field value if set, zero value otherwise.
+// GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorEndpointGDTCStageRequest) GetFriendlyName() string {
-	if o == nil || IsNil(o.FriendlyName) {
+	if o == nil || IsNil(o.FriendlyName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FriendlyName
+	return *o.FriendlyName.Get()
 }
 
 // GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorEndpointGDTCStageRequest) GetFriendlyNameOk() (*string, bool) {
-	if o == nil || IsNil(o.FriendlyName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FriendlyName, true
+	return o.FriendlyName.Get(), o.FriendlyName.IsSet()
 }
 
 // HasFriendlyName returns a boolean if a field has been set.
 func (o *AuthenticatorEndpointGDTCStageRequest) HasFriendlyName() bool {
-	if o != nil && !IsNil(o.FriendlyName) {
+	if o != nil && o.FriendlyName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFriendlyName gets a reference to the given string and assigns it to the FriendlyName field.
+// SetFriendlyName gets a reference to the given NullableString and assigns it to the FriendlyName field.
 func (o *AuthenticatorEndpointGDTCStageRequest) SetFriendlyName(v string) {
-	o.FriendlyName = &v
+	o.FriendlyName.Set(&v)
+}
+
+// SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+func (o *AuthenticatorEndpointGDTCStageRequest) SetFriendlyNameNil() {
+	o.FriendlyName.Set(nil)
+}
+
+// UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
+func (o *AuthenticatorEndpointGDTCStageRequest) UnsetFriendlyName() {
+	o.FriendlyName.Unset()
 }
 
 // GetCredentials returns the Credentials field value
-func (o *AuthenticatorEndpointGDTCStageRequest) GetCredentials() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *AuthenticatorEndpointGDTCStageRequest) GetCredentials() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -161,15 +206,16 @@ func (o *AuthenticatorEndpointGDTCStageRequest) GetCredentials() map[string]inte
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorEndpointGDTCStageRequest) GetCredentialsOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AuthenticatorEndpointGDTCStageRequest) GetCredentialsOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Credentials) {
+		return nil, false
 	}
-	return o.Credentials, true
+	return &o.Credentials, true
 }
 
 // SetCredentials sets field value
-func (o *AuthenticatorEndpointGDTCStageRequest) SetCredentials(v map[string]interface{}) {
+func (o *AuthenticatorEndpointGDTCStageRequest) SetCredentials(v interface{}) {
 	o.Credentials = v
 }
 
@@ -184,13 +230,18 @@ func (o AuthenticatorEndpointGDTCStageRequest) MarshalJSON() ([]byte, error) {
 func (o AuthenticatorEndpointGDTCStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if !IsNil(o.FriendlyName) {
-		toSerialize["friendly_name"] = o.FriendlyName
+	if o.FriendlyName.IsSet() {
+		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
-	toSerialize["credentials"] = o.Credentials
+	if o.Credentials != nil {
+		toSerialize["credentials"] = o.Credentials
+	}
 	return toSerialize, nil
 }
 

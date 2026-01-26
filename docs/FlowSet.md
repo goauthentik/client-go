@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Slug** | **string** | Visible in the URL. | 
 **Title** | **string** | Shown as the Title in Flow pages. | 
 **Designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | 
-**BackgroundUrl** | **string** | Get the URL to the background image | [readonly] 
+**Background** | **string** | Get the URL to the background image. If the name is /static or starts with http it is returned as-is | [readonly] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
 **ExportUrl** | **string** | Get export URL for flow | [readonly] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewFlowSet
 
-`func NewFlowSet(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, backgroundUrl string, exportUrl string, ) *FlowSet`
+`func NewFlowSet(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, background string, exportUrl string, ) *FlowSet`
 
 NewFlowSet instantiates a new FlowSet object
 This constructor will assign default values to properties that have it defined,
@@ -156,24 +156,24 @@ and a boolean to check if the value has been set.
 SetDesignation sets Designation field to given value.
 
 
-### GetBackgroundUrl
+### GetBackground
 
-`func (o *FlowSet) GetBackgroundUrl() string`
+`func (o *FlowSet) GetBackground() string`
 
-GetBackgroundUrl returns the BackgroundUrl field if non-nil, zero value otherwise.
+GetBackground returns the Background field if non-nil, zero value otherwise.
 
-### GetBackgroundUrlOk
+### GetBackgroundOk
 
-`func (o *FlowSet) GetBackgroundUrlOk() (*string, bool)`
+`func (o *FlowSet) GetBackgroundOk() (*string, bool)`
 
-GetBackgroundUrlOk returns a tuple with the BackgroundUrl field if it's non-nil, zero value otherwise
+GetBackgroundOk returns a tuple with the Background field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBackgroundUrl
+### SetBackground
 
-`func (o *FlowSet) SetBackgroundUrl(v string)`
+`func (o *FlowSet) SetBackground(v string)`
 
-SetBackgroundUrl sets BackgroundUrl field to given value.
+SetBackground sets Background field to given value.
 
 
 ### GetPolicyEngineMode

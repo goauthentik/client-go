@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **App** | **string** |  | 
-**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Attributes** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -69,20 +69,20 @@ SetApp sets App field to given value.
 
 ### GetAttributes
 
-`func (o *ApplicationEntitlementRequest) GetAttributes() map[string]interface{}`
+`func (o *ApplicationEntitlementRequest) GetAttributes() interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *ApplicationEntitlementRequest) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *ApplicationEntitlementRequest) GetAttributesOk() (*interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *ApplicationEntitlementRequest) SetAttributes(v map[string]interface{})`
+`func (o *ApplicationEntitlementRequest) SetAttributes(v interface{})`
 
 SetAttributes sets Attributes field to given value.
 
@@ -92,6 +92,16 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### SetAttributesNil
+
+`func (o *ApplicationEntitlementRequest) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *ApplicationEntitlementRequest) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **Provider** | Pointer to **int32** |  | [optional] 
 **Protocol** | Pointer to [**ProtocolEnum**](ProtocolEnum.md) |  | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
-**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
+**Settings** | Pointer to **interface{}** |  | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
-**AuthMode** | Pointer to [**EndpointAuthModeEnum**](EndpointAuthModeEnum.md) |  | [optional] 
+**AuthMode** | Pointer to [**AuthModeEnum**](AuthModeEnum.md) |  | [optional] 
 **MaximumConnections** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -134,20 +134,20 @@ HasHost returns a boolean if a field has been set.
 
 ### GetSettings
 
-`func (o *PatchedEndpointRequest) GetSettings() map[string]interface{}`
+`func (o *PatchedEndpointRequest) GetSettings() interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *PatchedEndpointRequest) GetSettingsOk() (*map[string]interface{}, bool)`
+`func (o *PatchedEndpointRequest) GetSettingsOk() (*interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *PatchedEndpointRequest) SetSettings(v map[string]interface{})`
+`func (o *PatchedEndpointRequest) SetSettings(v interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -157,6 +157,16 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
+### SetSettingsNil
+
+`func (o *PatchedEndpointRequest) SetSettingsNil(b bool)`
+
+ SetSettingsNil sets the value for Settings to be an explicit nil
+
+### UnsetSettings
+`func (o *PatchedEndpointRequest) UnsetSettings()`
+
+UnsetSettings ensures that no value is present for Settings, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *PatchedEndpointRequest) GetPropertyMappings() []string`
@@ -184,20 +194,20 @@ HasPropertyMappings returns a boolean if a field has been set.
 
 ### GetAuthMode
 
-`func (o *PatchedEndpointRequest) GetAuthMode() EndpointAuthModeEnum`
+`func (o *PatchedEndpointRequest) GetAuthMode() AuthModeEnum`
 
 GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
 
 ### GetAuthModeOk
 
-`func (o *PatchedEndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool)`
+`func (o *PatchedEndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool)`
 
 GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthMode
 
-`func (o *PatchedEndpointRequest) SetAuthMode(v EndpointAuthModeEnum)`
+`func (o *PatchedEndpointRequest) SetAuthMode(v AuthModeEnum)`
 
 SetAuthMode sets AuthMode field to given value.
 

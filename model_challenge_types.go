@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -32,12 +32,9 @@ type ChallengeTypes struct {
 	ConsentChallenge                 *ConsentChallenge
 	DummyChallenge                   *DummyChallenge
 	EmailChallenge                   *EmailChallenge
-	EndpointAgentChallenge           *EndpointAgentChallenge
 	FlowErrorChallenge               *FlowErrorChallenge
 	FrameChallenge                   *FrameChallenge
 	IdentificationChallenge          *IdentificationChallenge
-	IframeLogoutChallenge            *IframeLogoutChallenge
-	NativeLogoutChallenge            *NativeLogoutChallenge
 	OAuthDeviceCodeChallenge         *OAuthDeviceCodeChallenge
 	OAuthDeviceCodeFinishChallenge   *OAuthDeviceCodeFinishChallenge
 	PasswordChallenge                *PasswordChallenge
@@ -46,7 +43,6 @@ type ChallengeTypes struct {
 	RedirectChallenge                *RedirectChallenge
 	SessionEndChallenge              *SessionEndChallenge
 	ShellChallenge                   *ShellChallenge
-	TelegramLoginChallenge           *TelegramLoginChallenge
 	UserLoginChallenge               *UserLoginChallenge
 }
 
@@ -148,13 +144,6 @@ func EmailChallengeAsChallengeTypes(v *EmailChallenge) ChallengeTypes {
 	}
 }
 
-// EndpointAgentChallengeAsChallengeTypes is a convenience function that returns EndpointAgentChallenge wrapped in ChallengeTypes
-func EndpointAgentChallengeAsChallengeTypes(v *EndpointAgentChallenge) ChallengeTypes {
-	return ChallengeTypes{
-		EndpointAgentChallenge: v,
-	}
-}
-
 // FlowErrorChallengeAsChallengeTypes is a convenience function that returns FlowErrorChallenge wrapped in ChallengeTypes
 func FlowErrorChallengeAsChallengeTypes(v *FlowErrorChallenge) ChallengeTypes {
 	return ChallengeTypes{
@@ -173,20 +162,6 @@ func FrameChallengeAsChallengeTypes(v *FrameChallenge) ChallengeTypes {
 func IdentificationChallengeAsChallengeTypes(v *IdentificationChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		IdentificationChallenge: v,
-	}
-}
-
-// IframeLogoutChallengeAsChallengeTypes is a convenience function that returns IframeLogoutChallenge wrapped in ChallengeTypes
-func IframeLogoutChallengeAsChallengeTypes(v *IframeLogoutChallenge) ChallengeTypes {
-	return ChallengeTypes{
-		IframeLogoutChallenge: v,
-	}
-}
-
-// NativeLogoutChallengeAsChallengeTypes is a convenience function that returns NativeLogoutChallenge wrapped in ChallengeTypes
-func NativeLogoutChallengeAsChallengeTypes(v *NativeLogoutChallenge) ChallengeTypes {
-	return ChallengeTypes{
-		NativeLogoutChallenge: v,
 	}
 }
 
@@ -246,13 +221,6 @@ func ShellChallengeAsChallengeTypes(v *ShellChallenge) ChallengeTypes {
 	}
 }
 
-// TelegramLoginChallengeAsChallengeTypes is a convenience function that returns TelegramLoginChallenge wrapped in ChallengeTypes
-func TelegramLoginChallengeAsChallengeTypes(v *TelegramLoginChallenge) ChallengeTypes {
-	return ChallengeTypes{
-		TelegramLoginChallenge: v,
-	}
-}
-
 // UserLoginChallengeAsChallengeTypes is a convenience function that returns UserLoginChallenge wrapped in ChallengeTypes
 func UserLoginChallengeAsChallengeTypes(v *UserLoginChallenge) ChallengeTypes {
 	return ChallengeTypes{
@@ -268,18 +236,6 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
 		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
-	}
-
-	// check if the discriminator value is 'ak-provider-iframe-logout'
-	if jsonDict["component"] == "ak-provider-iframe-logout" {
-		// try to unmarshal JSON data into IframeLogoutChallenge
-		err = json.Unmarshal(data, &dst.IframeLogoutChallenge)
-		if err == nil {
-			return nil // data stored in dst.IframeLogoutChallenge, return on the first match
-		} else {
-			dst.IframeLogoutChallenge = nil
-			return fmt.Errorf("failed to unmarshal ChallengeTypes as IframeLogoutChallenge: %s", err.Error())
-		}
 	}
 
 	// check if the discriminator value is 'ak-provider-oauth2-device-code'
@@ -306,18 +262,6 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'ak-provider-saml-native-logout'
-	if jsonDict["component"] == "ak-provider-saml-native-logout" {
-		// try to unmarshal JSON data into NativeLogoutChallenge
-		err = json.Unmarshal(data, &dst.NativeLogoutChallenge)
-		if err == nil {
-			return nil // data stored in dst.NativeLogoutChallenge, return on the first match
-		} else {
-			dst.NativeLogoutChallenge = nil
-			return fmt.Errorf("failed to unmarshal ChallengeTypes as NativeLogoutChallenge: %s", err.Error())
-		}
-	}
-
 	// check if the discriminator value is 'ak-source-oauth-apple'
 	if jsonDict["component"] == "ak-source-oauth-apple" {
 		// try to unmarshal JSON data into AppleLoginChallenge
@@ -339,18 +283,6 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.PlexAuthenticationChallenge = nil
 			return fmt.Errorf("failed to unmarshal ChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-source-telegram'
-	if jsonDict["component"] == "ak-source-telegram" {
-		// try to unmarshal JSON data into TelegramLoginChallenge
-		err = json.Unmarshal(data, &dst.TelegramLoginChallenge)
-		if err == nil {
-			return nil // data stored in dst.TelegramLoginChallenge, return on the first match
-		} else {
-			dst.TelegramLoginChallenge = nil
-			return fmt.Errorf("failed to unmarshal ChallengeTypes as TelegramLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -507,18 +439,6 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.EmailChallenge = nil
 			return fmt.Errorf("failed to unmarshal ChallengeTypes as EmailChallenge: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ak-stage-endpoint-agent'
-	if jsonDict["component"] == "ak-stage-endpoint-agent" {
-		// try to unmarshal JSON data into EndpointAgentChallenge
-		err = json.Unmarshal(data, &dst.EndpointAgentChallenge)
-		if err == nil {
-			return nil // data stored in dst.EndpointAgentChallenge, return on the first match
-		} else {
-			dst.EndpointAgentChallenge = nil
-			return fmt.Errorf("failed to unmarshal ChallengeTypes as EndpointAgentChallenge: %s", err.Error())
 		}
 	}
 
@@ -691,10 +611,6 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.EmailChallenge)
 	}
 
-	if src.EndpointAgentChallenge != nil {
-		return json.Marshal(&src.EndpointAgentChallenge)
-	}
-
 	if src.FlowErrorChallenge != nil {
 		return json.Marshal(&src.FlowErrorChallenge)
 	}
@@ -705,14 +621,6 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 
 	if src.IdentificationChallenge != nil {
 		return json.Marshal(&src.IdentificationChallenge)
-	}
-
-	if src.IframeLogoutChallenge != nil {
-		return json.Marshal(&src.IframeLogoutChallenge)
-	}
-
-	if src.NativeLogoutChallenge != nil {
-		return json.Marshal(&src.NativeLogoutChallenge)
 	}
 
 	if src.OAuthDeviceCodeChallenge != nil {
@@ -745,10 +653,6 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 
 	if src.ShellChallenge != nil {
 		return json.Marshal(&src.ShellChallenge)
-	}
-
-	if src.TelegramLoginChallenge != nil {
-		return json.Marshal(&src.TelegramLoginChallenge)
 	}
 
 	if src.UserLoginChallenge != nil {
@@ -819,10 +723,6 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 		return obj.EmailChallenge
 	}
 
-	if obj.EndpointAgentChallenge != nil {
-		return obj.EndpointAgentChallenge
-	}
-
 	if obj.FlowErrorChallenge != nil {
 		return obj.FlowErrorChallenge
 	}
@@ -833,14 +733,6 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.IdentificationChallenge != nil {
 		return obj.IdentificationChallenge
-	}
-
-	if obj.IframeLogoutChallenge != nil {
-		return obj.IframeLogoutChallenge
-	}
-
-	if obj.NativeLogoutChallenge != nil {
-		return obj.NativeLogoutChallenge
 	}
 
 	if obj.OAuthDeviceCodeChallenge != nil {
@@ -873,10 +765,6 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.ShellChallenge != nil {
 		return obj.ShellChallenge
-	}
-
-	if obj.TelegramLoginChallenge != nil {
-		return obj.TelegramLoginChallenge
 	}
 
 	if obj.UserLoginChallenge != nil {
@@ -945,10 +833,6 @@ func (obj ChallengeTypes) GetActualInstanceValue() interface{} {
 		return *obj.EmailChallenge
 	}
 
-	if obj.EndpointAgentChallenge != nil {
-		return *obj.EndpointAgentChallenge
-	}
-
 	if obj.FlowErrorChallenge != nil {
 		return *obj.FlowErrorChallenge
 	}
@@ -959,14 +843,6 @@ func (obj ChallengeTypes) GetActualInstanceValue() interface{} {
 
 	if obj.IdentificationChallenge != nil {
 		return *obj.IdentificationChallenge
-	}
-
-	if obj.IframeLogoutChallenge != nil {
-		return *obj.IframeLogoutChallenge
-	}
-
-	if obj.NativeLogoutChallenge != nil {
-		return *obj.NativeLogoutChallenge
 	}
 
 	if obj.OAuthDeviceCodeChallenge != nil {
@@ -999,10 +875,6 @@ func (obj ChallengeTypes) GetActualInstanceValue() interface{} {
 
 	if obj.ShellChallenge != nil {
 		return *obj.ShellChallenge
-	}
-
-	if obj.TelegramLoginChallenge != nil {
-		return *obj.TelegramLoginChallenge
 	}
 
 	if obj.UserLoginChallenge != nil {

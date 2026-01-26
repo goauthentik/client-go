@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &SCIMProviderUser{}
 
 // SCIMProviderUser SCIMProviderUser Serializer
 type SCIMProviderUser struct {
-	Id         string                 `json:"id"`
-	ScimId     string                 `json:"scim_id"`
-	User       int32                  `json:"user"`
-	UserObj    PartialUser            `json:"user_obj"`
-	Provider   int32                  `json:"provider"`
-	Attributes map[string]interface{} `json:"attributes"`
+	Id         string      `json:"id"`
+	ScimId     string      `json:"scim_id"`
+	User       int32       `json:"user"`
+	UserObj    GroupMember `json:"user_obj"`
+	Provider   int32       `json:"provider"`
+	Attributes interface{} `json:"attributes"`
 }
 
 type _SCIMProviderUser SCIMProviderUser
@@ -36,7 +36,7 @@ type _SCIMProviderUser SCIMProviderUser
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProviderUser(id string, scimId string, user int32, userObj PartialUser, provider int32, attributes map[string]interface{}) *SCIMProviderUser {
+func NewSCIMProviderUser(id string, scimId string, user int32, userObj GroupMember, provider int32, attributes interface{}) *SCIMProviderUser {
 	this := SCIMProviderUser{}
 	this.Id = id
 	this.ScimId = scimId
@@ -128,9 +128,9 @@ func (o *SCIMProviderUser) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *SCIMProviderUser) GetUserObj() PartialUser {
+func (o *SCIMProviderUser) GetUserObj() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *SCIMProviderUser) GetUserObj() PartialUser {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMProviderUser) GetUserObjOk() (*PartialUser, bool) {
+func (o *SCIMProviderUser) GetUserObjOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *SCIMProviderUser) GetUserObjOk() (*PartialUser, bool) {
 }
 
 // SetUserObj sets field value
-func (o *SCIMProviderUser) SetUserObj(v PartialUser) {
+func (o *SCIMProviderUser) SetUserObj(v GroupMember) {
 	o.UserObj = v
 }
 
@@ -176,9 +176,10 @@ func (o *SCIMProviderUser) SetProvider(v int32) {
 }
 
 // GetAttributes returns the Attributes field value
-func (o *SCIMProviderUser) GetAttributes() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *SCIMProviderUser) GetAttributes() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -187,15 +188,16 @@ func (o *SCIMProviderUser) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *SCIMProviderUser) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMProviderUser) GetAttributesOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Attributes) {
+		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // SetAttributes sets field value
-func (o *SCIMProviderUser) SetAttributes(v map[string]interface{}) {
+func (o *SCIMProviderUser) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 
@@ -214,7 +216,9 @@ func (o SCIMProviderUser) ToMap() (map[string]interface{}, error) {
 	toSerialize["user"] = o.User
 	toSerialize["user_obj"] = o.UserObj
 	toSerialize["provider"] = o.Provider
-	toSerialize["attributes"] = o.Attributes
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
+	}
 	return toSerialize, nil
 }
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,7 @@ type AuthenticatorValidateStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName       string                   `json:"meta_model_name"`
-	FlowSet             []FlowSet                `json:"flow_set"`
+	FlowSet             []FlowSet                `json:"flow_set,omitempty"`
 	NotConfiguredAction *NotConfiguredActionEnum `json:"not_configured_action,omitempty"`
 	// Device classes which can be used to authenticate
 	DeviceClasses []DeviceClassesEnum `json:"device_classes,omitempty"`
@@ -52,7 +52,7 @@ type _AuthenticatorValidateStage AuthenticatorValidateStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorValidateStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, webauthnAllowedDeviceTypesObj []WebAuthnDeviceType) *AuthenticatorValidateStage {
+func NewAuthenticatorValidateStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, webauthnAllowedDeviceTypesObj []WebAuthnDeviceType) *AuthenticatorValidateStage {
 	this := AuthenticatorValidateStage{}
 	this.Pk = pk
 	this.Name = name
@@ -60,7 +60,6 @@ func NewAuthenticatorValidateStage(pk string, name string, component string, ver
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	this.WebauthnAllowedDeviceTypesObj = webauthnAllowedDeviceTypesObj
 	return &this
 }
@@ -217,26 +216,34 @@ func (o *AuthenticatorValidateStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorValidateStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorValidateStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *AuthenticatorValidateStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *AuthenticatorValidateStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -473,7 +480,9 @@ func (o AuthenticatorValidateStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.NotConfiguredAction) {
 		toSerialize["not_configured_action"] = o.NotConfiguredAction
 	}
@@ -507,7 +516,6 @@ func (o *AuthenticatorValidateStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 		"webauthn_allowed_device_types_obj",
 	}
 

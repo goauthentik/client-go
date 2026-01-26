@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]BlueprintInstance**](BlueprintInstance.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedBlueprintInstanceList
 
-`func NewPaginatedBlueprintInstanceList(pagination Pagination, results []BlueprintInstance, autocomplete map[string]interface{}, ) *PaginatedBlueprintInstanceList`
+`func NewPaginatedBlueprintInstanceList(pagination Pagination, results []BlueprintInstance, ) *PaginatedBlueprintInstanceList`
 
 NewPaginatedBlueprintInstanceList instantiates a new PaginatedBlueprintInstanceList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedBlueprintInstanceList) SetResults(v []BlueprintInstance)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedBlueprintInstanceList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedBlueprintInstanceList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedBlueprintInstanceList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

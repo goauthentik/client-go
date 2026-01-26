@@ -1,6 +1,6 @@
 # \CryptoAPI
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## CryptoCertificatekeypairsList
 
-> PaginatedCertificateKeyPairList CryptoCertificatekeypairsList(ctx).HasKey(hasKey).KeyType(keyType).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedCertificateKeyPairList CryptoCertificatekeypairsList(ctx).HasKey(hasKey).IncludeDetails(includeDetails).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -239,7 +239,7 @@ import (
 
 func main() {
 	hasKey := true // bool | Only return certificate-key pairs with keys (optional)
-	keyType := []string{"KeyType_example"} // []string | Filter by key algorithm type (RSA, EC, DSA, etc). Can be specified multiple times (e.g. '?key_type=rsa&key_type=ec') (optional)
+	includeDetails := true // bool |  (optional) (default to true)
 	managed := "managed_example" // string |  (optional)
 	name := "name_example" // string |  (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -249,7 +249,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).KeyType(keyType).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.CryptoAPI.CryptoCertificatekeypairsList(context.Background()).HasKey(hasKey).IncludeDetails(includeDetails).Managed(managed).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CryptoAPI.CryptoCertificatekeypairsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -271,7 +271,7 @@ Other parameters are passed through a pointer to a apiCryptoCertificatekeypairsL
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hasKey** | **bool** | Only return certificate-key pairs with keys | 
- **keyType** | **[]string** | Filter by key algorithm type (RSA, EC, DSA, etc). Can be specified multiple times (e.g. &#39;?key_type&#x3D;rsa&amp;key_type&#x3D;ec&#39;) | 
+ **includeDetails** | **bool** |  | [default to true]
  **managed** | **string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 

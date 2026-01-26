@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -25,8 +25,6 @@ type PatchedLDAPSourceRequest struct {
 	// Internal source name, used in URLs.
 	Slug    *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool   `json:"enabled,omitempty"`
-	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
-	Promoted *bool `json:"promoted,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
@@ -37,7 +35,6 @@ type PatchedLDAPSourceRequest struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	UserPathTemplate *string               `json:"user_path_template,omitempty"`
-	Icon             *string               `json:"icon,omitempty"`
 	ServerUri        *string               `json:"server_uri,omitempty"`
 	// Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
 	PeerCertificate NullableString `json:"peer_certificate,omitempty"`
@@ -58,8 +55,6 @@ type PatchedLDAPSourceRequest struct {
 	GroupObjectFilter *string `json:"group_object_filter,omitempty"`
 	// Field which contains members of a group.
 	GroupMembershipField *string `json:"group_membership_field,omitempty"`
-	// Attribute which matches the value of `group_membership_field`.
-	UserMembershipAttribute *string `json:"user_membership_attribute,omitempty"`
 	// Field which contains a unique Identifier.
 	ObjectUniquenessField *string `json:"object_uniqueness_field,omitempty"`
 	// Update internal authentik password when login succeeds with LDAP
@@ -71,10 +66,6 @@ type PatchedLDAPSourceRequest struct {
 	SyncParentGroup   NullableString `json:"sync_parent_group,omitempty"`
 	// Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory
 	LookupGroupsFromUser *bool `json:"lookup_groups_from_user,omitempty"`
-	// Delete authentik users and groups which were previously supplied by this source, but are now missing from it.
-	DeleteNotFoundObjects *bool `json:"delete_not_found_objects,omitempty"`
-	// When to trigger sync for outgoing providers
-	SyncOutgoingTriggerMode *SyncOutgoingTriggerModeEnum `json:"sync_outgoing_trigger_mode,omitempty"`
 }
 
 // NewPatchedLDAPSourceRequest instantiates a new PatchedLDAPSourceRequest object
@@ -188,38 +179,6 @@ func (o *PatchedLDAPSourceRequest) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *PatchedLDAPSourceRequest) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetPromoted returns the Promoted field value if set, zero value otherwise.
-func (o *PatchedLDAPSourceRequest) GetPromoted() bool {
-	if o == nil || IsNil(o.Promoted) {
-		var ret bool
-		return ret
-	}
-	return *o.Promoted
-}
-
-// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedLDAPSourceRequest) GetPromotedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Promoted) {
-		return nil, false
-	}
-	return o.Promoted, true
-}
-
-// HasPromoted returns a boolean if a field has been set.
-func (o *PatchedLDAPSourceRequest) HasPromoted() bool {
-	if o != nil && !IsNil(o.Promoted) {
-		return true
-	}
-
-	return false
-}
-
-// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
-func (o *PatchedLDAPSourceRequest) SetPromoted(v bool) {
-	o.Promoted = &v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -466,38 +425,6 @@ func (o *PatchedLDAPSourceRequest) HasUserPathTemplate() bool {
 // SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
 func (o *PatchedLDAPSourceRequest) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
-}
-
-// GetIcon returns the Icon field value if set, zero value otherwise.
-func (o *PatchedLDAPSourceRequest) GetIcon() string {
-	if o == nil || IsNil(o.Icon) {
-		var ret string
-		return ret
-	}
-	return *o.Icon
-}
-
-// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedLDAPSourceRequest) GetIconOk() (*string, bool) {
-	if o == nil || IsNil(o.Icon) {
-		return nil, false
-	}
-	return o.Icon, true
-}
-
-// HasIcon returns a boolean if a field has been set.
-func (o *PatchedLDAPSourceRequest) HasIcon() bool {
-	if o != nil && !IsNil(o.Icon) {
-		return true
-	}
-
-	return false
-}
-
-// SetIcon gets a reference to the given string and assigns it to the Icon field.
-func (o *PatchedLDAPSourceRequest) SetIcon(v string) {
-	o.Icon = &v
 }
 
 // GetServerUri returns the ServerUri field value if set, zero value otherwise.
@@ -938,38 +865,6 @@ func (o *PatchedLDAPSourceRequest) SetGroupMembershipField(v string) {
 	o.GroupMembershipField = &v
 }
 
-// GetUserMembershipAttribute returns the UserMembershipAttribute field value if set, zero value otherwise.
-func (o *PatchedLDAPSourceRequest) GetUserMembershipAttribute() string {
-	if o == nil || IsNil(o.UserMembershipAttribute) {
-		var ret string
-		return ret
-	}
-	return *o.UserMembershipAttribute
-}
-
-// GetUserMembershipAttributeOk returns a tuple with the UserMembershipAttribute field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedLDAPSourceRequest) GetUserMembershipAttributeOk() (*string, bool) {
-	if o == nil || IsNil(o.UserMembershipAttribute) {
-		return nil, false
-	}
-	return o.UserMembershipAttribute, true
-}
-
-// HasUserMembershipAttribute returns a boolean if a field has been set.
-func (o *PatchedLDAPSourceRequest) HasUserMembershipAttribute() bool {
-	if o != nil && !IsNil(o.UserMembershipAttribute) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserMembershipAttribute gets a reference to the given string and assigns it to the UserMembershipAttribute field.
-func (o *PatchedLDAPSourceRequest) SetUserMembershipAttribute(v string) {
-	o.UserMembershipAttribute = &v
-}
-
 // GetObjectUniquenessField returns the ObjectUniquenessField field value if set, zero value otherwise.
 func (o *PatchedLDAPSourceRequest) GetObjectUniquenessField() string {
 	if o == nil || IsNil(o.ObjectUniquenessField) {
@@ -1205,70 +1100,6 @@ func (o *PatchedLDAPSourceRequest) SetLookupGroupsFromUser(v bool) {
 	o.LookupGroupsFromUser = &v
 }
 
-// GetDeleteNotFoundObjects returns the DeleteNotFoundObjects field value if set, zero value otherwise.
-func (o *PatchedLDAPSourceRequest) GetDeleteNotFoundObjects() bool {
-	if o == nil || IsNil(o.DeleteNotFoundObjects) {
-		var ret bool
-		return ret
-	}
-	return *o.DeleteNotFoundObjects
-}
-
-// GetDeleteNotFoundObjectsOk returns a tuple with the DeleteNotFoundObjects field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedLDAPSourceRequest) GetDeleteNotFoundObjectsOk() (*bool, bool) {
-	if o == nil || IsNil(o.DeleteNotFoundObjects) {
-		return nil, false
-	}
-	return o.DeleteNotFoundObjects, true
-}
-
-// HasDeleteNotFoundObjects returns a boolean if a field has been set.
-func (o *PatchedLDAPSourceRequest) HasDeleteNotFoundObjects() bool {
-	if o != nil && !IsNil(o.DeleteNotFoundObjects) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeleteNotFoundObjects gets a reference to the given bool and assigns it to the DeleteNotFoundObjects field.
-func (o *PatchedLDAPSourceRequest) SetDeleteNotFoundObjects(v bool) {
-	o.DeleteNotFoundObjects = &v
-}
-
-// GetSyncOutgoingTriggerMode returns the SyncOutgoingTriggerMode field value if set, zero value otherwise.
-func (o *PatchedLDAPSourceRequest) GetSyncOutgoingTriggerMode() SyncOutgoingTriggerModeEnum {
-	if o == nil || IsNil(o.SyncOutgoingTriggerMode) {
-		var ret SyncOutgoingTriggerModeEnum
-		return ret
-	}
-	return *o.SyncOutgoingTriggerMode
-}
-
-// GetSyncOutgoingTriggerModeOk returns a tuple with the SyncOutgoingTriggerMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedLDAPSourceRequest) GetSyncOutgoingTriggerModeOk() (*SyncOutgoingTriggerModeEnum, bool) {
-	if o == nil || IsNil(o.SyncOutgoingTriggerMode) {
-		return nil, false
-	}
-	return o.SyncOutgoingTriggerMode, true
-}
-
-// HasSyncOutgoingTriggerMode returns a boolean if a field has been set.
-func (o *PatchedLDAPSourceRequest) HasSyncOutgoingTriggerMode() bool {
-	if o != nil && !IsNil(o.SyncOutgoingTriggerMode) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncOutgoingTriggerMode gets a reference to the given SyncOutgoingTriggerModeEnum and assigns it to the SyncOutgoingTriggerMode field.
-func (o *PatchedLDAPSourceRequest) SetSyncOutgoingTriggerMode(v SyncOutgoingTriggerModeEnum) {
-	o.SyncOutgoingTriggerMode = &v
-}
-
 func (o PatchedLDAPSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1287,9 +1118,6 @@ func (o PatchedLDAPSourceRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Promoted) {
-		toSerialize["promoted"] = o.Promoted
 	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
@@ -1311,9 +1139,6 @@ func (o PatchedLDAPSourceRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
-	}
-	if !IsNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
 	}
 	if !IsNil(o.ServerUri) {
 		toSerialize["server_uri"] = o.ServerUri
@@ -1354,9 +1179,6 @@ func (o PatchedLDAPSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GroupMembershipField) {
 		toSerialize["group_membership_field"] = o.GroupMembershipField
 	}
-	if !IsNil(o.UserMembershipAttribute) {
-		toSerialize["user_membership_attribute"] = o.UserMembershipAttribute
-	}
 	if !IsNil(o.ObjectUniquenessField) {
 		toSerialize["object_uniqueness_field"] = o.ObjectUniquenessField
 	}
@@ -1377,12 +1199,6 @@ func (o PatchedLDAPSourceRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LookupGroupsFromUser) {
 		toSerialize["lookup_groups_from_user"] = o.LookupGroupsFromUser
-	}
-	if !IsNil(o.DeleteNotFoundObjects) {
-		toSerialize["delete_not_found_objects"] = o.DeleteNotFoundObjects
-	}
-	if !IsNil(o.SyncOutgoingTriggerMode) {
-		toSerialize["sync_outgoing_trigger_mode"] = o.SyncOutgoingTriggerMode
 	}
 	return toSerialize, nil
 }

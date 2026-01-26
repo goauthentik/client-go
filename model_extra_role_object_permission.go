@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -20,7 +20,7 @@ import (
 // checks if the ExtraRoleObjectPermission type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ExtraRoleObjectPermission{}
 
-// ExtraRoleObjectPermission Role permission with additional object-related data
+// ExtraRoleObjectPermission User permission with additional object-related data
 type ExtraRoleObjectPermission struct {
 	Id       int32  `json:"id"`
 	Codename string `json:"codename"`
@@ -32,7 +32,7 @@ type ExtraRoleObjectPermission struct {
 	AppLabelVerbose string `json:"app_label_verbose"`
 	// Get model label from permission's model
 	ModelVerbose string `json:"model_verbose"`
-	// Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the role has the view_ permission on the object
+	// Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the user/role has the view_ permission on the object
 	ObjectDescription NullableString `json:"object_description"`
 }
 

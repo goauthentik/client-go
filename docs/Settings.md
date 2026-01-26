@@ -11,21 +11,18 @@ Name | Type | Description | Notes
 **EventRetention** | Pointer to **string** | Events will be deleted after this duration.(Format: weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2). | [optional] 
 **ReputationLowerLimit** | Pointer to **int32** | Reputation cannot decrease lower than this value. Zero or negative. | [optional] 
 **ReputationUpperLimit** | Pointer to **int32** | Reputation cannot increase higher than this value. Zero or positive. | [optional] 
-**FooterLinks** | Pointer to **interface{}** |  | [optional] 
+**FooterLinks** | Pointer to **interface{}** | The option configures the footer links on the flow executor pages. | [optional] 
 **GdprCompliance** | Pointer to **bool** | When enabled, all the events caused by a user will be deleted upon the user&#39;s deletion. | [optional] 
 **Impersonation** | Pointer to **bool** | Globally enable/disable impersonation. | [optional] 
 **ImpersonationRequireReason** | Pointer to **bool** | Require administrators to provide a reason for impersonating a user. | [optional] 
 **DefaultTokenDuration** | Pointer to **string** | Default token duration | [optional] 
 **DefaultTokenLength** | Pointer to **int32** | Default token length | [optional] 
-**PaginationDefaultPageSize** | Pointer to **int32** | Default page size for API responses, if no size was requested. | [optional] 
-**PaginationMaxPageSize** | Pointer to **int32** | Maximum page size | [optional] 
-**Flags** | [**PatchedSettingsRequestFlags**](PatchedSettingsRequestFlags.md) |  | 
 
 ## Methods
 
 ### NewSettings
 
-`func NewSettings(flags PatchedSettingsRequestFlags, ) *Settings`
+`func NewSettings() *Settings`
 
 NewSettings instantiates a new Settings object
 This constructor will assign default values to properties that have it defined,
@@ -374,76 +371,6 @@ SetDefaultTokenLength sets DefaultTokenLength field to given value.
 `func (o *Settings) HasDefaultTokenLength() bool`
 
 HasDefaultTokenLength returns a boolean if a field has been set.
-
-### GetPaginationDefaultPageSize
-
-`func (o *Settings) GetPaginationDefaultPageSize() int32`
-
-GetPaginationDefaultPageSize returns the PaginationDefaultPageSize field if non-nil, zero value otherwise.
-
-### GetPaginationDefaultPageSizeOk
-
-`func (o *Settings) GetPaginationDefaultPageSizeOk() (*int32, bool)`
-
-GetPaginationDefaultPageSizeOk returns a tuple with the PaginationDefaultPageSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPaginationDefaultPageSize
-
-`func (o *Settings) SetPaginationDefaultPageSize(v int32)`
-
-SetPaginationDefaultPageSize sets PaginationDefaultPageSize field to given value.
-
-### HasPaginationDefaultPageSize
-
-`func (o *Settings) HasPaginationDefaultPageSize() bool`
-
-HasPaginationDefaultPageSize returns a boolean if a field has been set.
-
-### GetPaginationMaxPageSize
-
-`func (o *Settings) GetPaginationMaxPageSize() int32`
-
-GetPaginationMaxPageSize returns the PaginationMaxPageSize field if non-nil, zero value otherwise.
-
-### GetPaginationMaxPageSizeOk
-
-`func (o *Settings) GetPaginationMaxPageSizeOk() (*int32, bool)`
-
-GetPaginationMaxPageSizeOk returns a tuple with the PaginationMaxPageSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPaginationMaxPageSize
-
-`func (o *Settings) SetPaginationMaxPageSize(v int32)`
-
-SetPaginationMaxPageSize sets PaginationMaxPageSize field to given value.
-
-### HasPaginationMaxPageSize
-
-`func (o *Settings) HasPaginationMaxPageSize() bool`
-
-HasPaginationMaxPageSize returns a boolean if a field has been set.
-
-### GetFlags
-
-`func (o *Settings) GetFlags() PatchedSettingsRequestFlags`
-
-GetFlags returns the Flags field if non-nil, zero value otherwise.
-
-### GetFlagsOk
-
-`func (o *Settings) GetFlagsOk() (*PatchedSettingsRequestFlags, bool)`
-
-GetFlagsOk returns a tuple with the Flags field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFlags
-
-`func (o *Settings) SetFlags(v PatchedSettingsRequestFlags)`
-
-SetFlags sets Flags field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -8,15 +8,13 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **DelegatedSubject** | Pointer to **string** |  | [optional] 
-**Credentials** | Pointer to **map[string]interface{}** |  | [optional] 
+**Credentials** | Pointer to **interface{}** |  | [optional] 
 **Scopes** | Pointer to **string** |  | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
 **UserDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **GroupDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **DefaultGroupEmailDomain** | Pointer to **string** |  | [optional] 
-**SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
-**SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
 ## Methods
@@ -140,20 +138,20 @@ HasDelegatedSubject returns a boolean if a field has been set.
 
 ### GetCredentials
 
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetCredentials() map[string]interface{}`
+`func (o *PatchedGoogleWorkspaceProviderRequest) GetCredentials() interface{}`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetCredentialsOk() (*map[string]interface{}, bool)`
+`func (o *PatchedGoogleWorkspaceProviderRequest) GetCredentialsOk() (*interface{}, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *PatchedGoogleWorkspaceProviderRequest) SetCredentials(v map[string]interface{})`
+`func (o *PatchedGoogleWorkspaceProviderRequest) SetCredentials(v interface{})`
 
 SetCredentials sets Credentials field to given value.
 
@@ -163,6 +161,16 @@ SetCredentials sets Credentials field to given value.
 
 HasCredentials returns a boolean if a field has been set.
 
+### SetCredentialsNil
+
+`func (o *PatchedGoogleWorkspaceProviderRequest) SetCredentialsNil(b bool)`
+
+ SetCredentialsNil sets the value for Credentials to be an explicit nil
+
+### UnsetCredentials
+`func (o *PatchedGoogleWorkspaceProviderRequest) UnsetCredentials()`
+
+UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
 ### GetScopes
 
 `func (o *PatchedGoogleWorkspaceProviderRequest) GetScopes() string`
@@ -322,56 +330,6 @@ SetDefaultGroupEmailDomain sets DefaultGroupEmailDomain field to given value.
 `func (o *PatchedGoogleWorkspaceProviderRequest) HasDefaultGroupEmailDomain() bool`
 
 HasDefaultGroupEmailDomain returns a boolean if a field has been set.
-
-### GetSyncPageSize
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetSyncPageSize() int32`
-
-GetSyncPageSize returns the SyncPageSize field if non-nil, zero value otherwise.
-
-### GetSyncPageSizeOk
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetSyncPageSizeOk() (*int32, bool)`
-
-GetSyncPageSizeOk returns a tuple with the SyncPageSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageSize
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) SetSyncPageSize(v int32)`
-
-SetSyncPageSize sets SyncPageSize field to given value.
-
-### HasSyncPageSize
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) HasSyncPageSize() bool`
-
-HasSyncPageSize returns a boolean if a field has been set.
-
-### GetSyncPageTimeout
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetSyncPageTimeout() string`
-
-GetSyncPageTimeout returns the SyncPageTimeout field if non-nil, zero value otherwise.
-
-### GetSyncPageTimeoutOk
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetSyncPageTimeoutOk() (*string, bool)`
-
-GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageTimeout
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) SetSyncPageTimeout(v string)`
-
-SetSyncPageTimeout sets SyncPageTimeout field to given value.
-
-### HasSyncPageTimeout
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) HasSyncPageTimeout() bool`
-
-HasSyncPageTimeout returns a boolean if a field has been set.
 
 ### GetDryRun
 

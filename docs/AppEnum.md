@@ -3,29 +3,13 @@
 ## Enum
 
 
-* `AUTHENTIK_COMMANDS` (value: `"authentik.commands"`)
-
 * `AUTHENTIK_TENANTS` (value: `"authentik.tenants"`)
-
-* `AUTHENTIK_TASKS` (value: `"authentik.tasks"`)
 
 * `AUTHENTIK_ADMIN` (value: `"authentik.admin"`)
 
 * `AUTHENTIK_API` (value: `"authentik.api"`)
 
-* `AUTHENTIK_CORE` (value: `"authentik.core"`)
-
 * `AUTHENTIK_CRYPTO` (value: `"authentik.crypto"`)
-
-* `AUTHENTIK_ENDPOINTS` (value: `"authentik.endpoints"`)
-
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT` (value: `"authentik.endpoints.connectors.agent"`)
-
-* `AUTHENTIK_ENTERPRISE` (value: `"authentik.enterprise"`)
-
-* `AUTHENTIK_EVENTS` (value: `"authentik.events"`)
-
-* `AUTHENTIK_ADMIN_FILES` (value: `"authentik.admin.files"`)
 
 * `AUTHENTIK_FLOWS` (value: `"authentik.flows"`)
 
@@ -77,8 +61,6 @@
 
 * `AUTHENTIK_SOURCES_SCIM` (value: `"authentik.sources.scim"`)
 
-* `AUTHENTIK_SOURCES_TELEGRAM` (value: `"authentik.sources.telegram"`)
-
 * `AUTHENTIK_STAGES_AUTHENTICATOR` (value: `"authentik.stages.authenticator"`)
 
 * `AUTHENTIK_STAGES_AUTHENTICATOR_DUO` (value: `"authentik.stages.authenticator_duo"`)
@@ -123,17 +105,15 @@
 
 * `AUTHENTIK_STAGES_USER_WRITE` (value: `"authentik.stages.user_write"`)
 
-* `AUTHENTIK_TASKS_SCHEDULES` (value: `"authentik.tasks.schedules"`)
-
 * `AUTHENTIK_BRANDS` (value: `"authentik.brands"`)
 
 * `AUTHENTIK_BLUEPRINTS` (value: `"authentik.blueprints"`)
 
+* `AUTHENTIK_CORE` (value: `"authentik.core"`)
+
+* `AUTHENTIK_ENTERPRISE` (value: `"authentik.enterprise"`)
+
 * `AUTHENTIK_ENTERPRISE_AUDIT` (value: `"authentik.enterprise.audit"`)
-
-* `AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT` (value: `"authentik.enterprise.endpoints.connectors.agent"`)
-
-* `AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_FLEET` (value: `"authentik.enterprise.endpoints.connectors.fleet"`)
 
 * `AUTHENTIK_ENTERPRISE_POLICIES_UNIQUE_PASSWORD` (value: `"authentik.enterprise.policies.unique_password"`)
 
@@ -141,21 +121,13 @@
 
 * `AUTHENTIK_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA` (value: `"authentik.enterprise.providers.microsoft_entra"`)
 
-* `AUTHENTIK_ENTERPRISE_PROVIDERS_RADIUS` (value: `"authentik.enterprise.providers.radius"`)
-
-* `AUTHENTIK_ENTERPRISE_PROVIDERS_SCIM` (value: `"authentik.enterprise.providers.scim"`)
-
 * `AUTHENTIK_ENTERPRISE_PROVIDERS_SSF` (value: `"authentik.enterprise.providers.ssf"`)
-
-* `AUTHENTIK_ENTERPRISE_REPORTS` (value: `"authentik.enterprise.reports"`)
-
-* `AUTHENTIK_ENTERPRISE_SEARCH` (value: `"authentik.enterprise.search"`)
 
 * `AUTHENTIK_ENTERPRISE_STAGES_AUTHENTICATOR_ENDPOINT_GDTC` (value: `"authentik.enterprise.stages.authenticator_endpoint_gdtc"`)
 
-* `AUTHENTIK_ENTERPRISE_STAGES_MTLS` (value: `"authentik.enterprise.stages.mtls"`)
-
 * `AUTHENTIK_ENTERPRISE_STAGES_SOURCE` (value: `"authentik.enterprise.stages.source"`)
+
+* `AUTHENTIK_EVENTS` (value: `"authentik.events"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

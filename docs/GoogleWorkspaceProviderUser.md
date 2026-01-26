@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **GoogleId** | **string** |  | 
 **User** | **int32** |  | 
-**UserObj** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 **Provider** | **int32** |  | 
-**Attributes** | **map[string]interface{}** |  | [readonly] 
+**Attributes** | **interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewGoogleWorkspaceProviderUser
 
-`func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj PartialUser, provider int32, attributes map[string]interface{}, ) *GoogleWorkspaceProviderUser`
+`func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj GroupMember, provider int32, attributes interface{}, ) *GoogleWorkspaceProviderUser`
 
 NewGoogleWorkspaceProviderUser instantiates a new GoogleWorkspaceProviderUser object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetUser sets User field to given value.
 
 ### GetUserObj
 
-`func (o *GoogleWorkspaceProviderUser) GetUserObj() PartialUser`
+`func (o *GoogleWorkspaceProviderUser) GetUserObj() GroupMember`
 
 GetUserObj returns the UserObj field if non-nil, zero value otherwise.
 
 ### GetUserObjOk
 
-`func (o *GoogleWorkspaceProviderUser) GetUserObjOk() (*PartialUser, bool)`
+`func (o *GoogleWorkspaceProviderUser) GetUserObjOk() (*GroupMember, bool)`
 
 GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserObj
 
-`func (o *GoogleWorkspaceProviderUser) SetUserObj(v PartialUser)`
+`func (o *GoogleWorkspaceProviderUser) SetUserObj(v GroupMember)`
 
 SetUserObj sets UserObj field to given value.
 
@@ -132,24 +132,34 @@ SetProvider sets Provider field to given value.
 
 ### GetAttributes
 
-`func (o *GoogleWorkspaceProviderUser) GetAttributes() map[string]interface{}`
+`func (o *GoogleWorkspaceProviderUser) GetAttributes() interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *GoogleWorkspaceProviderUser) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *GoogleWorkspaceProviderUser) GetAttributesOk() (*interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *GoogleWorkspaceProviderUser) SetAttributes(v map[string]interface{})`
+`func (o *GoogleWorkspaceProviderUser) SetAttributes(v interface{})`
 
 SetAttributes sets Attributes field to given value.
 
 
+### SetAttributesNil
+
+`func (o *GoogleWorkspaceProviderUser) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *GoogleWorkspaceProviderUser) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

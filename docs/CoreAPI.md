@@ -1,6 +1,6 @@
 # \CoreAPI
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,11 +15,13 @@ Method | HTTP request | Description
 [**CoreApplicationsCreate**](CoreAPI.md#CoreApplicationsCreate) | **Post** /core/applications/ | 
 [**CoreApplicationsDestroy**](CoreAPI.md#CoreApplicationsDestroy) | **Delete** /core/applications/{slug}/ | 
 [**CoreApplicationsList**](CoreAPI.md#CoreApplicationsList) | **Get** /core/applications/ | 
+[**CoreApplicationsMetricsList**](CoreAPI.md#CoreApplicationsMetricsList) | **Get** /core/applications/{slug}/metrics/ | 
 [**CoreApplicationsPartialUpdate**](CoreAPI.md#CoreApplicationsPartialUpdate) | **Patch** /core/applications/{slug}/ | 
 [**CoreApplicationsRetrieve**](CoreAPI.md#CoreApplicationsRetrieve) | **Get** /core/applications/{slug}/ | 
+[**CoreApplicationsSetIconCreate**](CoreAPI.md#CoreApplicationsSetIconCreate) | **Post** /core/applications/{slug}/set_icon/ | 
+[**CoreApplicationsSetIconUrlCreate**](CoreAPI.md#CoreApplicationsSetIconUrlCreate) | **Post** /core/applications/{slug}/set_icon_url/ | 
 [**CoreApplicationsUpdate**](CoreAPI.md#CoreApplicationsUpdate) | **Put** /core/applications/{slug}/ | 
 [**CoreApplicationsUsedByList**](CoreAPI.md#CoreApplicationsUsedByList) | **Get** /core/applications/{slug}/used_by/ | 
-[**CoreAuthenticatedSessionsBulkDeleteDestroy**](CoreAPI.md#CoreAuthenticatedSessionsBulkDeleteDestroy) | **Delete** /core/authenticated_sessions/bulk_delete/ | 
 [**CoreAuthenticatedSessionsDestroy**](CoreAPI.md#CoreAuthenticatedSessionsDestroy) | **Delete** /core/authenticated_sessions/{uuid}/ | 
 [**CoreAuthenticatedSessionsList**](CoreAPI.md#CoreAuthenticatedSessionsList) | **Get** /core/authenticated_sessions/ | 
 [**CoreAuthenticatedSessionsRetrieve**](CoreAPI.md#CoreAuthenticatedSessionsRetrieve) | **Get** /core/authenticated_sessions/{uuid}/ | 
@@ -57,11 +59,11 @@ Method | HTTP request | Description
 [**CoreUserConsentUsedByList**](CoreAPI.md#CoreUserConsentUsedByList) | **Get** /core/user_consent/{id}/used_by/ | 
 [**CoreUsersCreate**](CoreAPI.md#CoreUsersCreate) | **Post** /core/users/ | 
 [**CoreUsersDestroy**](CoreAPI.md#CoreUsersDestroy) | **Delete** /core/users/{id}/ | 
-[**CoreUsersExportCreate**](CoreAPI.md#CoreUsersExportCreate) | **Post** /core/users/export/ | 
 [**CoreUsersImpersonateCreate**](CoreAPI.md#CoreUsersImpersonateCreate) | **Post** /core/users/{id}/impersonate/ | 
 [**CoreUsersImpersonateEndRetrieve**](CoreAPI.md#CoreUsersImpersonateEndRetrieve) | **Get** /core/users/impersonate_end/ | 
 [**CoreUsersList**](CoreAPI.md#CoreUsersList) | **Get** /core/users/ | 
 [**CoreUsersMeRetrieve**](CoreAPI.md#CoreUsersMeRetrieve) | **Get** /core/users/me/ | 
+[**CoreUsersMetricsRetrieve**](CoreAPI.md#CoreUsersMetricsRetrieve) | **Get** /core/users/{id}/metrics/ | 
 [**CoreUsersPartialUpdate**](CoreAPI.md#CoreUsersPartialUpdate) | **Patch** /core/users/{id}/ | 
 [**CoreUsersPathsRetrieve**](CoreAPI.md#CoreUsersPathsRetrieve) | **Get** /core/users/paths/ | 
 [**CoreUsersRecoveryCreate**](CoreAPI.md#CoreUsersRecoveryCreate) | **Post** /core/users/{id}/recovery/ | 
@@ -866,6 +868,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CoreApplicationsMetricsList
+
+> []Coordinate CoreApplicationsMetricsList(ctx, slug).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	slug := "slug_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CoreAPI.CoreApplicationsMetricsList(context.Background(), slug).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreApplicationsMetricsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CoreApplicationsMetricsList`: []Coordinate
+	fmt.Fprintf(os.Stdout, "Response from `CoreAPI.CoreApplicationsMetricsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationsMetricsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]Coordinate**](Coordinate.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CoreApplicationsPartialUpdate
 
 > Application CoreApplicationsPartialUpdate(ctx, slug).PatchedApplicationRequest(patchedApplicationRequest).Execute()
@@ -1008,6 +1080,148 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CoreApplicationsSetIconCreate
+
+> CoreApplicationsSetIconCreate(ctx, slug).File(file).Clear(clear).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	slug := "slug_example" // string | 
+	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+	clear := true // bool |  (optional) (default to false)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CoreAPI.CoreApplicationsSetIconCreate(context.Background(), slug).File(file).Clear(clear).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreApplicationsSetIconCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationsSetIconCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** |  | 
+ **clear** | **bool** |  | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreApplicationsSetIconUrlCreate
+
+> CoreApplicationsSetIconUrlCreate(ctx, slug).FilePathRequest(filePathRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	slug := "slug_example" // string | 
+	filePathRequest := *openapiclient.NewFilePathRequest("Url_example") // FilePathRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CoreAPI.CoreApplicationsSetIconUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreApplicationsSetIconUrlCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreApplicationsSetIconUrlCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **filePathRequest** | [**FilePathRequest**](FilePathRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CoreApplicationsUpdate
 
 > Application CoreApplicationsUpdate(ctx, slug).ApplicationRequest(applicationRequest).Execute()
@@ -1135,72 +1349,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]UsedBy**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CoreAuthenticatedSessionsBulkDeleteDestroy
-
-> BulkDeleteSessionResponse CoreAuthenticatedSessionsBulkDeleteDestroy(ctx).UserPks(userPks).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	userPks := []int32{int32(123)} // []int32 | List of user IDs to revoke all sessions for
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreAuthenticatedSessionsBulkDeleteDestroy(context.Background()).UserPks(userPks).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreAuthenticatedSessionsBulkDeleteDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CoreAuthenticatedSessionsBulkDeleteDestroy`: BulkDeleteSessionResponse
-	fmt.Fprintf(os.Stdout, "Response from `CoreAPI.CoreAuthenticatedSessionsBulkDeleteDestroy`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreAuthenticatedSessionsBulkDeleteDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userPks** | **[]int32** | List of user IDs to revoke all sessions for | 
-
-### Return type
-
-[**BulkDeleteSessionResponse**](BulkDeleteSessionResponse.md)
 
 ### Authorization
 
@@ -1699,7 +1847,7 @@ Name | Type | Description  | Notes
 
 ## CoreBrandsList
 
-> PaginatedBrandList CoreBrandsList(ctx).BrandUuid(brandUuid).BrandingDefaultFlowBackground(brandingDefaultFlowBackground).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).ClientCertificates(clientCertificates).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
+> PaginatedBrandList CoreBrandsList(ctx).BrandUuid(brandUuid).BrandingDefaultFlowBackground(brandingDefaultFlowBackground).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
 
 
 
@@ -1723,7 +1871,6 @@ func main() {
 	brandingFavicon := "brandingFavicon_example" // string |  (optional)
 	brandingLogo := "brandingLogo_example" // string |  (optional)
 	brandingTitle := "brandingTitle_example" // string |  (optional)
-	clientCertificates := []string{"Inner_example"} // []string |  (optional)
 	default_ := true // bool |  (optional)
 	domain := "domain_example" // string |  (optional)
 	flowAuthentication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
@@ -1740,7 +1887,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreBrandsList(context.Background()).BrandUuid(brandUuid).BrandingDefaultFlowBackground(brandingDefaultFlowBackground).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).ClientCertificates(clientCertificates).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreBrandsList(context.Background()).BrandUuid(brandUuid).BrandingDefaultFlowBackground(brandingDefaultFlowBackground).BrandingFavicon(brandingFavicon).BrandingLogo(brandingLogo).BrandingTitle(brandingTitle).Default_(default_).Domain(domain).FlowAuthentication(flowAuthentication).FlowDeviceCode(flowDeviceCode).FlowInvalidation(flowInvalidation).FlowRecovery(flowRecovery).FlowUnenrollment(flowUnenrollment).FlowUserSettings(flowUserSettings).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).WebCertificate(webCertificate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreBrandsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1766,7 +1913,6 @@ Name | Type | Description  | Notes
  **brandingFavicon** | **string** |  | 
  **brandingLogo** | **string** |  | 
  **brandingTitle** | **string** |  | 
- **clientCertificates** | **[]string** |  | 
  **default_** | **bool** |  | 
  **domain** | **string** |  | 
  **flowAuthentication** | **string** |  | 
@@ -2289,7 +2435,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsList
 
-> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -2309,9 +2455,6 @@ import (
 
 func main() {
 	attributes := "attributes_example" // string | Attributes (optional)
-	includeChildren := true // bool |  (optional) (default to false)
-	includeInheritedRoles := true // bool |  (optional) (default to false)
-	includeParents := true // bool |  (optional) (default to false)
 	includeUsers := true // bool |  (optional) (default to true)
 	isSuperuser := true // bool |  (optional)
 	membersByPk := []int32{int32(123)} // []int32 |  (optional)
@@ -2324,7 +2467,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreGroupsList(context.Background()).Attributes(attributes).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreGroupsList(context.Background()).Attributes(attributes).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreGroupsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2346,9 +2489,6 @@ Other parameters are passed through a pointer to a apiCoreGroupsListRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributes** | **string** | Attributes | 
- **includeChildren** | **bool** |  | [default to false]
- **includeInheritedRoles** | **bool** |  | [default to false]
- **includeParents** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
  **isSuperuser** | **bool** |  | 
  **membersByPk** | **[]int32** |  | 
@@ -2521,7 +2661,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsRetrieve
 
-> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
+> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeUsers(includeUsers).Execute()
 
 
 
@@ -2541,14 +2681,11 @@ import (
 
 func main() {
 	groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
-	includeChildren := true // bool |  (optional) (default to false)
-	includeInheritedRoles := true // bool |  (optional) (default to false)
-	includeParents := true // bool |  (optional) (default to false)
 	includeUsers := true // bool |  (optional) (default to true)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeUsers(includeUsers).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreGroupsRetrieve``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2574,9 +2711,6 @@ Other parameters are passed through a pointer to a apiCoreGroupsRetrieveRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeChildren** | **bool** |  | [default to false]
- **includeInheritedRoles** | **bool** |  | [default to false]
- **includeParents** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
 
 ### Return type
@@ -3405,7 +3539,7 @@ import (
 )
 
 func main() {
-	transactionApplicationRequest := *openapiclient.NewTransactionApplicationRequest(*openapiclient.NewApplicationRequest("Name_example", "Slug_example"), openapiclient.ProviderModelEnum("authentik_providers_google_workspace.googleworkspaceprovider"), openapiclient.modelRequest{GoogleWorkspaceProviderRequest: openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", map[string]interface{}{"key": interface{}(123)}, "DefaultGroupEmailDomain_example")}) // TransactionApplicationRequest | 
+	transactionApplicationRequest := *openapiclient.NewTransactionApplicationRequest(*openapiclient.NewApplicationRequest("Name_example", "Slug_example"), openapiclient.ProviderModelEnum("authentik_providers_google_workspace.googleworkspaceprovider"), openapiclient.modelRequest{GoogleWorkspaceProviderRequest: openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example")}) // TransactionApplicationRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3868,123 +4002,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CoreUsersExportCreate
-
-> DataExport CoreUsersExportCreate(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-    "time"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	attributes := "attributes_example" // string | Attributes (optional)
-	dateJoined := time.Now() // time.Time |  (optional)
-	dateJoinedGt := time.Now() // time.Time |  (optional)
-	dateJoinedLt := time.Now() // time.Time |  (optional)
-	email := "email_example" // string |  (optional)
-	groupsByName := []string{"Inner_example"} // []string |  (optional)
-	groupsByPk := []string{"Inner_example"} // []string |  (optional)
-	isActive := true // bool |  (optional)
-	isSuperuser := true // bool |  (optional)
-	lastLogin := time.Now() // time.Time |  (optional)
-	lastLoginGt := time.Now() // time.Time |  (optional)
-	lastLoginIsnull := true // bool |  (optional)
-	lastLoginLt := time.Now() // time.Time |  (optional)
-	lastUpdated := time.Now() // time.Time |  (optional)
-	lastUpdatedGt := time.Now() // time.Time |  (optional)
-	lastUpdatedLt := time.Now() // time.Time |  (optional)
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	path := "path_example" // string |  (optional)
-	pathStartswith := "pathStartswith_example" // string |  (optional)
-	rolesByName := []string{"Inner_example"} // []string |  (optional)
-	rolesByPk := []string{"Inner_example"} // []string |  (optional)
-	search := "search_example" // string | A search term. (optional)
-	type_ := []string{"Type_example"} // []string |  (optional)
-	username := "username_example" // string |  (optional)
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreUsersExportCreate(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreUsersExportCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CoreUsersExportCreate`: DataExport
-	fmt.Fprintf(os.Stdout, "Response from `CoreAPI.CoreUsersExportCreate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreUsersExportCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **attributes** | **string** | Attributes | 
- **dateJoined** | **time.Time** |  | 
- **dateJoinedGt** | **time.Time** |  | 
- **dateJoinedLt** | **time.Time** |  | 
- **email** | **string** |  | 
- **groupsByName** | **[]string** |  | 
- **groupsByPk** | **[]string** |  | 
- **isActive** | **bool** |  | 
- **isSuperuser** | **bool** |  | 
- **lastLogin** | **time.Time** |  | 
- **lastLoginGt** | **time.Time** |  | 
- **lastLoginIsnull** | **bool** |  | 
- **lastLoginLt** | **time.Time** |  | 
- **lastUpdated** | **time.Time** |  | 
- **lastUpdatedGt** | **time.Time** |  | 
- **lastUpdatedLt** | **time.Time** |  | 
- **name** | **string** |  | 
- **ordering** | **string** | Which field to use when ordering the results. | 
- **path** | **string** |  | 
- **pathStartswith** | **string** |  | 
- **rolesByName** | **[]string** |  | 
- **rolesByPk** | **[]string** |  | 
- **search** | **string** | A search term. | 
- **type_** | **[]string** |  | 
- **username** | **string** |  | 
- **uuid** | **string** |  | 
-
-### Return type
-
-[**DataExport**](DataExport.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CoreUsersImpersonateCreate
 
 > CoreUsersImpersonateCreate(ctx, id).ImpersonationRequest(impersonationRequest).Execute()
@@ -4116,7 +4133,7 @@ Other parameters are passed through a pointer to a apiCoreUsersImpersonateEndRet
 
 ## CoreUsersList
 
-> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -4131,37 +4148,23 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 	attributes := "attributes_example" // string | Attributes (optional)
-	dateJoined := time.Now() // time.Time |  (optional)
-	dateJoinedGt := time.Now() // time.Time |  (optional)
-	dateJoinedLt := time.Now() // time.Time |  (optional)
 	email := "email_example" // string |  (optional)
 	groupsByName := []string{"Inner_example"} // []string |  (optional)
 	groupsByPk := []string{"Inner_example"} // []string |  (optional)
 	includeGroups := true // bool |  (optional) (default to true)
-	includeRoles := true // bool |  (optional) (default to true)
 	isActive := true // bool |  (optional)
 	isSuperuser := true // bool |  (optional)
-	lastLogin := time.Now() // time.Time |  (optional)
-	lastLoginGt := time.Now() // time.Time |  (optional)
-	lastLoginIsnull := true // bool |  (optional)
-	lastLoginLt := time.Now() // time.Time |  (optional)
-	lastUpdated := time.Now() // time.Time |  (optional)
-	lastUpdatedGt := time.Now() // time.Time |  (optional)
-	lastUpdatedLt := time.Now() // time.Time |  (optional)
 	name := "name_example" // string |  (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	page := int32(56) // int32 | A page number within the paginated result set. (optional)
 	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
 	path := "path_example" // string |  (optional)
 	pathStartswith := "pathStartswith_example" // string |  (optional)
-	rolesByName := []string{"Inner_example"} // []string |  (optional)
-	rolesByPk := []string{"Inner_example"} // []string |  (optional)
 	search := "search_example" // string | A search term. (optional)
 	type_ := []string{"Type_example"} // []string |  (optional)
 	username := "username_example" // string |  (optional)
@@ -4169,7 +4172,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreUsersList(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreUsersList(context.Background()).Attributes(attributes).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IsActive(isActive).IsSuperuser(isSuperuser).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreUsersList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4191,31 +4194,18 @@ Other parameters are passed through a pointer to a apiCoreUsersListRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributes** | **string** | Attributes | 
- **dateJoined** | **time.Time** |  | 
- **dateJoinedGt** | **time.Time** |  | 
- **dateJoinedLt** | **time.Time** |  | 
  **email** | **string** |  | 
  **groupsByName** | **[]string** |  | 
  **groupsByPk** | **[]string** |  | 
  **includeGroups** | **bool** |  | [default to true]
- **includeRoles** | **bool** |  | [default to true]
  **isActive** | **bool** |  | 
  **isSuperuser** | **bool** |  | 
- **lastLogin** | **time.Time** |  | 
- **lastLoginGt** | **time.Time** |  | 
- **lastLoginIsnull** | **bool** |  | 
- **lastLoginLt** | **time.Time** |  | 
- **lastUpdated** | **time.Time** |  | 
- **lastUpdatedGt** | **time.Time** |  | 
- **lastUpdatedLt** | **time.Time** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **path** | **string** |  | 
  **pathStartswith** | **string** |  | 
- **rolesByName** | **[]string** |  | 
- **rolesByPk** | **[]string** |  | 
  **search** | **string** | A search term. | 
  **type_** | **[]string** |  | 
  **username** | **string** |  | 
@@ -4285,6 +4275,76 @@ Other parameters are passed through a pointer to a apiCoreUsersMeRetrieveRequest
 ### Return type
 
 [**SessionUser**](SessionUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CoreUsersMetricsRetrieve
+
+> UserMetrics CoreUsersMetricsRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this User.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CoreAPI.CoreUsersMetricsRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreUsersMetricsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CoreUsersMetricsRetrieve`: UserMetrics
+	fmt.Fprintf(os.Stdout, "Response from `CoreAPI.CoreUsersMetricsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCoreUsersMetricsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**UserMetrics**](UserMetrics.md)
 
 ### Authorization
 
@@ -4393,7 +4453,7 @@ import (
 )
 
 func main() {
-	search := "search_example" // string | A search term. (optional)
+	search := "search_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -4418,7 +4478,7 @@ Other parameters are passed through a pointer to a apiCoreUsersPathsRetrieveRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **string** | A search term. | 
+ **search** | **string** |  | 
 
 ### Return type
 

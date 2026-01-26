@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &AuthenticatedSessionAsn{}
 
 // AuthenticatedSessionAsn Get ASN Data
 type AuthenticatedSessionAsn struct {
-	Asn     NullableInt32  `json:"asn"`
+	Asn     int32          `json:"asn"`
 	AsOrg   NullableString `json:"as_org"`
 	Network NullableString `json:"network"`
 }
@@ -33,7 +33,7 @@ type _AuthenticatedSessionAsn AuthenticatedSessionAsn
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatedSessionAsn(asn NullableInt32, asOrg NullableString, network NullableString) *AuthenticatedSessionAsn {
+func NewAuthenticatedSessionAsn(asn int32, asOrg NullableString, network NullableString) *AuthenticatedSessionAsn {
 	this := AuthenticatedSessionAsn{}
 	this.Asn = asn
 	this.AsOrg = asOrg
@@ -50,29 +50,27 @@ func NewAuthenticatedSessionAsnWithDefaults() *AuthenticatedSessionAsn {
 }
 
 // GetAsn returns the Asn field value
-// If the value is explicit nil, the zero value for int32 will be returned
 func (o *AuthenticatedSessionAsn) GetAsn() int32 {
-	if o == nil || o.Asn.Get() == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return *o.Asn.Get()
+	return o.Asn
 }
 
 // GetAsnOk returns a tuple with the Asn field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatedSessionAsn) GetAsnOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Asn.Get(), o.Asn.IsSet()
+	return &o.Asn, true
 }
 
 // SetAsn sets field value
 func (o *AuthenticatedSessionAsn) SetAsn(v int32) {
-	o.Asn.Set(&v)
+	o.Asn = v
 }
 
 // GetAsOrg returns the AsOrg field value
@@ -137,7 +135,7 @@ func (o AuthenticatedSessionAsn) MarshalJSON() ([]byte, error) {
 
 func (o AuthenticatedSessionAsn) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["asn"] = o.Asn.Get()
+	toSerialize["asn"] = o.Asn
 	toSerialize["as_org"] = o.AsOrg.Get()
 	toSerialize["network"] = o.Network.Get()
 	return toSerialize, nil

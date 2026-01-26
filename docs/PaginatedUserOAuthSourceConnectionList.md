@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]UserOAuthSourceConnection**](UserOAuthSourceConnection.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedUserOAuthSourceConnectionList
 
-`func NewPaginatedUserOAuthSourceConnectionList(pagination Pagination, results []UserOAuthSourceConnection, autocomplete map[string]interface{}, ) *PaginatedUserOAuthSourceConnectionList`
+`func NewPaginatedUserOAuthSourceConnectionList(pagination Pagination, results []UserOAuthSourceConnection, ) *PaginatedUserOAuthSourceConnectionList`
 
 NewPaginatedUserOAuthSourceConnectionList instantiates a new PaginatedUserOAuthSourceConnectionList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedUserOAuthSourceConnectionList) SetResults(v []UserOAuthSourceConnection)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedUserOAuthSourceConnectionList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedUserOAuthSourceConnectionList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedUserOAuthSourceConnectionList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **SessionDuration** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **TerminateOtherSessions** | Pointer to **bool** | Terminate all other sessions of the user logging in. | [optional] 
 **RememberMeOffset** | Pointer to **string** | Offset the session will be extended by when the user picks the remember me option. Default of 0 means that the remember me option will not be shown. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **NetworkBinding** | Pointer to [**NetworkBindingEnum**](NetworkBindingEnum.md) | Bind sessions created by this stage to the configured network | [optional] 
 **GeoipBinding** | Pointer to [**GeoipBindingEnum**](GeoipBindingEnum.md) | Bind sessions created by this stage to the configured GeoIP location | [optional] 
-**RememberDevice** | Pointer to **string** | When set to a non-zero value, authentik will save a cookie with a longer expiry,to remember the device the user is logging in from. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 
 ## Methods
 
@@ -55,6 +55,31 @@ SetName sets Name field to given value.
 `func (o *PatchedUserLoginStageRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetFlowSet
+
+`func (o *PatchedUserLoginStageRequest) GetFlowSet() []FlowSetRequest`
+
+GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
+
+### GetFlowSetOk
+
+`func (o *PatchedUserLoginStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
+
+GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowSet
+
+`func (o *PatchedUserLoginStageRequest) SetFlowSet(v []FlowSetRequest)`
+
+SetFlowSet sets FlowSet field to given value.
+
+### HasFlowSet
+
+`func (o *PatchedUserLoginStageRequest) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetSessionDuration
 
@@ -180,31 +205,6 @@ SetGeoipBinding sets GeoipBinding field to given value.
 `func (o *PatchedUserLoginStageRequest) HasGeoipBinding() bool`
 
 HasGeoipBinding returns a boolean if a field has been set.
-
-### GetRememberDevice
-
-`func (o *PatchedUserLoginStageRequest) GetRememberDevice() string`
-
-GetRememberDevice returns the RememberDevice field if non-nil, zero value otherwise.
-
-### GetRememberDeviceOk
-
-`func (o *PatchedUserLoginStageRequest) GetRememberDeviceOk() (*string, bool)`
-
-GetRememberDeviceOk returns a tuple with the RememberDevice field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRememberDevice
-
-`func (o *PatchedUserLoginStageRequest) SetRememberDevice(v string)`
-
-SetRememberDevice sets RememberDevice field to given value.
-
-### HasRememberDevice
-
-`func (o *PatchedUserLoginStageRequest) HasRememberDevice() bool`
-
-HasRememberDevice returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

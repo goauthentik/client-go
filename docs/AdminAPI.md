@@ -1,14 +1,11 @@
 # \AdminAPI
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdminAppsList**](AdminAPI.md#AdminAppsList) | **Get** /admin/apps/ | 
-[**AdminFileCreate**](AdminAPI.md#AdminFileCreate) | **Post** /admin/file/ | 
-[**AdminFileDestroy**](AdminAPI.md#AdminFileDestroy) | **Delete** /admin/file/ | 
-[**AdminFileList**](AdminAPI.md#AdminFileList) | **Get** /admin/file/ | 
-[**AdminFileUsedByList**](AdminAPI.md#AdminFileUsedByList) | **Get** /admin/file/used_by/ | 
+[**AdminMetricsRetrieve**](AdminAPI.md#AdminMetricsRetrieve) | **Get** /admin/metrics/ | 
 [**AdminModelsList**](AdminAPI.md#AdminModelsList) | **Get** /admin/models/ | 
 [**AdminSettingsPartialUpdate**](AdminAPI.md#AdminSettingsPartialUpdate) | **Patch** /admin/settings/ | 
 [**AdminSettingsRetrieve**](AdminAPI.md#AdminSettingsRetrieve) | **Get** /admin/settings/ | 
@@ -18,6 +15,7 @@ Method | HTTP request | Description
 [**AdminVersionHistoryList**](AdminAPI.md#AdminVersionHistoryList) | **Get** /admin/version/history/ | 
 [**AdminVersionHistoryRetrieve**](AdminAPI.md#AdminVersionHistoryRetrieve) | **Get** /admin/version/history/{id}/ | 
 [**AdminVersionRetrieve**](AdminAPI.md#AdminVersionRetrieve) | **Get** /admin/version/ | 
+[**AdminWorkersList**](AdminAPI.md#AdminWorkersList) | **Get** /admin/workers/ | 
 
 
 
@@ -82,77 +80,9 @@ Other parameters are passed through a pointer to a apiAdminAppsListRequest struc
 [[Back to README]](../README.md)
 
 
-## AdminFileCreate
+## AdminMetricsRetrieve
 
-> AdminFileCreate(ctx).File(file).Name(name).Usage(usage).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	file := os.NewFile(1234, "some_file") // *os.File | 
-	name := "name_example" // string |  (optional)
-	usage := "usage_example" // string |  (optional) (default to "media")
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AdminAPI.AdminFileCreate(context.Background()).File(file).Name(name).Usage(usage).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminFileCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAdminFileCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file** | ***os.File** |  | 
- **name** | **string** |  | 
- **usage** | **string** |  | [default to &quot;media&quot;]
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## AdminFileDestroy
-
-> AdminFileDestroy(ctx).Name(name).Usage(usage).Execute()
+> LoginMetrics AdminMetricsRetrieve(ctx).Execute()
 
 
 
@@ -171,170 +101,31 @@ import (
 )
 
 func main() {
-	name := "name_example" // string |  (optional)
-	usage := "usage_example" // string |  (optional) (default to "media")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AdminAPI.AdminFileDestroy(context.Background()).Name(name).Usage(usage).Execute()
+	resp, r, err := apiClient.AdminAPI.AdminMetricsRetrieve(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminFileDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminMetricsRetrieve``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AdminMetricsRetrieve`: LoginMetrics
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminMetricsRetrieve`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAdminFileDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string** |  | 
- **usage** | **string** |  | [default to &quot;media&quot;]
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## AdminFileList
-
-> []FileList AdminFileList(ctx).ManageableOnly(manageableOnly).Search(search).Usage(usage).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	manageableOnly := true // bool |  (optional) (default to false)
-	search := "search_example" // string | A search term. (optional)
-	usage := "usage_example" // string |  (optional) (default to "media")
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminFileList(context.Background()).ManageableOnly(manageableOnly).Search(search).Usage(usage).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminFileList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminFileList`: []FileList
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminFileList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAdminFileListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAdminMetricsRetrieveRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **manageableOnly** | **bool** |  | [default to false]
- **search** | **string** | A search term. | 
- **usage** | **string** |  | [default to &quot;media&quot;]
 
 ### Return type
 
-[**[]FileList**](FileList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## AdminFileUsedByList
-
-> []UsedBy AdminFileUsedByList(ctx).Name(name).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	name := "name_example" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.AdminFileUsedByList(context.Background()).Name(name).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminFileUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AdminFileUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminFileUsedByList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAdminFileUsedByListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string** |  | 
-
-### Return type
-
-[**[]UsedBy**](UsedBy.md)
+[**LoginMetrics**](LoginMetrics.md)
 
 ### Authorization
 
@@ -559,7 +350,7 @@ import (
 )
 
 func main() {
-	settingsRequest := *openapiclient.NewSettingsRequest(*openapiclient.NewPatchedSettingsRequestFlags(false, false, false)) // SettingsRequest | 
+	settingsRequest := *openapiclient.NewSettingsRequest() // SettingsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -914,6 +705,67 @@ Other parameters are passed through a pointer to a apiAdminVersionRetrieveReques
 ### Return type
 
 [**Version**](Version.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AdminWorkersList
+
+> []Worker AdminWorkersList(ctx).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.AdminWorkersList(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.AdminWorkersList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AdminWorkersList`: []Worker
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.AdminWorkersList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAdminWorkersListRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]Worker**](Worker.md)
 
 ### Authorization
 

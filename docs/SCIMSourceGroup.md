@@ -4,18 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**ExternalId** | **string** |  | 
+**Id** | **string** |  | 
 **Group** | **string** |  | 
-**GroupObj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] 
+**GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Source** | **string** |  | 
-**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Attributes** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewSCIMSourceGroup
 
-`func NewSCIMSourceGroup(externalId string, group string, groupObj PartialGroup, source string, ) *SCIMSourceGroup`
+`func NewSCIMSourceGroup(id string, group string, groupObj UserGroup, source string, ) *SCIMSourceGroup`
 
 NewSCIMSourceGroup instantiates a new SCIMSourceGroup object
 This constructor will assign default values to properties that have it defined,
@@ -49,31 +48,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *SCIMSourceGroup) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetExternalId
-
-`func (o *SCIMSourceGroup) GetExternalId() string`
-
-GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
-
-### GetExternalIdOk
-
-`func (o *SCIMSourceGroup) GetExternalIdOk() (*string, bool)`
-
-GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExternalId
-
-`func (o *SCIMSourceGroup) SetExternalId(v string)`
-
-SetExternalId sets ExternalId field to given value.
-
 
 ### GetGroup
 
@@ -97,20 +71,20 @@ SetGroup sets Group field to given value.
 
 ### GetGroupObj
 
-`func (o *SCIMSourceGroup) GetGroupObj() PartialGroup`
+`func (o *SCIMSourceGroup) GetGroupObj() UserGroup`
 
 GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
 ### GetGroupObjOk
 
-`func (o *SCIMSourceGroup) GetGroupObjOk() (*PartialGroup, bool)`
+`func (o *SCIMSourceGroup) GetGroupObjOk() (*UserGroup, bool)`
 
 GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupObj
 
-`func (o *SCIMSourceGroup) SetGroupObj(v PartialGroup)`
+`func (o *SCIMSourceGroup) SetGroupObj(v UserGroup)`
 
 SetGroupObj sets GroupObj field to given value.
 
@@ -137,20 +111,20 @@ SetSource sets Source field to given value.
 
 ### GetAttributes
 
-`func (o *SCIMSourceGroup) GetAttributes() map[string]interface{}`
+`func (o *SCIMSourceGroup) GetAttributes() interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *SCIMSourceGroup) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *SCIMSourceGroup) GetAttributesOk() (*interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *SCIMSourceGroup) SetAttributes(v map[string]interface{})`
+`func (o *SCIMSourceGroup) SetAttributes(v interface{})`
 
 SetAttributes sets Attributes field to given value.
 
@@ -160,6 +134,16 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### SetAttributesNil
+
+`func (o *SCIMSourceGroup) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *SCIMSourceGroup) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

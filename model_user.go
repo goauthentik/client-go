@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -28,15 +28,13 @@ type User struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive    *bool          `json:"is_active,omitempty"`
-	LastLogin   NullableTime   `json:"last_login,omitempty"`
-	DateJoined  time.Time      `json:"date_joined"`
-	IsSuperuser bool           `json:"is_superuser"`
-	Groups      []string       `json:"groups,omitempty"`
-	GroupsObj   []PartialGroup `json:"groups_obj"`
-	Roles       []string       `json:"roles,omitempty"`
-	RolesObj    []Role         `json:"roles_obj"`
-	Email       *string        `json:"email,omitempty"`
+	IsActive    *bool        `json:"is_active,omitempty"`
+	LastLogin   NullableTime `json:"last_login,omitempty"`
+	DateJoined  time.Time    `json:"date_joined"`
+	IsSuperuser bool         `json:"is_superuser"`
+	Groups      []string     `json:"groups,omitempty"`
+	GroupsObj   []UserGroup  `json:"groups_obj"`
+	Email       *string      `json:"email,omitempty"`
 	// User's avatar, either a http/https URL or a data URI
 	Avatar             string                 `json:"avatar"`
 	Attributes         map[string]interface{} `json:"attributes,omitempty"`
@@ -45,7 +43,6 @@ type User struct {
 	Type               *UserTypeEnum          `json:"type,omitempty"`
 	Uuid               string                 `json:"uuid"`
 	PasswordChangeDate time.Time              `json:"password_change_date"`
-	LastUpdated        time.Time              `json:"last_updated"`
 }
 
 type _User User
@@ -54,7 +51,7 @@ type _User User
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []PartialGroup, rolesObj []Role, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time) *User {
+func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []UserGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time) *User {
 	this := User{}
 	this.Pk = pk
 	this.Username = username
@@ -62,12 +59,10 @@ func NewUser(pk int32, username string, name string, dateJoined time.Time, isSup
 	this.DateJoined = dateJoined
 	this.IsSuperuser = isSuperuser
 	this.GroupsObj = groupsObj
-	this.RolesObj = rolesObj
 	this.Avatar = avatar
 	this.Uid = uid
 	this.Uuid = uuid
 	this.PasswordChangeDate = passwordChangeDate
-	this.LastUpdated = lastUpdated
 	return &this
 }
 
@@ -307,10 +302,10 @@ func (o *User) SetGroups(v []string) {
 }
 
 // GetGroupsObj returns the GroupsObj field value
-// If the value is explicit nil, the zero value for []PartialGroup will be returned
-func (o *User) GetGroupsObj() []PartialGroup {
+// If the value is explicit nil, the zero value for []UserGroup will be returned
+func (o *User) GetGroupsObj() []UserGroup {
 	if o == nil {
-		var ret []PartialGroup
+		var ret []UserGroup
 		return ret
 	}
 
@@ -320,7 +315,7 @@ func (o *User) GetGroupsObj() []PartialGroup {
 // GetGroupsObjOk returns a tuple with the GroupsObj field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *User) GetGroupsObjOk() ([]PartialGroup, bool) {
+func (o *User) GetGroupsObjOk() ([]UserGroup, bool) {
 	if o == nil || IsNil(o.GroupsObj) {
 		return nil, false
 	}
@@ -328,66 +323,8 @@ func (o *User) GetGroupsObjOk() ([]PartialGroup, bool) {
 }
 
 // SetGroupsObj sets field value
-func (o *User) SetGroupsObj(v []PartialGroup) {
+func (o *User) SetGroupsObj(v []UserGroup) {
 	o.GroupsObj = v
-}
-
-// GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *User) GetRoles() []string {
-	if o == nil || IsNil(o.Roles) {
-		var ret []string
-		return ret
-	}
-	return o.Roles
-}
-
-// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *User) GetRolesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Roles) {
-		return nil, false
-	}
-	return o.Roles, true
-}
-
-// HasRoles returns a boolean if a field has been set.
-func (o *User) HasRoles() bool {
-	if o != nil && !IsNil(o.Roles) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoles gets a reference to the given []string and assigns it to the Roles field.
-func (o *User) SetRoles(v []string) {
-	o.Roles = v
-}
-
-// GetRolesObj returns the RolesObj field value
-// If the value is explicit nil, the zero value for []Role will be returned
-func (o *User) GetRolesObj() []Role {
-	if o == nil {
-		var ret []Role
-		return ret
-	}
-
-	return o.RolesObj
-}
-
-// GetRolesObjOk returns a tuple with the RolesObj field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *User) GetRolesObjOk() ([]Role, bool) {
-	if o == nil || IsNil(o.RolesObj) {
-		return nil, false
-	}
-	return o.RolesObj, true
-}
-
-// SetRolesObj sets field value
-func (o *User) SetRolesObj(v []Role) {
-	o.RolesObj = v
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
@@ -614,30 +551,6 @@ func (o *User) SetPasswordChangeDate(v time.Time) {
 	o.PasswordChangeDate = v
 }
 
-// GetLastUpdated returns the LastUpdated field value
-func (o *User) GetLastUpdated() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.LastUpdated
-}
-
-// GetLastUpdatedOk returns a tuple with the LastUpdated field value
-// and a boolean to check if the value has been set.
-func (o *User) GetLastUpdatedOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LastUpdated, true
-}
-
-// SetLastUpdated sets field value
-func (o *User) SetLastUpdated(v time.Time) {
-	o.LastUpdated = v
-}
-
 func (o User) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -665,12 +578,6 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if o.GroupsObj != nil {
 		toSerialize["groups_obj"] = o.GroupsObj
 	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	if o.RolesObj != nil {
-		toSerialize["roles_obj"] = o.RolesObj
-	}
 	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
@@ -687,7 +594,6 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["uuid"] = o.Uuid
 	toSerialize["password_change_date"] = o.PasswordChangeDate
-	toSerialize["last_updated"] = o.LastUpdated
 	return toSerialize, nil
 }
 
@@ -702,12 +608,10 @@ func (o *User) UnmarshalJSON(data []byte) (err error) {
 		"date_joined",
 		"is_superuser",
 		"groups_obj",
-		"roles_obj",
 		"avatar",
 		"uid",
 		"uuid",
 		"password_change_date",
-		"last_updated",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &PatchedApplicationEntitlementRequest{}
 
 // PatchedApplicationEntitlementRequest ApplicationEntitlement Serializer
 type PatchedApplicationEntitlementRequest struct {
-	Name       *string                `json:"name,omitempty"`
-	App        *string                `json:"app,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Name       *string     `json:"name,omitempty"`
+	App        *string     `json:"app,omitempty"`
+	Attributes interface{} `json:"attributes,omitempty"`
 }
 
 // NewPatchedApplicationEntitlementRequest instantiates a new PatchedApplicationEntitlementRequest object
@@ -106,10 +106,10 @@ func (o *PatchedApplicationEntitlementRequest) SetApp(v string) {
 	o.App = &v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *PatchedApplicationEntitlementRequest) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]interface{}
+// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedApplicationEntitlementRequest) GetAttributes() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Attributes
@@ -117,11 +117,12 @@ func (o *PatchedApplicationEntitlementRequest) GetAttributes() map[string]interf
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedApplicationEntitlementRequest) GetAttributesOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedApplicationEntitlementRequest) GetAttributesOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
@@ -133,8 +134,8 @@ func (o *PatchedApplicationEntitlementRequest) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *PatchedApplicationEntitlementRequest) SetAttributes(v map[string]interface{}) {
+// SetAttributes gets a reference to the given interface{} and assigns it to the Attributes field.
+func (o *PatchedApplicationEntitlementRequest) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 
@@ -154,7 +155,7 @@ func (o PatchedApplicationEntitlementRequest) ToMap() (map[string]interface{}, e
 	if !IsNil(o.App) {
 		toSerialize["app"] = o.App
 	}
-	if !IsNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
 	return toSerialize, nil

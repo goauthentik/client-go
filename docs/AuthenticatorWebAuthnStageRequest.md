@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
-**FriendlyName** | Pointer to **string** |  | [optional] 
+**FriendlyName** | Pointer to **NullableString** |  | [optional] 
 **UserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] 
 **AuthenticatorAttachment** | Pointer to [**NullableAuthenticatorAttachmentEnum**](AuthenticatorAttachmentEnum.md) |  | [optional] 
 **ResidentKeyRequirement** | Pointer to [**ResidentKeyRequirementEnum**](ResidentKeyRequirementEnum.md) |  | [optional] 
 **DeviceTypeRestrictions** | Pointer to **[]string** |  | [optional] 
-**MaxAttempts** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -51,6 +51,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetFlowSet
+
+`func (o *AuthenticatorWebAuthnStageRequest) GetFlowSet() []FlowSetRequest`
+
+GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
+
+### GetFlowSetOk
+
+`func (o *AuthenticatorWebAuthnStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
+
+GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowSet
+
+`func (o *AuthenticatorWebAuthnStageRequest) SetFlowSet(v []FlowSetRequest)`
+
+SetFlowSet sets FlowSet field to given value.
+
+### HasFlowSet
+
+`func (o *AuthenticatorWebAuthnStageRequest) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetConfigureFlow
 
@@ -112,6 +137,16 @@ SetFriendlyName sets FriendlyName field to given value.
 
 HasFriendlyName returns a boolean if a field has been set.
 
+### SetFriendlyNameNil
+
+`func (o *AuthenticatorWebAuthnStageRequest) SetFriendlyNameNil(b bool)`
+
+ SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+
+### UnsetFriendlyName
+`func (o *AuthenticatorWebAuthnStageRequest) UnsetFriendlyName()`
+
+UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
 ### GetUserVerification
 
 `func (o *AuthenticatorWebAuthnStageRequest) GetUserVerification() UserVerificationEnum`
@@ -221,31 +256,6 @@ SetDeviceTypeRestrictions sets DeviceTypeRestrictions field to given value.
 `func (o *AuthenticatorWebAuthnStageRequest) HasDeviceTypeRestrictions() bool`
 
 HasDeviceTypeRestrictions returns a boolean if a field has been set.
-
-### GetMaxAttempts
-
-`func (o *AuthenticatorWebAuthnStageRequest) GetMaxAttempts() int32`
-
-GetMaxAttempts returns the MaxAttempts field if non-nil, zero value otherwise.
-
-### GetMaxAttemptsOk
-
-`func (o *AuthenticatorWebAuthnStageRequest) GetMaxAttemptsOk() (*int32, bool)`
-
-GetMaxAttemptsOk returns a tuple with the MaxAttempts field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMaxAttempts
-
-`func (o *AuthenticatorWebAuthnStageRequest) SetMaxAttempts(v int32)`
-
-SetMaxAttempts sets MaxAttempts field to given value.
-
-### HasMaxAttempts
-
-`func (o *AuthenticatorWebAuthnStageRequest) HasMaxAttempts() bool`
-
-HasMaxAttempts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

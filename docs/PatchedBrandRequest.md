@@ -19,8 +19,7 @@ Name | Type | Description | Notes
 **FlowDeviceCode** | Pointer to **NullableString** |  | [optional] 
 **DefaultApplication** | Pointer to **NullableString** | When set, external users will be redirected to this application after authenticating. | [optional] 
 **WebCertificate** | Pointer to **NullableString** | Web Certificate used by the authentik Core webserver. | [optional] 
-**ClientCertificates** | Pointer to **[]string** | Certificates used for client authentication. | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
+**Attributes** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -496,47 +495,22 @@ HasWebCertificate returns a boolean if a field has been set.
 `func (o *PatchedBrandRequest) UnsetWebCertificate()`
 
 UnsetWebCertificate ensures that no value is present for WebCertificate, not even an explicit nil
-### GetClientCertificates
-
-`func (o *PatchedBrandRequest) GetClientCertificates() []string`
-
-GetClientCertificates returns the ClientCertificates field if non-nil, zero value otherwise.
-
-### GetClientCertificatesOk
-
-`func (o *PatchedBrandRequest) GetClientCertificatesOk() (*[]string, bool)`
-
-GetClientCertificatesOk returns a tuple with the ClientCertificates field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientCertificates
-
-`func (o *PatchedBrandRequest) SetClientCertificates(v []string)`
-
-SetClientCertificates sets ClientCertificates field to given value.
-
-### HasClientCertificates
-
-`func (o *PatchedBrandRequest) HasClientCertificates() bool`
-
-HasClientCertificates returns a boolean if a field has been set.
-
 ### GetAttributes
 
-`func (o *PatchedBrandRequest) GetAttributes() map[string]interface{}`
+`func (o *PatchedBrandRequest) GetAttributes() interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *PatchedBrandRequest) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *PatchedBrandRequest) GetAttributesOk() (*interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *PatchedBrandRequest) SetAttributes(v map[string]interface{})`
+`func (o *PatchedBrandRequest) SetAttributes(v interface{})`
 
 SetAttributes sets Attributes field to given value.
 
@@ -546,6 +520,16 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### SetAttributesNil
+
+`func (o *PatchedBrandRequest) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *PatchedBrandRequest) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

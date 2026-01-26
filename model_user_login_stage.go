@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,7 @@ type UserLoginStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	SessionDuration *string `json:"session_duration,omitempty"`
 	// Terminate all other sessions of the user logging in.
@@ -43,8 +43,6 @@ type UserLoginStage struct {
 	NetworkBinding *NetworkBindingEnum `json:"network_binding,omitempty"`
 	// Bind sessions created by this stage to the configured GeoIP location
 	GeoipBinding *GeoipBindingEnum `json:"geoip_binding,omitempty"`
-	// When set to a non-zero value, authentik will save a cookie with a longer expiry,to remember the device the user is logging in from. (Format: hours=-1;minutes=-2;seconds=-3)
-	RememberDevice *string `json:"remember_device,omitempty"`
 }
 
 type _UserLoginStage UserLoginStage
@@ -53,7 +51,7 @@ type _UserLoginStage UserLoginStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserLoginStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet) *UserLoginStage {
+func NewUserLoginStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *UserLoginStage {
 	this := UserLoginStage{}
 	this.Pk = pk
 	this.Name = name
@@ -61,7 +59,6 @@ func NewUserLoginStage(pk string, name string, component string, verboseName str
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	return &this
 }
 
@@ -217,26 +214,34 @@ func (o *UserLoginStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *UserLoginStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *UserLoginStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *UserLoginStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -401,38 +406,6 @@ func (o *UserLoginStage) SetGeoipBinding(v GeoipBindingEnum) {
 	o.GeoipBinding = &v
 }
 
-// GetRememberDevice returns the RememberDevice field value if set, zero value otherwise.
-func (o *UserLoginStage) GetRememberDevice() string {
-	if o == nil || IsNil(o.RememberDevice) {
-		var ret string
-		return ret
-	}
-	return *o.RememberDevice
-}
-
-// GetRememberDeviceOk returns a tuple with the RememberDevice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserLoginStage) GetRememberDeviceOk() (*string, bool) {
-	if o == nil || IsNil(o.RememberDevice) {
-		return nil, false
-	}
-	return o.RememberDevice, true
-}
-
-// HasRememberDevice returns a boolean if a field has been set.
-func (o *UserLoginStage) HasRememberDevice() bool {
-	if o != nil && !IsNil(o.RememberDevice) {
-		return true
-	}
-
-	return false
-}
-
-// SetRememberDevice gets a reference to the given string and assigns it to the RememberDevice field.
-func (o *UserLoginStage) SetRememberDevice(v string) {
-	o.RememberDevice = &v
-}
-
 func (o UserLoginStage) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -449,7 +422,9 @@ func (o UserLoginStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.SessionDuration) {
 		toSerialize["session_duration"] = o.SessionDuration
 	}
@@ -465,9 +440,6 @@ func (o UserLoginStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GeoipBinding) {
 		toSerialize["geoip_binding"] = o.GeoipBinding
 	}
-	if !IsNil(o.RememberDevice) {
-		toSerialize["remember_device"] = o.RememberDevice
-	}
 	return toSerialize, nil
 }
 
@@ -482,7 +454,6 @@ func (o *UserLoginStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 	}
 
 	allProperties := make(map[string]interface{})

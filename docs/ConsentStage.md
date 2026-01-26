@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **Mode** | Pointer to [**ConsentStageModeEnum**](ConsentStageModeEnum.md) |  | [optional] 
 **ConsentExpireIn** | Pointer to **string** | Offset after which consent expires. (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewConsentStage
 
-`func NewConsentStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, ) *ConsentStage`
+`func NewConsentStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *ConsentStage`
 
 NewConsentStage instantiates a new ConsentStage object
 This constructor will assign default values to properties that have it defined,
@@ -172,6 +172,11 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
+### HasFlowSet
+
+`func (o *ConsentStage) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetMode
 

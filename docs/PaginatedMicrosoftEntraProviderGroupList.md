@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]MicrosoftEntraProviderGroup**](MicrosoftEntraProviderGroup.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedMicrosoftEntraProviderGroupList
 
-`func NewPaginatedMicrosoftEntraProviderGroupList(pagination Pagination, results []MicrosoftEntraProviderGroup, autocomplete map[string]interface{}, ) *PaginatedMicrosoftEntraProviderGroupList`
+`func NewPaginatedMicrosoftEntraProviderGroupList(pagination Pagination, results []MicrosoftEntraProviderGroup, ) *PaginatedMicrosoftEntraProviderGroupList`
 
 NewPaginatedMicrosoftEntraProviderGroupList instantiates a new PaginatedMicrosoftEntraProviderGroupList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedMicrosoftEntraProviderGroupList) SetResults(v []MicrosoftEntraProviderGroup)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedMicrosoftEntraProviderGroupList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedMicrosoftEntraProviderGroupList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedMicrosoftEntraProviderGroupList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -28,8 +28,6 @@ type SAMLSource struct {
 	// Internal source name, used in URLs.
 	Slug    string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool  `json:"enabled,omitempty"`
-	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
-	Promoted *bool `json:"promoted,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
@@ -50,8 +48,7 @@ type SAMLSource struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	Icon             *string        `json:"icon,omitempty"`
-	IconUrl          string         `json:"icon_url"`
+	Icon             string         `json:"icon"`
 	// How the source determines if an existing group should be used or a new group created.
 	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	// Flow used before authentication.
@@ -65,8 +62,8 @@ type SAMLSource struct {
 	// Allows authentication flows initiated by the IdP. This can be a security risk, as no validation of the request ID is done.
 	AllowIdpInitiated *bool `json:"allow_idp_initiated,omitempty"`
 	// NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
-	NameIdPolicy *SAMLNameIDPolicyEnum `json:"name_id_policy,omitempty"`
-	BindingType  *BindingTypeEnum      `json:"binding_type,omitempty"`
+	NameIdPolicy *NameIdPolicyEnum `json:"name_id_policy,omitempty"`
+	BindingType  *BindingTypeEnum  `json:"binding_type,omitempty"`
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// Keypair used to sign outgoing Responses going to the Identity Provider.
@@ -76,9 +73,7 @@ type SAMLSource struct {
 	// Time offset when temporary users should be deleted. This only applies if your IDP uses the NameID Format 'transient', and the user doesn't log out manually. (Format: hours=1;minutes=2;seconds=3).
 	TemporaryUserDeleteAfter *string `json:"temporary_user_delete_after,omitempty"`
 	// When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
-	EncryptionKp    NullableString `json:"encryption_kp,omitempty"`
-	SignedAssertion *bool          `json:"signed_assertion,omitempty"`
-	SignedResponse  *bool          `json:"signed_response,omitempty"`
+	EncryptionKp NullableString `json:"encryption_kp,omitempty"`
 }
 
 type _SAMLSource SAMLSource
@@ -87,7 +82,7 @@ type _SAMLSource SAMLSource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
+func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon string, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
 	this := SAMLSource{}
 	this.Pk = pk
 	this.Name = name
@@ -97,7 +92,7 @@ func NewSAMLSource(pk string, name string, slug string, component string, verbos
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.Managed = managed
-	this.IconUrl = iconUrl
+	this.Icon = icon
 	this.PreAuthenticationFlow = preAuthenticationFlow
 	this.SsoUrl = ssoUrl
 	return &this
@@ -213,38 +208,6 @@ func (o *SAMLSource) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *SAMLSource) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetPromoted returns the Promoted field value if set, zero value otherwise.
-func (o *SAMLSource) GetPromoted() bool {
-	if o == nil || IsNil(o.Promoted) {
-		var ret bool
-		return ret
-	}
-	return *o.Promoted
-}
-
-// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLSource) GetPromotedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Promoted) {
-		return nil, false
-	}
-	return o.Promoted, true
-}
-
-// HasPromoted returns a boolean if a field has been set.
-func (o *SAMLSource) HasPromoted() bool {
-	if o != nil && !IsNil(o.Promoted) {
-		return true
-	}
-
-	return false
-}
-
-// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
-func (o *SAMLSource) SetPromoted(v bool) {
-	o.Promoted = &v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -615,60 +578,28 @@ func (o *SAMLSource) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
 }
 
-// GetIcon returns the Icon field value if set, zero value otherwise.
+// GetIcon returns the Icon field value
 func (o *SAMLSource) GetIcon() string {
-	if o == nil || IsNil(o.Icon) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Icon
+
+	return o.Icon
 }
 
-// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// GetIconOk returns a tuple with the Icon field value
 // and a boolean to check if the value has been set.
 func (o *SAMLSource) GetIconOk() (*string, bool) {
-	if o == nil || IsNil(o.Icon) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Icon, true
+	return &o.Icon, true
 }
 
-// HasIcon returns a boolean if a field has been set.
-func (o *SAMLSource) HasIcon() bool {
-	if o != nil && !IsNil(o.Icon) {
-		return true
-	}
-
-	return false
-}
-
-// SetIcon gets a reference to the given string and assigns it to the Icon field.
+// SetIcon sets field value
 func (o *SAMLSource) SetIcon(v string) {
-	o.Icon = &v
-}
-
-// GetIconUrl returns the IconUrl field value
-func (o *SAMLSource) GetIconUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.IconUrl
-}
-
-// GetIconUrlOk returns a tuple with the IconUrl field value
-// and a boolean to check if the value has been set.
-func (o *SAMLSource) GetIconUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IconUrl, true
-}
-
-// SetIconUrl sets field value
-func (o *SAMLSource) SetIconUrl(v string) {
-	o.IconUrl = v
+	o.Icon = v
 }
 
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
@@ -859,9 +790,9 @@ func (o *SAMLSource) SetAllowIdpInitiated(v bool) {
 }
 
 // GetNameIdPolicy returns the NameIdPolicy field value if set, zero value otherwise.
-func (o *SAMLSource) GetNameIdPolicy() SAMLNameIDPolicyEnum {
+func (o *SAMLSource) GetNameIdPolicy() NameIdPolicyEnum {
 	if o == nil || IsNil(o.NameIdPolicy) {
-		var ret SAMLNameIDPolicyEnum
+		var ret NameIdPolicyEnum
 		return ret
 	}
 	return *o.NameIdPolicy
@@ -869,7 +800,7 @@ func (o *SAMLSource) GetNameIdPolicy() SAMLNameIDPolicyEnum {
 
 // GetNameIdPolicyOk returns a tuple with the NameIdPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLSource) GetNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool) {
+func (o *SAMLSource) GetNameIdPolicyOk() (*NameIdPolicyEnum, bool) {
 	if o == nil || IsNil(o.NameIdPolicy) {
 		return nil, false
 	}
@@ -885,8 +816,8 @@ func (o *SAMLSource) HasNameIdPolicy() bool {
 	return false
 }
 
-// SetNameIdPolicy gets a reference to the given SAMLNameIDPolicyEnum and assigns it to the NameIdPolicy field.
-func (o *SAMLSource) SetNameIdPolicy(v SAMLNameIDPolicyEnum) {
+// SetNameIdPolicy gets a reference to the given NameIdPolicyEnum and assigns it to the NameIdPolicy field.
+func (o *SAMLSource) SetNameIdPolicy(v NameIdPolicyEnum) {
 	o.NameIdPolicy = &v
 }
 
@@ -1147,70 +1078,6 @@ func (o *SAMLSource) UnsetEncryptionKp() {
 	o.EncryptionKp.Unset()
 }
 
-// GetSignedAssertion returns the SignedAssertion field value if set, zero value otherwise.
-func (o *SAMLSource) GetSignedAssertion() bool {
-	if o == nil || IsNil(o.SignedAssertion) {
-		var ret bool
-		return ret
-	}
-	return *o.SignedAssertion
-}
-
-// GetSignedAssertionOk returns a tuple with the SignedAssertion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLSource) GetSignedAssertionOk() (*bool, bool) {
-	if o == nil || IsNil(o.SignedAssertion) {
-		return nil, false
-	}
-	return o.SignedAssertion, true
-}
-
-// HasSignedAssertion returns a boolean if a field has been set.
-func (o *SAMLSource) HasSignedAssertion() bool {
-	if o != nil && !IsNil(o.SignedAssertion) {
-		return true
-	}
-
-	return false
-}
-
-// SetSignedAssertion gets a reference to the given bool and assigns it to the SignedAssertion field.
-func (o *SAMLSource) SetSignedAssertion(v bool) {
-	o.SignedAssertion = &v
-}
-
-// GetSignedResponse returns the SignedResponse field value if set, zero value otherwise.
-func (o *SAMLSource) GetSignedResponse() bool {
-	if o == nil || IsNil(o.SignedResponse) {
-		var ret bool
-		return ret
-	}
-	return *o.SignedResponse
-}
-
-// GetSignedResponseOk returns a tuple with the SignedResponse field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLSource) GetSignedResponseOk() (*bool, bool) {
-	if o == nil || IsNil(o.SignedResponse) {
-		return nil, false
-	}
-	return o.SignedResponse, true
-}
-
-// HasSignedResponse returns a boolean if a field has been set.
-func (o *SAMLSource) HasSignedResponse() bool {
-	if o != nil && !IsNil(o.SignedResponse) {
-		return true
-	}
-
-	return false
-}
-
-// SetSignedResponse gets a reference to the given bool and assigns it to the SignedResponse field.
-func (o *SAMLSource) SetSignedResponse(v bool) {
-	o.SignedResponse = &v
-}
-
 func (o SAMLSource) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1226,9 +1093,6 @@ func (o SAMLSource) ToMap() (map[string]interface{}, error) {
 	toSerialize["slug"] = o.Slug
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Promoted) {
-		toSerialize["promoted"] = o.Promoted
 	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
@@ -1256,10 +1120,7 @@ func (o SAMLSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if !IsNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
-	toSerialize["icon_url"] = o.IconUrl
+	toSerialize["icon"] = o.Icon
 	if !IsNil(o.GroupMatchingMode) {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
@@ -1298,12 +1159,6 @@ func (o SAMLSource) ToMap() (map[string]interface{}, error) {
 	if o.EncryptionKp.IsSet() {
 		toSerialize["encryption_kp"] = o.EncryptionKp.Get()
 	}
-	if !IsNil(o.SignedAssertion) {
-		toSerialize["signed_assertion"] = o.SignedAssertion
-	}
-	if !IsNil(o.SignedResponse) {
-		toSerialize["signed_response"] = o.SignedResponse
-	}
 	return toSerialize, nil
 }
 
@@ -1320,7 +1175,7 @@ func (o *SAMLSource) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name_plural",
 		"meta_model_name",
 		"managed",
-		"icon_url",
+		"icon",
 		"pre_authentication_flow",
 		"sso_url",
 	}

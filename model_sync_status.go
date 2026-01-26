@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -15,17 +15,15 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"time"
 )
 
 // checks if the SyncStatus type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SyncStatus{}
 
-// SyncStatus Provider/source sync status
+// SyncStatus Provider sync status
 type SyncStatus struct {
-	IsRunning          bool                      `json:"is_running"`
-	LastSuccessfulSync *time.Time                `json:"last_successful_sync,omitempty"`
-	LastSyncStatus     *TaskAggregatedStatusEnum `json:"last_sync_status,omitempty"`
+	IsRunning bool         `json:"is_running"`
+	Tasks     []SystemTask `json:"tasks"`
 }
 
 type _SyncStatus SyncStatus
@@ -34,9 +32,10 @@ type _SyncStatus SyncStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSyncStatus(isRunning bool) *SyncStatus {
+func NewSyncStatus(isRunning bool, tasks []SystemTask) *SyncStatus {
 	this := SyncStatus{}
 	this.IsRunning = isRunning
+	this.Tasks = tasks
 	return &this
 }
 
@@ -72,68 +71,28 @@ func (o *SyncStatus) SetIsRunning(v bool) {
 	o.IsRunning = v
 }
 
-// GetLastSuccessfulSync returns the LastSuccessfulSync field value if set, zero value otherwise.
-func (o *SyncStatus) GetLastSuccessfulSync() time.Time {
-	if o == nil || IsNil(o.LastSuccessfulSync) {
-		var ret time.Time
+// GetTasks returns the Tasks field value
+func (o *SyncStatus) GetTasks() []SystemTask {
+	if o == nil {
+		var ret []SystemTask
 		return ret
 	}
-	return *o.LastSuccessfulSync
+
+	return o.Tasks
 }
 
-// GetLastSuccessfulSyncOk returns a tuple with the LastSuccessfulSync field value if set, nil otherwise
+// GetTasksOk returns a tuple with the Tasks field value
 // and a boolean to check if the value has been set.
-func (o *SyncStatus) GetLastSuccessfulSyncOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.LastSuccessfulSync) {
+func (o *SyncStatus) GetTasksOk() ([]SystemTask, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastSuccessfulSync, true
+	return o.Tasks, true
 }
 
-// HasLastSuccessfulSync returns a boolean if a field has been set.
-func (o *SyncStatus) HasLastSuccessfulSync() bool {
-	if o != nil && !IsNil(o.LastSuccessfulSync) {
-		return true
-	}
-
-	return false
-}
-
-// SetLastSuccessfulSync gets a reference to the given time.Time and assigns it to the LastSuccessfulSync field.
-func (o *SyncStatus) SetLastSuccessfulSync(v time.Time) {
-	o.LastSuccessfulSync = &v
-}
-
-// GetLastSyncStatus returns the LastSyncStatus field value if set, zero value otherwise.
-func (o *SyncStatus) GetLastSyncStatus() TaskAggregatedStatusEnum {
-	if o == nil || IsNil(o.LastSyncStatus) {
-		var ret TaskAggregatedStatusEnum
-		return ret
-	}
-	return *o.LastSyncStatus
-}
-
-// GetLastSyncStatusOk returns a tuple with the LastSyncStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SyncStatus) GetLastSyncStatusOk() (*TaskAggregatedStatusEnum, bool) {
-	if o == nil || IsNil(o.LastSyncStatus) {
-		return nil, false
-	}
-	return o.LastSyncStatus, true
-}
-
-// HasLastSyncStatus returns a boolean if a field has been set.
-func (o *SyncStatus) HasLastSyncStatus() bool {
-	if o != nil && !IsNil(o.LastSyncStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetLastSyncStatus gets a reference to the given TaskAggregatedStatusEnum and assigns it to the LastSyncStatus field.
-func (o *SyncStatus) SetLastSyncStatus(v TaskAggregatedStatusEnum) {
-	o.LastSyncStatus = &v
+// SetTasks sets field value
+func (o *SyncStatus) SetTasks(v []SystemTask) {
+	o.Tasks = v
 }
 
 func (o SyncStatus) MarshalJSON() ([]byte, error) {
@@ -147,12 +106,7 @@ func (o SyncStatus) MarshalJSON() ([]byte, error) {
 func (o SyncStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["is_running"] = o.IsRunning
-	if !IsNil(o.LastSuccessfulSync) {
-		toSerialize["last_successful_sync"] = o.LastSuccessfulSync
-	}
-	if !IsNil(o.LastSyncStatus) {
-		toSerialize["last_sync_status"] = o.LastSyncStatus
-	}
+	toSerialize["tasks"] = o.Tasks
 	return toSerialize, nil
 }
 
@@ -162,6 +116,7 @@ func (o *SyncStatus) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"is_running",
+		"tasks",
 	}
 
 	allProperties := make(map[string]interface{})

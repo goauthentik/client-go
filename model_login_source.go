@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.4.1
 Contact: hello@goauthentik.io
 */
 
@@ -24,7 +24,6 @@ var _ MappedNullable = &LoginSource{}
 type LoginSource struct {
 	Name      string              `json:"name"`
 	IconUrl   NullableString      `json:"icon_url,omitempty"`
-	Promoted  *bool               `json:"promoted,omitempty"`
 	Challenge LoginChallengeTypes `json:"challenge"`
 }
 
@@ -37,8 +36,6 @@ type _LoginSource LoginSource
 func NewLoginSource(name string, challenge LoginChallengeTypes) *LoginSource {
 	this := LoginSource{}
 	this.Name = name
-	var promoted bool = false
-	this.Promoted = &promoted
 	this.Challenge = challenge
 	return &this
 }
@@ -48,8 +45,6 @@ func NewLoginSource(name string, challenge LoginChallengeTypes) *LoginSource {
 // but it doesn't guarantee that properties required by API are set
 func NewLoginSourceWithDefaults() *LoginSource {
 	this := LoginSource{}
-	var promoted bool = false
-	this.Promoted = &promoted
 	return &this
 }
 
@@ -120,38 +115,6 @@ func (o *LoginSource) UnsetIconUrl() {
 	o.IconUrl.Unset()
 }
 
-// GetPromoted returns the Promoted field value if set, zero value otherwise.
-func (o *LoginSource) GetPromoted() bool {
-	if o == nil || IsNil(o.Promoted) {
-		var ret bool
-		return ret
-	}
-	return *o.Promoted
-}
-
-// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoginSource) GetPromotedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Promoted) {
-		return nil, false
-	}
-	return o.Promoted, true
-}
-
-// HasPromoted returns a boolean if a field has been set.
-func (o *LoginSource) HasPromoted() bool {
-	if o != nil && !IsNil(o.Promoted) {
-		return true
-	}
-
-	return false
-}
-
-// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
-func (o *LoginSource) SetPromoted(v bool) {
-	o.Promoted = &v
-}
-
 // GetChallenge returns the Challenge field value
 func (o *LoginSource) GetChallenge() LoginChallengeTypes {
 	if o == nil {
@@ -189,9 +152,6 @@ func (o LoginSource) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if o.IconUrl.IsSet() {
 		toSerialize["icon_url"] = o.IconUrl.Get()
-	}
-	if !IsNil(o.Promoted) {
-		toSerialize["promoted"] = o.Promoted
 	}
 	toSerialize["challenge"] = o.Challenge
 	return toSerialize, nil

@@ -1,6 +1,6 @@
 # \ProvidersAPI
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -489,7 +489,7 @@ import (
 )
 
 func main() {
-	googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", map[string]interface{}{"key": interface{}(123)}, "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
+	googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1340,7 +1340,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this Google Workspace Provider.
-	googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", map[string]interface{}{"key": interface{}(123)}, "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
+	googleWorkspaceProviderRequest := *openapiclient.NewGoogleWorkspaceProviderRequest("Name_example", "DelegatedSubject_example", interface{}(123), "DefaultGroupEmailDomain_example") // GoogleWorkspaceProviderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -5968,7 +5968,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlImportMetadataCreate
 
-> SAMLProvider ProvidersSamlImportMetadataCreate(ctx).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
+> ProvidersSamlImportMetadataCreate(ctx).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
 
 
 
@@ -5994,13 +5994,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProvidersAPI.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
+	r, err := apiClient.ProvidersAPI.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersSamlImportMetadataCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProvidersSamlImportMetadataCreate`: SAMLProvider
-	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersSamlImportMetadataCreate`: %v\n", resp)
 }
 ```
 
@@ -6022,7 +6020,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SAMLProvider**](SAMLProvider.md)
+ (empty response body)
 
 ### Authorization
 
@@ -6040,7 +6038,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlList
 
-> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultNameIdPolicy(defaultNameIdPolicy).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).LogoutMethod(logoutMethod).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignLogoutRequest(signLogoutRequest).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SlsBinding(slsBinding).SlsUrl(slsUrl).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+> PaginatedSAMLProviderList ProvidersSamlList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
 
 
 
@@ -6067,14 +6065,12 @@ func main() {
 	authnContextClassRefMapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 	authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 	backchannelApplication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	defaultNameIdPolicy := "defaultNameIdPolicy_example" // string |  (optional)
 	defaultRelayState := "defaultRelayState_example" // string |  (optional)
 	digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
 	encryptionKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 	invalidationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 	isBackchannel := true // bool |  (optional)
 	issuer := "issuer_example" // string |  (optional)
-	logoutMethod := "logoutMethod_example" // string | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).   (optional)
 	name := "name_example" // string |  (optional)
 	nameIdMapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
@@ -6084,18 +6080,15 @@ func main() {
 	search := "search_example" // string | A search term. (optional)
 	sessionValidNotOnOrAfter := "sessionValidNotOnOrAfter_example" // string |  (optional)
 	signAssertion := true // bool |  (optional)
-	signLogoutRequest := true // bool |  (optional)
 	signResponse := true // bool |  (optional)
 	signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
 	signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	slsBinding := "slsBinding_example" // string | This determines how authentik sends the logout response back to the Service Provider.   (optional)
-	slsUrl := "slsUrl_example" // string |  (optional)
 	spBinding := "spBinding_example" // string | This determines how authentik sends the response back to the Service Provider.   (optional)
 	verificationKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProvidersAPI.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultNameIdPolicy(defaultNameIdPolicy).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).LogoutMethod(logoutMethod).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignLogoutRequest(signLogoutRequest).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SlsBinding(slsBinding).SlsUrl(slsUrl).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+	resp, r, err := apiClient.ProvidersAPI.ProvidersSamlList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersSamlList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6124,14 +6117,12 @@ Name | Type | Description  | Notes
  **authnContextClassRefMapping** | **string** |  | 
  **authorizationFlow** | **string** |  | 
  **backchannelApplication** | **string** |  | 
- **defaultNameIdPolicy** | **string** |  | 
  **defaultRelayState** | **string** |  | 
  **digestAlgorithm** | **string** |  | 
  **encryptionKp** | **string** |  | 
  **invalidationFlow** | **string** |  | 
  **isBackchannel** | **bool** |  | 
  **issuer** | **string** |  | 
- **logoutMethod** | **string** | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).   | 
  **name** | **string** |  | 
  **nameIdMapping** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
@@ -6141,12 +6132,9 @@ Name | Type | Description  | Notes
  **search** | **string** | A search term. | 
  **sessionValidNotOnOrAfter** | **string** |  | 
  **signAssertion** | **bool** |  | 
- **signLogoutRequest** | **bool** |  | 
  **signResponse** | **bool** |  | 
  **signatureAlgorithm** | **string** |  | 
  **signingKp** | **string** |  | 
- **slsBinding** | **string** | This determines how authentik sends the logout response back to the Service Provider.   | 
- **slsUrl** | **string** |  | 
  **spBinding** | **string** | This determines how authentik sends the response back to the Service Provider.   | 
  **verificationKp** | **string** |  | 
 
@@ -6619,7 +6607,7 @@ import (
 )
 
 func main() {
-	sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example") // SCIMProviderRequest | 
+	sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example", "Token_example") // SCIMProviderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -7470,7 +7458,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this SCIM Provider.
-	sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example") // SCIMProviderRequest | 
+	sCIMProviderRequest := *openapiclient.NewSCIMProviderRequest("Name_example", "Url_example", "Token_example") // SCIMProviderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
