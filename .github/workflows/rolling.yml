@@ -53,8 +53,8 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          version="$(yq -r '.info.version' schema.yml)-$(date +%s)"
-          make version="3.$version"
+          version="3.$(yq -r '.info.version' schema.yml)-$(date +%s)"
+          make version="$version"
 
           git config --global user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
           git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
