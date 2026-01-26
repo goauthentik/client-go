@@ -1,3 +1,4 @@
+---
 version: 2
 updates:
   - package-ecosystem: "github-actions"
@@ -5,4 +6,12 @@ updates:
     schedule:
       interval: "daily"
     assignees:
-    - BeryJu
+      - BeryJu
+      - rissson
+  - package-ecosystem: "docker-compose"
+    directory: "/scripts"
+    schedule:
+      interval: "daily"
+    assignees:
+      - BeryJu
+      - rissson

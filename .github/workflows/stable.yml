@@ -1,0 +1,106 @@
+---
+name: Stable release
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "12 * * * *"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  tags:
+    runs-on: ubuntu-latest
+    steps:
+      - id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: "${{ secrets.GH_APP_ID }}"
+          private-key: "${{ secrets.GH_APP_PRIVATE_KEY }}"
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: "${{ steps.app-token.outputs.token }}"
+      - id: tags
+        name: Get list of missing tags
+        run: |
+          tags="$(gh --repo goauthentik/authentik release list --exclude-drafts --json tagName --jq '.[].tagName' |
+            tac |
+            while read -r tag; do
+              if ! git show "$tag" >/dev/null 2>/dev/null; then
+                echo "$tag"
+              fi
+            done | jq -R -s -c 'split("\n") | map(select(length > 0))')"
+
+          should_run="$([ "$(echo "$tags" | jq '.|length')" -eq 0 ] && echo false || echo true)"
+
+          echo "tags=$tags" >> "$GITHUB_OUTPUT"
+          echo "should_run=$should_run" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: "${{ steps.app-token.outputs.token }}"
+    outputs:
+      tags: "${{ steps.tags.outputs.tags }}"
+      should_run: "${{ steps.tags.outputs.should_run }}"
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - tags
+    if: "${{ needs.tags.outputs.should_run == 'true' }}"
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        tag: "${{ fromJson(needs.tags.outputs.tags) }}"
+    steps:
+      - id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: "${{ secrets.GH_APP_ID }}"
+          private-key: "${{ secrets.GH_APP_PRIVATE_KEY }}"
+      - id: get-user-id
+        name: Get GitHub app user ID
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: "${{ steps.app-token.outputs.token }}"
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: "${{ steps.app-token.outputs.token }}"
+          path: client-go
+      - name: Fetch schema
+        uses: actions/checkout@v6
+        with:
+          repository: goauthentik/authentik
+          token: "${{ steps.app-token.outputs.token }}"
+          ref: "${{ matrix.tag }}"
+          path: authentik
+          sparse-checkout: |
+            schema.yml
+          sparse-checkout-cone-mode: false
+      - name: Publish
+        working-directory: client-go
+        run: |
+          tag="${{ matrix.tag }}"
+          version="$(echo -n "$tag" | sed 's/version\///')"
+          branch="$(echo -n "$tag" | sed 's/\//-/' | grep -oE "^version-[0-9]{4}\.[0-9]{1,2}")"
+          if ! git ls-remote --heads origin "$branch" | grep -q "$branch"; then
+            git checkout -b "$branch"
+          else
+            git checkout "$branch"
+          fi
+
+          make version="$version"
+
+          git config --global user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
+          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
+
+          git add .
+          git commit -m "Version $version" || exit 0
+          git tag "$tag"
+          git push origin "$branch"
+          git push --tags
+          gh release create "$tag" --latest --title "$version"
+        env:
+          GH_TOKEN: "${{ steps.app-token.outputs.token }}"
