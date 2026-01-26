@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2025.12.0-rc3
+  version: 2025.12.0
 servers:
 - url: /api/v3
 paths:
@@ -49988,6 +49988,7 @@ components:
         system_config: ""
         jwks_challenge:
           key: ""
+        license_status: ""
         nss_gid_offset: 1
       properties:
         device_id:
@@ -50019,12 +50020,18 @@ components:
           allOf:
           - $ref: "#/components/schemas/Config"
           readOnly: true
+        license_status:
+          allOf:
+          - $ref: "#/components/schemas/LicenseStatusEnum"
+          nullable: true
+          readOnly: true
       required:
       - auth_terminate_session_on_expiry
       - authorization_flow
       - device_id
       - jwks_auth
       - jwks_challenge
+      - license_status
       - nss_gid_offset
       - nss_uid_offset
       - refresh_interval
@@ -51541,7 +51548,7 @@ components:
         token_count: 171976544
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
-        token_length: 1294386358
+        token_length: 60
         name: name
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         flow_set:
@@ -51611,7 +51618,7 @@ components:
           minimum: 0
           type: integer
         token_length:
-          maximum: 2147483647
+          maximum: 100
           minimum: 0
           type: integer
       required:
@@ -51629,7 +51636,7 @@ components:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
         token_count: 171976544
-        token_length: 1294386358
+        token_length: 60
         name: name
       properties:
         name:
@@ -51648,7 +51655,7 @@ components:
           minimum: 0
           type: integer
         token_length:
-          maximum: 2147483647
+          maximum: 100
           minimum: 0
           type: integer
       required:
@@ -60398,6 +60405,16 @@ components:
       required:
       - key
       type: object
+    LicenseStatusEnum:
+      enum:
+      - unlicensed
+      - valid
+      - expired
+      - expiry_soon
+      - limit_exceeded_admin
+      - limit_exceeded_user
+      - read_only
+      type: string
     LicenseSummary:
       description: Serializer for license status
       example:
@@ -63608,7 +63625,7 @@ components:
           token_count: 171976544
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
-          token_length: 1294386358
+          token_length: 60
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -63643,7 +63660,7 @@ components:
           token_count: 171976544
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
-          token_length: 1294386358
+          token_length: 60
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           flow_set:
@@ -73988,7 +74005,7 @@ components:
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
         token_count: 171976544
-        token_length: 1294386358
+        token_length: 60
         name: name
       properties:
         name:
@@ -74007,7 +74024,7 @@ components:
           minimum: 0
           type: integer
         token_length:
-          maximum: 2147483647
+          maximum: 100
           minimum: 0
           type: integer
       type: object
@@ -84396,7 +84413,7 @@ components:
         token: token
       properties:
         token:
-          maxLength: 16
+          maxLength: 100
           type: string
       required:
       - token

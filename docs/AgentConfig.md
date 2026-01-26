@@ -13,12 +13,13 @@ Name | Type | Description | Notes
 **NssGidOffset** | **int32** |  | 
 **AuthTerminateSessionOnExpiry** | **bool** |  | 
 **SystemConfig** | [**Config**](Config.md) |  | [readonly] 
+**LicenseStatus** | [**NullableLicenseStatusEnum**](LicenseStatusEnum.md) |  | [readonly] 
 
 ## Methods
 
 ### NewAgentConfig
 
-`func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwksAuth map[string]interface{}, jwksChallenge map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, ) *AgentConfig`
+`func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwksAuth map[string]interface{}, jwksChallenge map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, licenseStatus NullableLicenseStatusEnum, ) *AgentConfig`
 
 NewAgentConfig instantiates a new AgentConfig object
 This constructor will assign default values to properties that have it defined,
@@ -233,6 +234,36 @@ and a boolean to check if the value has been set.
 SetSystemConfig sets SystemConfig field to given value.
 
 
+### GetLicenseStatus
+
+`func (o *AgentConfig) GetLicenseStatus() LicenseStatusEnum`
+
+GetLicenseStatus returns the LicenseStatus field if non-nil, zero value otherwise.
+
+### GetLicenseStatusOk
+
+`func (o *AgentConfig) GetLicenseStatusOk() (*LicenseStatusEnum, bool)`
+
+GetLicenseStatusOk returns a tuple with the LicenseStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenseStatus
+
+`func (o *AgentConfig) SetLicenseStatus(v LicenseStatusEnum)`
+
+SetLicenseStatus sets LicenseStatus field to given value.
+
+
+### SetLicenseStatusNil
+
+`func (o *AgentConfig) SetLicenseStatusNil(b bool)`
+
+ SetLicenseStatusNil sets the value for LicenseStatus to be an explicit nil
+
+### UnsetLicenseStatus
+`func (o *AgentConfig) UnsetLicenseStatus()`
+
+UnsetLicenseStatus ensures that no value is present for LicenseStatus, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

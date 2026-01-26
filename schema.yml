@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: authentik
-  version: 2025.12.0-rc3
+  version: 2025.12.0
   description: Making authentication simple.
   contact:
     email: hello@goauthentik.io
@@ -32778,12 +32778,18 @@ components:
           allOf:
           - $ref: '#/components/schemas/Config'
           readOnly: true
+        license_status:
+          allOf:
+          - $ref: '#/components/schemas/LicenseStatusEnum'
+          readOnly: true
+          nullable: true
       required:
       - auth_terminate_session_on_expiry
       - authorization_flow
       - device_id
       - jwks_auth
       - jwks_challenge
+      - license_status
       - nss_gid_offset
       - nss_uid_offset
       - refresh_interval
@@ -34056,7 +34062,7 @@ components:
           minimum: 0
         token_length:
           type: integer
-          maximum: 2147483647
+          maximum: 100
           minimum: 0
       required:
       - component
@@ -34087,7 +34093,7 @@ components:
           minimum: 0
         token_length:
           type: integer
-          maximum: 2147483647
+          maximum: 100
           minimum: 0
       required:
       - name
@@ -40907,6 +40913,16 @@ components:
           minLength: 1
       required:
       - key
+    LicenseStatusEnum:
+      enum:
+      - unlicensed
+      - valid
+      - expired
+      - expiry_soon
+      - limit_exceeded_admin
+      - limit_exceeded_user
+      - read_only
+      type: string
     LicenseSummary:
       type: object
       description: Serializer for license status
@@ -45798,7 +45814,7 @@ components:
           minimum: 0
         token_length:
           type: integer
-          maximum: 2147483647
+          maximum: 100
           minimum: 0
     PatchedAuthenticatorTOTPStageRequest:
       type: object
@@ -53790,7 +53806,7 @@ components:
       properties:
         token:
           type: string
-          maxLength: 16
+          maxLength: 100
       required:
       - token
     SubModeEnum:
