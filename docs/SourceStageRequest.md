@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **Source** | **string** |  | 
 **ResumeTimeout** | Pointer to **string** | Amount of time a user can take to return from the source to continue the flow (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetFlowSet
+
+`func (o *SourceStageRequest) GetFlowSet() []FlowSetRequest`
+
+GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
+
+### GetFlowSetOk
+
+`func (o *SourceStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
+
+GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowSet
+
+`func (o *SourceStageRequest) SetFlowSet(v []FlowSetRequest)`
+
+SetFlowSet sets FlowSet field to given value.
+
+### HasFlowSet
+
+`func (o *SourceStageRequest) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetSource
 

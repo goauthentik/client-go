@@ -5968,7 +5968,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersSamlImportMetadataCreate
 
-> SAMLProvider ProvidersSamlImportMetadataCreate(ctx).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
+> ProvidersSamlImportMetadataCreate(ctx).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
 
 
 
@@ -5994,13 +5994,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProvidersAPI.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
+	r, err := apiClient.ProvidersAPI.ProvidersSamlImportMetadataCreate(context.Background()).Name(name).AuthorizationFlow(authorizationFlow).InvalidationFlow(invalidationFlow).File(file).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersSamlImportMetadataCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProvidersSamlImportMetadataCreate`: SAMLProvider
-	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersSamlImportMetadataCreate`: %v\n", resp)
 }
 ```
 
@@ -6022,7 +6020,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SAMLProvider**](SAMLProvider.md)
+ (empty response body)
 
 ### Authorization
 

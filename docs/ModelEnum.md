@@ -17,18 +17,6 @@
 
 * `AUTHENTIK_CRYPTO_CERTIFICATEKEYPAIR` (value: `"authentik_crypto.certificatekeypair"`)
 
-* `AUTHENTIK_ENDPOINTS_DEVICEUSERBINDING` (value: `"authentik_endpoints.deviceuserbinding"`)
-
-* `AUTHENTIK_ENDPOINTS_DEVICEACCESSGROUP` (value: `"authentik_endpoints.deviceaccessgroup"`)
-
-* `AUTHENTIK_ENDPOINTS_ENDPOINTSTAGE` (value: `"authentik_endpoints.endpointstage"`)
-
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT_AGENTCONNECTOR` (value: `"authentik_endpoints_connectors_agent.agentconnector"`)
-
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT_AGENTDEVICEUSERBINDING` (value: `"authentik_endpoints_connectors_agent.agentdeviceuserbinding"`)
-
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT_ENROLLMENTTOKEN` (value: `"authentik_endpoints_connectors_agent.enrollmenttoken"`)
-
 * `AUTHENTIK_ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
 
 * `AUTHENTIK_EVENTS_EVENT` (value: `"authentik_events.event"`)
@@ -213,8 +201,6 @@
 
 * `AUTHENTIK_BLUEPRINTS_BLUEPRINTINSTANCE` (value: `"authentik_blueprints.blueprintinstance"`)
 
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_FLEET_FLEETCONNECTOR` (value: `"authentik_endpoints_connectors_fleet.fleetconnector"`)
-
 * `AUTHENTIK_POLICIES_UNIQUE_PASSWORD_UNIQUEPASSWORDPOLICY` (value: `"authentik_policies_unique_password.uniquepasswordpolicy"`)
 
 * `AUTHENTIK_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER` (value: `"authentik_providers_google_workspace.googleworkspaceprovider"`)
@@ -226,8 +212,6 @@
 * `AUTHENTIK_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDERMAPPING` (value: `"authentik_providers_microsoft_entra.microsoftentraprovidermapping"`)
 
 * `AUTHENTIK_PROVIDERS_SSF_SSFPROVIDER` (value: `"authentik_providers_ssf.ssfprovider"`)
-
-* `AUTHENTIK_REPORTS_DATAEXPORT` (value: `"authentik_reports.dataexport"`)
 
 * `AUTHENTIK_STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE` (value: `"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"`)
 

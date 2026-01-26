@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -35,15 +35,9 @@ type PatchedSCIMProviderRequest struct {
 	// Additional OAuth parameters, such as grant_type
 	AuthOauthParams map[string]interface{} `json:"auth_oauth_params,omitempty"`
 	// Alter authentik behavior for vendor-specific SCIM implementations.
-	CompatibilityMode *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
-	// Cache duration for ServiceProviderConfig responses. Set minutes=0 to disable.
-	ServiceProviderConfigCacheTimeout *string        `json:"service_provider_config_cache_timeout,omitempty"`
-	ExcludeUsersServiceAccount        *bool          `json:"exclude_users_service_account,omitempty"`
-	FilterGroup                       NullableString `json:"filter_group,omitempty"`
-	// Controls the number of objects synced in a single task
-	SyncPageSize *int32 `json:"sync_page_size,omitempty"`
-	// Timeout for synchronization of a single page
-	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
+	CompatibilityMode          *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
+	ExcludeUsersServiceAccount *bool                  `json:"exclude_users_service_account,omitempty"`
+	FilterGroup                NullableString         `json:"filter_group,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
 	DryRun *bool `json:"dry_run,omitempty"`
 }
@@ -396,38 +390,6 @@ func (o *PatchedSCIMProviderRequest) SetCompatibilityMode(v CompatibilityModeEnu
 	o.CompatibilityMode = &v
 }
 
-// GetServiceProviderConfigCacheTimeout returns the ServiceProviderConfigCacheTimeout field value if set, zero value otherwise.
-func (o *PatchedSCIMProviderRequest) GetServiceProviderConfigCacheTimeout() string {
-	if o == nil || IsNil(o.ServiceProviderConfigCacheTimeout) {
-		var ret string
-		return ret
-	}
-	return *o.ServiceProviderConfigCacheTimeout
-}
-
-// GetServiceProviderConfigCacheTimeoutOk returns a tuple with the ServiceProviderConfigCacheTimeout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSCIMProviderRequest) GetServiceProviderConfigCacheTimeoutOk() (*string, bool) {
-	if o == nil || IsNil(o.ServiceProviderConfigCacheTimeout) {
-		return nil, false
-	}
-	return o.ServiceProviderConfigCacheTimeout, true
-}
-
-// HasServiceProviderConfigCacheTimeout returns a boolean if a field has been set.
-func (o *PatchedSCIMProviderRequest) HasServiceProviderConfigCacheTimeout() bool {
-	if o != nil && !IsNil(o.ServiceProviderConfigCacheTimeout) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceProviderConfigCacheTimeout gets a reference to the given string and assigns it to the ServiceProviderConfigCacheTimeout field.
-func (o *PatchedSCIMProviderRequest) SetServiceProviderConfigCacheTimeout(v string) {
-	o.ServiceProviderConfigCacheTimeout = &v
-}
-
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetExcludeUsersServiceAccount() bool {
 	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
@@ -503,70 +465,6 @@ func (o *PatchedSCIMProviderRequest) UnsetFilterGroup() {
 	o.FilterGroup.Unset()
 }
 
-// GetSyncPageSize returns the SyncPageSize field value if set, zero value otherwise.
-func (o *PatchedSCIMProviderRequest) GetSyncPageSize() int32 {
-	if o == nil || IsNil(o.SyncPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.SyncPageSize
-}
-
-// GetSyncPageSizeOk returns a tuple with the SyncPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSCIMProviderRequest) GetSyncPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.SyncPageSize) {
-		return nil, false
-	}
-	return o.SyncPageSize, true
-}
-
-// HasSyncPageSize returns a boolean if a field has been set.
-func (o *PatchedSCIMProviderRequest) HasSyncPageSize() bool {
-	if o != nil && !IsNil(o.SyncPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncPageSize gets a reference to the given int32 and assigns it to the SyncPageSize field.
-func (o *PatchedSCIMProviderRequest) SetSyncPageSize(v int32) {
-	o.SyncPageSize = &v
-}
-
-// GetSyncPageTimeout returns the SyncPageTimeout field value if set, zero value otherwise.
-func (o *PatchedSCIMProviderRequest) GetSyncPageTimeout() string {
-	if o == nil || IsNil(o.SyncPageTimeout) {
-		var ret string
-		return ret
-	}
-	return *o.SyncPageTimeout
-}
-
-// GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSCIMProviderRequest) GetSyncPageTimeoutOk() (*string, bool) {
-	if o == nil || IsNil(o.SyncPageTimeout) {
-		return nil, false
-	}
-	return o.SyncPageTimeout, true
-}
-
-// HasSyncPageTimeout returns a boolean if a field has been set.
-func (o *PatchedSCIMProviderRequest) HasSyncPageTimeout() bool {
-	if o != nil && !IsNil(o.SyncPageTimeout) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncPageTimeout gets a reference to the given string and assigns it to the SyncPageTimeout field.
-func (o *PatchedSCIMProviderRequest) SetSyncPageTimeout(v string) {
-	o.SyncPageTimeout = &v
-}
-
 // GetDryRun returns the DryRun field value if set, zero value otherwise.
 func (o *PatchedSCIMProviderRequest) GetDryRun() bool {
 	if o == nil || IsNil(o.DryRun) {
@@ -639,20 +537,11 @@ func (o PatchedSCIMProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CompatibilityMode) {
 		toSerialize["compatibility_mode"] = o.CompatibilityMode
 	}
-	if !IsNil(o.ServiceProviderConfigCacheTimeout) {
-		toSerialize["service_provider_config_cache_timeout"] = o.ServiceProviderConfigCacheTimeout
-	}
 	if !IsNil(o.ExcludeUsersServiceAccount) {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
 	}
 	if o.FilterGroup.IsSet() {
 		toSerialize["filter_group"] = o.FilterGroup.Get()
-	}
-	if !IsNil(o.SyncPageSize) {
-		toSerialize["sync_page_size"] = o.SyncPageSize
-	}
-	if !IsNil(o.SyncPageTimeout) {
-		toSerialize["sync_page_timeout"] = o.SyncPageTimeout
 	}
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun

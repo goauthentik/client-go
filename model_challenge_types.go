@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,6 @@ type ChallengeTypes struct {
 	ConsentChallenge                 *ConsentChallenge
 	DummyChallenge                   *DummyChallenge
 	EmailChallenge                   *EmailChallenge
-	EndpointAgentChallenge           *EndpointAgentChallenge
 	FlowErrorChallenge               *FlowErrorChallenge
 	FrameChallenge                   *FrameChallenge
 	IdentificationChallenge          *IdentificationChallenge
@@ -145,13 +144,6 @@ func DummyChallengeAsChallengeTypes(v *DummyChallenge) ChallengeTypes {
 func EmailChallengeAsChallengeTypes(v *EmailChallenge) ChallengeTypes {
 	return ChallengeTypes{
 		EmailChallenge: v,
-	}
-}
-
-// EndpointAgentChallengeAsChallengeTypes is a convenience function that returns EndpointAgentChallenge wrapped in ChallengeTypes
-func EndpointAgentChallengeAsChallengeTypes(v *EndpointAgentChallenge) ChallengeTypes {
-	return ChallengeTypes{
-		EndpointAgentChallenge: v,
 	}
 }
 
@@ -510,18 +502,6 @@ func (dst *ChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'ak-stage-endpoint-agent'
-	if jsonDict["component"] == "ak-stage-endpoint-agent" {
-		// try to unmarshal JSON data into EndpointAgentChallenge
-		err = json.Unmarshal(data, &dst.EndpointAgentChallenge)
-		if err == nil {
-			return nil // data stored in dst.EndpointAgentChallenge, return on the first match
-		} else {
-			dst.EndpointAgentChallenge = nil
-			return fmt.Errorf("failed to unmarshal ChallengeTypes as EndpointAgentChallenge: %s", err.Error())
-		}
-	}
-
 	// check if the discriminator value is 'ak-stage-flow-error'
 	if jsonDict["component"] == "ak-stage-flow-error" {
 		// try to unmarshal JSON data into FlowErrorChallenge
@@ -691,10 +671,6 @@ func (src ChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.EmailChallenge)
 	}
 
-	if src.EndpointAgentChallenge != nil {
-		return json.Marshal(&src.EndpointAgentChallenge)
-	}
-
 	if src.FlowErrorChallenge != nil {
 		return json.Marshal(&src.FlowErrorChallenge)
 	}
@@ -819,10 +795,6 @@ func (obj *ChallengeTypes) GetActualInstance() interface{} {
 		return obj.EmailChallenge
 	}
 
-	if obj.EndpointAgentChallenge != nil {
-		return obj.EndpointAgentChallenge
-	}
-
 	if obj.FlowErrorChallenge != nil {
 		return obj.FlowErrorChallenge
 	}
@@ -943,10 +915,6 @@ func (obj ChallengeTypes) GetActualInstanceValue() interface{} {
 
 	if obj.EmailChallenge != nil {
 		return *obj.EmailChallenge
-	}
-
-	if obj.EndpointAgentChallenge != nil {
-		return *obj.EndpointAgentChallenge
 	}
 
 	if obj.FlowErrorChallenge != nil {

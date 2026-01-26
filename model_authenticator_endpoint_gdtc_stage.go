@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,7 @@ type AuthenticatorEndpointGDTCStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString         `json:"configure_flow,omitempty"`
 	FriendlyName  *string                `json:"friendly_name,omitempty"`
@@ -45,7 +45,7 @@ type _AuthenticatorEndpointGDTCStage AuthenticatorEndpointGDTCStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorEndpointGDTCStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, credentials map[string]interface{}) *AuthenticatorEndpointGDTCStage {
+func NewAuthenticatorEndpointGDTCStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, credentials map[string]interface{}) *AuthenticatorEndpointGDTCStage {
 	this := AuthenticatorEndpointGDTCStage{}
 	this.Pk = pk
 	this.Name = name
@@ -53,7 +53,6 @@ func NewAuthenticatorEndpointGDTCStage(pk string, name string, component string,
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	this.Credentials = credentials
 	return &this
 }
@@ -210,26 +209,34 @@ func (o *AuthenticatorEndpointGDTCStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorEndpointGDTCStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorEndpointGDTCStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *AuthenticatorEndpointGDTCStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *AuthenticatorEndpointGDTCStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -349,7 +356,9 @@ func (o AuthenticatorEndpointGDTCStage) ToMap() (map[string]interface{}, error) 
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
@@ -371,7 +380,6 @@ func (o *AuthenticatorEndpointGDTCStage) UnmarshalJSON(data []byte) (err error) 
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 		"credentials",
 	}
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **FriendlyName** | Pointer to **string** |  | [optional] 
 **Digits** | [**DigitsEnum**](DigitsEnum.md) |  | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorTOTPStage
 
-`func NewAuthenticatorTOTPStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, digits DigitsEnum, ) *AuthenticatorTOTPStage`
+`func NewAuthenticatorTOTPStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, digits DigitsEnum, ) *AuthenticatorTOTPStage`
 
 NewAuthenticatorTOTPStage instantiates a new AuthenticatorTOTPStage object
 This constructor will assign default values to properties that have it defined,
@@ -173,6 +173,11 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
+### HasFlowSet
+
+`func (o *AuthenticatorTOTPStage) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetConfigureFlow
 

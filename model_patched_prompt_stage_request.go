@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -20,9 +20,10 @@ var _ MappedNullable = &PatchedPromptStageRequest{}
 
 // PatchedPromptStageRequest PromptStage Serializer
 type PatchedPromptStageRequest struct {
-	Name               *string  `json:"name,omitempty"`
-	Fields             []string `json:"fields,omitempty"`
-	ValidationPolicies []string `json:"validation_policies,omitempty"`
+	Name               *string          `json:"name,omitempty"`
+	FlowSet            []FlowSetRequest `json:"flow_set,omitempty"`
+	Fields             []string         `json:"fields,omitempty"`
+	ValidationPolicies []string         `json:"validation_policies,omitempty"`
 }
 
 // NewPatchedPromptStageRequest instantiates a new PatchedPromptStageRequest object
@@ -72,6 +73,38 @@ func (o *PatchedPromptStageRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchedPromptStageRequest) SetName(v string) {
 	o.Name = &v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *PatchedPromptStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPromptStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *PatchedPromptStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedPromptStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise.
@@ -150,6 +183,9 @@ func (o PatchedPromptStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
 	}
 	if !IsNil(o.Fields) {
 		toSerialize["fields"] = o.Fields

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -20,7 +20,8 @@ var _ MappedNullable = &PatchedInvitationStageRequest{}
 
 // PatchedInvitationStageRequest InvitationStage Serializer
 type PatchedInvitationStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name    *string          `json:"name,omitempty"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given.
 	ContinueFlowWithoutInvitation *bool `json:"continue_flow_without_invitation,omitempty"`
 }
@@ -74,6 +75,38 @@ func (o *PatchedInvitationStageRequest) SetName(v string) {
 	o.Name = &v
 }
 
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *PatchedInvitationStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedInvitationStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *PatchedInvitationStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedInvitationStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
+}
+
 // GetContinueFlowWithoutInvitation returns the ContinueFlowWithoutInvitation field value if set, zero value otherwise.
 func (o *PatchedInvitationStageRequest) GetContinueFlowWithoutInvitation() bool {
 	if o == nil || IsNil(o.ContinueFlowWithoutInvitation) {
@@ -118,6 +151,9 @@ func (o PatchedInvitationStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
 	}
 	if !IsNil(o.ContinueFlowWithoutInvitation) {
 		toSerialize["continue_flow_without_invitation"] = o.ContinueFlowWithoutInvitation

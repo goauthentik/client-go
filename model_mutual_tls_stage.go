@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -31,9 +31,9 @@ type MutualTLSStage struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName string        `json:"meta_model_name"`
-	FlowSet       []FlowSet     `json:"flow_set"`
-	Mode          StageModeEnum `json:"mode"`
+	MetaModelName string                 `json:"meta_model_name"`
+	FlowSet       []FlowSet              `json:"flow_set,omitempty"`
+	Mode          MutualTLSStageModeEnum `json:"mode"`
 	// Configure certificate authorities to validate the certificate against. This option has a higher priority than the `client_certificate` option on `Brand`.
 	CertificateAuthorities []string          `json:"certificate_authorities,omitempty"`
 	CertAttribute          CertAttributeEnum `json:"cert_attribute"`
@@ -46,7 +46,7 @@ type _MutualTLSStage MutualTLSStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMutualTLSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, mode StageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum) *MutualTLSStage {
+func NewMutualTLSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, mode MutualTLSStageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum) *MutualTLSStage {
 	this := MutualTLSStage{}
 	this.Pk = pk
 	this.Name = name
@@ -54,7 +54,6 @@ func NewMutualTLSStage(pk string, name string, component string, verboseName str
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	this.Mode = mode
 	this.CertAttribute = certAttribute
 	this.UserAttribute = userAttribute
@@ -213,34 +212,42 @@ func (o *MutualTLSStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *MutualTLSStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutualTLSStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *MutualTLSStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *MutualTLSStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
 
 // GetMode returns the Mode field value
-func (o *MutualTLSStage) GetMode() StageModeEnum {
+func (o *MutualTLSStage) GetMode() MutualTLSStageModeEnum {
 	if o == nil {
-		var ret StageModeEnum
+		var ret MutualTLSStageModeEnum
 		return ret
 	}
 
@@ -249,7 +256,7 @@ func (o *MutualTLSStage) GetMode() StageModeEnum {
 
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
-func (o *MutualTLSStage) GetModeOk() (*StageModeEnum, bool) {
+func (o *MutualTLSStage) GetModeOk() (*MutualTLSStageModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -257,7 +264,7 @@ func (o *MutualTLSStage) GetModeOk() (*StageModeEnum, bool) {
 }
 
 // SetMode sets field value
-func (o *MutualTLSStage) SetMode(v StageModeEnum) {
+func (o *MutualTLSStage) SetMode(v MutualTLSStageModeEnum) {
 	o.Mode = v
 }
 
@@ -357,7 +364,9 @@ func (o MutualTLSStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	toSerialize["mode"] = o.Mode
 	if !IsNil(o.CertificateAuthorities) {
 		toSerialize["certificate_authorities"] = o.CertificateAuthorities
@@ -378,7 +387,6 @@ func (o *MutualTLSStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 		"mode",
 		"cert_attribute",
 		"user_attribute",

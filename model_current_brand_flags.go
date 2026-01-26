@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -22,9 +22,7 @@ var _ MappedNullable = &CurrentBrandFlags{}
 
 // CurrentBrandFlags struct for CurrentBrandFlags
 type CurrentBrandFlags struct {
-	EnterpriseAuditIncludeExpandedDiff bool `json:"enterprise_audit_include_expanded_diff"`
-	PoliciesBufferedAccessView         bool `json:"policies_buffered_access_view"`
-	FlowsRefreshOthers                 bool `json:"flows_refresh_others"`
+	PoliciesBufferedAccessView bool `json:"policies_buffered_access_view"`
 }
 
 type _CurrentBrandFlags CurrentBrandFlags
@@ -33,11 +31,9 @@ type _CurrentBrandFlags CurrentBrandFlags
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsRefreshOthers bool) *CurrentBrandFlags {
+func NewCurrentBrandFlags(policiesBufferedAccessView bool) *CurrentBrandFlags {
 	this := CurrentBrandFlags{}
-	this.EnterpriseAuditIncludeExpandedDiff = enterpriseAuditIncludeExpandedDiff
 	this.PoliciesBufferedAccessView = policiesBufferedAccessView
-	this.FlowsRefreshOthers = flowsRefreshOthers
 	return &this
 }
 
@@ -47,30 +43,6 @@ func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBuffe
 func NewCurrentBrandFlagsWithDefaults() *CurrentBrandFlags {
 	this := CurrentBrandFlags{}
 	return &this
-}
-
-// GetEnterpriseAuditIncludeExpandedDiff returns the EnterpriseAuditIncludeExpandedDiff field value
-func (o *CurrentBrandFlags) GetEnterpriseAuditIncludeExpandedDiff() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.EnterpriseAuditIncludeExpandedDiff
-}
-
-// GetEnterpriseAuditIncludeExpandedDiffOk returns a tuple with the EnterpriseAuditIncludeExpandedDiff field value
-// and a boolean to check if the value has been set.
-func (o *CurrentBrandFlags) GetEnterpriseAuditIncludeExpandedDiffOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EnterpriseAuditIncludeExpandedDiff, true
-}
-
-// SetEnterpriseAuditIncludeExpandedDiff sets field value
-func (o *CurrentBrandFlags) SetEnterpriseAuditIncludeExpandedDiff(v bool) {
-	o.EnterpriseAuditIncludeExpandedDiff = v
 }
 
 // GetPoliciesBufferedAccessView returns the PoliciesBufferedAccessView field value
@@ -97,30 +69,6 @@ func (o *CurrentBrandFlags) SetPoliciesBufferedAccessView(v bool) {
 	o.PoliciesBufferedAccessView = v
 }
 
-// GetFlowsRefreshOthers returns the FlowsRefreshOthers field value
-func (o *CurrentBrandFlags) GetFlowsRefreshOthers() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.FlowsRefreshOthers
-}
-
-// GetFlowsRefreshOthersOk returns a tuple with the FlowsRefreshOthers field value
-// and a boolean to check if the value has been set.
-func (o *CurrentBrandFlags) GetFlowsRefreshOthersOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.FlowsRefreshOthers, true
-}
-
-// SetFlowsRefreshOthers sets field value
-func (o *CurrentBrandFlags) SetFlowsRefreshOthers(v bool) {
-	o.FlowsRefreshOthers = v
-}
-
 func (o CurrentBrandFlags) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -131,9 +79,7 @@ func (o CurrentBrandFlags) MarshalJSON() ([]byte, error) {
 
 func (o CurrentBrandFlags) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["enterprise_audit_include_expanded_diff"] = o.EnterpriseAuditIncludeExpandedDiff
 	toSerialize["policies_buffered_access_view"] = o.PoliciesBufferedAccessView
-	toSerialize["flows_refresh_others"] = o.FlowsRefreshOthers
 	return toSerialize, nil
 }
 
@@ -142,9 +88,7 @@ func (o *CurrentBrandFlags) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"enterprise_audit_include_expanded_diff",
 		"policies_buffered_access_view",
-		"flows_refresh_others",
 	}
 
 	allProperties := make(map[string]interface{})

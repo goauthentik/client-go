@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Name** | **string** | Source&#39;s display Name. | 
 **Slug** | **string** | Internal source name, used in URLs. | 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**Promoted** | Pointer to **bool** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
@@ -21,8 +20,7 @@ Name | Type | Description | Notes
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | Pointer to **string** |  | [optional] 
-**IconUrl** | **string** |  | [readonly] 
+**Icon** | **string** |  | [readonly] 
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **Realm** | **string** | Kerberos realm | 
 **Krb5Conf** | Pointer to **string** | Custom krb5.conf to use. Uses the system one by default | [optional] 
@@ -35,13 +33,12 @@ Name | Type | Description | Notes
 **SpnegoServerName** | Pointer to **string** | Force the use of a specific server name for SPNEGO. Must be in the form HTTP@hostname | [optional] 
 **SpnegoCcache** | Pointer to **string** | Credential cache to use for SPNEGO in form type:residual | [optional] 
 **PasswordLoginUpdateInternalPassword** | Pointer to **bool** | If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend | [optional] 
-**SyncOutgoingTriggerMode** | Pointer to [**SyncOutgoingTriggerModeEnum**](SyncOutgoingTriggerModeEnum.md) | When to trigger sync for outgoing providers | [optional] 
 
 ## Methods
 
 ### NewKerberosSource
 
-`func NewKerberosSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, realm string, connectivity map[string]string, ) *KerberosSource`
+`func NewKerberosSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon string, realm string, connectivity map[string]string, ) *KerberosSource`
 
 NewKerberosSource instantiates a new KerberosSource object
 This constructor will assign default values to properties that have it defined,
@@ -140,31 +137,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *KerberosSource) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
-### GetPromoted
-
-`func (o *KerberosSource) GetPromoted() bool`
-
-GetPromoted returns the Promoted field if non-nil, zero value otherwise.
-
-### GetPromotedOk
-
-`func (o *KerberosSource) GetPromotedOk() (*bool, bool)`
-
-GetPromotedOk returns a tuple with the Promoted field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPromoted
-
-`func (o *KerberosSource) SetPromoted(v bool)`
-
-SetPromoted sets Promoted field to given value.
-
-### HasPromoted
-
-`func (o *KerberosSource) HasPromoted() bool`
-
-HasPromoted returns a boolean if a field has been set.
 
 ### GetAuthenticationFlow
 
@@ -490,31 +462,6 @@ and a boolean to check if the value has been set.
 
 SetIcon sets Icon field to given value.
 
-### HasIcon
-
-`func (o *KerberosSource) HasIcon() bool`
-
-HasIcon returns a boolean if a field has been set.
-
-### GetIconUrl
-
-`func (o *KerberosSource) GetIconUrl() string`
-
-GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
-
-### GetIconUrlOk
-
-`func (o *KerberosSource) GetIconUrlOk() (*string, bool)`
-
-GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIconUrl
-
-`func (o *KerberosSource) SetIconUrl(v string)`
-
-SetIconUrl sets IconUrl field to given value.
-
 
 ### GetGroupMatchingMode
 
@@ -815,31 +762,6 @@ SetPasswordLoginUpdateInternalPassword sets PasswordLoginUpdateInternalPassword 
 `func (o *KerberosSource) HasPasswordLoginUpdateInternalPassword() bool`
 
 HasPasswordLoginUpdateInternalPassword returns a boolean if a field has been set.
-
-### GetSyncOutgoingTriggerMode
-
-`func (o *KerberosSource) GetSyncOutgoingTriggerMode() SyncOutgoingTriggerModeEnum`
-
-GetSyncOutgoingTriggerMode returns the SyncOutgoingTriggerMode field if non-nil, zero value otherwise.
-
-### GetSyncOutgoingTriggerModeOk
-
-`func (o *KerberosSource) GetSyncOutgoingTriggerModeOk() (*SyncOutgoingTriggerModeEnum, bool)`
-
-GetSyncOutgoingTriggerModeOk returns a tuple with the SyncOutgoingTriggerMode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncOutgoingTriggerMode
-
-`func (o *KerberosSource) SetSyncOutgoingTriggerMode(v SyncOutgoingTriggerModeEnum)`
-
-SetSyncOutgoingTriggerMode sets SyncOutgoingTriggerMode field to given value.
-
-### HasSyncOutgoingTriggerMode
-
-`func (o *KerberosSource) HasSyncOutgoingTriggerMode() bool`
-
-HasSyncOutgoingTriggerMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

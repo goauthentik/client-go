@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**SourcesAllDestroy**](SourcesAPI.md#SourcesAllDestroy) | **Delete** /sources/all/{slug}/ | 
 [**SourcesAllList**](SourcesAPI.md#SourcesAllList) | **Get** /sources/all/ | 
 [**SourcesAllRetrieve**](SourcesAPI.md#SourcesAllRetrieve) | **Get** /sources/all/{slug}/ | 
+[**SourcesAllSetIconCreate**](SourcesAPI.md#SourcesAllSetIconCreate) | **Post** /sources/all/{slug}/set_icon/ | 
+[**SourcesAllSetIconUrlCreate**](SourcesAPI.md#SourcesAllSetIconUrlCreate) | **Post** /sources/all/{slug}/set_icon_url/ | 
 [**SourcesAllTypesList**](SourcesAPI.md#SourcesAllTypesList) | **Get** /sources/all/types/ | 
 [**SourcesAllUsedByList**](SourcesAPI.md#SourcesAllUsedByList) | **Get** /sources/all/{slug}/used_by/ | 
 [**SourcesAllUserSettingsList**](SourcesAPI.md#SourcesAllUserSettingsList) | **Get** /sources/all/user_settings/ | 
@@ -121,7 +123,6 @@ Method | HTTP request | Description
 [**SourcesScimUsersRetrieve**](SourcesAPI.md#SourcesScimUsersRetrieve) | **Get** /sources/scim_users/{id}/ | 
 [**SourcesScimUsersUpdate**](SourcesAPI.md#SourcesScimUsersUpdate) | **Put** /sources/scim_users/{id}/ | 
 [**SourcesScimUsersUsedByList**](SourcesAPI.md#SourcesScimUsersUsedByList) | **Get** /sources/scim_users/{id}/used_by/ | 
-[**SourcesTelegramConnectUserCreate**](SourcesAPI.md#SourcesTelegramConnectUserCreate) | **Post** /sources/telegram/{slug}/connect_user/ | 
 [**SourcesTelegramCreate**](SourcesAPI.md#SourcesTelegramCreate) | **Post** /sources/telegram/ | 
 [**SourcesTelegramDestroy**](SourcesAPI.md#SourcesTelegramDestroy) | **Delete** /sources/telegram/{slug}/ | 
 [**SourcesTelegramList**](SourcesAPI.md#SourcesTelegramList) | **Get** /sources/telegram/ | 
@@ -391,6 +392,148 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesAllSetIconCreate
+
+> SourcesAllSetIconCreate(ctx, slug).File(file).Clear(clear).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	slug := "slug_example" // string | 
+	file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+	clear := true // bool |  (optional) (default to false)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SourcesAPI.SourcesAllSetIconCreate(context.Background(), slug).File(file).Clear(clear).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllSetIconCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesAllSetIconCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** |  | 
+ **clear** | **bool** |  | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SourcesAllSetIconUrlCreate
+
+> SourcesAllSetIconUrlCreate(ctx, slug).FilePathRequest(filePathRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	slug := "slug_example" // string | 
+	filePathRequest := *openapiclient.NewFilePathRequest("Url_example") // FilePathRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SourcesAPI.SourcesAllSetIconUrlCreate(context.Background(), slug).FilePathRequest(filePathRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesAllSetIconUrlCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**slug** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSourcesAllSetIconUrlCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **filePathRequest** | [**FilePathRequest**](FilePathRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -8571,78 +8714,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SourcesTelegramConnectUserCreate
-
-> UserTelegramSourceConnection SourcesTelegramConnectUserCreate(ctx, slug).TelegramAuthRequest(telegramAuthRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	slug := "slug_example" // string | 
-	telegramAuthRequest := *openapiclient.NewTelegramAuthRequest(int32(123), int32(123), "Hash_example") // TelegramAuthRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SourcesAPI.SourcesTelegramConnectUserCreate(context.Background(), slug).TelegramAuthRequest(telegramAuthRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.SourcesTelegramConnectUserCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SourcesTelegramConnectUserCreate`: UserTelegramSourceConnection
-	fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.SourcesTelegramConnectUserCreate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**slug** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSourcesTelegramConnectUserCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **telegramAuthRequest** | [**TelegramAuthRequest**](TelegramAuthRequest.md) |  | 
-
-### Return type
-
-[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

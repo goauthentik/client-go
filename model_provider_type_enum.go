@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -34,10 +34,8 @@ const (
 	PROVIDERTYPEENUM_OKTA          ProviderTypeEnum = "okta"
 	PROVIDERTYPEENUM_PATREON       ProviderTypeEnum = "patreon"
 	PROVIDERTYPEENUM_REDDIT        ProviderTypeEnum = "reddit"
-	PROVIDERTYPEENUM_SLACK         ProviderTypeEnum = "slack"
 	PROVIDERTYPEENUM_TWITCH        ProviderTypeEnum = "twitch"
 	PROVIDERTYPEENUM_TWITTER       ProviderTypeEnum = "twitter"
-	PROVIDERTYPEENUM_WECHAT        ProviderTypeEnum = "wechat"
 )
 
 // All allowed values of ProviderTypeEnum enum
@@ -55,10 +53,8 @@ var AllowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
 	"okta",
 	"patreon",
 	"reddit",
-	"slack",
 	"twitch",
 	"twitter",
-	"wechat",
 }
 
 func (v *ProviderTypeEnum) UnmarshalJSON(src []byte) error {

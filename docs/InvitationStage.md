@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **ContinueFlowWithoutInvitation** | Pointer to **bool** | If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given. | [optional] 
 
 ## Methods
 
 ### NewInvitationStage
 
-`func NewInvitationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, ) *InvitationStage`
+`func NewInvitationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *InvitationStage`
 
 NewInvitationStage instantiates a new InvitationStage object
 This constructor will assign default values to properties that have it defined,
@@ -171,6 +171,11 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
+### HasFlowSet
+
+`func (o *InvitationStage) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetContinueFlowWithoutInvitation
 

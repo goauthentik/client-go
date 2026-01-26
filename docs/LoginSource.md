@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **IconUrl** | Pointer to **NullableString** |  | [optional] 
-**Promoted** | Pointer to **bool** |  | [optional] [default to false]
 **Challenge** | [**LoginChallengeTypes**](LoginChallengeTypes.md) |  | 
 
 ## Methods
@@ -83,31 +82,6 @@ HasIconUrl returns a boolean if a field has been set.
 `func (o *LoginSource) UnsetIconUrl()`
 
 UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
-### GetPromoted
-
-`func (o *LoginSource) GetPromoted() bool`
-
-GetPromoted returns the Promoted field if non-nil, zero value otherwise.
-
-### GetPromotedOk
-
-`func (o *LoginSource) GetPromotedOk() (*bool, bool)`
-
-GetPromotedOk returns a tuple with the Promoted field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPromoted
-
-`func (o *LoginSource) SetPromoted(v bool)`
-
-SetPromoted sets Promoted field to given value.
-
-### HasPromoted
-
-`func (o *LoginSource) HasPromoted() bool`
-
-HasPromoted returns a boolean if a field has been set.
-
 ### GetChallenge
 
 `func (o *LoginSource) GetChallenge() LoginChallengeTypes`

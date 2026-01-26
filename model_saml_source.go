@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -28,8 +28,6 @@ type SAMLSource struct {
 	// Internal source name, used in URLs.
 	Slug    string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool  `json:"enabled,omitempty"`
-	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
-	Promoted *bool `json:"promoted,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
@@ -50,8 +48,7 @@ type SAMLSource struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	Icon             *string        `json:"icon,omitempty"`
-	IconUrl          string         `json:"icon_url"`
+	Icon             string         `json:"icon"`
 	// How the source determines if an existing group should be used or a new group created.
 	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	// Flow used before authentication.
@@ -87,7 +84,7 @@ type _SAMLSource SAMLSource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
+func NewSAMLSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon string, preAuthenticationFlow string, ssoUrl string) *SAMLSource {
 	this := SAMLSource{}
 	this.Pk = pk
 	this.Name = name
@@ -97,7 +94,7 @@ func NewSAMLSource(pk string, name string, slug string, component string, verbos
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.Managed = managed
-	this.IconUrl = iconUrl
+	this.Icon = icon
 	this.PreAuthenticationFlow = preAuthenticationFlow
 	this.SsoUrl = ssoUrl
 	return &this
@@ -213,38 +210,6 @@ func (o *SAMLSource) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *SAMLSource) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetPromoted returns the Promoted field value if set, zero value otherwise.
-func (o *SAMLSource) GetPromoted() bool {
-	if o == nil || IsNil(o.Promoted) {
-		var ret bool
-		return ret
-	}
-	return *o.Promoted
-}
-
-// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLSource) GetPromotedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Promoted) {
-		return nil, false
-	}
-	return o.Promoted, true
-}
-
-// HasPromoted returns a boolean if a field has been set.
-func (o *SAMLSource) HasPromoted() bool {
-	if o != nil && !IsNil(o.Promoted) {
-		return true
-	}
-
-	return false
-}
-
-// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
-func (o *SAMLSource) SetPromoted(v bool) {
-	o.Promoted = &v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -615,60 +580,28 @@ func (o *SAMLSource) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
 }
 
-// GetIcon returns the Icon field value if set, zero value otherwise.
+// GetIcon returns the Icon field value
 func (o *SAMLSource) GetIcon() string {
-	if o == nil || IsNil(o.Icon) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Icon
+
+	return o.Icon
 }
 
-// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// GetIconOk returns a tuple with the Icon field value
 // and a boolean to check if the value has been set.
 func (o *SAMLSource) GetIconOk() (*string, bool) {
-	if o == nil || IsNil(o.Icon) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Icon, true
+	return &o.Icon, true
 }
 
-// HasIcon returns a boolean if a field has been set.
-func (o *SAMLSource) HasIcon() bool {
-	if o != nil && !IsNil(o.Icon) {
-		return true
-	}
-
-	return false
-}
-
-// SetIcon gets a reference to the given string and assigns it to the Icon field.
+// SetIcon sets field value
 func (o *SAMLSource) SetIcon(v string) {
-	o.Icon = &v
-}
-
-// GetIconUrl returns the IconUrl field value
-func (o *SAMLSource) GetIconUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.IconUrl
-}
-
-// GetIconUrlOk returns a tuple with the IconUrl field value
-// and a boolean to check if the value has been set.
-func (o *SAMLSource) GetIconUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IconUrl, true
-}
-
-// SetIconUrl sets field value
-func (o *SAMLSource) SetIconUrl(v string) {
-	o.IconUrl = v
+	o.Icon = v
 }
 
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
@@ -1227,9 +1160,6 @@ func (o SAMLSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.Promoted) {
-		toSerialize["promoted"] = o.Promoted
-	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
@@ -1256,10 +1186,7 @@ func (o SAMLSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if !IsNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
-	toSerialize["icon_url"] = o.IconUrl
+	toSerialize["icon"] = o.Icon
 	if !IsNil(o.GroupMatchingMode) {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
@@ -1320,7 +1247,7 @@ func (o *SAMLSource) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name_plural",
 		"meta_model_name",
 		"managed",
-		"icon_url",
+		"icon",
 		"pre_authentication_flow",
 		"sso_url",
 	}

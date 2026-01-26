@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Source&#39;s display Name. | [optional] 
 **Slug** | Pointer to **string** | Internal source name, used in URLs. | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**Promoted** | Pointer to **bool** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
@@ -15,7 +14,6 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | Pointer to **string** |  | [optional] 
 **BotUsername** | Pointer to **string** | Telegram bot username | [optional] 
 **BotToken** | Pointer to **string** | Telegram bot token | [optional] 
 **RequestMessageAccess** | Pointer to **bool** | Request access to send messages from your bot. | [optional] 
@@ -114,31 +112,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *PatchedTelegramSourceRequest) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
-### GetPromoted
-
-`func (o *PatchedTelegramSourceRequest) GetPromoted() bool`
-
-GetPromoted returns the Promoted field if non-nil, zero value otherwise.
-
-### GetPromotedOk
-
-`func (o *PatchedTelegramSourceRequest) GetPromotedOk() (*bool, bool)`
-
-GetPromotedOk returns a tuple with the Promoted field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPromoted
-
-`func (o *PatchedTelegramSourceRequest) SetPromoted(v bool)`
-
-SetPromoted sets Promoted field to given value.
-
-### HasPromoted
-
-`func (o *PatchedTelegramSourceRequest) HasPromoted() bool`
-
-HasPromoted returns a boolean if a field has been set.
 
 ### GetAuthenticationFlow
 
@@ -334,31 +307,6 @@ SetUserPathTemplate sets UserPathTemplate field to given value.
 `func (o *PatchedTelegramSourceRequest) HasUserPathTemplate() bool`
 
 HasUserPathTemplate returns a boolean if a field has been set.
-
-### GetIcon
-
-`func (o *PatchedTelegramSourceRequest) GetIcon() string`
-
-GetIcon returns the Icon field if non-nil, zero value otherwise.
-
-### GetIconOk
-
-`func (o *PatchedTelegramSourceRequest) GetIconOk() (*string, bool)`
-
-GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIcon
-
-`func (o *PatchedTelegramSourceRequest) SetIcon(v string)`
-
-SetIcon sets Icon field to given value.
-
-### HasIcon
-
-`func (o *PatchedTelegramSourceRequest) HasIcon() bool`
-
-HasIcon returns a boolean if a field has been set.
 
 ### GetBotUsername
 

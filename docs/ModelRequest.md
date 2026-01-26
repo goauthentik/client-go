@@ -15,8 +15,6 @@ Name | Type | Description | Notes
 **UserDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **GroupDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **DefaultGroupEmailDomain** | **string** |  | 
-**SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
-**SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
@@ -90,7 +88,6 @@ Name | Type | Description | Notes
 **AuthOauth** | Pointer to **NullableString** | OAuth Source used for authentication | [optional] 
 **AuthOauthParams** | Pointer to **map[string]map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
-**ServiceProviderConfigCacheTimeout** | Pointer to **string** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] 
 **OidcAuthProviders** | Pointer to **[]int32** |  | [optional] 
 **EventRetention** | Pointer to **string** |  | [optional] 
 
@@ -377,56 +374,6 @@ and a boolean to check if the value has been set.
 
 SetDefaultGroupEmailDomain sets DefaultGroupEmailDomain field to given value.
 
-
-### GetSyncPageSize
-
-`func (o *ModelRequest) GetSyncPageSize() int32`
-
-GetSyncPageSize returns the SyncPageSize field if non-nil, zero value otherwise.
-
-### GetSyncPageSizeOk
-
-`func (o *ModelRequest) GetSyncPageSizeOk() (*int32, bool)`
-
-GetSyncPageSizeOk returns a tuple with the SyncPageSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageSize
-
-`func (o *ModelRequest) SetSyncPageSize(v int32)`
-
-SetSyncPageSize sets SyncPageSize field to given value.
-
-### HasSyncPageSize
-
-`func (o *ModelRequest) HasSyncPageSize() bool`
-
-HasSyncPageSize returns a boolean if a field has been set.
-
-### GetSyncPageTimeout
-
-`func (o *ModelRequest) GetSyncPageTimeout() string`
-
-GetSyncPageTimeout returns the SyncPageTimeout field if non-nil, zero value otherwise.
-
-### GetSyncPageTimeoutOk
-
-`func (o *ModelRequest) GetSyncPageTimeoutOk() (*string, bool)`
-
-GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageTimeout
-
-`func (o *ModelRequest) SetSyncPageTimeout(v string)`
-
-SetSyncPageTimeout sets SyncPageTimeout field to given value.
-
-### HasSyncPageTimeout
-
-`func (o *ModelRequest) HasSyncPageTimeout() bool`
-
-HasSyncPageTimeout returns a boolean if a field has been set.
 
 ### GetDryRun
 
@@ -2292,31 +2239,6 @@ SetCompatibilityMode sets CompatibilityMode field to given value.
 `func (o *ModelRequest) HasCompatibilityMode() bool`
 
 HasCompatibilityMode returns a boolean if a field has been set.
-
-### GetServiceProviderConfigCacheTimeout
-
-`func (o *ModelRequest) GetServiceProviderConfigCacheTimeout() string`
-
-GetServiceProviderConfigCacheTimeout returns the ServiceProviderConfigCacheTimeout field if non-nil, zero value otherwise.
-
-### GetServiceProviderConfigCacheTimeoutOk
-
-`func (o *ModelRequest) GetServiceProviderConfigCacheTimeoutOk() (*string, bool)`
-
-GetServiceProviderConfigCacheTimeoutOk returns a tuple with the ServiceProviderConfigCacheTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServiceProviderConfigCacheTimeout
-
-`func (o *ModelRequest) SetServiceProviderConfigCacheTimeout(v string)`
-
-SetServiceProviderConfigCacheTimeout sets ServiceProviderConfigCacheTimeout field to given value.
-
-### HasServiceProviderConfigCacheTimeout
-
-`func (o *ModelRequest) HasServiceProviderConfigCacheTimeout() bool`
-
-HasServiceProviderConfigCacheTimeout returns a boolean if a field has been set.
 
 ### GetOidcAuthProviders
 

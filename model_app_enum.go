@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -28,11 +28,8 @@ const (
 	APPENUM_AUTHENTIK_API                                           AppEnum = "authentik.api"
 	APPENUM_AUTHENTIK_CORE                                          AppEnum = "authentik.core"
 	APPENUM_AUTHENTIK_CRYPTO                                        AppEnum = "authentik.crypto"
-	APPENUM_AUTHENTIK_ENDPOINTS                                     AppEnum = "authentik.endpoints"
-	APPENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT                    AppEnum = "authentik.endpoints.connectors.agent"
 	APPENUM_AUTHENTIK_ENTERPRISE                                    AppEnum = "authentik.enterprise"
 	APPENUM_AUTHENTIK_EVENTS                                        AppEnum = "authentik.events"
-	APPENUM_AUTHENTIK_ADMIN_FILES                                   AppEnum = "authentik.admin.files"
 	APPENUM_AUTHENTIK_FLOWS                                         AppEnum = "authentik.flows"
 	APPENUM_AUTHENTIK_OUTPOSTS                                      AppEnum = "authentik.outposts"
 	APPENUM_AUTHENTIK_POLICIES_DUMMY                                AppEnum = "authentik.policies.dummy"
@@ -85,15 +82,12 @@ const (
 	APPENUM_AUTHENTIK_BRANDS                                        AppEnum = "authentik.brands"
 	APPENUM_AUTHENTIK_BLUEPRINTS                                    AppEnum = "authentik.blueprints"
 	APPENUM_AUTHENTIK_ENTERPRISE_AUDIT                              AppEnum = "authentik.enterprise.audit"
-	APPENUM_AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT         AppEnum = "authentik.enterprise.endpoints.connectors.agent"
-	APPENUM_AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_FLEET         AppEnum = "authentik.enterprise.endpoints.connectors.fleet"
 	APPENUM_AUTHENTIK_ENTERPRISE_POLICIES_UNIQUE_PASSWORD           AppEnum = "authentik.enterprise.policies.unique_password"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE         AppEnum = "authentik.enterprise.providers.google_workspace"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA          AppEnum = "authentik.enterprise.providers.microsoft_entra"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_RADIUS                   AppEnum = "authentik.enterprise.providers.radius"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_SCIM                     AppEnum = "authentik.enterprise.providers.scim"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_SSF                      AppEnum = "authentik.enterprise.providers.ssf"
-	APPENUM_AUTHENTIK_ENTERPRISE_REPORTS                            AppEnum = "authentik.enterprise.reports"
 	APPENUM_AUTHENTIK_ENTERPRISE_SEARCH                             AppEnum = "authentik.enterprise.search"
 	APPENUM_AUTHENTIK_ENTERPRISE_STAGES_AUTHENTICATOR_ENDPOINT_GDTC AppEnum = "authentik.enterprise.stages.authenticator_endpoint_gdtc"
 	APPENUM_AUTHENTIK_ENTERPRISE_STAGES_MTLS                        AppEnum = "authentik.enterprise.stages.mtls"
@@ -109,11 +103,8 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.api",
 	"authentik.core",
 	"authentik.crypto",
-	"authentik.endpoints",
-	"authentik.endpoints.connectors.agent",
 	"authentik.enterprise",
 	"authentik.events",
-	"authentik.admin.files",
 	"authentik.flows",
 	"authentik.outposts",
 	"authentik.policies.dummy",
@@ -166,15 +157,12 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.brands",
 	"authentik.blueprints",
 	"authentik.enterprise.audit",
-	"authentik.enterprise.endpoints.connectors.agent",
-	"authentik.enterprise.endpoints.connectors.fleet",
 	"authentik.enterprise.policies.unique_password",
 	"authentik.enterprise.providers.google_workspace",
 	"authentik.enterprise.providers.microsoft_entra",
 	"authentik.enterprise.providers.radius",
 	"authentik.enterprise.providers.scim",
 	"authentik.enterprise.providers.ssf",
-	"authentik.enterprise.reports",
 	"authentik.enterprise.search",
 	"authentik.enterprise.stages.authenticator_endpoint_gdtc",
 	"authentik.enterprise.stages.mtls",

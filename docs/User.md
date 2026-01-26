@@ -13,8 +13,6 @@ Name | Type | Description | Notes
 **IsSuperuser** | **bool** |  | [readonly] 
 **Groups** | Pointer to **[]string** |  | [optional] 
 **GroupsObj** | [**[]PartialGroup**](PartialGroup.md) |  | [readonly] 
-**Roles** | Pointer to **[]string** |  | [optional] 
-**RolesObj** | [**[]Role**](Role.md) |  | [readonly] 
 **Email** | Pointer to **string** |  | [optional] 
 **Avatar** | **string** | User&#39;s avatar, either a http/https URL or a data URI | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -29,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewUser
 
-`func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []PartialGroup, rolesObj []Role, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time, ) *User`
+`func NewUser(pk int32, username string, name string, dateJoined time.Time, isSuperuser bool, groupsObj []PartialGroup, avatar string, uid string, uuid string, passwordChangeDate time.Time, lastUpdated time.Time, ) *User`
 
 NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
@@ -259,61 +257,6 @@ SetGroupsObj sets GroupsObj field to given value.
 `func (o *User) UnsetGroupsObj()`
 
 UnsetGroupsObj ensures that no value is present for GroupsObj, not even an explicit nil
-### GetRoles
-
-`func (o *User) GetRoles() []string`
-
-GetRoles returns the Roles field if non-nil, zero value otherwise.
-
-### GetRolesOk
-
-`func (o *User) GetRolesOk() (*[]string, bool)`
-
-GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRoles
-
-`func (o *User) SetRoles(v []string)`
-
-SetRoles sets Roles field to given value.
-
-### HasRoles
-
-`func (o *User) HasRoles() bool`
-
-HasRoles returns a boolean if a field has been set.
-
-### GetRolesObj
-
-`func (o *User) GetRolesObj() []Role`
-
-GetRolesObj returns the RolesObj field if non-nil, zero value otherwise.
-
-### GetRolesObjOk
-
-`func (o *User) GetRolesObjOk() (*[]Role, bool)`
-
-GetRolesObjOk returns a tuple with the RolesObj field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRolesObj
-
-`func (o *User) SetRolesObj(v []Role)`
-
-SetRolesObj sets RolesObj field to given value.
-
-
-### SetRolesObjNil
-
-`func (o *User) SetRolesObjNil(b bool)`
-
- SetRolesObjNil sets the value for RolesObj to be an explicit nil
-
-### UnsetRolesObj
-`func (o *User) UnsetRolesObj()`
-
-UnsetRolesObj ensures that no value is present for RolesObj, not even an explicit nil
 ### GetEmail
 
 `func (o *User) GetEmail() string`

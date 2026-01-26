@@ -15,8 +15,6 @@ Name | Type | Description | Notes
 **UserDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **GroupDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **DefaultGroupEmailDomain** | Pointer to **string** |  | [optional] 
-**SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
-**SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
 ## Methods
@@ -322,56 +320,6 @@ SetDefaultGroupEmailDomain sets DefaultGroupEmailDomain field to given value.
 `func (o *PatchedGoogleWorkspaceProviderRequest) HasDefaultGroupEmailDomain() bool`
 
 HasDefaultGroupEmailDomain returns a boolean if a field has been set.
-
-### GetSyncPageSize
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetSyncPageSize() int32`
-
-GetSyncPageSize returns the SyncPageSize field if non-nil, zero value otherwise.
-
-### GetSyncPageSizeOk
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetSyncPageSizeOk() (*int32, bool)`
-
-GetSyncPageSizeOk returns a tuple with the SyncPageSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageSize
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) SetSyncPageSize(v int32)`
-
-SetSyncPageSize sets SyncPageSize field to given value.
-
-### HasSyncPageSize
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) HasSyncPageSize() bool`
-
-HasSyncPageSize returns a boolean if a field has been set.
-
-### GetSyncPageTimeout
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetSyncPageTimeout() string`
-
-GetSyncPageTimeout returns the SyncPageTimeout field if non-nil, zero value otherwise.
-
-### GetSyncPageTimeoutOk
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) GetSyncPageTimeoutOk() (*string, bool)`
-
-GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageTimeout
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) SetSyncPageTimeout(v string)`
-
-SetSyncPageTimeout sets SyncPageTimeout field to given value.
-
-### HasSyncPageTimeout
-
-`func (o *PatchedGoogleWorkspaceProviderRequest) HasSyncPageTimeout() bool`
-
-HasSyncPageTimeout returns a boolean if a field has been set.
 
 ### GetDryRun
 

@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**EventsEventsActionsList**](EventsAPI.md#EventsEventsActionsList) | **Get** /events/events/actions/ | 
 [**EventsEventsCreate**](EventsAPI.md#EventsEventsCreate) | **Post** /events/events/ | 
 [**EventsEventsDestroy**](EventsAPI.md#EventsEventsDestroy) | **Delete** /events/events/{event_uuid}/ | 
-[**EventsEventsExportCreate**](EventsAPI.md#EventsEventsExportCreate) | **Post** /events/events/export/ | 
 [**EventsEventsList**](EventsAPI.md#EventsEventsList) | **Get** /events/events/ | 
 [**EventsEventsPartialUpdate**](EventsAPI.md#EventsEventsPartialUpdate) | **Patch** /events/events/{event_uuid}/ | 
 [**EventsEventsRetrieve**](EventsAPI.md#EventsEventsRetrieve) | **Get** /events/events/{event_uuid}/ | 
@@ -219,92 +218,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EventsEventsExportCreate
-
-> DataExport EventsEventsExportCreate(ctx).Action(action).Actions(actions).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).Username(username).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	action := "action_example" // string |  (optional)
-	actions := []string{"Actions_example"} // []string |  (optional)
-	brandName := "brandName_example" // string | Brand name (optional)
-	clientIp := "clientIp_example" // string |  (optional)
-	contextAuthorizedApp := "contextAuthorizedApp_example" // string | Context Authorized application (optional)
-	contextModelApp := "contextModelApp_example" // string | Context Model App (optional)
-	contextModelName := "contextModelName_example" // string | Context Model Name (optional)
-	contextModelPk := "contextModelPk_example" // string | Context Model Primary Key (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	search := "search_example" // string | A search term. (optional)
-	username := "username_example" // string | Username (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EventsAPI.EventsEventsExportCreate(context.Background()).Action(action).Actions(actions).BrandName(brandName).ClientIp(clientIp).ContextAuthorizedApp(contextAuthorizedApp).ContextModelApp(contextModelApp).ContextModelName(contextModelName).ContextModelPk(contextModelPk).Ordering(ordering).Search(search).Username(username).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EventsAPI.EventsEventsExportCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EventsEventsExportCreate`: DataExport
-	fmt.Fprintf(os.Stdout, "Response from `EventsAPI.EventsEventsExportCreate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEventsEventsExportCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **action** | **string** |  | 
- **actions** | **[]string** |  | 
- **brandName** | **string** | Brand name | 
- **clientIp** | **string** |  | 
- **contextAuthorizedApp** | **string** | Context Authorized application | 
- **contextModelApp** | **string** | Context Model App | 
- **contextModelName** | **string** | Context Model Name | 
- **contextModelPk** | **string** | Context Model Primary Key | 
- **ordering** | **string** | Which field to use when ordering the results. | 
- **search** | **string** | A search term. | 
- **username** | **string** | Username | 
-
-### Return type
-
-[**DataExport**](DataExport.md)
 
 ### Authorization
 

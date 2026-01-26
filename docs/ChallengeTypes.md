@@ -36,8 +36,6 @@ Name | Type | Description | Notes
 **AdditionalPermissions** | [**[]ConsentPermission**](ConsentPermission.md) |  | 
 **Token** | **string** |  | 
 **Name** | **string** |  | 
-**Challenge** | **string** |  | 
-**ChallengeIdleTimeout** | **int32** |  | 
 **RequestId** | **string** |  | 
 **Error** | Pointer to **string** |  | [optional] 
 **Traceback** | Pointer to **string** |  | [optional] 
@@ -56,7 +54,6 @@ Name | Type | Description | Notes
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
 **EnableRememberMe** | Pointer to **bool** |  | [optional] [default to true]
-**PasskeyChallenge** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **LogoutUrls** | Pointer to **[]map[string]map[string]interface{}** |  | [optional] 
 **PostUrl** | Pointer to **string** |  | [optional] 
 **SamlRequest** | Pointer to **string** |  | [optional] 
@@ -80,7 +77,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, challenge string, challengeIdleTimeout int32, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, botUsername string, requestMessageAccess bool, ) *ChallengeTypes`
+`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, botUsername string, requestMessageAccess bool, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -790,46 +787,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetChallenge
-
-`func (o *ChallengeTypes) GetChallenge() string`
-
-GetChallenge returns the Challenge field if non-nil, zero value otherwise.
-
-### GetChallengeOk
-
-`func (o *ChallengeTypes) GetChallengeOk() (*string, bool)`
-
-GetChallengeOk returns a tuple with the Challenge field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChallenge
-
-`func (o *ChallengeTypes) SetChallenge(v string)`
-
-SetChallenge sets Challenge field to given value.
-
-
-### GetChallengeIdleTimeout
-
-`func (o *ChallengeTypes) GetChallengeIdleTimeout() int32`
-
-GetChallengeIdleTimeout returns the ChallengeIdleTimeout field if non-nil, zero value otherwise.
-
-### GetChallengeIdleTimeoutOk
-
-`func (o *ChallengeTypes) GetChallengeIdleTimeoutOk() (*int32, bool)`
-
-GetChallengeIdleTimeoutOk returns a tuple with the ChallengeIdleTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChallengeIdleTimeout
-
-`func (o *ChallengeTypes) SetChallengeIdleTimeout(v int32)`
-
-SetChallengeIdleTimeout sets ChallengeIdleTimeout field to given value.
-
-
 ### GetRequestId
 
 `func (o *ChallengeTypes) GetRequestId() string`
@@ -1265,41 +1222,6 @@ SetEnableRememberMe sets EnableRememberMe field to given value.
 
 HasEnableRememberMe returns a boolean if a field has been set.
 
-### GetPasskeyChallenge
-
-`func (o *ChallengeTypes) GetPasskeyChallenge() map[string]map[string]interface{}`
-
-GetPasskeyChallenge returns the PasskeyChallenge field if non-nil, zero value otherwise.
-
-### GetPasskeyChallengeOk
-
-`func (o *ChallengeTypes) GetPasskeyChallengeOk() (*map[string]map[string]interface{}, bool)`
-
-GetPasskeyChallengeOk returns a tuple with the PasskeyChallenge field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPasskeyChallenge
-
-`func (o *ChallengeTypes) SetPasskeyChallenge(v map[string]map[string]interface{})`
-
-SetPasskeyChallenge sets PasskeyChallenge field to given value.
-
-### HasPasskeyChallenge
-
-`func (o *ChallengeTypes) HasPasskeyChallenge() bool`
-
-HasPasskeyChallenge returns a boolean if a field has been set.
-
-### SetPasskeyChallengeNil
-
-`func (o *ChallengeTypes) SetPasskeyChallengeNil(b bool)`
-
- SetPasskeyChallengeNil sets the value for PasskeyChallenge to be an explicit nil
-
-### UnsetPasskeyChallenge
-`func (o *ChallengeTypes) UnsetPasskeyChallenge()`
-
-UnsetPasskeyChallenge ensures that no value is present for PasskeyChallenge, not even an explicit nil
 ### GetLogoutUrls
 
 `func (o *ChallengeTypes) GetLogoutUrls() []map[string]map[string]interface{}`

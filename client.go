@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -41,7 +41,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the authentik API v2026.2.0-rc1
+// APIClient manages communication with the authentik API v2025.10.0-rc3
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -56,8 +56,6 @@ type APIClient struct {
 	CoreAPI *CoreAPIService
 
 	CryptoAPI *CryptoAPIService
-
-	EndpointsAPI *EndpointsAPIService
 
 	EnterpriseAPI *EnterpriseAPIService
 
@@ -80,8 +78,6 @@ type APIClient struct {
 	RacAPI *RacAPIService
 
 	RbacAPI *RbacAPIService
-
-	ReportsAPI *ReportsAPIService
 
 	RootAPI *RootAPIService
 
@@ -118,7 +114,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AuthenticatorsAPI = (*AuthenticatorsAPIService)(&c.common)
 	c.CoreAPI = (*CoreAPIService)(&c.common)
 	c.CryptoAPI = (*CryptoAPIService)(&c.common)
-	c.EndpointsAPI = (*EndpointsAPIService)(&c.common)
 	c.EnterpriseAPI = (*EnterpriseAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)
 	c.FlowsAPI = (*FlowsAPIService)(&c.common)
@@ -130,7 +125,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProvidersAPI = (*ProvidersAPIService)(&c.common)
 	c.RacAPI = (*RacAPIService)(&c.common)
 	c.RbacAPI = (*RbacAPIService)(&c.common)
-	c.ReportsAPI = (*ReportsAPIService)(&c.common)
 	c.RootAPI = (*RootAPIService)(&c.common)
 	c.SchemaAPI = (*SchemaAPIService)(&c.common)
 	c.SourcesAPI = (*SourcesAPIService)(&c.common)

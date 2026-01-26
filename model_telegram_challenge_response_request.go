@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -22,6 +22,7 @@ var _ MappedNullable = &TelegramChallengeResponseRequest{}
 
 // TelegramChallengeResponseRequest Base class for all challenge responses
 type TelegramChallengeResponseRequest struct {
+	Component *string `json:"component,omitempty"`
 	Id        int32   `json:"id"`
 	FirstName *string `json:"first_name,omitempty"`
 	LastName  *string `json:"last_name,omitempty"`
@@ -29,7 +30,6 @@ type TelegramChallengeResponseRequest struct {
 	PhotoUrl  *string `json:"photo_url,omitempty"`
 	AuthDate  int32   `json:"auth_date"`
 	Hash      string  `json:"hash"`
-	Component *string `json:"component,omitempty"`
 }
 
 type _TelegramChallengeResponseRequest TelegramChallengeResponseRequest
@@ -40,11 +40,11 @@ type _TelegramChallengeResponseRequest TelegramChallengeResponseRequest
 // will change when the set of required properties is changed
 func NewTelegramChallengeResponseRequest(id int32, authDate int32, hash string) *TelegramChallengeResponseRequest {
 	this := TelegramChallengeResponseRequest{}
+	var component string = "ak-source-telegram"
+	this.Component = &component
 	this.Id = id
 	this.AuthDate = authDate
 	this.Hash = hash
-	var component string = "ak-source-telegram"
-	this.Component = &component
 	return &this
 }
 
@@ -56,6 +56,38 @@ func NewTelegramChallengeResponseRequestWithDefaults() *TelegramChallengeRespons
 	var component string = "ak-source-telegram"
 	this.Component = &component
 	return &this
+}
+
+// GetComponent returns the Component field value if set, zero value otherwise.
+func (o *TelegramChallengeResponseRequest) GetComponent() string {
+	if o == nil || IsNil(o.Component) {
+		var ret string
+		return ret
+	}
+	return *o.Component
+}
+
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TelegramChallengeResponseRequest) GetComponentOk() (*string, bool) {
+	if o == nil || IsNil(o.Component) {
+		return nil, false
+	}
+	return o.Component, true
+}
+
+// HasComponent returns a boolean if a field has been set.
+func (o *TelegramChallengeResponseRequest) HasComponent() bool {
+	if o != nil && !IsNil(o.Component) {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given string and assigns it to the Component field.
+func (o *TelegramChallengeResponseRequest) SetComponent(v string) {
+	o.Component = &v
 }
 
 // GetId returns the Id field value
@@ -258,38 +290,6 @@ func (o *TelegramChallengeResponseRequest) SetHash(v string) {
 	o.Hash = v
 }
 
-// GetComponent returns the Component field value if set, zero value otherwise.
-func (o *TelegramChallengeResponseRequest) GetComponent() string {
-	if o == nil || IsNil(o.Component) {
-		var ret string
-		return ret
-	}
-	return *o.Component
-}
-
-// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TelegramChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || IsNil(o.Component) {
-		return nil, false
-	}
-	return o.Component, true
-}
-
-// HasComponent returns a boolean if a field has been set.
-func (o *TelegramChallengeResponseRequest) HasComponent() bool {
-	if o != nil && !IsNil(o.Component) {
-		return true
-	}
-
-	return false
-}
-
-// SetComponent gets a reference to the given string and assigns it to the Component field.
-func (o *TelegramChallengeResponseRequest) SetComponent(v string) {
-	o.Component = &v
-}
-
 func (o TelegramChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -300,6 +300,9 @@ func (o TelegramChallengeResponseRequest) MarshalJSON() ([]byte, error) {
 
 func (o TelegramChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
 	toSerialize["id"] = o.Id
 	if !IsNil(o.FirstName) {
 		toSerialize["first_name"] = o.FirstName
@@ -315,9 +318,6 @@ func (o TelegramChallengeResponseRequest) ToMap() (map[string]interface{}, error
 	}
 	toSerialize["auth_date"] = o.AuthDate
 	toSerialize["hash"] = o.Hash
-	if !IsNil(o.Component) {
-		toSerialize["component"] = o.Component
-	}
 	return toSerialize, nil
 }
 

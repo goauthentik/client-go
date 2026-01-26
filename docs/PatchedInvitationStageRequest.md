@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **ContinueFlowWithoutInvitation** | Pointer to **bool** | If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given. | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetName sets Name field to given value.
 `func (o *PatchedInvitationStageRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetFlowSet
+
+`func (o *PatchedInvitationStageRequest) GetFlowSet() []FlowSetRequest`
+
+GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
+
+### GetFlowSetOk
+
+`func (o *PatchedInvitationStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
+
+GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowSet
+
+`func (o *PatchedInvitationStageRequest) SetFlowSet(v []FlowSetRequest)`
+
+SetFlowSet sets FlowSet field to given value.
+
+### HasFlowSet
+
+`func (o *PatchedInvitationStageRequest) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetContinueFlowWithoutInvitation
 

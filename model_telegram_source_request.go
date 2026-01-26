@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -27,8 +27,6 @@ type TelegramSourceRequest struct {
 	// Internal source name, used in URLs.
 	Slug    string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool  `json:"enabled,omitempty"`
-	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
-	Promoted *bool `json:"promoted,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
@@ -39,7 +37,6 @@ type TelegramSourceRequest struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	UserPathTemplate *string               `json:"user_path_template,omitempty"`
-	Icon             *string               `json:"icon,omitempty"`
 	// Telegram bot username
 	BotUsername string `json:"bot_username"`
 	// Telegram bot token
@@ -152,38 +149,6 @@ func (o *TelegramSourceRequest) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *TelegramSourceRequest) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetPromoted returns the Promoted field value if set, zero value otherwise.
-func (o *TelegramSourceRequest) GetPromoted() bool {
-	if o == nil || IsNil(o.Promoted) {
-		var ret bool
-		return ret
-	}
-	return *o.Promoted
-}
-
-// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TelegramSourceRequest) GetPromotedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Promoted) {
-		return nil, false
-	}
-	return o.Promoted, true
-}
-
-// HasPromoted returns a boolean if a field has been set.
-func (o *TelegramSourceRequest) HasPromoted() bool {
-	if o != nil && !IsNil(o.Promoted) {
-		return true
-	}
-
-	return false
-}
-
-// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
-func (o *TelegramSourceRequest) SetPromoted(v bool) {
-	o.Promoted = &v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -432,38 +397,6 @@ func (o *TelegramSourceRequest) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
 }
 
-// GetIcon returns the Icon field value if set, zero value otherwise.
-func (o *TelegramSourceRequest) GetIcon() string {
-	if o == nil || IsNil(o.Icon) {
-		var ret string
-		return ret
-	}
-	return *o.Icon
-}
-
-// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TelegramSourceRequest) GetIconOk() (*string, bool) {
-	if o == nil || IsNil(o.Icon) {
-		return nil, false
-	}
-	return o.Icon, true
-}
-
-// HasIcon returns a boolean if a field has been set.
-func (o *TelegramSourceRequest) HasIcon() bool {
-	if o != nil && !IsNil(o.Icon) {
-		return true
-	}
-
-	return false
-}
-
-// SetIcon gets a reference to the given string and assigns it to the Icon field.
-func (o *TelegramSourceRequest) SetIcon(v string) {
-	o.Icon = &v
-}
-
 // GetBotUsername returns the BotUsername field value
 func (o *TelegramSourceRequest) GetBotUsername() string {
 	if o == nil {
@@ -583,9 +516,6 @@ func (o TelegramSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.Promoted) {
-		toSerialize["promoted"] = o.Promoted
-	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
@@ -606,9 +536,6 @@ func (o TelegramSourceRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
-	}
-	if !IsNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
 	}
 	toSerialize["bot_username"] = o.BotUsername
 	toSerialize["bot_token"] = o.BotToken

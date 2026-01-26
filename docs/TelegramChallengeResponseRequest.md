@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Component** | Pointer to **string** |  | [optional] [default to "ak-source-telegram"]
 **Id** | **int32** |  | 
 **FirstName** | Pointer to **string** |  | [optional] 
 **LastName** | Pointer to **string** |  | [optional] 
@@ -11,7 +12,6 @@ Name | Type | Description | Notes
 **PhotoUrl** | Pointer to **string** |  | [optional] 
 **AuthDate** | **int32** |  | 
 **Hash** | **string** |  | 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-source-telegram"]
 
 ## Methods
 
@@ -31,6 +31,31 @@ will change when the set of required properties is changed
 NewTelegramChallengeResponseRequestWithDefaults instantiates a new TelegramChallengeResponseRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetComponent
+
+`func (o *TelegramChallengeResponseRequest) GetComponent() string`
+
+GetComponent returns the Component field if non-nil, zero value otherwise.
+
+### GetComponentOk
+
+`func (o *TelegramChallengeResponseRequest) GetComponentOk() (*string, bool)`
+
+GetComponentOk returns a tuple with the Component field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComponent
+
+`func (o *TelegramChallengeResponseRequest) SetComponent(v string)`
+
+SetComponent sets Component field to given value.
+
+### HasComponent
+
+`func (o *TelegramChallengeResponseRequest) HasComponent() bool`
+
+HasComponent returns a boolean if a field has been set.
 
 ### GetId
 
@@ -191,31 +216,6 @@ and a boolean to check if the value has been set.
 
 SetHash sets Hash field to given value.
 
-
-### GetComponent
-
-`func (o *TelegramChallengeResponseRequest) GetComponent() string`
-
-GetComponent returns the Component field if non-nil, zero value otherwise.
-
-### GetComponentOk
-
-`func (o *TelegramChallengeResponseRequest) GetComponentOk() (*string, bool)`
-
-GetComponentOk returns a tuple with the Component field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetComponent
-
-`func (o *TelegramChallengeResponseRequest) SetComponent(v string)`
-
-SetComponent sets Component field to given value.
-
-### HasComponent
-
-`func (o *TelegramChallengeResponseRequest) HasComponent() bool`
-
-HasComponent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

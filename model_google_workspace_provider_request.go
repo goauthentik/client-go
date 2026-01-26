@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -34,10 +34,6 @@ type GoogleWorkspaceProviderRequest struct {
 	UserDeleteAction           *OutgoingSyncDeleteAction `json:"user_delete_action,omitempty"`
 	GroupDeleteAction          *OutgoingSyncDeleteAction `json:"group_delete_action,omitempty"`
 	DefaultGroupEmailDomain    string                    `json:"default_group_email_domain"`
-	// Controls the number of objects synced in a single task
-	SyncPageSize *int32 `json:"sync_page_size,omitempty"`
-	// Timeout for synchronization of a single page
-	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
 	DryRun *bool `json:"dry_run,omitempty"`
 }
@@ -396,70 +392,6 @@ func (o *GoogleWorkspaceProviderRequest) SetDefaultGroupEmailDomain(v string) {
 	o.DefaultGroupEmailDomain = v
 }
 
-// GetSyncPageSize returns the SyncPageSize field value if set, zero value otherwise.
-func (o *GoogleWorkspaceProviderRequest) GetSyncPageSize() int32 {
-	if o == nil || IsNil(o.SyncPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.SyncPageSize
-}
-
-// GetSyncPageSizeOk returns a tuple with the SyncPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GoogleWorkspaceProviderRequest) GetSyncPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.SyncPageSize) {
-		return nil, false
-	}
-	return o.SyncPageSize, true
-}
-
-// HasSyncPageSize returns a boolean if a field has been set.
-func (o *GoogleWorkspaceProviderRequest) HasSyncPageSize() bool {
-	if o != nil && !IsNil(o.SyncPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncPageSize gets a reference to the given int32 and assigns it to the SyncPageSize field.
-func (o *GoogleWorkspaceProviderRequest) SetSyncPageSize(v int32) {
-	o.SyncPageSize = &v
-}
-
-// GetSyncPageTimeout returns the SyncPageTimeout field value if set, zero value otherwise.
-func (o *GoogleWorkspaceProviderRequest) GetSyncPageTimeout() string {
-	if o == nil || IsNil(o.SyncPageTimeout) {
-		var ret string
-		return ret
-	}
-	return *o.SyncPageTimeout
-}
-
-// GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GoogleWorkspaceProviderRequest) GetSyncPageTimeoutOk() (*string, bool) {
-	if o == nil || IsNil(o.SyncPageTimeout) {
-		return nil, false
-	}
-	return o.SyncPageTimeout, true
-}
-
-// HasSyncPageTimeout returns a boolean if a field has been set.
-func (o *GoogleWorkspaceProviderRequest) HasSyncPageTimeout() bool {
-	if o != nil && !IsNil(o.SyncPageTimeout) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncPageTimeout gets a reference to the given string and assigns it to the SyncPageTimeout field.
-func (o *GoogleWorkspaceProviderRequest) SetSyncPageTimeout(v string) {
-	o.SyncPageTimeout = &v
-}
-
 // GetDryRun returns the DryRun field value if set, zero value otherwise.
 func (o *GoogleWorkspaceProviderRequest) GetDryRun() bool {
 	if o == nil || IsNil(o.DryRun) {
@@ -527,12 +459,6 @@ func (o GoogleWorkspaceProviderRequest) ToMap() (map[string]interface{}, error) 
 		toSerialize["group_delete_action"] = o.GroupDeleteAction
 	}
 	toSerialize["default_group_email_domain"] = o.DefaultGroupEmailDomain
-	if !IsNil(o.SyncPageSize) {
-		toSerialize["sync_page_size"] = o.SyncPageSize
-	}
-	if !IsNil(o.SyncPageTimeout) {
-		toSerialize["sync_page_timeout"] = o.SyncPageTimeout
-	}
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
 	}

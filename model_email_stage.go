@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,7 @@ type EmailStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// When enabled, global Email connection settings will be used and connection settings below will be ignored.
 	UseGlobalSettings *bool   `json:"use_global_settings,omitempty"`
 	Host              *string `json:"host,omitempty"`
@@ -59,7 +59,7 @@ type _EmailStage EmailStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEmailStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet) *EmailStage {
+func NewEmailStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *EmailStage {
 	this := EmailStage{}
 	this.Pk = pk
 	this.Name = name
@@ -67,7 +67,6 @@ func NewEmailStage(pk string, name string, component string, verboseName string,
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	return &this
 }
 
@@ -223,26 +222,34 @@ func (o *EmailStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *EmailStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *EmailStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *EmailStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -711,7 +718,9 @@ func (o EmailStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.UseGlobalSettings) {
 		toSerialize["use_global_settings"] = o.UseGlobalSettings
 	}
@@ -768,7 +777,6 @@ func (o *EmailStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 	}
 
 	allProperties := make(map[string]interface{})

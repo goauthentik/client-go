@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -26,17 +26,16 @@ type Group struct {
 	NumPk int32  `json:"num_pk"`
 	Name  string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser       *bool                  `json:"is_superuser,omitempty"`
-	Parents           []string               `json:"parents,omitempty"`
-	ParentsObj        []RelatedGroup         `json:"parents_obj"`
-	Users             []int32                `json:"users,omitempty"`
-	UsersObj          []PartialUser          `json:"users_obj"`
-	Attributes        map[string]interface{} `json:"attributes,omitempty"`
-	Roles             []string               `json:"roles,omitempty"`
-	RolesObj          []Role                 `json:"roles_obj"`
-	InheritedRolesObj []Role                 `json:"inherited_roles_obj"`
-	Children          []string               `json:"children"`
-	ChildrenObj       []RelatedGroup         `json:"children_obj"`
+	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
+	Parent      NullableString         `json:"parent,omitempty"`
+	ParentName  NullableString         `json:"parent_name"`
+	Users       []int32                `json:"users,omitempty"`
+	UsersObj    []PartialUser          `json:"users_obj"`
+	Attributes  map[string]interface{} `json:"attributes,omitempty"`
+	Roles       []string               `json:"roles,omitempty"`
+	RolesObj    []Role                 `json:"roles_obj"`
+	Children    []string               `json:"children,omitempty"`
+	ChildrenObj []GroupChild           `json:"children_obj"`
 }
 
 type _Group Group
@@ -45,16 +44,14 @@ type _Group Group
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroup(pk string, numPk int32, name string, parentsObj []RelatedGroup, usersObj []PartialUser, rolesObj []Role, inheritedRolesObj []Role, children []string, childrenObj []RelatedGroup) *Group {
+func NewGroup(pk string, numPk int32, name string, parentName NullableString, usersObj []PartialUser, rolesObj []Role, childrenObj []GroupChild) *Group {
 	this := Group{}
 	this.Pk = pk
 	this.NumPk = numPk
 	this.Name = name
-	this.ParentsObj = parentsObj
+	this.ParentName = parentName
 	this.UsersObj = usersObj
 	this.RolesObj = rolesObj
-	this.InheritedRolesObj = inheritedRolesObj
-	this.Children = children
 	this.ChildrenObj = childrenObj
 	return &this
 }
@@ -171,62 +168,73 @@ func (o *Group) SetIsSuperuser(v bool) {
 	o.IsSuperuser = &v
 }
 
-// GetParents returns the Parents field value if set, zero value otherwise.
-func (o *Group) GetParents() []string {
-	if o == nil || IsNil(o.Parents) {
-		var ret []string
+// GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Group) GetParent() string {
+	if o == nil || IsNil(o.Parent.Get()) {
+		var ret string
 		return ret
 	}
-	return o.Parents
+	return *o.Parent.Get()
 }
 
-// GetParentsOk returns a tuple with the Parents field value if set, nil otherwise
+// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Group) GetParentsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Parents) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Group) GetParentOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Parents, true
+	return o.Parent.Get(), o.Parent.IsSet()
 }
 
-// HasParents returns a boolean if a field has been set.
-func (o *Group) HasParents() bool {
-	if o != nil && !IsNil(o.Parents) {
+// HasParent returns a boolean if a field has been set.
+func (o *Group) HasParent() bool {
+	if o != nil && o.Parent.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetParents gets a reference to the given []string and assigns it to the Parents field.
-func (o *Group) SetParents(v []string) {
-	o.Parents = v
+// SetParent gets a reference to the given NullableString and assigns it to the Parent field.
+func (o *Group) SetParent(v string) {
+	o.Parent.Set(&v)
 }
 
-// GetParentsObj returns the ParentsObj field value
-// If the value is explicit nil, the zero value for []RelatedGroup will be returned
-func (o *Group) GetParentsObj() []RelatedGroup {
-	if o == nil {
-		var ret []RelatedGroup
+// SetParentNil sets the value for Parent to be an explicit nil
+func (o *Group) SetParentNil() {
+	o.Parent.Set(nil)
+}
+
+// UnsetParent ensures that no value is present for Parent, not even an explicit nil
+func (o *Group) UnsetParent() {
+	o.Parent.Unset()
+}
+
+// GetParentName returns the ParentName field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *Group) GetParentName() string {
+	if o == nil || o.ParentName.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return o.ParentsObj
+	return *o.ParentName.Get()
 }
 
-// GetParentsObjOk returns a tuple with the ParentsObj field value
+// GetParentNameOk returns a tuple with the ParentName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Group) GetParentsObjOk() ([]RelatedGroup, bool) {
-	if o == nil || IsNil(o.ParentsObj) {
+func (o *Group) GetParentNameOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ParentsObj, true
+	return o.ParentName.Get(), o.ParentName.IsSet()
 }
 
-// SetParentsObj sets field value
-func (o *Group) SetParentsObj(v []RelatedGroup) {
-	o.ParentsObj = v
+// SetParentName sets field value
+func (o *Group) SetParentName(v string) {
+	o.ParentName.Set(&v)
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise.
@@ -375,61 +383,43 @@ func (o *Group) SetRolesObj(v []Role) {
 	o.RolesObj = v
 }
 
-// GetInheritedRolesObj returns the InheritedRolesObj field value
-// If the value is explicit nil, the zero value for []Role will be returned
-func (o *Group) GetInheritedRolesObj() []Role {
-	if o == nil {
-		var ret []Role
-		return ret
-	}
-
-	return o.InheritedRolesObj
-}
-
-// GetInheritedRolesObjOk returns a tuple with the InheritedRolesObj field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Group) GetInheritedRolesObjOk() ([]Role, bool) {
-	if o == nil || IsNil(o.InheritedRolesObj) {
-		return nil, false
-	}
-	return o.InheritedRolesObj, true
-}
-
-// SetInheritedRolesObj sets field value
-func (o *Group) SetInheritedRolesObj(v []Role) {
-	o.InheritedRolesObj = v
-}
-
-// GetChildren returns the Children field value
+// GetChildren returns the Children field value if set, zero value otherwise.
 func (o *Group) GetChildren() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Children) {
 		var ret []string
 		return ret
 	}
-
 	return o.Children
 }
 
-// GetChildrenOk returns a tuple with the Children field value
+// GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetChildrenOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Children) {
 		return nil, false
 	}
 	return o.Children, true
 }
 
-// SetChildren sets field value
+// HasChildren returns a boolean if a field has been set.
+func (o *Group) HasChildren() bool {
+	if o != nil && !IsNil(o.Children) {
+		return true
+	}
+
+	return false
+}
+
+// SetChildren gets a reference to the given []string and assigns it to the Children field.
 func (o *Group) SetChildren(v []string) {
 	o.Children = v
 }
 
 // GetChildrenObj returns the ChildrenObj field value
-// If the value is explicit nil, the zero value for []RelatedGroup will be returned
-func (o *Group) GetChildrenObj() []RelatedGroup {
+// If the value is explicit nil, the zero value for []GroupChild will be returned
+func (o *Group) GetChildrenObj() []GroupChild {
 	if o == nil {
-		var ret []RelatedGroup
+		var ret []GroupChild
 		return ret
 	}
 
@@ -439,7 +429,7 @@ func (o *Group) GetChildrenObj() []RelatedGroup {
 // GetChildrenObjOk returns a tuple with the ChildrenObj field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Group) GetChildrenObjOk() ([]RelatedGroup, bool) {
+func (o *Group) GetChildrenObjOk() ([]GroupChild, bool) {
 	if o == nil || IsNil(o.ChildrenObj) {
 		return nil, false
 	}
@@ -447,7 +437,7 @@ func (o *Group) GetChildrenObjOk() ([]RelatedGroup, bool) {
 }
 
 // SetChildrenObj sets field value
-func (o *Group) SetChildrenObj(v []RelatedGroup) {
+func (o *Group) SetChildrenObj(v []GroupChild) {
 	o.ChildrenObj = v
 }
 
@@ -467,12 +457,10 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsSuperuser) {
 		toSerialize["is_superuser"] = o.IsSuperuser
 	}
-	if !IsNil(o.Parents) {
-		toSerialize["parents"] = o.Parents
+	if o.Parent.IsSet() {
+		toSerialize["parent"] = o.Parent.Get()
 	}
-	if o.ParentsObj != nil {
-		toSerialize["parents_obj"] = o.ParentsObj
-	}
+	toSerialize["parent_name"] = o.ParentName.Get()
 	if !IsNil(o.Users) {
 		toSerialize["users"] = o.Users
 	}
@@ -486,10 +474,9 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 		toSerialize["roles"] = o.Roles
 	}
 	toSerialize["roles_obj"] = o.RolesObj
-	if o.InheritedRolesObj != nil {
-		toSerialize["inherited_roles_obj"] = o.InheritedRolesObj
+	if !IsNil(o.Children) {
+		toSerialize["children"] = o.Children
 	}
-	toSerialize["children"] = o.Children
 	if o.ChildrenObj != nil {
 		toSerialize["children_obj"] = o.ChildrenObj
 	}
@@ -504,11 +491,9 @@ func (o *Group) UnmarshalJSON(data []byte) (err error) {
 		"pk",
 		"num_pk",
 		"name",
-		"parents_obj",
+		"parent_name",
 		"users_obj",
 		"roles_obj",
-		"inherited_roles_obj",
-		"children",
 		"children_obj",
 	}
 

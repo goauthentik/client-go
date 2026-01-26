@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Name** | **string** | Source&#39;s display Name. | 
 **Slug** | **string** | Internal source name, used in URLs. | 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**Promoted** | Pointer to **bool** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
@@ -15,7 +14,6 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | Pointer to **string** |  | [optional] 
 **ServerUri** | **string** |  | 
 **PeerCertificate** | Pointer to **NullableString** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] 
 **ClientCertificate** | Pointer to **NullableString** | Client certificate to authenticate against the LDAP Server&#39;s Certificate. | [optional] 
@@ -38,7 +36,6 @@ Name | Type | Description | Notes
 **SyncParentGroup** | Pointer to **NullableString** |  | [optional] 
 **LookupGroupsFromUser** | Pointer to **bool** | Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory | [optional] 
 **DeleteNotFoundObjects** | Pointer to **bool** | Delete authentik users and groups which were previously supplied by this source, but are now missing from it. | [optional] 
-**SyncOutgoingTriggerMode** | Pointer to [**SyncOutgoingTriggerModeEnum**](SyncOutgoingTriggerModeEnum.md) | When to trigger sync for outgoing providers | [optional] 
 
 ## Methods
 
@@ -123,31 +120,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *LDAPSourceRequest) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
-### GetPromoted
-
-`func (o *LDAPSourceRequest) GetPromoted() bool`
-
-GetPromoted returns the Promoted field if non-nil, zero value otherwise.
-
-### GetPromotedOk
-
-`func (o *LDAPSourceRequest) GetPromotedOk() (*bool, bool)`
-
-GetPromotedOk returns a tuple with the Promoted field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPromoted
-
-`func (o *LDAPSourceRequest) SetPromoted(v bool)`
-
-SetPromoted sets Promoted field to given value.
-
-### HasPromoted
-
-`func (o *LDAPSourceRequest) HasPromoted() bool`
-
-HasPromoted returns a boolean if a field has been set.
 
 ### GetAuthenticationFlow
 
@@ -343,31 +315,6 @@ SetUserPathTemplate sets UserPathTemplate field to given value.
 `func (o *LDAPSourceRequest) HasUserPathTemplate() bool`
 
 HasUserPathTemplate returns a boolean if a field has been set.
-
-### GetIcon
-
-`func (o *LDAPSourceRequest) GetIcon() string`
-
-GetIcon returns the Icon field if non-nil, zero value otherwise.
-
-### GetIconOk
-
-`func (o *LDAPSourceRequest) GetIconOk() (*string, bool)`
-
-GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIcon
-
-`func (o *LDAPSourceRequest) SetIcon(v string)`
-
-SetIcon sets Icon field to given value.
-
-### HasIcon
-
-`func (o *LDAPSourceRequest) HasIcon() bool`
-
-HasIcon returns a boolean if a field has been set.
 
 ### GetServerUri
 
@@ -938,31 +885,6 @@ SetDeleteNotFoundObjects sets DeleteNotFoundObjects field to given value.
 `func (o *LDAPSourceRequest) HasDeleteNotFoundObjects() bool`
 
 HasDeleteNotFoundObjects returns a boolean if a field has been set.
-
-### GetSyncOutgoingTriggerMode
-
-`func (o *LDAPSourceRequest) GetSyncOutgoingTriggerMode() SyncOutgoingTriggerModeEnum`
-
-GetSyncOutgoingTriggerMode returns the SyncOutgoingTriggerMode field if non-nil, zero value otherwise.
-
-### GetSyncOutgoingTriggerModeOk
-
-`func (o *LDAPSourceRequest) GetSyncOutgoingTriggerModeOk() (*SyncOutgoingTriggerModeEnum, bool)`
-
-GetSyncOutgoingTriggerModeOk returns a tuple with the SyncOutgoingTriggerMode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncOutgoingTriggerMode
-
-`func (o *LDAPSourceRequest) SetSyncOutgoingTriggerMode(v SyncOutgoingTriggerModeEnum)`
-
-SetSyncOutgoingTriggerMode sets SyncOutgoingTriggerMode field to given value.
-
-### HasSyncOutgoingTriggerMode
-
-`func (o *LDAPSourceRequest) HasSyncOutgoingTriggerMode() bool`
-
-HasSyncOutgoingTriggerMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

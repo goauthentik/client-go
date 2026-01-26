@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -20,8 +20,9 @@ var _ MappedNullable = &PatchedDenyStageRequest{}
 
 // PatchedDenyStageRequest DenyStage Serializer
 type PatchedDenyStageRequest struct {
-	Name        *string `json:"name,omitempty"`
-	DenyMessage *string `json:"deny_message,omitempty"`
+	Name        *string          `json:"name,omitempty"`
+	FlowSet     []FlowSetRequest `json:"flow_set,omitempty"`
+	DenyMessage *string          `json:"deny_message,omitempty"`
 }
 
 // NewPatchedDenyStageRequest instantiates a new PatchedDenyStageRequest object
@@ -73,6 +74,38 @@ func (o *PatchedDenyStageRequest) SetName(v string) {
 	o.Name = &v
 }
 
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *PatchedDenyStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedDenyStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *PatchedDenyStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedDenyStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
+}
+
 // GetDenyMessage returns the DenyMessage field value if set, zero value otherwise.
 func (o *PatchedDenyStageRequest) GetDenyMessage() string {
 	if o == nil || IsNil(o.DenyMessage) {
@@ -117,6 +150,9 @@ func (o PatchedDenyStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
 	}
 	if !IsNil(o.DenyMessage) {
 		toSerialize["deny_message"] = o.DenyMessage

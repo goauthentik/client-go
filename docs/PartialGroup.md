@@ -8,13 +8,15 @@ Name | Type | Description | Notes
 **NumPk** | **int32** | Get a numerical, int32 ID for the group | [readonly] 
 **Name** | **string** |  | 
 **IsSuperuser** | Pointer to **bool** | Users added to this group will be superusers. | [optional] 
+**Parent** | Pointer to **NullableString** |  | [optional] 
+**ParentName** | **NullableString** |  | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewPartialGroup
 
-`func NewPartialGroup(pk string, numPk int32, name string, ) *PartialGroup`
+`func NewPartialGroup(pk string, numPk int32, name string, parentName NullableString, ) *PartialGroup`
 
 NewPartialGroup instantiates a new PartialGroup object
 This constructor will assign default values to properties that have it defined,
@@ -114,6 +116,71 @@ SetIsSuperuser sets IsSuperuser field to given value.
 
 HasIsSuperuser returns a boolean if a field has been set.
 
+### GetParent
+
+`func (o *PartialGroup) GetParent() string`
+
+GetParent returns the Parent field if non-nil, zero value otherwise.
+
+### GetParentOk
+
+`func (o *PartialGroup) GetParentOk() (*string, bool)`
+
+GetParentOk returns a tuple with the Parent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParent
+
+`func (o *PartialGroup) SetParent(v string)`
+
+SetParent sets Parent field to given value.
+
+### HasParent
+
+`func (o *PartialGroup) HasParent() bool`
+
+HasParent returns a boolean if a field has been set.
+
+### SetParentNil
+
+`func (o *PartialGroup) SetParentNil(b bool)`
+
+ SetParentNil sets the value for Parent to be an explicit nil
+
+### UnsetParent
+`func (o *PartialGroup) UnsetParent()`
+
+UnsetParent ensures that no value is present for Parent, not even an explicit nil
+### GetParentName
+
+`func (o *PartialGroup) GetParentName() string`
+
+GetParentName returns the ParentName field if non-nil, zero value otherwise.
+
+### GetParentNameOk
+
+`func (o *PartialGroup) GetParentNameOk() (*string, bool)`
+
+GetParentNameOk returns a tuple with the ParentName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentName
+
+`func (o *PartialGroup) SetParentName(v string)`
+
+SetParentName sets ParentName field to given value.
+
+
+### SetParentNameNil
+
+`func (o *PartialGroup) SetParentNameNil(b bool)`
+
+ SetParentNameNil sets the value for ParentName to be an explicit nil
+
+### UnsetParentName
+`func (o *PartialGroup) UnsetParentName()`
+
+UnsetParentName ensures that no value is present for ParentName, not even an explicit nil
 ### GetAttributes
 
 `func (o *PartialGroup) GetAttributes() map[string]interface{}`

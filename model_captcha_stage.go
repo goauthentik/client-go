@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,7 @@ type CaptchaStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// Public key, acquired your captcha Provider.
 	PublicKey         string   `json:"public_key"`
 	JsUrl             *string  `json:"js_url,omitempty"`
@@ -50,7 +50,7 @@ type _CaptchaStage CaptchaStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCaptchaStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, publicKey string) *CaptchaStage {
+func NewCaptchaStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, publicKey string) *CaptchaStage {
 	this := CaptchaStage{}
 	this.Pk = pk
 	this.Name = name
@@ -58,7 +58,6 @@ func NewCaptchaStage(pk string, name string, component string, verboseName strin
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	this.PublicKey = publicKey
 	return &this
 }
@@ -215,26 +214,34 @@ func (o *CaptchaStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *CaptchaStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CaptchaStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *CaptchaStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *CaptchaStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -471,7 +478,9 @@ func (o CaptchaStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	toSerialize["public_key"] = o.PublicKey
 	if !IsNil(o.JsUrl) {
 		toSerialize["js_url"] = o.JsUrl
@@ -505,7 +514,6 @@ func (o *CaptchaStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 		"public_key",
 	}
 

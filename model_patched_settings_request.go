@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -44,12 +44,8 @@ type PatchedSettingsRequest struct {
 	// Default token duration
 	DefaultTokenDuration *string `json:"default_token_duration,omitempty"`
 	// Default token length
-	DefaultTokenLength *int32 `json:"default_token_length,omitempty"`
-	// Default page size for API responses, if no size was requested.
-	PaginationDefaultPageSize *int32 `json:"pagination_default_page_size,omitempty"`
-	// Maximum page size
-	PaginationMaxPageSize *int32                       `json:"pagination_max_page_size,omitempty"`
-	Flags                 *PatchedSettingsRequestFlags `json:"flags,omitempty"`
+	DefaultTokenLength *int32                       `json:"default_token_length,omitempty"`
+	Flags              *PatchedSettingsRequestFlags `json:"flags,omitempty"`
 }
 
 // NewPatchedSettingsRequest instantiates a new PatchedSettingsRequest object
@@ -486,70 +482,6 @@ func (o *PatchedSettingsRequest) SetDefaultTokenLength(v int32) {
 	o.DefaultTokenLength = &v
 }
 
-// GetPaginationDefaultPageSize returns the PaginationDefaultPageSize field value if set, zero value otherwise.
-func (o *PatchedSettingsRequest) GetPaginationDefaultPageSize() int32 {
-	if o == nil || IsNil(o.PaginationDefaultPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.PaginationDefaultPageSize
-}
-
-// GetPaginationDefaultPageSizeOk returns a tuple with the PaginationDefaultPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSettingsRequest) GetPaginationDefaultPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.PaginationDefaultPageSize) {
-		return nil, false
-	}
-	return o.PaginationDefaultPageSize, true
-}
-
-// HasPaginationDefaultPageSize returns a boolean if a field has been set.
-func (o *PatchedSettingsRequest) HasPaginationDefaultPageSize() bool {
-	if o != nil && !IsNil(o.PaginationDefaultPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaginationDefaultPageSize gets a reference to the given int32 and assigns it to the PaginationDefaultPageSize field.
-func (o *PatchedSettingsRequest) SetPaginationDefaultPageSize(v int32) {
-	o.PaginationDefaultPageSize = &v
-}
-
-// GetPaginationMaxPageSize returns the PaginationMaxPageSize field value if set, zero value otherwise.
-func (o *PatchedSettingsRequest) GetPaginationMaxPageSize() int32 {
-	if o == nil || IsNil(o.PaginationMaxPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.PaginationMaxPageSize
-}
-
-// GetPaginationMaxPageSizeOk returns a tuple with the PaginationMaxPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSettingsRequest) GetPaginationMaxPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.PaginationMaxPageSize) {
-		return nil, false
-	}
-	return o.PaginationMaxPageSize, true
-}
-
-// HasPaginationMaxPageSize returns a boolean if a field has been set.
-func (o *PatchedSettingsRequest) HasPaginationMaxPageSize() bool {
-	if o != nil && !IsNil(o.PaginationMaxPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaginationMaxPageSize gets a reference to the given int32 and assigns it to the PaginationMaxPageSize field.
-func (o *PatchedSettingsRequest) SetPaginationMaxPageSize(v int32) {
-	o.PaginationMaxPageSize = &v
-}
-
 // GetFlags returns the Flags field value if set, zero value otherwise.
 func (o *PatchedSettingsRequest) GetFlags() PatchedSettingsRequestFlags {
 	if o == nil || IsNil(o.Flags) {
@@ -630,12 +562,6 @@ func (o PatchedSettingsRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DefaultTokenLength) {
 		toSerialize["default_token_length"] = o.DefaultTokenLength
-	}
-	if !IsNil(o.PaginationDefaultPageSize) {
-		toSerialize["pagination_default_page_size"] = o.PaginationDefaultPageSize
-	}
-	if !IsNil(o.PaginationMaxPageSize) {
-		toSerialize["pagination_max_page_size"] = o.PaginationMaxPageSize
 	}
 	if !IsNil(o.Flags) {
 		toSerialize["flags"] = o.Flags

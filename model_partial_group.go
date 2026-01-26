@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -28,6 +28,8 @@ type PartialGroup struct {
 	Name  string `json:"name"`
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
+	Parent      NullableString         `json:"parent,omitempty"`
+	ParentName  NullableString         `json:"parent_name"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 }
 
@@ -37,11 +39,12 @@ type _PartialGroup PartialGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartialGroup(pk string, numPk int32, name string) *PartialGroup {
+func NewPartialGroup(pk string, numPk int32, name string, parentName NullableString) *PartialGroup {
 	this := PartialGroup{}
 	this.Pk = pk
 	this.NumPk = numPk
 	this.Name = name
+	this.ParentName = parentName
 	return &this
 }
 
@@ -157,6 +160,75 @@ func (o *PartialGroup) SetIsSuperuser(v bool) {
 	o.IsSuperuser = &v
 }
 
+// GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PartialGroup) GetParent() string {
+	if o == nil || IsNil(o.Parent.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Parent.Get()
+}
+
+// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PartialGroup) GetParentOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Parent.Get(), o.Parent.IsSet()
+}
+
+// HasParent returns a boolean if a field has been set.
+func (o *PartialGroup) HasParent() bool {
+	if o != nil && o.Parent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParent gets a reference to the given NullableString and assigns it to the Parent field.
+func (o *PartialGroup) SetParent(v string) {
+	o.Parent.Set(&v)
+}
+
+// SetParentNil sets the value for Parent to be an explicit nil
+func (o *PartialGroup) SetParentNil() {
+	o.Parent.Set(nil)
+}
+
+// UnsetParent ensures that no value is present for Parent, not even an explicit nil
+func (o *PartialGroup) UnsetParent() {
+	o.Parent.Unset()
+}
+
+// GetParentName returns the ParentName field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *PartialGroup) GetParentName() string {
+	if o == nil || o.ParentName.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.ParentName.Get()
+}
+
+// GetParentNameOk returns a tuple with the ParentName field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PartialGroup) GetParentNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ParentName.Get(), o.ParentName.IsSet()
+}
+
+// SetParentName sets field value
+func (o *PartialGroup) SetParentName(v string) {
+	o.ParentName.Set(&v)
+}
+
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PartialGroup) GetAttributes() map[string]interface{} {
 	if o == nil || IsNil(o.Attributes) {
@@ -205,6 +277,10 @@ func (o PartialGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsSuperuser) {
 		toSerialize["is_superuser"] = o.IsSuperuser
 	}
+	if o.Parent.IsSet() {
+		toSerialize["parent"] = o.Parent.Get()
+	}
+	toSerialize["parent_name"] = o.ParentName.Get()
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
@@ -219,6 +295,7 @@ func (o *PartialGroup) UnmarshalJSON(data []byte) (err error) {
 		"pk",
 		"num_pk",
 		"name",
+		"parent_name",
 	}
 
 	allProperties := make(map[string]interface{})

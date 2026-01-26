@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -23,6 +23,7 @@ var _ MappedNullable = &RedirectStageRequest{}
 // RedirectStageRequest RedirectStage Serializer
 type RedirectStageRequest struct {
 	Name         string                `json:"name"`
+	FlowSet      []FlowSetRequest      `json:"flow_set,omitempty"`
 	KeepContext  *bool                 `json:"keep_context,omitempty"`
 	Mode         RedirectStageModeEnum `json:"mode"`
 	TargetStatic *string               `json:"target_static,omitempty"`
@@ -72,6 +73,38 @@ func (o *RedirectStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *RedirectStageRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *RedirectStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RedirectStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *RedirectStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *RedirectStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetKeepContext returns the KeepContext field value if set, zero value otherwise.
@@ -216,6 +249,9 @@ func (o RedirectStageRequest) MarshalJSON() ([]byte, error) {
 func (o RedirectStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.KeepContext) {
 		toSerialize["keep_context"] = o.KeepContext
 	}

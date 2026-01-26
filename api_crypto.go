@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -17,7 +17,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"reflect"
 	"strings"
 )
 
@@ -391,16 +390,16 @@ func (a *CryptoAPIService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiC
 }
 
 type ApiCryptoCertificatekeypairsListRequest struct {
-	ctx        context.Context
-	ApiService *CryptoAPIService
-	hasKey     *bool
-	keyType    *[]string
-	managed    *string
-	name       *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
+	ctx            context.Context
+	ApiService     *CryptoAPIService
+	hasKey         *bool
+	includeDetails *bool
+	managed        *string
+	name           *string
+	ordering       *string
+	page           *int32
+	pageSize       *int32
+	search         *string
 }
 
 // Only return certificate-key pairs with keys
@@ -409,9 +408,8 @@ func (r ApiCryptoCertificatekeypairsListRequest) HasKey(hasKey bool) ApiCryptoCe
 	return r
 }
 
-// Filter by key algorithm type (RSA, EC, DSA, etc). Can be specified multiple times (e.g. &#39;?key_type&#x3D;rsa&amp;key_type&#x3D;ec&#39;)
-func (r ApiCryptoCertificatekeypairsListRequest) KeyType(keyType []string) ApiCryptoCertificatekeypairsListRequest {
-	r.keyType = &keyType
+func (r ApiCryptoCertificatekeypairsListRequest) IncludeDetails(includeDetails bool) ApiCryptoCertificatekeypairsListRequest {
+	r.includeDetails = &includeDetails
 	return r
 }
 
@@ -493,16 +491,12 @@ func (a *CryptoAPIService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 	if r.hasKey != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "has_key", r.hasKey, "form", "")
 	}
-	if r.keyType != nil {
-		t := *r.keyType
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "key_type", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "key_type", t, "form", "multi")
-		}
+	if r.includeDetails != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", r.includeDetails, "form", "")
+	} else {
+		var defaultValue bool = true
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", defaultValue, "form", "")
+		r.includeDetails = &defaultValue
 	}
 	if r.managed != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "managed", r.managed, "form", "")

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.10.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -31,7 +31,6 @@ type ApplicationRequest struct {
 	// Open launch URL in a new browser tab or window.
 	OpenInNewTab     *bool             `json:"open_in_new_tab,omitempty"`
 	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
-	MetaIcon         *string           `json:"meta_icon,omitempty"`
 	MetaDescription  *string           `json:"meta_description,omitempty"`
 	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
@@ -246,38 +245,6 @@ func (o *ApplicationRequest) SetMetaLaunchUrl(v string) {
 	o.MetaLaunchUrl = &v
 }
 
-// GetMetaIcon returns the MetaIcon field value if set, zero value otherwise.
-func (o *ApplicationRequest) GetMetaIcon() string {
-	if o == nil || IsNil(o.MetaIcon) {
-		var ret string
-		return ret
-	}
-	return *o.MetaIcon
-}
-
-// GetMetaIconOk returns a tuple with the MetaIcon field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetMetaIconOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaIcon) {
-		return nil, false
-	}
-	return o.MetaIcon, true
-}
-
-// HasMetaIcon returns a boolean if a field has been set.
-func (o *ApplicationRequest) HasMetaIcon() bool {
-	if o != nil && !IsNil(o.MetaIcon) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetaIcon gets a reference to the given string and assigns it to the MetaIcon field.
-func (o *ApplicationRequest) SetMetaIcon(v string) {
-	o.MetaIcon = &v
-}
-
 // GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetMetaDescription() string {
 	if o == nil || IsNil(o.MetaDescription) {
@@ -429,9 +396,6 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MetaLaunchUrl) {
 		toSerialize["meta_launch_url"] = o.MetaLaunchUrl
-	}
-	if !IsNil(o.MetaIcon) {
-		toSerialize["meta_icon"] = o.MetaIcon
 	}
 	if !IsNil(o.MetaDescription) {
 		toSerialize["meta_description"] = o.MetaDescription
