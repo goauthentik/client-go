@@ -54,25 +54,25 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           version="$(yq -r '.info.version' schema.yml)-$(date +%s)"
-          make version="$version"
+          make version="3.$version"
 
           git config --global user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
           git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
 
           git add .
           git commit -F "diff.test" || exit 0
-          git tag v$version
+          git tag "v$version"
           git push
           git push --tags
           truncate -s '<125000' diff.test
-          gh release create v$version -F diff.test --prerelease
+          gh release create "v$version" -F diff.test --prerelease
 
           echo "version=$version" >> "$GITHUB_OUTPUT"
       - name: Update in main repo
         if: "${{ steps.changes.outputs.schema_has_changes == 'true' }}"
         working-directory: authentik
         run: |
-          go get 'goauthentik.io/api/v3@${{ steps.publish.outputs.version }}'
+          go get 'goauthentik.io/api/v3@v${{ steps.publish.outputs.version }}'
       - name: Create pull request in main repo
         if: "${{ steps.changes.outputs.schema_has_changes == 'true' }}"
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0

@@ -83,7 +83,7 @@ jobs:
         working-directory: client-go
         run: |
           tag="${{ matrix.tag }}"
-          version="$(echo -n "$tag" | sed 's/version\///')"
+          version="3.$(echo -n "$tag" | sed 's/version\///')"
           branch="$(echo -n "$tag" | sed 's/\//-/' | grep -oE "^version-[0-9]{4}\.[0-9]{1,2}")"
           if ! git ls-remote --heads origin "$branch" | grep -q "$branch"; then
             git checkout -b "$branch"
@@ -98,9 +98,9 @@ jobs:
 
           git add .
           git commit -m "Version $version" || exit 0
-          git tag "$tag"
+          git tag "v$version"
           git push origin "$branch"
           git push --tags
-          gh release create "$tag" --latest --title "$version"
+          gh release create "v$version" --latest --title "$version"
         env:
           GH_TOKEN: "${{ steps.app-token.outputs.token }}"
