@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &DataExport{}
 // DataExport Mixin to validate that a valid enterprise license exists before allowing to save the object
 type DataExport struct {
 	Id          string                 `json:"id"`
-	RequestedBy PartialUser            `json:"requested_by"`
+	RequestedBy RequestedBy            `json:"requested_by"`
 	RequestedOn time.Time              `json:"requested_on"`
 	ContentType ContentType            `json:"content_type"`
 	QueryParams map[string]interface{} `json:"query_params"`
@@ -38,7 +38,7 @@ type _DataExport DataExport
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataExport(id string, requestedBy PartialUser, requestedOn time.Time, contentType ContentType, queryParams map[string]interface{}, fileUrl string, completed bool) *DataExport {
+func NewDataExport(id string, requestedBy RequestedBy, requestedOn time.Time, contentType ContentType, queryParams map[string]interface{}, fileUrl string, completed bool) *DataExport {
 	this := DataExport{}
 	this.Id = id
 	this.RequestedBy = requestedBy
@@ -83,9 +83,9 @@ func (o *DataExport) SetId(v string) {
 }
 
 // GetRequestedBy returns the RequestedBy field value
-func (o *DataExport) GetRequestedBy() PartialUser {
+func (o *DataExport) GetRequestedBy() RequestedBy {
 	if o == nil {
-		var ret PartialUser
+		var ret RequestedBy
 		return ret
 	}
 
@@ -94,7 +94,7 @@ func (o *DataExport) GetRequestedBy() PartialUser {
 
 // GetRequestedByOk returns a tuple with the RequestedBy field value
 // and a boolean to check if the value has been set.
-func (o *DataExport) GetRequestedByOk() (*PartialUser, bool) {
+func (o *DataExport) GetRequestedByOk() (*RequestedBy, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,7 +102,7 @@ func (o *DataExport) GetRequestedByOk() (*PartialUser, bool) {
 }
 
 // SetRequestedBy sets field value
-func (o *DataExport) SetRequestedBy(v PartialUser) {
+func (o *DataExport) SetRequestedBy(v RequestedBy) {
 	o.RequestedBy = v
 }
 

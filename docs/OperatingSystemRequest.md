@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Family** | [**DeviceFactsOSFamily**](DeviceFactsOSFamily.md) |  | 
-**Name** | Pointer to **string** | Operating System name, such as &#39;Server 2022&#39; or &#39;Ubuntu&#39; | [optional] 
-**Version** | Pointer to **string** | Operating System version, must always be the version number but may contain build name | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
+**Version** | Pointer to **string** |  | [optional] 
 **Arch** | **string** |  | 
 
 ## Methods

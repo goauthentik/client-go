@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -391,21 +391,27 @@ func (a *CryptoAPIService) CryptoCertificatekeypairsGenerateCreateExecute(r ApiC
 }
 
 type ApiCryptoCertificatekeypairsListRequest struct {
-	ctx        context.Context
-	ApiService *CryptoAPIService
-	hasKey     *bool
-	keyType    *[]string
-	managed    *string
-	name       *string
-	ordering   *string
-	page       *int32
-	pageSize   *int32
-	search     *string
+	ctx            context.Context
+	ApiService     *CryptoAPIService
+	hasKey         *bool
+	includeDetails *bool
+	keyType        *[]string
+	managed        *string
+	name           *string
+	ordering       *string
+	page           *int32
+	pageSize       *int32
+	search         *string
 }
 
 // Only return certificate-key pairs with keys
 func (r ApiCryptoCertificatekeypairsListRequest) HasKey(hasKey bool) ApiCryptoCertificatekeypairsListRequest {
 	r.hasKey = &hasKey
+	return r
+}
+
+func (r ApiCryptoCertificatekeypairsListRequest) IncludeDetails(includeDetails bool) ApiCryptoCertificatekeypairsListRequest {
+	r.includeDetails = &includeDetails
 	return r
 }
 
@@ -492,6 +498,13 @@ func (a *CryptoAPIService) CryptoCertificatekeypairsListExecute(r ApiCryptoCerti
 
 	if r.hasKey != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "has_key", r.hasKey, "form", "")
+	}
+	if r.includeDetails != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", r.includeDetails, "form", "")
+	} else {
+		var defaultValue bool = true
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", defaultValue, "form", "")
+		r.includeDetails = &defaultValue
 	}
 	if r.keyType != nil {
 		t := *r.keyType

@@ -19,7 +19,6 @@ Method | HTTP request | Description
 [**CoreApplicationsRetrieve**](CoreAPI.md#CoreApplicationsRetrieve) | **Get** /core/applications/{slug}/ | 
 [**CoreApplicationsUpdate**](CoreAPI.md#CoreApplicationsUpdate) | **Put** /core/applications/{slug}/ | 
 [**CoreApplicationsUsedByList**](CoreAPI.md#CoreApplicationsUsedByList) | **Get** /core/applications/{slug}/used_by/ | 
-[**CoreAuthenticatedSessionsBulkDeleteDestroy**](CoreAPI.md#CoreAuthenticatedSessionsBulkDeleteDestroy) | **Delete** /core/authenticated_sessions/bulk_delete/ | 
 [**CoreAuthenticatedSessionsDestroy**](CoreAPI.md#CoreAuthenticatedSessionsDestroy) | **Delete** /core/authenticated_sessions/{uuid}/ | 
 [**CoreAuthenticatedSessionsList**](CoreAPI.md#CoreAuthenticatedSessionsList) | **Get** /core/authenticated_sessions/ | 
 [**CoreAuthenticatedSessionsRetrieve**](CoreAPI.md#CoreAuthenticatedSessionsRetrieve) | **Get** /core/authenticated_sessions/{uuid}/ | 
@@ -1150,72 +1149,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CoreAuthenticatedSessionsBulkDeleteDestroy
-
-> BulkDeleteSessionResponse CoreAuthenticatedSessionsBulkDeleteDestroy(ctx).UserPks(userPks).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	userPks := []int32{int32(123)} // []int32 | List of user IDs to revoke all sessions for
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreAuthenticatedSessionsBulkDeleteDestroy(context.Background()).UserPks(userPks).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreAuthenticatedSessionsBulkDeleteDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CoreAuthenticatedSessionsBulkDeleteDestroy`: BulkDeleteSessionResponse
-	fmt.Fprintf(os.Stdout, "Response from `CoreAPI.CoreAuthenticatedSessionsBulkDeleteDestroy`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCoreAuthenticatedSessionsBulkDeleteDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userPks** | **[]int32** | List of user IDs to revoke all sessions for | 
-
-### Return type
-
-[**BulkDeleteSessionResponse**](BulkDeleteSessionResponse.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CoreAuthenticatedSessionsDestroy
 
 > CoreAuthenticatedSessionsDestroy(ctx, uuid).Execute()
@@ -2289,7 +2222,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsList
 
-> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -2310,7 +2243,6 @@ import (
 func main() {
 	attributes := "attributes_example" // string | Attributes (optional)
 	includeChildren := true // bool |  (optional) (default to false)
-	includeInheritedRoles := true // bool |  (optional) (default to false)
 	includeParents := true // bool |  (optional) (default to false)
 	includeUsers := true // bool |  (optional) (default to true)
 	isSuperuser := true // bool |  (optional)
@@ -2324,7 +2256,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreGroupsList(context.Background()).Attributes(attributes).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreGroupsList(context.Background()).Attributes(attributes).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreGroupsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2347,7 +2279,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributes** | **string** | Attributes | 
  **includeChildren** | **bool** |  | [default to false]
- **includeInheritedRoles** | **bool** |  | [default to false]
  **includeParents** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
  **isSuperuser** | **bool** |  | 
@@ -2521,7 +2452,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsRetrieve
 
-> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
+> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
 
 
 
@@ -2542,13 +2473,12 @@ import (
 func main() {
 	groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
 	includeChildren := true // bool |  (optional) (default to false)
-	includeInheritedRoles := true // bool |  (optional) (default to false)
 	includeParents := true // bool |  (optional) (default to false)
 	includeUsers := true // bool |  (optional) (default to true)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreGroupsRetrieve``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2575,7 +2505,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **includeChildren** | **bool** |  | [default to false]
- **includeInheritedRoles** | **bool** |  | [default to false]
  **includeParents** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
 
@@ -3870,7 +3799,7 @@ Name | Type | Description  | Notes
 
 ## CoreUsersExportCreate
 
-> DataExport CoreUsersExportCreate(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+> DataExport CoreUsersExportCreate(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -3899,10 +3828,6 @@ func main() {
 	groupsByPk := []string{"Inner_example"} // []string |  (optional)
 	isActive := true // bool |  (optional)
 	isSuperuser := true // bool |  (optional)
-	lastLogin := time.Now() // time.Time |  (optional)
-	lastLoginGt := time.Now() // time.Time |  (optional)
-	lastLoginIsnull := true // bool |  (optional)
-	lastLoginLt := time.Now() // time.Time |  (optional)
 	lastUpdated := time.Now() // time.Time |  (optional)
 	lastUpdatedGt := time.Now() // time.Time |  (optional)
 	lastUpdatedLt := time.Now() // time.Time |  (optional)
@@ -3919,7 +3844,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreUsersExportCreate(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreUsersExportCreate(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreUsersExportCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3949,10 +3874,6 @@ Name | Type | Description  | Notes
  **groupsByPk** | **[]string** |  | 
  **isActive** | **bool** |  | 
  **isSuperuser** | **bool** |  | 
- **lastLogin** | **time.Time** |  | 
- **lastLoginGt** | **time.Time** |  | 
- **lastLoginIsnull** | **bool** |  | 
- **lastLoginLt** | **time.Time** |  | 
  **lastUpdated** | **time.Time** |  | 
  **lastUpdatedGt** | **time.Time** |  | 
  **lastUpdatedLt** | **time.Time** |  | 
@@ -4116,7 +4037,7 @@ Other parameters are passed through a pointer to a apiCoreUsersImpersonateEndRet
 
 ## CoreUsersList
 
-> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+> PaginatedUserList CoreUsersList(ctx).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 
 
 
@@ -4147,10 +4068,6 @@ func main() {
 	includeRoles := true // bool |  (optional) (default to true)
 	isActive := true // bool |  (optional)
 	isSuperuser := true // bool |  (optional)
-	lastLogin := time.Now() // time.Time |  (optional)
-	lastLoginGt := time.Now() // time.Time |  (optional)
-	lastLoginIsnull := true // bool |  (optional)
-	lastLoginLt := time.Now() // time.Time |  (optional)
 	lastUpdated := time.Now() // time.Time |  (optional)
 	lastUpdatedGt := time.Now() // time.Time |  (optional)
 	lastUpdatedLt := time.Now() // time.Time |  (optional)
@@ -4169,7 +4086,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreUsersList(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastLogin(lastLogin).LastLoginGt(lastLoginGt).LastLoginIsnull(lastLoginIsnull).LastLoginLt(lastLoginLt).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreUsersList(context.Background()).Attributes(attributes).DateJoined(dateJoined).DateJoinedGt(dateJoinedGt).DateJoinedLt(dateJoinedLt).Email(email).GroupsByName(groupsByName).GroupsByPk(groupsByPk).IncludeGroups(includeGroups).IncludeRoles(includeRoles).IsActive(isActive).IsSuperuser(isSuperuser).LastUpdated(lastUpdated).LastUpdatedGt(lastUpdatedGt).LastUpdatedLt(lastUpdatedLt).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Path(path).PathStartswith(pathStartswith).RolesByName(rolesByName).RolesByPk(rolesByPk).Search(search).Type_(type_).Username(username).Uuid(uuid).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreUsersList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4201,10 +4118,6 @@ Name | Type | Description  | Notes
  **includeRoles** | **bool** |  | [default to true]
  **isActive** | **bool** |  | 
  **isSuperuser** | **bool** |  | 
- **lastLogin** | **time.Time** |  | 
- **lastLoginGt** | **time.Time** |  | 
- **lastLoginIsnull** | **bool** |  | 
- **lastLoginLt** | **time.Time** |  | 
  **lastUpdated** | **time.Time** |  | 
  **lastUpdatedGt** | **time.Time** |  | 
  **lastUpdatedLt** | **time.Time** |  | 

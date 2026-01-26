@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
-**FingerprintSha256** | **NullableString** | SHA256 fingerprint of the certificate | [readonly] 
-**FingerprintSha1** | **NullableString** | SHA1 fingerprint of the certificate | [readonly] 
-**CertExpiry** | **NullableTime** | Certificate expiry date | [readonly] 
-**CertSubject** | **NullableString** | Certificate subject as RFC4514 string | [readonly] 
+**FingerprintSha256** | **NullableString** | Get certificate Hash (SHA256) | [readonly] 
+**FingerprintSha1** | **NullableString** | Get certificate Hash (SHA1) | [readonly] 
+**CertExpiry** | **NullableTime** | Get certificate expiry | [readonly] 
+**CertSubject** | **NullableString** | Get certificate subject as full rfc4514 | [readonly] 
 **PrivateKeyAvailable** | **bool** | Show if this keypair has a private key configured or not | [readonly] 
-**KeyType** | [**NullableKeyTypeEnum**](KeyTypeEnum.md) | Key algorithm type detected from the certificate&#39;s public key | [readonly] 
+**KeyType** | [**NullableKeyTypeEnum**](KeyTypeEnum.md) |  | [readonly] 
 **CertificateDownloadUrl** | **string** | Get URL to download certificate | [readonly] 
 **PrivateKeyDownloadUrl** | **string** | Get URL to download private key | [readonly] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 

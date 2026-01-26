@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -2042,148 +2042,6 @@ func (a *CoreAPIService) CoreApplicationsUsedByListExecute(r ApiCoreApplications
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ValidationError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GenericError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest struct {
-	ctx        context.Context
-	ApiService *CoreAPIService
-	userPks    *[]int32
-}
-
-// List of user IDs to revoke all sessions for
-func (r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) UserPks(userPks []int32) ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest {
-	r.userPks = &userPks
-	return r
-}
-
-func (r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) Execute() (*BulkDeleteSessionResponse, *http.Response, error) {
-	return r.ApiService.CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r)
-}
-
-/*
-CoreAuthenticatedSessionsBulkDeleteDestroy Method for CoreAuthenticatedSessionsBulkDeleteDestroy
-
-Bulk revoke all sessions for multiple users
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest
-*/
-func (a *CoreAPIService) CoreAuthenticatedSessionsBulkDeleteDestroy(ctx context.Context) ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest {
-	return ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return BulkDeleteSessionResponse
-func (a *CoreAPIService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) (*BulkDeleteSessionResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BulkDeleteSessionResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreAuthenticatedSessionsBulkDeleteDestroy")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/core/authenticated_sessions/bulk_delete/"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.userPks == nil {
-		return localVarReturnValue, nil, reportError("userPks is required and must be specified")
-	}
-
-	{
-		t := *r.userPks
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "user_pks", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "user_pks", t, "form", "multi")
-		}
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -4369,21 +4227,20 @@ func (a *CoreAPIService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 }
 
 type ApiCoreGroupsListRequest struct {
-	ctx                   context.Context
-	ApiService            *CoreAPIService
-	attributes            *string
-	includeChildren       *bool
-	includeInheritedRoles *bool
-	includeParents        *bool
-	includeUsers          *bool
-	isSuperuser           *bool
-	membersByPk           *[]int32
-	membersByUsername     *[]string
-	name                  *string
-	ordering              *string
-	page                  *int32
-	pageSize              *int32
-	search                *string
+	ctx               context.Context
+	ApiService        *CoreAPIService
+	attributes        *string
+	includeChildren   *bool
+	includeParents    *bool
+	includeUsers      *bool
+	isSuperuser       *bool
+	membersByPk       *[]int32
+	membersByUsername *[]string
+	name              *string
+	ordering          *string
+	page              *int32
+	pageSize          *int32
+	search            *string
 }
 
 // Attributes
@@ -4394,11 +4251,6 @@ func (r ApiCoreGroupsListRequest) Attributes(attributes string) ApiCoreGroupsLis
 
 func (r ApiCoreGroupsListRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsListRequest {
 	r.includeChildren = &includeChildren
-	return r
-}
-
-func (r ApiCoreGroupsListRequest) IncludeInheritedRoles(includeInheritedRoles bool) ApiCoreGroupsListRequest {
-	r.includeInheritedRoles = &includeInheritedRoles
 	return r
 }
 
@@ -4507,13 +4359,6 @@ func (a *CoreAPIService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 		var defaultValue bool = false
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", defaultValue, "form", "")
 		r.includeChildren = &defaultValue
-	}
-	if r.includeInheritedRoles != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", r.includeInheritedRoles, "form", "")
-	} else {
-		var defaultValue bool = false
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", defaultValue, "form", "")
-		r.includeInheritedRoles = &defaultValue
 	}
 	if r.includeParents != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", r.includeParents, "form", "")
@@ -4902,22 +4747,16 @@ func (a *CoreAPIService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 }
 
 type ApiCoreGroupsRetrieveRequest struct {
-	ctx                   context.Context
-	ApiService            *CoreAPIService
-	groupUuid             string
-	includeChildren       *bool
-	includeInheritedRoles *bool
-	includeParents        *bool
-	includeUsers          *bool
+	ctx             context.Context
+	ApiService      *CoreAPIService
+	groupUuid       string
+	includeChildren *bool
+	includeParents  *bool
+	includeUsers    *bool
 }
 
 func (r ApiCoreGroupsRetrieveRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsRetrieveRequest {
 	r.includeChildren = &includeChildren
-	return r
-}
-
-func (r ApiCoreGroupsRetrieveRequest) IncludeInheritedRoles(includeInheritedRoles bool) ApiCoreGroupsRetrieveRequest {
-	r.includeInheritedRoles = &includeInheritedRoles
 	return r
 }
 
@@ -4981,13 +4820,6 @@ func (a *CoreAPIService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 		var defaultValue bool = false
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", defaultValue, "form", "")
 		r.includeChildren = &defaultValue
-	}
-	if r.includeInheritedRoles != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", r.includeInheritedRoles, "form", "")
-	} else {
-		var defaultValue bool = false
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", defaultValue, "form", "")
-		r.includeInheritedRoles = &defaultValue
 	}
 	if r.includeParents != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", r.includeParents, "form", "")
@@ -7486,34 +7318,30 @@ func (a *CoreAPIService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 }
 
 type ApiCoreUsersExportCreateRequest struct {
-	ctx             context.Context
-	ApiService      *CoreAPIService
-	attributes      *string
-	dateJoined      *time.Time
-	dateJoinedGt    *time.Time
-	dateJoinedLt    *time.Time
-	email           *string
-	groupsByName    *[]string
-	groupsByPk      *[]string
-	isActive        *bool
-	isSuperuser     *bool
-	lastLogin       *time.Time
-	lastLoginGt     *time.Time
-	lastLoginIsnull *bool
-	lastLoginLt     *time.Time
-	lastUpdated     *time.Time
-	lastUpdatedGt   *time.Time
-	lastUpdatedLt   *time.Time
-	name            *string
-	ordering        *string
-	path            *string
-	pathStartswith  *string
-	rolesByName     *[]string
-	rolesByPk       *[]string
-	search          *string
-	type_           *[]string
-	username        *string
-	uuid            *string
+	ctx            context.Context
+	ApiService     *CoreAPIService
+	attributes     *string
+	dateJoined     *time.Time
+	dateJoinedGt   *time.Time
+	dateJoinedLt   *time.Time
+	email          *string
+	groupsByName   *[]string
+	groupsByPk     *[]string
+	isActive       *bool
+	isSuperuser    *bool
+	lastUpdated    *time.Time
+	lastUpdatedGt  *time.Time
+	lastUpdatedLt  *time.Time
+	name           *string
+	ordering       *string
+	path           *string
+	pathStartswith *string
+	rolesByName    *[]string
+	rolesByPk      *[]string
+	search         *string
+	type_          *[]string
+	username       *string
+	uuid           *string
 }
 
 // Attributes
@@ -7559,26 +7387,6 @@ func (r ApiCoreUsersExportCreateRequest) IsActive(isActive bool) ApiCoreUsersExp
 
 func (r ApiCoreUsersExportCreateRequest) IsSuperuser(isSuperuser bool) ApiCoreUsersExportCreateRequest {
 	r.isSuperuser = &isSuperuser
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastLogin(lastLogin time.Time) ApiCoreUsersExportCreateRequest {
-	r.lastLogin = &lastLogin
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastLoginGt(lastLoginGt time.Time) ApiCoreUsersExportCreateRequest {
-	r.lastLoginGt = &lastLoginGt
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastLoginIsnull(lastLoginIsnull bool) ApiCoreUsersExportCreateRequest {
-	r.lastLoginIsnull = &lastLoginIsnull
-	return r
-}
-
-func (r ApiCoreUsersExportCreateRequest) LastLoginLt(lastLoginLt time.Time) ApiCoreUsersExportCreateRequest {
-	r.lastLoginLt = &lastLoginLt
 	return r
 }
 
@@ -7736,18 +7544,6 @@ func (a *CoreAPIService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 	}
 	if r.isSuperuser != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "is_superuser", r.isSuperuser, "form", "")
-	}
-	if r.lastLogin != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login", r.lastLogin, "form", "")
-	}
-	if r.lastLoginGt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__gt", r.lastLoginGt, "form", "")
-	}
-	if r.lastLoginIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__isnull", r.lastLoginIsnull, "form", "")
-	}
-	if r.lastLoginLt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__lt", r.lastLoginLt, "form", "")
 	}
 	if r.lastUpdated != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "form", "")
@@ -8121,38 +7917,34 @@ func (a *CoreAPIService) CoreUsersImpersonateEndRetrieveExecute(r ApiCoreUsersIm
 }
 
 type ApiCoreUsersListRequest struct {
-	ctx             context.Context
-	ApiService      *CoreAPIService
-	attributes      *string
-	dateJoined      *time.Time
-	dateJoinedGt    *time.Time
-	dateJoinedLt    *time.Time
-	email           *string
-	groupsByName    *[]string
-	groupsByPk      *[]string
-	includeGroups   *bool
-	includeRoles    *bool
-	isActive        *bool
-	isSuperuser     *bool
-	lastLogin       *time.Time
-	lastLoginGt     *time.Time
-	lastLoginIsnull *bool
-	lastLoginLt     *time.Time
-	lastUpdated     *time.Time
-	lastUpdatedGt   *time.Time
-	lastUpdatedLt   *time.Time
-	name            *string
-	ordering        *string
-	page            *int32
-	pageSize        *int32
-	path            *string
-	pathStartswith  *string
-	rolesByName     *[]string
-	rolesByPk       *[]string
-	search          *string
-	type_           *[]string
-	username        *string
-	uuid            *string
+	ctx            context.Context
+	ApiService     *CoreAPIService
+	attributes     *string
+	dateJoined     *time.Time
+	dateJoinedGt   *time.Time
+	dateJoinedLt   *time.Time
+	email          *string
+	groupsByName   *[]string
+	groupsByPk     *[]string
+	includeGroups  *bool
+	includeRoles   *bool
+	isActive       *bool
+	isSuperuser    *bool
+	lastUpdated    *time.Time
+	lastUpdatedGt  *time.Time
+	lastUpdatedLt  *time.Time
+	name           *string
+	ordering       *string
+	page           *int32
+	pageSize       *int32
+	path           *string
+	pathStartswith *string
+	rolesByName    *[]string
+	rolesByPk      *[]string
+	search         *string
+	type_          *[]string
+	username       *string
+	uuid           *string
 }
 
 // Attributes
@@ -8208,26 +8000,6 @@ func (r ApiCoreUsersListRequest) IsActive(isActive bool) ApiCoreUsersListRequest
 
 func (r ApiCoreUsersListRequest) IsSuperuser(isSuperuser bool) ApiCoreUsersListRequest {
 	r.isSuperuser = &isSuperuser
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastLogin(lastLogin time.Time) ApiCoreUsersListRequest {
-	r.lastLogin = &lastLogin
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastLoginGt(lastLoginGt time.Time) ApiCoreUsersListRequest {
-	r.lastLoginGt = &lastLoginGt
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastLoginIsnull(lastLoginIsnull bool) ApiCoreUsersListRequest {
-	r.lastLoginIsnull = &lastLoginIsnull
-	return r
-}
-
-func (r ApiCoreUsersListRequest) LastLoginLt(lastLoginLt time.Time) ApiCoreUsersListRequest {
-	r.lastLoginLt = &lastLoginLt
 	return r
 }
 
@@ -8407,18 +8179,6 @@ func (a *CoreAPIService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	}
 	if r.isSuperuser != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "is_superuser", r.isSuperuser, "form", "")
-	}
-	if r.lastLogin != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login", r.lastLogin, "form", "")
-	}
-	if r.lastLoginGt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__gt", r.lastLoginGt, "form", "")
-	}
-	if r.lastLoginIsnull != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__isnull", r.lastLoginIsnull, "form", "")
-	}
-	if r.lastLoginLt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__lt", r.lastLoginLt, "form", "")
 	}
 	if r.lastUpdated != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "form", "")

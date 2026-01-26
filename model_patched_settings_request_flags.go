@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -22,9 +22,8 @@ var _ MappedNullable = &PatchedSettingsRequestFlags{}
 
 // PatchedSettingsRequestFlags struct for PatchedSettingsRequestFlags
 type PatchedSettingsRequestFlags struct {
-	EnterpriseAuditIncludeExpandedDiff bool `json:"enterprise_audit_include_expanded_diff"`
-	PoliciesBufferedAccessView         bool `json:"policies_buffered_access_view"`
-	FlowsRefreshOthers                 bool `json:"flows_refresh_others"`
+	PoliciesBufferedAccessView bool `json:"policies_buffered_access_view"`
+	FlowsRefreshOthers         bool `json:"flows_refresh_others"`
 }
 
 type _PatchedSettingsRequestFlags PatchedSettingsRequestFlags
@@ -33,9 +32,8 @@ type _PatchedSettingsRequestFlags PatchedSettingsRequestFlags
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPatchedSettingsRequestFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsRefreshOthers bool) *PatchedSettingsRequestFlags {
+func NewPatchedSettingsRequestFlags(policiesBufferedAccessView bool, flowsRefreshOthers bool) *PatchedSettingsRequestFlags {
 	this := PatchedSettingsRequestFlags{}
-	this.EnterpriseAuditIncludeExpandedDiff = enterpriseAuditIncludeExpandedDiff
 	this.PoliciesBufferedAccessView = policiesBufferedAccessView
 	this.FlowsRefreshOthers = flowsRefreshOthers
 	return &this
@@ -47,30 +45,6 @@ func NewPatchedSettingsRequestFlags(enterpriseAuditIncludeExpandedDiff bool, pol
 func NewPatchedSettingsRequestFlagsWithDefaults() *PatchedSettingsRequestFlags {
 	this := PatchedSettingsRequestFlags{}
 	return &this
-}
-
-// GetEnterpriseAuditIncludeExpandedDiff returns the EnterpriseAuditIncludeExpandedDiff field value
-func (o *PatchedSettingsRequestFlags) GetEnterpriseAuditIncludeExpandedDiff() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.EnterpriseAuditIncludeExpandedDiff
-}
-
-// GetEnterpriseAuditIncludeExpandedDiffOk returns a tuple with the EnterpriseAuditIncludeExpandedDiff field value
-// and a boolean to check if the value has been set.
-func (o *PatchedSettingsRequestFlags) GetEnterpriseAuditIncludeExpandedDiffOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EnterpriseAuditIncludeExpandedDiff, true
-}
-
-// SetEnterpriseAuditIncludeExpandedDiff sets field value
-func (o *PatchedSettingsRequestFlags) SetEnterpriseAuditIncludeExpandedDiff(v bool) {
-	o.EnterpriseAuditIncludeExpandedDiff = v
 }
 
 // GetPoliciesBufferedAccessView returns the PoliciesBufferedAccessView field value
@@ -131,7 +105,6 @@ func (o PatchedSettingsRequestFlags) MarshalJSON() ([]byte, error) {
 
 func (o PatchedSettingsRequestFlags) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["enterprise_audit_include_expanded_diff"] = o.EnterpriseAuditIncludeExpandedDiff
 	toSerialize["policies_buffered_access_view"] = o.PoliciesBufferedAccessView
 	toSerialize["flows_refresh_others"] = o.FlowsRefreshOthers
 	return toSerialize, nil
@@ -142,7 +115,6 @@ func (o *PatchedSettingsRequestFlags) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"enterprise_audit_include_expanded_diff",
 		"policies_buffered_access_view",
 		"flows_refresh_others",
 	}

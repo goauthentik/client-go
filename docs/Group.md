@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Roles** | Pointer to **[]string** |  | [optional] 
 **RolesObj** | [**[]Role**](Role.md) |  | [readonly] 
-**InheritedRolesObj** | [**[]Role**](Role.md) |  | [readonly] 
 **Children** | **[]string** |  | [readonly] 
 **ChildrenObj** | [**[]RelatedGroup**](RelatedGroup.md) |  | [readonly] 
 
@@ -23,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewGroup
 
-`func NewGroup(pk string, numPk int32, name string, parentsObj []RelatedGroup, usersObj []PartialUser, rolesObj []Role, inheritedRolesObj []Role, children []string, childrenObj []RelatedGroup, ) *Group`
+`func NewGroup(pk string, numPk int32, name string, parentsObj []RelatedGroup, usersObj []PartialUser, rolesObj []Role, children []string, childrenObj []RelatedGroup, ) *Group`
 
 NewGroup instantiates a new Group object
 This constructor will assign default values to properties that have it defined,
@@ -303,36 +302,6 @@ and a boolean to check if the value has been set.
 SetRolesObj sets RolesObj field to given value.
 
 
-### GetInheritedRolesObj
-
-`func (o *Group) GetInheritedRolesObj() []Role`
-
-GetInheritedRolesObj returns the InheritedRolesObj field if non-nil, zero value otherwise.
-
-### GetInheritedRolesObjOk
-
-`func (o *Group) GetInheritedRolesObjOk() (*[]Role, bool)`
-
-GetInheritedRolesObjOk returns a tuple with the InheritedRolesObj field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInheritedRolesObj
-
-`func (o *Group) SetInheritedRolesObj(v []Role)`
-
-SetInheritedRolesObj sets InheritedRolesObj field to given value.
-
-
-### SetInheritedRolesObjNil
-
-`func (o *Group) SetInheritedRolesObjNil(b bool)`
-
- SetInheritedRolesObjNil sets the value for InheritedRolesObj to be an explicit nil
-
-### UnsetInheritedRolesObj
-`func (o *Group) UnsetInheritedRolesObj()`
-
-UnsetInheritedRolesObj ensures that no value is present for InheritedRolesObj, not even an explicit nil
 ### GetChildren
 
 `func (o *Group) GetChildren() []string`

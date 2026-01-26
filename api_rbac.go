@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -2270,8 +2270,6 @@ func (a *RbacAPIService) RbacRolesDestroyExecute(r ApiRbacRolesDestroyRequest) (
 type ApiRbacRolesListRequest struct {
 	ctx           context.Context
 	ApiService    *RbacAPIService
-	akGroups      *string
-	inherited     *bool
 	managed       *[]string
 	managedIsnull *bool
 	name          *string
@@ -2279,18 +2277,7 @@ type ApiRbacRolesListRequest struct {
 	page          *int32
 	pageSize      *int32
 	search        *string
-	users         *int32
-}
-
-func (r ApiRbacRolesListRequest) AkGroups(akGroups string) ApiRbacRolesListRequest {
-	r.akGroups = &akGroups
-	return r
-}
-
-// Include inherited roles (requires users or ak_groups filter)
-func (r ApiRbacRolesListRequest) Inherited(inherited bool) ApiRbacRolesListRequest {
-	r.inherited = &inherited
-	return r
+	users         *[]int32
 }
 
 func (r ApiRbacRolesListRequest) Managed(managed []string) ApiRbacRolesListRequest {
@@ -2332,7 +2319,7 @@ func (r ApiRbacRolesListRequest) Search(search string) ApiRbacRolesListRequest {
 	return r
 }
 
-func (r ApiRbacRolesListRequest) Users(users int32) ApiRbacRolesListRequest {
+func (r ApiRbacRolesListRequest) Users(users []int32) ApiRbacRolesListRequest {
 	r.users = &users
 	return r
 }
@@ -2378,12 +2365,6 @@ func (a *RbacAPIService) RbacRolesListExecute(r ApiRbacRolesListRequest) (*Pagin
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.akGroups != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ak_groups", r.akGroups, "form", "")
-	}
-	if r.inherited != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "inherited", r.inherited, "form", "")
-	}
 	if r.managed != nil {
 		t := *r.managed
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
@@ -2414,7 +2395,15 @@ func (a *RbacAPIService) RbacRolesListExecute(r ApiRbacRolesListRequest) (*Pagin
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.users != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "users", r.users, "form", "")
+		t := *r.users
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "users", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "users", t, "form", "multi")
+		}
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

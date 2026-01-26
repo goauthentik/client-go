@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -26,17 +26,16 @@ type Group struct {
 	NumPk int32  `json:"num_pk"`
 	Name  string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser       *bool                  `json:"is_superuser,omitempty"`
-	Parents           []string               `json:"parents,omitempty"`
-	ParentsObj        []RelatedGroup         `json:"parents_obj"`
-	Users             []int32                `json:"users,omitempty"`
-	UsersObj          []PartialUser          `json:"users_obj"`
-	Attributes        map[string]interface{} `json:"attributes,omitempty"`
-	Roles             []string               `json:"roles,omitempty"`
-	RolesObj          []Role                 `json:"roles_obj"`
-	InheritedRolesObj []Role                 `json:"inherited_roles_obj"`
-	Children          []string               `json:"children"`
-	ChildrenObj       []RelatedGroup         `json:"children_obj"`
+	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
+	Parents     []string               `json:"parents,omitempty"`
+	ParentsObj  []RelatedGroup         `json:"parents_obj"`
+	Users       []int32                `json:"users,omitempty"`
+	UsersObj    []PartialUser          `json:"users_obj"`
+	Attributes  map[string]interface{} `json:"attributes,omitempty"`
+	Roles       []string               `json:"roles,omitempty"`
+	RolesObj    []Role                 `json:"roles_obj"`
+	Children    []string               `json:"children"`
+	ChildrenObj []RelatedGroup         `json:"children_obj"`
 }
 
 type _Group Group
@@ -45,7 +44,7 @@ type _Group Group
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroup(pk string, numPk int32, name string, parentsObj []RelatedGroup, usersObj []PartialUser, rolesObj []Role, inheritedRolesObj []Role, children []string, childrenObj []RelatedGroup) *Group {
+func NewGroup(pk string, numPk int32, name string, parentsObj []RelatedGroup, usersObj []PartialUser, rolesObj []Role, children []string, childrenObj []RelatedGroup) *Group {
 	this := Group{}
 	this.Pk = pk
 	this.NumPk = numPk
@@ -53,7 +52,6 @@ func NewGroup(pk string, numPk int32, name string, parentsObj []RelatedGroup, us
 	this.ParentsObj = parentsObj
 	this.UsersObj = usersObj
 	this.RolesObj = rolesObj
-	this.InheritedRolesObj = inheritedRolesObj
 	this.Children = children
 	this.ChildrenObj = childrenObj
 	return &this
@@ -375,32 +373,6 @@ func (o *Group) SetRolesObj(v []Role) {
 	o.RolesObj = v
 }
 
-// GetInheritedRolesObj returns the InheritedRolesObj field value
-// If the value is explicit nil, the zero value for []Role will be returned
-func (o *Group) GetInheritedRolesObj() []Role {
-	if o == nil {
-		var ret []Role
-		return ret
-	}
-
-	return o.InheritedRolesObj
-}
-
-// GetInheritedRolesObjOk returns a tuple with the InheritedRolesObj field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Group) GetInheritedRolesObjOk() ([]Role, bool) {
-	if o == nil || IsNil(o.InheritedRolesObj) {
-		return nil, false
-	}
-	return o.InheritedRolesObj, true
-}
-
-// SetInheritedRolesObj sets field value
-func (o *Group) SetInheritedRolesObj(v []Role) {
-	o.InheritedRolesObj = v
-}
-
 // GetChildren returns the Children field value
 func (o *Group) GetChildren() []string {
 	if o == nil {
@@ -486,9 +458,6 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 		toSerialize["roles"] = o.Roles
 	}
 	toSerialize["roles_obj"] = o.RolesObj
-	if o.InheritedRolesObj != nil {
-		toSerialize["inherited_roles_obj"] = o.InheritedRolesObj
-	}
 	toSerialize["children"] = o.Children
 	if o.ChildrenObj != nil {
 		toSerialize["children_obj"] = o.ChildrenObj
@@ -507,7 +476,6 @@ func (o *Group) UnmarshalJSON(data []byte) (err error) {
 		"parents_obj",
 		"users_obj",
 		"roles_obj",
-		"inherited_roles_obj",
 		"children",
 		"children_obj",
 	}

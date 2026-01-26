@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -27,7 +27,6 @@ type DeviceFactSnapshot struct {
 	Connection string       `json:"connection"`
 	Created    time.Time    `json:"created"`
 	Expires    NullableTime `json:"expires"`
-	Vendor     VendorEnum   `json:"vendor"`
 }
 
 type _DeviceFactSnapshot DeviceFactSnapshot
@@ -36,13 +35,12 @@ type _DeviceFactSnapshot DeviceFactSnapshot
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceFactSnapshot(data DeviceFacts, connection string, created time.Time, expires NullableTime, vendor VendorEnum) *DeviceFactSnapshot {
+func NewDeviceFactSnapshot(data DeviceFacts, connection string, created time.Time, expires NullableTime) *DeviceFactSnapshot {
 	this := DeviceFactSnapshot{}
 	this.Data = data
 	this.Connection = connection
 	this.Created = created
 	this.Expires = expires
-	this.Vendor = vendor
 	return &this
 }
 
@@ -152,30 +150,6 @@ func (o *DeviceFactSnapshot) SetExpires(v time.Time) {
 	o.Expires.Set(&v)
 }
 
-// GetVendor returns the Vendor field value
-func (o *DeviceFactSnapshot) GetVendor() VendorEnum {
-	if o == nil {
-		var ret VendorEnum
-		return ret
-	}
-
-	return o.Vendor
-}
-
-// GetVendorOk returns a tuple with the Vendor field value
-// and a boolean to check if the value has been set.
-func (o *DeviceFactSnapshot) GetVendorOk() (*VendorEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Vendor, true
-}
-
-// SetVendor sets field value
-func (o *DeviceFactSnapshot) SetVendor(v VendorEnum) {
-	o.Vendor = v
-}
-
 func (o DeviceFactSnapshot) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -190,7 +164,6 @@ func (o DeviceFactSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize["connection"] = o.Connection
 	toSerialize["created"] = o.Created
 	toSerialize["expires"] = o.Expires.Get()
-	toSerialize["vendor"] = o.Vendor
 	return toSerialize, nil
 }
 
@@ -203,7 +176,6 @@ func (o *DeviceFactSnapshot) UnmarshalJSON(data []byte) (err error) {
 		"connection",
 		"created",
 		"expires",
-		"vendor",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -22,16 +22,15 @@ var _ MappedNullable = &AgentConfig{}
 
 // AgentConfig Base serializer class which doesn't implement create/update methods
 type AgentConfig struct {
-	DeviceId                     string                    `json:"device_id"`
-	RefreshInterval              int32                     `json:"refresh_interval"`
-	AuthorizationFlow            NullableString            `json:"authorization_flow"`
-	JwksAuth                     map[string]interface{}    `json:"jwks_auth"`
-	JwksChallenge                map[string]interface{}    `json:"jwks_challenge"`
-	NssUidOffset                 int32                     `json:"nss_uid_offset"`
-	NssGidOffset                 int32                     `json:"nss_gid_offset"`
-	AuthTerminateSessionOnExpiry bool                      `json:"auth_terminate_session_on_expiry"`
-	SystemConfig                 Config                    `json:"system_config"`
-	LicenseStatus                NullableLicenseStatusEnum `json:"license_status"`
+	DeviceId                     string                 `json:"device_id"`
+	RefreshInterval              int32                  `json:"refresh_interval"`
+	AuthorizationFlow            NullableString         `json:"authorization_flow"`
+	JwksAuth                     map[string]interface{} `json:"jwks_auth"`
+	JwksChallenge                map[string]interface{} `json:"jwks_challenge"`
+	NssUidOffset                 int32                  `json:"nss_uid_offset"`
+	NssGidOffset                 int32                  `json:"nss_gid_offset"`
+	AuthTerminateSessionOnExpiry bool                   `json:"auth_terminate_session_on_expiry"`
+	SystemConfig                 Config                 `json:"system_config"`
 }
 
 type _AgentConfig AgentConfig
@@ -40,7 +39,7 @@ type _AgentConfig AgentConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwksAuth map[string]interface{}, jwksChallenge map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config, licenseStatus NullableLicenseStatusEnum) *AgentConfig {
+func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow NullableString, jwksAuth map[string]interface{}, jwksChallenge map[string]interface{}, nssUidOffset int32, nssGidOffset int32, authTerminateSessionOnExpiry bool, systemConfig Config) *AgentConfig {
 	this := AgentConfig{}
 	this.DeviceId = deviceId
 	this.RefreshInterval = refreshInterval
@@ -51,7 +50,6 @@ func NewAgentConfig(deviceId string, refreshInterval int32, authorizationFlow Nu
 	this.NssGidOffset = nssGidOffset
 	this.AuthTerminateSessionOnExpiry = authTerminateSessionOnExpiry
 	this.SystemConfig = systemConfig
-	this.LicenseStatus = licenseStatus
 	return &this
 }
 
@@ -283,32 +281,6 @@ func (o *AgentConfig) SetSystemConfig(v Config) {
 	o.SystemConfig = v
 }
 
-// GetLicenseStatus returns the LicenseStatus field value
-// If the value is explicit nil, the zero value for LicenseStatusEnum will be returned
-func (o *AgentConfig) GetLicenseStatus() LicenseStatusEnum {
-	if o == nil || o.LicenseStatus.Get() == nil {
-		var ret LicenseStatusEnum
-		return ret
-	}
-
-	return *o.LicenseStatus.Get()
-}
-
-// GetLicenseStatusOk returns a tuple with the LicenseStatus field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AgentConfig) GetLicenseStatusOk() (*LicenseStatusEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.LicenseStatus.Get(), o.LicenseStatus.IsSet()
-}
-
-// SetLicenseStatus sets field value
-func (o *AgentConfig) SetLicenseStatus(v LicenseStatusEnum) {
-	o.LicenseStatus.Set(&v)
-}
-
 func (o AgentConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -330,7 +302,6 @@ func (o AgentConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize["nss_gid_offset"] = o.NssGidOffset
 	toSerialize["auth_terminate_session_on_expiry"] = o.AuthTerminateSessionOnExpiry
 	toSerialize["system_config"] = o.SystemConfig
-	toSerialize["license_status"] = o.LicenseStatus.Get()
 	return toSerialize, nil
 }
 
@@ -348,7 +319,6 @@ func (o *AgentConfig) UnmarshalJSON(data []byte) (err error) {
 		"nss_gid_offset",
 		"auth_terminate_session_on_expiry",
 		"system_config",
-		"license_status",
 	}
 
 	allProperties := make(map[string]interface{})

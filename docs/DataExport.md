@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | [readonly] 
-**RequestedBy** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**RequestedBy** | [**RequestedBy**](RequestedBy.md) |  | [readonly] 
 **RequestedOn** | **time.Time** |  | [readonly] 
 **ContentType** | [**ContentType**](ContentType.md) |  | [readonly] 
 **QueryParams** | **map[string]interface{}** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewDataExport
 
-`func NewDataExport(id string, requestedBy PartialUser, requestedOn time.Time, contentType ContentType, queryParams map[string]interface{}, fileUrl string, completed bool, ) *DataExport`
+`func NewDataExport(id string, requestedBy RequestedBy, requestedOn time.Time, contentType ContentType, queryParams map[string]interface{}, fileUrl string, completed bool, ) *DataExport`
 
 NewDataExport instantiates a new DataExport object
 This constructor will assign default values to properties that have it defined,
@@ -53,20 +53,20 @@ SetId sets Id field to given value.
 
 ### GetRequestedBy
 
-`func (o *DataExport) GetRequestedBy() PartialUser`
+`func (o *DataExport) GetRequestedBy() RequestedBy`
 
 GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
 
 ### GetRequestedByOk
 
-`func (o *DataExport) GetRequestedByOk() (*PartialUser, bool)`
+`func (o *DataExport) GetRequestedByOk() (*RequestedBy, bool)`
 
 GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedBy
 
-`func (o *DataExport) SetRequestedBy(v PartialUser)`
+`func (o *DataExport) SetRequestedBy(v RequestedBy)`
 
 SetRequestedBy sets RequestedBy field to given value.
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -25,18 +25,17 @@ var _ MappedNullable = &CertificateKeyPair{}
 type CertificateKeyPair struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
-	// SHA256 fingerprint of the certificate
+	// Get certificate Hash (SHA256)
 	FingerprintSha256 NullableString `json:"fingerprint_sha256"`
-	// SHA1 fingerprint of the certificate
+	// Get certificate Hash (SHA1)
 	FingerprintSha1 NullableString `json:"fingerprint_sha1"`
-	// Certificate expiry date
+	// Get certificate expiry
 	CertExpiry NullableTime `json:"cert_expiry"`
-	// Certificate subject as RFC4514 string
+	// Get certificate subject as full rfc4514
 	CertSubject NullableString `json:"cert_subject"`
 	// Show if this keypair has a private key configured or not
-	PrivateKeyAvailable bool `json:"private_key_available"`
-	// Key algorithm type detected from the certificate's public key
-	KeyType NullableKeyTypeEnum `json:"key_type"`
+	PrivateKeyAvailable bool                `json:"private_key_available"`
+	KeyType             NullableKeyTypeEnum `json:"key_type"`
 	// Get URL to download certificate
 	CertificateDownloadUrl string `json:"certificate_download_url"`
 	// Get URL to download private key

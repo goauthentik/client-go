@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -86,7 +86,6 @@ const (
 	APPENUM_AUTHENTIK_BLUEPRINTS                                    AppEnum = "authentik.blueprints"
 	APPENUM_AUTHENTIK_ENTERPRISE_AUDIT                              AppEnum = "authentik.enterprise.audit"
 	APPENUM_AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT         AppEnum = "authentik.enterprise.endpoints.connectors.agent"
-	APPENUM_AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_FLEET         AppEnum = "authentik.enterprise.endpoints.connectors.fleet"
 	APPENUM_AUTHENTIK_ENTERPRISE_POLICIES_UNIQUE_PASSWORD           AppEnum = "authentik.enterprise.policies.unique_password"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE         AppEnum = "authentik.enterprise.providers.google_workspace"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA          AppEnum = "authentik.enterprise.providers.microsoft_entra"
@@ -167,7 +166,6 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.blueprints",
 	"authentik.enterprise.audit",
 	"authentik.enterprise.endpoints.connectors.agent",
-	"authentik.enterprise.endpoints.connectors.fleet",
 	"authentik.enterprise.policies.unique_password",
 	"authentik.enterprise.providers.google_workspace",
 	"authentik.enterprise.providers.microsoft_entra",

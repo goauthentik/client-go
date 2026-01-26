@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -22,8 +22,7 @@ var _ MappedNullable = &DeviceAccessGroupRequest{}
 
 // DeviceAccessGroupRequest struct for DeviceAccessGroupRequest
 type DeviceAccessGroupRequest struct {
-	Name       string                 `json:"name"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Name string `json:"name"`
 }
 
 type _DeviceAccessGroupRequest DeviceAccessGroupRequest
@@ -70,38 +69,6 @@ func (o *DeviceAccessGroupRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *DeviceAccessGroupRequest) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeviceAccessGroupRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
-	}
-	return o.Attributes, true
-}
-
-// HasAttributes returns a boolean if a field has been set.
-func (o *DeviceAccessGroupRequest) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
-		return true
-	}
-
-	return false
-}
-
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *DeviceAccessGroupRequest) SetAttributes(v map[string]interface{}) {
-	o.Attributes = v
-}
-
 func (o DeviceAccessGroupRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -113,9 +80,6 @@ func (o DeviceAccessGroupRequest) MarshalJSON() ([]byte, error) {
 func (o DeviceAccessGroupRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Attributes) {
-		toSerialize["attributes"] = o.Attributes
-	}
 	return toSerialize, nil
 }
 

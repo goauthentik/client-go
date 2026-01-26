@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.12.0-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -20,14 +20,12 @@ import (
 // checks if the OperatingSystem type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OperatingSystem{}
 
-// OperatingSystem For example: {\"family\":\"linux\",\"name\":\"Ubuntu\",\"version\":\"24.04.3 LTS (Noble Numbat)\",\"arch\":\"amd64\"} {\"family\": \"windows\",\"name\":\"Server 2022 Datacenter\",\"version\":\"10.0.20348.4405\",\"arch\":\"amd64\"} {\"family\": \"windows\",\"name\":\"Server 2022 Datacenter\",\"version\":\"10.0.20348.4405\",\"arch\":\"amd64\"} {\"family\": \"mac_os\", \"name\": \"\", \"version\": \"26.2\", \"arch\": \"arm64\"}
+// OperatingSystem struct for OperatingSystem
 type OperatingSystem struct {
-	Family DeviceFactsOSFamily `json:"family"`
-	// Operating System name, such as 'Server 2022' or 'Ubuntu'
-	Name *string `json:"name,omitempty"`
-	// Operating System version, must always be the version number but may contain build name
-	Version *string `json:"version,omitempty"`
-	Arch    string  `json:"arch"`
+	Family  DeviceFactsOSFamily `json:"family"`
+	Name    *string             `json:"name,omitempty"`
+	Version *string             `json:"version,omitempty"`
+	Arch    string              `json:"arch"`
 }
 
 type _OperatingSystem OperatingSystem
