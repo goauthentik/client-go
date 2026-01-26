@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.8.0-rc6
+API version: 2025.8.0-rc7
 Contact: hello@goauthentik.io
 */
 
@@ -32,6 +32,8 @@ type NotificationTransport struct {
 	WebhookMappingBody NullableString `json:"webhook_mapping_body,omitempty"`
 	// Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs
 	WebhookMappingHeaders NullableString `json:"webhook_mapping_headers,omitempty"`
+	EmailSubjectPrefix    *string        `json:"email_subject_prefix,omitempty"`
+	EmailTemplate         *string        `json:"email_template,omitempty"`
 	// Only send notification once, for example when sending a webhook into a chat channel.
 	SendOnce *bool `json:"send_once,omitempty"`
 }
@@ -280,6 +282,70 @@ func (o *NotificationTransport) UnsetWebhookMappingHeaders() {
 	o.WebhookMappingHeaders.Unset()
 }
 
+// GetEmailSubjectPrefix returns the EmailSubjectPrefix field value if set, zero value otherwise.
+func (o *NotificationTransport) GetEmailSubjectPrefix() string {
+	if o == nil || IsNil(o.EmailSubjectPrefix) {
+		var ret string
+		return ret
+	}
+	return *o.EmailSubjectPrefix
+}
+
+// GetEmailSubjectPrefixOk returns a tuple with the EmailSubjectPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationTransport) GetEmailSubjectPrefixOk() (*string, bool) {
+	if o == nil || IsNil(o.EmailSubjectPrefix) {
+		return nil, false
+	}
+	return o.EmailSubjectPrefix, true
+}
+
+// HasEmailSubjectPrefix returns a boolean if a field has been set.
+func (o *NotificationTransport) HasEmailSubjectPrefix() bool {
+	if o != nil && !IsNil(o.EmailSubjectPrefix) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmailSubjectPrefix gets a reference to the given string and assigns it to the EmailSubjectPrefix field.
+func (o *NotificationTransport) SetEmailSubjectPrefix(v string) {
+	o.EmailSubjectPrefix = &v
+}
+
+// GetEmailTemplate returns the EmailTemplate field value if set, zero value otherwise.
+func (o *NotificationTransport) GetEmailTemplate() string {
+	if o == nil || IsNil(o.EmailTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.EmailTemplate
+}
+
+// GetEmailTemplateOk returns a tuple with the EmailTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationTransport) GetEmailTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.EmailTemplate) {
+		return nil, false
+	}
+	return o.EmailTemplate, true
+}
+
+// HasEmailTemplate returns a boolean if a field has been set.
+func (o *NotificationTransport) HasEmailTemplate() bool {
+	if o != nil && !IsNil(o.EmailTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmailTemplate gets a reference to the given string and assigns it to the EmailTemplate field.
+func (o *NotificationTransport) SetEmailTemplate(v string) {
+	o.EmailTemplate = &v
+}
+
 // GetSendOnce returns the SendOnce field value if set, zero value otherwise.
 func (o *NotificationTransport) GetSendOnce() bool {
 	if o == nil || IsNil(o.SendOnce) {
@@ -336,6 +402,12 @@ func (o NotificationTransport) ToMap() (map[string]interface{}, error) {
 	}
 	if o.WebhookMappingHeaders.IsSet() {
 		toSerialize["webhook_mapping_headers"] = o.WebhookMappingHeaders.Get()
+	}
+	if !IsNil(o.EmailSubjectPrefix) {
+		toSerialize["email_subject_prefix"] = o.EmailSubjectPrefix
+	}
+	if !IsNil(o.EmailTemplate) {
+		toSerialize["email_template"] = o.EmailTemplate
 	}
 	if !IsNil(o.SendOnce) {
 		toSerialize["send_once"] = o.SendOnce
