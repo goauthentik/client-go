@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.4.3
+API version: 2025.4.4
 Contact: hello@goauthentik.io
 */
 
