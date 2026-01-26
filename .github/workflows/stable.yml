@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: app-token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
           app-id: "${{ secrets.GH_APP_ID }}"
           private-key: "${{ secrets.GH_APP_PRIVATE_KEY }}"
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           fetch-depth: 0
           token: "${{ steps.app-token.outputs.token }}"
@@ -55,7 +55,7 @@ jobs:
         tag: "${{ fromJson(needs.tags.outputs.tags) }}"
     steps:
       - id: app-token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
           app-id: "${{ secrets.GH_APP_ID }}"
           private-key: "${{ secrets.GH_APP_PRIVATE_KEY }}"
@@ -64,13 +64,13 @@ jobs:
         run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: "${{ steps.app-token.outputs.token }}"
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           fetch-depth: 0
           token: "${{ steps.app-token.outputs.token }}"
           path: client-go
       - name: Fetch schema
-        uses: actions/checkout@v6
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           repository: goauthentik/authentik
           token: "${{ steps.app-token.outputs.token }}"
