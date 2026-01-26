@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2025.8.4
+  version: 2025.8.5
 servers:
 - url: /api/v3
 paths:
