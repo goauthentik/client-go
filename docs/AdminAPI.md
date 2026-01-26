@@ -287,7 +287,7 @@ import (
 )
 
 func main() {
-	settingsRequest := *openapiclient.NewSettingsRequest(*openapiclient.NewPatchedSettingsRequestFlags(false)) // SettingsRequest | 
+	settingsRequest := *openapiclient.NewSettingsRequest(*openapiclient.NewPatchedSettingsRequestFlags(false, false)) // SettingsRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

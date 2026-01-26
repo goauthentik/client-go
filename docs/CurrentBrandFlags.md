@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PoliciesBufferedAccessView** | **bool** |  | 
+**FlowsRefreshOthers** | **bool** |  | 
 
 ## Methods
 
 ### NewCurrentBrandFlags
 
-`func NewCurrentBrandFlags(policiesBufferedAccessView bool, ) *CurrentBrandFlags`
+`func NewCurrentBrandFlags(policiesBufferedAccessView bool, flowsRefreshOthers bool, ) *CurrentBrandFlags`
 
 NewCurrentBrandFlags instantiates a new CurrentBrandFlags object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *CurrentBrandFlags) SetPoliciesBufferedAccessView(v bool)`
 
 SetPoliciesBufferedAccessView sets PoliciesBufferedAccessView field to given value.
+
+
+### GetFlowsRefreshOthers
+
+`func (o *CurrentBrandFlags) GetFlowsRefreshOthers() bool`
+
+GetFlowsRefreshOthers returns the FlowsRefreshOthers field if non-nil, zero value otherwise.
+
+### GetFlowsRefreshOthersOk
+
+`func (o *CurrentBrandFlags) GetFlowsRefreshOthersOk() (*bool, bool)`
+
+GetFlowsRefreshOthersOk returns a tuple with the FlowsRefreshOthers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowsRefreshOthers
+
+`func (o *CurrentBrandFlags) SetFlowsRefreshOthers(v bool)`
+
+SetFlowsRefreshOthers sets FlowsRefreshOthers field to given value.
 
 
 
