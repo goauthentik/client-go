@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2025.8.1
+  version: 2025.8.2
 servers:
 - url: /api/v3
 paths:
@@ -80267,6 +80267,7 @@ components:
       - object_pk
       type: object
     UserPasswordSetRequest:
+      description: Payload to set a users' password directly
       example:
         password: password
       properties:

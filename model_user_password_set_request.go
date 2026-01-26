@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.8.1
+API version: 2025.8.2
 Contact: hello@goauthentik.io
 */
 
@@ -20,7 +20,7 @@ import (
 // checks if the UserPasswordSetRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &UserPasswordSetRequest{}
 
-// UserPasswordSetRequest struct for UserPasswordSetRequest
+// UserPasswordSetRequest Payload to set a users' password directly
 type UserPasswordSetRequest struct {
 	Password string `json:"password"`
 }
