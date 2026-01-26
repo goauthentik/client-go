@@ -20,10 +20,13 @@ var _ MappedNullable = &AuthenticatorSMSChallengeResponseRequest{}
 
 // AuthenticatorSMSChallengeResponseRequest SMS Challenge response, device is set by get_response_instance
 type AuthenticatorSMSChallengeResponseRequest struct {
-	Component   *string `json:"component,omitempty"`
-	Code        *string `json:"code,omitempty"`
-	PhoneNumber *string `json:"phone_number,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	Code                 *string `json:"code,omitempty"`
+	PhoneNumber          *string `json:"phone_number,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AuthenticatorSMSChallengeResponseRequest AuthenticatorSMSChallengeResponseRequest
 
 // NewAuthenticatorSMSChallengeResponseRequest instantiates a new AuthenticatorSMSChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -161,7 +164,35 @@ func (o AuthenticatorSMSChallengeResponseRequest) ToMap() (map[string]interface{
 	if !IsNil(o.PhoneNumber) {
 		toSerialize["phone_number"] = o.PhoneNumber
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AuthenticatorSMSChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varAuthenticatorSMSChallengeResponseRequest := _AuthenticatorSMSChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varAuthenticatorSMSChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorSMSChallengeResponseRequest(varAuthenticatorSMSChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "code")
+		delete(additionalProperties, "phone_number")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAuthenticatorSMSChallengeResponseRequest struct {

@@ -23,8 +23,11 @@ type PatchedSourceStageRequest struct {
 	Name   *string `json:"name,omitempty"`
 	Source *string `json:"source,omitempty"`
 	// Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
-	ResumeTimeout *string `json:"resume_timeout,omitempty"`
+	ResumeTimeout        *string `json:"resume_timeout,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedSourceStageRequest PatchedSourceStageRequest
 
 // NewPatchedSourceStageRequest instantiates a new PatchedSourceStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -158,7 +161,35 @@ func (o PatchedSourceStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResumeTimeout) {
 		toSerialize["resume_timeout"] = o.ResumeTimeout
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedSourceStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedSourceStageRequest := _PatchedSourceStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedSourceStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedSourceStageRequest(varPatchedSourceStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "resume_timeout")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedSourceStageRequest struct {

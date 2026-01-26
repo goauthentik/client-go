@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -52,6 +51,7 @@ type Settings struct {
 	// Maximum page size
 	PaginationMaxPageSize *int32                      `json:"pagination_max_page_size,omitempty"`
 	Flags                 PatchedSettingsRequestFlags `json:"flags"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _Settings Settings
@@ -635,6 +635,11 @@ func (o Settings) ToMap() (map[string]interface{}, error) {
 		toSerialize["pagination_max_page_size"] = o.PaginationMaxPageSize
 	}
 	toSerialize["flags"] = o.Flags
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -662,15 +667,35 @@ func (o *Settings) UnmarshalJSON(data []byte) (err error) {
 
 	varSettings := _Settings{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSettings)
+	err = json.Unmarshal(data, &varSettings)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Settings(varSettings)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "avatars")
+		delete(additionalProperties, "default_user_change_name")
+		delete(additionalProperties, "default_user_change_email")
+		delete(additionalProperties, "default_user_change_username")
+		delete(additionalProperties, "event_retention")
+		delete(additionalProperties, "reputation_lower_limit")
+		delete(additionalProperties, "reputation_upper_limit")
+		delete(additionalProperties, "footer_links")
+		delete(additionalProperties, "gdpr_compliance")
+		delete(additionalProperties, "impersonation")
+		delete(additionalProperties, "impersonation_require_reason")
+		delete(additionalProperties, "default_token_duration")
+		delete(additionalProperties, "default_token_length")
+		delete(additionalProperties, "pagination_default_page_size")
+		delete(additionalProperties, "pagination_max_page_size")
+		delete(additionalProperties, "flags")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -42,8 +41,9 @@ type Brand struct {
 	// Web Certificate used by the authentik Core webserver.
 	WebCertificate NullableString `json:"web_certificate,omitempty"`
 	// Certificates used for client authentication.
-	ClientCertificates []string               `json:"client_certificates,omitempty"`
-	Attributes         map[string]interface{} `json:"attributes,omitempty"`
+	ClientCertificates   []string               `json:"client_certificates,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Brand Brand
@@ -775,6 +775,11 @@ func (o Brand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -803,15 +808,37 @@ func (o *Brand) UnmarshalJSON(data []byte) (err error) {
 
 	varBrand := _Brand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBrand)
+	err = json.Unmarshal(data, &varBrand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Brand(varBrand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "brand_uuid")
+		delete(additionalProperties, "domain")
+		delete(additionalProperties, "default")
+		delete(additionalProperties, "branding_title")
+		delete(additionalProperties, "branding_logo")
+		delete(additionalProperties, "branding_favicon")
+		delete(additionalProperties, "branding_custom_css")
+		delete(additionalProperties, "branding_default_flow_background")
+		delete(additionalProperties, "flow_authentication")
+		delete(additionalProperties, "flow_invalidation")
+		delete(additionalProperties, "flow_recovery")
+		delete(additionalProperties, "flow_unenrollment")
+		delete(additionalProperties, "flow_user_settings")
+		delete(additionalProperties, "flow_device_code")
+		delete(additionalProperties, "default_application")
+		delete(additionalProperties, "web_certificate")
+		delete(additionalProperties, "client_certificates")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

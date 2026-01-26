@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &Tenant{}
 
 // Tenant Tenant Serializer
 type Tenant struct {
-	TenantUuid string `json:"tenant_uuid"`
-	SchemaName string `json:"schema_name"`
-	Name       string `json:"name"`
-	Ready      *bool  `json:"ready,omitempty"`
+	TenantUuid           string `json:"tenant_uuid"`
+	SchemaName           string `json:"schema_name"`
+	Name                 string `json:"name"`
+	Ready                *bool  `json:"ready,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Tenant Tenant
@@ -170,6 +170,11 @@ func (o Tenant) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ready) {
 		toSerialize["ready"] = o.Ready
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -199,15 +204,23 @@ func (o *Tenant) UnmarshalJSON(data []byte) (err error) {
 
 	varTenant := _Tenant{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTenant)
+	err = json.Unmarshal(data, &varTenant)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Tenant(varTenant)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tenant_uuid")
+		delete(additionalProperties, "schema_name")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "ready")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

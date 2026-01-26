@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &ErrorReportingConfig{}
 
 // ErrorReportingConfig Config for error reporting
 type ErrorReportingConfig struct {
-	Enabled          bool    `json:"enabled"`
-	SentryDsn        string  `json:"sentry_dsn"`
-	Environment      string  `json:"environment"`
-	SendPii          bool    `json:"send_pii"`
-	TracesSampleRate float64 `json:"traces_sample_rate"`
+	Enabled              bool    `json:"enabled"`
+	SentryDsn            string  `json:"sentry_dsn"`
+	Environment          string  `json:"environment"`
+	SendPii              bool    `json:"send_pii"`
+	TracesSampleRate     float64 `json:"traces_sample_rate"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ErrorReportingConfig ErrorReportingConfig
@@ -188,6 +188,11 @@ func (o ErrorReportingConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize["environment"] = o.Environment
 	toSerialize["send_pii"] = o.SendPii
 	toSerialize["traces_sample_rate"] = o.TracesSampleRate
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *ErrorReportingConfig) UnmarshalJSON(data []byte) (err error) {
 
 	varErrorReportingConfig := _ErrorReportingConfig{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varErrorReportingConfig)
+	err = json.Unmarshal(data, &varErrorReportingConfig)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ErrorReportingConfig(varErrorReportingConfig)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "sentry_dsn")
+		delete(additionalProperties, "environment")
+		delete(additionalProperties, "send_pii")
+		delete(additionalProperties, "traces_sample_rate")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

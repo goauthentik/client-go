@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &SoftwareRequest{}
 
 // SoftwareRequest struct for SoftwareRequest
 type SoftwareRequest struct {
-	Name    string  `json:"name"`
-	Version *string `json:"version,omitempty"`
-	Source  string  `json:"source"`
-	Path    *string `json:"path,omitempty"`
+	Name                 string  `json:"name"`
+	Version              *string `json:"version,omitempty"`
+	Source               string  `json:"source"`
+	Path                 *string `json:"path,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SoftwareRequest SoftwareRequest
@@ -179,6 +179,11 @@ func (o SoftwareRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Path) {
 		toSerialize["path"] = o.Path
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -207,15 +212,23 @@ func (o *SoftwareRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSoftwareRequest := _SoftwareRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSoftwareRequest)
+	err = json.Unmarshal(data, &varSoftwareRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SoftwareRequest(varSoftwareRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "path")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

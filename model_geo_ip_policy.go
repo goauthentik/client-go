@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -45,6 +44,7 @@ type GeoIPPolicy struct {
 	HistoryLoginCount     *int32                 `json:"history_login_count,omitempty"`
 	CheckImpossibleTravel *bool                  `json:"check_impossible_travel,omitempty"`
 	ImpossibleToleranceKm *int32                 `json:"impossible_tolerance_km,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _GeoIPPolicy GeoIPPolicy
@@ -590,6 +590,11 @@ func (o GeoIPPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ImpossibleToleranceKm) {
 		toSerialize["impossible_tolerance_km"] = o.ImpossibleToleranceKm
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -625,15 +630,36 @@ func (o *GeoIPPolicy) UnmarshalJSON(data []byte) (err error) {
 
 	varGeoIPPolicy := _GeoIPPolicy{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGeoIPPolicy)
+	err = json.Unmarshal(data, &varGeoIPPolicy)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GeoIPPolicy(varGeoIPPolicy)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "bound_to")
+		delete(additionalProperties, "asns")
+		delete(additionalProperties, "countries")
+		delete(additionalProperties, "countries_obj")
+		delete(additionalProperties, "check_history_distance")
+		delete(additionalProperties, "history_max_distance_km")
+		delete(additionalProperties, "distance_tolerance_km")
+		delete(additionalProperties, "history_login_count")
+		delete(additionalProperties, "check_impossible_travel")
+		delete(additionalProperties, "impossible_tolerance_km")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

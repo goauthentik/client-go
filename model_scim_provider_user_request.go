@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &SCIMProviderUserRequest{}
 
 // SCIMProviderUserRequest SCIMProviderUser Serializer
 type SCIMProviderUserRequest struct {
-	ScimId   string `json:"scim_id"`
-	User     int32  `json:"user"`
-	Provider int32  `json:"provider"`
+	ScimId               string `json:"scim_id"`
+	User                 int32  `json:"user"`
+	Provider             int32  `json:"provider"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SCIMProviderUserRequest SCIMProviderUserRequest
@@ -134,6 +134,11 @@ func (o SCIMProviderUserRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["scim_id"] = o.ScimId
 	toSerialize["user"] = o.User
 	toSerialize["provider"] = o.Provider
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *SCIMProviderUserRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSCIMProviderUserRequest := _SCIMProviderUserRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMProviderUserRequest)
+	err = json.Unmarshal(data, &varSCIMProviderUserRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SCIMProviderUserRequest(varSCIMProviderUserRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "scim_id")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "provider")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

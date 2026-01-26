@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedDeviceAccessGroupList{}
 
 // PaginatedDeviceAccessGroupList struct for PaginatedDeviceAccessGroupList
 type PaginatedDeviceAccessGroupList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []DeviceAccessGroup    `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []DeviceAccessGroup    `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedDeviceAccessGroupList PaginatedDeviceAccessGroupList
@@ -134,6 +134,11 @@ func (o PaginatedDeviceAccessGroupList) ToMap() (map[string]interface{}, error) 
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedDeviceAccessGroupList) UnmarshalJSON(data []byte) (err error) 
 
 	varPaginatedDeviceAccessGroupList := _PaginatedDeviceAccessGroupList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedDeviceAccessGroupList)
+	err = json.Unmarshal(data, &varPaginatedDeviceAccessGroupList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedDeviceAccessGroupList(varPaginatedDeviceAccessGroupList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

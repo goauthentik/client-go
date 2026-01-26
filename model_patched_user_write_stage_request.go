@@ -25,10 +25,13 @@ type PatchedUserWriteStageRequest struct {
 	// When set, newly created users are inactive and cannot login.
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
 	// Optionally add newly created users to this group.
-	CreateUsersGroup NullableString `json:"create_users_group,omitempty"`
-	UserType         *UserTypeEnum  `json:"user_type,omitempty"`
-	UserPathTemplate *string        `json:"user_path_template,omitempty"`
+	CreateUsersGroup     NullableString `json:"create_users_group,omitempty"`
+	UserType             *UserTypeEnum  `json:"user_type,omitempty"`
+	UserPathTemplate     *string        `json:"user_path_template,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedUserWriteStageRequest PatchedUserWriteStageRequest
 
 // NewPatchedUserWriteStageRequest instantiates a new PatchedUserWriteStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -278,7 +281,38 @@ func (o PatchedUserWriteStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUserWriteStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUserWriteStageRequest := _PatchedUserWriteStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUserWriteStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUserWriteStageRequest(varPatchedUserWriteStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "user_creation_mode")
+		delete(additionalProperties, "create_users_as_inactive")
+		delete(additionalProperties, "create_users_group")
+		delete(additionalProperties, "user_type")
+		delete(additionalProperties, "user_path_template")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUserWriteStageRequest struct {

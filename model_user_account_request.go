@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &UserAccountRequest{}
 
 // UserAccountRequest Account adding/removing operations
 type UserAccountRequest struct {
-	Pk int32 `json:"pk"`
+	Pk                   int32 `json:"pk"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserAccountRequest UserAccountRequest
@@ -80,6 +80,11 @@ func (o UserAccountRequest) MarshalJSON() ([]byte, error) {
 func (o UserAccountRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["pk"] = o.Pk
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *UserAccountRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varUserAccountRequest := _UserAccountRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserAccountRequest)
+	err = json.Unmarshal(data, &varUserAccountRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserAccountRequest(varUserAccountRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

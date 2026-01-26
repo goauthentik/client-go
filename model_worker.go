@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &Worker{}
 
 // Worker struct for Worker
 type Worker struct {
-	WorkerId        string `json:"worker_id"`
-	Version         string `json:"version"`
-	VersionMatching bool   `json:"version_matching"`
+	WorkerId             string `json:"worker_id"`
+	Version              string `json:"version"`
+	VersionMatching      bool   `json:"version_matching"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Worker Worker
@@ -134,6 +134,11 @@ func (o Worker) ToMap() (map[string]interface{}, error) {
 	toSerialize["worker_id"] = o.WorkerId
 	toSerialize["version"] = o.Version
 	toSerialize["version_matching"] = o.VersionMatching
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *Worker) UnmarshalJSON(data []byte) (err error) {
 
 	varWorker := _Worker{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varWorker)
+	err = json.Unmarshal(data, &varWorker)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Worker(varWorker)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "worker_id")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "version_matching")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

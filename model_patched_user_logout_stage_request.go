@@ -20,8 +20,11 @@ var _ MappedNullable = &PatchedUserLogoutStageRequest{}
 
 // PatchedUserLogoutStageRequest UserLogoutStage Serializer
 type PatchedUserLogoutStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedUserLogoutStageRequest PatchedUserLogoutStageRequest
 
 // NewPatchedUserLogoutStageRequest instantiates a new PatchedUserLogoutStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o PatchedUserLogoutStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUserLogoutStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUserLogoutStageRequest := _PatchedUserLogoutStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUserLogoutStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUserLogoutStageRequest(varPatchedUserLogoutStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUserLogoutStageRequest struct {

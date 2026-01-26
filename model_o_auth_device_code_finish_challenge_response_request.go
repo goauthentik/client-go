@@ -20,8 +20,11 @@ var _ MappedNullable = &OAuthDeviceCodeFinishChallengeResponseRequest{}
 
 // OAuthDeviceCodeFinishChallengeResponseRequest Response that device has been authenticated and tab can be closed
 type OAuthDeviceCodeFinishChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OAuthDeviceCodeFinishChallengeResponseRequest OAuthDeviceCodeFinishChallengeResponseRequest
 
 // NewOAuthDeviceCodeFinishChallengeResponseRequest instantiates a new OAuthDeviceCodeFinishChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o OAuthDeviceCodeFinishChallengeResponseRequest) ToMap() (map[string]inter
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OAuthDeviceCodeFinishChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varOAuthDeviceCodeFinishChallengeResponseRequest := _OAuthDeviceCodeFinishChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varOAuthDeviceCodeFinishChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OAuthDeviceCodeFinishChallengeResponseRequest(varOAuthDeviceCodeFinishChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOAuthDeviceCodeFinishChallengeResponseRequest struct {

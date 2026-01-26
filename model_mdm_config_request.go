@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &MDMConfigRequest{}
 
 // MDMConfigRequest Base serializer class which doesn't implement create/update methods
 type MDMConfigRequest struct {
-	Platform        DeviceFactsOSFamily `json:"platform"`
-	EnrollmentToken string              `json:"enrollment_token"`
+	Platform             DeviceFactsOSFamily `json:"platform"`
+	EnrollmentToken      string              `json:"enrollment_token"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _MDMConfigRequest MDMConfigRequest
@@ -107,6 +107,11 @@ func (o MDMConfigRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["platform"] = o.Platform
 	toSerialize["enrollment_token"] = o.EnrollmentToken
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *MDMConfigRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varMDMConfigRequest := _MDMConfigRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMDMConfigRequest)
+	err = json.Unmarshal(data, &varMDMConfigRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = MDMConfigRequest(varMDMConfigRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "platform")
+		delete(additionalProperties, "enrollment_token")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

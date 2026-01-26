@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,8 +34,9 @@ type ExpressionPolicy struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	// Return objects policy is bound to
-	BoundTo    int32  `json:"bound_to"`
-	Expression string `json:"expression"`
+	BoundTo              int32  `json:"bound_to"`
+	Expression           string `json:"expression"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ExpressionPolicy ExpressionPolicy
@@ -311,6 +311,11 @@ func (o ExpressionPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize["meta_model_name"] = o.MetaModelName
 	toSerialize["bound_to"] = o.BoundTo
 	toSerialize["expression"] = o.Expression
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -345,15 +350,28 @@ func (o *ExpressionPolicy) UnmarshalJSON(data []byte) (err error) {
 
 	varExpressionPolicy := _ExpressionPolicy{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varExpressionPolicy)
+	err = json.Unmarshal(data, &varExpressionPolicy)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ExpressionPolicy(varExpressionPolicy)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "bound_to")
+		delete(additionalProperties, "expression")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

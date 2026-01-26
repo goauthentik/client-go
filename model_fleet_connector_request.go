@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -28,9 +27,10 @@ type FleetConnectorRequest struct {
 	Url           string  `json:"url"`
 	Token         string  `json:"token"`
 	// Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs
-	HeadersMapping      NullableString `json:"headers_mapping,omitempty"`
-	MapUsers            *bool          `json:"map_users,omitempty"`
-	MapTeamsAccessGroup *bool          `json:"map_teams_access_group,omitempty"`
+	HeadersMapping       NullableString `json:"headers_mapping,omitempty"`
+	MapUsers             *bool          `json:"map_users,omitempty"`
+	MapTeamsAccessGroup  *bool          `json:"map_teams_access_group,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FleetConnectorRequest FleetConnectorRequest
@@ -326,6 +326,11 @@ func (o FleetConnectorRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MapTeamsAccessGroup) {
 		toSerialize["map_teams_access_group"] = o.MapTeamsAccessGroup
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -355,15 +360,27 @@ func (o *FleetConnectorRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varFleetConnectorRequest := _FleetConnectorRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFleetConnectorRequest)
+	err = json.Unmarshal(data, &varFleetConnectorRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FleetConnectorRequest(varFleetConnectorRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "connector_uuid")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "headers_mapping")
+		delete(additionalProperties, "map_users")
+		delete(additionalProperties, "map_teams_access_group")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

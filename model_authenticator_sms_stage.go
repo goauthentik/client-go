@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -45,7 +44,8 @@ type AuthenticatorSMSStage struct {
 	// When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not reused in the future.
 	VerifyOnly *bool `json:"verify_only,omitempty"`
 	// Optionally modify the payload being sent to custom providers.
-	Mapping NullableString `json:"mapping,omitempty"`
+	Mapping              NullableString `json:"mapping,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorSMSStage AuthenticatorSMSStage
@@ -595,6 +595,11 @@ func (o AuthenticatorSMSStage) ToMap() (map[string]interface{}, error) {
 	if o.Mapping.IsSet() {
 		toSerialize["mapping"] = o.Mapping.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -632,15 +637,36 @@ func (o *AuthenticatorSMSStage) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorSMSStage := _AuthenticatorSMSStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorSMSStage)
+	err = json.Unmarshal(data, &varAuthenticatorSMSStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorSMSStage(varAuthenticatorSMSStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "from_number")
+		delete(additionalProperties, "account_sid")
+		delete(additionalProperties, "auth")
+		delete(additionalProperties, "auth_password")
+		delete(additionalProperties, "auth_type")
+		delete(additionalProperties, "verify_only")
+		delete(additionalProperties, "mapping")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

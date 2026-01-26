@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -54,6 +53,7 @@ type ProxyProviderRequest struct {
 	AccessTokenValidity *string `json:"access_token_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	RefreshTokenValidity *string `json:"refresh_token_validity,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProxyProviderRequest ProxyProviderRequest
@@ -771,6 +771,11 @@ func (o ProxyProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RefreshTokenValidity) {
 		toSerialize["refresh_token_validity"] = o.RefreshTokenValidity
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -801,15 +806,39 @@ func (o *ProxyProviderRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varProxyProviderRequest := _ProxyProviderRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProxyProviderRequest)
+	err = json.Unmarshal(data, &varProxyProviderRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProxyProviderRequest(varProxyProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "invalidation_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "internal_host")
+		delete(additionalProperties, "external_host")
+		delete(additionalProperties, "internal_host_ssl_validation")
+		delete(additionalProperties, "certificate")
+		delete(additionalProperties, "skip_path_regex")
+		delete(additionalProperties, "basic_auth_enabled")
+		delete(additionalProperties, "basic_auth_password_attribute")
+		delete(additionalProperties, "basic_auth_user_attribute")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "intercept_header_auth")
+		delete(additionalProperties, "cookie_domain")
+		delete(additionalProperties, "jwt_federation_sources")
+		delete(additionalProperties, "jwt_federation_providers")
+		delete(additionalProperties, "access_token_validity")
+		delete(additionalProperties, "refresh_token_validity")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,7 +34,8 @@ type Outpost struct {
 	TokenIdentifier string                 `json:"token_identifier"`
 	Config          map[string]interface{} `json:"config"`
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
+	Managed              NullableString `json:"managed,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Outpost Outpost
@@ -393,6 +393,11 @@ func (o Outpost) ToMap() (map[string]interface{}, error) {
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -428,15 +433,30 @@ func (o *Outpost) UnmarshalJSON(data []byte) (err error) {
 
 	varOutpost := _Outpost{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOutpost)
+	err = json.Unmarshal(data, &varOutpost)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Outpost(varOutpost)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "providers")
+		delete(additionalProperties, "providers_obj")
+		delete(additionalProperties, "service_connection")
+		delete(additionalProperties, "service_connection_obj")
+		delete(additionalProperties, "refresh_interval_s")
+		delete(additionalProperties, "token_identifier")
+		delete(additionalProperties, "config")
+		delete(additionalProperties, "managed")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

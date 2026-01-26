@@ -20,13 +20,16 @@ var _ MappedNullable = &AuthenticatorValidationChallengeResponseRequest{}
 
 // AuthenticatorValidationChallengeResponseRequest Challenge used for Code-based and WebAuthn authenticators
 type AuthenticatorValidationChallengeResponseRequest struct {
-	Component         *string                 `json:"component,omitempty"`
-	SelectedChallenge *DeviceChallengeRequest `json:"selected_challenge,omitempty"`
-	SelectedStage     *string                 `json:"selected_stage,omitempty"`
-	Code              *string                 `json:"code,omitempty"`
-	Webauthn          map[string]interface{}  `json:"webauthn,omitempty"`
-	Duo               *int32                  `json:"duo,omitempty"`
+	Component            *string                 `json:"component,omitempty"`
+	SelectedChallenge    *DeviceChallengeRequest `json:"selected_challenge,omitempty"`
+	SelectedStage        *string                 `json:"selected_stage,omitempty"`
+	Code                 *string                 `json:"code,omitempty"`
+	Webauthn             map[string]interface{}  `json:"webauthn,omitempty"`
+	Duo                  *int32                  `json:"duo,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AuthenticatorValidationChallengeResponseRequest AuthenticatorValidationChallengeResponseRequest
 
 // NewAuthenticatorValidationChallengeResponseRequest instantiates a new AuthenticatorValidationChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,38 @@ func (o AuthenticatorValidationChallengeResponseRequest) ToMap() (map[string]int
 	if !IsNil(o.Duo) {
 		toSerialize["duo"] = o.Duo
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AuthenticatorValidationChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varAuthenticatorValidationChallengeResponseRequest := _AuthenticatorValidationChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varAuthenticatorValidationChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorValidationChallengeResponseRequest(varAuthenticatorValidationChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "selected_challenge")
+		delete(additionalProperties, "selected_stage")
+		delete(additionalProperties, "code")
+		delete(additionalProperties, "webauthn")
+		delete(additionalProperties, "duo")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAuthenticatorValidationChallengeResponseRequest struct {

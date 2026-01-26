@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -40,7 +39,8 @@ type PasswordStage struct {
 	// How many attempts a user has before the flow is canceled. To lock the user out, use a reputation policy and a user_write stage.
 	FailedAttemptsBeforeCancel *int32 `json:"failed_attempts_before_cancel,omitempty"`
 	// When enabled, provides a 'show password' button with the password input field.
-	AllowShowPassword *bool `json:"allow_show_password,omitempty"`
+	AllowShowPassword    *bool `json:"allow_show_password,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PasswordStage PasswordStage
@@ -396,6 +396,11 @@ func (o PasswordStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AllowShowPassword) {
 		toSerialize["allow_show_password"] = o.AllowShowPassword
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -430,15 +435,30 @@ func (o *PasswordStage) UnmarshalJSON(data []byte) (err error) {
 
 	varPasswordStage := _PasswordStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPasswordStage)
+	err = json.Unmarshal(data, &varPasswordStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PasswordStage(varPasswordStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "backends")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "failed_attempts_before_cancel")
+		delete(additionalProperties, "allow_show_password")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

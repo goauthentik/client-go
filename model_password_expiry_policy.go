@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,9 +34,10 @@ type PasswordExpiryPolicy struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	// Return objects policy is bound to
-	BoundTo  int32 `json:"bound_to"`
-	Days     int32 `json:"days"`
-	DenyOnly *bool `json:"deny_only,omitempty"`
+	BoundTo              int32 `json:"bound_to"`
+	Days                 int32 `json:"days"`
+	DenyOnly             *bool `json:"deny_only,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PasswordExpiryPolicy PasswordExpiryPolicy
@@ -347,6 +347,11 @@ func (o PasswordExpiryPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DenyOnly) {
 		toSerialize["deny_only"] = o.DenyOnly
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -381,15 +386,29 @@ func (o *PasswordExpiryPolicy) UnmarshalJSON(data []byte) (err error) {
 
 	varPasswordExpiryPolicy := _PasswordExpiryPolicy{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPasswordExpiryPolicy)
+	err = json.Unmarshal(data, &varPasswordExpiryPolicy)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PasswordExpiryPolicy(varPasswordExpiryPolicy)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "bound_to")
+		delete(additionalProperties, "days")
+		delete(additionalProperties, "deny_only")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

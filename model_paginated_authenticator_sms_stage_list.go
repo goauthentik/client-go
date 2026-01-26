@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedAuthenticatorSMSStageList{}
 
 // PaginatedAuthenticatorSMSStageList struct for PaginatedAuthenticatorSMSStageList
 type PaginatedAuthenticatorSMSStageList struct {
-	Pagination   Pagination              `json:"pagination"`
-	Results      []AuthenticatorSMSStage `json:"results"`
-	Autocomplete map[string]interface{}  `json:"autocomplete"`
+	Pagination           Pagination              `json:"pagination"`
+	Results              []AuthenticatorSMSStage `json:"results"`
+	Autocomplete         map[string]interface{}  `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedAuthenticatorSMSStageList PaginatedAuthenticatorSMSStageList
@@ -134,6 +134,11 @@ func (o PaginatedAuthenticatorSMSStageList) ToMap() (map[string]interface{}, err
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedAuthenticatorSMSStageList) UnmarshalJSON(data []byte) (err err
 
 	varPaginatedAuthenticatorSMSStageList := _PaginatedAuthenticatorSMSStageList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedAuthenticatorSMSStageList)
+	err = json.Unmarshal(data, &varPaginatedAuthenticatorSMSStageList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedAuthenticatorSMSStageList(varPaginatedAuthenticatorSMSStageList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

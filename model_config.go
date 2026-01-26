@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,6 +26,7 @@ type Config struct {
 	CacheTimeout         int32                `json:"cache_timeout"`
 	CacheTimeoutFlows    int32                `json:"cache_timeout_flows"`
 	CacheTimeoutPolicies int32                `json:"cache_timeout_policies"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Config Config
@@ -188,6 +188,11 @@ func (o Config) ToMap() (map[string]interface{}, error) {
 	toSerialize["cache_timeout"] = o.CacheTimeout
 	toSerialize["cache_timeout_flows"] = o.CacheTimeoutFlows
 	toSerialize["cache_timeout_policies"] = o.CacheTimeoutPolicies
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *Config) UnmarshalJSON(data []byte) (err error) {
 
 	varConfig := _Config{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varConfig)
+	err = json.Unmarshal(data, &varConfig)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Config(varConfig)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "error_reporting")
+		delete(additionalProperties, "capabilities")
+		delete(additionalProperties, "cache_timeout")
+		delete(additionalProperties, "cache_timeout_flows")
+		delete(additionalProperties, "cache_timeout_policies")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

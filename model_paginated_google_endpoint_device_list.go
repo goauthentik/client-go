@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedGoogleEndpointDeviceList{}
 
 // PaginatedGoogleEndpointDeviceList struct for PaginatedGoogleEndpointDeviceList
 type PaginatedGoogleEndpointDeviceList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []GoogleEndpointDevice `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []GoogleEndpointDevice `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedGoogleEndpointDeviceList PaginatedGoogleEndpointDeviceList
@@ -134,6 +134,11 @@ func (o PaginatedGoogleEndpointDeviceList) ToMap() (map[string]interface{}, erro
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedGoogleEndpointDeviceList) UnmarshalJSON(data []byte) (err erro
 
 	varPaginatedGoogleEndpointDeviceList := _PaginatedGoogleEndpointDeviceList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedGoogleEndpointDeviceList)
+	err = json.Unmarshal(data, &varPaginatedGoogleEndpointDeviceList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedGoogleEndpointDeviceList(varPaginatedGoogleEndpointDeviceList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

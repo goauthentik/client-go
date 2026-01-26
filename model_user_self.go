@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -40,7 +39,8 @@ type UserSelf struct {
 	Settings map[string]interface{} `json:"settings"`
 	Type     *UserTypeEnum          `json:"type,omitempty"`
 	// Get all system permissions assigned to the user
-	SystemPermissions []string `json:"system_permissions"`
+	SystemPermissions    []string `json:"system_permissions"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserSelf UserSelf
@@ -428,6 +428,11 @@ func (o UserSelf) ToMap() (map[string]interface{}, error) {
 		toSerialize["type"] = o.Type
 	}
 	toSerialize["system_permissions"] = o.SystemPermissions
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -465,15 +470,32 @@ func (o *UserSelf) UnmarshalJSON(data []byte) (err error) {
 
 	varUserSelf := _UserSelf{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserSelf)
+	err = json.Unmarshal(data, &varUserSelf)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserSelf(varUserSelf)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "is_active")
+		delete(additionalProperties, "is_superuser")
+		delete(additionalProperties, "groups")
+		delete(additionalProperties, "roles")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "avatar")
+		delete(additionalProperties, "uid")
+		delete(additionalProperties, "settings")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "system_permissions")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

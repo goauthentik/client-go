@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,11 +33,12 @@ type AuthenticatorDuoStage struct {
 	MetaModelName string    `json:"meta_model_name"`
 	FlowSet       []FlowSet `json:"flow_set"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow       NullableString `json:"configure_flow,omitempty"`
-	FriendlyName        *string        `json:"friendly_name,omitempty"`
-	ClientId            string         `json:"client_id"`
-	ApiHostname         string         `json:"api_hostname"`
-	AdminIntegrationKey *string        `json:"admin_integration_key,omitempty"`
+	ConfigureFlow        NullableString `json:"configure_flow,omitempty"`
+	FriendlyName         *string        `json:"friendly_name,omitempty"`
+	ClientId             string         `json:"client_id"`
+	ApiHostname          string         `json:"api_hostname"`
+	AdminIntegrationKey  *string        `json:"admin_integration_key,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorDuoStage AuthenticatorDuoStage
@@ -420,6 +420,11 @@ func (o AuthenticatorDuoStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdminIntegrationKey) {
 		toSerialize["admin_integration_key"] = o.AdminIntegrationKey
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -455,15 +460,31 @@ func (o *AuthenticatorDuoStage) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorDuoStage := _AuthenticatorDuoStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorDuoStage)
+	err = json.Unmarshal(data, &varAuthenticatorDuoStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorDuoStage(varAuthenticatorDuoStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "api_hostname")
+		delete(additionalProperties, "admin_integration_key")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

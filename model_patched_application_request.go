@@ -27,14 +27,17 @@ type PatchedApplicationRequest struct {
 	Provider             NullableInt32 `json:"provider,omitempty"`
 	BackchannelProviders []int32       `json:"backchannel_providers,omitempty"`
 	// Open launch URL in a new browser tab or window.
-	OpenInNewTab     *bool             `json:"open_in_new_tab,omitempty"`
-	MetaLaunchUrl    *string           `json:"meta_launch_url,omitempty"`
-	MetaIcon         *string           `json:"meta_icon,omitempty"`
-	MetaDescription  *string           `json:"meta_description,omitempty"`
-	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
-	Group            *string           `json:"group,omitempty"`
+	OpenInNewTab         *bool             `json:"open_in_new_tab,omitempty"`
+	MetaLaunchUrl        *string           `json:"meta_launch_url,omitempty"`
+	MetaIcon             *string           `json:"meta_icon,omitempty"`
+	MetaDescription      *string           `json:"meta_description,omitempty"`
+	MetaPublisher        *string           `json:"meta_publisher,omitempty"`
+	PolicyEngineMode     *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	Group                *string           `json:"group,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedApplicationRequest PatchedApplicationRequest
 
 // NewPatchedApplicationRequest instantiates a new PatchedApplicationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -459,7 +462,43 @@ func (o PatchedApplicationRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Group) {
 		toSerialize["group"] = o.Group
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedApplicationRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedApplicationRequest := _PatchedApplicationRequest{}
+
+	err = json.Unmarshal(data, &varPatchedApplicationRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedApplicationRequest(varPatchedApplicationRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "backchannel_providers")
+		delete(additionalProperties, "open_in_new_tab")
+		delete(additionalProperties, "meta_launch_url")
+		delete(additionalProperties, "meta_icon")
+		delete(additionalProperties, "meta_description")
+		delete(additionalProperties, "meta_publisher")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "group")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedApplicationRequest struct {

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &TelegramAuthRequest{}
 
 // TelegramAuthRequest struct for TelegramAuthRequest
 type TelegramAuthRequest struct {
-	Id        int32   `json:"id"`
-	FirstName *string `json:"first_name,omitempty"`
-	LastName  *string `json:"last_name,omitempty"`
-	Username  *string `json:"username,omitempty"`
-	PhotoUrl  *string `json:"photo_url,omitempty"`
-	AuthDate  int32   `json:"auth_date"`
-	Hash      string  `json:"hash"`
+	Id                   int32   `json:"id"`
+	FirstName            *string `json:"first_name,omitempty"`
+	LastName             *string `json:"last_name,omitempty"`
+	Username             *string `json:"username,omitempty"`
+	PhotoUrl             *string `json:"photo_url,omitempty"`
+	AuthDate             int32   `json:"auth_date"`
+	Hash                 string  `json:"hash"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TelegramAuthRequest TelegramAuthRequest
@@ -278,6 +278,11 @@ func (o TelegramAuthRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["auth_date"] = o.AuthDate
 	toSerialize["hash"] = o.Hash
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -307,15 +312,26 @@ func (o *TelegramAuthRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varTelegramAuthRequest := _TelegramAuthRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTelegramAuthRequest)
+	err = json.Unmarshal(data, &varTelegramAuthRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TelegramAuthRequest(varTelegramAuthRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "first_name")
+		delete(additionalProperties, "last_name")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "photo_url")
+		delete(additionalProperties, "auth_date")
+		delete(additionalProperties, "hash")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

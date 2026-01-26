@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,10 +22,11 @@ var _ MappedNullable = &RACPropertyMappingRequest{}
 // RACPropertyMappingRequest RACPropertyMapping Serializer
 type RACPropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed        NullableString         `json:"managed,omitempty"`
-	Name           string                 `json:"name"`
-	Expression     *string                `json:"expression,omitempty"`
-	StaticSettings map[string]interface{} `json:"static_settings"`
+	Managed              NullableString         `json:"managed,omitempty"`
+	Name                 string                 `json:"name"`
+	Expression           *string                `json:"expression,omitempty"`
+	StaticSettings       map[string]interface{} `json:"static_settings"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RACPropertyMappingRequest RACPropertyMappingRequest
@@ -191,6 +191,11 @@ func (o RACPropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["expression"] = o.Expression
 	}
 	toSerialize["static_settings"] = o.StaticSettings
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,23 @@ func (o *RACPropertyMappingRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varRACPropertyMappingRequest := _RACPropertyMappingRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRACPropertyMappingRequest)
+	err = json.Unmarshal(data, &varRACPropertyMappingRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RACPropertyMappingRequest(varRACPropertyMappingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		delete(additionalProperties, "static_settings")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -45,8 +45,11 @@ type PatchedSCIMProviderRequest struct {
 	// Timeout for synchronization of a single page
 	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
-	DryRun *bool `json:"dry_run,omitempty"`
+	DryRun               *bool `json:"dry_run,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedSCIMProviderRequest PatchedSCIMProviderRequest
 
 // NewPatchedSCIMProviderRequest instantiates a new PatchedSCIMProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -657,7 +660,48 @@ func (o PatchedSCIMProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedSCIMProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedSCIMProviderRequest := _PatchedSCIMProviderRequest{}
+
+	err = json.Unmarshal(data, &varPatchedSCIMProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedSCIMProviderRequest(varPatchedSCIMProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "property_mappings_group")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "verify_certificates")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "auth_mode")
+		delete(additionalProperties, "auth_oauth")
+		delete(additionalProperties, "auth_oauth_params")
+		delete(additionalProperties, "compatibility_mode")
+		delete(additionalProperties, "service_provider_config_cache_timeout")
+		delete(additionalProperties, "exclude_users_service_account")
+		delete(additionalProperties, "filter_group")
+		delete(additionalProperties, "sync_page_size")
+		delete(additionalProperties, "sync_page_timeout")
+		delete(additionalProperties, "dry_run")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedSCIMProviderRequest struct {

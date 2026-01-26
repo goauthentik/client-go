@@ -20,11 +20,14 @@ var _ MappedNullable = &NotificationRequest{}
 
 // NotificationRequest Notification Serializer
 type NotificationRequest struct {
-	Hyperlink      NullableString `json:"hyperlink,omitempty"`
-	HyperlinkLabel NullableString `json:"hyperlink_label,omitempty"`
-	Event          *EventRequest  `json:"event,omitempty"`
-	Seen           *bool          `json:"seen,omitempty"`
+	Hyperlink            NullableString `json:"hyperlink,omitempty"`
+	HyperlinkLabel       NullableString `json:"hyperlink_label,omitempty"`
+	Event                *EventRequest  `json:"event,omitempty"`
+	Seen                 *bool          `json:"seen,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NotificationRequest NotificationRequest
 
 // NewNotificationRequest instantiates a new NotificationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -215,7 +218,36 @@ func (o NotificationRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Seen) {
 		toSerialize["seen"] = o.Seen
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NotificationRequest) UnmarshalJSON(data []byte) (err error) {
+	varNotificationRequest := _NotificationRequest{}
+
+	err = json.Unmarshal(data, &varNotificationRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NotificationRequest(varNotificationRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "hyperlink")
+		delete(additionalProperties, "hyperlink_label")
+		delete(additionalProperties, "event")
+		delete(additionalProperties, "seen")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNotificationRequest struct {

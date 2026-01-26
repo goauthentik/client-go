@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,7 +23,8 @@ var _ MappedNullable = &GoogleEndpointDeviceRequest{}
 type GoogleEndpointDeviceRequest struct {
 	Pk *string `json:"pk,omitempty"`
 	// The human-readable name of this device.
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GoogleEndpointDeviceRequest GoogleEndpointDeviceRequest
@@ -117,6 +117,11 @@ func (o GoogleEndpointDeviceRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["pk"] = o.Pk
 	}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -144,15 +149,21 @@ func (o *GoogleEndpointDeviceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varGoogleEndpointDeviceRequest := _GoogleEndpointDeviceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleEndpointDeviceRequest)
+	err = json.Unmarshal(data, &varGoogleEndpointDeviceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleEndpointDeviceRequest(varGoogleEndpointDeviceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -20,9 +20,12 @@ var _ MappedNullable = &PatchedNotificationWebhookMappingRequest{}
 
 // PatchedNotificationWebhookMappingRequest NotificationWebhookMapping Serializer
 type PatchedNotificationWebhookMappingRequest struct {
-	Name       *string `json:"name,omitempty"`
-	Expression *string `json:"expression,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	Expression           *string `json:"expression,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedNotificationWebhookMappingRequest PatchedNotificationWebhookMappingRequest
 
 // NewPatchedNotificationWebhookMappingRequest instantiates a new PatchedNotificationWebhookMappingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o PatchedNotificationWebhookMappingRequest) ToMap() (map[string]interface{
 	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedNotificationWebhookMappingRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedNotificationWebhookMappingRequest := _PatchedNotificationWebhookMappingRequest{}
+
+	err = json.Unmarshal(data, &varPatchedNotificationWebhookMappingRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedNotificationWebhookMappingRequest(varPatchedNotificationWebhookMappingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedNotificationWebhookMappingRequest struct {

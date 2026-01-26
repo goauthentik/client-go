@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &TenantAdminGroupRequestRequest{}
 
 // TenantAdminGroupRequestRequest Tenant admin group creation request serializer
 type TenantAdminGroupRequestRequest struct {
-	User string `json:"user"`
+	User                 string `json:"user"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TenantAdminGroupRequestRequest TenantAdminGroupRequestRequest
@@ -80,6 +80,11 @@ func (o TenantAdminGroupRequestRequest) MarshalJSON() ([]byte, error) {
 func (o TenantAdminGroupRequestRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["user"] = o.User
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *TenantAdminGroupRequestRequest) UnmarshalJSON(data []byte) (err error) 
 
 	varTenantAdminGroupRequestRequest := _TenantAdminGroupRequestRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTenantAdminGroupRequestRequest)
+	err = json.Unmarshal(data, &varTenantAdminGroupRequestRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TenantAdminGroupRequestRequest(varTenantAdminGroupRequestRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

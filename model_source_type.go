@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,15 +21,16 @@ var _ MappedNullable = &SourceType{}
 
 // SourceType Serializer for SourceType
 type SourceType struct {
-	Name             string         `json:"name"`
-	VerboseName      string         `json:"verbose_name"`
-	UrlsCustomizable bool           `json:"urls_customizable"`
-	RequestTokenUrl  NullableString `json:"request_token_url"`
-	AuthorizationUrl NullableString `json:"authorization_url"`
-	AccessTokenUrl   NullableString `json:"access_token_url"`
-	ProfileUrl       NullableString `json:"profile_url"`
-	OidcWellKnownUrl NullableString `json:"oidc_well_known_url"`
-	OidcJwksUrl      NullableString `json:"oidc_jwks_url"`
+	Name                 string         `json:"name"`
+	VerboseName          string         `json:"verbose_name"`
+	UrlsCustomizable     bool           `json:"urls_customizable"`
+	RequestTokenUrl      NullableString `json:"request_token_url"`
+	AuthorizationUrl     NullableString `json:"authorization_url"`
+	AccessTokenUrl       NullableString `json:"access_token_url"`
+	ProfileUrl           NullableString `json:"profile_url"`
+	OidcWellKnownUrl     NullableString `json:"oidc_well_known_url"`
+	OidcJwksUrl          NullableString `json:"oidc_jwks_url"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SourceType SourceType
@@ -308,6 +308,11 @@ func (o SourceType) ToMap() (map[string]interface{}, error) {
 	toSerialize["profile_url"] = o.ProfileUrl.Get()
 	toSerialize["oidc_well_known_url"] = o.OidcWellKnownUrl.Get()
 	toSerialize["oidc_jwks_url"] = o.OidcJwksUrl.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -343,15 +348,28 @@ func (o *SourceType) UnmarshalJSON(data []byte) (err error) {
 
 	varSourceType := _SourceType{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSourceType)
+	err = json.Unmarshal(data, &varSourceType)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SourceType(varSourceType)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "urls_customizable")
+		delete(additionalProperties, "request_token_url")
+		delete(additionalProperties, "authorization_url")
+		delete(additionalProperties, "access_token_url")
+		delete(additionalProperties, "profile_url")
+		delete(additionalProperties, "oidc_well_known_url")
+		delete(additionalProperties, "oidc_jwks_url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

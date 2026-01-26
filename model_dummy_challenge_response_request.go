@@ -20,8 +20,11 @@ var _ MappedNullable = &DummyChallengeResponseRequest{}
 
 // DummyChallengeResponseRequest Dummy challenge response
 type DummyChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DummyChallengeResponseRequest DummyChallengeResponseRequest
 
 // NewDummyChallengeResponseRequest instantiates a new DummyChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o DummyChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DummyChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varDummyChallengeResponseRequest := _DummyChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varDummyChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DummyChallengeResponseRequest(varDummyChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDummyChallengeResponseRequest struct {

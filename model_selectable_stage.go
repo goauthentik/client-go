@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &SelectableStage{}
 
 // SelectableStage Serializer for stages which can be selected by users
 type SelectableStage struct {
-	Pk            string `json:"pk"`
-	Name          string `json:"name"`
-	VerboseName   string `json:"verbose_name"`
-	MetaModelName string `json:"meta_model_name"`
+	Pk                   string `json:"pk"`
+	Name                 string `json:"name"`
+	VerboseName          string `json:"verbose_name"`
+	MetaModelName        string `json:"meta_model_name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SelectableStage SelectableStage
@@ -161,6 +161,11 @@ func (o SelectableStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["meta_model_name"] = o.MetaModelName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *SelectableStage) UnmarshalJSON(data []byte) (err error) {
 
 	varSelectableStage := _SelectableStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSelectableStage)
+	err = json.Unmarshal(data, &varSelectableStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SelectableStage(varSelectableStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "meta_model_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

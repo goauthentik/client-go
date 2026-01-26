@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &BulkDeleteSessionResponse{}
 
 // BulkDeleteSessionResponse struct for BulkDeleteSessionResponse
 type BulkDeleteSessionResponse struct {
-	Deleted int32 `json:"deleted"`
+	Deleted              int32 `json:"deleted"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BulkDeleteSessionResponse BulkDeleteSessionResponse
@@ -80,6 +80,11 @@ func (o BulkDeleteSessionResponse) MarshalJSON() ([]byte, error) {
 func (o BulkDeleteSessionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["deleted"] = o.Deleted
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *BulkDeleteSessionResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varBulkDeleteSessionResponse := _BulkDeleteSessionResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBulkDeleteSessionResponse)
+	err = json.Unmarshal(data, &varBulkDeleteSessionResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BulkDeleteSessionResponse(varBulkDeleteSessionResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "deleted")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedAuthenticatorTOTPStageList{}
 
 // PaginatedAuthenticatorTOTPStageList struct for PaginatedAuthenticatorTOTPStageList
 type PaginatedAuthenticatorTOTPStageList struct {
-	Pagination   Pagination               `json:"pagination"`
-	Results      []AuthenticatorTOTPStage `json:"results"`
-	Autocomplete map[string]interface{}   `json:"autocomplete"`
+	Pagination           Pagination               `json:"pagination"`
+	Results              []AuthenticatorTOTPStage `json:"results"`
+	Autocomplete         map[string]interface{}   `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedAuthenticatorTOTPStageList PaginatedAuthenticatorTOTPStageList
@@ -134,6 +134,11 @@ func (o PaginatedAuthenticatorTOTPStageList) ToMap() (map[string]interface{}, er
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedAuthenticatorTOTPStageList) UnmarshalJSON(data []byte) (err er
 
 	varPaginatedAuthenticatorTOTPStageList := _PaginatedAuthenticatorTOTPStageList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedAuthenticatorTOTPStageList)
+	err = json.Unmarshal(data, &varPaginatedAuthenticatorTOTPStageList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedAuthenticatorTOTPStageList(varPaginatedAuthenticatorTOTPStageList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

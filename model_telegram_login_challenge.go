@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -28,6 +27,7 @@ type TelegramLoginChallenge struct {
 	// Telegram bot username
 	BotUsername          string `json:"bot_username"`
 	RequestMessageAccess bool   `json:"request_message_access"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TelegramLoginChallenge TelegramLoginChallenge
@@ -220,6 +220,11 @@ func (o TelegramLoginChallenge) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["bot_username"] = o.BotUsername
 	toSerialize["request_message_access"] = o.RequestMessageAccess
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -248,15 +253,24 @@ func (o *TelegramLoginChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varTelegramLoginChallenge := _TelegramLoginChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTelegramLoginChallenge)
+	err = json.Unmarshal(data, &varTelegramLoginChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TelegramLoginChallenge(varTelegramLoginChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "bot_username")
+		delete(additionalProperties, "request_message_access")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

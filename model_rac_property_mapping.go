@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,8 +33,9 @@ type RACPropertyMapping struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName  string                 `json:"meta_model_name"`
-	StaticSettings map[string]interface{} `json:"static_settings"`
+	MetaModelName        string                 `json:"meta_model_name"`
+	StaticSettings       map[string]interface{} `json:"static_settings"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RACPropertyMapping RACPropertyMapping
@@ -330,6 +330,11 @@ func (o RACPropertyMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
 	toSerialize["static_settings"] = o.StaticSettings
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -363,15 +368,28 @@ func (o *RACPropertyMapping) UnmarshalJSON(data []byte) (err error) {
 
 	varRACPropertyMapping := _RACPropertyMapping{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRACPropertyMapping)
+	err = json.Unmarshal(data, &varRACPropertyMapping)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RACPropertyMapping(varRACPropertyMapping)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "static_settings")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

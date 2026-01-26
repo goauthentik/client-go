@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,11 +32,12 @@ type SSFProvider struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	// Key used to sign the SSF Events.
-	SigningKey        string         `json:"signing_key"`
-	TokenObj          Token          `json:"token_obj"`
-	OidcAuthProviders []int32        `json:"oidc_auth_providers,omitempty"`
-	SsfUrl            NullableString `json:"ssf_url"`
-	EventRetention    *string        `json:"event_retention,omitempty"`
+	SigningKey           string         `json:"signing_key"`
+	TokenObj             Token          `json:"token_obj"`
+	OidcAuthProviders    []int32        `json:"oidc_auth_providers,omitempty"`
+	SsfUrl               NullableString `json:"ssf_url"`
+	EventRetention       *string        `json:"event_retention,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SSFProvider SSFProvider
@@ -375,6 +375,11 @@ func (o SSFProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventRetention) {
 		toSerialize["event_retention"] = o.EventRetention
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -410,15 +415,30 @@ func (o *SSFProvider) UnmarshalJSON(data []byte) (err error) {
 
 	varSSFProvider := _SSFProvider{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSSFProvider)
+	err = json.Unmarshal(data, &varSSFProvider)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SSFProvider(varSSFProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "signing_key")
+		delete(additionalProperties, "token_obj")
+		delete(additionalProperties, "oidc_auth_providers")
+		delete(additionalProperties, "ssf_url")
+		delete(additionalProperties, "event_retention")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

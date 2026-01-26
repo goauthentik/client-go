@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -36,6 +35,7 @@ type AgentConnectorRequest struct {
 	ChallengeIdleTimeout         *string        `json:"challenge_idle_timeout,omitempty"`
 	ChallengeTriggerCheckIn      *bool          `json:"challenge_trigger_check_in,omitempty"`
 	JwtFederationProviders       []int32        `json:"jwt_federation_providers,omitempty"`
+	AdditionalProperties         map[string]interface{}
 }
 
 type _AgentConnectorRequest AgentConnectorRequest
@@ -570,6 +570,11 @@ func (o AgentConnectorRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.JwtFederationProviders) {
 		toSerialize["jwt_federation_providers"] = o.JwtFederationProviders
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -597,15 +602,33 @@ func (o *AgentConnectorRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varAgentConnectorRequest := _AgentConnectorRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAgentConnectorRequest)
+	err = json.Unmarshal(data, &varAgentConnectorRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AgentConnectorRequest(varAgentConnectorRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "connector_uuid")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "snapshot_expiry")
+		delete(additionalProperties, "auth_session_duration")
+		delete(additionalProperties, "auth_terminate_session_on_expiry")
+		delete(additionalProperties, "refresh_interval")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "nss_uid_offset")
+		delete(additionalProperties, "nss_gid_offset")
+		delete(additionalProperties, "challenge_key")
+		delete(additionalProperties, "challenge_idle_timeout")
+		delete(additionalProperties, "challenge_trigger_check_in")
+		delete(additionalProperties, "jwt_federation_providers")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

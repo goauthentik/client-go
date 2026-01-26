@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedAuthenticatorEndpointGDTCStageList{}
 
 // PaginatedAuthenticatorEndpointGDTCStageList struct for PaginatedAuthenticatorEndpointGDTCStageList
 type PaginatedAuthenticatorEndpointGDTCStageList struct {
-	Pagination   Pagination                       `json:"pagination"`
-	Results      []AuthenticatorEndpointGDTCStage `json:"results"`
-	Autocomplete map[string]interface{}           `json:"autocomplete"`
+	Pagination           Pagination                       `json:"pagination"`
+	Results              []AuthenticatorEndpointGDTCStage `json:"results"`
+	Autocomplete         map[string]interface{}           `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedAuthenticatorEndpointGDTCStageList PaginatedAuthenticatorEndpointGDTCStageList
@@ -134,6 +134,11 @@ func (o PaginatedAuthenticatorEndpointGDTCStageList) ToMap() (map[string]interfa
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedAuthenticatorEndpointGDTCStageList) UnmarshalJSON(data []byte)
 
 	varPaginatedAuthenticatorEndpointGDTCStageList := _PaginatedAuthenticatorEndpointGDTCStageList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedAuthenticatorEndpointGDTCStageList)
+	err = json.Unmarshal(data, &varPaginatedAuthenticatorEndpointGDTCStageList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedAuthenticatorEndpointGDTCStageList(varPaginatedAuthenticatorEndpointGDTCStageList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

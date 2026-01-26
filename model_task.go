@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -35,15 +34,16 @@ type Task struct {
 	// Number of retries
 	Retries *int64 `json:"retries,omitempty"`
 	// Planned execution time
-	Eta              NullableTime             `json:"eta,omitempty"`
-	RelObjAppLabel   string                   `json:"rel_obj_app_label"`
-	RelObjModel      string                   `json:"rel_obj_model"`
-	RelObjId         NullableString           `json:"rel_obj_id,omitempty"`
-	Uid              string                   `json:"uid"`
-	Logs             []LogEvent               `json:"logs"`
-	PreviousLogs     []LogEvent               `json:"previous_logs"`
-	AggregatedStatus TaskAggregatedStatusEnum `json:"aggregated_status"`
-	Description      NullableString           `json:"description"`
+	Eta                  NullableTime             `json:"eta,omitempty"`
+	RelObjAppLabel       string                   `json:"rel_obj_app_label"`
+	RelObjModel          string                   `json:"rel_obj_model"`
+	RelObjId             NullableString           `json:"rel_obj_id,omitempty"`
+	Uid                  string                   `json:"uid"`
+	Logs                 []LogEvent               `json:"logs"`
+	PreviousLogs         []LogEvent               `json:"previous_logs"`
+	AggregatedStatus     TaskAggregatedStatusEnum `json:"aggregated_status"`
+	Description          NullableString           `json:"description"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Task Task
@@ -552,6 +552,11 @@ func (o Task) ToMap() (map[string]interface{}, error) {
 	toSerialize["previous_logs"] = o.PreviousLogs
 	toSerialize["aggregated_status"] = o.AggregatedStatus
 	toSerialize["description"] = o.Description.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -586,15 +591,34 @@ func (o *Task) UnmarshalJSON(data []byte) (err error) {
 
 	varTask := _Task{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTask)
+	err = json.Unmarshal(data, &varTask)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Task(varTask)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "message_id")
+		delete(additionalProperties, "queue_name")
+		delete(additionalProperties, "actor_name")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "mtime")
+		delete(additionalProperties, "retries")
+		delete(additionalProperties, "eta")
+		delete(additionalProperties, "rel_obj_app_label")
+		delete(additionalProperties, "rel_obj_model")
+		delete(additionalProperties, "rel_obj_id")
+		delete(additionalProperties, "uid")
+		delete(additionalProperties, "logs")
+		delete(additionalProperties, "previous_logs")
+		delete(additionalProperties, "aggregated_status")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

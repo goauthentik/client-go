@@ -20,8 +20,11 @@ var _ MappedNullable = &PatchedWebAuthnDeviceRequest{}
 
 // PatchedWebAuthnDeviceRequest Serializer for WebAuthn authenticator devices
 type PatchedWebAuthnDeviceRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedWebAuthnDeviceRequest PatchedWebAuthnDeviceRequest
 
 // NewPatchedWebAuthnDeviceRequest instantiates a new PatchedWebAuthnDeviceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o PatchedWebAuthnDeviceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedWebAuthnDeviceRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedWebAuthnDeviceRequest := _PatchedWebAuthnDeviceRequest{}
+
+	err = json.Unmarshal(data, &varPatchedWebAuthnDeviceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedWebAuthnDeviceRequest(varPatchedWebAuthnDeviceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedWebAuthnDeviceRequest struct {

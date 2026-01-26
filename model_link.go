@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &Link{}
 
 // Link Returns a single link
 type Link struct {
-	Link string `json:"link"`
+	Link                 string `json:"link"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Link Link
@@ -80,6 +80,11 @@ func (o Link) MarshalJSON() ([]byte, error) {
 func (o Link) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["link"] = o.Link
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *Link) UnmarshalJSON(data []byte) (err error) {
 
 	varLink := _Link{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLink)
+	err = json.Unmarshal(data, &varLink)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Link(varLink)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "link")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

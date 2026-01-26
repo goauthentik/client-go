@@ -21,8 +21,11 @@ var _ MappedNullable = &PatchedTOTPDeviceRequest{}
 // PatchedTOTPDeviceRequest Serializer for totp authenticator devices
 type PatchedTOTPDeviceRequest struct {
 	// The human-readable name of this device.
-	Name *string `json:"name,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedTOTPDeviceRequest PatchedTOTPDeviceRequest
 
 // NewPatchedTOTPDeviceRequest instantiates a new PatchedTOTPDeviceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -86,7 +89,33 @@ func (o PatchedTOTPDeviceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedTOTPDeviceRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedTOTPDeviceRequest := _PatchedTOTPDeviceRequest{}
+
+	err = json.Unmarshal(data, &varPatchedTOTPDeviceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedTOTPDeviceRequest(varPatchedTOTPDeviceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedTOTPDeviceRequest struct {

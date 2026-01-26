@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedUserTelegramSourceConnectionRequest{}
 
 // PatchedUserTelegramSourceConnectionRequest User source connection
 type PatchedUserTelegramSourceConnectionRequest struct {
-	User       *int32  `json:"user,omitempty"`
-	Source     *string `json:"source,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
+	User                 *int32  `json:"user,omitempty"`
+	Source               *string `json:"source,omitempty"`
+	Identifier           *string `json:"identifier,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedUserTelegramSourceConnectionRequest PatchedUserTelegramSourceConnectionRequest
 
 // NewPatchedUserTelegramSourceConnectionRequest instantiates a new PatchedUserTelegramSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedUserTelegramSourceConnectionRequest) ToMap() (map[string]interfac
 	if !IsNil(o.Identifier) {
 		toSerialize["identifier"] = o.Identifier
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUserTelegramSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUserTelegramSourceConnectionRequest := _PatchedUserTelegramSourceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUserTelegramSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUserTelegramSourceConnectionRequest(varPatchedUserTelegramSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUserTelegramSourceConnectionRequest struct {

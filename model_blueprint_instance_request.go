@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &BlueprintInstanceRequest{}
 
 // BlueprintInstanceRequest Info about a single blueprint instance file
 type BlueprintInstanceRequest struct {
-	Name    string                 `json:"name"`
-	Path    *string                `json:"path,omitempty"`
-	Context map[string]interface{} `json:"context,omitempty"`
-	Enabled *bool                  `json:"enabled,omitempty"`
-	Content *string                `json:"content,omitempty"`
+	Name                 string                 `json:"name"`
+	Path                 *string                `json:"path,omitempty"`
+	Context              map[string]interface{} `json:"context,omitempty"`
+	Enabled              *bool                  `json:"enabled,omitempty"`
+	Content              *string                `json:"content,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BlueprintInstanceRequest BlueprintInstanceRequest
@@ -228,6 +228,11 @@ func (o BlueprintInstanceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Content) {
 		toSerialize["content"] = o.Content
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -255,15 +260,24 @@ func (o *BlueprintInstanceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varBlueprintInstanceRequest := _BlueprintInstanceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBlueprintInstanceRequest)
+	err = json.Unmarshal(data, &varBlueprintInstanceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BlueprintInstanceRequest(varBlueprintInstanceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "context")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "content")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

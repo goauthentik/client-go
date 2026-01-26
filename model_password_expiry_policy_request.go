@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,9 +23,10 @@ var _ MappedNullable = &PasswordExpiryPolicyRequest{}
 type PasswordExpiryPolicyRequest struct {
 	Name string `json:"name"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool `json:"execution_logging,omitempty"`
-	Days             int32 `json:"days"`
-	DenyOnly         *bool `json:"deny_only,omitempty"`
+	ExecutionLogging     *bool `json:"execution_logging,omitempty"`
+	Days                 int32 `json:"days"`
+	DenyOnly             *bool `json:"deny_only,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PasswordExpiryPolicyRequest PasswordExpiryPolicyRequest
@@ -180,6 +180,11 @@ func (o PasswordExpiryPolicyRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DenyOnly) {
 		toSerialize["deny_only"] = o.DenyOnly
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -208,15 +213,23 @@ func (o *PasswordExpiryPolicyRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varPasswordExpiryPolicyRequest := _PasswordExpiryPolicyRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPasswordExpiryPolicyRequest)
+	err = json.Unmarshal(data, &varPasswordExpiryPolicyRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PasswordExpiryPolicyRequest(varPasswordExpiryPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "days")
+		delete(additionalProperties, "deny_only")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

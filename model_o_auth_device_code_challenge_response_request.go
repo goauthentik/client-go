@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &OAuthDeviceCodeChallengeResponseRequest{}
 
 // OAuthDeviceCodeChallengeResponseRequest Response that includes the user-entered device code
 type OAuthDeviceCodeChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	Code      string  `json:"code"`
+	Component            *string `json:"component,omitempty"`
+	Code                 string  `json:"code"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OAuthDeviceCodeChallengeResponseRequest OAuthDeviceCodeChallengeResponseRequest
@@ -120,6 +120,11 @@ func (o OAuthDeviceCodeChallengeResponseRequest) ToMap() (map[string]interface{}
 		toSerialize["component"] = o.Component
 	}
 	toSerialize["code"] = o.Code
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -147,15 +152,21 @@ func (o *OAuthDeviceCodeChallengeResponseRequest) UnmarshalJSON(data []byte) (er
 
 	varOAuthDeviceCodeChallengeResponseRequest := _OAuthDeviceCodeChallengeResponseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOAuthDeviceCodeChallengeResponseRequest)
+	err = json.Unmarshal(data, &varOAuthDeviceCodeChallengeResponseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OAuthDeviceCodeChallengeResponseRequest(varOAuthDeviceCodeChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "code")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

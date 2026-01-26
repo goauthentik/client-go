@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedGroupKerberosSourceConnectionList{}
 
 // PaginatedGroupKerberosSourceConnectionList struct for PaginatedGroupKerberosSourceConnectionList
 type PaginatedGroupKerberosSourceConnectionList struct {
-	Pagination   Pagination                      `json:"pagination"`
-	Results      []GroupKerberosSourceConnection `json:"results"`
-	Autocomplete map[string]interface{}          `json:"autocomplete"`
+	Pagination           Pagination                      `json:"pagination"`
+	Results              []GroupKerberosSourceConnection `json:"results"`
+	Autocomplete         map[string]interface{}          `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedGroupKerberosSourceConnectionList PaginatedGroupKerberosSourceConnectionList
@@ -134,6 +134,11 @@ func (o PaginatedGroupKerberosSourceConnectionList) ToMap() (map[string]interfac
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedGroupKerberosSourceConnectionList) UnmarshalJSON(data []byte) 
 
 	varPaginatedGroupKerberosSourceConnectionList := _PaginatedGroupKerberosSourceConnectionList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedGroupKerberosSourceConnectionList)
+	err = json.Unmarshal(data, &varPaginatedGroupKerberosSourceConnectionList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedGroupKerberosSourceConnectionList(varPaginatedGroupKerberosSourceConnectionList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

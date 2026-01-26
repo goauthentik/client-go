@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -51,6 +50,7 @@ type RACProvider struct {
 	ConnectionExpiry *string `json:"connection_expiry,omitempty"`
 	// When set to true, connection tokens will be deleted upon disconnect.
 	DeleteTokenOnDisconnect *bool `json:"delete_token_on_disconnect,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _RACProvider RACProvider
@@ -580,6 +580,11 @@ func (o RACProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeleteTokenOnDisconnect) {
 		toSerialize["delete_token_on_disconnect"] = o.DeleteTokenOnDisconnect
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -618,15 +623,36 @@ func (o *RACProvider) UnmarshalJSON(data []byte) (err error) {
 
 	varRACProvider := _RACProvider{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRACProvider)
+	err = json.Unmarshal(data, &varRACProvider)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RACProvider(varRACProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "assigned_application_slug")
+		delete(additionalProperties, "assigned_application_name")
+		delete(additionalProperties, "assigned_backchannel_application_slug")
+		delete(additionalProperties, "assigned_backchannel_application_name")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "settings")
+		delete(additionalProperties, "outpost_set")
+		delete(additionalProperties, "connection_expiry")
+		delete(additionalProperties, "delete_token_on_disconnect")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

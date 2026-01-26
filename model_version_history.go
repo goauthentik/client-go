@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,10 +22,11 @@ var _ MappedNullable = &VersionHistory{}
 
 // VersionHistory VersionHistory Serializer
 type VersionHistory struct {
-	Id        int32     `json:"id"`
-	Timestamp time.Time `json:"timestamp"`
-	Version   string    `json:"version"`
-	Build     string    `json:"build"`
+	Id                   int32     `json:"id"`
+	Timestamp            time.Time `json:"timestamp"`
+	Version              string    `json:"version"`
+	Build                string    `json:"build"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VersionHistory VersionHistory
@@ -162,6 +162,11 @@ func (o VersionHistory) ToMap() (map[string]interface{}, error) {
 	toSerialize["timestamp"] = o.Timestamp
 	toSerialize["version"] = o.Version
 	toSerialize["build"] = o.Build
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -192,15 +197,23 @@ func (o *VersionHistory) UnmarshalJSON(data []byte) (err error) {
 
 	varVersionHistory := _VersionHistory{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVersionHistory)
+	err = json.Unmarshal(data, &varVersionHistory)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VersionHistory(varVersionHistory)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "timestamp")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "build")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

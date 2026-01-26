@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,7 +26,8 @@ type FlowInspectorPlan struct {
 	// Get the plan's context, sanitized
 	PlanContext map[string]interface{} `json:"plan_context"`
 	// Get a unique session ID
-	SessionId string `json:"session_id"`
+	SessionId            string `json:"session_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FlowInspectorPlan FlowInspectorPlan
@@ -163,6 +163,11 @@ func (o FlowInspectorPlan) ToMap() (map[string]interface{}, error) {
 	toSerialize["next_planned_stage"] = o.NextPlannedStage
 	toSerialize["plan_context"] = o.PlanContext
 	toSerialize["session_id"] = o.SessionId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -193,15 +198,23 @@ func (o *FlowInspectorPlan) UnmarshalJSON(data []byte) (err error) {
 
 	varFlowInspectorPlan := _FlowInspectorPlan{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowInspectorPlan)
+	err = json.Unmarshal(data, &varFlowInspectorPlan)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlowInspectorPlan(varFlowInspectorPlan)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "current_stage")
+		delete(additionalProperties, "next_planned_stage")
+		delete(additionalProperties, "plan_context")
+		delete(additionalProperties, "session_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -37,7 +36,8 @@ type PolicyBinding struct {
 	// Timeout after which Policy execution is terminated.
 	Timeout *int32 `json:"timeout,omitempty"`
 	// Result if the Policy execution fails.
-	FailureResult *bool `json:"failure_result,omitempty"`
+	FailureResult        *bool `json:"failure_result,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PolicyBinding PolicyBinding
@@ -503,6 +503,11 @@ func (o PolicyBinding) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FailureResult) {
 		toSerialize["failure_result"] = o.FailureResult
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -535,15 +540,32 @@ func (o *PolicyBinding) UnmarshalJSON(data []byte) (err error) {
 
 	varPolicyBinding := _PolicyBinding{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPolicyBinding)
+	err = json.Unmarshal(data, &varPolicyBinding)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PolicyBinding(varPolicyBinding)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "policy")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "policy_obj")
+		delete(additionalProperties, "group_obj")
+		delete(additionalProperties, "user_obj")
+		delete(additionalProperties, "target")
+		delete(additionalProperties, "negate")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "failure_result")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

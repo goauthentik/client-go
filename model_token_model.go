@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -31,8 +30,9 @@ type TokenModel struct {
 	Expires   NullableTime `json:"expires,omitempty"`
 	Scope     []string     `json:"scope"`
 	// Get the token's id_token as JSON String
-	IdToken string `json:"id_token"`
-	Revoked *bool  `json:"revoked,omitempty"`
+	IdToken              string `json:"id_token"`
+	Revoked              *bool  `json:"revoked,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TokenModel TokenModel
@@ -301,6 +301,11 @@ func (o TokenModel) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Revoked) {
 		toSerialize["revoked"] = o.Revoked
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -333,15 +338,27 @@ func (o *TokenModel) UnmarshalJSON(data []byte) (err error) {
 
 	varTokenModel := _TokenModel{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTokenModel)
+	err = json.Unmarshal(data, &varTokenModel)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TokenModel(varTokenModel)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "is_expired")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "id_token")
+		delete(additionalProperties, "revoked")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

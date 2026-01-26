@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &GoogleWorkspaceProviderGroupRequest{}
 
 // GoogleWorkspaceProviderGroupRequest GoogleWorkspaceProviderGroup Serializer
 type GoogleWorkspaceProviderGroupRequest struct {
-	GoogleId string `json:"google_id"`
-	Group    string `json:"group"`
-	Provider int32  `json:"provider"`
+	GoogleId             string `json:"google_id"`
+	Group                string `json:"group"`
+	Provider             int32  `json:"provider"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GoogleWorkspaceProviderGroupRequest GoogleWorkspaceProviderGroupRequest
@@ -134,6 +134,11 @@ func (o GoogleWorkspaceProviderGroupRequest) ToMap() (map[string]interface{}, er
 	toSerialize["google_id"] = o.GoogleId
 	toSerialize["group"] = o.Group
 	toSerialize["provider"] = o.Provider
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *GoogleWorkspaceProviderGroupRequest) UnmarshalJSON(data []byte) (err er
 
 	varGoogleWorkspaceProviderGroupRequest := _GoogleWorkspaceProviderGroupRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleWorkspaceProviderGroupRequest)
+	err = json.Unmarshal(data, &varGoogleWorkspaceProviderGroupRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleWorkspaceProviderGroupRequest(varGoogleWorkspaceProviderGroupRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "google_id")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "provider")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

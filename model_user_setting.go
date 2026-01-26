@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &UserSetting{}
 
 // UserSetting Serializer for User settings for stages and sources
 type UserSetting struct {
-	ObjectUid    string  `json:"object_uid"`
-	Component    string  `json:"component"`
-	Title        string  `json:"title"`
-	ConfigureUrl *string `json:"configure_url,omitempty"`
-	IconUrl      *string `json:"icon_url,omitempty"`
+	ObjectUid            string  `json:"object_uid"`
+	Component            string  `json:"component"`
+	Title                string  `json:"title"`
+	ConfigureUrl         *string `json:"configure_url,omitempty"`
+	IconUrl              *string `json:"icon_url,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserSetting UserSetting
@@ -206,6 +206,11 @@ func (o UserSetting) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IconUrl) {
 		toSerialize["icon_url"] = o.IconUrl
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -235,15 +240,24 @@ func (o *UserSetting) UnmarshalJSON(data []byte) (err error) {
 
 	varUserSetting := _UserSetting{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserSetting)
+	err = json.Unmarshal(data, &varUserSetting)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserSetting(varUserSetting)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "object_uid")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "configure_url")
+		delete(additionalProperties, "icon_url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,6 +26,7 @@ type EndpointAgentChallenge struct {
 	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
 	Challenge            string                    `json:"challenge"`
 	ChallengeIdleTimeout int32                     `json:"challenge_idle_timeout"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EndpointAgentChallenge EndpointAgentChallenge
@@ -219,6 +219,11 @@ func (o EndpointAgentChallenge) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["challenge"] = o.Challenge
 	toSerialize["challenge_idle_timeout"] = o.ChallengeIdleTimeout
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,24 @@ func (o *EndpointAgentChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varEndpointAgentChallenge := _EndpointAgentChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpointAgentChallenge)
+	err = json.Unmarshal(data, &varEndpointAgentChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EndpointAgentChallenge(varEndpointAgentChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "challenge")
+		delete(additionalProperties, "challenge_idle_timeout")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

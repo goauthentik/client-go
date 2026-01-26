@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedGroupKerberosSourceConnectionRequest{}
 
 // PatchedGroupKerberosSourceConnectionRequest Group Source Connection
 type PatchedGroupKerberosSourceConnectionRequest struct {
-	Group      *string `json:"group,omitempty"`
-	Source     *string `json:"source,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
+	Group                *string `json:"group,omitempty"`
+	Source               *string `json:"source,omitempty"`
+	Identifier           *string `json:"identifier,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedGroupKerberosSourceConnectionRequest PatchedGroupKerberosSourceConnectionRequest
 
 // NewPatchedGroupKerberosSourceConnectionRequest instantiates a new PatchedGroupKerberosSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedGroupKerberosSourceConnectionRequest) ToMap() (map[string]interfa
 	if !IsNil(o.Identifier) {
 		toSerialize["identifier"] = o.Identifier
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedGroupKerberosSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedGroupKerberosSourceConnectionRequest := _PatchedGroupKerberosSourceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedGroupKerberosSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedGroupKerberosSourceConnectionRequest(varPatchedGroupKerberosSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedGroupKerberosSourceConnectionRequest struct {

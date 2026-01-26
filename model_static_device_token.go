@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &StaticDeviceToken{}
 
 // StaticDeviceToken Serializer for static device's tokens
 type StaticDeviceToken struct {
-	Token string `json:"token"`
+	Token                string `json:"token"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StaticDeviceToken StaticDeviceToken
@@ -80,6 +80,11 @@ func (o StaticDeviceToken) MarshalJSON() ([]byte, error) {
 func (o StaticDeviceToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["token"] = o.Token
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *StaticDeviceToken) UnmarshalJSON(data []byte) (err error) {
 
 	varStaticDeviceToken := _StaticDeviceToken{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStaticDeviceToken)
+	err = json.Unmarshal(data, &varStaticDeviceToken)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StaticDeviceToken(varStaticDeviceToken)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

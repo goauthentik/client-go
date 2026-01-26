@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &ContextualFlowInfo{}
 
 // ContextualFlowInfo Contextual flow information for a challenge
 type ContextualFlowInfo struct {
-	Title      *string                      `json:"title,omitempty"`
-	Background *string                      `json:"background,omitempty"`
-	CancelUrl  string                       `json:"cancel_url"`
-	Layout     ContextualFlowInfoLayoutEnum `json:"layout"`
+	Title                *string                      `json:"title,omitempty"`
+	Background           *string                      `json:"background,omitempty"`
+	CancelUrl            string                       `json:"cancel_url"`
+	Layout               ContextualFlowInfoLayoutEnum `json:"layout"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContextualFlowInfo ContextualFlowInfo
@@ -179,6 +179,11 @@ func (o ContextualFlowInfo) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["cancel_url"] = o.CancelUrl
 	toSerialize["layout"] = o.Layout
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -207,15 +212,23 @@ func (o *ContextualFlowInfo) UnmarshalJSON(data []byte) (err error) {
 
 	varContextualFlowInfo := _ContextualFlowInfo{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContextualFlowInfo)
+	err = json.Unmarshal(data, &varContextualFlowInfo)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContextualFlowInfo(varContextualFlowInfo)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "background")
+		delete(additionalProperties, "cancel_url")
+		delete(additionalProperties, "layout")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

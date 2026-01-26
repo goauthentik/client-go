@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,8 +26,9 @@ type PartialGroup struct {
 	NumPk int32  `json:"num_pk"`
 	Name  string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
-	Attributes  map[string]interface{} `json:"attributes,omitempty"`
+	IsSuperuser          *bool                  `json:"is_superuser,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PartialGroup PartialGroup
@@ -208,6 +208,11 @@ func (o PartialGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -237,15 +242,24 @@ func (o *PartialGroup) UnmarshalJSON(data []byte) (err error) {
 
 	varPartialGroup := _PartialGroup{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPartialGroup)
+	err = json.Unmarshal(data, &varPartialGroup)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PartialGroup(varPartialGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "num_pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "is_superuser")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

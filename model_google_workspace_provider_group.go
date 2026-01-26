@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &GoogleWorkspaceProviderGroup{}
 
 // GoogleWorkspaceProviderGroup GoogleWorkspaceProviderGroup Serializer
 type GoogleWorkspaceProviderGroup struct {
-	Id         string                 `json:"id"`
-	GoogleId   string                 `json:"google_id"`
-	Group      string                 `json:"group"`
-	GroupObj   PartialGroup           `json:"group_obj"`
-	Provider   int32                  `json:"provider"`
-	Attributes map[string]interface{} `json:"attributes"`
+	Id                   string                 `json:"id"`
+	GoogleId             string                 `json:"google_id"`
+	Group                string                 `json:"group"`
+	GroupObj             PartialGroup           `json:"group_obj"`
+	Provider             int32                  `json:"provider"`
+	Attributes           map[string]interface{} `json:"attributes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GoogleWorkspaceProviderGroup GoogleWorkspaceProviderGroup
@@ -215,6 +215,11 @@ func (o GoogleWorkspaceProviderGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize["group_obj"] = o.GroupObj
 	toSerialize["provider"] = o.Provider
 	toSerialize["attributes"] = o.Attributes
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,25 @@ func (o *GoogleWorkspaceProviderGroup) UnmarshalJSON(data []byte) (err error) {
 
 	varGoogleWorkspaceProviderGroup := _GoogleWorkspaceProviderGroup{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleWorkspaceProviderGroup)
+	err = json.Unmarshal(data, &varGoogleWorkspaceProviderGroup)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleWorkspaceProviderGroup(varGoogleWorkspaceProviderGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "google_id")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "group_obj")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

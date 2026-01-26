@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &AppleLoginChallenge{}
 
 // AppleLoginChallenge Special challenge for apple-native authentication flow, which happens on the client.
 type AppleLoginChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	ClientId       string                    `json:"client_id"`
-	Scope          string                    `json:"scope"`
-	RedirectUri    string                    `json:"redirect_uri"`
-	State          string                    `json:"state"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	ClientId             string                    `json:"client_id"`
+	Scope                string                    `json:"scope"`
+	RedirectUri          string                    `json:"redirect_uri"`
+	State                string                    `json:"state"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AppleLoginChallenge AppleLoginChallenge
@@ -273,6 +273,11 @@ func (o AppleLoginChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize["scope"] = o.Scope
 	toSerialize["redirect_uri"] = o.RedirectUri
 	toSerialize["state"] = o.State
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -303,15 +308,26 @@ func (o *AppleLoginChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varAppleLoginChallenge := _AppleLoginChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAppleLoginChallenge)
+	err = json.Unmarshal(data, &varAppleLoginChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AppleLoginChallenge(varAppleLoginChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "redirect_uri")
+		delete(additionalProperties, "state")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

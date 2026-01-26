@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -38,7 +37,8 @@ type DockerServiceConnection struct {
 	// CA which the endpoint's Certificate is verified against. Can be left empty for no validation.
 	TlsVerification NullableString `json:"tls_verification,omitempty"`
 	// Certificate/Key used for authentication. Can be left empty for no authentication.
-	TlsAuthentication NullableString `json:"tls_authentication,omitempty"`
+	TlsAuthentication    NullableString `json:"tls_authentication,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DockerServiceConnection DockerServiceConnection
@@ -379,6 +379,11 @@ func (o DockerServiceConnection) ToMap() (map[string]interface{}, error) {
 	if o.TlsAuthentication.IsSet() {
 		toSerialize["tls_authentication"] = o.TlsAuthentication.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -412,15 +417,29 @@ func (o *DockerServiceConnection) UnmarshalJSON(data []byte) (err error) {
 
 	varDockerServiceConnection := _DockerServiceConnection{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDockerServiceConnection)
+	err = json.Unmarshal(data, &varDockerServiceConnection)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DockerServiceConnection(varDockerServiceConnection)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "local")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tls_verification")
+		delete(additionalProperties, "tls_authentication")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

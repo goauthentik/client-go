@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &AuthenticatedSessionUserAgentOs{}
 
 // AuthenticatedSessionUserAgentOs User agent os
 type AuthenticatedSessionUserAgentOs struct {
-	Family     string `json:"family"`
-	Major      string `json:"major"`
-	Minor      string `json:"minor"`
-	Patch      string `json:"patch"`
-	PatchMinor string `json:"patch_minor"`
+	Family               string `json:"family"`
+	Major                string `json:"major"`
+	Minor                string `json:"minor"`
+	Patch                string `json:"patch"`
+	PatchMinor           string `json:"patch_minor"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatedSessionUserAgentOs AuthenticatedSessionUserAgentOs
@@ -188,6 +188,11 @@ func (o AuthenticatedSessionUserAgentOs) ToMap() (map[string]interface{}, error)
 	toSerialize["minor"] = o.Minor
 	toSerialize["patch"] = o.Patch
 	toSerialize["patch_minor"] = o.PatchMinor
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *AuthenticatedSessionUserAgentOs) UnmarshalJSON(data []byte) (err error)
 
 	varAuthenticatedSessionUserAgentOs := _AuthenticatedSessionUserAgentOs{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatedSessionUserAgentOs)
+	err = json.Unmarshal(data, &varAuthenticatedSessionUserAgentOs)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatedSessionUserAgentOs(varAuthenticatedSessionUserAgentOs)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "family")
+		delete(additionalProperties, "major")
+		delete(additionalProperties, "minor")
+		delete(additionalProperties, "patch")
+		delete(additionalProperties, "patch_minor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

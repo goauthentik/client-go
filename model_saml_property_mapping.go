@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,9 +33,10 @@ type SAMLPropertyMapping struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName string         `json:"meta_model_name"`
-	SamlName      string         `json:"saml_name"`
-	FriendlyName  NullableString `json:"friendly_name,omitempty"`
+	MetaModelName        string         `json:"meta_model_name"`
+	SamlName             string         `json:"saml_name"`
+	FriendlyName         NullableString `json:"friendly_name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SAMLPropertyMapping SAMLPropertyMapping
@@ -368,6 +368,11 @@ func (o SAMLPropertyMapping) ToMap() (map[string]interface{}, error) {
 	if o.FriendlyName.IsSet() {
 		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -402,15 +407,29 @@ func (o *SAMLPropertyMapping) UnmarshalJSON(data []byte) (err error) {
 
 	varSAMLPropertyMapping := _SAMLPropertyMapping{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSAMLPropertyMapping)
+	err = json.Unmarshal(data, &varSAMLPropertyMapping)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SAMLPropertyMapping(varSAMLPropertyMapping)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "saml_name")
+		delete(additionalProperties, "friendly_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

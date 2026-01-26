@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &MDMConfigResponse{}
 
 // MDMConfigResponse Base serializer class which doesn't implement create/update methods
 type MDMConfigResponse struct {
-	Config   string `json:"config"`
-	MimeType string `json:"mime_type"`
-	Filename string `json:"filename"`
+	Config               string `json:"config"`
+	MimeType             string `json:"mime_type"`
+	Filename             string `json:"filename"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _MDMConfigResponse MDMConfigResponse
@@ -134,6 +134,11 @@ func (o MDMConfigResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["config"] = o.Config
 	toSerialize["mime_type"] = o.MimeType
 	toSerialize["filename"] = o.Filename
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *MDMConfigResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varMDMConfigResponse := _MDMConfigResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMDMConfigResponse)
+	err = json.Unmarshal(data, &varMDMConfigResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = MDMConfigResponse(varMDMConfigResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "config")
+		delete(additionalProperties, "mime_type")
+		delete(additionalProperties, "filename")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

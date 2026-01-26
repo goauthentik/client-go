@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,9 +22,10 @@ var _ MappedNullable = &TOTPDevice{}
 // TOTPDevice Serializer for totp authenticator devices
 type TOTPDevice struct {
 	// The human-readable name of this device.
-	Name string      `json:"name"`
-	Pk   int32       `json:"pk"`
-	User PartialUser `json:"user"`
+	Name                 string      `json:"name"`
+	Pk                   int32       `json:"pk"`
+	User                 PartialUser `json:"user"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TOTPDevice TOTPDevice
@@ -135,6 +135,11 @@ func (o TOTPDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["pk"] = o.Pk
 	toSerialize["user"] = o.User
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -164,15 +169,22 @@ func (o *TOTPDevice) UnmarshalJSON(data []byte) (err error) {
 
 	varTOTPDevice := _TOTPDevice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTOTPDevice)
+	err = json.Unmarshal(data, &varTOTPDevice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TOTPDevice(varTOTPDevice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

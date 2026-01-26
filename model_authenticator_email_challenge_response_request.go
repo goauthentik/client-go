@@ -20,10 +20,13 @@ var _ MappedNullable = &AuthenticatorEmailChallengeResponseRequest{}
 
 // AuthenticatorEmailChallengeResponseRequest Authenticator Email Challenge response, device is set by get_response_instance
 type AuthenticatorEmailChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	Code      *string `json:"code,omitempty"`
-	Email     *string `json:"email,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	Code                 *string `json:"code,omitempty"`
+	Email                *string `json:"email,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AuthenticatorEmailChallengeResponseRequest AuthenticatorEmailChallengeResponseRequest
 
 // NewAuthenticatorEmailChallengeResponseRequest instantiates a new AuthenticatorEmailChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -161,7 +164,35 @@ func (o AuthenticatorEmailChallengeResponseRequest) ToMap() (map[string]interfac
 	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AuthenticatorEmailChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varAuthenticatorEmailChallengeResponseRequest := _AuthenticatorEmailChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varAuthenticatorEmailChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorEmailChallengeResponseRequest(varAuthenticatorEmailChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "code")
+		delete(additionalProperties, "email")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAuthenticatorEmailChallengeResponseRequest struct {

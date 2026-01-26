@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedDomainRequest{}
 
 // PatchedDomainRequest Domain Serializer
 type PatchedDomainRequest struct {
-	Domain    *string `json:"domain,omitempty"`
-	IsPrimary *bool   `json:"is_primary,omitempty"`
-	Tenant    *string `json:"tenant,omitempty"`
+	Domain               *string `json:"domain,omitempty"`
+	IsPrimary            *bool   `json:"is_primary,omitempty"`
+	Tenant               *string `json:"tenant,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedDomainRequest PatchedDomainRequest
 
 // NewPatchedDomainRequest instantiates a new PatchedDomainRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedDomainRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tenant) {
 		toSerialize["tenant"] = o.Tenant
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedDomainRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedDomainRequest := _PatchedDomainRequest{}
+
+	err = json.Unmarshal(data, &varPatchedDomainRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedDomainRequest(varPatchedDomainRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "domain")
+		delete(additionalProperties, "is_primary")
+		delete(additionalProperties, "tenant")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedDomainRequest struct {

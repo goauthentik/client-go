@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,8 +32,9 @@ type DeviceUserBindingRequest struct {
 	// Timeout after which Policy execution is terminated.
 	Timeout *int32 `json:"timeout,omitempty"`
 	// Result if the Policy execution fails.
-	FailureResult *bool `json:"failure_result,omitempty"`
-	IsPrimary     *bool `json:"is_primary,omitempty"`
+	FailureResult        *bool `json:"failure_result,omitempty"`
+	IsPrimary            *bool `json:"is_primary,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeviceUserBindingRequest DeviceUserBindingRequest
@@ -431,6 +431,11 @@ func (o DeviceUserBindingRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsPrimary) {
 		toSerialize["is_primary"] = o.IsPrimary
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -459,15 +464,29 @@ func (o *DeviceUserBindingRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDeviceUserBindingRequest := _DeviceUserBindingRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeviceUserBindingRequest)
+	err = json.Unmarshal(data, &varDeviceUserBindingRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeviceUserBindingRequest(varDeviceUserBindingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "policy")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "target")
+		delete(additionalProperties, "negate")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "failure_result")
+		delete(additionalProperties, "is_primary")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

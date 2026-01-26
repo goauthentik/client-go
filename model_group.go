@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,17 +25,18 @@ type Group struct {
 	NumPk int32  `json:"num_pk"`
 	Name  string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser       *bool                  `json:"is_superuser,omitempty"`
-	Parents           []string               `json:"parents,omitempty"`
-	ParentsObj        []RelatedGroup         `json:"parents_obj"`
-	Users             []int32                `json:"users,omitempty"`
-	UsersObj          []PartialUser          `json:"users_obj"`
-	Attributes        map[string]interface{} `json:"attributes,omitempty"`
-	Roles             []string               `json:"roles,omitempty"`
-	RolesObj          []Role                 `json:"roles_obj"`
-	InheritedRolesObj []Role                 `json:"inherited_roles_obj"`
-	Children          []string               `json:"children"`
-	ChildrenObj       []RelatedGroup         `json:"children_obj"`
+	IsSuperuser          *bool                  `json:"is_superuser,omitempty"`
+	Parents              []string               `json:"parents,omitempty"`
+	ParentsObj           []RelatedGroup         `json:"parents_obj"`
+	Users                []int32                `json:"users,omitempty"`
+	UsersObj             []PartialUser          `json:"users_obj"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	Roles                []string               `json:"roles,omitempty"`
+	RolesObj             []Role                 `json:"roles_obj"`
+	InheritedRolesObj    []Role                 `json:"inherited_roles_obj"`
+	Children             []string               `json:"children"`
+	ChildrenObj          []RelatedGroup         `json:"children_obj"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Group Group
@@ -493,6 +493,11 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 	if o.ChildrenObj != nil {
 		toSerialize["children_obj"] = o.ChildrenObj
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -528,15 +533,33 @@ func (o *Group) UnmarshalJSON(data []byte) (err error) {
 
 	varGroup := _Group{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroup)
+	err = json.Unmarshal(data, &varGroup)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Group(varGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "num_pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "is_superuser")
+		delete(additionalProperties, "parents")
+		delete(additionalProperties, "parents_obj")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "users_obj")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "roles")
+		delete(additionalProperties, "roles_obj")
+		delete(additionalProperties, "inherited_roles_obj")
+		delete(additionalProperties, "children")
+		delete(additionalProperties, "children_obj")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &PlexAuthenticationChallenge{}
 
 // PlexAuthenticationChallenge Challenge shown to the user in identification stage
 type PlexAuthenticationChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	ClientId       string                    `json:"client_id"`
-	Slug           string                    `json:"slug"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	ClientId             string                    `json:"client_id"`
+	Slug                 string                    `json:"slug"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PlexAuthenticationChallenge PlexAuthenticationChallenge
@@ -219,6 +219,11 @@ func (o PlexAuthenticationChallenge) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["client_id"] = o.ClientId
 	toSerialize["slug"] = o.Slug
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,24 @@ func (o *PlexAuthenticationChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varPlexAuthenticationChallenge := _PlexAuthenticationChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPlexAuthenticationChallenge)
+	err = json.Unmarshal(data, &varPlexAuthenticationChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PlexAuthenticationChallenge(varPlexAuthenticationChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "slug")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

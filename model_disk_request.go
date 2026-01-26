@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &DiskRequest{}
 
 // DiskRequest struct for DiskRequest
 type DiskRequest struct {
-	Name               string  `json:"name"`
-	Mountpoint         string  `json:"mountpoint"`
-	Label              *string `json:"label,omitempty"`
-	CapacityTotalBytes *int64  `json:"capacity_total_bytes,omitempty"`
-	CapacityUsedBytes  *int64  `json:"capacity_used_bytes,omitempty"`
-	EncryptionEnabled  *bool   `json:"encryption_enabled,omitempty"`
+	Name                 string  `json:"name"`
+	Mountpoint           string  `json:"mountpoint"`
+	Label                *string `json:"label,omitempty"`
+	CapacityTotalBytes   *int64  `json:"capacity_total_bytes,omitempty"`
+	CapacityUsedBytes    *int64  `json:"capacity_used_bytes,omitempty"`
+	EncryptionEnabled    *bool   `json:"encryption_enabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DiskRequest DiskRequest
@@ -255,6 +255,11 @@ func (o DiskRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EncryptionEnabled) {
 		toSerialize["encryption_enabled"] = o.EncryptionEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -283,15 +288,25 @@ func (o *DiskRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDiskRequest := _DiskRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDiskRequest)
+	err = json.Unmarshal(data, &varDiskRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DiskRequest(varDiskRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "mountpoint")
+		delete(additionalProperties, "label")
+		delete(additionalProperties, "capacity_total_bytes")
+		delete(additionalProperties, "capacity_used_bytes")
+		delete(additionalProperties, "encryption_enabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

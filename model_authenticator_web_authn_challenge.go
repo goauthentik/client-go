@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &AuthenticatorWebAuthnChallenge{}
 
 // AuthenticatorWebAuthnChallenge WebAuthn Challenge
 type AuthenticatorWebAuthnChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	Registration      map[string]interface{}    `json:"registration"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	Registration         map[string]interface{}    `json:"registration"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorWebAuthnChallenge AuthenticatorWebAuthnChallenge
@@ -246,6 +246,11 @@ func (o AuthenticatorWebAuthnChallenge) ToMap() (map[string]interface{}, error) 
 	toSerialize["pending_user"] = o.PendingUser
 	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
 	toSerialize["registration"] = o.Registration
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -275,15 +280,25 @@ func (o *AuthenticatorWebAuthnChallenge) UnmarshalJSON(data []byte) (err error) 
 
 	varAuthenticatorWebAuthnChallenge := _AuthenticatorWebAuthnChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorWebAuthnChallenge)
+	err = json.Unmarshal(data, &varAuthenticatorWebAuthnChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorWebAuthnChallenge(varAuthenticatorWebAuthnChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "registration")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

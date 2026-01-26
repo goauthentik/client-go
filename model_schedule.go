@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -35,10 +34,11 @@ type Schedule struct {
 	// When to schedule tasks
 	Crontab string `json:"crontab"`
 	// Pause this schedule
-	Paused         *bool                      `json:"paused,omitempty"`
-	NextRun        time.Time                  `json:"next_run"`
-	Description    NullableString             `json:"description"`
-	LastTaskStatus NullableLastTaskStatusEnum `json:"last_task_status"`
+	Paused               *bool                      `json:"paused,omitempty"`
+	NextRun              time.Time                  `json:"next_run"`
+	Description          NullableString             `json:"description"`
+	LastTaskStatus       NullableLastTaskStatusEnum `json:"last_task_status"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Schedule Schedule
@@ -417,6 +417,11 @@ func (o Schedule) ToMap() (map[string]interface{}, error) {
 	toSerialize["next_run"] = o.NextRun
 	toSerialize["description"] = o.Description.Get()
 	toSerialize["last_task_status"] = o.LastTaskStatus.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -453,15 +458,31 @@ func (o *Schedule) UnmarshalJSON(data []byte) (err error) {
 
 	varSchedule := _Schedule{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSchedule)
+	err = json.Unmarshal(data, &varSchedule)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Schedule(varSchedule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "uid")
+		delete(additionalProperties, "actor_name")
+		delete(additionalProperties, "rel_obj_app_label")
+		delete(additionalProperties, "rel_obj_model")
+		delete(additionalProperties, "rel_obj_id")
+		delete(additionalProperties, "crontab")
+		delete(additionalProperties, "paused")
+		delete(additionalProperties, "next_run")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "last_task_status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

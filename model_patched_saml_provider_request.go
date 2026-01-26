@@ -63,9 +63,12 @@ type PatchedSAMLProviderRequest struct {
 	// Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).
 	LogoutMethod *SAMLProviderLogoutMethodEnum `json:"logout_method,omitempty"`
 	// Default relay_state value for IDP-initiated logins
-	DefaultRelayState   *string               `json:"default_relay_state,omitempty"`
-	DefaultNameIdPolicy *SAMLNameIDPolicyEnum `json:"default_name_id_policy,omitempty"`
+	DefaultRelayState    *string               `json:"default_relay_state,omitempty"`
+	DefaultNameIdPolicy  *SAMLNameIDPolicyEnum `json:"default_name_id_policy,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedSAMLProviderRequest PatchedSAMLProviderRequest
 
 // NewPatchedSAMLProviderRequest instantiates a new PatchedSAMLProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -1105,7 +1108,59 @@ func (o PatchedSAMLProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DefaultNameIdPolicy) {
 		toSerialize["default_name_id_policy"] = o.DefaultNameIdPolicy
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedSAMLProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedSAMLProviderRequest := _PatchedSAMLProviderRequest{}
+
+	err = json.Unmarshal(data, &varPatchedSAMLProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedSAMLProviderRequest(varPatchedSAMLProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "invalidation_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "acs_url")
+		delete(additionalProperties, "sls_url")
+		delete(additionalProperties, "audience")
+		delete(additionalProperties, "issuer")
+		delete(additionalProperties, "assertion_valid_not_before")
+		delete(additionalProperties, "assertion_valid_not_on_or_after")
+		delete(additionalProperties, "session_valid_not_on_or_after")
+		delete(additionalProperties, "name_id_mapping")
+		delete(additionalProperties, "authn_context_class_ref_mapping")
+		delete(additionalProperties, "digest_algorithm")
+		delete(additionalProperties, "signature_algorithm")
+		delete(additionalProperties, "signing_kp")
+		delete(additionalProperties, "verification_kp")
+		delete(additionalProperties, "encryption_kp")
+		delete(additionalProperties, "sign_assertion")
+		delete(additionalProperties, "sign_response")
+		delete(additionalProperties, "sign_logout_request")
+		delete(additionalProperties, "sp_binding")
+		delete(additionalProperties, "sls_binding")
+		delete(additionalProperties, "logout_method")
+		delete(additionalProperties, "default_relay_state")
+		delete(additionalProperties, "default_name_id_policy")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedSAMLProviderRequest struct {

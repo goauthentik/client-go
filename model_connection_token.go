@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &ConnectionToken{}
 
 // ConnectionToken ConnectionToken Serializer
 type ConnectionToken struct {
-	Pk          *string     `json:"pk,omitempty"`
-	Provider    int32       `json:"provider"`
-	ProviderObj RACProvider `json:"provider_obj"`
-	Endpoint    string      `json:"endpoint"`
-	EndpointObj Endpoint    `json:"endpoint_obj"`
-	User        PartialUser `json:"user"`
+	Pk                   *string     `json:"pk,omitempty"`
+	Provider             int32       `json:"provider"`
+	ProviderObj          RACProvider `json:"provider_obj"`
+	Endpoint             string      `json:"endpoint"`
+	EndpointObj          Endpoint    `json:"endpoint_obj"`
+	User                 PartialUser `json:"user"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ConnectionToken ConnectionToken
@@ -224,6 +224,11 @@ func (o ConnectionToken) ToMap() (map[string]interface{}, error) {
 	toSerialize["endpoint"] = o.Endpoint
 	toSerialize["endpoint_obj"] = o.EndpointObj
 	toSerialize["user"] = o.User
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -255,15 +260,25 @@ func (o *ConnectionToken) UnmarshalJSON(data []byte) (err error) {
 
 	varConnectionToken := _ConnectionToken{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varConnectionToken)
+	err = json.Unmarshal(data, &varConnectionToken)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ConnectionToken(varConnectionToken)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "provider_obj")
+		delete(additionalProperties, "endpoint")
+		delete(additionalProperties, "endpoint_obj")
+		delete(additionalProperties, "user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

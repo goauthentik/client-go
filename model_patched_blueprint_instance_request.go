@@ -20,12 +20,15 @@ var _ MappedNullable = &PatchedBlueprintInstanceRequest{}
 
 // PatchedBlueprintInstanceRequest Info about a single blueprint instance file
 type PatchedBlueprintInstanceRequest struct {
-	Name    *string                `json:"name,omitempty"`
-	Path    *string                `json:"path,omitempty"`
-	Context map[string]interface{} `json:"context,omitempty"`
-	Enabled *bool                  `json:"enabled,omitempty"`
-	Content *string                `json:"content,omitempty"`
+	Name                 *string                `json:"name,omitempty"`
+	Path                 *string                `json:"path,omitempty"`
+	Context              map[string]interface{} `json:"context,omitempty"`
+	Enabled              *bool                  `json:"enabled,omitempty"`
+	Content              *string                `json:"content,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedBlueprintInstanceRequest PatchedBlueprintInstanceRequest
 
 // NewPatchedBlueprintInstanceRequest instantiates a new PatchedBlueprintInstanceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,37 @@ func (o PatchedBlueprintInstanceRequest) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Content) {
 		toSerialize["content"] = o.Content
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedBlueprintInstanceRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedBlueprintInstanceRequest := _PatchedBlueprintInstanceRequest{}
+
+	err = json.Unmarshal(data, &varPatchedBlueprintInstanceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedBlueprintInstanceRequest(varPatchedBlueprintInstanceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "context")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "content")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedBlueprintInstanceRequest struct {

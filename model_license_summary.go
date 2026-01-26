@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,11 +22,12 @@ var _ MappedNullable = &LicenseSummary{}
 
 // LicenseSummary Serializer for license status
 type LicenseSummary struct {
-	InternalUsers int32                    `json:"internal_users"`
-	ExternalUsers int32                    `json:"external_users"`
-	Status        LicenseSummaryStatusEnum `json:"status"`
-	LatestValid   time.Time                `json:"latest_valid"`
-	LicenseFlags  []LicenseFlagsEnum       `json:"license_flags"`
+	InternalUsers        int32                    `json:"internal_users"`
+	ExternalUsers        int32                    `json:"external_users"`
+	Status               LicenseSummaryStatusEnum `json:"status"`
+	LatestValid          time.Time                `json:"latest_valid"`
+	LicenseFlags         []LicenseFlagsEnum       `json:"license_flags"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _LicenseSummary LicenseSummary
@@ -189,6 +189,11 @@ func (o LicenseSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["latest_valid"] = o.LatestValid
 	toSerialize["license_flags"] = o.LicenseFlags
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -220,15 +225,24 @@ func (o *LicenseSummary) UnmarshalJSON(data []byte) (err error) {
 
 	varLicenseSummary := _LicenseSummary{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLicenseSummary)
+	err = json.Unmarshal(data, &varLicenseSummary)
 
 	if err != nil {
 		return err
 	}
 
 	*o = LicenseSummary(varLicenseSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "internal_users")
+		delete(additionalProperties, "external_users")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "latest_valid")
+		delete(additionalProperties, "license_flags")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

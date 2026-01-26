@@ -26,8 +26,11 @@ type PatchedKubernetesServiceConnectionRequest struct {
 	// Paste your kubeconfig here. authentik will automatically use the currently selected context.
 	Kubeconfig map[string]interface{} `json:"kubeconfig,omitempty"`
 	// Verify SSL Certificates of the Kubernetes API endpoint
-	VerifySsl *bool `json:"verify_ssl,omitempty"`
+	VerifySsl            *bool `json:"verify_ssl,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedKubernetesServiceConnectionRequest PatchedKubernetesServiceConnectionRequest
 
 // NewPatchedKubernetesServiceConnectionRequest instantiates a new PatchedKubernetesServiceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -196,7 +199,36 @@ func (o PatchedKubernetesServiceConnectionRequest) ToMap() (map[string]interface
 	if !IsNil(o.VerifySsl) {
 		toSerialize["verify_ssl"] = o.VerifySsl
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedKubernetesServiceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedKubernetesServiceConnectionRequest := _PatchedKubernetesServiceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedKubernetesServiceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedKubernetesServiceConnectionRequest(varPatchedKubernetesServiceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "local")
+		delete(additionalProperties, "kubeconfig")
+		delete(additionalProperties, "verify_ssl")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedKubernetesServiceConnectionRequest struct {

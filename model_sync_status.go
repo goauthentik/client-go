@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,9 +22,10 @@ var _ MappedNullable = &SyncStatus{}
 
 // SyncStatus Provider/source sync status
 type SyncStatus struct {
-	IsRunning          bool                      `json:"is_running"`
-	LastSuccessfulSync *time.Time                `json:"last_successful_sync,omitempty"`
-	LastSyncStatus     *TaskAggregatedStatusEnum `json:"last_sync_status,omitempty"`
+	IsRunning            bool                      `json:"is_running"`
+	LastSuccessfulSync   *time.Time                `json:"last_successful_sync,omitempty"`
+	LastSyncStatus       *TaskAggregatedStatusEnum `json:"last_sync_status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SyncStatus SyncStatus
@@ -153,6 +153,11 @@ func (o SyncStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastSyncStatus) {
 		toSerialize["last_sync_status"] = o.LastSyncStatus
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -180,15 +185,22 @@ func (o *SyncStatus) UnmarshalJSON(data []byte) (err error) {
 
 	varSyncStatus := _SyncStatus{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSyncStatus)
+	err = json.Unmarshal(data, &varSyncStatus)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SyncStatus(varSyncStatus)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "is_running")
+		delete(additionalProperties, "last_successful_sync")
+		delete(additionalProperties, "last_sync_status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

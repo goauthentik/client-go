@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &UserLDAPSourceConnectionRequest{}
 
 // UserLDAPSourceConnectionRequest User source connection
 type UserLDAPSourceConnectionRequest struct {
-	User       int32  `json:"user"`
-	Source     string `json:"source"`
-	Identifier string `json:"identifier"`
+	User                 int32  `json:"user"`
+	Source               string `json:"source"`
+	Identifier           string `json:"identifier"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserLDAPSourceConnectionRequest UserLDAPSourceConnectionRequest
@@ -134,6 +134,11 @@ func (o UserLDAPSourceConnectionRequest) ToMap() (map[string]interface{}, error)
 	toSerialize["user"] = o.User
 	toSerialize["source"] = o.Source
 	toSerialize["identifier"] = o.Identifier
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *UserLDAPSourceConnectionRequest) UnmarshalJSON(data []byte) (err error)
 
 	varUserLDAPSourceConnectionRequest := _UserLDAPSourceConnectionRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserLDAPSourceConnectionRequest)
+	err = json.Unmarshal(data, &varUserLDAPSourceConnectionRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserLDAPSourceConnectionRequest(varUserLDAPSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

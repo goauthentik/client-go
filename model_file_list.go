@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &FileList{}
 
 // FileList Base serializer class which doesn't implement create/update methods
 type FileList struct {
-	Name     string `json:"name"`
-	MimeType string `json:"mime_type"`
-	Url      string `json:"url"`
+	Name                 string `json:"name"`
+	MimeType             string `json:"mime_type"`
+	Url                  string `json:"url"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FileList FileList
@@ -134,6 +134,11 @@ func (o FileList) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["mime_type"] = o.MimeType
 	toSerialize["url"] = o.Url
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *FileList) UnmarshalJSON(data []byte) (err error) {
 
 	varFileList := _FileList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFileList)
+	err = json.Unmarshal(data, &varFileList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FileList(varFileList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "mime_type")
+		delete(additionalProperties, "url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

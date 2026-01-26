@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &AuthenticatedSessionAsn{}
 
 // AuthenticatedSessionAsn Get ASN Data
 type AuthenticatedSessionAsn struct {
-	Asn     NullableInt32  `json:"asn"`
-	AsOrg   NullableString `json:"as_org"`
-	Network NullableString `json:"network"`
+	Asn                  NullableInt32  `json:"asn"`
+	AsOrg                NullableString `json:"as_org"`
+	Network              NullableString `json:"network"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatedSessionAsn AuthenticatedSessionAsn
@@ -140,6 +140,11 @@ func (o AuthenticatedSessionAsn) ToMap() (map[string]interface{}, error) {
 	toSerialize["asn"] = o.Asn.Get()
 	toSerialize["as_org"] = o.AsOrg.Get()
 	toSerialize["network"] = o.Network.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -169,15 +174,22 @@ func (o *AuthenticatedSessionAsn) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatedSessionAsn := _AuthenticatedSessionAsn{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatedSessionAsn)
+	err = json.Unmarshal(data, &varAuthenticatedSessionAsn)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatedSessionAsn(varAuthenticatedSessionAsn)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "asn")
+		delete(additionalProperties, "as_org")
+		delete(additionalProperties, "network")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

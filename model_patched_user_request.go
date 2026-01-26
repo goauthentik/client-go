@@ -25,15 +25,18 @@ type PatchedUserRequest struct {
 	// User's display name.
 	Name *string `json:"name,omitempty"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive   *bool                  `json:"is_active,omitempty"`
-	LastLogin  NullableTime           `json:"last_login,omitempty"`
-	Groups     []string               `json:"groups,omitempty"`
-	Roles      []string               `json:"roles,omitempty"`
-	Email      *string                `json:"email,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
-	Path       *string                `json:"path,omitempty"`
-	Type       *UserTypeEnum          `json:"type,omitempty"`
+	IsActive             *bool                  `json:"is_active,omitempty"`
+	LastLogin            NullableTime           `json:"last_login,omitempty"`
+	Groups               []string               `json:"groups,omitempty"`
+	Roles                []string               `json:"roles,omitempty"`
+	Email                *string                `json:"email,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	Path                 *string                `json:"path,omitempty"`
+	Type                 *UserTypeEnum          `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedUserRequest PatchedUserRequest
 
 // NewPatchedUserRequest instantiates a new PatchedUserRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -423,7 +426,42 @@ func (o PatchedUserRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUserRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUserRequest := _PatchedUserRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUserRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUserRequest(varPatchedUserRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "is_active")
+		delete(additionalProperties, "last_login")
+		delete(additionalProperties, "groups")
+		delete(additionalProperties, "roles")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUserRequest struct {

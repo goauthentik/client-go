@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedTenantRequest{}
 
 // PatchedTenantRequest Tenant Serializer
 type PatchedTenantRequest struct {
-	SchemaName *string `json:"schema_name,omitempty"`
-	Name       *string `json:"name,omitempty"`
-	Ready      *bool   `json:"ready,omitempty"`
+	SchemaName           *string `json:"schema_name,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	Ready                *bool   `json:"ready,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedTenantRequest PatchedTenantRequest
 
 // NewPatchedTenantRequest instantiates a new PatchedTenantRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedTenantRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ready) {
 		toSerialize["ready"] = o.Ready
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedTenantRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedTenantRequest := _PatchedTenantRequest{}
+
+	err = json.Unmarshal(data, &varPatchedTenantRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedTenantRequest(varPatchedTenantRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "schema_name")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "ready")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedTenantRequest struct {

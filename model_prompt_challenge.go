@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &PromptChallenge{}
 
 // PromptChallenge Initial challenge being sent, define fields
 type PromptChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	Fields         []StagePrompt             `json:"fields"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	Fields               []StagePrompt             `json:"fields"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PromptChallenge PromptChallenge
@@ -192,6 +192,11 @@ func (o PromptChallenge) ToMap() (map[string]interface{}, error) {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
 	toSerialize["fields"] = o.Fields
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,23 @@ func (o *PromptChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varPromptChallenge := _PromptChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPromptChallenge)
+	err = json.Unmarshal(data, &varPromptChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PromptChallenge(varPromptChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "fields")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

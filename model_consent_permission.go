@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &ConsentPermission{}
 
 // ConsentPermission Permission used for consent
 type ConsentPermission struct {
-	Name string `json:"name"`
-	Id   string `json:"id"`
+	Name                 string `json:"name"`
+	Id                   string `json:"id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ConsentPermission ConsentPermission
@@ -107,6 +107,11 @@ func (o ConsentPermission) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["id"] = o.Id
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *ConsentPermission) UnmarshalJSON(data []byte) (err error) {
 
 	varConsentPermission := _ConsentPermission{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varConsentPermission)
+	err = json.Unmarshal(data, &varConsentPermission)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ConsentPermission(varConsentPermission)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

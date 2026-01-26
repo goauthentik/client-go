@@ -30,8 +30,11 @@ type PatchedNotificationTransportRequest struct {
 	EmailSubjectPrefix    *string        `json:"email_subject_prefix,omitempty"`
 	EmailTemplate         *string        `json:"email_template,omitempty"`
 	// Only send notification once, for example when sending a webhook into a chat channel.
-	SendOnce *bool `json:"send_once,omitempty"`
+	SendOnce             *bool `json:"send_once,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedNotificationTransportRequest PatchedNotificationTransportRequest
 
 // NewPatchedNotificationTransportRequest instantiates a new PatchedNotificationTransportRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -362,7 +365,40 @@ func (o PatchedNotificationTransportRequest) ToMap() (map[string]interface{}, er
 	if !IsNil(o.SendOnce) {
 		toSerialize["send_once"] = o.SendOnce
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedNotificationTransportRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedNotificationTransportRequest := _PatchedNotificationTransportRequest{}
+
+	err = json.Unmarshal(data, &varPatchedNotificationTransportRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedNotificationTransportRequest(varPatchedNotificationTransportRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "webhook_url")
+		delete(additionalProperties, "webhook_mapping_body")
+		delete(additionalProperties, "webhook_mapping_headers")
+		delete(additionalProperties, "email_subject_prefix")
+		delete(additionalProperties, "email_template")
+		delete(additionalProperties, "send_once")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedNotificationTransportRequest struct {

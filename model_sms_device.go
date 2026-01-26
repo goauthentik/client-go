@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,10 +22,11 @@ var _ MappedNullable = &SMSDevice{}
 // SMSDevice Serializer for sms authenticator devices
 type SMSDevice struct {
 	// The human-readable name of this device.
-	Name        string      `json:"name"`
-	Pk          int32       `json:"pk"`
-	PhoneNumber string      `json:"phone_number"`
-	User        PartialUser `json:"user"`
+	Name                 string      `json:"name"`
+	Pk                   int32       `json:"pk"`
+	PhoneNumber          string      `json:"phone_number"`
+	User                 PartialUser `json:"user"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SMSDevice SMSDevice
@@ -162,6 +162,11 @@ func (o SMSDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize["pk"] = o.Pk
 	toSerialize["phone_number"] = o.PhoneNumber
 	toSerialize["user"] = o.User
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -192,15 +197,23 @@ func (o *SMSDevice) UnmarshalJSON(data []byte) (err error) {
 
 	varSMSDevice := _SMSDevice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSMSDevice)
+	err = json.Unmarshal(data, &varSMSDevice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SMSDevice(varSMSDevice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "phone_number")
+		delete(additionalProperties, "user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,8 +23,9 @@ var _ MappedNullable = &DuoDevice{}
 type DuoDevice struct {
 	Pk int32 `json:"pk"`
 	// The human-readable name of this device.
-	Name string      `json:"name"`
-	User PartialUser `json:"user"`
+	Name                 string      `json:"name"`
+	User                 PartialUser `json:"user"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DuoDevice DuoDevice
@@ -135,6 +135,11 @@ func (o DuoDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize["pk"] = o.Pk
 	toSerialize["name"] = o.Name
 	toSerialize["user"] = o.User
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -164,15 +169,22 @@ func (o *DuoDevice) UnmarshalJSON(data []byte) (err error) {
 
 	varDuoDevice := _DuoDevice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDuoDevice)
+	err = json.Unmarshal(data, &varDuoDevice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DuoDevice(varDuoDevice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

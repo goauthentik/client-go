@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &RoleRequest{}
 
 // RoleRequest Role serializer
 type RoleRequest struct {
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RoleRequest RoleRequest
@@ -80,6 +80,11 @@ func (o RoleRequest) MarshalJSON() ([]byte, error) {
 func (o RoleRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *RoleRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varRoleRequest := _RoleRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRoleRequest)
+	err = json.Unmarshal(data, &varRoleRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RoleRequest(varRoleRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

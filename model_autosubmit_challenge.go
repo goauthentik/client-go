@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &AutosubmitChallenge{}
 
 // AutosubmitChallenge Autosubmit challenge used to send and navigate a POST request
 type AutosubmitChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	Url            string                    `json:"url"`
-	Attrs          map[string]string         `json:"attrs"`
-	Title          *string                   `json:"title,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	Url                  string                    `json:"url"`
+	Attrs                map[string]string         `json:"attrs"`
+	Title                *string                   `json:"title,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AutosubmitChallenge AutosubmitChallenge
@@ -255,6 +255,11 @@ func (o AutosubmitChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -283,15 +288,25 @@ func (o *AutosubmitChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varAutosubmitChallenge := _AutosubmitChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAutosubmitChallenge)
+	err = json.Unmarshal(data, &varAutosubmitChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AutosubmitChallenge(varAutosubmitChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "attrs")
+		delete(additionalProperties, "title")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

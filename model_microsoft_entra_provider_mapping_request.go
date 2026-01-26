@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,9 +22,10 @@ var _ MappedNullable = &MicrosoftEntraProviderMappingRequest{}
 // MicrosoftEntraProviderMappingRequest MicrosoftEntraProviderMapping Serializer
 type MicrosoftEntraProviderMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed    NullableString `json:"managed,omitempty"`
-	Name       string         `json:"name"`
-	Expression string         `json:"expression"`
+	Managed              NullableString `json:"managed,omitempty"`
+	Name                 string         `json:"name"`
+	Expression           string         `json:"expression"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _MicrosoftEntraProviderMappingRequest MicrosoftEntraProviderMappingRequest
@@ -155,6 +155,11 @@ func (o MicrosoftEntraProviderMappingRequest) ToMap() (map[string]interface{}, e
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["expression"] = o.Expression
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -183,15 +188,22 @@ func (o *MicrosoftEntraProviderMappingRequest) UnmarshalJSON(data []byte) (err e
 
 	varMicrosoftEntraProviderMappingRequest := _MicrosoftEntraProviderMappingRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMicrosoftEntraProviderMappingRequest)
+	err = json.Unmarshal(data, &varMicrosoftEntraProviderMappingRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = MicrosoftEntraProviderMappingRequest(varMicrosoftEntraProviderMappingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

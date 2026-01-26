@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedInitialPermissionsRequest{}
 
 // PatchedInitialPermissionsRequest InitialPermissions serializer
 type PatchedInitialPermissionsRequest struct {
-	Name        *string `json:"name,omitempty"`
-	Role        *string `json:"role,omitempty"`
-	Permissions []int32 `json:"permissions,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	Role                 *string `json:"role,omitempty"`
+	Permissions          []int32 `json:"permissions,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedInitialPermissionsRequest PatchedInitialPermissionsRequest
 
 // NewPatchedInitialPermissionsRequest instantiates a new PatchedInitialPermissionsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedInitialPermissionsRequest) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedInitialPermissionsRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedInitialPermissionsRequest := _PatchedInitialPermissionsRequest{}
+
+	err = json.Unmarshal(data, &varPatchedInitialPermissionsRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedInitialPermissionsRequest(varPatchedInitialPermissionsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "permissions")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedInitialPermissionsRequest struct {

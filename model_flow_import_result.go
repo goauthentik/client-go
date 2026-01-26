@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &FlowImportResult{}
 
 // FlowImportResult Logs of an attempted flow import
 type FlowImportResult struct {
-	Logs    []LogEvent `json:"logs"`
-	Success bool       `json:"success"`
+	Logs                 []LogEvent `json:"logs"`
+	Success              bool       `json:"success"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FlowImportResult FlowImportResult
@@ -107,6 +107,11 @@ func (o FlowImportResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["logs"] = o.Logs
 	toSerialize["success"] = o.Success
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *FlowImportResult) UnmarshalJSON(data []byte) (err error) {
 
 	varFlowImportResult := _FlowImportResult{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowImportResult)
+	err = json.Unmarshal(data, &varFlowImportResult)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlowImportResult(varFlowImportResult)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "logs")
+		delete(additionalProperties, "success")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

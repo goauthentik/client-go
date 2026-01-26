@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,15 +22,16 @@ var _ MappedNullable = &EndpointDevice{}
 
 // EndpointDevice struct for EndpointDevice
 type EndpointDevice struct {
-	DeviceUuid     *string                `json:"device_uuid,omitempty"`
-	PbmUuid        string                 `json:"pbm_uuid"`
-	Name           string                 `json:"name"`
-	AccessGroup    NullableString         `json:"access_group,omitempty"`
-	AccessGroupObj *DeviceAccessGroup     `json:"access_group_obj,omitempty"`
-	Expiring       *bool                  `json:"expiring,omitempty"`
-	Expires        NullableTime           `json:"expires,omitempty"`
-	Facts          DeviceFactSnapshot     `json:"facts"`
-	Attributes     map[string]interface{} `json:"attributes,omitempty"`
+	DeviceUuid           *string                `json:"device_uuid,omitempty"`
+	PbmUuid              string                 `json:"pbm_uuid"`
+	Name                 string                 `json:"name"`
+	AccessGroup          NullableString         `json:"access_group,omitempty"`
+	AccessGroupObj       *DeviceAccessGroup     `json:"access_group_obj,omitempty"`
+	Expiring             *bool                  `json:"expiring,omitempty"`
+	Expires              NullableTime           `json:"expires,omitempty"`
+	Facts                DeviceFactSnapshot     `json:"facts"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EndpointDevice EndpointDevice
@@ -373,6 +373,11 @@ func (o EndpointDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -402,15 +407,28 @@ func (o *EndpointDevice) UnmarshalJSON(data []byte) (err error) {
 
 	varEndpointDevice := _EndpointDevice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpointDevice)
+	err = json.Unmarshal(data, &varEndpointDevice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EndpointDevice(varEndpointDevice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device_uuid")
+		delete(additionalProperties, "pbm_uuid")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "access_group")
+		delete(additionalProperties, "access_group_obj")
+		delete(additionalProperties, "expiring")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "facts")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

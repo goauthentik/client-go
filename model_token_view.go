@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &TokenView{}
 
 // TokenView Show token's current key
 type TokenView struct {
-	Key string `json:"key"`
+	Key                  string `json:"key"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TokenView TokenView
@@ -80,6 +80,11 @@ func (o TokenView) MarshalJSON() ([]byte, error) {
 func (o TokenView) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *TokenView) UnmarshalJSON(data []byte) (err error) {
 
 	varTokenView := _TokenView{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTokenView)
+	err = json.Unmarshal(data, &varTokenView)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TokenView(varTokenView)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

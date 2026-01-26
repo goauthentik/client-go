@@ -34,7 +34,10 @@ type PatchedPromptRequest struct {
 	SubText                *string `json:"sub_text,omitempty"`
 	PlaceholderExpression  *bool   `json:"placeholder_expression,omitempty"`
 	InitialValueExpression *bool   `json:"initial_value_expression,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
+
+type _PatchedPromptRequest PatchedPromptRequest
 
 // NewPatchedPromptRequest instantiates a new PatchedPromptRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -448,7 +451,43 @@ func (o PatchedPromptRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InitialValueExpression) {
 		toSerialize["initial_value_expression"] = o.InitialValueExpression
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedPromptRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedPromptRequest := _PatchedPromptRequest{}
+
+	err = json.Unmarshal(data, &varPatchedPromptRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedPromptRequest(varPatchedPromptRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "field_key")
+		delete(additionalProperties, "label")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "required")
+		delete(additionalProperties, "placeholder")
+		delete(additionalProperties, "initial_value")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "sub_text")
+		delete(additionalProperties, "placeholder_expression")
+		delete(additionalProperties, "initial_value_expression")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedPromptRequest struct {

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -43,7 +42,8 @@ type EventMatcherPolicy struct {
 	// Match events created by selected application. When left empty, all applications are matched.
 	App NullableAppEnum `json:"app,omitempty"`
 	// Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
-	Model NullableModelEnum `json:"model,omitempty"`
+	Model                NullableModelEnum `json:"model,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EventMatcherPolicy EventMatcherPolicy
@@ -476,6 +476,11 @@ func (o EventMatcherPolicy) ToMap() (map[string]interface{}, error) {
 	if o.Model.IsSet() {
 		toSerialize["model"] = o.Model.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -509,15 +514,31 @@ func (o *EventMatcherPolicy) UnmarshalJSON(data []byte) (err error) {
 
 	varEventMatcherPolicy := _EventMatcherPolicy{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEventMatcherPolicy)
+	err = json.Unmarshal(data, &varEventMatcherPolicy)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EventMatcherPolicy(varEventMatcherPolicy)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "bound_to")
+		delete(additionalProperties, "action")
+		delete(additionalProperties, "client_ip")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "model")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

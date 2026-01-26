@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &Hardware{}
 
 // Hardware struct for Hardware
 type Hardware struct {
-	Model        *string `json:"model,omitempty"`
-	Manufacturer *string `json:"manufacturer,omitempty"`
-	Serial       string  `json:"serial"`
-	CpuName      *string `json:"cpu_name,omitempty"`
-	CpuCount     *int32  `json:"cpu_count,omitempty"`
-	MemoryBytes  *int64  `json:"memory_bytes,omitempty"`
+	Model                *string `json:"model,omitempty"`
+	Manufacturer         *string `json:"manufacturer,omitempty"`
+	Serial               string  `json:"serial"`
+	CpuName              *string `json:"cpu_name,omitempty"`
+	CpuCount             *int32  `json:"cpu_count,omitempty"`
+	MemoryBytes          *int64  `json:"memory_bytes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Hardware Hardware
@@ -260,6 +260,11 @@ func (o Hardware) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MemoryBytes) {
 		toSerialize["memory_bytes"] = o.MemoryBytes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -287,15 +292,25 @@ func (o *Hardware) UnmarshalJSON(data []byte) (err error) {
 
 	varHardware := _Hardware{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHardware)
+	err = json.Unmarshal(data, &varHardware)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Hardware(varHardware)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "model")
+		delete(additionalProperties, "manufacturer")
+		delete(additionalProperties, "serial")
+		delete(additionalProperties, "cpu_name")
+		delete(additionalProperties, "cpu_count")
+		delete(additionalProperties, "memory_bytes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

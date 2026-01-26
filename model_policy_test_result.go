@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PolicyTestResult{}
 
 // PolicyTestResult result of a policy test
 type PolicyTestResult struct {
-	Passing     bool       `json:"passing"`
-	Messages    []string   `json:"messages"`
-	LogMessages []LogEvent `json:"log_messages"`
+	Passing              bool       `json:"passing"`
+	Messages             []string   `json:"messages"`
+	LogMessages          []LogEvent `json:"log_messages"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PolicyTestResult PolicyTestResult
@@ -134,6 +134,11 @@ func (o PolicyTestResult) ToMap() (map[string]interface{}, error) {
 	toSerialize["passing"] = o.Passing
 	toSerialize["messages"] = o.Messages
 	toSerialize["log_messages"] = o.LogMessages
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PolicyTestResult) UnmarshalJSON(data []byte) (err error) {
 
 	varPolicyTestResult := _PolicyTestResult{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPolicyTestResult)
+	err = json.Unmarshal(data, &varPolicyTestResult)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PolicyTestResult(varPolicyTestResult)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "passing")
+		delete(additionalProperties, "messages")
+		delete(additionalProperties, "log_messages")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

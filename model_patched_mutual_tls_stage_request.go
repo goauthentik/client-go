@@ -26,7 +26,10 @@ type PatchedMutualTLSStageRequest struct {
 	CertificateAuthorities []string           `json:"certificate_authorities,omitempty"`
 	CertAttribute          *CertAttributeEnum `json:"cert_attribute,omitempty"`
 	UserAttribute          *UserAttributeEnum `json:"user_attribute,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
+
+type _PatchedMutualTLSStageRequest PatchedMutualTLSStageRequest
 
 // NewPatchedMutualTLSStageRequest instantiates a new PatchedMutualTLSStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -230,7 +233,37 @@ func (o PatchedMutualTLSStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserAttribute) {
 		toSerialize["user_attribute"] = o.UserAttribute
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedMutualTLSStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedMutualTLSStageRequest := _PatchedMutualTLSStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedMutualTLSStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedMutualTLSStageRequest(varPatchedMutualTLSStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "certificate_authorities")
+		delete(additionalProperties, "cert_attribute")
+		delete(additionalProperties, "user_attribute")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedMutualTLSStageRequest struct {

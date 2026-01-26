@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &InitialPermissionsRequest{}
 
 // InitialPermissionsRequest InitialPermissions serializer
 type InitialPermissionsRequest struct {
-	Name        string  `json:"name"`
-	Role        string  `json:"role"`
-	Permissions []int32 `json:"permissions,omitempty"`
+	Name                 string  `json:"name"`
+	Role                 string  `json:"role"`
+	Permissions          []int32 `json:"permissions,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _InitialPermissionsRequest InitialPermissionsRequest
@@ -143,6 +143,11 @@ func (o InitialPermissionsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *InitialPermissionsRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varInitialPermissionsRequest := _InitialPermissionsRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInitialPermissionsRequest)
+	err = json.Unmarshal(data, &varInitialPermissionsRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InitialPermissionsRequest(varInitialPermissionsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "permissions")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

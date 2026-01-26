@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,7 +22,8 @@ var _ MappedNullable = &EmailDeviceRequest{}
 // EmailDeviceRequest Serializer for email authenticator devices
 type EmailDeviceRequest struct {
 	// The human-readable name of this device.
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EmailDeviceRequest EmailDeviceRequest
@@ -81,6 +81,11 @@ func (o EmailDeviceRequest) MarshalJSON() ([]byte, error) {
 func (o EmailDeviceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -108,15 +113,20 @@ func (o *EmailDeviceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEmailDeviceRequest := _EmailDeviceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEmailDeviceRequest)
+	err = json.Unmarshal(data, &varEmailDeviceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EmailDeviceRequest(varEmailDeviceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

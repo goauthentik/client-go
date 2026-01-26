@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,8 +30,9 @@ type UserDeleteStage struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
+	MetaModelName        string    `json:"meta_model_name"`
+	FlowSet              []FlowSet `json:"flow_set"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserDeleteStage UserDeleteStage
@@ -246,6 +246,11 @@ func (o UserDeleteStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
 	toSerialize["flow_set"] = o.FlowSet
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -279,15 +284,26 @@ func (o *UserDeleteStage) UnmarshalJSON(data []byte) (err error) {
 
 	varUserDeleteStage := _UserDeleteStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserDeleteStage)
+	err = json.Unmarshal(data, &varUserDeleteStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserDeleteStage(varUserDeleteStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

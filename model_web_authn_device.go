@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,12 +22,13 @@ var _ MappedNullable = &WebAuthnDevice{}
 
 // WebAuthnDevice Serializer for WebAuthn authenticator devices
 type WebAuthnDevice struct {
-	Pk         int32                      `json:"pk"`
-	Name       string                     `json:"name"`
-	CreatedOn  time.Time                  `json:"created_on"`
-	DeviceType NullableWebAuthnDeviceType `json:"device_type"`
-	Aaguid     string                     `json:"aaguid"`
-	User       PartialUser                `json:"user"`
+	Pk                   int32                      `json:"pk"`
+	Name                 string                     `json:"name"`
+	CreatedOn            time.Time                  `json:"created_on"`
+	DeviceType           NullableWebAuthnDeviceType `json:"device_type"`
+	Aaguid               string                     `json:"aaguid"`
+	User                 PartialUser                `json:"user"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _WebAuthnDevice WebAuthnDevice
@@ -218,6 +218,11 @@ func (o WebAuthnDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize["device_type"] = o.DeviceType.Get()
 	toSerialize["aaguid"] = o.Aaguid
 	toSerialize["user"] = o.User
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -250,15 +255,25 @@ func (o *WebAuthnDevice) UnmarshalJSON(data []byte) (err error) {
 
 	varWebAuthnDevice := _WebAuthnDevice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varWebAuthnDevice)
+	err = json.Unmarshal(data, &varWebAuthnDevice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = WebAuthnDevice(varWebAuthnDevice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "created_on")
+		delete(additionalProperties, "device_type")
+		delete(additionalProperties, "aaguid")
+		delete(additionalProperties, "user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &OutpostDefaultConfig{}
 
 // OutpostDefaultConfig Global default outpost config
 type OutpostDefaultConfig struct {
-	Config map[string]interface{} `json:"config"`
+	Config               map[string]interface{} `json:"config"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OutpostDefaultConfig OutpostDefaultConfig
@@ -80,6 +80,11 @@ func (o OutpostDefaultConfig) MarshalJSON() ([]byte, error) {
 func (o OutpostDefaultConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["config"] = o.Config
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *OutpostDefaultConfig) UnmarshalJSON(data []byte) (err error) {
 
 	varOutpostDefaultConfig := _OutpostDefaultConfig{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOutpostDefaultConfig)
+	err = json.Unmarshal(data, &varOutpostDefaultConfig)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OutpostDefaultConfig(varOutpostDefaultConfig)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "config")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

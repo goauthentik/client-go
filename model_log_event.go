@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,11 +22,12 @@ var _ MappedNullable = &LogEvent{}
 
 // LogEvent Single log message with all context logged.
 type LogEvent struct {
-	Timestamp  time.Time              `json:"timestamp"`
-	LogLevel   LogLevelEnum           `json:"log_level"`
-	Logger     string                 `json:"logger"`
-	Event      string                 `json:"event"`
-	Attributes map[string]interface{} `json:"attributes"`
+	Timestamp            time.Time              `json:"timestamp"`
+	LogLevel             LogLevelEnum           `json:"log_level"`
+	Logger               string                 `json:"logger"`
+	Event                string                 `json:"event"`
+	Attributes           map[string]interface{} `json:"attributes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _LogEvent LogEvent
@@ -189,6 +189,11 @@ func (o LogEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize["logger"] = o.Logger
 	toSerialize["event"] = o.Event
 	toSerialize["attributes"] = o.Attributes
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -220,15 +225,24 @@ func (o *LogEvent) UnmarshalJSON(data []byte) (err error) {
 
 	varLogEvent := _LogEvent{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLogEvent)
+	err = json.Unmarshal(data, &varLogEvent)
 
 	if err != nil {
 		return err
 	}
 
 	*o = LogEvent(varLogEvent)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "timestamp")
+		delete(additionalProperties, "log_level")
+		delete(additionalProperties, "logger")
+		delete(additionalProperties, "event")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

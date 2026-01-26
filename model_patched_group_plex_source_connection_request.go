@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedGroupPlexSourceConnectionRequest{}
 
 // PatchedGroupPlexSourceConnectionRequest Group Source Connection
 type PatchedGroupPlexSourceConnectionRequest struct {
-	Group      *string `json:"group,omitempty"`
-	Source     *string `json:"source,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
+	Group                *string `json:"group,omitempty"`
+	Source               *string `json:"source,omitempty"`
+	Identifier           *string `json:"identifier,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedGroupPlexSourceConnectionRequest PatchedGroupPlexSourceConnectionRequest
 
 // NewPatchedGroupPlexSourceConnectionRequest instantiates a new PatchedGroupPlexSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedGroupPlexSourceConnectionRequest) ToMap() (map[string]interface{}
 	if !IsNil(o.Identifier) {
 		toSerialize["identifier"] = o.Identifier
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedGroupPlexSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedGroupPlexSourceConnectionRequest := _PatchedGroupPlexSourceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedGroupPlexSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedGroupPlexSourceConnectionRequest(varPatchedGroupPlexSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedGroupPlexSourceConnectionRequest struct {

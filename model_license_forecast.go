@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,6 +25,7 @@ type LicenseForecast struct {
 	ExternalUsers           int32 `json:"external_users"`
 	ForecastedInternalUsers int32 `json:"forecasted_internal_users"`
 	ForecastedExternalUsers int32 `json:"forecasted_external_users"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _LicenseForecast LicenseForecast
@@ -161,6 +161,11 @@ func (o LicenseForecast) ToMap() (map[string]interface{}, error) {
 	toSerialize["external_users"] = o.ExternalUsers
 	toSerialize["forecasted_internal_users"] = o.ForecastedInternalUsers
 	toSerialize["forecasted_external_users"] = o.ForecastedExternalUsers
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *LicenseForecast) UnmarshalJSON(data []byte) (err error) {
 
 	varLicenseForecast := _LicenseForecast{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLicenseForecast)
+	err = json.Unmarshal(data, &varLicenseForecast)
 
 	if err != nil {
 		return err
 	}
 
 	*o = LicenseForecast(varLicenseForecast)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "internal_users")
+		delete(additionalProperties, "external_users")
+		delete(additionalProperties, "forecasted_internal_users")
+		delete(additionalProperties, "forecasted_external_users")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &AuthenticatedSessionGeoIp{}
 
 // AuthenticatedSessionGeoIp Get GeoIP Data
 type AuthenticatedSessionGeoIp struct {
-	Continent NullableString  `json:"continent"`
-	Country   NullableString  `json:"country"`
-	Lat       NullableFloat64 `json:"lat"`
-	Long      NullableFloat64 `json:"long"`
-	City      string          `json:"city"`
+	Continent            NullableString  `json:"continent"`
+	Country              NullableString  `json:"country"`
+	Lat                  NullableFloat64 `json:"lat"`
+	Long                 NullableFloat64 `json:"long"`
+	City                 string          `json:"city"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatedSessionGeoIp AuthenticatedSessionGeoIp
@@ -196,6 +196,11 @@ func (o AuthenticatedSessionGeoIp) ToMap() (map[string]interface{}, error) {
 	toSerialize["lat"] = o.Lat.Get()
 	toSerialize["long"] = o.Long.Get()
 	toSerialize["city"] = o.City
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -227,15 +232,24 @@ func (o *AuthenticatedSessionGeoIp) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatedSessionGeoIp := _AuthenticatedSessionGeoIp{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatedSessionGeoIp)
+	err = json.Unmarshal(data, &varAuthenticatedSessionGeoIp)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatedSessionGeoIp(varAuthenticatedSessionGeoIp)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "continent")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "lat")
+		delete(additionalProperties, "long")
+		delete(additionalProperties, "city")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -36,7 +35,8 @@ type KubernetesServiceConnection struct {
 	// Paste your kubeconfig here. authentik will automatically use the currently selected context.
 	Kubeconfig map[string]interface{} `json:"kubeconfig,omitempty"`
 	// Verify SSL Certificates of the Kubernetes API endpoint
-	VerifySsl *bool `json:"verify_ssl,omitempty"`
+	VerifySsl            *bool `json:"verify_ssl,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesServiceConnection KubernetesServiceConnection
@@ -329,6 +329,11 @@ func (o KubernetesServiceConnection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VerifySsl) {
 		toSerialize["verify_ssl"] = o.VerifySsl
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -361,15 +366,28 @@ func (o *KubernetesServiceConnection) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesServiceConnection := _KubernetesServiceConnection{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesServiceConnection)
+	err = json.Unmarshal(data, &varKubernetesServiceConnection)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesServiceConnection(varKubernetesServiceConnection)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "local")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "kubeconfig")
+		delete(additionalProperties, "verify_ssl")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

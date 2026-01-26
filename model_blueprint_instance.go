@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,17 +22,18 @@ var _ MappedNullable = &BlueprintInstance{}
 
 // BlueprintInstance Info about a single blueprint instance file
 type BlueprintInstance struct {
-	Pk              string                      `json:"pk"`
-	Name            string                      `json:"name"`
-	Path            *string                     `json:"path,omitempty"`
-	Context         map[string]interface{}      `json:"context,omitempty"`
-	LastApplied     time.Time                   `json:"last_applied"`
-	LastAppliedHash string                      `json:"last_applied_hash"`
-	Status          BlueprintInstanceStatusEnum `json:"status"`
-	Enabled         *bool                       `json:"enabled,omitempty"`
-	ManagedModels   []string                    `json:"managed_models"`
-	Metadata        map[string]interface{}      `json:"metadata"`
-	Content         *string                     `json:"content,omitempty"`
+	Pk                   string                      `json:"pk"`
+	Name                 string                      `json:"name"`
+	Path                 *string                     `json:"path,omitempty"`
+	Context              map[string]interface{}      `json:"context,omitempty"`
+	LastApplied          time.Time                   `json:"last_applied"`
+	LastAppliedHash      string                      `json:"last_applied_hash"`
+	Status               BlueprintInstanceStatusEnum `json:"status"`
+	Enabled              *bool                       `json:"enabled,omitempty"`
+	ManagedModels        []string                    `json:"managed_models"`
+	Metadata             map[string]interface{}      `json:"metadata"`
+	Content              *string                     `json:"content,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BlueprintInstance BlueprintInstance
@@ -391,6 +391,11 @@ func (o BlueprintInstance) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Content) {
 		toSerialize["content"] = o.Content
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -424,15 +429,30 @@ func (o *BlueprintInstance) UnmarshalJSON(data []byte) (err error) {
 
 	varBlueprintInstance := _BlueprintInstance{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBlueprintInstance)
+	err = json.Unmarshal(data, &varBlueprintInstance)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BlueprintInstance(varBlueprintInstance)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "context")
+		delete(additionalProperties, "last_applied")
+		delete(additionalProperties, "last_applied_hash")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "managed_models")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "content")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &SessionUser{}
 
 // SessionUser Response for the /user/me endpoint, returns the currently active user (as `user` property) and, if this user is being impersonated, the original user in the `original` property.
 type SessionUser struct {
-	User     UserSelf  `json:"user"`
-	Original *UserSelf `json:"original,omitempty"`
+	User                 UserSelf  `json:"user"`
+	Original             *UserSelf `json:"original,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SessionUser SessionUser
@@ -116,6 +116,11 @@ func (o SessionUser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Original) {
 		toSerialize["original"] = o.Original
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *SessionUser) UnmarshalJSON(data []byte) (err error) {
 
 	varSessionUser := _SessionUser{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSessionUser)
+	err = json.Unmarshal(data, &varSessionUser)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SessionUser(varSessionUser)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "original")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

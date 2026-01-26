@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &UserPath{}
 
 // UserPath struct for UserPath
 type UserPath struct {
-	Paths []string `json:"paths"`
+	Paths                []string `json:"paths"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserPath UserPath
@@ -80,6 +80,11 @@ func (o UserPath) MarshalJSON() ([]byte, error) {
 func (o UserPath) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["paths"] = o.Paths
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *UserPath) UnmarshalJSON(data []byte) (err error) {
 
 	varUserPath := _UserPath{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserPath)
+	err = json.Unmarshal(data, &varUserPath)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserPath(varUserPath)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "paths")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

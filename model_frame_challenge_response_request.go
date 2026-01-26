@@ -20,8 +20,11 @@ var _ MappedNullable = &FrameChallengeResponseRequest{}
 
 // FrameChallengeResponseRequest Base class for all challenge responses
 type FrameChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FrameChallengeResponseRequest FrameChallengeResponseRequest
 
 // NewFrameChallengeResponseRequest instantiates a new FrameChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o FrameChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FrameChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varFrameChallengeResponseRequest := _FrameChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varFrameChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FrameChallengeResponseRequest(varFrameChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFrameChallengeResponseRequest struct {

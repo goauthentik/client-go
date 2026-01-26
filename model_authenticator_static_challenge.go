@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &AuthenticatorStaticChallenge{}
 
 // AuthenticatorStaticChallenge Static authenticator challenge
 type AuthenticatorStaticChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	Codes             []string                  `json:"codes"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	Codes                []string                  `json:"codes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorStaticChallenge AuthenticatorStaticChallenge
@@ -246,6 +246,11 @@ func (o AuthenticatorStaticChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize["pending_user"] = o.PendingUser
 	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
 	toSerialize["codes"] = o.Codes
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -275,15 +280,25 @@ func (o *AuthenticatorStaticChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorStaticChallenge := _AuthenticatorStaticChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorStaticChallenge)
+	err = json.Unmarshal(data, &varAuthenticatorStaticChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorStaticChallenge(varAuthenticatorStaticChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "codes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -30,7 +29,8 @@ type Permission struct {
 	// Human-readable app label
 	AppLabelVerbose string `json:"app_label_verbose"`
 	// Human-readable model name
-	ModelVerbose string `json:"model_verbose"`
+	ModelVerbose         string `json:"model_verbose"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Permission Permission
@@ -244,6 +244,11 @@ func (o Permission) ToMap() (map[string]interface{}, error) {
 	toSerialize["app_label"] = o.AppLabel
 	toSerialize["app_label_verbose"] = o.AppLabelVerbose
 	toSerialize["model_verbose"] = o.ModelVerbose
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -277,15 +282,26 @@ func (o *Permission) UnmarshalJSON(data []byte) (err error) {
 
 	varPermission := _Permission{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPermission)
+	err = json.Unmarshal(data, &varPermission)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Permission(varPermission)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "codename")
+		delete(additionalProperties, "model")
+		delete(additionalProperties, "app_label")
+		delete(additionalProperties, "app_label_verbose")
+		delete(additionalProperties, "model_verbose")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &EnrollmentToken{}
 
 // EnrollmentToken struct for EnrollmentToken
 type EnrollmentToken struct {
-	TokenUuid      string            `json:"token_uuid"`
-	DeviceGroup    NullableString    `json:"device_group,omitempty"`
-	DeviceGroupObj DeviceAccessGroup `json:"device_group_obj"`
-	Connector      string            `json:"connector"`
-	Name           string            `json:"name"`
-	Expiring       *bool             `json:"expiring,omitempty"`
-	Expires        NullableTime      `json:"expires,omitempty"`
+	TokenUuid            string            `json:"token_uuid"`
+	DeviceGroup          NullableString    `json:"device_group,omitempty"`
+	DeviceGroupObj       DeviceAccessGroup `json:"device_group_obj"`
+	Connector            string            `json:"connector"`
+	Name                 string            `json:"name"`
+	Expiring             *bool             `json:"expiring,omitempty"`
+	Expires              NullableTime      `json:"expires,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnrollmentToken EnrollmentToken
@@ -292,6 +292,11 @@ func (o EnrollmentToken) ToMap() (map[string]interface{}, error) {
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -322,15 +327,26 @@ func (o *EnrollmentToken) UnmarshalJSON(data []byte) (err error) {
 
 	varEnrollmentToken := _EnrollmentToken{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnrollmentToken)
+	err = json.Unmarshal(data, &varEnrollmentToken)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnrollmentToken(varEnrollmentToken)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token_uuid")
+		delete(additionalProperties, "device_group")
+		delete(additionalProperties, "device_group_obj")
+		delete(additionalProperties, "connector")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expiring")
+		delete(additionalProperties, "expires")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

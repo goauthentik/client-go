@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -30,7 +29,8 @@ type PasswordStageRequest struct {
 	// How many attempts a user has before the flow is canceled. To lock the user out, use a reputation policy and a user_write stage.
 	FailedAttemptsBeforeCancel *int32 `json:"failed_attempts_before_cancel,omitempty"`
 	// When enabled, provides a 'show password' button with the password input field.
-	AllowShowPassword *bool `json:"allow_show_password,omitempty"`
+	AllowShowPassword    *bool `json:"allow_show_password,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PasswordStageRequest PasswordStageRequest
@@ -230,6 +230,11 @@ func (o PasswordStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AllowShowPassword) {
 		toSerialize["allow_show_password"] = o.AllowShowPassword
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -258,15 +263,24 @@ func (o *PasswordStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varPasswordStageRequest := _PasswordStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPasswordStageRequest)
+	err = json.Unmarshal(data, &varPasswordStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PasswordStageRequest(varPasswordStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "backends")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "failed_attempts_before_cancel")
+		delete(additionalProperties, "allow_show_password")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

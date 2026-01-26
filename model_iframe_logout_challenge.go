@@ -20,11 +20,14 @@ var _ MappedNullable = &IframeLogoutChallenge{}
 
 // IframeLogoutChallenge Challenge for iframe logout
 type IframeLogoutChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	LogoutUrls     []map[string]interface{}  `json:"logout_urls,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	LogoutUrls           []map[string]interface{}  `json:"logout_urls,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _IframeLogoutChallenge IframeLogoutChallenge
 
 // NewIframeLogoutChallenge instantiates a new IframeLogoutChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -197,7 +200,36 @@ func (o IframeLogoutChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LogoutUrls) {
 		toSerialize["logout_urls"] = o.LogoutUrls
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *IframeLogoutChallenge) UnmarshalJSON(data []byte) (err error) {
+	varIframeLogoutChallenge := _IframeLogoutChallenge{}
+
+	err = json.Unmarshal(data, &varIframeLogoutChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IframeLogoutChallenge(varIframeLogoutChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "logout_urls")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableIframeLogoutChallenge struct {

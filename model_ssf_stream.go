@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,15 +21,16 @@ var _ MappedNullable = &SSFStream{}
 
 // SSFStream SSFStream Serializer
 type SSFStream struct {
-	Pk              string                `json:"pk"`
-	Provider        int32                 `json:"provider"`
-	ProviderObj     SSFProvider           `json:"provider_obj"`
-	DeliveryMethod  DeliveryMethodEnum    `json:"delivery_method"`
-	EndpointUrl     NullableString        `json:"endpoint_url,omitempty"`
-	EventsRequested []EventsRequestedEnum `json:"events_requested,omitempty"`
-	Format          string                `json:"format"`
-	Aud             []string              `json:"aud,omitempty"`
-	Iss             string                `json:"iss"`
+	Pk                   string                `json:"pk"`
+	Provider             int32                 `json:"provider"`
+	ProviderObj          SSFProvider           `json:"provider_obj"`
+	DeliveryMethod       DeliveryMethodEnum    `json:"delivery_method"`
+	EndpointUrl          NullableString        `json:"endpoint_url,omitempty"`
+	EventsRequested      []EventsRequestedEnum `json:"events_requested,omitempty"`
+	Format               string                `json:"format"`
+	Aud                  []string              `json:"aud,omitempty"`
+	Iss                  string                `json:"iss"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SSFStream SSFStream
@@ -334,6 +334,11 @@ func (o SSFStream) ToMap() (map[string]interface{}, error) {
 		toSerialize["aud"] = o.Aud
 	}
 	toSerialize["iss"] = o.Iss
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -366,15 +371,28 @@ func (o *SSFStream) UnmarshalJSON(data []byte) (err error) {
 
 	varSSFStream := _SSFStream{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSSFStream)
+	err = json.Unmarshal(data, &varSSFStream)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SSFStream(varSSFStream)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "provider_obj")
+		delete(additionalProperties, "delivery_method")
+		delete(additionalProperties, "endpoint_url")
+		delete(additionalProperties, "events_requested")
+		delete(additionalProperties, "format")
+		delete(additionalProperties, "aud")
+		delete(additionalProperties, "iss")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

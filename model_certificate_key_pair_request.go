@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,7 +25,8 @@ type CertificateKeyPairRequest struct {
 	// PEM-encoded Certificate data
 	CertificateData string `json:"certificate_data"`
 	// Optional Private Key. If this is set, you can use this keypair for encryption.
-	KeyData *string `json:"key_data,omitempty"`
+	KeyData              *string `json:"key_data,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CertificateKeyPairRequest CertificateKeyPairRequest
@@ -145,6 +145,11 @@ func (o CertificateKeyPairRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.KeyData) {
 		toSerialize["key_data"] = o.KeyData
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -173,15 +178,22 @@ func (o *CertificateKeyPairRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varCertificateKeyPairRequest := _CertificateKeyPairRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCertificateKeyPairRequest)
+	err = json.Unmarshal(data, &varCertificateKeyPairRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CertificateKeyPairRequest(varCertificateKeyPairRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "certificate_data")
+		delete(additionalProperties, "key_data")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

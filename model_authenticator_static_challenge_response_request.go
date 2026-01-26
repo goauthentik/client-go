@@ -20,8 +20,11 @@ var _ MappedNullable = &AuthenticatorStaticChallengeResponseRequest{}
 
 // AuthenticatorStaticChallengeResponseRequest Pseudo class for static response
 type AuthenticatorStaticChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AuthenticatorStaticChallengeResponseRequest AuthenticatorStaticChallengeResponseRequest
 
 // NewAuthenticatorStaticChallengeResponseRequest instantiates a new AuthenticatorStaticChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o AuthenticatorStaticChallengeResponseRequest) ToMap() (map[string]interfa
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AuthenticatorStaticChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varAuthenticatorStaticChallengeResponseRequest := _AuthenticatorStaticChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varAuthenticatorStaticChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorStaticChallengeResponseRequest(varAuthenticatorStaticChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAuthenticatorStaticChallengeResponseRequest struct {

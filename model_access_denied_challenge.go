@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &AccessDeniedChallenge{}
 
 // AccessDeniedChallenge Challenge when a flow's active stage calls `stage_invalid()`.
 type AccessDeniedChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	ErrorMessage      *string                   `json:"error_message,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	ErrorMessage         *string                   `json:"error_message,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AccessDeniedChallenge AccessDeniedChallenge
@@ -255,6 +255,11 @@ func (o AccessDeniedChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ErrorMessage) {
 		toSerialize["error_message"] = o.ErrorMessage
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -283,15 +288,25 @@ func (o *AccessDeniedChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varAccessDeniedChallenge := _AccessDeniedChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAccessDeniedChallenge)
+	err = json.Unmarshal(data, &varAccessDeniedChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AccessDeniedChallenge(varAccessDeniedChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "error_message")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,7 +33,8 @@ type GoogleWorkspaceProviderMapping struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName string `json:"meta_model_name"`
+	MetaModelName        string `json:"meta_model_name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GoogleWorkspaceProviderMapping GoogleWorkspaceProviderMapping
@@ -294,6 +294,11 @@ func (o GoogleWorkspaceProviderMapping) ToMap() (map[string]interface{}, error) 
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -327,15 +332,27 @@ func (o *GoogleWorkspaceProviderMapping) UnmarshalJSON(data []byte) (err error) 
 
 	varGoogleWorkspaceProviderMapping := _GoogleWorkspaceProviderMapping{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleWorkspaceProviderMapping)
+	err = json.Unmarshal(data, &varGoogleWorkspaceProviderMapping)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleWorkspaceProviderMapping(varGoogleWorkspaceProviderMapping)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

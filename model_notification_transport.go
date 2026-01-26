@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,7 +34,8 @@ type NotificationTransport struct {
 	EmailSubjectPrefix    *string        `json:"email_subject_prefix,omitempty"`
 	EmailTemplate         *string        `json:"email_template,omitempty"`
 	// Only send notification once, for example when sending a webhook into a chat channel.
-	SendOnce *bool `json:"send_once,omitempty"`
+	SendOnce             *bool `json:"send_once,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NotificationTransport NotificationTransport
@@ -412,6 +412,11 @@ func (o NotificationTransport) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SendOnce) {
 		toSerialize["send_once"] = o.SendOnce
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -441,15 +446,29 @@ func (o *NotificationTransport) UnmarshalJSON(data []byte) (err error) {
 
 	varNotificationTransport := _NotificationTransport{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotificationTransport)
+	err = json.Unmarshal(data, &varNotificationTransport)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NotificationTransport(varNotificationTransport)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "mode_verbose")
+		delete(additionalProperties, "webhook_url")
+		delete(additionalProperties, "webhook_mapping_body")
+		delete(additionalProperties, "webhook_mapping_headers")
+		delete(additionalProperties, "email_subject_prefix")
+		delete(additionalProperties, "email_template")
+		delete(additionalProperties, "send_once")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

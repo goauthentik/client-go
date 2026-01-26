@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &AuthenticatedSessionUserAgent{}
 
 // AuthenticatedSessionUserAgent Get parsed user agent
 type AuthenticatedSessionUserAgent struct {
-	Device    AuthenticatedSessionUserAgentDevice    `json:"device"`
-	Os        AuthenticatedSessionUserAgentOs        `json:"os"`
-	UserAgent AuthenticatedSessionUserAgentUserAgent `json:"user_agent"`
-	String    string                                 `json:"string"`
+	Device               AuthenticatedSessionUserAgentDevice    `json:"device"`
+	Os                   AuthenticatedSessionUserAgentOs        `json:"os"`
+	UserAgent            AuthenticatedSessionUserAgentUserAgent `json:"user_agent"`
+	String               string                                 `json:"string"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatedSessionUserAgent AuthenticatedSessionUserAgent
@@ -161,6 +161,11 @@ func (o AuthenticatedSessionUserAgent) ToMap() (map[string]interface{}, error) {
 	toSerialize["os"] = o.Os
 	toSerialize["user_agent"] = o.UserAgent
 	toSerialize["string"] = o.String
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *AuthenticatedSessionUserAgent) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatedSessionUserAgent := _AuthenticatedSessionUserAgent{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatedSessionUserAgent)
+	err = json.Unmarshal(data, &varAuthenticatedSessionUserAgent)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatedSessionUserAgent(varAuthenticatedSessionUserAgent)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device")
+		delete(additionalProperties, "os")
+		delete(additionalProperties, "user_agent")
+		delete(additionalProperties, "string")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

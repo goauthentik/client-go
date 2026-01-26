@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -32,6 +31,7 @@ type FlowStageBindingRequest struct {
 	PolicyEngineMode   *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
 	InvalidResponseAction *InvalidResponseActionEnum `json:"invalid_response_action,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _FlowStageBindingRequest FlowStageBindingRequest
@@ -281,6 +281,11 @@ func (o FlowStageBindingRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InvalidResponseAction) {
 		toSerialize["invalid_response_action"] = o.InvalidResponseAction
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -310,15 +315,26 @@ func (o *FlowStageBindingRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varFlowStageBindingRequest := _FlowStageBindingRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowStageBindingRequest)
+	err = json.Unmarshal(data, &varFlowStageBindingRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlowStageBindingRequest(varFlowStageBindingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "target")
+		delete(additionalProperties, "stage")
+		delete(additionalProperties, "evaluate_on_plan")
+		delete(additionalProperties, "re_evaluate_policies")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "invalid_response_action")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

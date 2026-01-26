@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &PaginatedExtraRoleObjectPermissionList{}
 
 // PaginatedExtraRoleObjectPermissionList struct for PaginatedExtraRoleObjectPermissionList
 type PaginatedExtraRoleObjectPermissionList struct {
-	Pagination Pagination                  `json:"pagination"`
-	Results    []ExtraRoleObjectPermission `json:"results"`
+	Pagination           Pagination                  `json:"pagination"`
+	Results              []ExtraRoleObjectPermission `json:"results"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedExtraRoleObjectPermissionList PaginatedExtraRoleObjectPermissionList
@@ -107,6 +107,11 @@ func (o PaginatedExtraRoleObjectPermissionList) ToMap() (map[string]interface{},
 	toSerialize := map[string]interface{}{}
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *PaginatedExtraRoleObjectPermissionList) UnmarshalJSON(data []byte) (err
 
 	varPaginatedExtraRoleObjectPermissionList := _PaginatedExtraRoleObjectPermissionList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedExtraRoleObjectPermissionList)
+	err = json.Unmarshal(data, &varPaginatedExtraRoleObjectPermissionList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedExtraRoleObjectPermissionList(varPaginatedExtraRoleObjectPermissionList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &DenyStageRequest{}
 
 // DenyStageRequest DenyStage Serializer
 type DenyStageRequest struct {
-	Name        string  `json:"name"`
-	DenyMessage *string `json:"deny_message,omitempty"`
+	Name                 string  `json:"name"`
+	DenyMessage          *string `json:"deny_message,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DenyStageRequest DenyStageRequest
@@ -116,6 +116,11 @@ func (o DenyStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DenyMessage) {
 		toSerialize["deny_message"] = o.DenyMessage
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *DenyStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDenyStageRequest := _DenyStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDenyStageRequest)
+	err = json.Unmarshal(data, &varDenyStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DenyStageRequest(varDenyStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "deny_message")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

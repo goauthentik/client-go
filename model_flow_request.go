@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -38,7 +37,8 @@ type FlowRequest struct {
 	// Configure what should happen when a flow denies access to a user.
 	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
 	// Required level of authentication and authorization to access a flow.
-	Authentication *AuthenticationEnum `json:"authentication,omitempty"`
+	Authentication       *AuthenticationEnum `json:"authentication,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FlowRequest FlowRequest
@@ -384,6 +384,11 @@ func (o FlowRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Authentication) {
 		toSerialize["authentication"] = o.Authentication
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -414,15 +419,29 @@ func (o *FlowRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varFlowRequest := _FlowRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowRequest)
+	err = json.Unmarshal(data, &varFlowRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlowRequest(varFlowRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "designation")
+		delete(additionalProperties, "background")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "compatibility_mode")
+		delete(additionalProperties, "layout")
+		delete(additionalProperties, "denied_action")
+		delete(additionalProperties, "authentication")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

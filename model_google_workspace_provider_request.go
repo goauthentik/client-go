@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -39,7 +38,8 @@ type GoogleWorkspaceProviderRequest struct {
 	// Timeout for synchronization of a single page
 	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
-	DryRun *bool `json:"dry_run,omitempty"`
+	DryRun               *bool `json:"dry_run,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GoogleWorkspaceProviderRequest GoogleWorkspaceProviderRequest
@@ -536,6 +536,11 @@ func (o GoogleWorkspaceProviderRequest) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -566,15 +571,33 @@ func (o *GoogleWorkspaceProviderRequest) UnmarshalJSON(data []byte) (err error) 
 
 	varGoogleWorkspaceProviderRequest := _GoogleWorkspaceProviderRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleWorkspaceProviderRequest)
+	err = json.Unmarshal(data, &varGoogleWorkspaceProviderRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleWorkspaceProviderRequest(varGoogleWorkspaceProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "property_mappings_group")
+		delete(additionalProperties, "delegated_subject")
+		delete(additionalProperties, "credentials")
+		delete(additionalProperties, "scopes")
+		delete(additionalProperties, "exclude_users_service_account")
+		delete(additionalProperties, "filter_group")
+		delete(additionalProperties, "user_delete_action")
+		delete(additionalProperties, "group_delete_action")
+		delete(additionalProperties, "default_group_email_domain")
+		delete(additionalProperties, "sync_page_size")
+		delete(additionalProperties, "sync_page_timeout")
+		delete(additionalProperties, "dry_run")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

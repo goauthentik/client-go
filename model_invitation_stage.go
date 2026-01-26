@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,6 +34,7 @@ type InvitationStage struct {
 	FlowSet       []FlowSet `json:"flow_set"`
 	// If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given.
 	ContinueFlowWithoutInvitation *bool `json:"continue_flow_without_invitation,omitempty"`
+	AdditionalProperties          map[string]interface{}
 }
 
 type _InvitationStage InvitationStage
@@ -283,6 +283,11 @@ func (o InvitationStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ContinueFlowWithoutInvitation) {
 		toSerialize["continue_flow_without_invitation"] = o.ContinueFlowWithoutInvitation
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -316,15 +321,27 @@ func (o *InvitationStage) UnmarshalJSON(data []byte) (err error) {
 
 	varInvitationStage := _InvitationStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInvitationStage)
+	err = json.Unmarshal(data, &varInvitationStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InvitationStage(varInvitationStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "continue_flow_without_invitation")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

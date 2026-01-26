@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &CaptchaChallengeResponseRequest{}
 
 // CaptchaChallengeResponseRequest Validate captcha token
 type CaptchaChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	Token     string  `json:"token"`
+	Component            *string `json:"component,omitempty"`
+	Token                string  `json:"token"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CaptchaChallengeResponseRequest CaptchaChallengeResponseRequest
@@ -120,6 +120,11 @@ func (o CaptchaChallengeResponseRequest) ToMap() (map[string]interface{}, error)
 		toSerialize["component"] = o.Component
 	}
 	toSerialize["token"] = o.Token
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -147,15 +152,21 @@ func (o *CaptchaChallengeResponseRequest) UnmarshalJSON(data []byte) (err error)
 
 	varCaptchaChallengeResponseRequest := _CaptchaChallengeResponseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCaptchaChallengeResponseRequest)
+	err = json.Unmarshal(data, &varCaptchaChallengeResponseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CaptchaChallengeResponseRequest(varCaptchaChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "token")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

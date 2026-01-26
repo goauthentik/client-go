@@ -75,7 +75,10 @@ type PatchedLDAPSourceRequest struct {
 	DeleteNotFoundObjects *bool `json:"delete_not_found_objects,omitempty"`
 	// When to trigger sync for outgoing providers
 	SyncOutgoingTriggerMode *SyncOutgoingTriggerModeEnum `json:"sync_outgoing_trigger_mode,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
+
+type _PatchedLDAPSourceRequest PatchedLDAPSourceRequest
 
 // NewPatchedLDAPSourceRequest instantiates a new PatchedLDAPSourceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -1384,7 +1387,67 @@ func (o PatchedLDAPSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SyncOutgoingTriggerMode) {
 		toSerialize["sync_outgoing_trigger_mode"] = o.SyncOutgoingTriggerMode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedLDAPSourceRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedLDAPSourceRequest := _PatchedLDAPSourceRequest{}
+
+	err = json.Unmarshal(data, &varPatchedLDAPSourceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedLDAPSourceRequest(varPatchedLDAPSourceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "user_matching_mode")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "icon")
+		delete(additionalProperties, "server_uri")
+		delete(additionalProperties, "peer_certificate")
+		delete(additionalProperties, "client_certificate")
+		delete(additionalProperties, "bind_cn")
+		delete(additionalProperties, "bind_password")
+		delete(additionalProperties, "start_tls")
+		delete(additionalProperties, "sni")
+		delete(additionalProperties, "base_dn")
+		delete(additionalProperties, "additional_user_dn")
+		delete(additionalProperties, "additional_group_dn")
+		delete(additionalProperties, "user_object_filter")
+		delete(additionalProperties, "group_object_filter")
+		delete(additionalProperties, "group_membership_field")
+		delete(additionalProperties, "user_membership_attribute")
+		delete(additionalProperties, "object_uniqueness_field")
+		delete(additionalProperties, "password_login_update_internal_password")
+		delete(additionalProperties, "sync_users")
+		delete(additionalProperties, "sync_users_password")
+		delete(additionalProperties, "sync_groups")
+		delete(additionalProperties, "sync_parent_group")
+		delete(additionalProperties, "lookup_groups_from_user")
+		delete(additionalProperties, "delete_not_found_objects")
+		delete(additionalProperties, "sync_outgoing_trigger_mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedLDAPSourceRequest struct {

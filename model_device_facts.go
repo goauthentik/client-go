@@ -20,16 +20,19 @@ var _ MappedNullable = &DeviceFacts{}
 
 // DeviceFacts struct for DeviceFacts
 type DeviceFacts struct {
-	Os        NullableOperatingSystem `json:"os,omitempty"`
-	Disks     []Disk                  `json:"disks,omitempty"`
-	Network   NullableNetwork         `json:"network,omitempty"`
-	Hardware  NullableHardware        `json:"hardware,omitempty"`
-	Software  []Software              `json:"software,omitempty"`
-	Processes []Process               `json:"processes,omitempty"`
-	Users     []DeviceUser            `json:"users,omitempty"`
-	Groups    []DeviceGroup           `json:"groups,omitempty"`
-	Vendor    map[string]interface{}  `json:"vendor,omitempty"`
+	Os                   NullableOperatingSystem `json:"os,omitempty"`
+	Disks                []Disk                  `json:"disks,omitempty"`
+	Network              NullableNetwork         `json:"network,omitempty"`
+	Hardware             NullableHardware        `json:"hardware,omitempty"`
+	Software             []Software              `json:"software,omitempty"`
+	Processes            []Process               `json:"processes,omitempty"`
+	Users                []DeviceUser            `json:"users,omitempty"`
+	Groups               []DeviceGroup           `json:"groups,omitempty"`
+	Vendor               map[string]interface{}  `json:"vendor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeviceFacts DeviceFacts
 
 // NewDeviceFacts instantiates a new DeviceFacts object
 // This constructor will assign default values to properties that have it defined,
@@ -411,7 +414,41 @@ func (o DeviceFacts) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Vendor) {
 		toSerialize["vendor"] = o.Vendor
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeviceFacts) UnmarshalJSON(data []byte) (err error) {
+	varDeviceFacts := _DeviceFacts{}
+
+	err = json.Unmarshal(data, &varDeviceFacts)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceFacts(varDeviceFacts)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "os")
+		delete(additionalProperties, "disks")
+		delete(additionalProperties, "network")
+		delete(additionalProperties, "hardware")
+		delete(additionalProperties, "software")
+		delete(additionalProperties, "processes")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "groups")
+		delete(additionalProperties, "vendor")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeviceFacts struct {

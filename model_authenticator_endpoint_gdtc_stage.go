@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,9 +33,10 @@ type AuthenticatorEndpointGDTCStage struct {
 	MetaModelName string    `json:"meta_model_name"`
 	FlowSet       []FlowSet `json:"flow_set"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString         `json:"configure_flow,omitempty"`
-	FriendlyName  *string                `json:"friendly_name,omitempty"`
-	Credentials   map[string]interface{} `json:"credentials"`
+	ConfigureFlow        NullableString         `json:"configure_flow,omitempty"`
+	FriendlyName         *string                `json:"friendly_name,omitempty"`
+	Credentials          map[string]interface{} `json:"credentials"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorEndpointGDTCStage AuthenticatorEndpointGDTCStage
@@ -357,6 +357,11 @@ func (o AuthenticatorEndpointGDTCStage) ToMap() (map[string]interface{}, error) 
 		toSerialize["friendly_name"] = o.FriendlyName
 	}
 	toSerialize["credentials"] = o.Credentials
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -391,15 +396,29 @@ func (o *AuthenticatorEndpointGDTCStage) UnmarshalJSON(data []byte) (err error) 
 
 	varAuthenticatorEndpointGDTCStage := _AuthenticatorEndpointGDTCStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorEndpointGDTCStage)
+	err = json.Unmarshal(data, &varAuthenticatorEndpointGDTCStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorEndpointGDTCStage(varAuthenticatorEndpointGDTCStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "credentials")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

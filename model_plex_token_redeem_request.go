@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &PlexTokenRedeemRequest{}
 
 // PlexTokenRedeemRequest Serializer to redeem a plex token
 type PlexTokenRedeemRequest struct {
-	PlexToken string `json:"plex_token"`
+	PlexToken            string `json:"plex_token"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PlexTokenRedeemRequest PlexTokenRedeemRequest
@@ -80,6 +80,11 @@ func (o PlexTokenRedeemRequest) MarshalJSON() ([]byte, error) {
 func (o PlexTokenRedeemRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["plex_token"] = o.PlexToken
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *PlexTokenRedeemRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varPlexTokenRedeemRequest := _PlexTokenRedeemRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPlexTokenRedeemRequest)
+	err = json.Unmarshal(data, &varPlexTokenRedeemRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PlexTokenRedeemRequest(varPlexTokenRedeemRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "plex_token")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

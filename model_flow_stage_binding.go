@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,6 +34,7 @@ type FlowStageBinding struct {
 	PolicyEngineMode   *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.
 	InvalidResponseAction *InvalidResponseActionEnum `json:"invalid_response_action,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _FlowStageBinding FlowStageBinding
@@ -362,6 +362,11 @@ func (o FlowStageBinding) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InvalidResponseAction) {
 		toSerialize["invalid_response_action"] = o.InvalidResponseAction
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -394,15 +399,29 @@ func (o *FlowStageBinding) UnmarshalJSON(data []byte) (err error) {
 
 	varFlowStageBinding := _FlowStageBinding{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowStageBinding)
+	err = json.Unmarshal(data, &varFlowStageBinding)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlowStageBinding(varFlowStageBinding)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "policybindingmodel_ptr_id")
+		delete(additionalProperties, "target")
+		delete(additionalProperties, "stage")
+		delete(additionalProperties, "stage_obj")
+		delete(additionalProperties, "evaluate_on_plan")
+		delete(additionalProperties, "re_evaluate_policies")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "invalid_response_action")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

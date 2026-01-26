@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &AuthenticatorWebAuthnChallengeResponseRequest{}
 
 // AuthenticatorWebAuthnChallengeResponseRequest WebAuthn Challenge response
 type AuthenticatorWebAuthnChallengeResponseRequest struct {
-	Component *string                `json:"component,omitempty"`
-	Response  map[string]interface{} `json:"response"`
+	Component            *string                `json:"component,omitempty"`
+	Response             map[string]interface{} `json:"response"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorWebAuthnChallengeResponseRequest AuthenticatorWebAuthnChallengeResponseRequest
@@ -120,6 +120,11 @@ func (o AuthenticatorWebAuthnChallengeResponseRequest) ToMap() (map[string]inter
 		toSerialize["component"] = o.Component
 	}
 	toSerialize["response"] = o.Response
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -147,15 +152,21 @@ func (o *AuthenticatorWebAuthnChallengeResponseRequest) UnmarshalJSON(data []byt
 
 	varAuthenticatorWebAuthnChallengeResponseRequest := _AuthenticatorWebAuthnChallengeResponseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorWebAuthnChallengeResponseRequest)
+	err = json.Unmarshal(data, &varAuthenticatorWebAuthnChallengeResponseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorWebAuthnChallengeResponseRequest(varAuthenticatorWebAuthnChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &AuthenticatorEmailChallenge{}
 
 // AuthenticatorEmailChallenge Authenticator Email Setup challenge
 type AuthenticatorEmailChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	Email             NullableString            `json:"email,omitempty"`
-	EmailRequired     *bool                     `json:"email_required,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	Email                NullableString            `json:"email,omitempty"`
+	EmailRequired        *bool                     `json:"email_required,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorEmailChallenge AuthenticatorEmailChallenge
@@ -306,6 +306,11 @@ func (o AuthenticatorEmailChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EmailRequired) {
 		toSerialize["email_required"] = o.EmailRequired
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -334,15 +339,26 @@ func (o *AuthenticatorEmailChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorEmailChallenge := _AuthenticatorEmailChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorEmailChallenge)
+	err = json.Unmarshal(data, &varAuthenticatorEmailChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorEmailChallenge(varAuthenticatorEmailChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "email_required")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

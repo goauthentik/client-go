@@ -24,8 +24,11 @@ type PatchedScheduleRequest struct {
 	// When to schedule tasks
 	Crontab *string `json:"crontab,omitempty"`
 	// Pause this schedule
-	Paused *bool `json:"paused,omitempty"`
+	Paused               *bool `json:"paused,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedScheduleRequest PatchedScheduleRequest
 
 // NewPatchedScheduleRequest instantiates a new PatchedScheduleRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -170,7 +173,35 @@ func (o PatchedScheduleRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Paused) {
 		toSerialize["paused"] = o.Paused
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedScheduleRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedScheduleRequest := _PatchedScheduleRequest{}
+
+	err = json.Unmarshal(data, &varPatchedScheduleRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedScheduleRequest(varPatchedScheduleRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "rel_obj_id")
+		delete(additionalProperties, "crontab")
+		delete(additionalProperties, "paused")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedScheduleRequest struct {

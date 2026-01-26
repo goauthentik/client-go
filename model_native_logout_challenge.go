@@ -20,17 +20,20 @@ var _ MappedNullable = &NativeLogoutChallenge{}
 
 // NativeLogoutChallenge Challenge for native browser logout
 type NativeLogoutChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PostUrl        *string                   `json:"post_url,omitempty"`
-	SamlRequest    *string                   `json:"saml_request,omitempty"`
-	RelayState     *string                   `json:"relay_state,omitempty"`
-	ProviderName   *string                   `json:"provider_name,omitempty"`
-	Binding        *string                   `json:"binding,omitempty"`
-	RedirectUrl    *string                   `json:"redirect_url,omitempty"`
-	IsComplete     *bool                     `json:"is_complete,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PostUrl              *string                   `json:"post_url,omitempty"`
+	SamlRequest          *string                   `json:"saml_request,omitempty"`
+	RelayState           *string                   `json:"relay_state,omitempty"`
+	ProviderName         *string                   `json:"provider_name,omitempty"`
+	Binding              *string                   `json:"binding,omitempty"`
+	RedirectUrl          *string                   `json:"redirect_url,omitempty"`
+	IsComplete           *bool                     `json:"is_complete,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NativeLogoutChallenge NativeLogoutChallenge
 
 // NewNativeLogoutChallenge instantiates a new NativeLogoutChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -417,7 +420,42 @@ func (o NativeLogoutChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsComplete) {
 		toSerialize["is_complete"] = o.IsComplete
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NativeLogoutChallenge) UnmarshalJSON(data []byte) (err error) {
+	varNativeLogoutChallenge := _NativeLogoutChallenge{}
+
+	err = json.Unmarshal(data, &varNativeLogoutChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NativeLogoutChallenge(varNativeLogoutChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "post_url")
+		delete(additionalProperties, "saml_request")
+		delete(additionalProperties, "relay_state")
+		delete(additionalProperties, "provider_name")
+		delete(additionalProperties, "binding")
+		delete(additionalProperties, "redirect_url")
+		delete(additionalProperties, "is_complete")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNativeLogoutChallenge struct {

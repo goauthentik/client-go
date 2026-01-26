@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &RoleAssignedObjectPermission{}
 
 // RoleAssignedObjectPermission Roles assigned object permission serializer
 type RoleAssignedObjectPermission struct {
-	RolePk            string                 `json:"role_pk"`
-	Name              string                 `json:"name"`
-	ObjectPermissions []RoleObjectPermission `json:"object_permissions"`
-	ModelPermissions  []RoleModelPermission  `json:"model_permissions"`
+	RolePk               string                 `json:"role_pk"`
+	Name                 string                 `json:"name"`
+	ObjectPermissions    []RoleObjectPermission `json:"object_permissions"`
+	ModelPermissions     []RoleModelPermission  `json:"model_permissions"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RoleAssignedObjectPermission RoleAssignedObjectPermission
@@ -161,6 +161,11 @@ func (o RoleAssignedObjectPermission) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["object_permissions"] = o.ObjectPermissions
 	toSerialize["model_permissions"] = o.ModelPermissions
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *RoleAssignedObjectPermission) UnmarshalJSON(data []byte) (err error) {
 
 	varRoleAssignedObjectPermission := _RoleAssignedObjectPermission{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRoleAssignedObjectPermission)
+	err = json.Unmarshal(data, &varRoleAssignedObjectPermission)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RoleAssignedObjectPermission(varRoleAssignedObjectPermission)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "role_pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "object_permissions")
+		delete(additionalProperties, "model_permissions")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

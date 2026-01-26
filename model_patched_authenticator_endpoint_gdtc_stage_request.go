@@ -22,10 +22,13 @@ var _ MappedNullable = &PatchedAuthenticatorEndpointGDTCStageRequest{}
 type PatchedAuthenticatorEndpointGDTCStageRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString         `json:"configure_flow,omitempty"`
-	FriendlyName  *string                `json:"friendly_name,omitempty"`
-	Credentials   map[string]interface{} `json:"credentials,omitempty"`
+	ConfigureFlow        NullableString         `json:"configure_flow,omitempty"`
+	FriendlyName         *string                `json:"friendly_name,omitempty"`
+	Credentials          map[string]interface{} `json:"credentials,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedAuthenticatorEndpointGDTCStageRequest PatchedAuthenticatorEndpointGDTCStageRequest
 
 // NewPatchedAuthenticatorEndpointGDTCStageRequest instantiates a new PatchedAuthenticatorEndpointGDTCStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -205,7 +208,36 @@ func (o PatchedAuthenticatorEndpointGDTCStageRequest) ToMap() (map[string]interf
 	if !IsNil(o.Credentials) {
 		toSerialize["credentials"] = o.Credentials
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedAuthenticatorEndpointGDTCStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedAuthenticatorEndpointGDTCStageRequest := _PatchedAuthenticatorEndpointGDTCStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedAuthenticatorEndpointGDTCStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedAuthenticatorEndpointGDTCStageRequest(varPatchedAuthenticatorEndpointGDTCStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "credentials")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedAuthenticatorEndpointGDTCStageRequest struct {

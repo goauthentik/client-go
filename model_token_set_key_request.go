@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &TokenSetKeyRequest{}
 
 // TokenSetKeyRequest Set token's key
 type TokenSetKeyRequest struct {
-	Key string `json:"key"`
+	Key                  string `json:"key"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TokenSetKeyRequest TokenSetKeyRequest
@@ -80,6 +80,11 @@ func (o TokenSetKeyRequest) MarshalJSON() ([]byte, error) {
 func (o TokenSetKeyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *TokenSetKeyRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varTokenSetKeyRequest := _TokenSetKeyRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTokenSetKeyRequest)
+	err = json.Unmarshal(data, &varTokenSetKeyRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TokenSetKeyRequest(varTokenSetKeyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

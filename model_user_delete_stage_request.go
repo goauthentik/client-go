@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &UserDeleteStageRequest{}
 
 // UserDeleteStageRequest UserDeleteStage Serializer
 type UserDeleteStageRequest struct {
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserDeleteStageRequest UserDeleteStageRequest
@@ -80,6 +80,11 @@ func (o UserDeleteStageRequest) MarshalJSON() ([]byte, error) {
 func (o UserDeleteStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *UserDeleteStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varUserDeleteStageRequest := _UserDeleteStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserDeleteStageRequest)
+	err = json.Unmarshal(data, &varUserDeleteStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserDeleteStageRequest(varUserDeleteStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

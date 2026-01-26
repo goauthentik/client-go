@@ -22,8 +22,11 @@ var _ MappedNullable = &PatchedGoogleEndpointDeviceRequest{}
 type PatchedGoogleEndpointDeviceRequest struct {
 	Pk *string `json:"pk,omitempty"`
 	// The human-readable name of this device.
-	Name *string `json:"name,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedGoogleEndpointDeviceRequest PatchedGoogleEndpointDeviceRequest
 
 // NewPatchedGoogleEndpointDeviceRequest instantiates a new PatchedGoogleEndpointDeviceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o PatchedGoogleEndpointDeviceRequest) ToMap() (map[string]interface{}, err
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedGoogleEndpointDeviceRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedGoogleEndpointDeviceRequest := _PatchedGoogleEndpointDeviceRequest{}
+
+	err = json.Unmarshal(data, &varPatchedGoogleEndpointDeviceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedGoogleEndpointDeviceRequest(varPatchedGoogleEndpointDeviceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedGoogleEndpointDeviceRequest struct {

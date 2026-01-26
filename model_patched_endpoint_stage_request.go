@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedEndpointStageRequest{}
 
 // PatchedEndpointStageRequest EndpointStage Serializer
 type PatchedEndpointStageRequest struct {
-	Name      *string        `json:"name,omitempty"`
-	Connector *string        `json:"connector,omitempty"`
-	Mode      *StageModeEnum `json:"mode,omitempty"`
+	Name                 *string        `json:"name,omitempty"`
+	Connector            *string        `json:"connector,omitempty"`
+	Mode                 *StageModeEnum `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedEndpointStageRequest PatchedEndpointStageRequest
 
 // NewPatchedEndpointStageRequest instantiates a new PatchedEndpointStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedEndpointStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedEndpointStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedEndpointStageRequest := _PatchedEndpointStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedEndpointStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedEndpointStageRequest(varPatchedEndpointStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "connector")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedEndpointStageRequest struct {

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,14 +21,15 @@ var _ MappedNullable = &EndpointRequest{}
 
 // EndpointRequest Endpoint Serializer
 type EndpointRequest struct {
-	Name               string                 `json:"name"`
-	Provider           int32                  `json:"provider"`
-	Protocol           ProtocolEnum           `json:"protocol"`
-	Host               string                 `json:"host"`
-	Settings           map[string]interface{} `json:"settings,omitempty"`
-	PropertyMappings   []string               `json:"property_mappings,omitempty"`
-	AuthMode           EndpointAuthModeEnum   `json:"auth_mode"`
-	MaximumConnections *int32                 `json:"maximum_connections,omitempty"`
+	Name                 string                 `json:"name"`
+	Provider             int32                  `json:"provider"`
+	Protocol             ProtocolEnum           `json:"protocol"`
+	Host                 string                 `json:"host"`
+	Settings             map[string]interface{} `json:"settings,omitempty"`
+	PropertyMappings     []string               `json:"property_mappings,omitempty"`
+	AuthMode             EndpointAuthModeEnum   `json:"auth_mode"`
+	MaximumConnections   *int32                 `json:"maximum_connections,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EndpointRequest EndpointRequest
@@ -296,6 +296,11 @@ func (o EndpointRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaximumConnections) {
 		toSerialize["maximum_connections"] = o.MaximumConnections
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -327,15 +332,27 @@ func (o *EndpointRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEndpointRequest := _EndpointRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpointRequest)
+	err = json.Unmarshal(data, &varEndpointRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EndpointRequest(varEndpointRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "host")
+		delete(additionalProperties, "settings")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "auth_mode")
+		delete(additionalProperties, "maximum_connections")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

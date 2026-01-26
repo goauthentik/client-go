@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &PasswordChallenge{}
 
 // PasswordChallenge Password challenge UI fields
 type PasswordChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	RecoveryUrl       *string                   `json:"recovery_url,omitempty"`
-	AllowShowPassword *bool                     `json:"allow_show_password,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	RecoveryUrl          *string                   `json:"recovery_url,omitempty"`
+	AllowShowPassword    *bool                     `json:"allow_show_password,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PasswordChallenge PasswordChallenge
@@ -295,6 +295,11 @@ func (o PasswordChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AllowShowPassword) {
 		toSerialize["allow_show_password"] = o.AllowShowPassword
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -323,15 +328,26 @@ func (o *PasswordChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varPasswordChallenge := _PasswordChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPasswordChallenge)
+	err = json.Unmarshal(data, &varPasswordChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PasswordChallenge(varPasswordChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "recovery_url")
+		delete(additionalProperties, "allow_show_password")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -44,7 +43,8 @@ type UserLoginStage struct {
 	// Bind sessions created by this stage to the configured GeoIP location
 	GeoipBinding *GeoipBindingEnum `json:"geoip_binding,omitempty"`
 	// When set to a non-zero value, authentik will save a cookie with a longer expiry,to remember the device the user is logging in from. (Format: hours=-1;minutes=-2;seconds=-3)
-	RememberDevice *string `json:"remember_device,omitempty"`
+	RememberDevice       *string `json:"remember_device,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserLoginStage UserLoginStage
@@ -468,6 +468,11 @@ func (o UserLoginStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RememberDevice) {
 		toSerialize["remember_device"] = o.RememberDevice
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -501,15 +506,32 @@ func (o *UserLoginStage) UnmarshalJSON(data []byte) (err error) {
 
 	varUserLoginStage := _UserLoginStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserLoginStage)
+	err = json.Unmarshal(data, &varUserLoginStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserLoginStage(varUserLoginStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "session_duration")
+		delete(additionalProperties, "terminate_other_sessions")
+		delete(additionalProperties, "remember_me_offset")
+		delete(additionalProperties, "network_binding")
+		delete(additionalProperties, "geoip_binding")
+		delete(additionalProperties, "remember_device")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &OAuth2ProviderSetupURLs{}
 
 // OAuth2ProviderSetupURLs OAuth2 Provider Metadata serializer
 type OAuth2ProviderSetupURLs struct {
-	Issuer       string `json:"issuer"`
-	Authorize    string `json:"authorize"`
-	Token        string `json:"token"`
-	UserInfo     string `json:"user_info"`
-	ProviderInfo string `json:"provider_info"`
-	Logout       string `json:"logout"`
-	Jwks         string `json:"jwks"`
+	Issuer               string `json:"issuer"`
+	Authorize            string `json:"authorize"`
+	Token                string `json:"token"`
+	UserInfo             string `json:"user_info"`
+	ProviderInfo         string `json:"provider_info"`
+	Logout               string `json:"logout"`
+	Jwks                 string `json:"jwks"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OAuth2ProviderSetupURLs OAuth2ProviderSetupURLs
@@ -242,6 +242,11 @@ func (o OAuth2ProviderSetupURLs) ToMap() (map[string]interface{}, error) {
 	toSerialize["provider_info"] = o.ProviderInfo
 	toSerialize["logout"] = o.Logout
 	toSerialize["jwks"] = o.Jwks
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -275,15 +280,26 @@ func (o *OAuth2ProviderSetupURLs) UnmarshalJSON(data []byte) (err error) {
 
 	varOAuth2ProviderSetupURLs := _OAuth2ProviderSetupURLs{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOAuth2ProviderSetupURLs)
+	err = json.Unmarshal(data, &varOAuth2ProviderSetupURLs)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OAuth2ProviderSetupURLs(varOAuth2ProviderSetupURLs)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "issuer")
+		delete(additionalProperties, "authorize")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "user_info")
+		delete(additionalProperties, "provider_info")
+		delete(additionalProperties, "logout")
+		delete(additionalProperties, "jwks")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

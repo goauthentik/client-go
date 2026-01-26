@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,10 +22,11 @@ var _ MappedNullable = &StaticDevice{}
 // StaticDevice Serializer for static authenticator devices
 type StaticDevice struct {
 	// The human-readable name of this device.
-	Name     string              `json:"name"`
-	TokenSet []StaticDeviceToken `json:"token_set"`
-	Pk       int32               `json:"pk"`
-	User     PartialUser         `json:"user"`
+	Name                 string              `json:"name"`
+	TokenSet             []StaticDeviceToken `json:"token_set"`
+	Pk                   int32               `json:"pk"`
+	User                 PartialUser         `json:"user"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StaticDevice StaticDevice
@@ -162,6 +162,11 @@ func (o StaticDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize["token_set"] = o.TokenSet
 	toSerialize["pk"] = o.Pk
 	toSerialize["user"] = o.User
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -192,15 +197,23 @@ func (o *StaticDevice) UnmarshalJSON(data []byte) (err error) {
 
 	varStaticDevice := _StaticDevice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStaticDevice)
+	err = json.Unmarshal(data, &varStaticDevice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StaticDevice(varStaticDevice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "token_set")
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

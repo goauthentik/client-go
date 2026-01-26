@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &SyncObjectResult{}
 
 // SyncObjectResult Result of a single object sync
 type SyncObjectResult struct {
-	Messages []LogEvent `json:"messages"`
+	Messages             []LogEvent `json:"messages"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SyncObjectResult SyncObjectResult
@@ -80,6 +80,11 @@ func (o SyncObjectResult) MarshalJSON() ([]byte, error) {
 func (o SyncObjectResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["messages"] = o.Messages
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *SyncObjectResult) UnmarshalJSON(data []byte) (err error) {
 
 	varSyncObjectResult := _SyncObjectResult{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSyncObjectResult)
+	err = json.Unmarshal(data, &varSyncObjectResult)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SyncObjectResult(varSyncObjectResult)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "messages")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

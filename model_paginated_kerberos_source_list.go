@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedKerberosSourceList{}
 
 // PaginatedKerberosSourceList struct for PaginatedKerberosSourceList
 type PaginatedKerberosSourceList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []KerberosSource       `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []KerberosSource       `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedKerberosSourceList PaginatedKerberosSourceList
@@ -134,6 +134,11 @@ func (o PaginatedKerberosSourceList) ToMap() (map[string]interface{}, error) {
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedKerberosSourceList) UnmarshalJSON(data []byte) (err error) {
 
 	varPaginatedKerberosSourceList := _PaginatedKerberosSourceList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedKerberosSourceList)
+	err = json.Unmarshal(data, &varPaginatedKerberosSourceList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedKerberosSourceList(varPaginatedKerberosSourceList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

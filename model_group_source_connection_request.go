@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &GroupSourceConnectionRequest{}
 
 // GroupSourceConnectionRequest Group Source Connection
 type GroupSourceConnectionRequest struct {
-	Group      string `json:"group"`
-	Source     string `json:"source"`
-	Identifier string `json:"identifier"`
+	Group                string `json:"group"`
+	Source               string `json:"source"`
+	Identifier           string `json:"identifier"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GroupSourceConnectionRequest GroupSourceConnectionRequest
@@ -134,6 +134,11 @@ func (o GroupSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["group"] = o.Group
 	toSerialize["source"] = o.Source
 	toSerialize["identifier"] = o.Identifier
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *GroupSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varGroupSourceConnectionRequest := _GroupSourceConnectionRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupSourceConnectionRequest)
+	err = json.Unmarshal(data, &varGroupSourceConnectionRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GroupSourceConnectionRequest(varGroupSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

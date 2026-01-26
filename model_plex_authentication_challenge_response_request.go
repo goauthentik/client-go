@@ -20,8 +20,11 @@ var _ MappedNullable = &PlexAuthenticationChallengeResponseRequest{}
 
 // PlexAuthenticationChallengeResponseRequest Pseudo class for plex response
 type PlexAuthenticationChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PlexAuthenticationChallengeResponseRequest PlexAuthenticationChallengeResponseRequest
 
 // NewPlexAuthenticationChallengeResponseRequest instantiates a new PlexAuthenticationChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o PlexAuthenticationChallengeResponseRequest) ToMap() (map[string]interfac
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PlexAuthenticationChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varPlexAuthenticationChallengeResponseRequest := _PlexAuthenticationChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varPlexAuthenticationChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PlexAuthenticationChallengeResponseRequest(varPlexAuthenticationChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePlexAuthenticationChallengeResponseRequest struct {

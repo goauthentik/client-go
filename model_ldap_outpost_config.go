@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -40,7 +39,8 @@ type LDAPOutpostConfig struct {
 	SearchMode     *LDAPAPIAccessMode `json:"search_mode,omitempty"`
 	BindMode       *LDAPAPIAccessMode `json:"bind_mode,omitempty"`
 	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
-	MfaSupport *bool `json:"mfa_support,omitempty"`
+	MfaSupport           *bool `json:"mfa_support,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _LDAPOutpostConfig LDAPOutpostConfig
@@ -495,6 +495,11 @@ func (o LDAPOutpostConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MfaSupport) {
 		toSerialize["mfa_support"] = o.MfaSupport
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -526,15 +531,32 @@ func (o *LDAPOutpostConfig) UnmarshalJSON(data []byte) (err error) {
 
 	varLDAPOutpostConfig := _LDAPOutpostConfig{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLDAPOutpostConfig)
+	err = json.Unmarshal(data, &varLDAPOutpostConfig)
 
 	if err != nil {
 		return err
 	}
 
 	*o = LDAPOutpostConfig(varLDAPOutpostConfig)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "base_dn")
+		delete(additionalProperties, "bind_flow_slug")
+		delete(additionalProperties, "unbind_flow_slug")
+		delete(additionalProperties, "application_slug")
+		delete(additionalProperties, "certificate")
+		delete(additionalProperties, "tls_server_name")
+		delete(additionalProperties, "uid_start_number")
+		delete(additionalProperties, "gid_start_number")
+		delete(additionalProperties, "search_mode")
+		delete(additionalProperties, "bind_mode")
+		delete(additionalProperties, "mfa_support")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

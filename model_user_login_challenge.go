@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &UserLoginChallenge{}
 
 // UserLoginChallenge Empty challenge
 type UserLoginChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserLoginChallenge UserLoginChallenge
@@ -219,6 +219,11 @@ func (o UserLoginChallenge) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["pending_user"] = o.PendingUser
 	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,24 @@ func (o *UserLoginChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varUserLoginChallenge := _UserLoginChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserLoginChallenge)
+	err = json.Unmarshal(data, &varUserLoginChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserLoginChallenge(varUserLoginChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

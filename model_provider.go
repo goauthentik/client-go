@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -46,7 +45,8 @@ type Provider struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName string `json:"meta_model_name"`
+	MetaModelName        string `json:"meta_model_name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Provider Provider
@@ -471,6 +471,11 @@ func (o Provider) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -509,15 +514,33 @@ func (o *Provider) UnmarshalJSON(data []byte) (err error) {
 
 	varProvider := _Provider{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProvider)
+	err = json.Unmarshal(data, &varProvider)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Provider(varProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "invalidation_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "assigned_application_slug")
+		delete(additionalProperties, "assigned_application_name")
+		delete(additionalProperties, "assigned_backchannel_application_slug")
+		delete(additionalProperties, "assigned_backchannel_application_name")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

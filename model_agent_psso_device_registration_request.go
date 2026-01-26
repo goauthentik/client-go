@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &AgentPSSODeviceRegistrationRequest{}
 
 // AgentPSSODeviceRegistrationRequest Register Apple device via Platform SSO
 type AgentPSSODeviceRegistrationRequest struct {
-	DeviceSigningKey    string `json:"device_signing_key"`
-	DeviceEncryptionKey string `json:"device_encryption_key"`
-	SignKeyId           string `json:"sign_key_id"`
-	EncKeyId            string `json:"enc_key_id"`
+	DeviceSigningKey     string `json:"device_signing_key"`
+	DeviceEncryptionKey  string `json:"device_encryption_key"`
+	SignKeyId            string `json:"sign_key_id"`
+	EncKeyId             string `json:"enc_key_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AgentPSSODeviceRegistrationRequest AgentPSSODeviceRegistrationRequest
@@ -161,6 +161,11 @@ func (o AgentPSSODeviceRegistrationRequest) ToMap() (map[string]interface{}, err
 	toSerialize["device_encryption_key"] = o.DeviceEncryptionKey
 	toSerialize["sign_key_id"] = o.SignKeyId
 	toSerialize["enc_key_id"] = o.EncKeyId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *AgentPSSODeviceRegistrationRequest) UnmarshalJSON(data []byte) (err err
 
 	varAgentPSSODeviceRegistrationRequest := _AgentPSSODeviceRegistrationRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAgentPSSODeviceRegistrationRequest)
+	err = json.Unmarshal(data, &varAgentPSSODeviceRegistrationRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AgentPSSODeviceRegistrationRequest(varAgentPSSODeviceRegistrationRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device_signing_key")
+		delete(additionalProperties, "device_encryption_key")
+		delete(additionalProperties, "sign_key_id")
+		delete(additionalProperties, "enc_key_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

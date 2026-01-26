@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,11 +22,12 @@ var _ MappedNullable = &DeviceFactSnapshot{}
 
 // DeviceFactSnapshot struct for DeviceFactSnapshot
 type DeviceFactSnapshot struct {
-	Data       DeviceFacts  `json:"data"`
-	Connection string       `json:"connection"`
-	Created    time.Time    `json:"created"`
-	Expires    NullableTime `json:"expires"`
-	Vendor     VendorEnum   `json:"vendor"`
+	Data                 DeviceFacts  `json:"data"`
+	Connection           string       `json:"connection"`
+	Created              time.Time    `json:"created"`
+	Expires              NullableTime `json:"expires"`
+	Vendor               VendorEnum   `json:"vendor"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeviceFactSnapshot DeviceFactSnapshot
@@ -191,6 +191,11 @@ func (o DeviceFactSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize["created"] = o.Created
 	toSerialize["expires"] = o.Expires.Get()
 	toSerialize["vendor"] = o.Vendor
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -222,15 +227,24 @@ func (o *DeviceFactSnapshot) UnmarshalJSON(data []byte) (err error) {
 
 	varDeviceFactSnapshot := _DeviceFactSnapshot{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeviceFactSnapshot)
+	err = json.Unmarshal(data, &varDeviceFactSnapshot)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeviceFactSnapshot(varDeviceFactSnapshot)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "connection")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "vendor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

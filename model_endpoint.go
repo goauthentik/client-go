@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -32,8 +31,9 @@ type Endpoint struct {
 	PropertyMappings []string               `json:"property_mappings,omitempty"`
 	AuthMode         EndpointAuthModeEnum   `json:"auth_mode"`
 	// Build actual launch URL (the provider itself does not have one, just individual endpoints)
-	LaunchUrl          NullableString `json:"launch_url"`
-	MaximumConnections *int32         `json:"maximum_connections,omitempty"`
+	LaunchUrl            NullableString `json:"launch_url"`
+	MaximumConnections   *int32         `json:"maximum_connections,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Endpoint Endpoint
@@ -380,6 +380,11 @@ func (o Endpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaximumConnections) {
 		toSerialize["maximum_connections"] = o.MaximumConnections
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -414,15 +419,30 @@ func (o *Endpoint) UnmarshalJSON(data []byte) (err error) {
 
 	varEndpoint := _Endpoint{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpoint)
+	err = json.Unmarshal(data, &varEndpoint)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Endpoint(varEndpoint)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "provider_obj")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "host")
+		delete(additionalProperties, "settings")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "auth_mode")
+		delete(additionalProperties, "launch_url")
+		delete(additionalProperties, "maximum_connections")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

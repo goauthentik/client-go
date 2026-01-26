@@ -32,8 +32,11 @@ type PatchedUserLoginStageRequest struct {
 	// Bind sessions created by this stage to the configured GeoIP location
 	GeoipBinding *GeoipBindingEnum `json:"geoip_binding,omitempty"`
 	// When set to a non-zero value, authentik will save a cookie with a longer expiry,to remember the device the user is logging in from. (Format: hours=-1;minutes=-2;seconds=-3)
-	RememberDevice *string `json:"remember_device,omitempty"`
+	RememberDevice       *string `json:"remember_device,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedUserLoginStageRequest PatchedUserLoginStageRequest
 
 // NewPatchedUserLoginStageRequest instantiates a new PatchedUserLoginStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -307,7 +310,39 @@ func (o PatchedUserLoginStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RememberDevice) {
 		toSerialize["remember_device"] = o.RememberDevice
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUserLoginStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUserLoginStageRequest := _PatchedUserLoginStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUserLoginStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUserLoginStageRequest(varPatchedUserLoginStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "session_duration")
+		delete(additionalProperties, "terminate_other_sessions")
+		delete(additionalProperties, "remember_me_offset")
+		delete(additionalProperties, "network_binding")
+		delete(additionalProperties, "geoip_binding")
+		delete(additionalProperties, "remember_device")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUserLoginStageRequest struct {

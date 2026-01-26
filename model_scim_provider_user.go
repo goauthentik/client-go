@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &SCIMProviderUser{}
 
 // SCIMProviderUser SCIMProviderUser Serializer
 type SCIMProviderUser struct {
-	Id         string                 `json:"id"`
-	ScimId     string                 `json:"scim_id"`
-	User       int32                  `json:"user"`
-	UserObj    PartialUser            `json:"user_obj"`
-	Provider   int32                  `json:"provider"`
-	Attributes map[string]interface{} `json:"attributes"`
+	Id                   string                 `json:"id"`
+	ScimId               string                 `json:"scim_id"`
+	User                 int32                  `json:"user"`
+	UserObj              PartialUser            `json:"user_obj"`
+	Provider             int32                  `json:"provider"`
+	Attributes           map[string]interface{} `json:"attributes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SCIMProviderUser SCIMProviderUser
@@ -215,6 +215,11 @@ func (o SCIMProviderUser) ToMap() (map[string]interface{}, error) {
 	toSerialize["user_obj"] = o.UserObj
 	toSerialize["provider"] = o.Provider
 	toSerialize["attributes"] = o.Attributes
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,25 @@ func (o *SCIMProviderUser) UnmarshalJSON(data []byte) (err error) {
 
 	varSCIMProviderUser := _SCIMProviderUser{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMProviderUser)
+	err = json.Unmarshal(data, &varSCIMProviderUser)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SCIMProviderUser(varSCIMProviderUser)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "scim_id")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "user_obj")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

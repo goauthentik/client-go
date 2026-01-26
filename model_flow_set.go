@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -40,7 +39,8 @@ type FlowSet struct {
 	ExportUrl string          `json:"export_url"`
 	Layout    *FlowLayoutEnum `json:"layout,omitempty"`
 	// Configure what should happen when a flow denies access to a user.
-	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
+	DeniedAction         *DeniedActionEnum `json:"denied_action,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FlowSet FlowSet
@@ -420,6 +420,11 @@ func (o FlowSet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeniedAction) {
 		toSerialize["denied_action"] = o.DeniedAction
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -454,15 +459,31 @@ func (o *FlowSet) UnmarshalJSON(data []byte) (err error) {
 
 	varFlowSet := _FlowSet{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowSet)
+	err = json.Unmarshal(data, &varFlowSet)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlowSet(varFlowSet)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "policybindingmodel_ptr_id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "designation")
+		delete(additionalProperties, "background_url")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "compatibility_mode")
+		delete(additionalProperties, "export_url")
+		delete(additionalProperties, "layout")
+		delete(additionalProperties, "denied_action")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

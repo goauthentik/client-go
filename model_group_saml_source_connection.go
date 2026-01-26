@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &GroupSAMLSourceConnection{}
 
 // GroupSAMLSourceConnection Group Source Connection
 type GroupSAMLSourceConnection struct {
-	Pk          int32     `json:"pk"`
-	Group       string    `json:"group"`
-	Source      string    `json:"source"`
-	SourceObj   Source    `json:"source_obj"`
-	Identifier  string    `json:"identifier"`
-	Created     time.Time `json:"created"`
-	LastUpdated time.Time `json:"last_updated"`
+	Pk                   int32     `json:"pk"`
+	Group                string    `json:"group"`
+	Source               string    `json:"source"`
+	SourceObj            Source    `json:"source_obj"`
+	Identifier           string    `json:"identifier"`
+	Created              time.Time `json:"created"`
+	LastUpdated          time.Time `json:"last_updated"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GroupSAMLSourceConnection GroupSAMLSourceConnection
@@ -243,6 +243,11 @@ func (o GroupSAMLSourceConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize["identifier"] = o.Identifier
 	toSerialize["created"] = o.Created
 	toSerialize["last_updated"] = o.LastUpdated
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -276,15 +281,26 @@ func (o *GroupSAMLSourceConnection) UnmarshalJSON(data []byte) (err error) {
 
 	varGroupSAMLSourceConnection := _GroupSAMLSourceConnection{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupSAMLSourceConnection)
+	err = json.Unmarshal(data, &varGroupSAMLSourceConnection)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GroupSAMLSourceConnection(varGroupSAMLSourceConnection)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "source_obj")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "last_updated")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

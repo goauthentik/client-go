@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &PropertyMappingTestResult{}
 
 // PropertyMappingTestResult Result of a Property-mapping test
 type PropertyMappingTestResult struct {
-	Result     string `json:"result"`
-	Successful bool   `json:"successful"`
+	Result               string `json:"result"`
+	Successful           bool   `json:"successful"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PropertyMappingTestResult PropertyMappingTestResult
@@ -107,6 +107,11 @@ func (o PropertyMappingTestResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["result"] = o.Result
 	toSerialize["successful"] = o.Successful
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *PropertyMappingTestResult) UnmarshalJSON(data []byte) (err error) {
 
 	varPropertyMappingTestResult := _PropertyMappingTestResult{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPropertyMappingTestResult)
+	err = json.Unmarshal(data, &varPropertyMappingTestResult)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PropertyMappingTestResult(varPropertyMappingTestResult)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "result")
+		delete(additionalProperties, "successful")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &EnrollRequest{}
 
 // EnrollRequest Base serializer class which doesn't implement create/update methods
 type EnrollRequest struct {
-	DeviceSerial string `json:"device_serial"`
-	DeviceName   string `json:"device_name"`
+	DeviceSerial         string `json:"device_serial"`
+	DeviceName           string `json:"device_name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnrollRequest EnrollRequest
@@ -107,6 +107,11 @@ func (o EnrollRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["device_serial"] = o.DeviceSerial
 	toSerialize["device_name"] = o.DeviceName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *EnrollRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEnrollRequest := _EnrollRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnrollRequest)
+	err = json.Unmarshal(data, &varEnrollRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnrollRequest(varEnrollRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device_serial")
+		delete(additionalProperties, "device_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

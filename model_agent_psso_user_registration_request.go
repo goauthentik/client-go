@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,6 +24,7 @@ type AgentPSSOUserRegistrationRequest struct {
 	UserAuth             string `json:"user_auth"`
 	UserSecureEnclaveKey string `json:"user_secure_enclave_key"`
 	EnclaveKeyId         string `json:"enclave_key_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AgentPSSOUserRegistrationRequest AgentPSSOUserRegistrationRequest
@@ -134,6 +134,11 @@ func (o AgentPSSOUserRegistrationRequest) ToMap() (map[string]interface{}, error
 	toSerialize["user_auth"] = o.UserAuth
 	toSerialize["user_secure_enclave_key"] = o.UserSecureEnclaveKey
 	toSerialize["enclave_key_id"] = o.EnclaveKeyId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *AgentPSSOUserRegistrationRequest) UnmarshalJSON(data []byte) (err error
 
 	varAgentPSSOUserRegistrationRequest := _AgentPSSOUserRegistrationRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAgentPSSOUserRegistrationRequest)
+	err = json.Unmarshal(data, &varAgentPSSOUserRegistrationRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AgentPSSOUserRegistrationRequest(varAgentPSSOUserRegistrationRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user_auth")
+		delete(additionalProperties, "user_secure_enclave_key")
+		delete(additionalProperties, "enclave_key_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,7 +25,8 @@ type ScheduleRequest struct {
 	// When to schedule tasks
 	Crontab string `json:"crontab"`
 	// Pause this schedule
-	Paused *bool `json:"paused,omitempty"`
+	Paused               *bool `json:"paused,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ScheduleRequest ScheduleRequest
@@ -165,6 +165,11 @@ func (o ScheduleRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Paused) {
 		toSerialize["paused"] = o.Paused
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -192,15 +197,22 @@ func (o *ScheduleRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varScheduleRequest := _ScheduleRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varScheduleRequest)
+	err = json.Unmarshal(data, &varScheduleRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ScheduleRequest(varScheduleRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "rel_obj_id")
+		delete(additionalProperties, "crontab")
+		delete(additionalProperties, "paused")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

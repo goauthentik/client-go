@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,14 +22,15 @@ var _ MappedNullable = &Notification{}
 
 // Notification Notification Serializer
 type Notification struct {
-	Pk             string         `json:"pk"`
-	Severity       SeverityEnum   `json:"severity"`
-	Body           string         `json:"body"`
-	Hyperlink      NullableString `json:"hyperlink,omitempty"`
-	HyperlinkLabel NullableString `json:"hyperlink_label,omitempty"`
-	Created        time.Time      `json:"created"`
-	Event          *Event         `json:"event,omitempty"`
-	Seen           *bool          `json:"seen,omitempty"`
+	Pk                   string         `json:"pk"`
+	Severity             SeverityEnum   `json:"severity"`
+	Body                 string         `json:"body"`
+	Hyperlink            NullableString `json:"hyperlink,omitempty"`
+	HyperlinkLabel       NullableString `json:"hyperlink_label,omitempty"`
+	Created              time.Time      `json:"created"`
+	Event                *Event         `json:"event,omitempty"`
+	Seen                 *bool          `json:"seen,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Notification Notification
@@ -328,6 +328,11 @@ func (o Notification) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Seen) {
 		toSerialize["seen"] = o.Seen
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -358,15 +363,27 @@ func (o *Notification) UnmarshalJSON(data []byte) (err error) {
 
 	varNotification := _Notification{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotification)
+	err = json.Unmarshal(data, &varNotification)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Notification(varNotification)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "severity")
+		delete(additionalProperties, "body")
+		delete(additionalProperties, "hyperlink")
+		delete(additionalProperties, "hyperlink_label")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "event")
+		delete(additionalProperties, "seen")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

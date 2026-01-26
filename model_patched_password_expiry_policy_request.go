@@ -22,10 +22,13 @@ var _ MappedNullable = &PatchedPasswordExpiryPolicyRequest{}
 type PatchedPasswordExpiryPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
-	Days             *int32 `json:"days,omitempty"`
-	DenyOnly         *bool  `json:"deny_only,omitempty"`
+	ExecutionLogging     *bool  `json:"execution_logging,omitempty"`
+	Days                 *int32 `json:"days,omitempty"`
+	DenyOnly             *bool  `json:"deny_only,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedPasswordExpiryPolicyRequest PatchedPasswordExpiryPolicyRequest
 
 // NewPatchedPasswordExpiryPolicyRequest instantiates a new PatchedPasswordExpiryPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -194,7 +197,36 @@ func (o PatchedPasswordExpiryPolicyRequest) ToMap() (map[string]interface{}, err
 	if !IsNil(o.DenyOnly) {
 		toSerialize["deny_only"] = o.DenyOnly
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedPasswordExpiryPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedPasswordExpiryPolicyRequest := _PatchedPasswordExpiryPolicyRequest{}
+
+	err = json.Unmarshal(data, &varPatchedPasswordExpiryPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedPasswordExpiryPolicyRequest(varPatchedPasswordExpiryPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "days")
+		delete(additionalProperties, "deny_only")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedPasswordExpiryPolicyRequest struct {

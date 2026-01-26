@@ -22,14 +22,17 @@ var _ MappedNullable = &PatchedAuthenticatorDuoStageRequest{}
 type PatchedAuthenticatorDuoStageRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow       NullableString `json:"configure_flow,omitempty"`
-	FriendlyName        *string        `json:"friendly_name,omitempty"`
-	ClientId            *string        `json:"client_id,omitempty"`
-	ClientSecret        *string        `json:"client_secret,omitempty"`
-	ApiHostname         *string        `json:"api_hostname,omitempty"`
-	AdminIntegrationKey *string        `json:"admin_integration_key,omitempty"`
-	AdminSecretKey      *string        `json:"admin_secret_key,omitempty"`
+	ConfigureFlow        NullableString `json:"configure_flow,omitempty"`
+	FriendlyName         *string        `json:"friendly_name,omitempty"`
+	ClientId             *string        `json:"client_id,omitempty"`
+	ClientSecret         *string        `json:"client_secret,omitempty"`
+	ApiHostname          *string        `json:"api_hostname,omitempty"`
+	AdminIntegrationKey  *string        `json:"admin_integration_key,omitempty"`
+	AdminSecretKey       *string        `json:"admin_secret_key,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedAuthenticatorDuoStageRequest PatchedAuthenticatorDuoStageRequest
 
 // NewPatchedAuthenticatorDuoStageRequest instantiates a new PatchedAuthenticatorDuoStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -349,7 +352,40 @@ func (o PatchedAuthenticatorDuoStageRequest) ToMap() (map[string]interface{}, er
 	if !IsNil(o.AdminSecretKey) {
 		toSerialize["admin_secret_key"] = o.AdminSecretKey
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedAuthenticatorDuoStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedAuthenticatorDuoStageRequest := _PatchedAuthenticatorDuoStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedAuthenticatorDuoStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedAuthenticatorDuoStageRequest(varPatchedAuthenticatorDuoStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "client_secret")
+		delete(additionalProperties, "api_hostname")
+		delete(additionalProperties, "admin_integration_key")
+		delete(additionalProperties, "admin_secret_key")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedAuthenticatorDuoStageRequest struct {

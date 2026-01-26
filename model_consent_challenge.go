@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,6 +30,7 @@ type ConsentChallenge struct {
 	Permissions           []ConsentPermission       `json:"permissions"`
 	AdditionalPermissions []ConsentPermission       `json:"additional_permissions"`
 	Token                 string                    `json:"token"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _ConsentChallenge ConsentChallenge
@@ -336,6 +336,11 @@ func (o ConsentChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize["permissions"] = o.Permissions
 	toSerialize["additional_permissions"] = o.AdditionalPermissions
 	toSerialize["token"] = o.Token
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -367,15 +372,28 @@ func (o *ConsentChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varConsentChallenge := _ConsentChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varConsentChallenge)
+	err = json.Unmarshal(data, &varConsentChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ConsentChallenge(varConsentChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "header_text")
+		delete(additionalProperties, "permissions")
+		delete(additionalProperties, "additional_permissions")
+		delete(additionalProperties, "token")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

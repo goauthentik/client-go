@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -42,6 +41,7 @@ type EmailStageRequest struct {
 	RecoveryMaxAttempts   *int32 `json:"recovery_max_attempts,omitempty"`
 	// The time window used to count recent account recovery attempts. If the number of attempts exceed recovery_max_attempts within this period, further attempts will be rate-limited. (Format: hours=1;minutes=2;seconds=3).
 	RecoveryCacheTimeout *string `json:"recovery_cache_timeout,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EmailStageRequest EmailStageRequest
@@ -624,6 +624,11 @@ func (o EmailStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RecoveryCacheTimeout) {
 		toSerialize["recovery_cache_timeout"] = o.RecoveryCacheTimeout
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -651,15 +656,35 @@ func (o *EmailStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEmailStageRequest := _EmailStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEmailStageRequest)
+	err = json.Unmarshal(data, &varEmailStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EmailStageRequest(varEmailStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "use_global_settings")
+		delete(additionalProperties, "host")
+		delete(additionalProperties, "port")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "use_tls")
+		delete(additionalProperties, "use_ssl")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "from_address")
+		delete(additionalProperties, "token_expiry")
+		delete(additionalProperties, "subject")
+		delete(additionalProperties, "template")
+		delete(additionalProperties, "activate_user_on_success")
+		delete(additionalProperties, "recovery_max_attempts")
+		delete(additionalProperties, "recovery_cache_timeout")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

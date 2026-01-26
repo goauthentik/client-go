@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedLDAPOutpostConfigList{}
 
 // PaginatedLDAPOutpostConfigList struct for PaginatedLDAPOutpostConfigList
 type PaginatedLDAPOutpostConfigList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []LDAPOutpostConfig    `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []LDAPOutpostConfig    `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedLDAPOutpostConfigList PaginatedLDAPOutpostConfigList
@@ -134,6 +134,11 @@ func (o PaginatedLDAPOutpostConfigList) ToMap() (map[string]interface{}, error) 
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedLDAPOutpostConfigList) UnmarshalJSON(data []byte) (err error) 
 
 	varPaginatedLDAPOutpostConfigList := _PaginatedLDAPOutpostConfigList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedLDAPOutpostConfigList)
+	err = json.Unmarshal(data, &varPaginatedLDAPOutpostConfigList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedLDAPOutpostConfigList(varPaginatedLDAPOutpostConfigList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

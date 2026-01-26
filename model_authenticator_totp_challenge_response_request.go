@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &AuthenticatorTOTPChallengeResponseRequest{}
 
 // AuthenticatorTOTPChallengeResponseRequest TOTP Challenge response, device is set by get_response_instance
 type AuthenticatorTOTPChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	Code      string  `json:"code"`
+	Component            *string `json:"component,omitempty"`
+	Code                 string  `json:"code"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorTOTPChallengeResponseRequest AuthenticatorTOTPChallengeResponseRequest
@@ -120,6 +120,11 @@ func (o AuthenticatorTOTPChallengeResponseRequest) ToMap() (map[string]interface
 		toSerialize["component"] = o.Component
 	}
 	toSerialize["code"] = o.Code
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -147,15 +152,21 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) UnmarshalJSON(data []byte) (
 
 	varAuthenticatorTOTPChallengeResponseRequest := _AuthenticatorTOTPChallengeResponseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorTOTPChallengeResponseRequest)
+	err = json.Unmarshal(data, &varAuthenticatorTOTPChallengeResponseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorTOTPChallengeResponseRequest(varAuthenticatorTOTPChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "code")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

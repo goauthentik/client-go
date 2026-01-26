@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &LicenseRequest{}
 
 // LicenseRequest License Serializer
 type LicenseRequest struct {
-	Key string `json:"key"`
+	Key                  string `json:"key"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _LicenseRequest LicenseRequest
@@ -80,6 +80,11 @@ func (o LicenseRequest) MarshalJSON() ([]byte, error) {
 func (o LicenseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *LicenseRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varLicenseRequest := _LicenseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLicenseRequest)
+	err = json.Unmarshal(data, &varLicenseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = LicenseRequest(varLicenseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

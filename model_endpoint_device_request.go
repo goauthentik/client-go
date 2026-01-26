@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &EndpointDeviceRequest{}
 
 // EndpointDeviceRequest struct for EndpointDeviceRequest
 type EndpointDeviceRequest struct {
-	DeviceUuid     *string                   `json:"device_uuid,omitempty"`
-	Name           string                    `json:"name"`
-	AccessGroup    NullableString            `json:"access_group,omitempty"`
-	AccessGroupObj *DeviceAccessGroupRequest `json:"access_group_obj,omitempty"`
-	Expiring       *bool                     `json:"expiring,omitempty"`
-	Expires        NullableTime              `json:"expires,omitempty"`
-	Attributes     map[string]interface{}    `json:"attributes,omitempty"`
+	DeviceUuid           *string                   `json:"device_uuid,omitempty"`
+	Name                 string                    `json:"name"`
+	AccessGroup          NullableString            `json:"access_group,omitempty"`
+	AccessGroupObj       *DeviceAccessGroupRequest `json:"access_group_obj,omitempty"`
+	Expiring             *bool                     `json:"expiring,omitempty"`
+	Expires              NullableTime              `json:"expires,omitempty"`
+	Attributes           map[string]interface{}    `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EndpointDeviceRequest EndpointDeviceRequest
@@ -319,6 +319,11 @@ func (o EndpointDeviceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -346,15 +351,26 @@ func (o *EndpointDeviceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEndpointDeviceRequest := _EndpointDeviceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpointDeviceRequest)
+	err = json.Unmarshal(data, &varEndpointDeviceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EndpointDeviceRequest(varEndpointDeviceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device_uuid")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "access_group")
+		delete(additionalProperties, "access_group_obj")
+		delete(additionalProperties, "expiring")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

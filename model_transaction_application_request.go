@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &TransactionApplicationRequest{}
 
 // TransactionApplicationRequest Serializer for creating a provider and an application in one transaction
 type TransactionApplicationRequest struct {
-	App            ApplicationRequest                `json:"app"`
-	ProviderModel  ProviderModelEnum                 `json:"provider_model"`
-	Provider       ModelRequest                      `json:"provider"`
-	PolicyBindings []TransactionPolicyBindingRequest `json:"policy_bindings,omitempty"`
+	App                  ApplicationRequest                `json:"app"`
+	ProviderModel        ProviderModelEnum                 `json:"provider_model"`
+	Provider             ModelRequest                      `json:"provider"`
+	PolicyBindings       []TransactionPolicyBindingRequest `json:"policy_bindings,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TransactionApplicationRequest TransactionApplicationRequest
@@ -170,6 +170,11 @@ func (o TransactionApplicationRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PolicyBindings) {
 		toSerialize["policy_bindings"] = o.PolicyBindings
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -199,15 +204,23 @@ func (o *TransactionApplicationRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varTransactionApplicationRequest := _TransactionApplicationRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionApplicationRequest)
+	err = json.Unmarshal(data, &varTransactionApplicationRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransactionApplicationRequest(varTransactionApplicationRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "provider_model")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "policy_bindings")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

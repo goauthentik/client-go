@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &LDAPDebug{}
 
 // LDAPDebug struct for LDAPDebug
 type LDAPDebug struct {
-	User       []map[string]interface{} `json:"user"`
-	Group      []map[string]interface{} `json:"group"`
-	Membership []map[string]interface{} `json:"membership"`
+	User                 []map[string]interface{} `json:"user"`
+	Group                []map[string]interface{} `json:"group"`
+	Membership           []map[string]interface{} `json:"membership"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _LDAPDebug LDAPDebug
@@ -134,6 +134,11 @@ func (o LDAPDebug) ToMap() (map[string]interface{}, error) {
 	toSerialize["user"] = o.User
 	toSerialize["group"] = o.Group
 	toSerialize["membership"] = o.Membership
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *LDAPDebug) UnmarshalJSON(data []byte) (err error) {
 
 	varLDAPDebug := _LDAPDebug{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLDAPDebug)
+	err = json.Unmarshal(data, &varLDAPDebug)
 
 	if err != nil {
 		return err
 	}
 
 	*o = LDAPDebug(varLDAPDebug)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "membership")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

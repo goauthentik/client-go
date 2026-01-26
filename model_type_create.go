@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &TypeCreate{}
 
 // TypeCreate Types of an object that can be created
 type TypeCreate struct {
-	Name               string  `json:"name"`
-	Description        string  `json:"description"`
-	Component          string  `json:"component"`
-	ModelName          string  `json:"model_name"`
-	IconUrl            *string `json:"icon_url,omitempty"`
-	RequiresEnterprise *bool   `json:"requires_enterprise,omitempty"`
-	Deprecated         *bool   `json:"deprecated,omitempty"`
+	Name                 string  `json:"name"`
+	Description          string  `json:"description"`
+	Component            string  `json:"component"`
+	ModelName            string  `json:"model_name"`
+	IconUrl              *string `json:"icon_url,omitempty"`
+	RequiresEnterprise   *bool   `json:"requires_enterprise,omitempty"`
+	Deprecated           *bool   `json:"deprecated,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TypeCreate TypeCreate
@@ -277,6 +277,11 @@ func (o TypeCreate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Deprecated) {
 		toSerialize["deprecated"] = o.Deprecated
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -307,15 +312,26 @@ func (o *TypeCreate) UnmarshalJSON(data []byte) (err error) {
 
 	varTypeCreate := _TypeCreate{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTypeCreate)
+	err = json.Unmarshal(data, &varTypeCreate)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TypeCreate(varTypeCreate)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "model_name")
+		delete(additionalProperties, "icon_url")
+		delete(additionalProperties, "requires_enterprise")
+		delete(additionalProperties, "deprecated")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

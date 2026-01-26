@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &SCIMSourceUser{}
 
 // SCIMSourceUser SCIMSourceUser Serializer
 type SCIMSourceUser struct {
-	Id         *string                `json:"id,omitempty"`
-	ExternalId string                 `json:"external_id"`
-	User       int32                  `json:"user"`
-	UserObj    PartialUser            `json:"user_obj"`
-	Source     string                 `json:"source"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Id                   *string                `json:"id,omitempty"`
+	ExternalId           string                 `json:"external_id"`
+	User                 int32                  `json:"user"`
+	UserObj              PartialUser            `json:"user_obj"`
+	Source               string                 `json:"source"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SCIMSourceUser SCIMSourceUser
@@ -233,6 +233,11 @@ func (o SCIMSourceUser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -263,15 +268,25 @@ func (o *SCIMSourceUser) UnmarshalJSON(data []byte) (err error) {
 
 	varSCIMSourceUser := _SCIMSourceUser{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMSourceUser)
+	err = json.Unmarshal(data, &varSCIMSourceUser)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SCIMSourceUser(varSCIMSourceUser)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "external_id")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "user_obj")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

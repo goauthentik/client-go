@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &PropertyMappingPreview{}
 
 // PropertyMappingPreview Preview how the current user is mapped via the property mappings selected in a provider
 type PropertyMappingPreview struct {
-	Preview map[string]interface{} `json:"preview"`
+	Preview              map[string]interface{} `json:"preview"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PropertyMappingPreview PropertyMappingPreview
@@ -80,6 +80,11 @@ func (o PropertyMappingPreview) MarshalJSON() ([]byte, error) {
 func (o PropertyMappingPreview) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["preview"] = o.Preview
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *PropertyMappingPreview) UnmarshalJSON(data []byte) (err error) {
 
 	varPropertyMappingPreview := _PropertyMappingPreview{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPropertyMappingPreview)
+	err = json.Unmarshal(data, &varPropertyMappingPreview)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PropertyMappingPreview(varPropertyMappingPreview)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "preview")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

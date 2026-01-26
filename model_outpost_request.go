@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -29,7 +28,8 @@ type OutpostRequest struct {
 	ServiceConnection NullableString         `json:"service_connection,omitempty"`
 	Config            map[string]interface{} `json:"config"`
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed,omitempty"`
+	Managed              NullableString `json:"managed,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OutpostRequest OutpostRequest
@@ -257,6 +257,11 @@ func (o OutpostRequest) ToMap() (map[string]interface{}, error) {
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -287,15 +292,25 @@ func (o *OutpostRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varOutpostRequest := _OutpostRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOutpostRequest)
+	err = json.Unmarshal(data, &varOutpostRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OutpostRequest(varOutpostRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "providers")
+		delete(additionalProperties, "service_connection")
+		delete(additionalProperties, "config")
+		delete(additionalProperties, "managed")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

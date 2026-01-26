@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &ApplicationEntitlementRequest{}
 
 // ApplicationEntitlementRequest ApplicationEntitlement Serializer
 type ApplicationEntitlementRequest struct {
-	Name       string                 `json:"name"`
-	App        string                 `json:"app"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Name                 string                 `json:"name"`
+	App                  string                 `json:"app"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ApplicationEntitlementRequest ApplicationEntitlementRequest
@@ -143,6 +143,11 @@ func (o ApplicationEntitlementRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *ApplicationEntitlementRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varApplicationEntitlementRequest := _ApplicationEntitlementRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varApplicationEntitlementRequest)
+	err = json.Unmarshal(data, &varApplicationEntitlementRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ApplicationEntitlementRequest(varApplicationEntitlementRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

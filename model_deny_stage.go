@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,9 +30,10 @@ type DenyStage struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
-	DenyMessage   *string   `json:"deny_message,omitempty"`
+	MetaModelName        string    `json:"meta_model_name"`
+	FlowSet              []FlowSet `json:"flow_set"`
+	DenyMessage          *string   `json:"deny_message,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DenyStage DenyStage
@@ -282,6 +282,11 @@ func (o DenyStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DenyMessage) {
 		toSerialize["deny_message"] = o.DenyMessage
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -315,15 +320,27 @@ func (o *DenyStage) UnmarshalJSON(data []byte) (err error) {
 
 	varDenyStage := _DenyStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDenyStage)
+	err = json.Unmarshal(data, &varDenyStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DenyStage(varDenyStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "deny_message")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

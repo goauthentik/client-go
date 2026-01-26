@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -64,9 +63,10 @@ type SAMLSourceRequest struct {
 	// Time offset when temporary users should be deleted. This only applies if your IDP uses the NameID Format 'transient', and the user doesn't log out manually. (Format: hours=1;minutes=2;seconds=3).
 	TemporaryUserDeleteAfter *string `json:"temporary_user_delete_after,omitempty"`
 	// When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
-	EncryptionKp    NullableString `json:"encryption_kp,omitempty"`
-	SignedAssertion *bool          `json:"signed_assertion,omitempty"`
-	SignedResponse  *bool          `json:"signed_response,omitempty"`
+	EncryptionKp         NullableString `json:"encryption_kp,omitempty"`
+	SignedAssertion      *bool          `json:"signed_assertion,omitempty"`
+	SignedResponse       *bool          `json:"signed_response,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SAMLSourceRequest SAMLSourceRequest
@@ -1108,6 +1108,11 @@ func (o SAMLSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SignedResponse) {
 		toSerialize["signed_response"] = o.SignedResponse
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1138,15 +1143,47 @@ func (o *SAMLSourceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSAMLSourceRequest := _SAMLSourceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSAMLSourceRequest)
+	err = json.Unmarshal(data, &varSAMLSourceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SAMLSourceRequest(varSAMLSourceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "user_matching_mode")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "icon")
+		delete(additionalProperties, "group_matching_mode")
+		delete(additionalProperties, "pre_authentication_flow")
+		delete(additionalProperties, "issuer")
+		delete(additionalProperties, "sso_url")
+		delete(additionalProperties, "slo_url")
+		delete(additionalProperties, "allow_idp_initiated")
+		delete(additionalProperties, "name_id_policy")
+		delete(additionalProperties, "binding_type")
+		delete(additionalProperties, "verification_kp")
+		delete(additionalProperties, "signing_kp")
+		delete(additionalProperties, "digest_algorithm")
+		delete(additionalProperties, "signature_algorithm")
+		delete(additionalProperties, "temporary_user_delete_after")
+		delete(additionalProperties, "encryption_kp")
+		delete(additionalProperties, "signed_assertion")
+		delete(additionalProperties, "signed_response")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

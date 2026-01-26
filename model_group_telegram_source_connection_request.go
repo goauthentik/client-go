@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &GroupTelegramSourceConnectionRequest{}
 
 // GroupTelegramSourceConnectionRequest Group Source Connection
 type GroupTelegramSourceConnectionRequest struct {
-	Group      string `json:"group"`
-	Source     string `json:"source"`
-	Identifier string `json:"identifier"`
+	Group                string `json:"group"`
+	Source               string `json:"source"`
+	Identifier           string `json:"identifier"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GroupTelegramSourceConnectionRequest GroupTelegramSourceConnectionRequest
@@ -134,6 +134,11 @@ func (o GroupTelegramSourceConnectionRequest) ToMap() (map[string]interface{}, e
 	toSerialize["group"] = o.Group
 	toSerialize["source"] = o.Source
 	toSerialize["identifier"] = o.Identifier
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *GroupTelegramSourceConnectionRequest) UnmarshalJSON(data []byte) (err e
 
 	varGroupTelegramSourceConnectionRequest := _GroupTelegramSourceConnectionRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupTelegramSourceConnectionRequest)
+	err = json.Unmarshal(data, &varGroupTelegramSourceConnectionRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GroupTelegramSourceConnectionRequest(varGroupTelegramSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

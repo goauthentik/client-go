@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,6 +30,7 @@ type AuthenticatorWebAuthnStageRequest struct {
 	ResidentKeyRequirement  *ResidentKeyRequirementEnum         `json:"resident_key_requirement,omitempty"`
 	DeviceTypeRestrictions  []string                            `json:"device_type_restrictions,omitempty"`
 	MaxAttempts             *int32                              `json:"max_attempts,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _AuthenticatorWebAuthnStageRequest AuthenticatorWebAuthnStageRequest
@@ -355,6 +355,11 @@ func (o AuthenticatorWebAuthnStageRequest) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.MaxAttempts) {
 		toSerialize["max_attempts"] = o.MaxAttempts
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -382,15 +387,27 @@ func (o *AuthenticatorWebAuthnStageRequest) UnmarshalJSON(data []byte) (err erro
 
 	varAuthenticatorWebAuthnStageRequest := _AuthenticatorWebAuthnStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorWebAuthnStageRequest)
+	err = json.Unmarshal(data, &varAuthenticatorWebAuthnStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorWebAuthnStageRequest(varAuthenticatorWebAuthnStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "user_verification")
+		delete(additionalProperties, "authenticator_attachment")
+		delete(additionalProperties, "resident_key_requirement")
+		delete(additionalProperties, "device_type_restrictions")
+		delete(additionalProperties, "max_attempts")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

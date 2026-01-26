@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &AgentAuthenticationResponse{}
 
 // AgentAuthenticationResponse Base serializer class which doesn't implement create/update methods
 type AgentAuthenticationResponse struct {
-	Url string `json:"url"`
+	Url                  string `json:"url"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AgentAuthenticationResponse AgentAuthenticationResponse
@@ -80,6 +80,11 @@ func (o AgentAuthenticationResponse) MarshalJSON() ([]byte, error) {
 func (o AgentAuthenticationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["url"] = o.Url
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *AgentAuthenticationResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varAgentAuthenticationResponse := _AgentAuthenticationResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAgentAuthenticationResponse)
+	err = json.Unmarshal(data, &varAgentAuthenticationResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AgentAuthenticationResponse(varAgentAuthenticationResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

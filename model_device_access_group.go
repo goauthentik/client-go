@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &DeviceAccessGroup{}
 
 // DeviceAccessGroup struct for DeviceAccessGroup
 type DeviceAccessGroup struct {
-	PbmUuid    string                 `json:"pbm_uuid"`
-	Name       string                 `json:"name"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	PbmUuid              string                 `json:"pbm_uuid"`
+	Name                 string                 `json:"name"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeviceAccessGroup DeviceAccessGroup
@@ -143,6 +143,11 @@ func (o DeviceAccessGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *DeviceAccessGroup) UnmarshalJSON(data []byte) (err error) {
 
 	varDeviceAccessGroup := _DeviceAccessGroup{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeviceAccessGroup)
+	err = json.Unmarshal(data, &varDeviceAccessGroup)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeviceAccessGroup(varDeviceAccessGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pbm_uuid")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -48,7 +47,8 @@ type Flow struct {
 	// Configure what should happen when a flow denies access to a user.
 	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
 	// Required level of authentication and authorization to access a flow.
-	Authentication *AuthenticationEnum `json:"authentication,omitempty"`
+	Authentication       *AuthenticationEnum `json:"authentication,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Flow Flow
@@ -576,6 +576,11 @@ func (o Flow) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Authentication) {
 		toSerialize["authentication"] = o.Authentication
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -613,15 +618,36 @@ func (o *Flow) UnmarshalJSON(data []byte) (err error) {
 
 	varFlow := _Flow{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlow)
+	err = json.Unmarshal(data, &varFlow)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Flow(varFlow)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "policybindingmodel_ptr_id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "designation")
+		delete(additionalProperties, "background")
+		delete(additionalProperties, "background_url")
+		delete(additionalProperties, "stages")
+		delete(additionalProperties, "policies")
+		delete(additionalProperties, "cache_count")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "compatibility_mode")
+		delete(additionalProperties, "export_url")
+		delete(additionalProperties, "layout")
+		delete(additionalProperties, "denied_action")
+		delete(additionalProperties, "authentication")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

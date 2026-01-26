@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &RoleModelPermission{}
 
 // RoleModelPermission Role-bound object level permission
 type RoleModelPermission struct {
-	Id       int32  `json:"id"`
-	Codename string `json:"codename"`
-	Model    string `json:"model"`
-	AppLabel string `json:"app_label"`
-	Name     string `json:"name"`
+	Id                   int32  `json:"id"`
+	Codename             string `json:"codename"`
+	Model                string `json:"model"`
+	AppLabel             string `json:"app_label"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RoleModelPermission RoleModelPermission
@@ -188,6 +188,11 @@ func (o RoleModelPermission) ToMap() (map[string]interface{}, error) {
 	toSerialize["model"] = o.Model
 	toSerialize["app_label"] = o.AppLabel
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *RoleModelPermission) UnmarshalJSON(data []byte) (err error) {
 
 	varRoleModelPermission := _RoleModelPermission{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRoleModelPermission)
+	err = json.Unmarshal(data, &varRoleModelPermission)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RoleModelPermission(varRoleModelPermission)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "codename")
+		delete(additionalProperties, "model")
+		delete(additionalProperties, "app_label")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

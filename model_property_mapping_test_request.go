@@ -20,10 +20,13 @@ var _ MappedNullable = &PropertyMappingTestRequest{}
 
 // PropertyMappingTestRequest Test property mapping execution for a user/group with context
 type PropertyMappingTestRequest struct {
-	User    NullableInt32          `json:"user,omitempty"`
-	Context map[string]interface{} `json:"context,omitempty"`
-	Group   NullableString         `json:"group,omitempty"`
+	User                 NullableInt32          `json:"user,omitempty"`
+	Context              map[string]interface{} `json:"context,omitempty"`
+	Group                NullableString         `json:"group,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PropertyMappingTestRequest PropertyMappingTestRequest
 
 // NewPropertyMappingTestRequest instantiates a new PropertyMappingTestRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -179,7 +182,35 @@ func (o PropertyMappingTestRequest) ToMap() (map[string]interface{}, error) {
 	if o.Group.IsSet() {
 		toSerialize["group"] = o.Group.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PropertyMappingTestRequest) UnmarshalJSON(data []byte) (err error) {
+	varPropertyMappingTestRequest := _PropertyMappingTestRequest{}
+
+	err = json.Unmarshal(data, &varPropertyMappingTestRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PropertyMappingTestRequest(varPropertyMappingTestRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "context")
+		delete(additionalProperties, "group")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePropertyMappingTestRequest struct {

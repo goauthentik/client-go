@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -78,6 +77,7 @@ type KerberosSource struct {
 	PasswordLoginUpdateInternalPassword *bool `json:"password_login_update_internal_password,omitempty"`
 	// When to trigger sync for outgoing providers
 	SyncOutgoingTriggerMode *SyncOutgoingTriggerModeEnum `json:"sync_outgoing_trigger_mode,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _KerberosSource KerberosSource
@@ -1158,6 +1158,11 @@ func (o KerberosSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SyncOutgoingTriggerMode) {
 		toSerialize["sync_outgoing_trigger_mode"] = o.SyncOutgoingTriggerMode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1195,15 +1200,51 @@ func (o *KerberosSource) UnmarshalJSON(data []byte) (err error) {
 
 	varKerberosSource := _KerberosSource{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKerberosSource)
+	err = json.Unmarshal(data, &varKerberosSource)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KerberosSource(varKerberosSource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "user_matching_mode")
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "icon")
+		delete(additionalProperties, "icon_url")
+		delete(additionalProperties, "group_matching_mode")
+		delete(additionalProperties, "realm")
+		delete(additionalProperties, "krb5_conf")
+		delete(additionalProperties, "kadmin_type")
+		delete(additionalProperties, "sync_users")
+		delete(additionalProperties, "sync_users_password")
+		delete(additionalProperties, "sync_principal")
+		delete(additionalProperties, "sync_ccache")
+		delete(additionalProperties, "connectivity")
+		delete(additionalProperties, "spnego_server_name")
+		delete(additionalProperties, "spnego_ccache")
+		delete(additionalProperties, "password_login_update_internal_password")
+		delete(additionalProperties, "sync_outgoing_trigger_mode")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

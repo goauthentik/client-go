@@ -31,7 +31,10 @@ type PatchedRACProviderRequest struct {
 	ConnectionExpiry *string `json:"connection_expiry,omitempty"`
 	// When set to true, connection tokens will be deleted upon disconnect.
 	DeleteTokenOnDisconnect *bool `json:"delete_token_on_disconnect,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
+
+type _PatchedRACProviderRequest PatchedRACProviderRequest
 
 // NewPatchedRACProviderRequest instantiates a new PatchedRACProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -316,7 +319,39 @@ func (o PatchedRACProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeleteTokenOnDisconnect) {
 		toSerialize["delete_token_on_disconnect"] = o.DeleteTokenOnDisconnect
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedRACProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedRACProviderRequest := _PatchedRACProviderRequest{}
+
+	err = json.Unmarshal(data, &varPatchedRACProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedRACProviderRequest(varPatchedRACProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "settings")
+		delete(additionalProperties, "connection_expiry")
+		delete(additionalProperties, "delete_token_on_disconnect")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedRACProviderRequest struct {

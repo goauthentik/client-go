@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &WebAuthnDeviceType{}
 
 // WebAuthnDeviceType WebAuthnDeviceType Serializer
 type WebAuthnDeviceType struct {
-	Aaguid      string `json:"aaguid"`
-	Description string `json:"description"`
+	Aaguid               string `json:"aaguid"`
+	Description          string `json:"description"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _WebAuthnDeviceType WebAuthnDeviceType
@@ -107,6 +107,11 @@ func (o WebAuthnDeviceType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["aaguid"] = o.Aaguid
 	toSerialize["description"] = o.Description
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *WebAuthnDeviceType) UnmarshalJSON(data []byte) (err error) {
 
 	varWebAuthnDeviceType := _WebAuthnDeviceType{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varWebAuthnDeviceType)
+	err = json.Unmarshal(data, &varWebAuthnDeviceType)
 
 	if err != nil {
 		return err
 	}
 
 	*o = WebAuthnDeviceType(varWebAuthnDeviceType)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "aaguid")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

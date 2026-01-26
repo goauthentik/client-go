@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedGroupTelegramSourceConnectionList{}
 
 // PaginatedGroupTelegramSourceConnectionList struct for PaginatedGroupTelegramSourceConnectionList
 type PaginatedGroupTelegramSourceConnectionList struct {
-	Pagination   Pagination                      `json:"pagination"`
-	Results      []GroupTelegramSourceConnection `json:"results"`
-	Autocomplete map[string]interface{}          `json:"autocomplete"`
+	Pagination           Pagination                      `json:"pagination"`
+	Results              []GroupTelegramSourceConnection `json:"results"`
+	Autocomplete         map[string]interface{}          `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedGroupTelegramSourceConnectionList PaginatedGroupTelegramSourceConnectionList
@@ -134,6 +134,11 @@ func (o PaginatedGroupTelegramSourceConnectionList) ToMap() (map[string]interfac
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedGroupTelegramSourceConnectionList) UnmarshalJSON(data []byte) 
 
 	varPaginatedGroupTelegramSourceConnectionList := _PaginatedGroupTelegramSourceConnectionList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedGroupTelegramSourceConnectionList)
+	err = json.Unmarshal(data, &varPaginatedGroupTelegramSourceConnectionList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedGroupTelegramSourceConnectionList(varPaginatedGroupTelegramSourceConnectionList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

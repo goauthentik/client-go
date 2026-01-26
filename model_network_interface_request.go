@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &NetworkInterfaceRequest{}
 
 // NetworkInterfaceRequest struct for NetworkInterfaceRequest
 type NetworkInterfaceRequest struct {
-	Name            string   `json:"name"`
-	HardwareAddress string   `json:"hardware_address"`
-	IpAddresses     []string `json:"ip_addresses,omitempty"`
-	DnsServers      []string `json:"dns_servers,omitempty"`
+	Name                 string   `json:"name"`
+	HardwareAddress      string   `json:"hardware_address"`
+	IpAddresses          []string `json:"ip_addresses,omitempty"`
+	DnsServers           []string `json:"dns_servers,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NetworkInterfaceRequest NetworkInterfaceRequest
@@ -179,6 +179,11 @@ func (o NetworkInterfaceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsServers) {
 		toSerialize["dns_servers"] = o.DnsServers
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -207,15 +212,23 @@ func (o *NetworkInterfaceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varNetworkInterfaceRequest := _NetworkInterfaceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNetworkInterfaceRequest)
+	err = json.Unmarshal(data, &varNetworkInterfaceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NetworkInterfaceRequest(varNetworkInterfaceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "hardware_address")
+		delete(additionalProperties, "ip_addresses")
+		delete(additionalProperties, "dns_servers")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

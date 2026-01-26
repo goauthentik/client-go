@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &DuoDeviceEnrollmentStatus{}
 
 // DuoDeviceEnrollmentStatus struct for DuoDeviceEnrollmentStatus
 type DuoDeviceEnrollmentStatus struct {
-	DuoResponse DuoResponseEnum `json:"duo_response"`
+	DuoResponse          DuoResponseEnum `json:"duo_response"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DuoDeviceEnrollmentStatus DuoDeviceEnrollmentStatus
@@ -80,6 +80,11 @@ func (o DuoDeviceEnrollmentStatus) MarshalJSON() ([]byte, error) {
 func (o DuoDeviceEnrollmentStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["duo_response"] = o.DuoResponse
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *DuoDeviceEnrollmentStatus) UnmarshalJSON(data []byte) (err error) {
 
 	varDuoDeviceEnrollmentStatus := _DuoDeviceEnrollmentStatus{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDuoDeviceEnrollmentStatus)
+	err = json.Unmarshal(data, &varDuoDeviceEnrollmentStatus)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DuoDeviceEnrollmentStatus(varDuoDeviceEnrollmentStatus)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "duo_response")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

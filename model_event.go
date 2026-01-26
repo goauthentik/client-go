@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,15 +22,16 @@ var _ MappedNullable = &Event{}
 
 // Event Event Serializer
 type Event struct {
-	Pk       string                 `json:"pk"`
-	User     map[string]interface{} `json:"user,omitempty"`
-	Action   EventActions           `json:"action"`
-	App      string                 `json:"app"`
-	Context  map[string]interface{} `json:"context,omitempty"`
-	ClientIp NullableString         `json:"client_ip,omitempty"`
-	Created  time.Time              `json:"created"`
-	Expires  *time.Time             `json:"expires,omitempty"`
-	Brand    map[string]interface{} `json:"brand,omitempty"`
+	Pk                   string                 `json:"pk"`
+	User                 map[string]interface{} `json:"user,omitempty"`
+	Action               EventActions           `json:"action"`
+	App                  string                 `json:"app"`
+	Context              map[string]interface{} `json:"context,omitempty"`
+	ClientIp             NullableString         `json:"client_ip,omitempty"`
+	Created              time.Time              `json:"created"`
+	Expires              *time.Time             `json:"expires,omitempty"`
+	Brand                map[string]interface{} `json:"brand,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Event Event
@@ -353,6 +353,11 @@ func (o Event) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Brand) {
 		toSerialize["brand"] = o.Brand
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -383,15 +388,28 @@ func (o *Event) UnmarshalJSON(data []byte) (err error) {
 
 	varEvent := _Event{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEvent)
+	err = json.Unmarshal(data, &varEvent)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Event(varEvent)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "action")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "context")
+		delete(additionalProperties, "client_ip")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "brand")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

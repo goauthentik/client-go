@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -52,6 +51,7 @@ type PasswordPolicy struct {
 	HibpAllowedCount *int32 `json:"hibp_allowed_count,omitempty"`
 	// If the zxcvbn score is equal or less than this value, the policy will fail.
 	ZxcvbnScoreThreshold *int32 `json:"zxcvbn_score_threshold,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PasswordPolicy PasswordPolicy
@@ -755,6 +755,11 @@ func (o PasswordPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ZxcvbnScoreThreshold) {
 		toSerialize["zxcvbn_score_threshold"] = o.ZxcvbnScoreThreshold
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -788,15 +793,40 @@ func (o *PasswordPolicy) UnmarshalJSON(data []byte) (err error) {
 
 	varPasswordPolicy := _PasswordPolicy{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPasswordPolicy)
+	err = json.Unmarshal(data, &varPasswordPolicy)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PasswordPolicy(varPasswordPolicy)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "bound_to")
+		delete(additionalProperties, "password_field")
+		delete(additionalProperties, "amount_digits")
+		delete(additionalProperties, "amount_uppercase")
+		delete(additionalProperties, "amount_lowercase")
+		delete(additionalProperties, "amount_symbols")
+		delete(additionalProperties, "length_min")
+		delete(additionalProperties, "symbol_charset")
+		delete(additionalProperties, "error_message")
+		delete(additionalProperties, "check_static_rules")
+		delete(additionalProperties, "check_have_i_been_pwned")
+		delete(additionalProperties, "check_zxcvbn")
+		delete(additionalProperties, "hibp_allowed_count")
+		delete(additionalProperties, "zxcvbn_score_threshold")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

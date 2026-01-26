@@ -20,10 +20,13 @@ var _ MappedNullable = &EmailChallenge{}
 
 // EmailChallenge Email challenge
 type EmailChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EmailChallenge EmailChallenge
 
 // NewEmailChallenge instantiates a new EmailChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -161,7 +164,35 @@ func (o EmailChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResponseErrors) {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EmailChallenge) UnmarshalJSON(data []byte) (err error) {
+	varEmailChallenge := _EmailChallenge{}
+
+	err = json.Unmarshal(data, &varEmailChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EmailChallenge(varEmailChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEmailChallenge struct {

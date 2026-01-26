@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &DeviceUser{}
 
 // DeviceUser struct for DeviceUser
 type DeviceUser struct {
-	Id       string  `json:"id"`
-	Username *string `json:"username,omitempty"`
-	Name     *string `json:"name,omitempty"`
-	Home     *string `json:"home,omitempty"`
+	Id                   string  `json:"id"`
+	Username             *string `json:"username,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	Home                 *string `json:"home,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeviceUser DeviceUser
@@ -188,6 +188,11 @@ func (o DeviceUser) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Home) {
 		toSerialize["home"] = o.Home
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -215,15 +220,23 @@ func (o *DeviceUser) UnmarshalJSON(data []byte) (err error) {
 
 	varDeviceUser := _DeviceUser{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeviceUser)
+	err = json.Unmarshal(data, &varDeviceUser)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeviceUser(varDeviceUser)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "home")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

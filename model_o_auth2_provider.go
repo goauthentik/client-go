@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -75,6 +74,7 @@ type OAuth2Provider struct {
 	IssuerMode             *IssuerModeEnum `json:"issuer_mode,omitempty"`
 	JwtFederationSources   []string        `json:"jwt_federation_sources,omitempty"`
 	JwtFederationProviders []int32         `json:"jwt_federation_providers,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _OAuth2Provider OAuth2Provider
@@ -1107,6 +1107,11 @@ func (o OAuth2Provider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.JwtFederationProviders) {
 		toSerialize["jwt_federation_providers"] = o.JwtFederationProviders
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1146,15 +1151,50 @@ func (o *OAuth2Provider) UnmarshalJSON(data []byte) (err error) {
 
 	varOAuth2Provider := _OAuth2Provider{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOAuth2Provider)
+	err = json.Unmarshal(data, &varOAuth2Provider)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OAuth2Provider(varOAuth2Provider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "invalidation_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "assigned_application_slug")
+		delete(additionalProperties, "assigned_application_name")
+		delete(additionalProperties, "assigned_backchannel_application_slug")
+		delete(additionalProperties, "assigned_backchannel_application_name")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "client_type")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "client_secret")
+		delete(additionalProperties, "access_code_validity")
+		delete(additionalProperties, "access_token_validity")
+		delete(additionalProperties, "refresh_token_validity")
+		delete(additionalProperties, "refresh_token_threshold")
+		delete(additionalProperties, "include_claims_in_id_token")
+		delete(additionalProperties, "signing_key")
+		delete(additionalProperties, "encryption_key")
+		delete(additionalProperties, "redirect_uris")
+		delete(additionalProperties, "logout_uri")
+		delete(additionalProperties, "logout_method")
+		delete(additionalProperties, "sub_mode")
+		delete(additionalProperties, "issuer_mode")
+		delete(additionalProperties, "jwt_federation_sources")
+		delete(additionalProperties, "jwt_federation_providers")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

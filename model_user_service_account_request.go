@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -27,7 +26,8 @@ type UserServiceAccountRequest struct {
 	CreateGroup *bool  `json:"create_group,omitempty"`
 	Expiring    *bool  `json:"expiring,omitempty"`
 	// If not provided, valid for 360 days
-	Expires *time.Time `json:"expires,omitempty"`
+	Expires              *time.Time `json:"expires,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserServiceAccountRequest UserServiceAccountRequest
@@ -198,6 +198,11 @@ func (o UserServiceAccountRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -225,15 +230,23 @@ func (o *UserServiceAccountRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varUserServiceAccountRequest := _UserServiceAccountRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserServiceAccountRequest)
+	err = json.Unmarshal(data, &varUserServiceAccountRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserServiceAccountRequest(varUserServiceAccountRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "create_group")
+		delete(additionalProperties, "expiring")
+		delete(additionalProperties, "expires")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

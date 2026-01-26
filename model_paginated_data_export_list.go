@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedDataExportList{}
 
 // PaginatedDataExportList struct for PaginatedDataExportList
 type PaginatedDataExportList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []DataExport           `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []DataExport           `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedDataExportList PaginatedDataExportList
@@ -134,6 +134,11 @@ func (o PaginatedDataExportList) ToMap() (map[string]interface{}, error) {
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedDataExportList) UnmarshalJSON(data []byte) (err error) {
 
 	varPaginatedDataExportList := _PaginatedDataExportList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedDataExportList)
+	err = json.Unmarshal(data, &varPaginatedDataExportList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedDataExportList(varPaginatedDataExportList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

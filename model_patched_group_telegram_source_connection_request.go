@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedGroupTelegramSourceConnectionRequest{}
 
 // PatchedGroupTelegramSourceConnectionRequest Group Source Connection
 type PatchedGroupTelegramSourceConnectionRequest struct {
-	Group      *string `json:"group,omitempty"`
-	Source     *string `json:"source,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
+	Group                *string `json:"group,omitempty"`
+	Source               *string `json:"source,omitempty"`
+	Identifier           *string `json:"identifier,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedGroupTelegramSourceConnectionRequest PatchedGroupTelegramSourceConnectionRequest
 
 // NewPatchedGroupTelegramSourceConnectionRequest instantiates a new PatchedGroupTelegramSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedGroupTelegramSourceConnectionRequest) ToMap() (map[string]interfa
 	if !IsNil(o.Identifier) {
 		toSerialize["identifier"] = o.Identifier
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedGroupTelegramSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedGroupTelegramSourceConnectionRequest := _PatchedGroupTelegramSourceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedGroupTelegramSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedGroupTelegramSourceConnectionRequest(varPatchedGroupTelegramSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedGroupTelegramSourceConnectionRequest struct {

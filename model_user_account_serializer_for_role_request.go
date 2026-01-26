@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &UserAccountSerializerForRoleRequest{}
 
 // UserAccountSerializerForRoleRequest Account adding/removing operations
 type UserAccountSerializerForRoleRequest struct {
-	Pk int32 `json:"pk"`
+	Pk                   int32 `json:"pk"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserAccountSerializerForRoleRequest UserAccountSerializerForRoleRequest
@@ -80,6 +80,11 @@ func (o UserAccountSerializerForRoleRequest) MarshalJSON() ([]byte, error) {
 func (o UserAccountSerializerForRoleRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["pk"] = o.Pk
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *UserAccountSerializerForRoleRequest) UnmarshalJSON(data []byte) (err er
 
 	varUserAccountSerializerForRoleRequest := _UserAccountSerializerForRoleRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserAccountSerializerForRoleRequest)
+	err = json.Unmarshal(data, &varUserAccountSerializerForRoleRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserAccountSerializerForRoleRequest(varUserAccountSerializerForRoleRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

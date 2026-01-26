@@ -21,11 +21,14 @@ var _ MappedNullable = &PatchedRACPropertyMappingRequest{}
 // PatchedRACPropertyMappingRequest RACPropertyMapping Serializer
 type PatchedRACPropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed        NullableString         `json:"managed,omitempty"`
-	Name           *string                `json:"name,omitempty"`
-	Expression     *string                `json:"expression,omitempty"`
-	StaticSettings map[string]interface{} `json:"static_settings,omitempty"`
+	Managed              NullableString         `json:"managed,omitempty"`
+	Name                 *string                `json:"name,omitempty"`
+	Expression           *string                `json:"expression,omitempty"`
+	StaticSettings       map[string]interface{} `json:"static_settings,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedRACPropertyMappingRequest PatchedRACPropertyMappingRequest
 
 // NewPatchedRACPropertyMappingRequest instantiates a new PatchedRACPropertyMappingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -205,7 +208,36 @@ func (o PatchedRACPropertyMappingRequest) ToMap() (map[string]interface{}, error
 	if !IsNil(o.StaticSettings) {
 		toSerialize["static_settings"] = o.StaticSettings
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedRACPropertyMappingRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedRACPropertyMappingRequest := _PatchedRACPropertyMappingRequest{}
+
+	err = json.Unmarshal(data, &varPatchedRACPropertyMappingRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedRACPropertyMappingRequest(varPatchedRACPropertyMappingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		delete(additionalProperties, "static_settings")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedRACPropertyMappingRequest struct {

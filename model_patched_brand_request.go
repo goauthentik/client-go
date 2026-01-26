@@ -39,9 +39,12 @@ type PatchedBrandRequest struct {
 	// Web Certificate used by the authentik Core webserver.
 	WebCertificate NullableString `json:"web_certificate,omitempty"`
 	// Certificates used for client authentication.
-	ClientCertificates []string               `json:"client_certificates,omitempty"`
-	Attributes         map[string]interface{} `json:"attributes,omitempty"`
+	ClientCertificates   []string               `json:"client_certificates,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedBrandRequest PatchedBrandRequest
 
 // NewPatchedBrandRequest instantiates a new PatchedBrandRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -753,7 +756,49 @@ func (o PatchedBrandRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedBrandRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedBrandRequest := _PatchedBrandRequest{}
+
+	err = json.Unmarshal(data, &varPatchedBrandRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedBrandRequest(varPatchedBrandRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "domain")
+		delete(additionalProperties, "default")
+		delete(additionalProperties, "branding_title")
+		delete(additionalProperties, "branding_logo")
+		delete(additionalProperties, "branding_favicon")
+		delete(additionalProperties, "branding_custom_css")
+		delete(additionalProperties, "branding_default_flow_background")
+		delete(additionalProperties, "flow_authentication")
+		delete(additionalProperties, "flow_invalidation")
+		delete(additionalProperties, "flow_recovery")
+		delete(additionalProperties, "flow_unenrollment")
+		delete(additionalProperties, "flow_user_settings")
+		delete(additionalProperties, "flow_device_code")
+		delete(additionalProperties, "default_application")
+		delete(additionalProperties, "web_certificate")
+		delete(additionalProperties, "client_certificates")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedBrandRequest struct {

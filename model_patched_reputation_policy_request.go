@@ -22,11 +22,14 @@ var _ MappedNullable = &PatchedReputationPolicyRequest{}
 type PatchedReputationPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
-	CheckIp          *bool  `json:"check_ip,omitempty"`
-	CheckUsername    *bool  `json:"check_username,omitempty"`
-	Threshold        *int32 `json:"threshold,omitempty"`
+	ExecutionLogging     *bool  `json:"execution_logging,omitempty"`
+	CheckIp              *bool  `json:"check_ip,omitempty"`
+	CheckUsername        *bool  `json:"check_username,omitempty"`
+	Threshold            *int32 `json:"threshold,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedReputationPolicyRequest PatchedReputationPolicyRequest
 
 // NewPatchedReputationPolicyRequest instantiates a new PatchedReputationPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -230,7 +233,37 @@ func (o PatchedReputationPolicyRequest) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Threshold) {
 		toSerialize["threshold"] = o.Threshold
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedReputationPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedReputationPolicyRequest := _PatchedReputationPolicyRequest{}
+
+	err = json.Unmarshal(data, &varPatchedReputationPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedReputationPolicyRequest(varPatchedReputationPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "check_ip")
+		delete(additionalProperties, "check_username")
+		delete(additionalProperties, "threshold")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedReputationPolicyRequest struct {

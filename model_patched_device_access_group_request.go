@@ -20,9 +20,12 @@ var _ MappedNullable = &PatchedDeviceAccessGroupRequest{}
 
 // PatchedDeviceAccessGroupRequest struct for PatchedDeviceAccessGroupRequest
 type PatchedDeviceAccessGroupRequest struct {
-	Name       *string                `json:"name,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Name                 *string                `json:"name,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedDeviceAccessGroupRequest PatchedDeviceAccessGroupRequest
 
 // NewPatchedDeviceAccessGroupRequest instantiates a new PatchedDeviceAccessGroupRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o PatchedDeviceAccessGroupRequest) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedDeviceAccessGroupRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedDeviceAccessGroupRequest := _PatchedDeviceAccessGroupRequest{}
+
+	err = json.Unmarshal(data, &varPatchedDeviceAccessGroupRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedDeviceAccessGroupRequest(varPatchedDeviceAccessGroupRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedDeviceAccessGroupRequest struct {

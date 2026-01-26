@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &AuthenticatorTOTPChallenge{}
 
 // AuthenticatorTOTPChallenge TOTP Setup challenge
 type AuthenticatorTOTPChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	ConfigUrl         string                    `json:"config_url"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	ConfigUrl            string                    `json:"config_url"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorTOTPChallenge AuthenticatorTOTPChallenge
@@ -246,6 +246,11 @@ func (o AuthenticatorTOTPChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize["pending_user"] = o.PendingUser
 	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
 	toSerialize["config_url"] = o.ConfigUrl
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -275,15 +280,25 @@ func (o *AuthenticatorTOTPChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorTOTPChallenge := _AuthenticatorTOTPChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorTOTPChallenge)
+	err = json.Unmarshal(data, &varAuthenticatorTOTPChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorTOTPChallenge(varAuthenticatorTOTPChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "config_url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

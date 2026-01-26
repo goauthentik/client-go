@@ -20,11 +20,14 @@ var _ MappedNullable = &PatchedUserPlexSourceConnectionRequest{}
 
 // PatchedUserPlexSourceConnectionRequest User source connection
 type PatchedUserPlexSourceConnectionRequest struct {
-	User       *int32  `json:"user,omitempty"`
-	Source     *string `json:"source,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
-	PlexToken  *string `json:"plex_token,omitempty"`
+	User                 *int32  `json:"user,omitempty"`
+	Source               *string `json:"source,omitempty"`
+	Identifier           *string `json:"identifier,omitempty"`
+	PlexToken            *string `json:"plex_token,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedUserPlexSourceConnectionRequest PatchedUserPlexSourceConnectionRequest
 
 // NewPatchedUserPlexSourceConnectionRequest instantiates a new PatchedUserPlexSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -193,7 +196,36 @@ func (o PatchedUserPlexSourceConnectionRequest) ToMap() (map[string]interface{},
 	if !IsNil(o.PlexToken) {
 		toSerialize["plex_token"] = o.PlexToken
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUserPlexSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUserPlexSourceConnectionRequest := _PatchedUserPlexSourceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUserPlexSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUserPlexSourceConnectionRequest(varPatchedUserPlexSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "plex_token")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUserPlexSourceConnectionRequest struct {

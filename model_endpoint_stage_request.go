@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &EndpointStageRequest{}
 
 // EndpointStageRequest EndpointStage Serializer
 type EndpointStageRequest struct {
-	Name      string         `json:"name"`
-	Connector string         `json:"connector"`
-	Mode      *StageModeEnum `json:"mode,omitempty"`
+	Name                 string         `json:"name"`
+	Connector            string         `json:"connector"`
+	Mode                 *StageModeEnum `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EndpointStageRequest EndpointStageRequest
@@ -143,6 +143,11 @@ func (o EndpointStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *EndpointStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEndpointStageRequest := _EndpointStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpointStageRequest)
+	err = json.Unmarshal(data, &varEndpointStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EndpointStageRequest(varEndpointStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "connector")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

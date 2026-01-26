@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -61,7 +60,8 @@ type PlexSource struct {
 	// Allow friends to authenticate, even if you don't share a server.
 	AllowFriends *bool `json:"allow_friends,omitempty"`
 	// Plex token used to check friends
-	PlexToken string `json:"plex_token"`
+	PlexToken            string `json:"plex_token"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PlexSource PlexSource
@@ -867,6 +867,11 @@ func (o PlexSource) ToMap() (map[string]interface{}, error) {
 		toSerialize["allow_friends"] = o.AllowFriends
 	}
 	toSerialize["plex_token"] = o.PlexToken
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -903,15 +908,43 @@ func (o *PlexSource) UnmarshalJSON(data []byte) (err error) {
 
 	varPlexSource := _PlexSource{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPlexSource)
+	err = json.Unmarshal(data, &varPlexSource)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PlexSource(varPlexSource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "user_matching_mode")
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "icon")
+		delete(additionalProperties, "icon_url")
+		delete(additionalProperties, "group_matching_mode")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "allowed_servers")
+		delete(additionalProperties, "allow_friends")
+		delete(additionalProperties, "plex_token")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

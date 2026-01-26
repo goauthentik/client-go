@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,6 +32,7 @@ type RACProviderRequest struct {
 	ConnectionExpiry *string `json:"connection_expiry,omitempty"`
 	// When set to true, connection tokens will be deleted upon disconnect.
 	DeleteTokenOnDisconnect *bool `json:"delete_token_on_disconnect,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _RACProviderRequest RACProviderRequest
@@ -302,6 +302,11 @@ func (o RACProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeleteTokenOnDisconnect) {
 		toSerialize["delete_token_on_disconnect"] = o.DeleteTokenOnDisconnect
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -330,15 +335,26 @@ func (o *RACProviderRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varRACProviderRequest := _RACProviderRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRACProviderRequest)
+	err = json.Unmarshal(data, &varRACProviderRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RACProviderRequest(varRACProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "settings")
+		delete(additionalProperties, "connection_expiry")
+		delete(additionalProperties, "delete_token_on_disconnect")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

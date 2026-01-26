@@ -20,8 +20,11 @@ var _ MappedNullable = &PatchedLicenseRequest{}
 
 // PatchedLicenseRequest License Serializer
 type PatchedLicenseRequest struct {
-	Key *string `json:"key,omitempty"`
+	Key                  *string `json:"key,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedLicenseRequest PatchedLicenseRequest
 
 // NewPatchedLicenseRequest instantiates a new PatchedLicenseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o PatchedLicenseRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedLicenseRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedLicenseRequest := _PatchedLicenseRequest{}
+
+	err = json.Unmarshal(data, &varPatchedLicenseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedLicenseRequest(varPatchedLicenseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedLicenseRequest struct {

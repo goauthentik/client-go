@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &Cache{}
 
 // Cache Generic cache stats for an object
 type Cache struct {
-	Count int32 `json:"count"`
+	Count                int32 `json:"count"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Cache Cache
@@ -80,6 +80,11 @@ func (o Cache) MarshalJSON() ([]byte, error) {
 func (o Cache) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["count"] = o.Count
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *Cache) UnmarshalJSON(data []byte) (err error) {
 
 	varCache := _Cache{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCache)
+	err = json.Unmarshal(data, &varCache)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Cache(varCache)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "count")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

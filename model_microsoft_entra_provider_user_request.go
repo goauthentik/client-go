@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &MicrosoftEntraProviderUserRequest{}
 
 // MicrosoftEntraProviderUserRequest MicrosoftEntraProviderUser Serializer
 type MicrosoftEntraProviderUserRequest struct {
-	MicrosoftId string `json:"microsoft_id"`
-	User        int32  `json:"user"`
-	Provider    int32  `json:"provider"`
+	MicrosoftId          string `json:"microsoft_id"`
+	User                 int32  `json:"user"`
+	Provider             int32  `json:"provider"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _MicrosoftEntraProviderUserRequest MicrosoftEntraProviderUserRequest
@@ -134,6 +134,11 @@ func (o MicrosoftEntraProviderUserRequest) ToMap() (map[string]interface{}, erro
 	toSerialize["microsoft_id"] = o.MicrosoftId
 	toSerialize["user"] = o.User
 	toSerialize["provider"] = o.Provider
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *MicrosoftEntraProviderUserRequest) UnmarshalJSON(data []byte) (err erro
 
 	varMicrosoftEntraProviderUserRequest := _MicrosoftEntraProviderUserRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMicrosoftEntraProviderUserRequest)
+	err = json.Unmarshal(data, &varMicrosoftEntraProviderUserRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = MicrosoftEntraProviderUserRequest(varMicrosoftEntraProviderUserRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "microsoft_id")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "provider")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

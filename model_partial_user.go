@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -29,11 +28,12 @@ type PartialUser struct {
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-	IsActive   *bool                  `json:"is_active,omitempty"`
-	LastLogin  NullableTime           `json:"last_login,omitempty"`
-	Email      *string                `json:"email,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
-	Uid        string                 `json:"uid"`
+	IsActive             *bool                  `json:"is_active,omitempty"`
+	LastLogin            NullableTime           `json:"last_login,omitempty"`
+	Email                *string                `json:"email,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	Uid                  string                 `json:"uid"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PartialUser PartialUser
@@ -320,6 +320,11 @@ func (o PartialUser) ToMap() (map[string]interface{}, error) {
 		toSerialize["attributes"] = o.Attributes
 	}
 	toSerialize["uid"] = o.Uid
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -350,15 +355,27 @@ func (o *PartialUser) UnmarshalJSON(data []byte) (err error) {
 
 	varPartialUser := _PartialUser{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPartialUser)
+	err = json.Unmarshal(data, &varPartialUser)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PartialUser(varPartialUser)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "is_active")
+		delete(additionalProperties, "last_login")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "uid")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,6 +32,7 @@ type AuthenticatorValidateStageRequest struct {
 	// Enforce user verification for WebAuthn devices.
 	WebauthnUserVerification   *UserVerificationEnum `json:"webauthn_user_verification,omitempty"`
 	WebauthnAllowedDeviceTypes []string              `json:"webauthn_allowed_device_types,omitempty"`
+	AdditionalProperties       map[string]interface{}
 }
 
 type _AuthenticatorValidateStageRequest AuthenticatorValidateStageRequest
@@ -300,6 +300,11 @@ func (o AuthenticatorValidateStageRequest) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.WebauthnAllowedDeviceTypes) {
 		toSerialize["webauthn_allowed_device_types"] = o.WebauthnAllowedDeviceTypes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -327,15 +332,26 @@ func (o *AuthenticatorValidateStageRequest) UnmarshalJSON(data []byte) (err erro
 
 	varAuthenticatorValidateStageRequest := _AuthenticatorValidateStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorValidateStageRequest)
+	err = json.Unmarshal(data, &varAuthenticatorValidateStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorValidateStageRequest(varAuthenticatorValidateStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "not_configured_action")
+		delete(additionalProperties, "device_classes")
+		delete(additionalProperties, "configuration_stages")
+		delete(additionalProperties, "last_auth_threshold")
+		delete(additionalProperties, "webauthn_user_verification")
+		delete(additionalProperties, "webauthn_allowed_device_types")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

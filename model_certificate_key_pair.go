@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -42,7 +41,8 @@ type CertificateKeyPair struct {
 	// Get URL to download private key
 	PrivateKeyDownloadUrl string `json:"private_key_download_url"`
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed NullableString `json:"managed"`
+	Managed              NullableString `json:"managed"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CertificateKeyPair CertificateKeyPair
@@ -372,6 +372,11 @@ func (o CertificateKeyPair) ToMap() (map[string]interface{}, error) {
 	toSerialize["certificate_download_url"] = o.CertificateDownloadUrl
 	toSerialize["private_key_download_url"] = o.PrivateKeyDownloadUrl
 	toSerialize["managed"] = o.Managed.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -409,15 +414,30 @@ func (o *CertificateKeyPair) UnmarshalJSON(data []byte) (err error) {
 
 	varCertificateKeyPair := _CertificateKeyPair{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCertificateKeyPair)
+	err = json.Unmarshal(data, &varCertificateKeyPair)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CertificateKeyPair(varCertificateKeyPair)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "fingerprint_sha256")
+		delete(additionalProperties, "fingerprint_sha1")
+		delete(additionalProperties, "cert_expiry")
+		delete(additionalProperties, "cert_subject")
+		delete(additionalProperties, "private_key_available")
+		delete(additionalProperties, "key_type")
+		delete(additionalProperties, "certificate_download_url")
+		delete(additionalProperties, "private_key_download_url")
+		delete(additionalProperties, "managed")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

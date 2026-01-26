@@ -22,9 +22,12 @@ var _ MappedNullable = &PatchedExpressionPolicyRequest{}
 type PatchedExpressionPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool   `json:"execution_logging,omitempty"`
-	Expression       *string `json:"expression,omitempty"`
+	ExecutionLogging     *bool   `json:"execution_logging,omitempty"`
+	Expression           *string `json:"expression,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedExpressionPolicyRequest PatchedExpressionPolicyRequest
 
 // NewPatchedExpressionPolicyRequest instantiates a new PatchedExpressionPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -158,7 +161,35 @@ func (o PatchedExpressionPolicyRequest) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedExpressionPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedExpressionPolicyRequest := _PatchedExpressionPolicyRequest{}
+
+	err = json.Unmarshal(data, &varPatchedExpressionPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedExpressionPolicyRequest(varPatchedExpressionPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "expression")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedExpressionPolicyRequest struct {

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,14 +21,15 @@ var _ MappedNullable = &AuthenticatorDuoChallenge{}
 
 // AuthenticatorDuoChallenge Duo Challenge
 type AuthenticatorDuoChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	ActivationBarcode string                    `json:"activation_barcode"`
-	ActivationCode    string                    `json:"activation_code"`
-	StageUuid         string                    `json:"stage_uuid"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	ActivationBarcode    string                    `json:"activation_barcode"`
+	ActivationCode       string                    `json:"activation_code"`
+	StageUuid            string                    `json:"stage_uuid"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorDuoChallenge AuthenticatorDuoChallenge
@@ -300,6 +300,11 @@ func (o AuthenticatorDuoChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize["activation_barcode"] = o.ActivationBarcode
 	toSerialize["activation_code"] = o.ActivationCode
 	toSerialize["stage_uuid"] = o.StageUuid
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -331,15 +336,27 @@ func (o *AuthenticatorDuoChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorDuoChallenge := _AuthenticatorDuoChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorDuoChallenge)
+	err = json.Unmarshal(data, &varAuthenticatorDuoChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorDuoChallenge(varAuthenticatorDuoChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "activation_barcode")
+		delete(additionalProperties, "activation_code")
+		delete(additionalProperties, "stage_uuid")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -26,10 +26,13 @@ type PatchedFleetConnectorRequest struct {
 	Url           *string `json:"url,omitempty"`
 	Token         *string `json:"token,omitempty"`
 	// Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs
-	HeadersMapping      NullableString `json:"headers_mapping,omitempty"`
-	MapUsers            *bool          `json:"map_users,omitempty"`
-	MapTeamsAccessGroup *bool          `json:"map_teams_access_group,omitempty"`
+	HeadersMapping       NullableString `json:"headers_mapping,omitempty"`
+	MapUsers             *bool          `json:"map_users,omitempty"`
+	MapTeamsAccessGroup  *bool          `json:"map_teams_access_group,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedFleetConnectorRequest PatchedFleetConnectorRequest
 
 // NewPatchedFleetConnectorRequest instantiates a new PatchedFleetConnectorRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -349,7 +352,40 @@ func (o PatchedFleetConnectorRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MapTeamsAccessGroup) {
 		toSerialize["map_teams_access_group"] = o.MapTeamsAccessGroup
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedFleetConnectorRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedFleetConnectorRequest := _PatchedFleetConnectorRequest{}
+
+	err = json.Unmarshal(data, &varPatchedFleetConnectorRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedFleetConnectorRequest(varPatchedFleetConnectorRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "connector_uuid")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "headers_mapping")
+		delete(additionalProperties, "map_users")
+		delete(additionalProperties, "map_teams_access_group")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedFleetConnectorRequest struct {

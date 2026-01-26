@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &FrameChallenge{}
 
 // FrameChallenge Challenge type to render a frame
 type FrameChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	Url            string                    `json:"url"`
-	LoadingOverlay *bool                     `json:"loading_overlay,omitempty"`
-	LoadingText    string                    `json:"loading_text"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	Url                  string                    `json:"url"`
+	LoadingOverlay       *bool                     `json:"loading_overlay,omitempty"`
+	LoadingText          string                    `json:"loading_text"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FrameChallenge FrameChallenge
@@ -259,6 +259,11 @@ func (o FrameChallenge) ToMap() (map[string]interface{}, error) {
 		toSerialize["loading_overlay"] = o.LoadingOverlay
 	}
 	toSerialize["loading_text"] = o.LoadingText
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -287,15 +292,25 @@ func (o *FrameChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varFrameChallenge := _FrameChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFrameChallenge)
+	err = json.Unmarshal(data, &varFrameChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FrameChallenge(varFrameChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "loading_overlay")
+		delete(additionalProperties, "loading_text")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

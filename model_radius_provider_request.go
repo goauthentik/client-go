@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,8 +34,9 @@ type RadiusProviderRequest struct {
 	// Shared secret between clients and server to hash packets.
 	SharedSecret *string `json:"shared_secret,omitempty"`
 	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
-	MfaSupport  *bool          `json:"mfa_support,omitempty"`
-	Certificate NullableString `json:"certificate,omitempty"`
+	MfaSupport           *bool          `json:"mfa_support,omitempty"`
+	Certificate          NullableString `json:"certificate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RadiusProviderRequest RadiusProviderRequest
@@ -378,6 +378,11 @@ func (o RadiusProviderRequest) ToMap() (map[string]interface{}, error) {
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -407,15 +412,28 @@ func (o *RadiusProviderRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varRadiusProviderRequest := _RadiusProviderRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRadiusProviderRequest)
+	err = json.Unmarshal(data, &varRadiusProviderRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RadiusProviderRequest(varRadiusProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "invalidation_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "client_networks")
+		delete(additionalProperties, "shared_secret")
+		delete(additionalProperties, "mfa_support")
+		delete(additionalProperties, "certificate")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

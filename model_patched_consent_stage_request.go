@@ -23,8 +23,11 @@ type PatchedConsentStageRequest struct {
 	Name *string               `json:"name,omitempty"`
 	Mode *ConsentStageModeEnum `json:"mode,omitempty"`
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
-	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
+	ConsentExpireIn      *string `json:"consent_expire_in,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedConsentStageRequest PatchedConsentStageRequest
 
 // NewPatchedConsentStageRequest instantiates a new PatchedConsentStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -158,7 +161,35 @@ func (o PatchedConsentStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConsentExpireIn) {
 		toSerialize["consent_expire_in"] = o.ConsentExpireIn
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedConsentStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedConsentStageRequest := _PatchedConsentStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedConsentStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedConsentStageRequest(varPatchedConsentStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "consent_expire_in")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedConsentStageRequest struct {

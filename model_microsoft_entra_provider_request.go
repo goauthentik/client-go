@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -38,7 +37,8 @@ type MicrosoftEntraProviderRequest struct {
 	// Timeout for synchronization of a single page
 	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
-	DryRun *bool `json:"dry_run,omitempty"`
+	DryRun               *bool `json:"dry_run,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _MicrosoftEntraProviderRequest MicrosoftEntraProviderRequest
@@ -500,6 +500,11 @@ func (o MicrosoftEntraProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -530,15 +535,32 @@ func (o *MicrosoftEntraProviderRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varMicrosoftEntraProviderRequest := _MicrosoftEntraProviderRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMicrosoftEntraProviderRequest)
+	err = json.Unmarshal(data, &varMicrosoftEntraProviderRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = MicrosoftEntraProviderRequest(varMicrosoftEntraProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "property_mappings_group")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "client_secret")
+		delete(additionalProperties, "tenant_id")
+		delete(additionalProperties, "exclude_users_service_account")
+		delete(additionalProperties, "filter_group")
+		delete(additionalProperties, "user_delete_action")
+		delete(additionalProperties, "group_delete_action")
+		delete(additionalProperties, "sync_page_size")
+		delete(additionalProperties, "sync_page_timeout")
+		delete(additionalProperties, "dry_run")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

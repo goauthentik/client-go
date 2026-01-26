@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedIdentificationStageList{}
 
 // PaginatedIdentificationStageList struct for PaginatedIdentificationStageList
 type PaginatedIdentificationStageList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []IdentificationStage  `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []IdentificationStage  `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedIdentificationStageList PaginatedIdentificationStageList
@@ -134,6 +134,11 @@ func (o PaginatedIdentificationStageList) ToMap() (map[string]interface{}, error
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedIdentificationStageList) UnmarshalJSON(data []byte) (err error
 
 	varPaginatedIdentificationStageList := _PaginatedIdentificationStageList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedIdentificationStageList)
+	err = json.Unmarshal(data, &varPaginatedIdentificationStageList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedIdentificationStageList(varPaginatedIdentificationStageList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

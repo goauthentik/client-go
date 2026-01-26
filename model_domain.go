@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &Domain{}
 
 // Domain Domain Serializer
 type Domain struct {
-	Id        int32  `json:"id"`
-	Domain    string `json:"domain"`
-	IsPrimary *bool  `json:"is_primary,omitempty"`
-	Tenant    string `json:"tenant"`
+	Id                   int32  `json:"id"`
+	Domain               string `json:"domain"`
+	IsPrimary            *bool  `json:"is_primary,omitempty"`
+	Tenant               string `json:"tenant"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Domain Domain
@@ -170,6 +170,11 @@ func (o Domain) ToMap() (map[string]interface{}, error) {
 		toSerialize["is_primary"] = o.IsPrimary
 	}
 	toSerialize["tenant"] = o.Tenant
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -199,15 +204,23 @@ func (o *Domain) UnmarshalJSON(data []byte) (err error) {
 
 	varDomain := _Domain{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDomain)
+	err = json.Unmarshal(data, &varDomain)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Domain(varDomain)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "domain")
+		delete(additionalProperties, "is_primary")
+		delete(additionalProperties, "tenant")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -37,7 +36,8 @@ type SystemInfo struct {
 	// Whether the embedded outpost is disabled
 	EmbeddedOutpostDisabled bool `json:"embedded_outpost_disabled"`
 	// Get the FQDN configured on the embedded outpost
-	EmbeddedOutpostHost string `json:"embedded_outpost_host"`
+	EmbeddedOutpostHost  string `json:"embedded_outpost_host"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SystemInfo SystemInfo
@@ -277,6 +277,11 @@ func (o SystemInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize["server_time"] = o.ServerTime
 	toSerialize["embedded_outpost_disabled"] = o.EmbeddedOutpostDisabled
 	toSerialize["embedded_outpost_host"] = o.EmbeddedOutpostHost
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -311,15 +316,27 @@ func (o *SystemInfo) UnmarshalJSON(data []byte) (err error) {
 
 	varSystemInfo := _SystemInfo{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSystemInfo)
+	err = json.Unmarshal(data, &varSystemInfo)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SystemInfo(varSystemInfo)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "http_headers")
+		delete(additionalProperties, "http_host")
+		delete(additionalProperties, "http_is_secure")
+		delete(additionalProperties, "runtime")
+		delete(additionalProperties, "brand")
+		delete(additionalProperties, "server_time")
+		delete(additionalProperties, "embedded_outpost_disabled")
+		delete(additionalProperties, "embedded_outpost_host")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

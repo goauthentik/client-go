@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,10 +22,11 @@ var _ MappedNullable = &EmailDevice{}
 // EmailDevice Serializer for email authenticator devices
 type EmailDevice struct {
 	// The human-readable name of this device.
-	Name  string      `json:"name"`
-	Pk    int32       `json:"pk"`
-	Email string      `json:"email"`
-	User  PartialUser `json:"user"`
+	Name                 string      `json:"name"`
+	Pk                   int32       `json:"pk"`
+	Email                string      `json:"email"`
+	User                 PartialUser `json:"user"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EmailDevice EmailDevice
@@ -162,6 +162,11 @@ func (o EmailDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize["pk"] = o.Pk
 	toSerialize["email"] = o.Email
 	toSerialize["user"] = o.User
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -192,15 +197,23 @@ func (o *EmailDevice) UnmarshalJSON(data []byte) (err error) {
 
 	varEmailDevice := _EmailDevice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEmailDevice)
+	err = json.Unmarshal(data, &varEmailDevice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EmailDevice(varEmailDevice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

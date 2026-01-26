@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &RedirectURIRequest{}
 
 // RedirectURIRequest A single allowed redirect URI entry
 type RedirectURIRequest struct {
-	MatchingMode MatchingModeEnum `json:"matching_mode"`
-	Url          string           `json:"url"`
+	MatchingMode         MatchingModeEnum `json:"matching_mode"`
+	Url                  string           `json:"url"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RedirectURIRequest RedirectURIRequest
@@ -107,6 +107,11 @@ func (o RedirectURIRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["matching_mode"] = o.MatchingMode
 	toSerialize["url"] = o.Url
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *RedirectURIRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varRedirectURIRequest := _RedirectURIRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRedirectURIRequest)
+	err = json.Unmarshal(data, &varRedirectURIRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RedirectURIRequest(varRedirectURIRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "matching_mode")
+		delete(additionalProperties, "url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

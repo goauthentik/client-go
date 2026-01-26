@@ -22,10 +22,13 @@ var _ MappedNullable = &PatchedSSFProviderRequest{}
 type PatchedSSFProviderRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Key used to sign the SSF Events.
-	SigningKey        *string `json:"signing_key,omitempty"`
-	OidcAuthProviders []int32 `json:"oidc_auth_providers,omitempty"`
-	EventRetention    *string `json:"event_retention,omitempty"`
+	SigningKey           *string `json:"signing_key,omitempty"`
+	OidcAuthProviders    []int32 `json:"oidc_auth_providers,omitempty"`
+	EventRetention       *string `json:"event_retention,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedSSFProviderRequest PatchedSSFProviderRequest
 
 // NewPatchedSSFProviderRequest instantiates a new PatchedSSFProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -194,7 +197,36 @@ func (o PatchedSSFProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventRetention) {
 		toSerialize["event_retention"] = o.EventRetention
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedSSFProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedSSFProviderRequest := _PatchedSSFProviderRequest{}
+
+	err = json.Unmarshal(data, &varPatchedSSFProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedSSFProviderRequest(varPatchedSSFProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "signing_key")
+		delete(additionalProperties, "oidc_auth_providers")
+		delete(additionalProperties, "event_retention")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedSSFProviderRequest struct {

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,6 +32,7 @@ type OpenIDConnectConfiguration struct {
 	IdTokenSigningAlgValuesSupported  []string `json:"id_token_signing_alg_values_supported"`
 	SubjectTypesSupported             []string `json:"subject_types_supported"`
 	TokenEndpointAuthMethodsSupported []string `json:"token_endpoint_auth_methods_supported"`
+	AdditionalProperties              map[string]interface{}
 }
 
 type _OpenIDConnectConfiguration OpenIDConnectConfiguration
@@ -350,6 +350,11 @@ func (o OpenIDConnectConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize["id_token_signing_alg_values_supported"] = o.IdTokenSigningAlgValuesSupported
 	toSerialize["subject_types_supported"] = o.SubjectTypesSupported
 	toSerialize["token_endpoint_auth_methods_supported"] = o.TokenEndpointAuthMethodsSupported
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -387,15 +392,30 @@ func (o *OpenIDConnectConfiguration) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenIDConnectConfiguration := _OpenIDConnectConfiguration{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenIDConnectConfiguration)
+	err = json.Unmarshal(data, &varOpenIDConnectConfiguration)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenIDConnectConfiguration(varOpenIDConnectConfiguration)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "issuer")
+		delete(additionalProperties, "authorization_endpoint")
+		delete(additionalProperties, "token_endpoint")
+		delete(additionalProperties, "userinfo_endpoint")
+		delete(additionalProperties, "end_session_endpoint")
+		delete(additionalProperties, "introspection_endpoint")
+		delete(additionalProperties, "jwks_uri")
+		delete(additionalProperties, "response_types_supported")
+		delete(additionalProperties, "id_token_signing_alg_values_supported")
+		delete(additionalProperties, "subject_types_supported")
+		delete(additionalProperties, "token_endpoint_auth_methods_supported")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

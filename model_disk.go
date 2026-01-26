@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &Disk{}
 
 // Disk struct for Disk
 type Disk struct {
-	Name               string  `json:"name"`
-	Mountpoint         string  `json:"mountpoint"`
-	Label              *string `json:"label,omitempty"`
-	CapacityTotalBytes *int64  `json:"capacity_total_bytes,omitempty"`
-	CapacityUsedBytes  *int64  `json:"capacity_used_bytes,omitempty"`
-	EncryptionEnabled  *bool   `json:"encryption_enabled,omitempty"`
+	Name                 string  `json:"name"`
+	Mountpoint           string  `json:"mountpoint"`
+	Label                *string `json:"label,omitempty"`
+	CapacityTotalBytes   *int64  `json:"capacity_total_bytes,omitempty"`
+	CapacityUsedBytes    *int64  `json:"capacity_used_bytes,omitempty"`
+	EncryptionEnabled    *bool   `json:"encryption_enabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Disk Disk
@@ -255,6 +255,11 @@ func (o Disk) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EncryptionEnabled) {
 		toSerialize["encryption_enabled"] = o.EncryptionEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -283,15 +288,25 @@ func (o *Disk) UnmarshalJSON(data []byte) (err error) {
 
 	varDisk := _Disk{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDisk)
+	err = json.Unmarshal(data, &varDisk)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Disk(varDisk)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "mountpoint")
+		delete(additionalProperties, "label")
+		delete(additionalProperties, "capacity_total_bytes")
+		delete(additionalProperties, "capacity_used_bytes")
+		delete(additionalProperties, "encryption_enabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

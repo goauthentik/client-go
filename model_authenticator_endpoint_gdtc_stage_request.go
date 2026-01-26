@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,9 +23,10 @@ var _ MappedNullable = &AuthenticatorEndpointGDTCStageRequest{}
 type AuthenticatorEndpointGDTCStageRequest struct {
 	Name string `json:"name"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString         `json:"configure_flow,omitempty"`
-	FriendlyName  *string                `json:"friendly_name,omitempty"`
-	Credentials   map[string]interface{} `json:"credentials"`
+	ConfigureFlow        NullableString         `json:"configure_flow,omitempty"`
+	FriendlyName         *string                `json:"friendly_name,omitempty"`
+	Credentials          map[string]interface{} `json:"credentials"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorEndpointGDTCStageRequest AuthenticatorEndpointGDTCStageRequest
@@ -191,6 +191,11 @@ func (o AuthenticatorEndpointGDTCStageRequest) ToMap() (map[string]interface{}, 
 		toSerialize["friendly_name"] = o.FriendlyName
 	}
 	toSerialize["credentials"] = o.Credentials
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,23 @@ func (o *AuthenticatorEndpointGDTCStageRequest) UnmarshalJSON(data []byte) (err 
 
 	varAuthenticatorEndpointGDTCStageRequest := _AuthenticatorEndpointGDTCStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorEndpointGDTCStageRequest)
+	err = json.Unmarshal(data, &varAuthenticatorEndpointGDTCStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorEndpointGDTCStageRequest(varAuthenticatorEndpointGDTCStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "credentials")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

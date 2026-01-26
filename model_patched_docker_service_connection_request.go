@@ -28,8 +28,11 @@ type PatchedDockerServiceConnectionRequest struct {
 	// CA which the endpoint's Certificate is verified against. Can be left empty for no validation.
 	TlsVerification NullableString `json:"tls_verification,omitempty"`
 	// Certificate/Key used for authentication. Can be left empty for no authentication.
-	TlsAuthentication NullableString `json:"tls_authentication,omitempty"`
+	TlsAuthentication    NullableString `json:"tls_authentication,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedDockerServiceConnectionRequest PatchedDockerServiceConnectionRequest
 
 // NewPatchedDockerServiceConnectionRequest instantiates a new PatchedDockerServiceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -255,7 +258,37 @@ func (o PatchedDockerServiceConnectionRequest) ToMap() (map[string]interface{}, 
 	if o.TlsAuthentication.IsSet() {
 		toSerialize["tls_authentication"] = o.TlsAuthentication.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedDockerServiceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedDockerServiceConnectionRequest := _PatchedDockerServiceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedDockerServiceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedDockerServiceConnectionRequest(varPatchedDockerServiceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "local")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tls_verification")
+		delete(additionalProperties, "tls_authentication")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedDockerServiceConnectionRequest struct {

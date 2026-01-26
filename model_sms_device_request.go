@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,7 +22,8 @@ var _ MappedNullable = &SMSDeviceRequest{}
 // SMSDeviceRequest Serializer for sms authenticator devices
 type SMSDeviceRequest struct {
 	// The human-readable name of this device.
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SMSDeviceRequest SMSDeviceRequest
@@ -81,6 +81,11 @@ func (o SMSDeviceRequest) MarshalJSON() ([]byte, error) {
 func (o SMSDeviceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -108,15 +113,20 @@ func (o *SMSDeviceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSMSDeviceRequest := _SMSDeviceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSMSDeviceRequest)
+	err = json.Unmarshal(data, &varSMSDeviceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SMSDeviceRequest(varSMSDeviceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

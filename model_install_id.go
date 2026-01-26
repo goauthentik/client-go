@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &InstallID{}
 
 // InstallID struct for InstallID
 type InstallID struct {
-	InstallId string `json:"install_id"`
+	InstallId            string `json:"install_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _InstallID InstallID
@@ -80,6 +80,11 @@ func (o InstallID) MarshalJSON() ([]byte, error) {
 func (o InstallID) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["install_id"] = o.InstallId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *InstallID) UnmarshalJSON(data []byte) (err error) {
 
 	varInstallID := _InstallID{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInstallID)
+	err = json.Unmarshal(data, &varInstallID)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InstallID(varInstallID)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "install_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

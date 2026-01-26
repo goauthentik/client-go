@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &PolicyTestRequest{}
 
 // PolicyTestRequest Test policy execution for a user with context
 type PolicyTestRequest struct {
-	User    int32                  `json:"user"`
-	Context map[string]interface{} `json:"context,omitempty"`
+	User                 int32                  `json:"user"`
+	Context              map[string]interface{} `json:"context,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PolicyTestRequest PolicyTestRequest
@@ -116,6 +116,11 @@ func (o PolicyTestRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Context) {
 		toSerialize["context"] = o.Context
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *PolicyTestRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varPolicyTestRequest := _PolicyTestRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPolicyTestRequest)
+	err = json.Unmarshal(data, &varPolicyTestRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PolicyTestRequest(varPolicyTestRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "context")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

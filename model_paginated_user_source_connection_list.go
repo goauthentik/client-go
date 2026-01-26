@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedUserSourceConnectionList{}
 
 // PaginatedUserSourceConnectionList struct for PaginatedUserSourceConnectionList
 type PaginatedUserSourceConnectionList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []UserSourceConnection `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []UserSourceConnection `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedUserSourceConnectionList PaginatedUserSourceConnectionList
@@ -134,6 +134,11 @@ func (o PaginatedUserSourceConnectionList) ToMap() (map[string]interface{}, erro
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedUserSourceConnectionList) UnmarshalJSON(data []byte) (err erro
 
 	varPaginatedUserSourceConnectionList := _PaginatedUserSourceConnectionList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedUserSourceConnectionList)
+	err = json.Unmarshal(data, &varPaginatedUserSourceConnectionList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedUserSourceConnectionList(varPaginatedUserSourceConnectionList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

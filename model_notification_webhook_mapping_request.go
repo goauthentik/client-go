@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &NotificationWebhookMappingRequest{}
 
 // NotificationWebhookMappingRequest NotificationWebhookMapping Serializer
 type NotificationWebhookMappingRequest struct {
-	Name       string `json:"name"`
-	Expression string `json:"expression"`
+	Name                 string `json:"name"`
+	Expression           string `json:"expression"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NotificationWebhookMappingRequest NotificationWebhookMappingRequest
@@ -107,6 +107,11 @@ func (o NotificationWebhookMappingRequest) ToMap() (map[string]interface{}, erro
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["expression"] = o.Expression
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *NotificationWebhookMappingRequest) UnmarshalJSON(data []byte) (err erro
 
 	varNotificationWebhookMappingRequest := _NotificationWebhookMappingRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotificationWebhookMappingRequest)
+	err = json.Unmarshal(data, &varNotificationWebhookMappingRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NotificationWebhookMappingRequest(varNotificationWebhookMappingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

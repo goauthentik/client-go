@@ -22,14 +22,17 @@ var _ MappedNullable = &PatchedTokenRequest{}
 // PatchedTokenRequest Token Serializer
 type PatchedTokenRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed     NullableString `json:"managed,omitempty"`
-	Identifier  *string        `json:"identifier,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Intent      *IntentEnum    `json:"intent,omitempty"`
-	User        *int32         `json:"user,omitempty"`
-	Description *string        `json:"description,omitempty"`
-	Expires     NullableTime   `json:"expires,omitempty"`
-	Expiring    *bool          `json:"expiring,omitempty"`
+	Managed              NullableString `json:"managed,omitempty"`
+	Identifier           *string        `json:"identifier,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Intent               *IntentEnum    `json:"intent,omitempty"`
+	User                 *int32         `json:"user,omitempty"`
+	Description          *string        `json:"description,omitempty"`
+	Expires              NullableTime   `json:"expires,omitempty"`
+	Expiring             *bool          `json:"expiring,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedTokenRequest PatchedTokenRequest
 
 // NewPatchedTokenRequest instantiates a new PatchedTokenRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -325,7 +328,39 @@ func (o PatchedTokenRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Expiring) {
 		toSerialize["expiring"] = o.Expiring
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedTokenRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedTokenRequest := _PatchedTokenRequest{}
+
+	err = json.Unmarshal(data, &varPatchedTokenRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedTokenRequest(varPatchedTokenRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "intent")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "expiring")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedTokenRequest struct {

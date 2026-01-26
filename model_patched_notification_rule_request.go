@@ -29,7 +29,10 @@ type PatchedNotificationRuleRequest struct {
 	DestinationGroup NullableString `json:"destination_group,omitempty"`
 	// When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both.
 	DestinationEventUser *bool `json:"destination_event_user,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedNotificationRuleRequest PatchedNotificationRuleRequest
 
 // NewPatchedNotificationRuleRequest instantiates a new PatchedNotificationRuleRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -244,7 +247,37 @@ func (o PatchedNotificationRuleRequest) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.DestinationEventUser) {
 		toSerialize["destination_event_user"] = o.DestinationEventUser
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedNotificationRuleRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedNotificationRuleRequest := _PatchedNotificationRuleRequest{}
+
+	err = json.Unmarshal(data, &varPatchedNotificationRuleRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedNotificationRuleRequest(varPatchedNotificationRuleRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "transports")
+		delete(additionalProperties, "severity")
+		delete(additionalProperties, "destination_group")
+		delete(additionalProperties, "destination_event_user")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedNotificationRuleRequest struct {

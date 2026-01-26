@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -42,6 +41,7 @@ type AuthenticatorWebAuthnStage struct {
 	DeviceTypeRestrictions    []string                            `json:"device_type_restrictions,omitempty"`
 	DeviceTypeRestrictionsObj []WebAuthnDeviceType                `json:"device_type_restrictions_obj"`
 	MaxAttempts               *int32                              `json:"max_attempts,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _AuthenticatorWebAuthnStage AuthenticatorWebAuthnStage
@@ -548,6 +548,11 @@ func (o AuthenticatorWebAuthnStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaxAttempts) {
 		toSerialize["max_attempts"] = o.MaxAttempts
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -582,15 +587,34 @@ func (o *AuthenticatorWebAuthnStage) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorWebAuthnStage := _AuthenticatorWebAuthnStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorWebAuthnStage)
+	err = json.Unmarshal(data, &varAuthenticatorWebAuthnStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorWebAuthnStage(varAuthenticatorWebAuthnStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "user_verification")
+		delete(additionalProperties, "authenticator_attachment")
+		delete(additionalProperties, "resident_key_requirement")
+		delete(additionalProperties, "device_type_restrictions")
+		delete(additionalProperties, "device_type_restrictions_obj")
+		delete(additionalProperties, "max_attempts")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

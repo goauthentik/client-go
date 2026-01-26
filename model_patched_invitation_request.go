@@ -27,8 +27,11 @@ type PatchedInvitationRequest struct {
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
 	// When set, only the configured flow can use this invitation.
-	Flow NullableString `json:"flow,omitempty"`
+	Flow                 NullableString `json:"flow,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedInvitationRequest PatchedInvitationRequest
 
 // NewPatchedInvitationRequest instantiates a new PatchedInvitationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -254,7 +257,37 @@ func (o PatchedInvitationRequest) ToMap() (map[string]interface{}, error) {
 	if o.Flow.IsSet() {
 		toSerialize["flow"] = o.Flow.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedInvitationRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedInvitationRequest := _PatchedInvitationRequest{}
+
+	err = json.Unmarshal(data, &varPatchedInvitationRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedInvitationRequest(varPatchedInvitationRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "fixed_data")
+		delete(additionalProperties, "single_use")
+		delete(additionalProperties, "flow")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedInvitationRequest struct {

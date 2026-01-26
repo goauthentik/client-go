@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &DeviceSummary{}
 
 // DeviceSummary Summary of registered devices
 type DeviceSummary struct {
-	TotalCount         int32 `json:"total_count"`
-	UnreachableCount   int32 `json:"unreachable_count"`
-	OutdatedAgentCount int32 `json:"outdated_agent_count"`
+	TotalCount           int32 `json:"total_count"`
+	UnreachableCount     int32 `json:"unreachable_count"`
+	OutdatedAgentCount   int32 `json:"outdated_agent_count"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeviceSummary DeviceSummary
@@ -134,6 +134,11 @@ func (o DeviceSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize["total_count"] = o.TotalCount
 	toSerialize["unreachable_count"] = o.UnreachableCount
 	toSerialize["outdated_agent_count"] = o.OutdatedAgentCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *DeviceSummary) UnmarshalJSON(data []byte) (err error) {
 
 	varDeviceSummary := _DeviceSummary{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeviceSummary)
+	err = json.Unmarshal(data, &varDeviceSummary)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeviceSummary(varDeviceSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "total_count")
+		delete(additionalProperties, "unreachable_count")
+		delete(additionalProperties, "outdated_agent_count")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

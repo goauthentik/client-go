@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PermissionAssignRequest{}
 
 // PermissionAssignRequest Request to assign a new permission
 type PermissionAssignRequest struct {
-	Permissions []string   `json:"permissions"`
-	Model       *ModelEnum `json:"model,omitempty"`
-	ObjectPk    *string    `json:"object_pk,omitempty"`
+	Permissions          []string   `json:"permissions"`
+	Model                *ModelEnum `json:"model,omitempty"`
+	ObjectPk             *string    `json:"object_pk,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PermissionAssignRequest PermissionAssignRequest
@@ -152,6 +152,11 @@ func (o PermissionAssignRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ObjectPk) {
 		toSerialize["object_pk"] = o.ObjectPk
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -179,15 +184,22 @@ func (o *PermissionAssignRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varPermissionAssignRequest := _PermissionAssignRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPermissionAssignRequest)
+	err = json.Unmarshal(data, &varPermissionAssignRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PermissionAssignRequest(varPermissionAssignRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "permissions")
+		delete(additionalProperties, "model")
+		delete(additionalProperties, "object_pk")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

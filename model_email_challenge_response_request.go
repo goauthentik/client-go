@@ -20,8 +20,11 @@ var _ MappedNullable = &EmailChallengeResponseRequest{}
 
 // EmailChallengeResponseRequest Email challenge resposen. No fields. This challenge is always declared invalid to give the user a chance to retry
 type EmailChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EmailChallengeResponseRequest EmailChallengeResponseRequest
 
 // NewEmailChallengeResponseRequest instantiates a new EmailChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o EmailChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EmailChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varEmailChallengeResponseRequest := _EmailChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varEmailChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EmailChallengeResponseRequest(varEmailChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEmailChallengeResponseRequest struct {

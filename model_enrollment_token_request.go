@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,11 +22,12 @@ var _ MappedNullable = &EnrollmentTokenRequest{}
 
 // EnrollmentTokenRequest struct for EnrollmentTokenRequest
 type EnrollmentTokenRequest struct {
-	DeviceGroup NullableString `json:"device_group,omitempty"`
-	Connector   string         `json:"connector"`
-	Name        string         `json:"name"`
-	Expiring    *bool          `json:"expiring,omitempty"`
-	Expires     NullableTime   `json:"expires,omitempty"`
+	DeviceGroup          NullableString `json:"device_group,omitempty"`
+	Connector            string         `json:"connector"`
+	Name                 string         `json:"name"`
+	Expiring             *bool          `json:"expiring,omitempty"`
+	Expires              NullableTime   `json:"expires,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnrollmentTokenRequest EnrollmentTokenRequest
@@ -238,6 +238,11 @@ func (o EnrollmentTokenRequest) ToMap() (map[string]interface{}, error) {
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -266,15 +271,24 @@ func (o *EnrollmentTokenRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEnrollmentTokenRequest := _EnrollmentTokenRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnrollmentTokenRequest)
+	err = json.Unmarshal(data, &varEnrollmentTokenRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnrollmentTokenRequest(varEnrollmentTokenRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device_group")
+		delete(additionalProperties, "connector")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expiring")
+		delete(additionalProperties, "expires")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

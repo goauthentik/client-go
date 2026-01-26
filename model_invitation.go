@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -31,8 +30,9 @@ type Invitation struct {
 	// When enabled, the invitation will be deleted after usage.
 	SingleUse *bool `json:"single_use,omitempty"`
 	// When set, only the configured flow can use this invitation.
-	Flow    NullableString `json:"flow,omitempty"`
-	FlowObj Flow           `json:"flow_obj"`
+	Flow                 NullableString `json:"flow,omitempty"`
+	FlowObj              Flow           `json:"flow_obj"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Invitation Invitation
@@ -330,6 +330,11 @@ func (o Invitation) ToMap() (map[string]interface{}, error) {
 		toSerialize["flow"] = o.Flow.Get()
 	}
 	toSerialize["flow_obj"] = o.FlowObj
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -360,15 +365,27 @@ func (o *Invitation) UnmarshalJSON(data []byte) (err error) {
 
 	varInvitation := _Invitation{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInvitation)
+	err = json.Unmarshal(data, &varInvitation)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Invitation(varInvitation)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "fixed_data")
+		delete(additionalProperties, "created_by")
+		delete(additionalProperties, "single_use")
+		delete(additionalProperties, "flow")
+		delete(additionalProperties, "flow_obj")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

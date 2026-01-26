@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,11 +22,12 @@ var _ MappedNullable = &UserOAuthSourceConnectionRequest{}
 
 // UserOAuthSourceConnectionRequest User source connection
 type UserOAuthSourceConnectionRequest struct {
-	User        int32          `json:"user"`
-	Source      string         `json:"source"`
-	Identifier  string         `json:"identifier"`
-	AccessToken NullableString `json:"access_token,omitempty"`
-	Expires     *time.Time     `json:"expires,omitempty"`
+	User                 int32          `json:"user"`
+	Source               string         `json:"source"`
+	Identifier           string         `json:"identifier"`
+	AccessToken          NullableString `json:"access_token,omitempty"`
+	Expires              *time.Time     `json:"expires,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserOAuthSourceConnectionRequest UserOAuthSourceConnectionRequest
@@ -218,6 +218,11 @@ func (o UserOAuthSourceConnectionRequest) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,24 @@ func (o *UserOAuthSourceConnectionRequest) UnmarshalJSON(data []byte) (err error
 
 	varUserOAuthSourceConnectionRequest := _UserOAuthSourceConnectionRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserOAuthSourceConnectionRequest)
+	err = json.Unmarshal(data, &varUserOAuthSourceConnectionRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserOAuthSourceConnectionRequest(varUserOAuthSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "access_token")
+		delete(additionalProperties, "expires")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

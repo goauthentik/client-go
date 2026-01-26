@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PromptStageRequest{}
 
 // PromptStageRequest PromptStage Serializer
 type PromptStageRequest struct {
-	Name               string   `json:"name"`
-	Fields             []string `json:"fields"`
-	ValidationPolicies []string `json:"validation_policies,omitempty"`
+	Name                 string   `json:"name"`
+	Fields               []string `json:"fields"`
+	ValidationPolicies   []string `json:"validation_policies,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PromptStageRequest PromptStageRequest
@@ -143,6 +143,11 @@ func (o PromptStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ValidationPolicies) {
 		toSerialize["validation_policies"] = o.ValidationPolicies
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *PromptStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varPromptStageRequest := _PromptStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPromptStageRequest)
+	err = json.Unmarshal(data, &varPromptStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PromptStageRequest(varPromptStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "fields")
+		delete(additionalProperties, "validation_policies")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

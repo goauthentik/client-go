@@ -20,8 +20,11 @@ var _ MappedNullable = &AppleChallengeResponseRequest{}
 
 // AppleChallengeResponseRequest Pseudo class for apple response
 type AppleChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AppleChallengeResponseRequest AppleChallengeResponseRequest
 
 // NewAppleChallengeResponseRequest instantiates a new AppleChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o AppleChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AppleChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varAppleChallengeResponseRequest := _AppleChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varAppleChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AppleChallengeResponseRequest(varAppleChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAppleChallengeResponseRequest struct {

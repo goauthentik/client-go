@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,6 +32,7 @@ type NotificationRule struct {
 	DestinationGroupObj Group          `json:"destination_group_obj"`
 	// When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both.
 	DestinationEventUser *bool `json:"destination_event_user,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NotificationRule NotificationRule
@@ -293,6 +293,11 @@ func (o NotificationRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DestinationEventUser) {
 		toSerialize["destination_event_user"] = o.DestinationEventUser
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -322,15 +327,26 @@ func (o *NotificationRule) UnmarshalJSON(data []byte) (err error) {
 
 	varNotificationRule := _NotificationRule{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotificationRule)
+	err = json.Unmarshal(data, &varNotificationRule)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NotificationRule(varNotificationRule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "transports")
+		delete(additionalProperties, "severity")
+		delete(additionalProperties, "destination_group")
+		delete(additionalProperties, "destination_group_obj")
+		delete(additionalProperties, "destination_event_user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

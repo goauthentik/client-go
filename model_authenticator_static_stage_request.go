@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,10 +23,11 @@ var _ MappedNullable = &AuthenticatorStaticStageRequest{}
 type AuthenticatorStaticStageRequest struct {
 	Name string `json:"name"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	FriendlyName  *string        `json:"friendly_name,omitempty"`
-	TokenCount    *int32         `json:"token_count,omitempty"`
-	TokenLength   *int32         `json:"token_length,omitempty"`
+	ConfigureFlow        NullableString `json:"configure_flow,omitempty"`
+	FriendlyName         *string        `json:"friendly_name,omitempty"`
+	TokenCount           *int32         `json:"token_count,omitempty"`
+	TokenLength          *int32         `json:"token_length,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorStaticStageRequest AuthenticatorStaticStageRequest
@@ -236,6 +236,11 @@ func (o AuthenticatorStaticStageRequest) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.TokenLength) {
 		toSerialize["token_length"] = o.TokenLength
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -263,15 +268,24 @@ func (o *AuthenticatorStaticStageRequest) UnmarshalJSON(data []byte) (err error)
 
 	varAuthenticatorStaticStageRequest := _AuthenticatorStaticStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorStaticStageRequest)
+	err = json.Unmarshal(data, &varAuthenticatorStaticStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorStaticStageRequest(varAuthenticatorStaticStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "token_count")
+		delete(additionalProperties, "token_length")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

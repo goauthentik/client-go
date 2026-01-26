@@ -20,16 +20,19 @@ var _ MappedNullable = &DeviceFactsRequest{}
 
 // DeviceFactsRequest struct for DeviceFactsRequest
 type DeviceFactsRequest struct {
-	Os        NullableOperatingSystemRequest `json:"os,omitempty"`
-	Disks     []DiskRequest                  `json:"disks,omitempty"`
-	Network   NullableNetworkRequest         `json:"network,omitempty"`
-	Hardware  NullableHardwareRequest        `json:"hardware,omitempty"`
-	Software  []SoftwareRequest              `json:"software,omitempty"`
-	Processes []ProcessRequest               `json:"processes,omitempty"`
-	Users     []DeviceUserRequest            `json:"users,omitempty"`
-	Groups    []DeviceGroupRequest           `json:"groups,omitempty"`
-	Vendor    map[string]interface{}         `json:"vendor,omitempty"`
+	Os                   NullableOperatingSystemRequest `json:"os,omitempty"`
+	Disks                []DiskRequest                  `json:"disks,omitempty"`
+	Network              NullableNetworkRequest         `json:"network,omitempty"`
+	Hardware             NullableHardwareRequest        `json:"hardware,omitempty"`
+	Software             []SoftwareRequest              `json:"software,omitempty"`
+	Processes            []ProcessRequest               `json:"processes,omitempty"`
+	Users                []DeviceUserRequest            `json:"users,omitempty"`
+	Groups               []DeviceGroupRequest           `json:"groups,omitempty"`
+	Vendor               map[string]interface{}         `json:"vendor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeviceFactsRequest DeviceFactsRequest
 
 // NewDeviceFactsRequest instantiates a new DeviceFactsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -411,7 +414,41 @@ func (o DeviceFactsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Vendor) {
 		toSerialize["vendor"] = o.Vendor
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeviceFactsRequest) UnmarshalJSON(data []byte) (err error) {
+	varDeviceFactsRequest := _DeviceFactsRequest{}
+
+	err = json.Unmarshal(data, &varDeviceFactsRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceFactsRequest(varDeviceFactsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "os")
+		delete(additionalProperties, "disks")
+		delete(additionalProperties, "network")
+		delete(additionalProperties, "hardware")
+		delete(additionalProperties, "software")
+		delete(additionalProperties, "processes")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "groups")
+		delete(additionalProperties, "vendor")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeviceFactsRequest struct {

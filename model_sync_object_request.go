@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &SyncObjectRequest{}
 
 // SyncObjectRequest Sync object serializer
 type SyncObjectRequest struct {
-	SyncObjectModel SyncObjectModelEnum `json:"sync_object_model"`
-	SyncObjectId    string              `json:"sync_object_id"`
-	OverrideDryRun  *bool               `json:"override_dry_run,omitempty"`
+	SyncObjectModel      SyncObjectModelEnum `json:"sync_object_model"`
+	SyncObjectId         string              `json:"sync_object_id"`
+	OverrideDryRun       *bool               `json:"override_dry_run,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SyncObjectRequest SyncObjectRequest
@@ -147,6 +147,11 @@ func (o SyncObjectRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OverrideDryRun) {
 		toSerialize["override_dry_run"] = o.OverrideDryRun
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -175,15 +180,22 @@ func (o *SyncObjectRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSyncObjectRequest := _SyncObjectRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSyncObjectRequest)
+	err = json.Unmarshal(data, &varSyncObjectRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SyncObjectRequest(varSyncObjectRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "sync_object_model")
+		delete(additionalProperties, "sync_object_id")
+		delete(additionalProperties, "override_dry_run")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

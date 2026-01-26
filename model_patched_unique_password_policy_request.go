@@ -27,7 +27,10 @@ type PatchedUniquePasswordPolicyRequest struct {
 	PasswordField *string `json:"password_field,omitempty"`
 	// Number of passwords to check against.
 	NumHistoricalPasswords *int32 `json:"num_historical_passwords,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
+
+type _PatchedUniquePasswordPolicyRequest PatchedUniquePasswordPolicyRequest
 
 // NewPatchedUniquePasswordPolicyRequest instantiates a new PatchedUniquePasswordPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -196,7 +199,36 @@ func (o PatchedUniquePasswordPolicyRequest) ToMap() (map[string]interface{}, err
 	if !IsNil(o.NumHistoricalPasswords) {
 		toSerialize["num_historical_passwords"] = o.NumHistoricalPasswords
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUniquePasswordPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUniquePasswordPolicyRequest := _PatchedUniquePasswordPolicyRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUniquePasswordPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUniquePasswordPolicyRequest(varPatchedUniquePasswordPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "password_field")
+		delete(additionalProperties, "num_historical_passwords")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUniquePasswordPolicyRequest struct {

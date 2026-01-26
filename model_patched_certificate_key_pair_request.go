@@ -24,8 +24,11 @@ type PatchedCertificateKeyPairRequest struct {
 	// PEM-encoded Certificate data
 	CertificateData *string `json:"certificate_data,omitempty"`
 	// Optional Private Key. If this is set, you can use this keypair for encryption.
-	KeyData *string `json:"key_data,omitempty"`
+	KeyData              *string `json:"key_data,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedCertificateKeyPairRequest PatchedCertificateKeyPairRequest
 
 // NewPatchedCertificateKeyPairRequest instantiates a new PatchedCertificateKeyPairRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -159,7 +162,35 @@ func (o PatchedCertificateKeyPairRequest) ToMap() (map[string]interface{}, error
 	if !IsNil(o.KeyData) {
 		toSerialize["key_data"] = o.KeyData
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedCertificateKeyPairRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedCertificateKeyPairRequest := _PatchedCertificateKeyPairRequest{}
+
+	err = json.Unmarshal(data, &varPatchedCertificateKeyPairRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedCertificateKeyPairRequest(varPatchedCertificateKeyPairRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "certificate_data")
+		delete(additionalProperties, "key_data")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedCertificateKeyPairRequest struct {

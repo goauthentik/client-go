@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &DeviceGroup{}
 
 // DeviceGroup struct for DeviceGroup
 type DeviceGroup struct {
-	Id   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
+	Id                   string  `json:"id"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeviceGroup DeviceGroup
@@ -116,6 +116,11 @@ func (o DeviceGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *DeviceGroup) UnmarshalJSON(data []byte) (err error) {
 
 	varDeviceGroup := _DeviceGroup{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeviceGroup)
+	err = json.Unmarshal(data, &varDeviceGroup)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeviceGroup(varDeviceGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

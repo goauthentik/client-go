@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,7 +34,8 @@ type ConsentStage struct {
 	FlowSet       []FlowSet             `json:"flow_set"`
 	Mode          *ConsentStageModeEnum `json:"mode,omitempty"`
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
-	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
+	ConsentExpireIn      *string `json:"consent_expire_in,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ConsentStage ConsentStage
@@ -319,6 +319,11 @@ func (o ConsentStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConsentExpireIn) {
 		toSerialize["consent_expire_in"] = o.ConsentExpireIn
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -352,15 +357,28 @@ func (o *ConsentStage) UnmarshalJSON(data []byte) (err error) {
 
 	varConsentStage := _ConsentStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varConsentStage)
+	err = json.Unmarshal(data, &varConsentStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ConsentStage(varConsentStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "consent_expire_in")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

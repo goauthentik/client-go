@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &DetailedCountry{}
 
 // DetailedCountry struct for DetailedCountry
 type DetailedCountry struct {
-	Code CountryCodeEnum `json:"code"`
-	Name string          `json:"name"`
+	Code                 CountryCodeEnum `json:"code"`
+	Name                 string          `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DetailedCountry DetailedCountry
@@ -107,6 +107,11 @@ func (o DetailedCountry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["code"] = o.Code
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *DetailedCountry) UnmarshalJSON(data []byte) (err error) {
 
 	varDetailedCountry := _DetailedCountry{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDetailedCountry)
+	err = json.Unmarshal(data, &varDetailedCountry)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DetailedCountry(varDetailedCountry)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "code")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

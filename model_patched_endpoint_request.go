@@ -20,15 +20,18 @@ var _ MappedNullable = &PatchedEndpointRequest{}
 
 // PatchedEndpointRequest Endpoint Serializer
 type PatchedEndpointRequest struct {
-	Name               *string                `json:"name,omitempty"`
-	Provider           *int32                 `json:"provider,omitempty"`
-	Protocol           *ProtocolEnum          `json:"protocol,omitempty"`
-	Host               *string                `json:"host,omitempty"`
-	Settings           map[string]interface{} `json:"settings,omitempty"`
-	PropertyMappings   []string               `json:"property_mappings,omitempty"`
-	AuthMode           *EndpointAuthModeEnum  `json:"auth_mode,omitempty"`
-	MaximumConnections *int32                 `json:"maximum_connections,omitempty"`
+	Name                 *string                `json:"name,omitempty"`
+	Provider             *int32                 `json:"provider,omitempty"`
+	Protocol             *ProtocolEnum          `json:"protocol,omitempty"`
+	Host                 *string                `json:"host,omitempty"`
+	Settings             map[string]interface{} `json:"settings,omitempty"`
+	PropertyMappings     []string               `json:"property_mappings,omitempty"`
+	AuthMode             *EndpointAuthModeEnum  `json:"auth_mode,omitempty"`
+	MaximumConnections   *int32                 `json:"maximum_connections,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedEndpointRequest PatchedEndpointRequest
 
 // NewPatchedEndpointRequest instantiates a new PatchedEndpointRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -337,7 +340,40 @@ func (o PatchedEndpointRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaximumConnections) {
 		toSerialize["maximum_connections"] = o.MaximumConnections
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedEndpointRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedEndpointRequest := _PatchedEndpointRequest{}
+
+	err = json.Unmarshal(data, &varPatchedEndpointRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedEndpointRequest(varPatchedEndpointRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "host")
+		delete(additionalProperties, "settings")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "auth_mode")
+		delete(additionalProperties, "maximum_connections")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedEndpointRequest struct {

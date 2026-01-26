@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &UserSelfGroups{}
 
 // UserSelfGroups struct for UserSelfGroups
 type UserSelfGroups struct {
-	Name string `json:"name"`
-	Pk   string `json:"pk"`
+	Name                 string `json:"name"`
+	Pk                   string `json:"pk"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserSelfGroups UserSelfGroups
@@ -107,6 +107,11 @@ func (o UserSelfGroups) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["pk"] = o.Pk
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *UserSelfGroups) UnmarshalJSON(data []byte) (err error) {
 
 	varUserSelfGroups := _UserSelfGroups{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserSelfGroups)
+	err = json.Unmarshal(data, &varUserSelfGroups)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserSelfGroups(varUserSelfGroups)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "pk")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

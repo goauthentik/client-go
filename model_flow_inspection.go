@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &FlowInspection{}
 
 // FlowInspection Serializer for inspect endpoint
 type FlowInspection struct {
-	Plans       []FlowInspectorPlan `json:"plans"`
-	CurrentPlan *FlowInspectorPlan  `json:"current_plan,omitempty"`
-	IsCompleted bool                `json:"is_completed"`
+	Plans                []FlowInspectorPlan `json:"plans"`
+	CurrentPlan          *FlowInspectorPlan  `json:"current_plan,omitempty"`
+	IsCompleted          bool                `json:"is_completed"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FlowInspection FlowInspection
@@ -143,6 +143,11 @@ func (o FlowInspection) ToMap() (map[string]interface{}, error) {
 		toSerialize["current_plan"] = o.CurrentPlan
 	}
 	toSerialize["is_completed"] = o.IsCompleted
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *FlowInspection) UnmarshalJSON(data []byte) (err error) {
 
 	varFlowInspection := _FlowInspection{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowInspection)
+	err = json.Unmarshal(data, &varFlowInspection)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlowInspection(varFlowInspection)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "plans")
+		delete(additionalProperties, "current_plan")
+		delete(additionalProperties, "is_completed")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

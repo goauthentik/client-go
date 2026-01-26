@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,7 +34,8 @@ type SourceStage struct {
 	FlowSet       []FlowSet `json:"flow_set"`
 	Source        string    `json:"source"`
 	// Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
-	ResumeTimeout *string `json:"resume_timeout,omitempty"`
+	ResumeTimeout        *string `json:"resume_timeout,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SourceStage SourceStage
@@ -310,6 +310,11 @@ func (o SourceStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResumeTimeout) {
 		toSerialize["resume_timeout"] = o.ResumeTimeout
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -344,15 +349,28 @@ func (o *SourceStage) UnmarshalJSON(data []byte) (err error) {
 
 	varSourceStage := _SourceStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSourceStage)
+	err = json.Unmarshal(data, &varSourceStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SourceStage(varSourceStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "resume_timeout")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

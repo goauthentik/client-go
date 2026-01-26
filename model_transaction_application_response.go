@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &TransactionApplicationResponse{}
 
 // TransactionApplicationResponse Transactional creation response
 type TransactionApplicationResponse struct {
-	Applied bool     `json:"applied"`
-	Logs    []string `json:"logs"`
+	Applied              bool     `json:"applied"`
+	Logs                 []string `json:"logs"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TransactionApplicationResponse TransactionApplicationResponse
@@ -107,6 +107,11 @@ func (o TransactionApplicationResponse) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	toSerialize["applied"] = o.Applied
 	toSerialize["logs"] = o.Logs
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *TransactionApplicationResponse) UnmarshalJSON(data []byte) (err error) 
 
 	varTransactionApplicationResponse := _TransactionApplicationResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionApplicationResponse)
+	err = json.Unmarshal(data, &varTransactionApplicationResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransactionApplicationResponse(varTransactionApplicationResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "applied")
+		delete(additionalProperties, "logs")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

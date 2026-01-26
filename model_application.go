@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -38,11 +37,12 @@ type Application struct {
 	MetaLaunchUrl *string `json:"meta_launch_url,omitempty"`
 	MetaIcon      *string `json:"meta_icon,omitempty"`
 	// Get the URL to the App Icon image
-	MetaIconUrl      NullableString    `json:"meta_icon_url"`
-	MetaDescription  *string           `json:"meta_description,omitempty"`
-	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
-	Group            *string           `json:"group,omitempty"`
+	MetaIconUrl          NullableString    `json:"meta_icon_url"`
+	MetaDescription      *string           `json:"meta_description,omitempty"`
+	MetaPublisher        *string           `json:"meta_publisher,omitempty"`
+	PolicyEngineMode     *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	Group                *string           `json:"group,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Application Application
@@ -586,6 +586,11 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Group) {
 		toSerialize["group"] = o.Group
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -619,15 +624,35 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 
 	varApplication := _Application{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varApplication)
+	err = json.Unmarshal(data, &varApplication)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Application(varApplication)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "provider_obj")
+		delete(additionalProperties, "backchannel_providers")
+		delete(additionalProperties, "backchannel_providers_obj")
+		delete(additionalProperties, "launch_url")
+		delete(additionalProperties, "open_in_new_tab")
+		delete(additionalProperties, "meta_launch_url")
+		delete(additionalProperties, "meta_icon")
+		delete(additionalProperties, "meta_icon_url")
+		delete(additionalProperties, "meta_description")
+		delete(additionalProperties, "meta_publisher")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "group")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

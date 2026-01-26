@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -54,6 +53,7 @@ type ProxyOutpostConfig struct {
 	AssignedApplicationSlug string `json:"assigned_application_slug"`
 	// Application's display Name.
 	AssignedApplicationName string `json:"assigned_application_name"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _ProxyOutpostConfig ProxyOutpostConfig
@@ -761,6 +761,11 @@ func (o ProxyOutpostConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize["scopes_to_request"] = o.ScopesToRequest
 	toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
 	toSerialize["assigned_application_name"] = o.AssignedApplicationName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -795,15 +800,40 @@ func (o *ProxyOutpostConfig) UnmarshalJSON(data []byte) (err error) {
 
 	varProxyOutpostConfig := _ProxyOutpostConfig{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProxyOutpostConfig)
+	err = json.Unmarshal(data, &varProxyOutpostConfig)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProxyOutpostConfig(varProxyOutpostConfig)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "internal_host")
+		delete(additionalProperties, "external_host")
+		delete(additionalProperties, "internal_host_ssl_validation")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "client_secret")
+		delete(additionalProperties, "oidc_configuration")
+		delete(additionalProperties, "cookie_secret")
+		delete(additionalProperties, "certificate")
+		delete(additionalProperties, "skip_path_regex")
+		delete(additionalProperties, "basic_auth_enabled")
+		delete(additionalProperties, "basic_auth_password_attribute")
+		delete(additionalProperties, "basic_auth_user_attribute")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "cookie_domain")
+		delete(additionalProperties, "access_token_validity")
+		delete(additionalProperties, "intercept_header_auth")
+		delete(additionalProperties, "scopes_to_request")
+		delete(additionalProperties, "assigned_application_slug")
+		delete(additionalProperties, "assigned_application_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

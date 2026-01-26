@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,7 +32,8 @@ type ExtraRoleObjectPermission struct {
 	// Get model label from permission's model
 	ModelVerbose string `json:"model_verbose"`
 	// Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the role has the view_ permission on the object
-	ObjectDescription NullableString `json:"object_description"`
+	ObjectDescription    NullableString `json:"object_description"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ExtraRoleObjectPermission ExtraRoleObjectPermission
@@ -301,6 +301,11 @@ func (o ExtraRoleObjectPermission) ToMap() (map[string]interface{}, error) {
 	toSerialize["app_label_verbose"] = o.AppLabelVerbose
 	toSerialize["model_verbose"] = o.ModelVerbose
 	toSerialize["object_description"] = o.ObjectDescription.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -336,15 +341,28 @@ func (o *ExtraRoleObjectPermission) UnmarshalJSON(data []byte) (err error) {
 
 	varExtraRoleObjectPermission := _ExtraRoleObjectPermission{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varExtraRoleObjectPermission)
+	err = json.Unmarshal(data, &varExtraRoleObjectPermission)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ExtraRoleObjectPermission(varExtraRoleObjectPermission)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "codename")
+		delete(additionalProperties, "model")
+		delete(additionalProperties, "app_label")
+		delete(additionalProperties, "object_pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "app_label_verbose")
+		delete(additionalProperties, "model_verbose")
+		delete(additionalProperties, "object_description")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

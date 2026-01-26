@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,10 +22,11 @@ var _ MappedNullable = &BlueprintFile{}
 
 // BlueprintFile struct for BlueprintFile
 type BlueprintFile struct {
-	Path  string    `json:"path"`
-	LastM time.Time `json:"last_m"`
-	Hash  string    `json:"hash"`
-	Meta  Metadata  `json:"meta"`
+	Path                 string    `json:"path"`
+	LastM                time.Time `json:"last_m"`
+	Hash                 string    `json:"hash"`
+	Meta                 Metadata  `json:"meta"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BlueprintFile BlueprintFile
@@ -162,6 +162,11 @@ func (o BlueprintFile) ToMap() (map[string]interface{}, error) {
 	toSerialize["last_m"] = o.LastM
 	toSerialize["hash"] = o.Hash
 	toSerialize["meta"] = o.Meta
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -192,15 +197,23 @@ func (o *BlueprintFile) UnmarshalJSON(data []byte) (err error) {
 
 	varBlueprintFile := _BlueprintFile{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBlueprintFile)
+	err = json.Unmarshal(data, &varBlueprintFile)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BlueprintFile(varBlueprintFile)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "last_m")
+		delete(additionalProperties, "hash")
+		delete(additionalProperties, "meta")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,10 +34,11 @@ type DummyPolicy struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	// Return objects policy is bound to
-	BoundTo int32  `json:"bound_to"`
-	Result  *bool  `json:"result,omitempty"`
-	WaitMin *int32 `json:"wait_min,omitempty"`
-	WaitMax *int32 `json:"wait_max,omitempty"`
+	BoundTo              int32  `json:"bound_to"`
+	Result               *bool  `json:"result,omitempty"`
+	WaitMin              *int32 `json:"wait_min,omitempty"`
+	WaitMax              *int32 `json:"wait_max,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DummyPolicy DummyPolicy
@@ -392,6 +392,11 @@ func (o DummyPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WaitMax) {
 		toSerialize["wait_max"] = o.WaitMax
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -425,15 +430,30 @@ func (o *DummyPolicy) UnmarshalJSON(data []byte) (err error) {
 
 	varDummyPolicy := _DummyPolicy{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDummyPolicy)
+	err = json.Unmarshal(data, &varDummyPolicy)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DummyPolicy(varDummyPolicy)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "bound_to")
+		delete(additionalProperties, "result")
+		delete(additionalProperties, "wait_min")
+		delete(additionalProperties, "wait_max")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

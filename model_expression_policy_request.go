@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,8 +23,9 @@ var _ MappedNullable = &ExpressionPolicyRequest{}
 type ExpressionPolicyRequest struct {
 	Name string `json:"name"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
-	Expression       string `json:"expression"`
+	ExecutionLogging     *bool  `json:"execution_logging,omitempty"`
+	Expression           string `json:"expression"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ExpressionPolicyRequest ExpressionPolicyRequest
@@ -144,6 +144,11 @@ func (o ExpressionPolicyRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["execution_logging"] = o.ExecutionLogging
 	}
 	toSerialize["expression"] = o.Expression
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -172,15 +177,22 @@ func (o *ExpressionPolicyRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varExpressionPolicyRequest := _ExpressionPolicyRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varExpressionPolicyRequest)
+	err = json.Unmarshal(data, &varExpressionPolicyRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ExpressionPolicyRequest(varExpressionPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "expression")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

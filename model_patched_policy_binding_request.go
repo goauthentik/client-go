@@ -31,8 +31,11 @@ type PatchedPolicyBindingRequest struct {
 	// Timeout after which Policy execution is terminated.
 	Timeout *int32 `json:"timeout,omitempty"`
 	// Result if the Policy execution fails.
-	FailureResult *bool `json:"failure_result,omitempty"`
+	FailureResult        *bool `json:"failure_result,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedPolicyBindingRequest PatchedPolicyBindingRequest
 
 // NewPatchedPolicyBindingRequest instantiates a new PatchedPolicyBindingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -409,7 +412,41 @@ func (o PatchedPolicyBindingRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FailureResult) {
 		toSerialize["failure_result"] = o.FailureResult
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedPolicyBindingRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedPolicyBindingRequest := _PatchedPolicyBindingRequest{}
+
+	err = json.Unmarshal(data, &varPatchedPolicyBindingRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedPolicyBindingRequest(varPatchedPolicyBindingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "policy")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "target")
+		delete(additionalProperties, "negate")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "failure_result")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedPolicyBindingRequest struct {

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -30,6 +29,7 @@ type SCIMSourceRequest struct {
 	UserPropertyMappings  []string `json:"user_property_mappings,omitempty"`
 	GroupPropertyMappings []string `json:"group_property_mappings,omitempty"`
 	UserPathTemplate      *string  `json:"user_path_template,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _SCIMSourceRequest SCIMSourceRequest
@@ -253,6 +253,11 @@ func (o SCIMSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -281,15 +286,25 @@ func (o *SCIMSourceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSCIMSourceRequest := _SCIMSourceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMSourceRequest)
+	err = json.Unmarshal(data, &varSCIMSourceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SCIMSourceRequest(varSCIMSourceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "user_path_template")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

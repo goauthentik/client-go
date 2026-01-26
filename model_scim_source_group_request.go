@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &SCIMSourceGroupRequest{}
 
 // SCIMSourceGroupRequest SCIMSourceGroup Serializer
 type SCIMSourceGroupRequest struct {
-	Id         *string                `json:"id,omitempty"`
-	ExternalId string                 `json:"external_id"`
-	Group      string                 `json:"group"`
-	Source     string                 `json:"source"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Id                   *string                `json:"id,omitempty"`
+	ExternalId           string                 `json:"external_id"`
+	Group                string                 `json:"group"`
+	Source               string                 `json:"source"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SCIMSourceGroupRequest SCIMSourceGroupRequest
@@ -206,6 +206,11 @@ func (o SCIMSourceGroupRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -235,15 +240,24 @@ func (o *SCIMSourceGroupRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSCIMSourceGroupRequest := _SCIMSourceGroupRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMSourceGroupRequest)
+	err = json.Unmarshal(data, &varSCIMSourceGroupRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SCIMSourceGroupRequest(varSCIMSourceGroupRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "external_id")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

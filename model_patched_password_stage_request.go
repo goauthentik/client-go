@@ -28,8 +28,11 @@ type PatchedPasswordStageRequest struct {
 	// How many attempts a user has before the flow is canceled. To lock the user out, use a reputation policy and a user_write stage.
 	FailedAttemptsBeforeCancel *int32 `json:"failed_attempts_before_cancel,omitempty"`
 	// When enabled, provides a 'show password' button with the password input field.
-	AllowShowPassword *bool `json:"allow_show_password,omitempty"`
+	AllowShowPassword    *bool `json:"allow_show_password,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedPasswordStageRequest PatchedPasswordStageRequest
 
 // NewPatchedPasswordStageRequest instantiates a new PatchedPasswordStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -244,7 +247,37 @@ func (o PatchedPasswordStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AllowShowPassword) {
 		toSerialize["allow_show_password"] = o.AllowShowPassword
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedPasswordStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedPasswordStageRequest := _PatchedPasswordStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedPasswordStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedPasswordStageRequest(varPatchedPasswordStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "backends")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "failed_attempts_before_cancel")
+		delete(additionalProperties, "allow_show_password")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedPasswordStageRequest struct {

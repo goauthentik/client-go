@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -38,14 +37,15 @@ type User struct {
 	RolesObj    []Role         `json:"roles_obj"`
 	Email       *string        `json:"email,omitempty"`
 	// User's avatar, either a http/https URL or a data URI
-	Avatar             string                 `json:"avatar"`
-	Attributes         map[string]interface{} `json:"attributes,omitempty"`
-	Uid                string                 `json:"uid"`
-	Path               *string                `json:"path,omitempty"`
-	Type               *UserTypeEnum          `json:"type,omitempty"`
-	Uuid               string                 `json:"uuid"`
-	PasswordChangeDate time.Time              `json:"password_change_date"`
-	LastUpdated        time.Time              `json:"last_updated"`
+	Avatar               string                 `json:"avatar"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	Uid                  string                 `json:"uid"`
+	Path                 *string                `json:"path,omitempty"`
+	Type                 *UserTypeEnum          `json:"type,omitempty"`
+	Uuid                 string                 `json:"uuid"`
+	PasswordChangeDate   time.Time              `json:"password_change_date"`
+	LastUpdated          time.Time              `json:"last_updated"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _User User
@@ -688,6 +688,11 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	toSerialize["uuid"] = o.Uuid
 	toSerialize["password_change_date"] = o.PasswordChangeDate
 	toSerialize["last_updated"] = o.LastUpdated
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -726,15 +731,39 @@ func (o *User) UnmarshalJSON(data []byte) (err error) {
 
 	varUser := _User{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUser)
+	err = json.Unmarshal(data, &varUser)
 
 	if err != nil {
 		return err
 	}
 
 	*o = User(varUser)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "is_active")
+		delete(additionalProperties, "last_login")
+		delete(additionalProperties, "date_joined")
+		delete(additionalProperties, "is_superuser")
+		delete(additionalProperties, "groups")
+		delete(additionalProperties, "groups_obj")
+		delete(additionalProperties, "roles")
+		delete(additionalProperties, "roles_obj")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "avatar")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "uid")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "password_change_date")
+		delete(additionalProperties, "last_updated")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &UserPlexSourceConnectionRequest{}
 
 // UserPlexSourceConnectionRequest User source connection
 type UserPlexSourceConnectionRequest struct {
-	User       int32  `json:"user"`
-	Source     string `json:"source"`
-	Identifier string `json:"identifier"`
-	PlexToken  string `json:"plex_token"`
+	User                 int32  `json:"user"`
+	Source               string `json:"source"`
+	Identifier           string `json:"identifier"`
+	PlexToken            string `json:"plex_token"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserPlexSourceConnectionRequest UserPlexSourceConnectionRequest
@@ -161,6 +161,11 @@ func (o UserPlexSourceConnectionRequest) ToMap() (map[string]interface{}, error)
 	toSerialize["source"] = o.Source
 	toSerialize["identifier"] = o.Identifier
 	toSerialize["plex_token"] = o.PlexToken
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *UserPlexSourceConnectionRequest) UnmarshalJSON(data []byte) (err error)
 
 	varUserPlexSourceConnectionRequest := _UserPlexSourceConnectionRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserPlexSourceConnectionRequest)
+	err = json.Unmarshal(data, &varUserPlexSourceConnectionRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserPlexSourceConnectionRequest(varUserPlexSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "plex_token")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

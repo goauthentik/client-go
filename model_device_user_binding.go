@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -37,10 +36,11 @@ type DeviceUserBinding struct {
 	// Timeout after which Policy execution is terminated.
 	Timeout *int32 `json:"timeout,omitempty"`
 	// Result if the Policy execution fails.
-	FailureResult *bool          `json:"failure_result,omitempty"`
-	IsPrimary     *bool          `json:"is_primary,omitempty"`
-	Connector     NullableString `json:"connector"`
-	ConnectorObj  Connector      `json:"connector_obj"`
+	FailureResult        *bool          `json:"failure_result,omitempty"`
+	IsPrimary            *bool          `json:"is_primary,omitempty"`
+	Connector            NullableString `json:"connector"`
+	ConnectorObj         Connector      `json:"connector_obj"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeviceUserBinding DeviceUserBinding
@@ -595,6 +595,11 @@ func (o DeviceUserBinding) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["connector"] = o.Connector.Get()
 	toSerialize["connector_obj"] = o.ConnectorObj
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -629,15 +634,35 @@ func (o *DeviceUserBinding) UnmarshalJSON(data []byte) (err error) {
 
 	varDeviceUserBinding := _DeviceUserBinding{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeviceUserBinding)
+	err = json.Unmarshal(data, &varDeviceUserBinding)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeviceUserBinding(varDeviceUserBinding)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "policy")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "policy_obj")
+		delete(additionalProperties, "group_obj")
+		delete(additionalProperties, "user_obj")
+		delete(additionalProperties, "target")
+		delete(additionalProperties, "negate")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "failure_result")
+		delete(additionalProperties, "is_primary")
+		delete(additionalProperties, "connector")
+		delete(additionalProperties, "connector_obj")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

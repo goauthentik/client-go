@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &SCIMProviderGroup{}
 
 // SCIMProviderGroup SCIMProviderGroup Serializer
 type SCIMProviderGroup struct {
-	Id         string                 `json:"id"`
-	ScimId     string                 `json:"scim_id"`
-	Group      string                 `json:"group"`
-	GroupObj   PartialGroup           `json:"group_obj"`
-	Provider   int32                  `json:"provider"`
-	Attributes map[string]interface{} `json:"attributes"`
+	Id                   string                 `json:"id"`
+	ScimId               string                 `json:"scim_id"`
+	Group                string                 `json:"group"`
+	GroupObj             PartialGroup           `json:"group_obj"`
+	Provider             int32                  `json:"provider"`
+	Attributes           map[string]interface{} `json:"attributes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SCIMProviderGroup SCIMProviderGroup
@@ -215,6 +215,11 @@ func (o SCIMProviderGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize["group_obj"] = o.GroupObj
 	toSerialize["provider"] = o.Provider
 	toSerialize["attributes"] = o.Attributes
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,25 @@ func (o *SCIMProviderGroup) UnmarshalJSON(data []byte) (err error) {
 
 	varSCIMProviderGroup := _SCIMProviderGroup{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMProviderGroup)
+	err = json.Unmarshal(data, &varSCIMProviderGroup)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SCIMProviderGroup(varSCIMProviderGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "scim_id")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "group_obj")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,8 +22,9 @@ var _ MappedNullable = &TenantRecoveryKeyResponse{}
 
 // TenantRecoveryKeyResponse Tenant recovery key creation response serializer
 type TenantRecoveryKeyResponse struct {
-	Expiry time.Time `json:"expiry"`
-	Url    string    `json:"url"`
+	Expiry               time.Time `json:"expiry"`
+	Url                  string    `json:"url"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TenantRecoveryKeyResponse TenantRecoveryKeyResponse
@@ -108,6 +108,11 @@ func (o TenantRecoveryKeyResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["expiry"] = o.Expiry
 	toSerialize["url"] = o.Url
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -136,15 +141,21 @@ func (o *TenantRecoveryKeyResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varTenantRecoveryKeyResponse := _TenantRecoveryKeyResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTenantRecoveryKeyResponse)
+	err = json.Unmarshal(data, &varTenantRecoveryKeyResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TenantRecoveryKeyResponse(varTenantRecoveryKeyResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "expiry")
+		delete(additionalProperties, "url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

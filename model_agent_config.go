@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -32,6 +31,7 @@ type AgentConfig struct {
 	AuthTerminateSessionOnExpiry bool                      `json:"auth_terminate_session_on_expiry"`
 	SystemConfig                 Config                    `json:"system_config"`
 	LicenseStatus                NullableLicenseStatusEnum `json:"license_status"`
+	AdditionalProperties         map[string]interface{}
 }
 
 type _AgentConfig AgentConfig
@@ -331,6 +331,11 @@ func (o AgentConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize["auth_terminate_session_on_expiry"] = o.AuthTerminateSessionOnExpiry
 	toSerialize["system_config"] = o.SystemConfig
 	toSerialize["license_status"] = o.LicenseStatus.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -367,15 +372,29 @@ func (o *AgentConfig) UnmarshalJSON(data []byte) (err error) {
 
 	varAgentConfig := _AgentConfig{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAgentConfig)
+	err = json.Unmarshal(data, &varAgentConfig)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AgentConfig(varAgentConfig)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device_id")
+		delete(additionalProperties, "refresh_interval")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "jwks_auth")
+		delete(additionalProperties, "jwks_challenge")
+		delete(additionalProperties, "nss_uid_offset")
+		delete(additionalProperties, "nss_gid_offset")
+		delete(additionalProperties, "auth_terminate_session_on_expiry")
+		delete(additionalProperties, "system_config")
+		delete(additionalProperties, "license_status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

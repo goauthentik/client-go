@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,14 +21,15 @@ var _ MappedNullable = &TelegramChallengeResponseRequest{}
 
 // TelegramChallengeResponseRequest Base class for all challenge responses
 type TelegramChallengeResponseRequest struct {
-	Id        int32   `json:"id"`
-	FirstName *string `json:"first_name,omitempty"`
-	LastName  *string `json:"last_name,omitempty"`
-	Username  *string `json:"username,omitempty"`
-	PhotoUrl  *string `json:"photo_url,omitempty"`
-	AuthDate  int32   `json:"auth_date"`
-	Hash      string  `json:"hash"`
-	Component *string `json:"component,omitempty"`
+	Id                   int32   `json:"id"`
+	FirstName            *string `json:"first_name,omitempty"`
+	LastName             *string `json:"last_name,omitempty"`
+	Username             *string `json:"username,omitempty"`
+	PhotoUrl             *string `json:"photo_url,omitempty"`
+	AuthDate             int32   `json:"auth_date"`
+	Hash                 string  `json:"hash"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TelegramChallengeResponseRequest TelegramChallengeResponseRequest
@@ -318,6 +318,11 @@ func (o TelegramChallengeResponseRequest) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -347,15 +352,27 @@ func (o *TelegramChallengeResponseRequest) UnmarshalJSON(data []byte) (err error
 
 	varTelegramChallengeResponseRequest := _TelegramChallengeResponseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTelegramChallengeResponseRequest)
+	err = json.Unmarshal(data, &varTelegramChallengeResponseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TelegramChallengeResponseRequest(varTelegramChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "first_name")
+		delete(additionalProperties, "last_name")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "photo_url")
+		delete(additionalProperties, "auth_date")
+		delete(additionalProperties, "hash")
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

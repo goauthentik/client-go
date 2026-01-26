@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -38,6 +37,7 @@ type Prompt struct {
 	SubText                *string       `json:"sub_text,omitempty"`
 	PlaceholderExpression  *bool         `json:"placeholder_expression,omitempty"`
 	InitialValueExpression *bool         `json:"initial_value_expression,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _Prompt Prompt
@@ -470,6 +470,11 @@ func (o Prompt) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InitialValueExpression) {
 		toSerialize["initial_value_expression"] = o.InitialValueExpression
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -502,15 +507,32 @@ func (o *Prompt) UnmarshalJSON(data []byte) (err error) {
 
 	varPrompt := _Prompt{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPrompt)
+	err = json.Unmarshal(data, &varPrompt)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Prompt(varPrompt)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "field_key")
+		delete(additionalProperties, "label")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "required")
+		delete(additionalProperties, "placeholder")
+		delete(additionalProperties, "initial_value")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "prompt_stages_obj")
+		delete(additionalProperties, "sub_text")
+		delete(additionalProperties, "placeholder_expression")
+		delete(additionalProperties, "initial_value_expression")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

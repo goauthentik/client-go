@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &AuthenticatedSessionUserAgentDevice{}
 
 // AuthenticatedSessionUserAgentDevice User agent device
 type AuthenticatedSessionUserAgentDevice struct {
-	Brand  string `json:"brand"`
-	Family string `json:"family"`
-	Model  string `json:"model"`
+	Brand                string `json:"brand"`
+	Family               string `json:"family"`
+	Model                string `json:"model"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatedSessionUserAgentDevice AuthenticatedSessionUserAgentDevice
@@ -134,6 +134,11 @@ func (o AuthenticatedSessionUserAgentDevice) ToMap() (map[string]interface{}, er
 	toSerialize["brand"] = o.Brand
 	toSerialize["family"] = o.Family
 	toSerialize["model"] = o.Model
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *AuthenticatedSessionUserAgentDevice) UnmarshalJSON(data []byte) (err er
 
 	varAuthenticatedSessionUserAgentDevice := _AuthenticatedSessionUserAgentDevice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatedSessionUserAgentDevice)
+	err = json.Unmarshal(data, &varAuthenticatedSessionUserAgentDevice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatedSessionUserAgentDevice(varAuthenticatedSessionUserAgentDevice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "brand")
+		delete(additionalProperties, "family")
+		delete(additionalProperties, "model")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

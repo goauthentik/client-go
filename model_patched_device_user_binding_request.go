@@ -31,9 +31,12 @@ type PatchedDeviceUserBindingRequest struct {
 	// Timeout after which Policy execution is terminated.
 	Timeout *int32 `json:"timeout,omitempty"`
 	// Result if the Policy execution fails.
-	FailureResult *bool `json:"failure_result,omitempty"`
-	IsPrimary     *bool `json:"is_primary,omitempty"`
+	FailureResult        *bool `json:"failure_result,omitempty"`
+	IsPrimary            *bool `json:"is_primary,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedDeviceUserBindingRequest PatchedDeviceUserBindingRequest
 
 // NewPatchedDeviceUserBindingRequest instantiates a new PatchedDeviceUserBindingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -445,7 +448,42 @@ func (o PatchedDeviceUserBindingRequest) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.IsPrimary) {
 		toSerialize["is_primary"] = o.IsPrimary
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedDeviceUserBindingRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedDeviceUserBindingRequest := _PatchedDeviceUserBindingRequest{}
+
+	err = json.Unmarshal(data, &varPatchedDeviceUserBindingRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedDeviceUserBindingRequest(varPatchedDeviceUserBindingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "policy")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "target")
+		delete(additionalProperties, "negate")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "failure_result")
+		delete(additionalProperties, "is_primary")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedDeviceUserBindingRequest struct {

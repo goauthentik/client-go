@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -38,8 +37,9 @@ type AuthenticatorEmailStageRequest struct {
 	FromAddress       *string `json:"from_address,omitempty"`
 	Subject           *string `json:"subject,omitempty"`
 	// Time the token sent is valid (Format: hours=3,minutes=17,seconds=300).
-	TokenExpiry *string `json:"token_expiry,omitempty"`
-	Template    *string `json:"template,omitempty"`
+	TokenExpiry          *string `json:"token_expiry,omitempty"`
+	Template             *string `json:"template,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorEmailStageRequest AuthenticatorEmailStageRequest
@@ -598,6 +598,11 @@ func (o AuthenticatorEmailStageRequest) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Template) {
 		toSerialize["template"] = o.Template
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -625,15 +630,34 @@ func (o *AuthenticatorEmailStageRequest) UnmarshalJSON(data []byte) (err error) 
 
 	varAuthenticatorEmailStageRequest := _AuthenticatorEmailStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorEmailStageRequest)
+	err = json.Unmarshal(data, &varAuthenticatorEmailStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorEmailStageRequest(varAuthenticatorEmailStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "use_global_settings")
+		delete(additionalProperties, "host")
+		delete(additionalProperties, "port")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "use_tls")
+		delete(additionalProperties, "use_ssl")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "from_address")
+		delete(additionalProperties, "subject")
+		delete(additionalProperties, "token_expiry")
+		delete(additionalProperties, "template")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,14 +21,15 @@ var _ MappedNullable = &SystemInfoRuntime{}
 
 // SystemInfoRuntime Get versions
 type SystemInfoRuntime struct {
-	PythonVersion      string       `json:"python_version"`
-	Environment        string       `json:"environment"`
-	Architecture       string       `json:"architecture"`
-	Platform           string       `json:"platform"`
-	Uname              string       `json:"uname"`
-	OpensslVersion     string       `json:"openssl_version"`
-	OpensslFipsEnabled NullableBool `json:"openssl_fips_enabled"`
-	AuthentikVersion   string       `json:"authentik_version"`
+	PythonVersion        string       `json:"python_version"`
+	Environment          string       `json:"environment"`
+	Architecture         string       `json:"architecture"`
+	Platform             string       `json:"platform"`
+	Uname                string       `json:"uname"`
+	OpensslVersion       string       `json:"openssl_version"`
+	OpensslFipsEnabled   NullableBool `json:"openssl_fips_enabled"`
+	AuthentikVersion     string       `json:"authentik_version"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SystemInfoRuntime SystemInfoRuntime
@@ -271,6 +271,11 @@ func (o SystemInfoRuntime) ToMap() (map[string]interface{}, error) {
 	toSerialize["openssl_version"] = o.OpensslVersion
 	toSerialize["openssl_fips_enabled"] = o.OpensslFipsEnabled.Get()
 	toSerialize["authentik_version"] = o.AuthentikVersion
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -305,15 +310,27 @@ func (o *SystemInfoRuntime) UnmarshalJSON(data []byte) (err error) {
 
 	varSystemInfoRuntime := _SystemInfoRuntime{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSystemInfoRuntime)
+	err = json.Unmarshal(data, &varSystemInfoRuntime)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SystemInfoRuntime(varSystemInfoRuntime)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "python_version")
+		delete(additionalProperties, "environment")
+		delete(additionalProperties, "architecture")
+		delete(additionalProperties, "platform")
+		delete(additionalProperties, "uname")
+		delete(additionalProperties, "openssl_version")
+		delete(additionalProperties, "openssl_fips_enabled")
+		delete(additionalProperties, "authentik_version")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

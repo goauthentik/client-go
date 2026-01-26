@@ -36,9 +36,12 @@ type PatchedAuthenticatorEmailStageRequest struct {
 	FromAddress       *string `json:"from_address,omitempty"`
 	Subject           *string `json:"subject,omitempty"`
 	// Time the token sent is valid (Format: hours=3,minutes=17,seconds=300).
-	TokenExpiry *string `json:"token_expiry,omitempty"`
-	Template    *string `json:"template,omitempty"`
+	TokenExpiry          *string `json:"token_expiry,omitempty"`
+	Template             *string `json:"template,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedAuthenticatorEmailStageRequest PatchedAuthenticatorEmailStageRequest
 
 // NewPatchedAuthenticatorEmailStageRequest instantiates a new PatchedAuthenticatorEmailStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -603,7 +606,47 @@ func (o PatchedAuthenticatorEmailStageRequest) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Template) {
 		toSerialize["template"] = o.Template
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedAuthenticatorEmailStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedAuthenticatorEmailStageRequest := _PatchedAuthenticatorEmailStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedAuthenticatorEmailStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedAuthenticatorEmailStageRequest(varPatchedAuthenticatorEmailStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "use_global_settings")
+		delete(additionalProperties, "host")
+		delete(additionalProperties, "port")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "use_tls")
+		delete(additionalProperties, "use_ssl")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "from_address")
+		delete(additionalProperties, "subject")
+		delete(additionalProperties, "token_expiry")
+		delete(additionalProperties, "template")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedAuthenticatorEmailStageRequest struct {

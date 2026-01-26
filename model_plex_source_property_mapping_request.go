@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,9 +22,10 @@ var _ MappedNullable = &PlexSourcePropertyMappingRequest{}
 // PlexSourcePropertyMappingRequest PlexSourcePropertyMapping Serializer
 type PlexSourcePropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed    NullableString `json:"managed,omitempty"`
-	Name       string         `json:"name"`
-	Expression string         `json:"expression"`
+	Managed              NullableString `json:"managed,omitempty"`
+	Name                 string         `json:"name"`
+	Expression           string         `json:"expression"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PlexSourcePropertyMappingRequest PlexSourcePropertyMappingRequest
@@ -155,6 +155,11 @@ func (o PlexSourcePropertyMappingRequest) ToMap() (map[string]interface{}, error
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["expression"] = o.Expression
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -183,15 +188,22 @@ func (o *PlexSourcePropertyMappingRequest) UnmarshalJSON(data []byte) (err error
 
 	varPlexSourcePropertyMappingRequest := _PlexSourcePropertyMappingRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPlexSourcePropertyMappingRequest)
+	err = json.Unmarshal(data, &varPlexSourcePropertyMappingRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PlexSourcePropertyMappingRequest(varPlexSourcePropertyMappingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

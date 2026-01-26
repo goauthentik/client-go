@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,10 +23,11 @@ var _ MappedNullable = &DummyPolicyRequest{}
 type DummyPolicyRequest struct {
 	Name string `json:"name"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
-	Result           *bool  `json:"result,omitempty"`
-	WaitMin          *int32 `json:"wait_min,omitempty"`
-	WaitMax          *int32 `json:"wait_max,omitempty"`
+	ExecutionLogging     *bool  `json:"execution_logging,omitempty"`
+	Result               *bool  `json:"result,omitempty"`
+	WaitMin              *int32 `json:"wait_min,omitempty"`
+	WaitMax              *int32 `json:"wait_max,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DummyPolicyRequest DummyPolicyRequest
@@ -225,6 +225,11 @@ func (o DummyPolicyRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WaitMax) {
 		toSerialize["wait_max"] = o.WaitMax
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -252,15 +257,24 @@ func (o *DummyPolicyRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDummyPolicyRequest := _DummyPolicyRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDummyPolicyRequest)
+	err = json.Unmarshal(data, &varDummyPolicyRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DummyPolicyRequest(varDummyPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "result")
+		delete(additionalProperties, "wait_min")
+		delete(additionalProperties, "wait_max")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

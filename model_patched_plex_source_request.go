@@ -47,8 +47,11 @@ type PatchedPlexSourceRequest struct {
 	// Allow friends to authenticate, even if you don't share a server.
 	AllowFriends *bool `json:"allow_friends,omitempty"`
 	// Plex token used to check friends
-	PlexToken *string `json:"plex_token,omitempty"`
+	PlexToken            *string `json:"plex_token,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedPlexSourceRequest PatchedPlexSourceRequest
 
 // NewPatchedPlexSourceRequest instantiates a new PatchedPlexSourceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -694,7 +697,49 @@ func (o PatchedPlexSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PlexToken) {
 		toSerialize["plex_token"] = o.PlexToken
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedPlexSourceRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedPlexSourceRequest := _PatchedPlexSourceRequest{}
+
+	err = json.Unmarshal(data, &varPatchedPlexSourceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedPlexSourceRequest(varPatchedPlexSourceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "user_matching_mode")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "icon")
+		delete(additionalProperties, "group_matching_mode")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "allowed_servers")
+		delete(additionalProperties, "allow_friends")
+		delete(additionalProperties, "plex_token")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedPlexSourceRequest struct {

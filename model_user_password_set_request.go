@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &UserPasswordSetRequest{}
 
 // UserPasswordSetRequest Payload to set a users' password directly
 type UserPasswordSetRequest struct {
-	Password string `json:"password"`
+	Password             string `json:"password"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserPasswordSetRequest UserPasswordSetRequest
@@ -80,6 +80,11 @@ func (o UserPasswordSetRequest) MarshalJSON() ([]byte, error) {
 func (o UserPasswordSetRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["password"] = o.Password
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *UserPasswordSetRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varUserPasswordSetRequest := _UserPasswordSetRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserPasswordSetRequest)
+	err = json.Unmarshal(data, &varUserPasswordSetRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserPasswordSetRequest(varUserPasswordSetRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "password")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

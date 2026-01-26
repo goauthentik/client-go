@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &SCIMSourceUserRequest{}
 
 // SCIMSourceUserRequest SCIMSourceUser Serializer
 type SCIMSourceUserRequest struct {
-	Id         *string                `json:"id,omitempty"`
-	ExternalId string                 `json:"external_id"`
-	User       int32                  `json:"user"`
-	Source     string                 `json:"source"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Id                   *string                `json:"id,omitempty"`
+	ExternalId           string                 `json:"external_id"`
+	User                 int32                  `json:"user"`
+	Source               string                 `json:"source"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SCIMSourceUserRequest SCIMSourceUserRequest
@@ -206,6 +206,11 @@ func (o SCIMSourceUserRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -235,15 +240,24 @@ func (o *SCIMSourceUserRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSCIMSourceUserRequest := _SCIMSourceUserRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMSourceUserRequest)
+	err = json.Unmarshal(data, &varSCIMSourceUserRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SCIMSourceUserRequest(varSCIMSourceUserRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "external_id")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

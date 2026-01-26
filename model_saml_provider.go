@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -95,7 +94,8 @@ type SAMLProvider struct {
 	// Get SLO POST URL
 	UrlSloPost string `json:"url_slo_post"`
 	// Get SLO redirect URL
-	UrlSloRedirect string `json:"url_slo_redirect"`
+	UrlSloRedirect       string `json:"url_slo_redirect"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SAMLProvider SAMLProvider
@@ -1492,6 +1492,11 @@ func (o SAMLProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize["url_sso_init"] = o.UrlSsoInit
 	toSerialize["url_slo_post"] = o.UrlSloPost
 	toSerialize["url_slo_redirect"] = o.UrlSloRedirect
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1537,15 +1542,61 @@ func (o *SAMLProvider) UnmarshalJSON(data []byte) (err error) {
 
 	varSAMLProvider := _SAMLProvider{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSAMLProvider)
+	err = json.Unmarshal(data, &varSAMLProvider)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SAMLProvider(varSAMLProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "invalidation_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "assigned_application_slug")
+		delete(additionalProperties, "assigned_application_name")
+		delete(additionalProperties, "assigned_backchannel_application_slug")
+		delete(additionalProperties, "assigned_backchannel_application_name")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "acs_url")
+		delete(additionalProperties, "sls_url")
+		delete(additionalProperties, "audience")
+		delete(additionalProperties, "issuer")
+		delete(additionalProperties, "assertion_valid_not_before")
+		delete(additionalProperties, "assertion_valid_not_on_or_after")
+		delete(additionalProperties, "session_valid_not_on_or_after")
+		delete(additionalProperties, "name_id_mapping")
+		delete(additionalProperties, "authn_context_class_ref_mapping")
+		delete(additionalProperties, "digest_algorithm")
+		delete(additionalProperties, "signature_algorithm")
+		delete(additionalProperties, "signing_kp")
+		delete(additionalProperties, "verification_kp")
+		delete(additionalProperties, "encryption_kp")
+		delete(additionalProperties, "sign_assertion")
+		delete(additionalProperties, "sign_response")
+		delete(additionalProperties, "sign_logout_request")
+		delete(additionalProperties, "sp_binding")
+		delete(additionalProperties, "sls_binding")
+		delete(additionalProperties, "logout_method")
+		delete(additionalProperties, "default_relay_state")
+		delete(additionalProperties, "default_name_id_policy")
+		delete(additionalProperties, "url_download_metadata")
+		delete(additionalProperties, "url_sso_post")
+		delete(additionalProperties, "url_sso_redirect")
+		delete(additionalProperties, "url_sso_init")
+		delete(additionalProperties, "url_slo_post")
+		delete(additionalProperties, "url_slo_redirect")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedOAuth2ProviderList{}
 
 // PaginatedOAuth2ProviderList struct for PaginatedOAuth2ProviderList
 type PaginatedOAuth2ProviderList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []OAuth2Provider       `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []OAuth2Provider       `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedOAuth2ProviderList PaginatedOAuth2ProviderList
@@ -134,6 +134,11 @@ func (o PaginatedOAuth2ProviderList) ToMap() (map[string]interface{}, error) {
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedOAuth2ProviderList) UnmarshalJSON(data []byte) (err error) {
 
 	varPaginatedOAuth2ProviderList := _PaginatedOAuth2ProviderList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedOAuth2ProviderList)
+	err = json.Unmarshal(data, &varPaginatedOAuth2ProviderList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedOAuth2ProviderList(varPaginatedOAuth2ProviderList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

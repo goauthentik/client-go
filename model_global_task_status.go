@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,16 +21,17 @@ var _ MappedNullable = &GlobalTaskStatus{}
 
 // GlobalTaskStatus struct for GlobalTaskStatus
 type GlobalTaskStatus struct {
-	Queued      int32 `json:"queued"`
-	Consumed    int32 `json:"consumed"`
-	Preprocess  int32 `json:"preprocess"`
-	Running     int32 `json:"running"`
-	Postprocess int32 `json:"postprocess"`
-	Rejected    int32 `json:"rejected"`
-	Done        int32 `json:"done"`
-	Info        int32 `json:"info"`
-	Warning     int32 `json:"warning"`
-	Error       int32 `json:"error"`
+	Queued               int32 `json:"queued"`
+	Consumed             int32 `json:"consumed"`
+	Preprocess           int32 `json:"preprocess"`
+	Running              int32 `json:"running"`
+	Postprocess          int32 `json:"postprocess"`
+	Rejected             int32 `json:"rejected"`
+	Done                 int32 `json:"done"`
+	Info                 int32 `json:"info"`
+	Warning              int32 `json:"warning"`
+	Error                int32 `json:"error"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GlobalTaskStatus GlobalTaskStatus
@@ -323,6 +323,11 @@ func (o GlobalTaskStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["info"] = o.Info
 	toSerialize["warning"] = o.Warning
 	toSerialize["error"] = o.Error
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -359,15 +364,29 @@ func (o *GlobalTaskStatus) UnmarshalJSON(data []byte) (err error) {
 
 	varGlobalTaskStatus := _GlobalTaskStatus{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGlobalTaskStatus)
+	err = json.Unmarshal(data, &varGlobalTaskStatus)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GlobalTaskStatus(varGlobalTaskStatus)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "queued")
+		delete(additionalProperties, "consumed")
+		delete(additionalProperties, "preprocess")
+		delete(additionalProperties, "running")
+		delete(additionalProperties, "postprocess")
+		delete(additionalProperties, "rejected")
+		delete(additionalProperties, "done")
+		delete(additionalProperties, "info")
+		delete(additionalProperties, "warning")
+		delete(additionalProperties, "error")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

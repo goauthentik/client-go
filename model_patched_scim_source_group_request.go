@@ -20,12 +20,15 @@ var _ MappedNullable = &PatchedSCIMSourceGroupRequest{}
 
 // PatchedSCIMSourceGroupRequest SCIMSourceGroup Serializer
 type PatchedSCIMSourceGroupRequest struct {
-	Id         *string                `json:"id,omitempty"`
-	ExternalId *string                `json:"external_id,omitempty"`
-	Group      *string                `json:"group,omitempty"`
-	Source     *string                `json:"source,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Id                   *string                `json:"id,omitempty"`
+	ExternalId           *string                `json:"external_id,omitempty"`
+	Group                *string                `json:"group,omitempty"`
+	Source               *string                `json:"source,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedSCIMSourceGroupRequest PatchedSCIMSourceGroupRequest
 
 // NewPatchedSCIMSourceGroupRequest instantiates a new PatchedSCIMSourceGroupRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -229,7 +232,37 @@ func (o PatchedSCIMSourceGroupRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedSCIMSourceGroupRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedSCIMSourceGroupRequest := _PatchedSCIMSourceGroupRequest{}
+
+	err = json.Unmarshal(data, &varPatchedSCIMSourceGroupRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedSCIMSourceGroupRequest(varPatchedSCIMSourceGroupRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "external_id")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedSCIMSourceGroupRequest struct {

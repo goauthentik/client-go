@@ -21,14 +21,17 @@ var _ MappedNullable = &PatchedEventRequest{}
 
 // PatchedEventRequest Event Serializer
 type PatchedEventRequest struct {
-	User     map[string]interface{} `json:"user,omitempty"`
-	Action   *EventActions          `json:"action,omitempty"`
-	App      *string                `json:"app,omitempty"`
-	Context  map[string]interface{} `json:"context,omitempty"`
-	ClientIp NullableString         `json:"client_ip,omitempty"`
-	Expires  *time.Time             `json:"expires,omitempty"`
-	Brand    map[string]interface{} `json:"brand,omitempty"`
+	User                 map[string]interface{} `json:"user,omitempty"`
+	Action               *EventActions          `json:"action,omitempty"`
+	App                  *string                `json:"app,omitempty"`
+	Context              map[string]interface{} `json:"context,omitempty"`
+	ClientIp             NullableString         `json:"client_ip,omitempty"`
+	Expires              *time.Time             `json:"expires,omitempty"`
+	Brand                map[string]interface{} `json:"brand,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedEventRequest PatchedEventRequest
 
 // NewPatchedEventRequest instantiates a new PatchedEventRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -313,7 +316,39 @@ func (o PatchedEventRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Brand) {
 		toSerialize["brand"] = o.Brand
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedEventRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedEventRequest := _PatchedEventRequest{}
+
+	err = json.Unmarshal(data, &varPatchedEventRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedEventRequest(varPatchedEventRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "action")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "context")
+		delete(additionalProperties, "client_ip")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "brand")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedEventRequest struct {

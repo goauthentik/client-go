@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,9 +33,10 @@ type AuthenticatorTOTPStage struct {
 	MetaModelName string    `json:"meta_model_name"`
 	FlowSet       []FlowSet `json:"flow_set"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	FriendlyName  *string        `json:"friendly_name,omitempty"`
-	Digits        DigitsEnum     `json:"digits"`
+	ConfigureFlow        NullableString `json:"configure_flow,omitempty"`
+	FriendlyName         *string        `json:"friendly_name,omitempty"`
+	Digits               DigitsEnum     `json:"digits"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorTOTPStage AuthenticatorTOTPStage
@@ -357,6 +357,11 @@ func (o AuthenticatorTOTPStage) ToMap() (map[string]interface{}, error) {
 		toSerialize["friendly_name"] = o.FriendlyName
 	}
 	toSerialize["digits"] = o.Digits
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -391,15 +396,29 @@ func (o *AuthenticatorTOTPStage) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorTOTPStage := _AuthenticatorTOTPStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorTOTPStage)
+	err = json.Unmarshal(data, &varAuthenticatorTOTPStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorTOTPStage(varAuthenticatorTOTPStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "digits")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

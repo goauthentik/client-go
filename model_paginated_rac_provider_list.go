@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedRACProviderList{}
 
 // PaginatedRACProviderList struct for PaginatedRACProviderList
 type PaginatedRACProviderList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []RACProvider          `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []RACProvider          `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedRACProviderList PaginatedRACProviderList
@@ -134,6 +134,11 @@ func (o PaginatedRACProviderList) ToMap() (map[string]interface{}, error) {
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedRACProviderList) UnmarshalJSON(data []byte) (err error) {
 
 	varPaginatedRACProviderList := _PaginatedRACProviderList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedRACProviderList)
+	err = json.Unmarshal(data, &varPaginatedRACProviderList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedRACProviderList(varPaginatedRACProviderList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

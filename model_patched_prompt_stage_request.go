@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedPromptStageRequest{}
 
 // PatchedPromptStageRequest PromptStage Serializer
 type PatchedPromptStageRequest struct {
-	Name               *string  `json:"name,omitempty"`
-	Fields             []string `json:"fields,omitempty"`
-	ValidationPolicies []string `json:"validation_policies,omitempty"`
+	Name                 *string  `json:"name,omitempty"`
+	Fields               []string `json:"fields,omitempty"`
+	ValidationPolicies   []string `json:"validation_policies,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedPromptStageRequest PatchedPromptStageRequest
 
 // NewPatchedPromptStageRequest instantiates a new PatchedPromptStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedPromptStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ValidationPolicies) {
 		toSerialize["validation_policies"] = o.ValidationPolicies
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedPromptStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedPromptStageRequest := _PatchedPromptStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedPromptStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedPromptStageRequest(varPatchedPromptStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "fields")
+		delete(additionalProperties, "validation_policies")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedPromptStageRequest struct {

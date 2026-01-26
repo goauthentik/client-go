@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &ConsentChallengeResponseRequest{}
 
 // ConsentChallengeResponseRequest Consent challenge response, any valid response request is valid
 type ConsentChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	Token     string  `json:"token"`
+	Component            *string `json:"component,omitempty"`
+	Token                string  `json:"token"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ConsentChallengeResponseRequest ConsentChallengeResponseRequest
@@ -120,6 +120,11 @@ func (o ConsentChallengeResponseRequest) ToMap() (map[string]interface{}, error)
 		toSerialize["component"] = o.Component
 	}
 	toSerialize["token"] = o.Token
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -147,15 +152,21 @@ func (o *ConsentChallengeResponseRequest) UnmarshalJSON(data []byte) (err error)
 
 	varConsentChallengeResponseRequest := _ConsentChallengeResponseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varConsentChallengeResponseRequest)
+	err = json.Unmarshal(data, &varConsentChallengeResponseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ConsentChallengeResponseRequest(varConsentChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "token")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

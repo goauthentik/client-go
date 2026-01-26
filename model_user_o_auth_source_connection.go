@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,14 +22,15 @@ var _ MappedNullable = &UserOAuthSourceConnection{}
 
 // UserOAuthSourceConnection User source connection
 type UserOAuthSourceConnection struct {
-	Pk          int32      `json:"pk"`
-	User        int32      `json:"user"`
-	Source      string     `json:"source"`
-	SourceObj   Source     `json:"source_obj"`
-	Identifier  string     `json:"identifier"`
-	Created     time.Time  `json:"created"`
-	LastUpdated time.Time  `json:"last_updated"`
-	Expires     *time.Time `json:"expires,omitempty"`
+	Pk                   int32      `json:"pk"`
+	User                 int32      `json:"user"`
+	Source               string     `json:"source"`
+	SourceObj            Source     `json:"source_obj"`
+	Identifier           string     `json:"identifier"`
+	Created              time.Time  `json:"created"`
+	LastUpdated          time.Time  `json:"last_updated"`
+	Expires              *time.Time `json:"expires,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserOAuthSourceConnection UserOAuthSourceConnection
@@ -279,6 +279,11 @@ func (o UserOAuthSourceConnection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -312,15 +317,27 @@ func (o *UserOAuthSourceConnection) UnmarshalJSON(data []byte) (err error) {
 
 	varUserOAuthSourceConnection := _UserOAuthSourceConnection{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserOAuthSourceConnection)
+	err = json.Unmarshal(data, &varUserOAuthSourceConnection)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserOAuthSourceConnection(varUserOAuthSourceConnection)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "source_obj")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "last_updated")
+		delete(additionalProperties, "expires")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

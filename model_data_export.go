@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &DataExport{}
 
 // DataExport Mixin to validate that a valid enterprise license exists before allowing to save the object
 type DataExport struct {
-	Id          string                 `json:"id"`
-	RequestedBy PartialUser            `json:"requested_by"`
-	RequestedOn time.Time              `json:"requested_on"`
-	ContentType ContentType            `json:"content_type"`
-	QueryParams map[string]interface{} `json:"query_params"`
-	FileUrl     string                 `json:"file_url"`
-	Completed   bool                   `json:"completed"`
+	Id                   string                 `json:"id"`
+	RequestedBy          PartialUser            `json:"requested_by"`
+	RequestedOn          time.Time              `json:"requested_on"`
+	ContentType          ContentType            `json:"content_type"`
+	QueryParams          map[string]interface{} `json:"query_params"`
+	FileUrl              string                 `json:"file_url"`
+	Completed            bool                   `json:"completed"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DataExport DataExport
@@ -243,6 +243,11 @@ func (o DataExport) ToMap() (map[string]interface{}, error) {
 	toSerialize["query_params"] = o.QueryParams
 	toSerialize["file_url"] = o.FileUrl
 	toSerialize["completed"] = o.Completed
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -276,15 +281,26 @@ func (o *DataExport) UnmarshalJSON(data []byte) (err error) {
 
 	varDataExport := _DataExport{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDataExport)
+	err = json.Unmarshal(data, &varDataExport)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DataExport(varDataExport)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "requested_by")
+		delete(additionalProperties, "requested_on")
+		delete(additionalProperties, "content_type")
+		delete(additionalProperties, "query_params")
+		delete(additionalProperties, "file_url")
+		delete(additionalProperties, "completed")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

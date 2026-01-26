@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,7 +32,8 @@ type Version struct {
 	// Check if we're running the latest version
 	Outdated bool `json:"outdated"`
 	// Check if any outpost is outdated/has a version mismatch
-	OutpostOutdated bool `json:"outpost_outdated"`
+	OutpostOutdated      bool `json:"outpost_outdated"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Version Version
@@ -221,6 +221,11 @@ func (o Version) ToMap() (map[string]interface{}, error) {
 	toSerialize["build_hash"] = o.BuildHash
 	toSerialize["outdated"] = o.Outdated
 	toSerialize["outpost_outdated"] = o.OutpostOutdated
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -253,15 +258,25 @@ func (o *Version) UnmarshalJSON(data []byte) (err error) {
 
 	varVersion := _Version{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVersion)
+	err = json.Unmarshal(data, &varVersion)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Version(varVersion)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "version_current")
+		delete(additionalProperties, "version_latest")
+		delete(additionalProperties, "version_latest_valid")
+		delete(additionalProperties, "build_hash")
+		delete(additionalProperties, "outdated")
+		delete(additionalProperties, "outpost_outdated")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

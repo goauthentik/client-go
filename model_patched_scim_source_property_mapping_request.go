@@ -21,10 +21,13 @@ var _ MappedNullable = &PatchedSCIMSourcePropertyMappingRequest{}
 // PatchedSCIMSourcePropertyMappingRequest SCIMSourcePropertyMapping Serializer
 type PatchedSCIMSourcePropertyMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed    NullableString `json:"managed,omitempty"`
-	Name       *string        `json:"name,omitempty"`
-	Expression *string        `json:"expression,omitempty"`
+	Managed              NullableString `json:"managed,omitempty"`
+	Name                 *string        `json:"name,omitempty"`
+	Expression           *string        `json:"expression,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedSCIMSourcePropertyMappingRequest PatchedSCIMSourcePropertyMappingRequest
 
 // NewPatchedSCIMSourcePropertyMappingRequest instantiates a new PatchedSCIMSourcePropertyMappingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -169,7 +172,35 @@ func (o PatchedSCIMSourcePropertyMappingRequest) ToMap() (map[string]interface{}
 	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedSCIMSourcePropertyMappingRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedSCIMSourcePropertyMappingRequest := _PatchedSCIMSourcePropertyMappingRequest{}
+
+	err = json.Unmarshal(data, &varPatchedSCIMSourcePropertyMappingRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedSCIMSourcePropertyMappingRequest(varPatchedSCIMSourcePropertyMappingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedSCIMSourcePropertyMappingRequest struct {

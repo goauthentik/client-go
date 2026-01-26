@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &ShellChallenge{}
 
 // ShellChallenge challenge type to render HTML as-is
 type ShellChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	Body           string                    `json:"body"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	Body                 string                    `json:"body"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ShellChallenge ShellChallenge
@@ -192,6 +192,11 @@ func (o ShellChallenge) ToMap() (map[string]interface{}, error) {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
 	toSerialize["body"] = o.Body
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,23 @@ func (o *ShellChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varShellChallenge := _ShellChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varShellChallenge)
+	err = json.Unmarshal(data, &varShellChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ShellChallenge(varShellChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "body")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

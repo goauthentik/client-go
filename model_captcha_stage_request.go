@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -33,7 +32,8 @@ type CaptchaStageRequest struct {
 	ScoreMinThreshold *float64 `json:"score_min_threshold,omitempty"`
 	ScoreMaxThreshold *float64 `json:"score_max_threshold,omitempty"`
 	// When enabled and the received captcha score is outside of the given threshold, the stage will show an error message. When not enabled, the flow will continue, but the data from the captcha will be available in the context for policy decisions
-	ErrorOnInvalidScore *bool `json:"error_on_invalid_score,omitempty"`
+	ErrorOnInvalidScore  *bool `json:"error_on_invalid_score,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CaptchaStageRequest CaptchaStageRequest
@@ -353,6 +353,11 @@ func (o CaptchaStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ErrorOnInvalidScore) {
 		toSerialize["error_on_invalid_score"] = o.ErrorOnInvalidScore
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -382,15 +387,28 @@ func (o *CaptchaStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varCaptchaStageRequest := _CaptchaStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCaptchaStageRequest)
+	err = json.Unmarshal(data, &varCaptchaStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CaptchaStageRequest(varCaptchaStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "public_key")
+		delete(additionalProperties, "private_key")
+		delete(additionalProperties, "js_url")
+		delete(additionalProperties, "api_url")
+		delete(additionalProperties, "interactive")
+		delete(additionalProperties, "score_min_threshold")
+		delete(additionalProperties, "score_max_threshold")
+		delete(additionalProperties, "error_on_invalid_score")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

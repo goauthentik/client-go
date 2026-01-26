@@ -28,7 +28,10 @@ type PatchedSCIMSourceRequest struct {
 	UserPropertyMappings  []string `json:"user_property_mappings,omitempty"`
 	GroupPropertyMappings []string `json:"group_property_mappings,omitempty"`
 	UserPathTemplate      *string  `json:"user_path_template,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _PatchedSCIMSourceRequest PatchedSCIMSourceRequest
 
 // NewPatchedSCIMSourceRequest instantiates a new PatchedSCIMSourceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -267,7 +270,38 @@ func (o PatchedSCIMSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedSCIMSourceRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedSCIMSourceRequest := _PatchedSCIMSourceRequest{}
+
+	err = json.Unmarshal(data, &varPatchedSCIMSourceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedSCIMSourceRequest(varPatchedSCIMSourceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "user_path_template")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedSCIMSourceRequest struct {

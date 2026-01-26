@@ -22,11 +22,14 @@ var _ MappedNullable = &PatchedDummyPolicyRequest{}
 type PatchedDummyPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
-	Result           *bool  `json:"result,omitempty"`
-	WaitMin          *int32 `json:"wait_min,omitempty"`
-	WaitMax          *int32 `json:"wait_max,omitempty"`
+	ExecutionLogging     *bool  `json:"execution_logging,omitempty"`
+	Result               *bool  `json:"result,omitempty"`
+	WaitMin              *int32 `json:"wait_min,omitempty"`
+	WaitMax              *int32 `json:"wait_max,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedDummyPolicyRequest PatchedDummyPolicyRequest
 
 // NewPatchedDummyPolicyRequest instantiates a new PatchedDummyPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -230,7 +233,37 @@ func (o PatchedDummyPolicyRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WaitMax) {
 		toSerialize["wait_max"] = o.WaitMax
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedDummyPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedDummyPolicyRequest := _PatchedDummyPolicyRequest{}
+
+	err = json.Unmarshal(data, &varPatchedDummyPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedDummyPolicyRequest(varPatchedDummyPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "result")
+		delete(additionalProperties, "wait_min")
+		delete(additionalProperties, "wait_max")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedDummyPolicyRequest struct {

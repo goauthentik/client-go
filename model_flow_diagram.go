@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &FlowDiagram{}
 
 // FlowDiagram response of the flow's diagram action
 type FlowDiagram struct {
-	Diagram string `json:"diagram"`
+	Diagram              string `json:"diagram"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FlowDiagram FlowDiagram
@@ -80,6 +80,11 @@ func (o FlowDiagram) MarshalJSON() ([]byte, error) {
 func (o FlowDiagram) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["diagram"] = o.Diagram
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *FlowDiagram) UnmarshalJSON(data []byte) (err error) {
 
 	varFlowDiagram := _FlowDiagram{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowDiagram)
+	err = json.Unmarshal(data, &varFlowDiagram)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlowDiagram(varFlowDiagram)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "diagram")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

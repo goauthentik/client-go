@@ -58,7 +58,10 @@ type PatchedOAuthSourceRequest struct {
 	OidcJwks         map[string]interface{} `json:"oidc_jwks,omitempty"`
 	// How to perform authentication during an authorization_code token request flow
 	AuthorizationCodeAuthMethod *AuthorizationCodeAuthMethodEnum `json:"authorization_code_auth_method,omitempty"`
+	AdditionalProperties        map[string]interface{}
 }
+
+type _PatchedOAuthSourceRequest PatchedOAuthSourceRequest
 
 // NewPatchedOAuthSourceRequest instantiates a new PatchedOAuthSourceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -1063,7 +1066,58 @@ func (o PatchedOAuthSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AuthorizationCodeAuthMethod) {
 		toSerialize["authorization_code_auth_method"] = o.AuthorizationCodeAuthMethod
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedOAuthSourceRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedOAuthSourceRequest := _PatchedOAuthSourceRequest{}
+
+	err = json.Unmarshal(data, &varPatchedOAuthSourceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedOAuthSourceRequest(varPatchedOAuthSourceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "user_matching_mode")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "icon")
+		delete(additionalProperties, "group_matching_mode")
+		delete(additionalProperties, "provider_type")
+		delete(additionalProperties, "request_token_url")
+		delete(additionalProperties, "authorization_url")
+		delete(additionalProperties, "access_token_url")
+		delete(additionalProperties, "profile_url")
+		delete(additionalProperties, "pkce")
+		delete(additionalProperties, "consumer_key")
+		delete(additionalProperties, "consumer_secret")
+		delete(additionalProperties, "additional_scopes")
+		delete(additionalProperties, "oidc_well_known_url")
+		delete(additionalProperties, "oidc_jwks_url")
+		delete(additionalProperties, "oidc_jwks")
+		delete(additionalProperties, "authorization_code_auth_method")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedOAuthSourceRequest struct {

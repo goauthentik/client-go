@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &RoleObjectPermission{}
 
 // RoleObjectPermission Role-bound object level permission
 type RoleObjectPermission struct {
-	Id       int32  `json:"id"`
-	Codename string `json:"codename"`
-	Model    string `json:"model"`
-	AppLabel string `json:"app_label"`
-	ObjectPk string `json:"object_pk"`
-	Name     string `json:"name"`
+	Id                   int32  `json:"id"`
+	Codename             string `json:"codename"`
+	Model                string `json:"model"`
+	AppLabel             string `json:"app_label"`
+	ObjectPk             string `json:"object_pk"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RoleObjectPermission RoleObjectPermission
@@ -215,6 +215,11 @@ func (o RoleObjectPermission) ToMap() (map[string]interface{}, error) {
 	toSerialize["app_label"] = o.AppLabel
 	toSerialize["object_pk"] = o.ObjectPk
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,25 @@ func (o *RoleObjectPermission) UnmarshalJSON(data []byte) (err error) {
 
 	varRoleObjectPermission := _RoleObjectPermission{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRoleObjectPermission)
+	err = json.Unmarshal(data, &varRoleObjectPermission)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RoleObjectPermission(varRoleObjectPermission)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "codename")
+		delete(additionalProperties, "model")
+		delete(additionalProperties, "app_label")
+		delete(additionalProperties, "object_pk")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -22,11 +22,14 @@ var _ MappedNullable = &PatchedAuthenticatorStaticStageRequest{}
 type PatchedAuthenticatorStaticStageRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	FriendlyName  *string        `json:"friendly_name,omitempty"`
-	TokenCount    *int32         `json:"token_count,omitempty"`
-	TokenLength   *int32         `json:"token_length,omitempty"`
+	ConfigureFlow        NullableString `json:"configure_flow,omitempty"`
+	FriendlyName         *string        `json:"friendly_name,omitempty"`
+	TokenCount           *int32         `json:"token_count,omitempty"`
+	TokenLength          *int32         `json:"token_length,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedAuthenticatorStaticStageRequest PatchedAuthenticatorStaticStageRequest
 
 // NewPatchedAuthenticatorStaticStageRequest instantiates a new PatchedAuthenticatorStaticStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -241,7 +244,37 @@ func (o PatchedAuthenticatorStaticStageRequest) ToMap() (map[string]interface{},
 	if !IsNil(o.TokenLength) {
 		toSerialize["token_length"] = o.TokenLength
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedAuthenticatorStaticStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedAuthenticatorStaticStageRequest := _PatchedAuthenticatorStaticStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedAuthenticatorStaticStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedAuthenticatorStaticStageRequest(varPatchedAuthenticatorStaticStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "token_count")
+		delete(additionalProperties, "token_length")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedAuthenticatorStaticStageRequest struct {

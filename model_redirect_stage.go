@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,12 +30,13 @@ type RedirectStage struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName string                `json:"meta_model_name"`
-	FlowSet       []FlowSet             `json:"flow_set"`
-	KeepContext   *bool                 `json:"keep_context,omitempty"`
-	Mode          RedirectStageModeEnum `json:"mode"`
-	TargetStatic  *string               `json:"target_static,omitempty"`
-	TargetFlow    NullableString        `json:"target_flow,omitempty"`
+	MetaModelName        string                `json:"meta_model_name"`
+	FlowSet              []FlowSet             `json:"flow_set"`
+	KeepContext          *bool                 `json:"keep_context,omitempty"`
+	Mode                 RedirectStageModeEnum `json:"mode"`
+	TargetStatic         *string               `json:"target_static,omitempty"`
+	TargetFlow           NullableString        `json:"target_flow,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RedirectStage RedirectStage
@@ -392,6 +392,11 @@ func (o RedirectStage) ToMap() (map[string]interface{}, error) {
 	if o.TargetFlow.IsSet() {
 		toSerialize["target_flow"] = o.TargetFlow.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -426,15 +431,30 @@ func (o *RedirectStage) UnmarshalJSON(data []byte) (err error) {
 
 	varRedirectStage := _RedirectStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRedirectStage)
+	err = json.Unmarshal(data, &varRedirectStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RedirectStage(varRedirectStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "keep_context")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "target_static")
+		delete(additionalProperties, "target_flow")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

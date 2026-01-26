@@ -20,10 +20,13 @@ var _ MappedNullable = &OAuthDeviceCodeChallenge{}
 
 // OAuthDeviceCodeChallenge OAuth Device code challenge
 type OAuthDeviceCodeChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OAuthDeviceCodeChallenge OAuthDeviceCodeChallenge
 
 // NewOAuthDeviceCodeChallenge instantiates a new OAuthDeviceCodeChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -161,7 +164,35 @@ func (o OAuthDeviceCodeChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResponseErrors) {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OAuthDeviceCodeChallenge) UnmarshalJSON(data []byte) (err error) {
+	varOAuthDeviceCodeChallenge := _OAuthDeviceCodeChallenge{}
+
+	err = json.Unmarshal(data, &varOAuthDeviceCodeChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OAuthDeviceCodeChallenge(varOAuthDeviceCodeChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOAuthDeviceCodeChallenge struct {

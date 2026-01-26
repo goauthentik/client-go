@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -30,12 +29,13 @@ type OutpostHealth struct {
 	OpensslEnabled bool      `json:"openssl_enabled"`
 	OpensslVersion string    `json:"openssl_version"`
 	// Get FIPS enabled
-	FipsEnabled     NullableBool `json:"fips_enabled"`
-	VersionShould   string       `json:"version_should"`
-	VersionOutdated bool         `json:"version_outdated"`
-	BuildHash       string       `json:"build_hash"`
-	BuildHashShould string       `json:"build_hash_should"`
-	Hostname        string       `json:"hostname"`
+	FipsEnabled          NullableBool `json:"fips_enabled"`
+	VersionShould        string       `json:"version_should"`
+	VersionOutdated      bool         `json:"version_outdated"`
+	BuildHash            string       `json:"build_hash"`
+	BuildHashShould      string       `json:"build_hash_should"`
+	Hostname             string       `json:"hostname"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OutpostHealth OutpostHealth
@@ -381,6 +381,11 @@ func (o OutpostHealth) ToMap() (map[string]interface{}, error) {
 	toSerialize["build_hash"] = o.BuildHash
 	toSerialize["build_hash_should"] = o.BuildHashShould
 	toSerialize["hostname"] = o.Hostname
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -419,15 +424,31 @@ func (o *OutpostHealth) UnmarshalJSON(data []byte) (err error) {
 
 	varOutpostHealth := _OutpostHealth{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOutpostHealth)
+	err = json.Unmarshal(data, &varOutpostHealth)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OutpostHealth(varOutpostHealth)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "uid")
+		delete(additionalProperties, "last_seen")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "golang_version")
+		delete(additionalProperties, "openssl_enabled")
+		delete(additionalProperties, "openssl_version")
+		delete(additionalProperties, "fips_enabled")
+		delete(additionalProperties, "version_should")
+		delete(additionalProperties, "version_outdated")
+		delete(additionalProperties, "build_hash")
+		delete(additionalProperties, "build_hash_should")
+		delete(additionalProperties, "hostname")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

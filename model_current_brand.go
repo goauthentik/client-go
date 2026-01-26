@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,21 +21,22 @@ var _ MappedNullable = &CurrentBrand{}
 
 // CurrentBrand Partial brand information for styling
 type CurrentBrand struct {
-	MatchedDomain      string            `json:"matched_domain"`
-	BrandingTitle      string            `json:"branding_title"`
-	BrandingLogo       string            `json:"branding_logo"`
-	BrandingFavicon    string            `json:"branding_favicon"`
-	BrandingCustomCss  string            `json:"branding_custom_css"`
-	UiFooterLinks      []FooterLink      `json:"ui_footer_links"`
-	UiTheme            UiThemeEnum       `json:"ui_theme"`
-	FlowAuthentication *string           `json:"flow_authentication,omitempty"`
-	FlowInvalidation   *string           `json:"flow_invalidation,omitempty"`
-	FlowRecovery       *string           `json:"flow_recovery,omitempty"`
-	FlowUnenrollment   *string           `json:"flow_unenrollment,omitempty"`
-	FlowUserSettings   *string           `json:"flow_user_settings,omitempty"`
-	FlowDeviceCode     *string           `json:"flow_device_code,omitempty"`
-	DefaultLocale      string            `json:"default_locale"`
-	Flags              CurrentBrandFlags `json:"flags"`
+	MatchedDomain        string            `json:"matched_domain"`
+	BrandingTitle        string            `json:"branding_title"`
+	BrandingLogo         string            `json:"branding_logo"`
+	BrandingFavicon      string            `json:"branding_favicon"`
+	BrandingCustomCss    string            `json:"branding_custom_css"`
+	UiFooterLinks        []FooterLink      `json:"ui_footer_links"`
+	UiTheme              UiThemeEnum       `json:"ui_theme"`
+	FlowAuthentication   *string           `json:"flow_authentication,omitempty"`
+	FlowInvalidation     *string           `json:"flow_invalidation,omitempty"`
+	FlowRecovery         *string           `json:"flow_recovery,omitempty"`
+	FlowUnenrollment     *string           `json:"flow_unenrollment,omitempty"`
+	FlowUserSettings     *string           `json:"flow_user_settings,omitempty"`
+	FlowDeviceCode       *string           `json:"flow_device_code,omitempty"`
+	DefaultLocale        string            `json:"default_locale"`
+	Flags                CurrentBrandFlags `json:"flags"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CurrentBrand CurrentBrand
@@ -512,6 +512,11 @@ func (o CurrentBrand) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["default_locale"] = o.DefaultLocale
 	toSerialize["flags"] = o.Flags
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -547,15 +552,34 @@ func (o *CurrentBrand) UnmarshalJSON(data []byte) (err error) {
 
 	varCurrentBrand := _CurrentBrand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCurrentBrand)
+	err = json.Unmarshal(data, &varCurrentBrand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CurrentBrand(varCurrentBrand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "matched_domain")
+		delete(additionalProperties, "branding_title")
+		delete(additionalProperties, "branding_logo")
+		delete(additionalProperties, "branding_favicon")
+		delete(additionalProperties, "branding_custom_css")
+		delete(additionalProperties, "ui_footer_links")
+		delete(additionalProperties, "ui_theme")
+		delete(additionalProperties, "flow_authentication")
+		delete(additionalProperties, "flow_invalidation")
+		delete(additionalProperties, "flow_recovery")
+		delete(additionalProperties, "flow_unenrollment")
+		delete(additionalProperties, "flow_user_settings")
+		delete(additionalProperties, "flow_device_code")
+		delete(additionalProperties, "default_locale")
+		delete(additionalProperties, "flags")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

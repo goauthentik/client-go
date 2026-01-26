@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -29,7 +28,8 @@ type ScopeMappingRequest struct {
 	// Scope name requested by the client
 	ScopeName string `json:"scope_name"`
 	// Description shown to the user when consenting. If left empty, the user won't be informed.
-	Description *string `json:"description,omitempty"`
+	Description          *string `json:"description,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ScopeMappingRequest ScopeMappingRequest
@@ -220,6 +220,11 @@ func (o ScopeMappingRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -249,15 +254,24 @@ func (o *ScopeMappingRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varScopeMappingRequest := _ScopeMappingRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varScopeMappingRequest)
+	err = json.Unmarshal(data, &varScopeMappingRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ScopeMappingRequest(varScopeMappingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		delete(additionalProperties, "scope_name")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

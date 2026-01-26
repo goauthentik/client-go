@@ -50,7 +50,10 @@ type PatchedSettingsRequest struct {
 	// Maximum page size
 	PaginationMaxPageSize *int32                       `json:"pagination_max_page_size,omitempty"`
 	Flags                 *PatchedSettingsRequestFlags `json:"flags,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _PatchedSettingsRequest PatchedSettingsRequest
 
 // NewPatchedSettingsRequest instantiates a new PatchedSettingsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -640,7 +643,48 @@ func (o PatchedSettingsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Flags) {
 		toSerialize["flags"] = o.Flags
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedSettingsRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedSettingsRequest := _PatchedSettingsRequest{}
+
+	err = json.Unmarshal(data, &varPatchedSettingsRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedSettingsRequest(varPatchedSettingsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "avatars")
+		delete(additionalProperties, "default_user_change_name")
+		delete(additionalProperties, "default_user_change_email")
+		delete(additionalProperties, "default_user_change_username")
+		delete(additionalProperties, "event_retention")
+		delete(additionalProperties, "reputation_lower_limit")
+		delete(additionalProperties, "reputation_upper_limit")
+		delete(additionalProperties, "footer_links")
+		delete(additionalProperties, "gdpr_compliance")
+		delete(additionalProperties, "impersonation")
+		delete(additionalProperties, "impersonation_require_reason")
+		delete(additionalProperties, "default_token_duration")
+		delete(additionalProperties, "default_token_length")
+		delete(additionalProperties, "pagination_default_page_size")
+		delete(additionalProperties, "pagination_max_page_size")
+		delete(additionalProperties, "flags")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedSettingsRequest struct {

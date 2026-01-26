@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,13 +23,14 @@ var _ MappedNullable = &AuthenticatorDuoStageRequest{}
 type AuthenticatorDuoStageRequest struct {
 	Name string `json:"name"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow       NullableString `json:"configure_flow,omitempty"`
-	FriendlyName        *string        `json:"friendly_name,omitempty"`
-	ClientId            string         `json:"client_id"`
-	ClientSecret        string         `json:"client_secret"`
-	ApiHostname         string         `json:"api_hostname"`
-	AdminIntegrationKey *string        `json:"admin_integration_key,omitempty"`
-	AdminSecretKey      *string        `json:"admin_secret_key,omitempty"`
+	ConfigureFlow        NullableString `json:"configure_flow,omitempty"`
+	FriendlyName         *string        `json:"friendly_name,omitempty"`
+	ClientId             string         `json:"client_id"`
+	ClientSecret         string         `json:"client_secret"`
+	ApiHostname          string         `json:"api_hostname"`
+	AdminIntegrationKey  *string        `json:"admin_integration_key,omitempty"`
+	AdminSecretKey       *string        `json:"admin_secret_key,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorDuoStageRequest AuthenticatorDuoStageRequest
@@ -317,6 +317,11 @@ func (o AuthenticatorDuoStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdminSecretKey) {
 		toSerialize["admin_secret_key"] = o.AdminSecretKey
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -347,15 +352,27 @@ func (o *AuthenticatorDuoStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorDuoStageRequest := _AuthenticatorDuoStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorDuoStageRequest)
+	err = json.Unmarshal(data, &varAuthenticatorDuoStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorDuoStageRequest(varAuthenticatorDuoStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "client_secret")
+		delete(additionalProperties, "api_hostname")
+		delete(additionalProperties, "admin_integration_key")
+		delete(additionalProperties, "admin_secret_key")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

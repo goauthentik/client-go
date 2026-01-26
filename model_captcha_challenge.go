@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,14 +21,15 @@ var _ MappedNullable = &CaptchaChallenge{}
 
 // CaptchaChallenge Site public key
 type CaptchaChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser       string                    `json:"pending_user"`
-	PendingUserAvatar string                    `json:"pending_user_avatar"`
-	SiteKey           string                    `json:"site_key"`
-	JsUrl             string                    `json:"js_url"`
-	Interactive       bool                      `json:"interactive"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	SiteKey              string                    `json:"site_key"`
+	JsUrl                string                    `json:"js_url"`
+	Interactive          bool                      `json:"interactive"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CaptchaChallenge CaptchaChallenge
@@ -300,6 +300,11 @@ func (o CaptchaChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize["site_key"] = o.SiteKey
 	toSerialize["js_url"] = o.JsUrl
 	toSerialize["interactive"] = o.Interactive
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -331,15 +336,27 @@ func (o *CaptchaChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varCaptchaChallenge := _CaptchaChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCaptchaChallenge)
+	err = json.Unmarshal(data, &varCaptchaChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CaptchaChallenge(varCaptchaChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "site_key")
+		delete(additionalProperties, "js_url")
+		delete(additionalProperties, "interactive")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

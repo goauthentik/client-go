@@ -20,12 +20,15 @@ var _ MappedNullable = &IdentificationChallengeResponseRequest{}
 
 // IdentificationChallengeResponseRequest Identification challenge
 type IdentificationChallengeResponseRequest struct {
-	Component    *string                `json:"component,omitempty"`
-	UidField     NullableString         `json:"uid_field,omitempty"`
-	Password     NullableString         `json:"password,omitempty"`
-	CaptchaToken NullableString         `json:"captcha_token,omitempty"`
-	Passkey      map[string]interface{} `json:"passkey,omitempty"`
+	Component            *string                `json:"component,omitempty"`
+	UidField             NullableString         `json:"uid_field,omitempty"`
+	Password             NullableString         `json:"password,omitempty"`
+	CaptchaToken         NullableString         `json:"captcha_token,omitempty"`
+	Passkey              map[string]interface{} `json:"passkey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _IdentificationChallengeResponseRequest IdentificationChallengeResponseRequest
 
 // NewIdentificationChallengeResponseRequest instantiates a new IdentificationChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -267,7 +270,37 @@ func (o IdentificationChallengeResponseRequest) ToMap() (map[string]interface{},
 	if o.Passkey != nil {
 		toSerialize["passkey"] = o.Passkey
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *IdentificationChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varIdentificationChallengeResponseRequest := _IdentificationChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varIdentificationChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IdentificationChallengeResponseRequest(varIdentificationChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "uid_field")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "captcha_token")
+		delete(additionalProperties, "passkey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableIdentificationChallengeResponseRequest struct {

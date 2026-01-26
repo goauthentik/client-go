@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &AuthenticatorDuoStageDeviceImportResponse{}
 
 // AuthenticatorDuoStageDeviceImportResponse struct for AuthenticatorDuoStageDeviceImportResponse
 type AuthenticatorDuoStageDeviceImportResponse struct {
-	Count int32  `json:"count"`
-	Error string `json:"error"`
+	Count                int32  `json:"count"`
+	Error                string `json:"error"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorDuoStageDeviceImportResponse AuthenticatorDuoStageDeviceImportResponse
@@ -107,6 +107,11 @@ func (o AuthenticatorDuoStageDeviceImportResponse) ToMap() (map[string]interface
 	toSerialize := map[string]interface{}{}
 	toSerialize["count"] = o.Count
 	toSerialize["error"] = o.Error
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *AuthenticatorDuoStageDeviceImportResponse) UnmarshalJSON(data []byte) (
 
 	varAuthenticatorDuoStageDeviceImportResponse := _AuthenticatorDuoStageDeviceImportResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorDuoStageDeviceImportResponse)
+	err = json.Unmarshal(data, &varAuthenticatorDuoStageDeviceImportResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorDuoStageDeviceImportResponse(varAuthenticatorDuoStageDeviceImportResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "count")
+		delete(additionalProperties, "error")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

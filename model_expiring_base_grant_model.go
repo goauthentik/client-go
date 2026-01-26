@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -27,9 +26,10 @@ type ExpiringBaseGrantModel struct {
 	Provider OAuth2Provider `json:"provider"`
 	User     User           `json:"user"`
 	// Check if token is expired yet.
-	IsExpired bool         `json:"is_expired"`
-	Expires   NullableTime `json:"expires,omitempty"`
-	Scope     []string     `json:"scope"`
+	IsExpired            bool         `json:"is_expired"`
+	Expires              NullableTime `json:"expires,omitempty"`
+	Scope                []string     `json:"scope"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ExpiringBaseGrantModel ExpiringBaseGrantModel
@@ -237,6 +237,11 @@ func (o ExpiringBaseGrantModel) ToMap() (map[string]interface{}, error) {
 		toSerialize["expires"] = o.Expires.Get()
 	}
 	toSerialize["scope"] = o.Scope
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -268,15 +273,25 @@ func (o *ExpiringBaseGrantModel) UnmarshalJSON(data []byte) (err error) {
 
 	varExpiringBaseGrantModel := _ExpiringBaseGrantModel{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varExpiringBaseGrantModel)
+	err = json.Unmarshal(data, &varExpiringBaseGrantModel)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ExpiringBaseGrantModel(varExpiringBaseGrantModel)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "is_expired")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "scope")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

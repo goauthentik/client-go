@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,9 +24,10 @@ type RelatedGroup struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
-	Attributes  map[string]interface{} `json:"attributes,omitempty"`
-	GroupUuid   string                 `json:"group_uuid"`
+	IsSuperuser          *bool                  `json:"is_superuser,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	GroupUuid            string                 `json:"group_uuid"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RelatedGroup RelatedGroup
@@ -207,6 +207,11 @@ func (o RelatedGroup) ToMap() (map[string]interface{}, error) {
 		toSerialize["attributes"] = o.Attributes
 	}
 	toSerialize["group_uuid"] = o.GroupUuid
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -236,15 +241,24 @@ func (o *RelatedGroup) UnmarshalJSON(data []byte) (err error) {
 
 	varRelatedGroup := _RelatedGroup{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRelatedGroup)
+	err = json.Unmarshal(data, &varRelatedGroup)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RelatedGroup(varRelatedGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "is_superuser")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "group_uuid")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

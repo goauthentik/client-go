@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &UsedBy{}
 
 // UsedBy A list of all objects referencing the queried object
 type UsedBy struct {
-	App       string           `json:"app"`
-	ModelName string           `json:"model_name"`
-	Pk        string           `json:"pk"`
-	Name      string           `json:"name"`
-	Action    UsedByActionEnum `json:"action"`
+	App                  string           `json:"app"`
+	ModelName            string           `json:"model_name"`
+	Pk                   string           `json:"pk"`
+	Name                 string           `json:"name"`
+	Action               UsedByActionEnum `json:"action"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UsedBy UsedBy
@@ -188,6 +188,11 @@ func (o UsedBy) ToMap() (map[string]interface{}, error) {
 	toSerialize["pk"] = o.Pk
 	toSerialize["name"] = o.Name
 	toSerialize["action"] = o.Action
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *UsedBy) UnmarshalJSON(data []byte) (err error) {
 
 	varUsedBy := _UsedBy{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUsedBy)
+	err = json.Unmarshal(data, &varUsedBy)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UsedBy(varUsedBy)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "model_name")
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "action")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

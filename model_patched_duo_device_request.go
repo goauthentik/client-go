@@ -21,8 +21,11 @@ var _ MappedNullable = &PatchedDuoDeviceRequest{}
 // PatchedDuoDeviceRequest Serializer for Duo authenticator devices
 type PatchedDuoDeviceRequest struct {
 	// The human-readable name of this device.
-	Name *string `json:"name,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedDuoDeviceRequest PatchedDuoDeviceRequest
 
 // NewPatchedDuoDeviceRequest instantiates a new PatchedDuoDeviceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -86,7 +89,33 @@ func (o PatchedDuoDeviceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedDuoDeviceRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedDuoDeviceRequest := _PatchedDuoDeviceRequest{}
+
+	err = json.Unmarshal(data, &varPatchedDuoDeviceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedDuoDeviceRequest(varPatchedDuoDeviceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedDuoDeviceRequest struct {

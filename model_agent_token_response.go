@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &AgentTokenResponse{}
 
 // AgentTokenResponse Base serializer class which doesn't implement create/update methods
 type AgentTokenResponse struct {
-	Token     string `json:"token"`
-	ExpiresIn *int32 `json:"expires_in,omitempty"`
+	Token                string `json:"token"`
+	ExpiresIn            *int32 `json:"expires_in,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AgentTokenResponse AgentTokenResponse
@@ -116,6 +116,11 @@ func (o AgentTokenResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExpiresIn) {
 		toSerialize["expires_in"] = o.ExpiresIn
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *AgentTokenResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varAgentTokenResponse := _AgentTokenResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAgentTokenResponse)
+	err = json.Unmarshal(data, &varAgentTokenResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AgentTokenResponse(varAgentTokenResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "expires_in")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

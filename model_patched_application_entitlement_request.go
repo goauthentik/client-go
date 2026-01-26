@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedApplicationEntitlementRequest{}
 
 // PatchedApplicationEntitlementRequest ApplicationEntitlement Serializer
 type PatchedApplicationEntitlementRequest struct {
-	Name       *string                `json:"name,omitempty"`
-	App        *string                `json:"app,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Name                 *string                `json:"name,omitempty"`
+	App                  *string                `json:"app,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedApplicationEntitlementRequest PatchedApplicationEntitlementRequest
 
 // NewPatchedApplicationEntitlementRequest instantiates a new PatchedApplicationEntitlementRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedApplicationEntitlementRequest) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedApplicationEntitlementRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedApplicationEntitlementRequest := _PatchedApplicationEntitlementRequest{}
+
+	err = json.Unmarshal(data, &varPatchedApplicationEntitlementRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedApplicationEntitlementRequest(varPatchedApplicationEntitlementRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedApplicationEntitlementRequest struct {

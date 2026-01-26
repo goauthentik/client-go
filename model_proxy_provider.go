@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -74,6 +73,7 @@ type ProxyProvider struct {
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	RefreshTokenValidity *string  `json:"refresh_token_validity,omitempty"`
 	OutpostSet           []string `json:"outpost_set"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProxyProvider ProxyProvider
@@ -1103,6 +1103,11 @@ func (o ProxyProvider) ToMap() (map[string]interface{}, error) {
 		toSerialize["refresh_token_validity"] = o.RefreshTokenValidity
 	}
 	toSerialize["outpost_set"] = o.OutpostSet
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1145,15 +1150,51 @@ func (o *ProxyProvider) UnmarshalJSON(data []byte) (err error) {
 
 	varProxyProvider := _ProxyProvider{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProxyProvider)
+	err = json.Unmarshal(data, &varProxyProvider)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProxyProvider(varProxyProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "invalidation_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "assigned_application_slug")
+		delete(additionalProperties, "assigned_application_name")
+		delete(additionalProperties, "assigned_backchannel_application_slug")
+		delete(additionalProperties, "assigned_backchannel_application_name")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "internal_host")
+		delete(additionalProperties, "external_host")
+		delete(additionalProperties, "internal_host_ssl_validation")
+		delete(additionalProperties, "certificate")
+		delete(additionalProperties, "skip_path_regex")
+		delete(additionalProperties, "basic_auth_enabled")
+		delete(additionalProperties, "basic_auth_password_attribute")
+		delete(additionalProperties, "basic_auth_user_attribute")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "intercept_header_auth")
+		delete(additionalProperties, "redirect_uris")
+		delete(additionalProperties, "cookie_domain")
+		delete(additionalProperties, "jwt_federation_sources")
+		delete(additionalProperties, "jwt_federation_providers")
+		delete(additionalProperties, "access_token_validity")
+		delete(additionalProperties, "refresh_token_validity")
+		delete(additionalProperties, "outpost_set")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

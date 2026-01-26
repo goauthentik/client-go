@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &DummyStageRequest{}
 
 // DummyStageRequest DummyStage Serializer
 type DummyStageRequest struct {
-	Name       string `json:"name"`
-	ThrowError *bool  `json:"throw_error,omitempty"`
+	Name                 string `json:"name"`
+	ThrowError           *bool  `json:"throw_error,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DummyStageRequest DummyStageRequest
@@ -116,6 +116,11 @@ func (o DummyStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ThrowError) {
 		toSerialize["throw_error"] = o.ThrowError
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *DummyStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDummyStageRequest := _DummyStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDummyStageRequest)
+	err = json.Unmarshal(data, &varDummyStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DummyStageRequest(varDummyStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "throw_error")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

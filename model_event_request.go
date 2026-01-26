@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &EventRequest{}
 
 // EventRequest Event Serializer
 type EventRequest struct {
-	User     map[string]interface{} `json:"user,omitempty"`
-	Action   EventActions           `json:"action"`
-	App      string                 `json:"app"`
-	Context  map[string]interface{} `json:"context,omitempty"`
-	ClientIp NullableString         `json:"client_ip,omitempty"`
-	Expires  *time.Time             `json:"expires,omitempty"`
-	Brand    map[string]interface{} `json:"brand,omitempty"`
+	User                 map[string]interface{} `json:"user,omitempty"`
+	Action               EventActions           `json:"action"`
+	App                  string                 `json:"app"`
+	Context              map[string]interface{} `json:"context,omitempty"`
+	ClientIp             NullableString         `json:"client_ip,omitempty"`
+	Expires              *time.Time             `json:"expires,omitempty"`
+	Brand                map[string]interface{} `json:"brand,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EventRequest EventRequest
@@ -299,6 +299,11 @@ func (o EventRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Brand) {
 		toSerialize["brand"] = o.Brand
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -327,15 +332,26 @@ func (o *EventRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEventRequest := _EventRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEventRequest)
+	err = json.Unmarshal(data, &varEventRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EventRequest(varEventRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "action")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "context")
+		delete(additionalProperties, "client_ip")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "brand")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

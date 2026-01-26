@@ -27,8 +27,11 @@ type PatchedScopeMappingRequest struct {
 	// Scope name requested by the client
 	ScopeName *string `json:"scope_name,omitempty"`
 	// Description shown to the user when consenting. If left empty, the user won't be informed.
-	Description *string `json:"description,omitempty"`
+	Description          *string `json:"description,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedScopeMappingRequest PatchedScopeMappingRequest
 
 // NewPatchedScopeMappingRequest instantiates a new PatchedScopeMappingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -243,7 +246,37 @@ func (o PatchedScopeMappingRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedScopeMappingRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedScopeMappingRequest := _PatchedScopeMappingRequest{}
+
+	err = json.Unmarshal(data, &varPatchedScopeMappingRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedScopeMappingRequest(varPatchedScopeMappingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		delete(additionalProperties, "scope_name")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedScopeMappingRequest struct {

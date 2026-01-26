@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,11 +23,12 @@ var _ MappedNullable = &GroupRequest{}
 type GroupRequest struct {
 	Name string `json:"name"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
-	Parents     []string               `json:"parents,omitempty"`
-	Users       []int32                `json:"users,omitempty"`
-	Attributes  map[string]interface{} `json:"attributes,omitempty"`
-	Roles       []string               `json:"roles,omitempty"`
+	IsSuperuser          *bool                  `json:"is_superuser,omitempty"`
+	Parents              []string               `json:"parents,omitempty"`
+	Users                []int32                `json:"users,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	Roles                []string               `json:"roles,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GroupRequest GroupRequest
@@ -261,6 +261,11 @@ func (o GroupRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Roles) {
 		toSerialize["roles"] = o.Roles
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -288,15 +293,25 @@ func (o *GroupRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varGroupRequest := _GroupRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupRequest)
+	err = json.Unmarshal(data, &varGroupRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GroupRequest(varGroupRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "is_superuser")
+		delete(additionalProperties, "parents")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "roles")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

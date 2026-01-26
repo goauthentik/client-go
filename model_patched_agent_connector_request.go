@@ -34,7 +34,10 @@ type PatchedAgentConnectorRequest struct {
 	ChallengeIdleTimeout         *string        `json:"challenge_idle_timeout,omitempty"`
 	ChallengeTriggerCheckIn      *bool          `json:"challenge_trigger_check_in,omitempty"`
 	JwtFederationProviders       []int32        `json:"jwt_federation_providers,omitempty"`
+	AdditionalProperties         map[string]interface{}
 }
+
+type _PatchedAgentConnectorRequest PatchedAgentConnectorRequest
 
 // NewPatchedAgentConnectorRequest instantiates a new PatchedAgentConnectorRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -575,7 +578,46 @@ func (o PatchedAgentConnectorRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.JwtFederationProviders) {
 		toSerialize["jwt_federation_providers"] = o.JwtFederationProviders
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedAgentConnectorRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedAgentConnectorRequest := _PatchedAgentConnectorRequest{}
+
+	err = json.Unmarshal(data, &varPatchedAgentConnectorRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedAgentConnectorRequest(varPatchedAgentConnectorRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "connector_uuid")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "snapshot_expiry")
+		delete(additionalProperties, "auth_session_duration")
+		delete(additionalProperties, "auth_terminate_session_on_expiry")
+		delete(additionalProperties, "refresh_interval")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "nss_uid_offset")
+		delete(additionalProperties, "nss_gid_offset")
+		delete(additionalProperties, "challenge_key")
+		delete(additionalProperties, "challenge_idle_timeout")
+		delete(additionalProperties, "challenge_trigger_check_in")
+		delete(additionalProperties, "jwt_federation_providers")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedAgentConnectorRequest struct {

@@ -20,8 +20,11 @@ var _ MappedNullable = &NativeLogoutChallengeResponseRequest{}
 
 // NativeLogoutChallengeResponseRequest Response for native browser logout
 type NativeLogoutChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NativeLogoutChallengeResponseRequest NativeLogoutChallengeResponseRequest
 
 // NewNativeLogoutChallengeResponseRequest instantiates a new NativeLogoutChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o NativeLogoutChallengeResponseRequest) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NativeLogoutChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varNativeLogoutChallengeResponseRequest := _NativeLogoutChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varNativeLogoutChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NativeLogoutChallengeResponseRequest(varNativeLogoutChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNativeLogoutChallengeResponseRequest struct {

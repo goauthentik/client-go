@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &RedirectStageRequest{}
 
 // RedirectStageRequest RedirectStage Serializer
 type RedirectStageRequest struct {
-	Name         string                `json:"name"`
-	KeepContext  *bool                 `json:"keep_context,omitempty"`
-	Mode         RedirectStageModeEnum `json:"mode"`
-	TargetStatic *string               `json:"target_static,omitempty"`
-	TargetFlow   NullableString        `json:"target_flow,omitempty"`
+	Name                 string                `json:"name"`
+	KeepContext          *bool                 `json:"keep_context,omitempty"`
+	Mode                 RedirectStageModeEnum `json:"mode"`
+	TargetStatic         *string               `json:"target_static,omitempty"`
+	TargetFlow           NullableString        `json:"target_flow,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RedirectStageRequest RedirectStageRequest
@@ -226,6 +226,11 @@ func (o RedirectStageRequest) ToMap() (map[string]interface{}, error) {
 	if o.TargetFlow.IsSet() {
 		toSerialize["target_flow"] = o.TargetFlow.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -254,15 +259,24 @@ func (o *RedirectStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varRedirectStageRequest := _RedirectStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRedirectStageRequest)
+	err = json.Unmarshal(data, &varRedirectStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RedirectStageRequest(varRedirectStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "keep_context")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "target_static")
+		delete(additionalProperties, "target_flow")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

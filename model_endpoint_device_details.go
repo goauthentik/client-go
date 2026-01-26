@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,18 +22,19 @@ var _ MappedNullable = &EndpointDeviceDetails{}
 
 // EndpointDeviceDetails struct for EndpointDeviceDetails
 type EndpointDeviceDetails struct {
-	DeviceUuid     *string                `json:"device_uuid,omitempty"`
-	PbmUuid        string                 `json:"pbm_uuid"`
-	Name           string                 `json:"name"`
-	AccessGroup    NullableString         `json:"access_group,omitempty"`
-	AccessGroupObj *DeviceAccessGroup     `json:"access_group_obj,omitempty"`
-	Expiring       *bool                  `json:"expiring,omitempty"`
-	Expires        NullableTime           `json:"expires,omitempty"`
-	Facts          DeviceFactSnapshot     `json:"facts"`
-	Attributes     map[string]interface{} `json:"attributes,omitempty"`
-	ConnectionsObj []DeviceConnection     `json:"connections_obj"`
-	Policies       []string               `json:"policies"`
-	Connections    []string               `json:"connections"`
+	DeviceUuid           *string                `json:"device_uuid,omitempty"`
+	PbmUuid              string                 `json:"pbm_uuid"`
+	Name                 string                 `json:"name"`
+	AccessGroup          NullableString         `json:"access_group,omitempty"`
+	AccessGroupObj       *DeviceAccessGroup     `json:"access_group_obj,omitempty"`
+	Expiring             *bool                  `json:"expiring,omitempty"`
+	Expires              NullableTime           `json:"expires,omitempty"`
+	Facts                DeviceFactSnapshot     `json:"facts"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	ConnectionsObj       []DeviceConnection     `json:"connections_obj"`
+	Policies             []string               `json:"policies"`
+	Connections          []string               `json:"connections"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EndpointDeviceDetails EndpointDeviceDetails
@@ -454,6 +454,11 @@ func (o EndpointDeviceDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize["connections_obj"] = o.ConnectionsObj
 	toSerialize["policies"] = o.Policies
 	toSerialize["connections"] = o.Connections
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -486,15 +491,31 @@ func (o *EndpointDeviceDetails) UnmarshalJSON(data []byte) (err error) {
 
 	varEndpointDeviceDetails := _EndpointDeviceDetails{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpointDeviceDetails)
+	err = json.Unmarshal(data, &varEndpointDeviceDetails)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EndpointDeviceDetails(varEndpointDeviceDetails)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device_uuid")
+		delete(additionalProperties, "pbm_uuid")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "access_group")
+		delete(additionalProperties, "access_group_obj")
+		delete(additionalProperties, "expiring")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "facts")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "connections_obj")
+		delete(additionalProperties, "policies")
+		delete(additionalProperties, "connections")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

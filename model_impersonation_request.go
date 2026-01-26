@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &ImpersonationRequest{}
 
 // ImpersonationRequest struct for ImpersonationRequest
 type ImpersonationRequest struct {
-	Reason string `json:"reason"`
+	Reason               string `json:"reason"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ImpersonationRequest ImpersonationRequest
@@ -80,6 +80,11 @@ func (o ImpersonationRequest) MarshalJSON() ([]byte, error) {
 func (o ImpersonationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["reason"] = o.Reason
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *ImpersonationRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varImpersonationRequest := _ImpersonationRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varImpersonationRequest)
+	err = json.Unmarshal(data, &varImpersonationRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ImpersonationRequest(varImpersonationRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "reason")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

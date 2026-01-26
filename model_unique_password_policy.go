@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -40,6 +39,7 @@ type UniquePasswordPolicy struct {
 	PasswordField *string `json:"password_field,omitempty"`
 	// Number of passwords to check against.
 	NumHistoricalPasswords *int32 `json:"num_historical_passwords,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _UniquePasswordPolicy UniquePasswordPolicy
@@ -358,6 +358,11 @@ func (o UniquePasswordPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NumHistoricalPasswords) {
 		toSerialize["num_historical_passwords"] = o.NumHistoricalPasswords
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -391,15 +396,29 @@ func (o *UniquePasswordPolicy) UnmarshalJSON(data []byte) (err error) {
 
 	varUniquePasswordPolicy := _UniquePasswordPolicy{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUniquePasswordPolicy)
+	err = json.Unmarshal(data, &varUniquePasswordPolicy)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UniquePasswordPolicy(varUniquePasswordPolicy)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "bound_to")
+		delete(additionalProperties, "password_field")
+		delete(additionalProperties, "num_historical_passwords")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

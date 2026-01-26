@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &Metadata{}
 
 // Metadata Serializer for blueprint metadata
 type Metadata struct {
-	Name   string                 `json:"name"`
-	Labels map[string]interface{} `json:"labels"`
+	Name                 string                 `json:"name"`
+	Labels               map[string]interface{} `json:"labels"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Metadata Metadata
@@ -107,6 +107,11 @@ func (o Metadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["labels"] = o.Labels
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
 
 	varMetadata := _Metadata{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMetadata)
+	err = json.Unmarshal(data, &varMetadata)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Metadata(varMetadata)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "labels")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

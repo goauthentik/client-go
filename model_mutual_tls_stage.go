@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -38,6 +37,7 @@ type MutualTLSStage struct {
 	CertificateAuthorities []string          `json:"certificate_authorities,omitempty"`
 	CertAttribute          CertAttributeEnum `json:"cert_attribute"`
 	UserAttribute          UserAttributeEnum `json:"user_attribute"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _MutualTLSStage MutualTLSStage
@@ -364,6 +364,11 @@ func (o MutualTLSStage) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["cert_attribute"] = o.CertAttribute
 	toSerialize["user_attribute"] = o.UserAttribute
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -400,15 +405,30 @@ func (o *MutualTLSStage) UnmarshalJSON(data []byte) (err error) {
 
 	varMutualTLSStage := _MutualTLSStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMutualTLSStage)
+	err = json.Unmarshal(data, &varMutualTLSStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = MutualTLSStage(varMutualTLSStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "certificate_authorities")
+		delete(additionalProperties, "cert_attribute")
+		delete(additionalProperties, "user_attribute")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

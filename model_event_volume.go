@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,9 +22,10 @@ var _ MappedNullable = &EventVolume{}
 
 // EventVolume Count of events of action created on day
 type EventVolume struct {
-	Action EventActions `json:"action"`
-	Time   time.Time    `json:"time"`
-	Count  int32        `json:"count"`
+	Action               EventActions `json:"action"`
+	Time                 time.Time    `json:"time"`
+	Count                int32        `json:"count"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EventVolume EventVolume
@@ -135,6 +135,11 @@ func (o EventVolume) ToMap() (map[string]interface{}, error) {
 	toSerialize["action"] = o.Action
 	toSerialize["time"] = o.Time
 	toSerialize["count"] = o.Count
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -164,15 +169,22 @@ func (o *EventVolume) UnmarshalJSON(data []byte) (err error) {
 
 	varEventVolume := _EventVolume{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEventVolume)
+	err = json.Unmarshal(data, &varEventVolume)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EventVolume(varEventVolume)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "action")
+		delete(additionalProperties, "time")
+		delete(additionalProperties, "count")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

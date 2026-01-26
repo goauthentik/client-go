@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &NotificationTransportTest{}
 
 // NotificationTransportTest Notification test serializer
 type NotificationTransportTest struct {
-	Messages []string `json:"messages"`
+	Messages             []string `json:"messages"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NotificationTransportTest NotificationTransportTest
@@ -80,6 +80,11 @@ func (o NotificationTransportTest) MarshalJSON() ([]byte, error) {
 func (o NotificationTransportTest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["messages"] = o.Messages
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *NotificationTransportTest) UnmarshalJSON(data []byte) (err error) {
 
 	varNotificationTransportTest := _NotificationTransportTest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotificationTransportTest)
+	err = json.Unmarshal(data, &varNotificationTransportTest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NotificationTransportTest(varNotificationTransportTest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "messages")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

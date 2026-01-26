@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,9 +23,10 @@ var _ MappedNullable = &AuthenticatorTOTPStageRequest{}
 type AuthenticatorTOTPStageRequest struct {
 	Name string `json:"name"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	FriendlyName  *string        `json:"friendly_name,omitempty"`
-	Digits        DigitsEnum     `json:"digits"`
+	ConfigureFlow        NullableString `json:"configure_flow,omitempty"`
+	FriendlyName         *string        `json:"friendly_name,omitempty"`
+	Digits               DigitsEnum     `json:"digits"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorTOTPStageRequest AuthenticatorTOTPStageRequest
@@ -191,6 +191,11 @@ func (o AuthenticatorTOTPStageRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["friendly_name"] = o.FriendlyName
 	}
 	toSerialize["digits"] = o.Digits
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,23 @@ func (o *AuthenticatorTOTPStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorTOTPStageRequest := _AuthenticatorTOTPStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorTOTPStageRequest)
+	err = json.Unmarshal(data, &varAuthenticatorTOTPStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorTOTPStageRequest(varAuthenticatorTOTPStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "digits")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

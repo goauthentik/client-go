@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &FooterLink{}
 
 // FooterLink Links returned in Config API
 type FooterLink struct {
-	Href NullableString `json:"href"`
-	Name string         `json:"name"`
+	Href                 NullableString `json:"href"`
+	Name                 string         `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FooterLink FooterLink
@@ -109,6 +109,11 @@ func (o FooterLink) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["href"] = o.Href.Get()
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -137,15 +142,21 @@ func (o *FooterLink) UnmarshalJSON(data []byte) (err error) {
 
 	varFooterLink := _FooterLink{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFooterLink)
+	err = json.Unmarshal(data, &varFooterLink)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FooterLink(varFooterLink)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "href")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

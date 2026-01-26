@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -57,7 +56,8 @@ type IdentificationStage struct {
 	// Show the user the 'Remember me on this device' toggle, allowing repeat users to skip straight to entering their password.
 	EnableRememberMe *bool `json:"enable_remember_me,omitempty"`
 	// When set, and conditional WebAuthn is available, allow the user to use their passkey as a first factor.
-	WebauthnStage NullableString `json:"webauthn_stage,omitempty"`
+	WebauthnStage        NullableString `json:"webauthn_stage,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _IdentificationStage IdentificationStage
@@ -792,6 +792,11 @@ func (o IdentificationStage) ToMap() (map[string]interface{}, error) {
 	if o.WebauthnStage.IsSet() {
 		toSerialize["webauthn_stage"] = o.WebauthnStage.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -825,15 +830,39 @@ func (o *IdentificationStage) UnmarshalJSON(data []byte) (err error) {
 
 	varIdentificationStage := _IdentificationStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varIdentificationStage)
+	err = json.Unmarshal(data, &varIdentificationStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = IdentificationStage(varIdentificationStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "user_fields")
+		delete(additionalProperties, "password_stage")
+		delete(additionalProperties, "captcha_stage")
+		delete(additionalProperties, "case_insensitive_matching")
+		delete(additionalProperties, "show_matched_user")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "recovery_flow")
+		delete(additionalProperties, "passwordless_flow")
+		delete(additionalProperties, "sources")
+		delete(additionalProperties, "show_source_labels")
+		delete(additionalProperties, "pretend_user_exists")
+		delete(additionalProperties, "enable_remember_me")
+		delete(additionalProperties, "webauthn_stage")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

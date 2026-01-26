@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &EventTopPerUser{}
 
 // EventTopPerUser Response object of Event's top_per_user
 type EventTopPerUser struct {
-	Application   map[string]interface{} `json:"application"`
-	CountedEvents int32                  `json:"counted_events"`
-	UniqueUsers   int32                  `json:"unique_users"`
+	Application          map[string]interface{} `json:"application"`
+	CountedEvents        int32                  `json:"counted_events"`
+	UniqueUsers          int32                  `json:"unique_users"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EventTopPerUser EventTopPerUser
@@ -134,6 +134,11 @@ func (o EventTopPerUser) ToMap() (map[string]interface{}, error) {
 	toSerialize["application"] = o.Application
 	toSerialize["counted_events"] = o.CountedEvents
 	toSerialize["unique_users"] = o.UniqueUsers
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *EventTopPerUser) UnmarshalJSON(data []byte) (err error) {
 
 	varEventTopPerUser := _EventTopPerUser{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEventTopPerUser)
+	err = json.Unmarshal(data, &varEventTopPerUser)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EventTopPerUser(varEventTopPerUser)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "application")
+		delete(additionalProperties, "counted_events")
+		delete(additionalProperties, "unique_users")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

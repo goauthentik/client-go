@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &Reputation{}
 
 // Reputation Reputation Serializer
 type Reputation struct {
-	Pk         *string                `json:"pk,omitempty"`
-	Identifier string                 `json:"identifier"`
-	Ip         string                 `json:"ip"`
-	IpGeoData  map[string]interface{} `json:"ip_geo_data,omitempty"`
-	IpAsnData  map[string]interface{} `json:"ip_asn_data,omitempty"`
-	Score      *int64                 `json:"score,omitempty"`
-	Updated    time.Time              `json:"updated"`
+	Pk                   *string                `json:"pk,omitempty"`
+	Identifier           string                 `json:"identifier"`
+	Ip                   string                 `json:"ip"`
+	IpGeoData            map[string]interface{} `json:"ip_geo_data,omitempty"`
+	IpAsnData            map[string]interface{} `json:"ip_asn_data,omitempty"`
+	Score                *int64                 `json:"score,omitempty"`
+	Updated              time.Time              `json:"updated"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Reputation Reputation
@@ -279,6 +279,11 @@ func (o Reputation) ToMap() (map[string]interface{}, error) {
 		toSerialize["score"] = o.Score
 	}
 	toSerialize["updated"] = o.Updated
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -308,15 +313,26 @@ func (o *Reputation) UnmarshalJSON(data []byte) (err error) {
 
 	varReputation := _Reputation{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varReputation)
+	err = json.Unmarshal(data, &varReputation)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Reputation(varReputation)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "ip")
+		delete(additionalProperties, "ip_geo_data")
+		delete(additionalProperties, "ip_asn_data")
+		delete(additionalProperties, "score")
+		delete(additionalProperties, "updated")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

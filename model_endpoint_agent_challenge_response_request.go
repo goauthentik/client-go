@@ -20,9 +20,12 @@ var _ MappedNullable = &EndpointAgentChallengeResponseRequest{}
 
 // EndpointAgentChallengeResponseRequest Response to signed challenge
 type EndpointAgentChallengeResponseRequest struct {
-	Component *string        `json:"component,omitempty"`
-	Response  NullableString `json:"response,omitempty"`
+	Component            *string        `json:"component,omitempty"`
+	Response             NullableString `json:"response,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EndpointAgentChallengeResponseRequest EndpointAgentChallengeResponseRequest
 
 // NewEndpointAgentChallengeResponseRequest instantiates a new EndpointAgentChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -136,7 +139,34 @@ func (o EndpointAgentChallengeResponseRequest) ToMap() (map[string]interface{}, 
 	if o.Response.IsSet() {
 		toSerialize["response"] = o.Response.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EndpointAgentChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varEndpointAgentChallengeResponseRequest := _EndpointAgentChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varEndpointAgentChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EndpointAgentChallengeResponseRequest(varEndpointAgentChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEndpointAgentChallengeResponseRequest struct {

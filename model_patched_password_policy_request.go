@@ -39,7 +39,10 @@ type PatchedPasswordPolicyRequest struct {
 	HibpAllowedCount *int32 `json:"hibp_allowed_count,omitempty"`
 	// If the zxcvbn score is equal or less than this value, the policy will fail.
 	ZxcvbnScoreThreshold *int32 `json:"zxcvbn_score_threshold,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedPasswordPolicyRequest PatchedPasswordPolicyRequest
 
 // NewPatchedPasswordPolicyRequest instantiates a new PatchedPasswordPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -593,7 +596,47 @@ func (o PatchedPasswordPolicyRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ZxcvbnScoreThreshold) {
 		toSerialize["zxcvbn_score_threshold"] = o.ZxcvbnScoreThreshold
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedPasswordPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedPasswordPolicyRequest := _PatchedPasswordPolicyRequest{}
+
+	err = json.Unmarshal(data, &varPatchedPasswordPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedPasswordPolicyRequest(varPatchedPasswordPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "password_field")
+		delete(additionalProperties, "amount_digits")
+		delete(additionalProperties, "amount_uppercase")
+		delete(additionalProperties, "amount_lowercase")
+		delete(additionalProperties, "amount_symbols")
+		delete(additionalProperties, "length_min")
+		delete(additionalProperties, "symbol_charset")
+		delete(additionalProperties, "error_message")
+		delete(additionalProperties, "check_static_rules")
+		delete(additionalProperties, "check_have_i_been_pwned")
+		delete(additionalProperties, "check_zxcvbn")
+		delete(additionalProperties, "hibp_allowed_count")
+		delete(additionalProperties, "zxcvbn_score_threshold")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedPasswordPolicyRequest struct {

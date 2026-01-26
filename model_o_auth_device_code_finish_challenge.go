@@ -20,10 +20,13 @@ var _ MappedNullable = &OAuthDeviceCodeFinishChallenge{}
 
 // OAuthDeviceCodeFinishChallenge Final challenge after user enters their code
 type OAuthDeviceCodeFinishChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OAuthDeviceCodeFinishChallenge OAuthDeviceCodeFinishChallenge
 
 // NewOAuthDeviceCodeFinishChallenge instantiates a new OAuthDeviceCodeFinishChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -161,7 +164,35 @@ func (o OAuthDeviceCodeFinishChallenge) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.ResponseErrors) {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OAuthDeviceCodeFinishChallenge) UnmarshalJSON(data []byte) (err error) {
+	varOAuthDeviceCodeFinishChallenge := _OAuthDeviceCodeFinishChallenge{}
+
+	err = json.Unmarshal(data, &varOAuthDeviceCodeFinishChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OAuthDeviceCodeFinishChallenge(varOAuthDeviceCodeFinishChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOAuthDeviceCodeFinishChallenge struct {

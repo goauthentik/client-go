@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &UserServiceAccountResponse{}
 
 // UserServiceAccountResponse struct for UserServiceAccountResponse
 type UserServiceAccountResponse struct {
-	Username string  `json:"username"`
-	Token    string  `json:"token"`
-	UserUid  string  `json:"user_uid"`
-	UserPk   int32   `json:"user_pk"`
-	GroupPk  *string `json:"group_pk,omitempty"`
+	Username             string  `json:"username"`
+	Token                string  `json:"token"`
+	UserUid              string  `json:"user_uid"`
+	UserPk               int32   `json:"user_pk"`
+	GroupPk              *string `json:"group_pk,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserServiceAccountResponse UserServiceAccountResponse
@@ -197,6 +197,11 @@ func (o UserServiceAccountResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GroupPk) {
 		toSerialize["group_pk"] = o.GroupPk
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -227,15 +232,24 @@ func (o *UserServiceAccountResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varUserServiceAccountResponse := _UserServiceAccountResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserServiceAccountResponse)
+	err = json.Unmarshal(data, &varUserServiceAccountResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserServiceAccountResponse(varUserServiceAccountResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "user_uid")
+		delete(additionalProperties, "user_pk")
+		delete(additionalProperties, "group_pk")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

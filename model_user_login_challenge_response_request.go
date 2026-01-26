@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &UserLoginChallengeResponseRequest{}
 
 // UserLoginChallengeResponseRequest User login challenge
 type UserLoginChallengeResponseRequest struct {
-	Component  *string `json:"component,omitempty"`
-	RememberMe bool    `json:"remember_me"`
+	Component            *string `json:"component,omitempty"`
+	RememberMe           bool    `json:"remember_me"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserLoginChallengeResponseRequest UserLoginChallengeResponseRequest
@@ -120,6 +120,11 @@ func (o UserLoginChallengeResponseRequest) ToMap() (map[string]interface{}, erro
 		toSerialize["component"] = o.Component
 	}
 	toSerialize["remember_me"] = o.RememberMe
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -147,15 +152,21 @@ func (o *UserLoginChallengeResponseRequest) UnmarshalJSON(data []byte) (err erro
 
 	varUserLoginChallengeResponseRequest := _UserLoginChallengeResponseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserLoginChallengeResponseRequest)
+	err = json.Unmarshal(data, &varUserLoginChallengeResponseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserLoginChallengeResponseRequest(varUserLoginChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "remember_me")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &ContentType{}
 
 // ContentType struct for ContentType
 type ContentType struct {
-	Id                int32  `json:"id"`
-	AppLabel          string `json:"app_label"`
-	Model             string `json:"model"`
-	VerboseNamePlural string `json:"verbose_name_plural"`
+	Id                   int32  `json:"id"`
+	AppLabel             string `json:"app_label"`
+	Model                string `json:"model"`
+	VerboseNamePlural    string `json:"verbose_name_plural"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContentType ContentType
@@ -161,6 +161,11 @@ func (o ContentType) ToMap() (map[string]interface{}, error) {
 	toSerialize["app_label"] = o.AppLabel
 	toSerialize["model"] = o.Model
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *ContentType) UnmarshalJSON(data []byte) (err error) {
 
 	varContentType := _ContentType{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContentType)
+	err = json.Unmarshal(data, &varContentType)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContentType(varContentType)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "app_label")
+		delete(additionalProperties, "model")
+		delete(additionalProperties, "verbose_name_plural")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

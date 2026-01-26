@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &Pagination{}
 
 // Pagination struct for Pagination
 type Pagination struct {
-	Next       float32 `json:"next"`
-	Previous   float32 `json:"previous"`
-	Count      float32 `json:"count"`
-	Current    float32 `json:"current"`
-	TotalPages float32 `json:"total_pages"`
-	StartIndex float32 `json:"start_index"`
-	EndIndex   float32 `json:"end_index"`
+	Next                 float32 `json:"next"`
+	Previous             float32 `json:"previous"`
+	Count                float32 `json:"count"`
+	Current              float32 `json:"current"`
+	TotalPages           float32 `json:"total_pages"`
+	StartIndex           float32 `json:"start_index"`
+	EndIndex             float32 `json:"end_index"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Pagination Pagination
@@ -242,6 +242,11 @@ func (o Pagination) ToMap() (map[string]interface{}, error) {
 	toSerialize["total_pages"] = o.TotalPages
 	toSerialize["start_index"] = o.StartIndex
 	toSerialize["end_index"] = o.EndIndex
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -275,15 +280,26 @@ func (o *Pagination) UnmarshalJSON(data []byte) (err error) {
 
 	varPagination := _Pagination{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPagination)
+	err = json.Unmarshal(data, &varPagination)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Pagination(varPagination)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "next")
+		delete(additionalProperties, "previous")
+		delete(additionalProperties, "count")
+		delete(additionalProperties, "current")
+		delete(additionalProperties, "total_pages")
+		delete(additionalProperties, "start_index")
+		delete(additionalProperties, "end_index")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

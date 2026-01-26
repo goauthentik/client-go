@@ -21,12 +21,15 @@ var _ MappedNullable = &PatchedUserOAuthSourceConnectionRequest{}
 
 // PatchedUserOAuthSourceConnectionRequest User source connection
 type PatchedUserOAuthSourceConnectionRequest struct {
-	User        *int32         `json:"user,omitempty"`
-	Source      *string        `json:"source,omitempty"`
-	Identifier  *string        `json:"identifier,omitempty"`
-	AccessToken NullableString `json:"access_token,omitempty"`
-	Expires     *time.Time     `json:"expires,omitempty"`
+	User                 *int32         `json:"user,omitempty"`
+	Source               *string        `json:"source,omitempty"`
+	Identifier           *string        `json:"identifier,omitempty"`
+	AccessToken          NullableString `json:"access_token,omitempty"`
+	Expires              *time.Time     `json:"expires,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedUserOAuthSourceConnectionRequest PatchedUserOAuthSourceConnectionRequest
 
 // NewPatchedUserOAuthSourceConnectionRequest instantiates a new PatchedUserOAuthSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -241,7 +244,37 @@ func (o PatchedUserOAuthSourceConnectionRequest) ToMap() (map[string]interface{}
 	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUserOAuthSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUserOAuthSourceConnectionRequest := _PatchedUserOAuthSourceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUserOAuthSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUserOAuthSourceConnectionRequest(varPatchedUserOAuthSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "access_token")
+		delete(additionalProperties, "expires")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUserOAuthSourceConnectionRequest struct {

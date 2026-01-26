@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,10 +30,11 @@ type PromptStage struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName      string    `json:"meta_model_name"`
-	FlowSet            []FlowSet `json:"flow_set"`
-	Fields             []string  `json:"fields"`
-	ValidationPolicies []string  `json:"validation_policies,omitempty"`
+	MetaModelName        string    `json:"meta_model_name"`
+	FlowSet              []FlowSet `json:"flow_set"`
+	Fields               []string  `json:"fields"`
+	ValidationPolicies   []string  `json:"validation_policies,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PromptStage PromptStage
@@ -309,6 +309,11 @@ func (o PromptStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ValidationPolicies) {
 		toSerialize["validation_policies"] = o.ValidationPolicies
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -343,15 +348,28 @@ func (o *PromptStage) UnmarshalJSON(data []byte) (err error) {
 
 	varPromptStage := _PromptStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPromptStage)
+	err = json.Unmarshal(data, &varPromptStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PromptStage(varPromptStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "fields")
+		delete(additionalProperties, "validation_policies")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

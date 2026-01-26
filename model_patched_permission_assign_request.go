@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedPermissionAssignRequest{}
 
 // PatchedPermissionAssignRequest Request to assign a new permission
 type PatchedPermissionAssignRequest struct {
-	Permissions []string   `json:"permissions,omitempty"`
-	Model       *ModelEnum `json:"model,omitempty"`
-	ObjectPk    *string    `json:"object_pk,omitempty"`
+	Permissions          []string   `json:"permissions,omitempty"`
+	Model                *ModelEnum `json:"model,omitempty"`
+	ObjectPk             *string    `json:"object_pk,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedPermissionAssignRequest PatchedPermissionAssignRequest
 
 // NewPatchedPermissionAssignRequest instantiates a new PatchedPermissionAssignRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedPermissionAssignRequest) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.ObjectPk) {
 		toSerialize["object_pk"] = o.ObjectPk
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedPermissionAssignRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedPermissionAssignRequest := _PatchedPermissionAssignRequest{}
+
+	err = json.Unmarshal(data, &varPatchedPermissionAssignRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedPermissionAssignRequest(varPatchedPermissionAssignRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "permissions")
+		delete(additionalProperties, "model")
+		delete(additionalProperties, "object_pk")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedPermissionAssignRequest struct {

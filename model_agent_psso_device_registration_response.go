@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &AgentPSSODeviceRegistrationResponse{}
 
 // AgentPSSODeviceRegistrationResponse authentik settings for Platform SSO tokens
 type AgentPSSODeviceRegistrationResponse struct {
-	ClientId      string `json:"client_id"`
-	Issuer        string `json:"issuer"`
-	TokenEndpoint string `json:"token_endpoint"`
-	JwksEndpoint  string `json:"jwks_endpoint"`
-	Audience      string `json:"audience"`
-	NonceEndpoint string `json:"nonce_endpoint"`
+	ClientId             string `json:"client_id"`
+	Issuer               string `json:"issuer"`
+	TokenEndpoint        string `json:"token_endpoint"`
+	JwksEndpoint         string `json:"jwks_endpoint"`
+	Audience             string `json:"audience"`
+	NonceEndpoint        string `json:"nonce_endpoint"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AgentPSSODeviceRegistrationResponse AgentPSSODeviceRegistrationResponse
@@ -215,6 +215,11 @@ func (o AgentPSSODeviceRegistrationResponse) ToMap() (map[string]interface{}, er
 	toSerialize["jwks_endpoint"] = o.JwksEndpoint
 	toSerialize["audience"] = o.Audience
 	toSerialize["nonce_endpoint"] = o.NonceEndpoint
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,25 @@ func (o *AgentPSSODeviceRegistrationResponse) UnmarshalJSON(data []byte) (err er
 
 	varAgentPSSODeviceRegistrationResponse := _AgentPSSODeviceRegistrationResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAgentPSSODeviceRegistrationResponse)
+	err = json.Unmarshal(data, &varAgentPSSODeviceRegistrationResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AgentPSSODeviceRegistrationResponse(varAgentPSSODeviceRegistrationResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "client_id")
+		delete(additionalProperties, "issuer")
+		delete(additionalProperties, "token_endpoint")
+		delete(additionalProperties, "jwks_endpoint")
+		delete(additionalProperties, "audience")
+		delete(additionalProperties, "nonce_endpoint")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

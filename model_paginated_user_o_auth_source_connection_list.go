@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedUserOAuthSourceConnectionList{}
 
 // PaginatedUserOAuthSourceConnectionList struct for PaginatedUserOAuthSourceConnectionList
 type PaginatedUserOAuthSourceConnectionList struct {
-	Pagination   Pagination                  `json:"pagination"`
-	Results      []UserOAuthSourceConnection `json:"results"`
-	Autocomplete map[string]interface{}      `json:"autocomplete"`
+	Pagination           Pagination                  `json:"pagination"`
+	Results              []UserOAuthSourceConnection `json:"results"`
+	Autocomplete         map[string]interface{}      `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedUserOAuthSourceConnectionList PaginatedUserOAuthSourceConnectionList
@@ -134,6 +134,11 @@ func (o PaginatedUserOAuthSourceConnectionList) ToMap() (map[string]interface{},
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedUserOAuthSourceConnectionList) UnmarshalJSON(data []byte) (err
 
 	varPaginatedUserOAuthSourceConnectionList := _PaginatedUserOAuthSourceConnectionList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedUserOAuthSourceConnectionList)
+	err = json.Unmarshal(data, &varPaginatedUserOAuthSourceConnectionList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedUserOAuthSourceConnectionList(varPaginatedUserOAuthSourceConnectionList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

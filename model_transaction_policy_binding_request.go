@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -32,7 +31,8 @@ type TransactionPolicyBindingRequest struct {
 	// Timeout after which Policy execution is terminated.
 	Timeout *int32 `json:"timeout,omitempty"`
 	// Result if the Policy execution fails.
-	FailureResult *bool `json:"failure_result,omitempty"`
+	FailureResult        *bool `json:"failure_result,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TransactionPolicyBindingRequest TransactionPolicyBindingRequest
@@ -368,6 +368,11 @@ func (o TransactionPolicyBindingRequest) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.FailureResult) {
 		toSerialize["failure_result"] = o.FailureResult
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -395,15 +400,27 @@ func (o *TransactionPolicyBindingRequest) UnmarshalJSON(data []byte) (err error)
 
 	varTransactionPolicyBindingRequest := _TransactionPolicyBindingRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransactionPolicyBindingRequest)
+	err = json.Unmarshal(data, &varTransactionPolicyBindingRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransactionPolicyBindingRequest(varTransactionPolicyBindingRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "policy")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "negate")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "failure_result")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

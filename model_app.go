@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &App{}
 
 // App Serialize Application info
 type App struct {
-	Name  string `json:"name"`
-	Label string `json:"label"`
+	Name                 string `json:"name"`
+	Label                string `json:"label"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _App App
@@ -107,6 +107,11 @@ func (o App) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["label"] = o.Label
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *App) UnmarshalJSON(data []byte) (err error) {
 
 	varApp := _App{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varApp)
+	err = json.Unmarshal(data, &varApp)
 
 	if err != nil {
 		return err
 	}
 
 	*o = App(varApp)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "label")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -20,8 +20,11 @@ var _ MappedNullable = &PatchedUserDeleteStageRequest{}
 
 // PatchedUserDeleteStageRequest UserDeleteStage Serializer
 type PatchedUserDeleteStageRequest struct {
-	Name *string `json:"name,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedUserDeleteStageRequest PatchedUserDeleteStageRequest
 
 // NewPatchedUserDeleteStageRequest instantiates a new PatchedUserDeleteStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o PatchedUserDeleteStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUserDeleteStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUserDeleteStageRequest := _PatchedUserDeleteStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUserDeleteStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUserDeleteStageRequest(varPatchedUserDeleteStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUserDeleteStageRequest struct {

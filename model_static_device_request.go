@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,7 +22,8 @@ var _ MappedNullable = &StaticDeviceRequest{}
 // StaticDeviceRequest Serializer for static authenticator devices
 type StaticDeviceRequest struct {
 	// The human-readable name of this device.
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StaticDeviceRequest StaticDeviceRequest
@@ -81,6 +81,11 @@ func (o StaticDeviceRequest) MarshalJSON() ([]byte, error) {
 func (o StaticDeviceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -108,15 +113,20 @@ func (o *StaticDeviceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varStaticDeviceRequest := _StaticDeviceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStaticDeviceRequest)
+	err = json.Unmarshal(data, &varStaticDeviceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StaticDeviceRequest(varStaticDeviceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

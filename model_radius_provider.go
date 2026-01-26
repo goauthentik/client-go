@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -53,8 +52,9 @@ type RadiusProvider struct {
 	SharedSecret *string  `json:"shared_secret,omitempty"`
 	OutpostSet   []string `json:"outpost_set"`
 	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
-	MfaSupport  *bool          `json:"mfa_support,omitempty"`
-	Certificate NullableString `json:"certificate,omitempty"`
+	MfaSupport           *bool          `json:"mfa_support,omitempty"`
+	Certificate          NullableString `json:"certificate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RadiusProvider RadiusProvider
@@ -656,6 +656,11 @@ func (o RadiusProvider) ToMap() (map[string]interface{}, error) {
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -695,15 +700,38 @@ func (o *RadiusProvider) UnmarshalJSON(data []byte) (err error) {
 
 	varRadiusProvider := _RadiusProvider{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRadiusProvider)
+	err = json.Unmarshal(data, &varRadiusProvider)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RadiusProvider(varRadiusProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "invalidation_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "assigned_application_slug")
+		delete(additionalProperties, "assigned_application_name")
+		delete(additionalProperties, "assigned_backchannel_application_slug")
+		delete(additionalProperties, "assigned_backchannel_application_name")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "client_networks")
+		delete(additionalProperties, "shared_secret")
+		delete(additionalProperties, "outpost_set")
+		delete(additionalProperties, "mfa_support")
+		delete(additionalProperties, "certificate")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

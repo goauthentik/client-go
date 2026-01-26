@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &CertificateData{}
 
 // CertificateData Get CertificateKeyPair's data
 type CertificateData struct {
-	Data string `json:"data"`
+	Data                 string `json:"data"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CertificateData CertificateData
@@ -80,6 +80,11 @@ func (o CertificateData) MarshalJSON() ([]byte, error) {
 func (o CertificateData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["data"] = o.Data
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *CertificateData) UnmarshalJSON(data []byte) (err error) {
 
 	varCertificateData := _CertificateData{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCertificateData)
+	err = json.Unmarshal(data, &varCertificateData)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CertificateData(varCertificateData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,9 +30,10 @@ type DummyStage struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
-	ThrowError    *bool     `json:"throw_error,omitempty"`
+	MetaModelName        string    `json:"meta_model_name"`
+	FlowSet              []FlowSet `json:"flow_set"`
+	ThrowError           *bool     `json:"throw_error,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DummyStage DummyStage
@@ -282,6 +282,11 @@ func (o DummyStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ThrowError) {
 		toSerialize["throw_error"] = o.ThrowError
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -315,15 +320,27 @@ func (o *DummyStage) UnmarshalJSON(data []byte) (err error) {
 
 	varDummyStage := _DummyStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDummyStage)
+	err = json.Unmarshal(data, &varDummyStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DummyStage(varDummyStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "throw_error")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

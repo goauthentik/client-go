@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,6 +24,7 @@ type CurrentBrandFlags struct {
 	EnterpriseAuditIncludeExpandedDiff bool `json:"enterprise_audit_include_expanded_diff"`
 	PoliciesBufferedAccessView         bool `json:"policies_buffered_access_view"`
 	FlowsRefreshOthers                 bool `json:"flows_refresh_others"`
+	AdditionalProperties               map[string]interface{}
 }
 
 type _CurrentBrandFlags CurrentBrandFlags
@@ -134,6 +134,11 @@ func (o CurrentBrandFlags) ToMap() (map[string]interface{}, error) {
 	toSerialize["enterprise_audit_include_expanded_diff"] = o.EnterpriseAuditIncludeExpandedDiff
 	toSerialize["policies_buffered_access_view"] = o.PoliciesBufferedAccessView
 	toSerialize["flows_refresh_others"] = o.FlowsRefreshOthers
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *CurrentBrandFlags) UnmarshalJSON(data []byte) (err error) {
 
 	varCurrentBrandFlags := _CurrentBrandFlags{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCurrentBrandFlags)
+	err = json.Unmarshal(data, &varCurrentBrandFlags)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CurrentBrandFlags(varCurrentBrandFlags)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "enterprise_audit_include_expanded_diff")
+		delete(additionalProperties, "policies_buffered_access_view")
+		delete(additionalProperties, "flows_refresh_others")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

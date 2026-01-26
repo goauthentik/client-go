@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedNotificationTransportList{}
 
 // PaginatedNotificationTransportList struct for PaginatedNotificationTransportList
 type PaginatedNotificationTransportList struct {
-	Pagination   Pagination              `json:"pagination"`
-	Results      []NotificationTransport `json:"results"`
-	Autocomplete map[string]interface{}  `json:"autocomplete"`
+	Pagination           Pagination              `json:"pagination"`
+	Results              []NotificationTransport `json:"results"`
+	Autocomplete         map[string]interface{}  `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedNotificationTransportList PaginatedNotificationTransportList
@@ -134,6 +134,11 @@ func (o PaginatedNotificationTransportList) ToMap() (map[string]interface{}, err
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedNotificationTransportList) UnmarshalJSON(data []byte) (err err
 
 	varPaginatedNotificationTransportList := _PaginatedNotificationTransportList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedNotificationTransportList)
+	err = json.Unmarshal(data, &varPaginatedNotificationTransportList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedNotificationTransportList(varPaginatedNotificationTransportList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

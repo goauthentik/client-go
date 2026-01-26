@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &FlowErrorChallenge{}
 
 // FlowErrorChallenge Challenge class when an unhandled error occurs during a stage. Normal users are shown an error message, superusers are shown a full stacktrace.
 type FlowErrorChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	RequestId      string                    `json:"request_id"`
-	Error          *string                   `json:"error,omitempty"`
-	Traceback      *string                   `json:"traceback,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	RequestId            string                    `json:"request_id"`
+	Error                *string                   `json:"error,omitempty"`
+	Traceback            *string                   `json:"traceback,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FlowErrorChallenge FlowErrorChallenge
@@ -264,6 +264,11 @@ func (o FlowErrorChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Traceback) {
 		toSerialize["traceback"] = o.Traceback
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -291,15 +296,25 @@ func (o *FlowErrorChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varFlowErrorChallenge := _FlowErrorChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlowErrorChallenge)
+	err = json.Unmarshal(data, &varFlowErrorChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlowErrorChallenge(varFlowErrorChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "request_id")
+		delete(additionalProperties, "error")
+		delete(additionalProperties, "traceback")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

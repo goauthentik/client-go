@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &Network{}
 
 // Network struct for Network
 type Network struct {
-	Hostname        string             `json:"hostname"`
-	FirewallEnabled *bool              `json:"firewall_enabled,omitempty"`
-	Interfaces      []NetworkInterface `json:"interfaces"`
-	Gateway         *string            `json:"gateway,omitempty"`
+	Hostname             string             `json:"hostname"`
+	FirewallEnabled      *bool              `json:"firewall_enabled,omitempty"`
+	Interfaces           []NetworkInterface `json:"interfaces"`
+	Gateway              *string            `json:"gateway,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Network Network
@@ -179,6 +179,11 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Gateway) {
 		toSerialize["gateway"] = o.Gateway
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -207,15 +212,23 @@ func (o *Network) UnmarshalJSON(data []byte) (err error) {
 
 	varNetwork := _Network{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNetwork)
+	err = json.Unmarshal(data, &varNetwork)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Network(varNetwork)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "hostname")
+		delete(additionalProperties, "firewall_enabled")
+		delete(additionalProperties, "interfaces")
+		delete(additionalProperties, "gateway")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -42,8 +41,9 @@ type SCIMSource struct {
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
 	// Get Root URL
-	RootUrl  string `json:"root_url"`
-	TokenObj Token  `json:"token_obj"`
+	RootUrl              string `json:"root_url"`
+	TokenObj             Token  `json:"token_obj"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SCIMSource SCIMSource
@@ -477,6 +477,11 @@ func (o SCIMSource) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["root_url"] = o.RootUrl
 	toSerialize["token_obj"] = o.TokenObj
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -513,15 +518,33 @@ func (o *SCIMSource) UnmarshalJSON(data []byte) (err error) {
 
 	varSCIMSource := _SCIMSource{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMSource)
+	err = json.Unmarshal(data, &varSCIMSource)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SCIMSource(varSCIMSource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "root_url")
+		delete(additionalProperties, "token_obj")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

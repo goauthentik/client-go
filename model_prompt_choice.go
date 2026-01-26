@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &PromptChoice{}
 
 // PromptChoice Serializer for a single Choice field
 type PromptChoice struct {
-	Value string `json:"value"`
-	Label string `json:"label"`
+	Value                string `json:"value"`
+	Label                string `json:"label"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PromptChoice PromptChoice
@@ -107,6 +107,11 @@ func (o PromptChoice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["value"] = o.Value
 	toSerialize["label"] = o.Label
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *PromptChoice) UnmarshalJSON(data []byte) (err error) {
 
 	varPromptChoice := _PromptChoice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPromptChoice)
+	err = json.Unmarshal(data, &varPromptChoice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PromptChoice(varPromptChoice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "label")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

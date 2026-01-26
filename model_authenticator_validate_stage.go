@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -44,6 +43,7 @@ type AuthenticatorValidateStage struct {
 	WebauthnUserVerification      *UserVerificationEnum `json:"webauthn_user_verification,omitempty"`
 	WebauthnAllowedDeviceTypes    []string              `json:"webauthn_allowed_device_types,omitempty"`
 	WebauthnAllowedDeviceTypesObj []WebAuthnDeviceType  `json:"webauthn_allowed_device_types_obj"`
+	AdditionalProperties          map[string]interface{}
 }
 
 type _AuthenticatorValidateStage AuthenticatorValidateStage
@@ -493,6 +493,11 @@ func (o AuthenticatorValidateStage) ToMap() (map[string]interface{}, error) {
 		toSerialize["webauthn_allowed_device_types"] = o.WebauthnAllowedDeviceTypes
 	}
 	toSerialize["webauthn_allowed_device_types_obj"] = o.WebauthnAllowedDeviceTypesObj
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -527,15 +532,33 @@ func (o *AuthenticatorValidateStage) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorValidateStage := _AuthenticatorValidateStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorValidateStage)
+	err = json.Unmarshal(data, &varAuthenticatorValidateStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorValidateStage(varAuthenticatorValidateStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "not_configured_action")
+		delete(additionalProperties, "device_classes")
+		delete(additionalProperties, "configuration_stages")
+		delete(additionalProperties, "last_auth_threshold")
+		delete(additionalProperties, "webauthn_user_verification")
+		delete(additionalProperties, "webauthn_allowed_device_types")
+		delete(additionalProperties, "webauthn_allowed_device_types_obj")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

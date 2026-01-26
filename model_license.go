@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,12 +22,13 @@ var _ MappedNullable = &License{}
 
 // License License Serializer
 type License struct {
-	LicenseUuid   string    `json:"license_uuid"`
-	Name          string    `json:"name"`
-	Key           string    `json:"key"`
-	Expiry        time.Time `json:"expiry"`
-	InternalUsers int32     `json:"internal_users"`
-	ExternalUsers int32     `json:"external_users"`
+	LicenseUuid          string    `json:"license_uuid"`
+	Name                 string    `json:"name"`
+	Key                  string    `json:"key"`
+	Expiry               time.Time `json:"expiry"`
+	InternalUsers        int32     `json:"internal_users"`
+	ExternalUsers        int32     `json:"external_users"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _License License
@@ -216,6 +216,11 @@ func (o License) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiry"] = o.Expiry
 	toSerialize["internal_users"] = o.InternalUsers
 	toSerialize["external_users"] = o.ExternalUsers
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -248,15 +253,25 @@ func (o *License) UnmarshalJSON(data []byte) (err error) {
 
 	varLicense := _License{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLicense)
+	err = json.Unmarshal(data, &varLicense)
 
 	if err != nil {
 		return err
 	}
 
 	*o = License(varLicense)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "license_uuid")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "expiry")
+		delete(additionalProperties, "internal_users")
+		delete(additionalProperties, "external_users")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

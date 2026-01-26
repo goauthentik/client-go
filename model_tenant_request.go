@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &TenantRequest{}
 
 // TenantRequest Tenant Serializer
 type TenantRequest struct {
-	SchemaName string `json:"schema_name"`
-	Name       string `json:"name"`
-	Ready      *bool  `json:"ready,omitempty"`
+	SchemaName           string `json:"schema_name"`
+	Name                 string `json:"name"`
+	Ready                *bool  `json:"ready,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TenantRequest TenantRequest
@@ -143,6 +143,11 @@ func (o TenantRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ready) {
 		toSerialize["ready"] = o.Ready
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *TenantRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varTenantRequest := _TenantRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTenantRequest)
+	err = json.Unmarshal(data, &varTenantRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TenantRequest(varTenantRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "schema_name")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "ready")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

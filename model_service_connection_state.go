@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &ServiceConnectionState{}
 
 // ServiceConnectionState Serializer for Service connection state
 type ServiceConnectionState struct {
-	Healthy bool   `json:"healthy"`
-	Version string `json:"version"`
+	Healthy              bool   `json:"healthy"`
+	Version              string `json:"version"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ServiceConnectionState ServiceConnectionState
@@ -107,6 +107,11 @@ func (o ServiceConnectionState) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["healthy"] = o.Healthy
 	toSerialize["version"] = o.Version
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *ServiceConnectionState) UnmarshalJSON(data []byte) (err error) {
 
 	varServiceConnectionState := _ServiceConnectionState{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServiceConnectionState)
+	err = json.Unmarshal(data, &varServiceConnectionState)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServiceConnectionState(varServiceConnectionState)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "healthy")
+		delete(additionalProperties, "version")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

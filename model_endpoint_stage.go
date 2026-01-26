@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,11 +30,12 @@ type EndpointStage struct {
 	// Return object's plural verbose_name
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
-	MetaModelName string         `json:"meta_model_name"`
-	FlowSet       []FlowSet      `json:"flow_set"`
-	Connector     string         `json:"connector"`
-	ConnectorObj  Connector      `json:"connector_obj"`
-	Mode          *StageModeEnum `json:"mode,omitempty"`
+	MetaModelName        string         `json:"meta_model_name"`
+	FlowSet              []FlowSet      `json:"flow_set"`
+	Connector            string         `json:"connector"`
+	ConnectorObj         Connector      `json:"connector_obj"`
+	Mode                 *StageModeEnum `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EndpointStage EndpointStage
@@ -336,6 +336,11 @@ func (o EndpointStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -371,15 +376,29 @@ func (o *EndpointStage) UnmarshalJSON(data []byte) (err error) {
 
 	varEndpointStage := _EndpointStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEndpointStage)
+	err = json.Unmarshal(data, &varEndpointStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EndpointStage(varEndpointStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "connector")
+		delete(additionalProperties, "connector_obj")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

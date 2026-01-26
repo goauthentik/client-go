@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -48,6 +47,7 @@ type TelegramSourceRequest struct {
 	RequestMessageAccess *bool `json:"request_message_access,omitempty"`
 	// Flow used before authentication.
 	PreAuthenticationFlow string `json:"pre_authentication_flow"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _TelegramSourceRequest TelegramSourceRequest
@@ -616,6 +616,11 @@ func (o TelegramSourceRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["request_message_access"] = o.RequestMessageAccess
 	}
 	toSerialize["pre_authentication_flow"] = o.PreAuthenticationFlow
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -647,15 +652,35 @@ func (o *TelegramSourceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varTelegramSourceRequest := _TelegramSourceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTelegramSourceRequest)
+	err = json.Unmarshal(data, &varTelegramSourceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TelegramSourceRequest(varTelegramSourceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "user_matching_mode")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "icon")
+		delete(additionalProperties, "bot_username")
+		delete(additionalProperties, "bot_token")
+		delete(additionalProperties, "request_message_access")
+		delete(additionalProperties, "pre_authentication_flow")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -22,10 +22,13 @@ var _ MappedNullable = &PatchedAuthenticatorTOTPStageRequest{}
 type PatchedAuthenticatorTOTPStageRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	FriendlyName  *string        `json:"friendly_name,omitempty"`
-	Digits        *DigitsEnum    `json:"digits,omitempty"`
+	ConfigureFlow        NullableString `json:"configure_flow,omitempty"`
+	FriendlyName         *string        `json:"friendly_name,omitempty"`
+	Digits               *DigitsEnum    `json:"digits,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedAuthenticatorTOTPStageRequest PatchedAuthenticatorTOTPStageRequest
 
 // NewPatchedAuthenticatorTOTPStageRequest instantiates a new PatchedAuthenticatorTOTPStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -205,7 +208,36 @@ func (o PatchedAuthenticatorTOTPStageRequest) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Digits) {
 		toSerialize["digits"] = o.Digits
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedAuthenticatorTOTPStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedAuthenticatorTOTPStageRequest := _PatchedAuthenticatorTOTPStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedAuthenticatorTOTPStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedAuthenticatorTOTPStageRequest(varPatchedAuthenticatorTOTPStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "digits")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedAuthenticatorTOTPStageRequest struct {

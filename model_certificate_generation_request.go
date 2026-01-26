@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &CertificateGenerationRequest{}
 
 // CertificateGenerationRequest Certificate generation parameters
 type CertificateGenerationRequest struct {
-	CommonName     string   `json:"common_name"`
-	SubjectAltName *string  `json:"subject_alt_name,omitempty"`
-	ValidityDays   int32    `json:"validity_days"`
-	Alg            *AlgEnum `json:"alg,omitempty"`
+	CommonName           string   `json:"common_name"`
+	SubjectAltName       *string  `json:"subject_alt_name,omitempty"`
+	ValidityDays         int32    `json:"validity_days"`
+	Alg                  *AlgEnum `json:"alg,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CertificateGenerationRequest CertificateGenerationRequest
@@ -183,6 +183,11 @@ func (o CertificateGenerationRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Alg) {
 		toSerialize["alg"] = o.Alg
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -211,15 +216,23 @@ func (o *CertificateGenerationRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varCertificateGenerationRequest := _CertificateGenerationRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCertificateGenerationRequest)
+	err = json.Unmarshal(data, &varCertificateGenerationRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CertificateGenerationRequest(varCertificateGenerationRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "common_name")
+		delete(additionalProperties, "subject_alt_name")
+		delete(additionalProperties, "validity_days")
+		delete(additionalProperties, "alg")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

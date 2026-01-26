@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &AuthenticatorSMSChallenge{}
 
 // AuthenticatorSMSChallenge SMS Setup challenge
 type AuthenticatorSMSChallenge struct {
-	FlowInfo            *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component           *string                   `json:"component,omitempty"`
-	ResponseErrors      *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser         string                    `json:"pending_user"`
-	PendingUserAvatar   string                    `json:"pending_user_avatar"`
-	PhoneNumberRequired *bool                     `json:"phone_number_required,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	PhoneNumberRequired  *bool                     `json:"phone_number_required,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorSMSChallenge AuthenticatorSMSChallenge
@@ -259,6 +259,11 @@ func (o AuthenticatorSMSChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PhoneNumberRequired) {
 		toSerialize["phone_number_required"] = o.PhoneNumberRequired
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -287,15 +292,25 @@ func (o *AuthenticatorSMSChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorSMSChallenge := _AuthenticatorSMSChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorSMSChallenge)
+	err = json.Unmarshal(data, &varAuthenticatorSMSChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorSMSChallenge(varAuthenticatorSMSChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "phone_number_required")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

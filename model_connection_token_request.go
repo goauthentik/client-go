@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &ConnectionTokenRequest{}
 
 // ConnectionTokenRequest ConnectionToken Serializer
 type ConnectionTokenRequest struct {
-	Pk       *string `json:"pk,omitempty"`
-	Provider int32   `json:"provider"`
-	Endpoint string  `json:"endpoint"`
+	Pk                   *string `json:"pk,omitempty"`
+	Provider             int32   `json:"provider"`
+	Endpoint             string  `json:"endpoint"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ConnectionTokenRequest ConnectionTokenRequest
@@ -143,6 +143,11 @@ func (o ConnectionTokenRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["provider"] = o.Provider
 	toSerialize["endpoint"] = o.Endpoint
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *ConnectionTokenRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varConnectionTokenRequest := _ConnectionTokenRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varConnectionTokenRequest)
+	err = json.Unmarshal(data, &varConnectionTokenRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ConnectionTokenRequest(varConnectionTokenRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "endpoint")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

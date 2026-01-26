@@ -22,12 +22,15 @@ var _ MappedNullable = &PatchedGroupRequest{}
 type PatchedGroupRequest struct {
 	Name *string `json:"name,omitempty"`
 	// Users added to this group will be superusers.
-	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
-	Parents     []string               `json:"parents,omitempty"`
-	Users       []int32                `json:"users,omitempty"`
-	Attributes  map[string]interface{} `json:"attributes,omitempty"`
-	Roles       []string               `json:"roles,omitempty"`
+	IsSuperuser          *bool                  `json:"is_superuser,omitempty"`
+	Parents              []string               `json:"parents,omitempty"`
+	Users                []int32                `json:"users,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	Roles                []string               `json:"roles,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedGroupRequest PatchedGroupRequest
 
 // NewPatchedGroupRequest instantiates a new PatchedGroupRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -266,7 +269,38 @@ func (o PatchedGroupRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Roles) {
 		toSerialize["roles"] = o.Roles
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedGroupRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedGroupRequest := _PatchedGroupRequest{}
+
+	err = json.Unmarshal(data, &varPatchedGroupRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedGroupRequest(varPatchedGroupRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "is_superuser")
+		delete(additionalProperties, "parents")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "roles")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedGroupRequest struct {

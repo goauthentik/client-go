@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -74,6 +73,7 @@ type OAuthSource struct {
 	OidcJwks         map[string]interface{} `json:"oidc_jwks,omitempty"`
 	// How to perform authentication during an authorization_code token request flow
 	AuthorizationCodeAuthMethod *AuthorizationCodeAuthMethodEnum `json:"authorization_code_auth_method,omitempty"`
+	AdditionalProperties        map[string]interface{}
 }
 
 type _OAuthSource OAuthSource
@@ -1248,6 +1248,11 @@ func (o OAuthSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AuthorizationCodeAuthMethod) {
 		toSerialize["authorization_code_auth_method"] = o.AuthorizationCodeAuthMethod
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1287,15 +1292,53 @@ func (o *OAuthSource) UnmarshalJSON(data []byte) (err error) {
 
 	varOAuthSource := _OAuthSource{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOAuthSource)
+	err = json.Unmarshal(data, &varOAuthSource)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OAuthSource(varOAuthSource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "user_matching_mode")
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "icon")
+		delete(additionalProperties, "icon_url")
+		delete(additionalProperties, "group_matching_mode")
+		delete(additionalProperties, "provider_type")
+		delete(additionalProperties, "request_token_url")
+		delete(additionalProperties, "authorization_url")
+		delete(additionalProperties, "access_token_url")
+		delete(additionalProperties, "profile_url")
+		delete(additionalProperties, "pkce")
+		delete(additionalProperties, "consumer_key")
+		delete(additionalProperties, "callback_url")
+		delete(additionalProperties, "additional_scopes")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "oidc_well_known_url")
+		delete(additionalProperties, "oidc_jwks_url")
+		delete(additionalProperties, "oidc_jwks")
+		delete(additionalProperties, "authorization_code_auth_method")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

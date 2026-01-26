@@ -23,7 +23,10 @@ type PatchedInvitationStageRequest struct {
 	Name *string `json:"name,omitempty"`
 	// If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given.
 	ContinueFlowWithoutInvitation *bool `json:"continue_flow_without_invitation,omitempty"`
+	AdditionalProperties          map[string]interface{}
 }
+
+type _PatchedInvitationStageRequest PatchedInvitationStageRequest
 
 // NewPatchedInvitationStageRequest instantiates a new PatchedInvitationStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o PatchedInvitationStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ContinueFlowWithoutInvitation) {
 		toSerialize["continue_flow_without_invitation"] = o.ContinueFlowWithoutInvitation
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedInvitationStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedInvitationStageRequest := _PatchedInvitationStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedInvitationStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedInvitationStageRequest(varPatchedInvitationStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "continue_flow_without_invitation")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedInvitationStageRequest struct {

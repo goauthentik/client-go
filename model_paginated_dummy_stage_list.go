@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedDummyStageList{}
 
 // PaginatedDummyStageList struct for PaginatedDummyStageList
 type PaginatedDummyStageList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []DummyStage           `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []DummyStage           `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedDummyStageList PaginatedDummyStageList
@@ -134,6 +134,11 @@ func (o PaginatedDummyStageList) ToMap() (map[string]interface{}, error) {
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedDummyStageList) UnmarshalJSON(data []byte) (err error) {
 
 	varPaginatedDummyStageList := _PaginatedDummyStageList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedDummyStageList)
+	err = json.Unmarshal(data, &varPaginatedDummyStageList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedDummyStageList(varPaginatedDummyStageList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

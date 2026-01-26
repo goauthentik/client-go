@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedConnectionTokenRequest{}
 
 // PatchedConnectionTokenRequest ConnectionToken Serializer
 type PatchedConnectionTokenRequest struct {
-	Pk       *string `json:"pk,omitempty"`
-	Provider *int32  `json:"provider,omitempty"`
-	Endpoint *string `json:"endpoint,omitempty"`
+	Pk                   *string `json:"pk,omitempty"`
+	Provider             *int32  `json:"provider,omitempty"`
+	Endpoint             *string `json:"endpoint,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedConnectionTokenRequest PatchedConnectionTokenRequest
 
 // NewPatchedConnectionTokenRequest instantiates a new PatchedConnectionTokenRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedConnectionTokenRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Endpoint) {
 		toSerialize["endpoint"] = o.Endpoint
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedConnectionTokenRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedConnectionTokenRequest := _PatchedConnectionTokenRequest{}
+
+	err = json.Unmarshal(data, &varPatchedConnectionTokenRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedConnectionTokenRequest(varPatchedConnectionTokenRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "endpoint")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedConnectionTokenRequest struct {

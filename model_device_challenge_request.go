@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,10 +22,11 @@ var _ MappedNullable = &DeviceChallengeRequest{}
 
 // DeviceChallengeRequest Single device challenge
 type DeviceChallengeRequest struct {
-	DeviceClass DeviceClassesEnum      `json:"device_class"`
-	DeviceUid   string                 `json:"device_uid"`
-	Challenge   map[string]interface{} `json:"challenge"`
-	LastUsed    NullableTime           `json:"last_used"`
+	DeviceClass          DeviceClassesEnum      `json:"device_class"`
+	DeviceUid            string                 `json:"device_uid"`
+	Challenge            map[string]interface{} `json:"challenge"`
+	LastUsed             NullableTime           `json:"last_used"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeviceChallengeRequest DeviceChallengeRequest
@@ -164,6 +164,11 @@ func (o DeviceChallengeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["device_uid"] = o.DeviceUid
 	toSerialize["challenge"] = o.Challenge
 	toSerialize["last_used"] = o.LastUsed.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -194,15 +199,23 @@ func (o *DeviceChallengeRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDeviceChallengeRequest := _DeviceChallengeRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeviceChallengeRequest)
+	err = json.Unmarshal(data, &varDeviceChallengeRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeviceChallengeRequest(varDeviceChallengeRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device_class")
+		delete(additionalProperties, "device_uid")
+		delete(additionalProperties, "challenge")
+		delete(additionalProperties, "last_used")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,23 +21,24 @@ var _ MappedNullable = &IdentificationChallenge{}
 
 // IdentificationChallenge Identification challenges with all UI elements
 type IdentificationChallenge struct {
-	FlowInfo          *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component         *string                   `json:"component,omitempty"`
-	ResponseErrors    *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	UserFields        []string                  `json:"user_fields"`
-	PasswordFields    bool                      `json:"password_fields"`
-	AllowShowPassword *bool                     `json:"allow_show_password,omitempty"`
-	ApplicationPre    *string                   `json:"application_pre,omitempty"`
-	FlowDesignation   FlowDesignationEnum       `json:"flow_designation"`
-	CaptchaStage      NullableCaptchaChallenge  `json:"captcha_stage,omitempty"`
-	EnrollUrl         *string                   `json:"enroll_url,omitempty"`
-	RecoveryUrl       *string                   `json:"recovery_url,omitempty"`
-	PasswordlessUrl   *string                   `json:"passwordless_url,omitempty"`
-	PrimaryAction     string                    `json:"primary_action"`
-	Sources           []LoginSource             `json:"sources,omitempty"`
-	ShowSourceLabels  bool                      `json:"show_source_labels"`
-	EnableRememberMe  *bool                     `json:"enable_remember_me,omitempty"`
-	PasskeyChallenge  map[string]interface{}    `json:"passkey_challenge,omitempty"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	UserFields           []string                  `json:"user_fields"`
+	PasswordFields       bool                      `json:"password_fields"`
+	AllowShowPassword    *bool                     `json:"allow_show_password,omitempty"`
+	ApplicationPre       *string                   `json:"application_pre,omitempty"`
+	FlowDesignation      FlowDesignationEnum       `json:"flow_designation"`
+	CaptchaStage         NullableCaptchaChallenge  `json:"captcha_stage,omitempty"`
+	EnrollUrl            *string                   `json:"enroll_url,omitempty"`
+	RecoveryUrl          *string                   `json:"recovery_url,omitempty"`
+	PasswordlessUrl      *string                   `json:"passwordless_url,omitempty"`
+	PrimaryAction        string                    `json:"primary_action"`
+	Sources              []LoginSource             `json:"sources,omitempty"`
+	ShowSourceLabels     bool                      `json:"show_source_labels"`
+	EnableRememberMe     *bool                     `json:"enable_remember_me,omitempty"`
+	PasskeyChallenge     map[string]interface{}    `json:"passkey_challenge,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _IdentificationChallenge IdentificationChallenge
@@ -648,6 +648,11 @@ func (o IdentificationChallenge) ToMap() (map[string]interface{}, error) {
 	if o.PasskeyChallenge != nil {
 		toSerialize["passkey_challenge"] = o.PasskeyChallenge
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -679,15 +684,36 @@ func (o *IdentificationChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varIdentificationChallenge := _IdentificationChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varIdentificationChallenge)
+	err = json.Unmarshal(data, &varIdentificationChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = IdentificationChallenge(varIdentificationChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "user_fields")
+		delete(additionalProperties, "password_fields")
+		delete(additionalProperties, "allow_show_password")
+		delete(additionalProperties, "application_pre")
+		delete(additionalProperties, "flow_designation")
+		delete(additionalProperties, "captcha_stage")
+		delete(additionalProperties, "enroll_url")
+		delete(additionalProperties, "recovery_url")
+		delete(additionalProperties, "passwordless_url")
+		delete(additionalProperties, "primary_action")
+		delete(additionalProperties, "sources")
+		delete(additionalProperties, "show_source_labels")
+		delete(additionalProperties, "enable_remember_me")
+		delete(additionalProperties, "passkey_challenge")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

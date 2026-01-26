@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &GenericError{}
 
 // GenericError Generic API Error
 type GenericError struct {
-	Detail string  `json:"detail"`
-	Code   *string `json:"code,omitempty"`
+	Detail               string  `json:"detail"`
+	Code                 *string `json:"code,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GenericError GenericError
@@ -116,6 +116,11 @@ func (o GenericError) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *GenericError) UnmarshalJSON(data []byte) (err error) {
 
 	varGenericError := _GenericError{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGenericError)
+	err = json.Unmarshal(data, &varGenericError)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GenericError(varGenericError)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "detail")
+		delete(additionalProperties, "code")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -31,7 +31,10 @@ type PatchedGeoIPPolicyRequest struct {
 	HistoryLoginCount     *int32            `json:"history_login_count,omitempty"`
 	CheckImpossibleTravel *bool             `json:"check_impossible_travel,omitempty"`
 	ImpossibleToleranceKm *int32            `json:"impossible_tolerance_km,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _PatchedGeoIPPolicyRequest PatchedGeoIPPolicyRequest
 
 // NewPatchedGeoIPPolicyRequest instantiates a new PatchedGeoIPPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -410,7 +413,42 @@ func (o PatchedGeoIPPolicyRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ImpossibleToleranceKm) {
 		toSerialize["impossible_tolerance_km"] = o.ImpossibleToleranceKm
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedGeoIPPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedGeoIPPolicyRequest := _PatchedGeoIPPolicyRequest{}
+
+	err = json.Unmarshal(data, &varPatchedGeoIPPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedGeoIPPolicyRequest(varPatchedGeoIPPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "asns")
+		delete(additionalProperties, "countries")
+		delete(additionalProperties, "check_history_distance")
+		delete(additionalProperties, "history_max_distance_km")
+		delete(additionalProperties, "distance_tolerance_km")
+		delete(additionalProperties, "history_login_count")
+		delete(additionalProperties, "check_impossible_travel")
+		delete(additionalProperties, "impossible_tolerance_km")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedGeoIPPolicyRequest struct {

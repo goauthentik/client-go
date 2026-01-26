@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &ErrorDetail{}
 
 // ErrorDetail Serializer for rest_framework's error messages
 type ErrorDetail struct {
-	String string `json:"string"`
-	Code   string `json:"code"`
+	String               string `json:"string"`
+	Code                 string `json:"code"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ErrorDetail ErrorDetail
@@ -107,6 +107,11 @@ func (o ErrorDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["string"] = o.String
 	toSerialize["code"] = o.Code
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *ErrorDetail) UnmarshalJSON(data []byte) (err error) {
 
 	varErrorDetail := _ErrorDetail{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varErrorDetail)
+	err = json.Unmarshal(data, &varErrorDetail)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ErrorDetail(varErrorDetail)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "string")
+		delete(additionalProperties, "code")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

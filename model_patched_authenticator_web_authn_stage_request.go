@@ -29,7 +29,10 @@ type PatchedAuthenticatorWebAuthnStageRequest struct {
 	ResidentKeyRequirement  *ResidentKeyRequirementEnum         `json:"resident_key_requirement,omitempty"`
 	DeviceTypeRestrictions  []string                            `json:"device_type_restrictions,omitempty"`
 	MaxAttempts             *int32                              `json:"max_attempts,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
+
+type _PatchedAuthenticatorWebAuthnStageRequest PatchedAuthenticatorWebAuthnStageRequest
 
 // NewPatchedAuthenticatorWebAuthnStageRequest instantiates a new PatchedAuthenticatorWebAuthnStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -360,7 +363,40 @@ func (o PatchedAuthenticatorWebAuthnStageRequest) ToMap() (map[string]interface{
 	if !IsNil(o.MaxAttempts) {
 		toSerialize["max_attempts"] = o.MaxAttempts
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedAuthenticatorWebAuthnStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedAuthenticatorWebAuthnStageRequest := _PatchedAuthenticatorWebAuthnStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedAuthenticatorWebAuthnStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedAuthenticatorWebAuthnStageRequest(varPatchedAuthenticatorWebAuthnStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "user_verification")
+		delete(additionalProperties, "authenticator_attachment")
+		delete(additionalProperties, "resident_key_requirement")
+		delete(additionalProperties, "device_type_restrictions")
+		delete(additionalProperties, "max_attempts")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedAuthenticatorWebAuthnStageRequest struct {

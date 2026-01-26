@@ -37,8 +37,11 @@ type PatchedGoogleWorkspaceProviderRequest struct {
 	// Timeout for synchronization of a single page
 	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
-	DryRun *bool `json:"dry_run,omitempty"`
+	DryRun               *bool `json:"dry_run,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedGoogleWorkspaceProviderRequest PatchedGoogleWorkspaceProviderRequest
 
 // NewPatchedGoogleWorkspaceProviderRequest instantiates a new PatchedGoogleWorkspaceProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -568,7 +571,46 @@ func (o PatchedGoogleWorkspaceProviderRequest) ToMap() (map[string]interface{}, 
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedGoogleWorkspaceProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedGoogleWorkspaceProviderRequest := _PatchedGoogleWorkspaceProviderRequest{}
+
+	err = json.Unmarshal(data, &varPatchedGoogleWorkspaceProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedGoogleWorkspaceProviderRequest(varPatchedGoogleWorkspaceProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "property_mappings_group")
+		delete(additionalProperties, "delegated_subject")
+		delete(additionalProperties, "credentials")
+		delete(additionalProperties, "scopes")
+		delete(additionalProperties, "exclude_users_service_account")
+		delete(additionalProperties, "filter_group")
+		delete(additionalProperties, "user_delete_action")
+		delete(additionalProperties, "group_delete_action")
+		delete(additionalProperties, "default_group_email_domain")
+		delete(additionalProperties, "sync_page_size")
+		delete(additionalProperties, "sync_page_timeout")
+		delete(additionalProperties, "dry_run")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedGoogleWorkspaceProviderRequest struct {

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -52,7 +51,8 @@ type Source struct {
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
 	Icon             *string        `json:"icon,omitempty"`
 	// Get the URL to the source icon
-	IconUrl NullableString `json:"icon_url"`
+	IconUrl              NullableString `json:"icon_url"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Source Source
@@ -694,6 +694,11 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 		toSerialize["icon"] = o.Icon
 	}
 	toSerialize["icon_url"] = o.IconUrl.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -729,15 +734,38 @@ func (o *Source) UnmarshalJSON(data []byte) (err error) {
 
 	varSource := _Source{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSource)
+	err = json.Unmarshal(data, &varSource)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Source(varSource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "enrollment_flow")
+		delete(additionalProperties, "user_property_mappings")
+		delete(additionalProperties, "group_property_mappings")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "user_matching_mode")
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "user_path_template")
+		delete(additionalProperties, "icon")
+		delete(additionalProperties, "icon_url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -30,8 +30,11 @@ type PatchedEventMatcherPolicyRequest struct {
 	// Match events created by selected application. When left empty, all applications are matched.
 	App NullableAppEnum `json:"app,omitempty"`
 	// Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
-	Model NullableModelEnum `json:"model,omitempty"`
+	Model                NullableModelEnum `json:"model,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedEventMatcherPolicyRequest PatchedEventMatcherPolicyRequest
 
 // NewPatchedEventMatcherPolicyRequest instantiates a new PatchedEventMatcherPolicyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -314,7 +317,38 @@ func (o PatchedEventMatcherPolicyRequest) ToMap() (map[string]interface{}, error
 	if o.Model.IsSet() {
 		toSerialize["model"] = o.Model.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedEventMatcherPolicyRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedEventMatcherPolicyRequest := _PatchedEventMatcherPolicyRequest{}
+
+	err = json.Unmarshal(data, &varPatchedEventMatcherPolicyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedEventMatcherPolicyRequest(varPatchedEventMatcherPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "action")
+		delete(additionalProperties, "client_ip")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "model")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedEventMatcherPolicyRequest struct {

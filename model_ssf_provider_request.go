@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,9 +23,10 @@ var _ MappedNullable = &SSFProviderRequest{}
 type SSFProviderRequest struct {
 	Name string `json:"name"`
 	// Key used to sign the SSF Events.
-	SigningKey        string  `json:"signing_key"`
-	OidcAuthProviders []int32 `json:"oidc_auth_providers,omitempty"`
-	EventRetention    *string `json:"event_retention,omitempty"`
+	SigningKey           string  `json:"signing_key"`
+	OidcAuthProviders    []int32 `json:"oidc_auth_providers,omitempty"`
+	EventRetention       *string `json:"event_retention,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SSFProviderRequest SSFProviderRequest
@@ -180,6 +180,11 @@ func (o SSFProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EventRetention) {
 		toSerialize["event_retention"] = o.EventRetention
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -208,15 +213,23 @@ func (o *SSFProviderRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSSFProviderRequest := _SSFProviderRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSSFProviderRequest)
+	err = json.Unmarshal(data, &varSSFProviderRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SSFProviderRequest(varSSFProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "signing_key")
+		delete(additionalProperties, "oidc_auth_providers")
+		delete(additionalProperties, "event_retention")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

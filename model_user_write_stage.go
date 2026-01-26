@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -37,9 +36,10 @@ type UserWriteStage struct {
 	// When set, newly created users are inactive and cannot login.
 	CreateUsersAsInactive *bool `json:"create_users_as_inactive,omitempty"`
 	// Optionally add newly created users to this group.
-	CreateUsersGroup NullableString `json:"create_users_group,omitempty"`
-	UserType         *UserTypeEnum  `json:"user_type,omitempty"`
-	UserPathTemplate *string        `json:"user_path_template,omitempty"`
+	CreateUsersGroup     NullableString `json:"create_users_group,omitempty"`
+	UserType             *UserTypeEnum  `json:"user_type,omitempty"`
+	UserPathTemplate     *string        `json:"user_path_template,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserWriteStage UserWriteStage
@@ -439,6 +439,11 @@ func (o UserWriteStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -472,15 +477,31 @@ func (o *UserWriteStage) UnmarshalJSON(data []byte) (err error) {
 
 	varUserWriteStage := _UserWriteStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserWriteStage)
+	err = json.Unmarshal(data, &varUserWriteStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserWriteStage(varUserWriteStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "user_creation_mode")
+		delete(additionalProperties, "create_users_as_inactive")
+		delete(additionalProperties, "create_users_group")
+		delete(additionalProperties, "user_type")
+		delete(additionalProperties, "user_path_template")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,15 +21,16 @@ var _ MappedNullable = &StagePrompt{}
 
 // StagePrompt Serializer for a single Prompt field
 type StagePrompt struct {
-	FieldKey     string         `json:"field_key"`
-	Label        string         `json:"label"`
-	Type         PromptTypeEnum `json:"type"`
-	Required     bool           `json:"required"`
-	Placeholder  string         `json:"placeholder"`
-	InitialValue string         `json:"initial_value"`
-	Order        int32          `json:"order"`
-	SubText      string         `json:"sub_text"`
-	Choices      []PromptChoice `json:"choices"`
+	FieldKey             string         `json:"field_key"`
+	Label                string         `json:"label"`
+	Type                 PromptTypeEnum `json:"type"`
+	Required             bool           `json:"required"`
+	Placeholder          string         `json:"placeholder"`
+	InitialValue         string         `json:"initial_value"`
+	Order                int32          `json:"order"`
+	SubText              string         `json:"sub_text"`
+	Choices              []PromptChoice `json:"choices"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StagePrompt StagePrompt
@@ -300,6 +300,11 @@ func (o StagePrompt) ToMap() (map[string]interface{}, error) {
 	if o.Choices != nil {
 		toSerialize["choices"] = o.Choices
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -335,15 +340,28 @@ func (o *StagePrompt) UnmarshalJSON(data []byte) (err error) {
 
 	varStagePrompt := _StagePrompt{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStagePrompt)
+	err = json.Unmarshal(data, &varStagePrompt)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StagePrompt(varStagePrompt)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "field_key")
+		delete(additionalProperties, "label")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "required")
+		delete(additionalProperties, "placeholder")
+		delete(additionalProperties, "initial_value")
+		delete(additionalProperties, "order")
+		delete(additionalProperties, "sub_text")
+		delete(additionalProperties, "choices")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &AuthenticatorValidationChallenge{}
 
 // AuthenticatorValidationChallenge Authenticator challenge
 type AuthenticatorValidationChallenge struct {
-	FlowInfo            *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component           *string                   `json:"component,omitempty"`
-	ResponseErrors      *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PendingUser         string                    `json:"pending_user"`
-	PendingUserAvatar   string                    `json:"pending_user_avatar"`
-	DeviceChallenges    []DeviceChallenge         `json:"device_challenges"`
-	ConfigurationStages []SelectableStage         `json:"configuration_stages"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	PendingUser          string                    `json:"pending_user"`
+	PendingUserAvatar    string                    `json:"pending_user_avatar"`
+	DeviceChallenges     []DeviceChallenge         `json:"device_challenges"`
+	ConfigurationStages  []SelectableStage         `json:"configuration_stages"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorValidationChallenge AuthenticatorValidationChallenge
@@ -273,6 +273,11 @@ func (o AuthenticatorValidationChallenge) ToMap() (map[string]interface{}, error
 	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
 	toSerialize["device_challenges"] = o.DeviceChallenges
 	toSerialize["configuration_stages"] = o.ConfigurationStages
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -303,15 +308,26 @@ func (o *AuthenticatorValidationChallenge) UnmarshalJSON(data []byte) (err error
 
 	varAuthenticatorValidationChallenge := _AuthenticatorValidationChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorValidationChallenge)
+	err = json.Unmarshal(data, &varAuthenticatorValidationChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorValidationChallenge(varAuthenticatorValidationChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "device_challenges")
+		delete(additionalProperties, "configuration_stages")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

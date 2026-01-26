@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &RadiusCheckAccess{}
 
 // RadiusCheckAccess Base serializer class which doesn't implement create/update methods
 type RadiusCheckAccess struct {
-	Attributes *string          `json:"attributes,omitempty"`
-	Access     PolicyTestResult `json:"access"`
+	Attributes           *string          `json:"attributes,omitempty"`
+	Access               PolicyTestResult `json:"access"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RadiusCheckAccess RadiusCheckAccess
@@ -116,6 +116,11 @@ func (o RadiusCheckAccess) ToMap() (map[string]interface{}, error) {
 		toSerialize["attributes"] = o.Attributes
 	}
 	toSerialize["access"] = o.Access
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *RadiusCheckAccess) UnmarshalJSON(data []byte) (err error) {
 
 	varRadiusCheckAccess := _RadiusCheckAccess{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRadiusCheckAccess)
+	err = json.Unmarshal(data, &varRadiusCheckAccess)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RadiusCheckAccess(varRadiusCheckAccess)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "access")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

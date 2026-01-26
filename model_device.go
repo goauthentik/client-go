@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -40,7 +39,8 @@ type Device struct {
 	// Get extra description
 	ExtraDescription NullableString `json:"extra_description"`
 	// Get external Device ID
-	ExternalId NullableString `json:"external_id"`
+	ExternalId           NullableString `json:"external_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Device Device
@@ -390,6 +390,11 @@ func (o Device) ToMap() (map[string]interface{}, error) {
 	toSerialize["last_used"] = o.LastUsed.Get()
 	toSerialize["extra_description"] = o.ExtraDescription.Get()
 	toSerialize["external_id"] = o.ExternalId.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -428,15 +433,31 @@ func (o *Device) UnmarshalJSON(data []byte) (err error) {
 
 	varDevice := _Device{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDevice)
+	err = json.Unmarshal(data, &varDevice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Device(varDevice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "confirmed")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "last_updated")
+		delete(additionalProperties, "last_used")
+		delete(additionalProperties, "extra_description")
+		delete(additionalProperties, "external_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

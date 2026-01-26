@@ -20,9 +20,12 @@ var _ MappedNullable = &PatchedDummyStageRequest{}
 
 // PatchedDummyStageRequest DummyStage Serializer
 type PatchedDummyStageRequest struct {
-	Name       *string `json:"name,omitempty"`
-	ThrowError *bool   `json:"throw_error,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	ThrowError           *bool   `json:"throw_error,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedDummyStageRequest PatchedDummyStageRequest
 
 // NewPatchedDummyStageRequest instantiates a new PatchedDummyStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o PatchedDummyStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ThrowError) {
 		toSerialize["throw_error"] = o.ThrowError
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedDummyStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedDummyStageRequest := _PatchedDummyStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedDummyStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedDummyStageRequest(varPatchedDummyStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "throw_error")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedDummyStageRequest struct {

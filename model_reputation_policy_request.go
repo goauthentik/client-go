@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,10 +23,11 @@ var _ MappedNullable = &ReputationPolicyRequest{}
 type ReputationPolicyRequest struct {
 	Name string `json:"name"`
 	// When this option is enabled, all executions of this policy will be logged. By default, only execution errors are logged.
-	ExecutionLogging *bool  `json:"execution_logging,omitempty"`
-	CheckIp          *bool  `json:"check_ip,omitempty"`
-	CheckUsername    *bool  `json:"check_username,omitempty"`
-	Threshold        *int32 `json:"threshold,omitempty"`
+	ExecutionLogging     *bool  `json:"execution_logging,omitempty"`
+	CheckIp              *bool  `json:"check_ip,omitempty"`
+	CheckUsername        *bool  `json:"check_username,omitempty"`
+	Threshold            *int32 `json:"threshold,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ReputationPolicyRequest ReputationPolicyRequest
@@ -225,6 +225,11 @@ func (o ReputationPolicyRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Threshold) {
 		toSerialize["threshold"] = o.Threshold
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -252,15 +257,24 @@ func (o *ReputationPolicyRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varReputationPolicyRequest := _ReputationPolicyRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varReputationPolicyRequest)
+	err = json.Unmarshal(data, &varReputationPolicyRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ReputationPolicyRequest(varReputationPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "check_ip")
+		delete(additionalProperties, "check_username")
+		delete(additionalProperties, "threshold")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

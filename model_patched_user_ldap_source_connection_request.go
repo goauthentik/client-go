@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedUserLDAPSourceConnectionRequest{}
 
 // PatchedUserLDAPSourceConnectionRequest User source connection
 type PatchedUserLDAPSourceConnectionRequest struct {
-	User       *int32  `json:"user,omitempty"`
-	Source     *string `json:"source,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
+	User                 *int32  `json:"user,omitempty"`
+	Source               *string `json:"source,omitempty"`
+	Identifier           *string `json:"identifier,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedUserLDAPSourceConnectionRequest PatchedUserLDAPSourceConnectionRequest
 
 // NewPatchedUserLDAPSourceConnectionRequest instantiates a new PatchedUserLDAPSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedUserLDAPSourceConnectionRequest) ToMap() (map[string]interface{},
 	if !IsNil(o.Identifier) {
 		toSerialize["identifier"] = o.Identifier
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedUserLDAPSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedUserLDAPSourceConnectionRequest := _PatchedUserLDAPSourceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedUserLDAPSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedUserLDAPSourceConnectionRequest(varPatchedUserLDAPSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedUserLDAPSourceConnectionRequest struct {

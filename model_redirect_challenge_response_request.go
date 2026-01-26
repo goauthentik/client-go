@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &RedirectChallengeResponseRequest{}
 
 // RedirectChallengeResponseRequest Redirect challenge response
 type RedirectChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
-	To        string  `json:"to"`
+	Component            *string `json:"component,omitempty"`
+	To                   string  `json:"to"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RedirectChallengeResponseRequest RedirectChallengeResponseRequest
@@ -120,6 +120,11 @@ func (o RedirectChallengeResponseRequest) ToMap() (map[string]interface{}, error
 		toSerialize["component"] = o.Component
 	}
 	toSerialize["to"] = o.To
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -147,15 +152,21 @@ func (o *RedirectChallengeResponseRequest) UnmarshalJSON(data []byte) (err error
 
 	varRedirectChallengeResponseRequest := _RedirectChallengeResponseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRedirectChallengeResponseRequest)
+	err = json.Unmarshal(data, &varRedirectChallengeResponseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RedirectChallengeResponseRequest(varRedirectChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "to")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

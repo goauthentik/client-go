@@ -21,12 +21,15 @@ var _ MappedNullable = &PatchedEnrollmentTokenRequest{}
 
 // PatchedEnrollmentTokenRequest struct for PatchedEnrollmentTokenRequest
 type PatchedEnrollmentTokenRequest struct {
-	DeviceGroup NullableString `json:"device_group,omitempty"`
-	Connector   *string        `json:"connector,omitempty"`
-	Name        *string        `json:"name,omitempty"`
-	Expiring    *bool          `json:"expiring,omitempty"`
-	Expires     NullableTime   `json:"expires,omitempty"`
+	DeviceGroup          NullableString `json:"device_group,omitempty"`
+	Connector            *string        `json:"connector,omitempty"`
+	Name                 *string        `json:"name,omitempty"`
+	Expiring             *bool          `json:"expiring,omitempty"`
+	Expires              NullableTime   `json:"expires,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedEnrollmentTokenRequest PatchedEnrollmentTokenRequest
 
 // NewPatchedEnrollmentTokenRequest instantiates a new PatchedEnrollmentTokenRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -252,7 +255,37 @@ func (o PatchedEnrollmentTokenRequest) ToMap() (map[string]interface{}, error) {
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedEnrollmentTokenRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedEnrollmentTokenRequest := _PatchedEnrollmentTokenRequest{}
+
+	err = json.Unmarshal(data, &varPatchedEnrollmentTokenRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedEnrollmentTokenRequest(varPatchedEnrollmentTokenRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device_group")
+		delete(additionalProperties, "connector")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expiring")
+		delete(additionalProperties, "expires")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedEnrollmentTokenRequest struct {

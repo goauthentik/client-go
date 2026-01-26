@@ -20,12 +20,15 @@ var _ MappedNullable = &PatchedRedirectStageRequest{}
 
 // PatchedRedirectStageRequest RedirectStage Serializer
 type PatchedRedirectStageRequest struct {
-	Name         *string                `json:"name,omitempty"`
-	KeepContext  *bool                  `json:"keep_context,omitempty"`
-	Mode         *RedirectStageModeEnum `json:"mode,omitempty"`
-	TargetStatic *string                `json:"target_static,omitempty"`
-	TargetFlow   NullableString         `json:"target_flow,omitempty"`
+	Name                 *string                `json:"name,omitempty"`
+	KeepContext          *bool                  `json:"keep_context,omitempty"`
+	Mode                 *RedirectStageModeEnum `json:"mode,omitempty"`
+	TargetStatic         *string                `json:"target_static,omitempty"`
+	TargetFlow           NullableString         `json:"target_flow,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedRedirectStageRequest PatchedRedirectStageRequest
 
 // NewPatchedRedirectStageRequest instantiates a new PatchedRedirectStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -240,7 +243,37 @@ func (o PatchedRedirectStageRequest) ToMap() (map[string]interface{}, error) {
 	if o.TargetFlow.IsSet() {
 		toSerialize["target_flow"] = o.TargetFlow.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedRedirectStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedRedirectStageRequest := _PatchedRedirectStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedRedirectStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedRedirectStageRequest(varPatchedRedirectStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "keep_context")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "target_static")
+		delete(additionalProperties, "target_flow")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedRedirectStageRequest struct {

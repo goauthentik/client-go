@@ -20,8 +20,11 @@ var _ MappedNullable = &IframeLogoutChallengeResponseRequest{}
 
 // IframeLogoutChallengeResponseRequest Response for iframe logout
 type IframeLogoutChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _IframeLogoutChallengeResponseRequest IframeLogoutChallengeResponseRequest
 
 // NewIframeLogoutChallengeResponseRequest instantiates a new IframeLogoutChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o IframeLogoutChallengeResponseRequest) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *IframeLogoutChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varIframeLogoutChallengeResponseRequest := _IframeLogoutChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varIframeLogoutChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IframeLogoutChallengeResponseRequest(varIframeLogoutChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableIframeLogoutChallengeResponseRequest struct {

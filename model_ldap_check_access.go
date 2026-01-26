@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &LDAPCheckAccess{}
 
 // LDAPCheckAccess Base serializer class which doesn't implement create/update methods
 type LDAPCheckAccess struct {
-	HasSearchPermission *bool            `json:"has_search_permission,omitempty"`
-	Access              PolicyTestResult `json:"access"`
+	HasSearchPermission  *bool            `json:"has_search_permission,omitempty"`
+	Access               PolicyTestResult `json:"access"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _LDAPCheckAccess LDAPCheckAccess
@@ -116,6 +116,11 @@ func (o LDAPCheckAccess) ToMap() (map[string]interface{}, error) {
 		toSerialize["has_search_permission"] = o.HasSearchPermission
 	}
 	toSerialize["access"] = o.Access
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *LDAPCheckAccess) UnmarshalJSON(data []byte) (err error) {
 
 	varLDAPCheckAccess := _LDAPCheckAccess{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLDAPCheckAccess)
+	err = json.Unmarshal(data, &varLDAPCheckAccess)
 
 	if err != nil {
 		return err
 	}
 
 	*o = LDAPCheckAccess(varLDAPCheckAccess)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "has_search_permission")
+		delete(additionalProperties, "access")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

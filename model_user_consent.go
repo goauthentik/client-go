@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,12 +22,13 @@ var _ MappedNullable = &UserConsent{}
 
 // UserConsent UserConsent Serializer
 type UserConsent struct {
-	Pk          int32        `json:"pk"`
-	Expires     NullableTime `json:"expires,omitempty"`
-	Expiring    *bool        `json:"expiring,omitempty"`
-	User        User         `json:"user"`
-	Application Application  `json:"application"`
-	Permissions *string      `json:"permissions,omitempty"`
+	Pk                   int32        `json:"pk"`
+	Expires              NullableTime `json:"expires,omitempty"`
+	Expiring             *bool        `json:"expiring,omitempty"`
+	User                 User         `json:"user"`
+	Application          Application  `json:"application"`
+	Permissions          *string      `json:"permissions,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserConsent UserConsent
@@ -258,6 +258,11 @@ func (o UserConsent) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -287,15 +292,25 @@ func (o *UserConsent) UnmarshalJSON(data []byte) (err error) {
 
 	varUserConsent := _UserConsent{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserConsent)
+	err = json.Unmarshal(data, &varUserConsent)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserConsent(varUserConsent)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "expiring")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "application")
+		delete(additionalProperties, "permissions")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,10 +33,11 @@ type AuthenticatorStaticStage struct {
 	MetaModelName string    `json:"meta_model_name"`
 	FlowSet       []FlowSet `json:"flow_set"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
-	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	FriendlyName  *string        `json:"friendly_name,omitempty"`
-	TokenCount    *int32         `json:"token_count,omitempty"`
-	TokenLength   *int32         `json:"token_length,omitempty"`
+	ConfigureFlow        NullableString `json:"configure_flow,omitempty"`
+	FriendlyName         *string        `json:"friendly_name,omitempty"`
+	TokenCount           *int32         `json:"token_count,omitempty"`
+	TokenLength          *int32         `json:"token_length,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatorStaticStage AuthenticatorStaticStage
@@ -402,6 +402,11 @@ func (o AuthenticatorStaticStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TokenLength) {
 		toSerialize["token_length"] = o.TokenLength
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -435,15 +440,30 @@ func (o *AuthenticatorStaticStage) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatorStaticStage := _AuthenticatorStaticStage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatorStaticStage)
+	err = json.Unmarshal(data, &varAuthenticatorStaticStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatorStaticStage(varAuthenticatorStaticStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pk")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "verbose_name")
+		delete(additionalProperties, "verbose_name_plural")
+		delete(additionalProperties, "meta_model_name")
+		delete(additionalProperties, "flow_set")
+		delete(additionalProperties, "configure_flow")
+		delete(additionalProperties, "friendly_name")
+		delete(additionalProperties, "token_count")
+		delete(additionalProperties, "token_length")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

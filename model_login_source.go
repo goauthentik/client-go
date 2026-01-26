@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &LoginSource{}
 
 // LoginSource Serializer for Login buttons of sources
 type LoginSource struct {
-	Name      string              `json:"name"`
-	IconUrl   NullableString      `json:"icon_url,omitempty"`
-	Promoted  *bool               `json:"promoted,omitempty"`
-	Challenge LoginChallengeTypes `json:"challenge"`
+	Name                 string              `json:"name"`
+	IconUrl              NullableString      `json:"icon_url,omitempty"`
+	Promoted             *bool               `json:"promoted,omitempty"`
+	Challenge            LoginChallengeTypes `json:"challenge"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _LoginSource LoginSource
@@ -194,6 +194,11 @@ func (o LoginSource) ToMap() (map[string]interface{}, error) {
 		toSerialize["promoted"] = o.Promoted
 	}
 	toSerialize["challenge"] = o.Challenge
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -222,15 +227,23 @@ func (o *LoginSource) UnmarshalJSON(data []byte) (err error) {
 
 	varLoginSource := _LoginSource{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLoginSource)
+	err = json.Unmarshal(data, &varLoginSource)
 
 	if err != nil {
 		return err
 	}
 
 	*o = LoginSource(varLoginSource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "icon_url")
+		delete(additionalProperties, "promoted")
+		delete(additionalProperties, "challenge")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,7 +24,8 @@ type SourceStageRequest struct {
 	Name   string `json:"name"`
 	Source string `json:"source"`
 	// Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
-	ResumeTimeout *string `json:"resume_timeout,omitempty"`
+	ResumeTimeout        *string `json:"resume_timeout,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SourceStageRequest SourceStageRequest
@@ -144,6 +144,11 @@ func (o SourceStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResumeTimeout) {
 		toSerialize["resume_timeout"] = o.ResumeTimeout
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -172,15 +177,22 @@ func (o *SourceStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSourceStageRequest := _SourceStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSourceStageRequest)
+	err = json.Unmarshal(data, &varSourceStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SourceStageRequest(varSourceStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "resume_timeout")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedGoogleWorkspaceProviderUserList{}
 
 // PaginatedGoogleWorkspaceProviderUserList struct for PaginatedGoogleWorkspaceProviderUserList
 type PaginatedGoogleWorkspaceProviderUserList struct {
-	Pagination   Pagination                    `json:"pagination"`
-	Results      []GoogleWorkspaceProviderUser `json:"results"`
-	Autocomplete map[string]interface{}        `json:"autocomplete"`
+	Pagination           Pagination                    `json:"pagination"`
+	Results              []GoogleWorkspaceProviderUser `json:"results"`
+	Autocomplete         map[string]interface{}        `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedGoogleWorkspaceProviderUserList PaginatedGoogleWorkspaceProviderUserList
@@ -134,6 +134,11 @@ func (o PaginatedGoogleWorkspaceProviderUserList) ToMap() (map[string]interface{
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedGoogleWorkspaceProviderUserList) UnmarshalJSON(data []byte) (e
 
 	varPaginatedGoogleWorkspaceProviderUserList := _PaginatedGoogleWorkspaceProviderUserList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedGoogleWorkspaceProviderUserList)
+	err = json.Unmarshal(data, &varPaginatedGoogleWorkspaceProviderUserList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedGoogleWorkspaceProviderUserList(varPaginatedGoogleWorkspaceProviderUserList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

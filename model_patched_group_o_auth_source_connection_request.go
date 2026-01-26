@@ -20,10 +20,13 @@ var _ MappedNullable = &PatchedGroupOAuthSourceConnectionRequest{}
 
 // PatchedGroupOAuthSourceConnectionRequest Group Source Connection
 type PatchedGroupOAuthSourceConnectionRequest struct {
-	Group      *string `json:"group,omitempty"`
-	Source     *string `json:"source,omitempty"`
-	Identifier *string `json:"identifier,omitempty"`
+	Group                *string `json:"group,omitempty"`
+	Source               *string `json:"source,omitempty"`
+	Identifier           *string `json:"identifier,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedGroupOAuthSourceConnectionRequest PatchedGroupOAuthSourceConnectionRequest
 
 // NewPatchedGroupOAuthSourceConnectionRequest instantiates a new PatchedGroupOAuthSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o PatchedGroupOAuthSourceConnectionRequest) ToMap() (map[string]interface{
 	if !IsNil(o.Identifier) {
 		toSerialize["identifier"] = o.Identifier
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedGroupOAuthSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedGroupOAuthSourceConnectionRequest := _PatchedGroupOAuthSourceConnectionRequest{}
+
+	err = json.Unmarshal(data, &varPatchedGroupOAuthSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedGroupOAuthSourceConnectionRequest(varPatchedGroupOAuthSourceConnectionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "identifier")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedGroupOAuthSourceConnectionRequest struct {

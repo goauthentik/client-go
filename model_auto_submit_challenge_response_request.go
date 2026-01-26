@@ -20,8 +20,11 @@ var _ MappedNullable = &AutoSubmitChallengeResponseRequest{}
 
 // AutoSubmitChallengeResponseRequest Pseudo class for autosubmit response
 type AutoSubmitChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AutoSubmitChallengeResponseRequest AutoSubmitChallengeResponseRequest
 
 // NewAutoSubmitChallengeResponseRequest instantiates a new AutoSubmitChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +92,33 @@ func (o AutoSubmitChallengeResponseRequest) ToMap() (map[string]interface{}, err
 	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AutoSubmitChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varAutoSubmitChallengeResponseRequest := _AutoSubmitChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varAutoSubmitChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AutoSubmitChallengeResponseRequest(varAutoSubmitChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAutoSubmitChallengeResponseRequest struct {

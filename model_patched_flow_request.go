@@ -36,8 +36,11 @@ type PatchedFlowRequest struct {
 	// Configure what should happen when a flow denies access to a user.
 	DeniedAction *DeniedActionEnum `json:"denied_action,omitempty"`
 	// Required level of authentication and authorization to access a flow.
-	Authentication *AuthenticationEnum `json:"authentication,omitempty"`
+	Authentication       *AuthenticationEnum `json:"authentication,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedFlowRequest PatchedFlowRequest
 
 // NewPatchedFlowRequest instantiates a new PatchedFlowRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -416,7 +419,42 @@ func (o PatchedFlowRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Authentication) {
 		toSerialize["authentication"] = o.Authentication
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedFlowRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedFlowRequest := _PatchedFlowRequest{}
+
+	err = json.Unmarshal(data, &varPatchedFlowRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedFlowRequest(varPatchedFlowRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "designation")
+		delete(additionalProperties, "background")
+		delete(additionalProperties, "policy_engine_mode")
+		delete(additionalProperties, "compatibility_mode")
+		delete(additionalProperties, "layout")
+		delete(additionalProperties, "denied_action")
+		delete(additionalProperties, "authentication")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedFlowRequest struct {

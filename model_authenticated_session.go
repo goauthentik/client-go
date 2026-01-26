@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -25,15 +24,16 @@ var _ MappedNullable = &AuthenticatedSession{}
 type AuthenticatedSession struct {
 	Uuid *string `json:"uuid,omitempty"`
 	// Check if session is currently active session
-	Current       bool                              `json:"current"`
-	UserAgent     AuthenticatedSessionUserAgent     `json:"user_agent"`
-	GeoIp         NullableAuthenticatedSessionGeoIp `json:"geo_ip"`
-	Asn           NullableAuthenticatedSessionAsn   `json:"asn"`
-	User          int32                             `json:"user"`
-	LastIp        string                            `json:"last_ip"`
-	LastUserAgent string                            `json:"last_user_agent"`
-	LastUsed      time.Time                         `json:"last_used"`
-	Expires       time.Time                         `json:"expires"`
+	Current              bool                              `json:"current"`
+	UserAgent            AuthenticatedSessionUserAgent     `json:"user_agent"`
+	GeoIp                NullableAuthenticatedSessionGeoIp `json:"geo_ip"`
+	Asn                  NullableAuthenticatedSessionAsn   `json:"asn"`
+	User                 int32                             `json:"user"`
+	LastIp               string                            `json:"last_ip"`
+	LastUserAgent        string                            `json:"last_user_agent"`
+	LastUsed             time.Time                         `json:"last_used"`
+	Expires              time.Time                         `json:"expires"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AuthenticatedSession AuthenticatedSession
@@ -338,6 +338,11 @@ func (o AuthenticatedSession) ToMap() (map[string]interface{}, error) {
 	toSerialize["last_user_agent"] = o.LastUserAgent
 	toSerialize["last_used"] = o.LastUsed
 	toSerialize["expires"] = o.Expires
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -373,15 +378,29 @@ func (o *AuthenticatedSession) UnmarshalJSON(data []byte) (err error) {
 
 	varAuthenticatedSession := _AuthenticatedSession{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAuthenticatedSession)
+	err = json.Unmarshal(data, &varAuthenticatedSession)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AuthenticatedSession(varAuthenticatedSession)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "current")
+		delete(additionalProperties, "user_agent")
+		delete(additionalProperties, "geo_ip")
+		delete(additionalProperties, "asn")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "last_ip")
+		delete(additionalProperties, "last_user_agent")
+		delete(additionalProperties, "last_used")
+		delete(additionalProperties, "expires")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

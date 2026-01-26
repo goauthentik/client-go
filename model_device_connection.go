@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &DeviceConnection{}
 
 // DeviceConnection struct for DeviceConnection
 type DeviceConnection struct {
-	Device         string                     `json:"device"`
-	Connector      string                     `json:"connector"`
-	ConnectorObj   Connector                  `json:"connector_obj"`
-	LatestSnapshot NullableDeviceFactSnapshot `json:"latest_snapshot"`
+	Device               string                     `json:"device"`
+	Connector            string                     `json:"connector"`
+	ConnectorObj         Connector                  `json:"connector_obj"`
+	LatestSnapshot       NullableDeviceFactSnapshot `json:"latest_snapshot"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeviceConnection DeviceConnection
@@ -163,6 +163,11 @@ func (o DeviceConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize["connector"] = o.Connector
 	toSerialize["connector_obj"] = o.ConnectorObj
 	toSerialize["latest_snapshot"] = o.LatestSnapshot.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -193,15 +198,23 @@ func (o *DeviceConnection) UnmarshalJSON(data []byte) (err error) {
 
 	varDeviceConnection := _DeviceConnection{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeviceConnection)
+	err = json.Unmarshal(data, &varDeviceConnection)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeviceConnection(varDeviceConnection)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "device")
+		delete(additionalProperties, "connector")
+		delete(additionalProperties, "connector_obj")
+		delete(additionalProperties, "latest_snapshot")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

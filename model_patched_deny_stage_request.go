@@ -20,9 +20,12 @@ var _ MappedNullable = &PatchedDenyStageRequest{}
 
 // PatchedDenyStageRequest DenyStage Serializer
 type PatchedDenyStageRequest struct {
-	Name        *string `json:"name,omitempty"`
-	DenyMessage *string `json:"deny_message,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	DenyMessage          *string `json:"deny_message,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedDenyStageRequest PatchedDenyStageRequest
 
 // NewPatchedDenyStageRequest instantiates a new PatchedDenyStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o PatchedDenyStageRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DenyMessage) {
 		toSerialize["deny_message"] = o.DenyMessage
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedDenyStageRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedDenyStageRequest := _PatchedDenyStageRequest{}
+
+	err = json.Unmarshal(data, &varPatchedDenyStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedDenyStageRequest(varPatchedDenyStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "deny_message")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedDenyStageRequest struct {

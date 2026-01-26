@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -32,7 +31,8 @@ type EventMatcherPolicyRequest struct {
 	// Match events created by selected application. When left empty, all applications are matched.
 	App NullableAppEnum `json:"app,omitempty"`
 	// Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
-	Model NullableModelEnum `json:"model,omitempty"`
+	Model                NullableModelEnum `json:"model,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EventMatcherPolicyRequest EventMatcherPolicyRequest
@@ -309,6 +309,11 @@ func (o EventMatcherPolicyRequest) ToMap() (map[string]interface{}, error) {
 	if o.Model.IsSet() {
 		toSerialize["model"] = o.Model.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -336,15 +341,25 @@ func (o *EventMatcherPolicyRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEventMatcherPolicyRequest := _EventMatcherPolicyRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEventMatcherPolicyRequest)
+	err = json.Unmarshal(data, &varEventMatcherPolicyRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EventMatcherPolicyRequest(varEventMatcherPolicyRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "execution_logging")
+		delete(additionalProperties, "action")
+		delete(additionalProperties, "client_ip")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "model")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

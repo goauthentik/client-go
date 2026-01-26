@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -24,13 +23,14 @@ var _ MappedNullable = &TokenRequest{}
 // TokenRequest Token Serializer
 type TokenRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed     NullableString `json:"managed,omitempty"`
-	Identifier  string         `json:"identifier" validate:"regexp=^[-a-zA-Z0-9_]+$"`
-	Intent      *IntentEnum    `json:"intent,omitempty"`
-	User        *int32         `json:"user,omitempty"`
-	Description *string        `json:"description,omitempty"`
-	Expires     NullableTime   `json:"expires,omitempty"`
-	Expiring    *bool          `json:"expiring,omitempty"`
+	Managed              NullableString `json:"managed,omitempty"`
+	Identifier           string         `json:"identifier" validate:"regexp=^[-a-zA-Z0-9_]+$"`
+	Intent               *IntentEnum    `json:"intent,omitempty"`
+	User                 *int32         `json:"user,omitempty"`
+	Description          *string        `json:"description,omitempty"`
+	Expires              NullableTime   `json:"expires,omitempty"`
+	Expiring             *bool          `json:"expiring,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TokenRequest TokenRequest
@@ -320,6 +320,11 @@ func (o TokenRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Expiring) {
 		toSerialize["expiring"] = o.Expiring
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -347,15 +352,26 @@ func (o *TokenRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varTokenRequest := _TokenRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTokenRequest)
+	err = json.Unmarshal(data, &varTokenRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TokenRequest(varTokenRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "managed")
+		delete(additionalProperties, "identifier")
+		delete(additionalProperties, "intent")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "expires")
+		delete(additionalProperties, "expiring")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

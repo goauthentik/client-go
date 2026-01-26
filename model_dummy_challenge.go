@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &DummyChallenge{}
 
 // DummyChallenge Dummy challenge
 type DummyChallenge struct {
-	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component      *string                   `json:"component,omitempty"`
-	ResponseErrors *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	Name           string                    `json:"name"`
+	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component            *string                   `json:"component,omitempty"`
+	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	Name                 string                    `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DummyChallenge DummyChallenge
@@ -192,6 +192,11 @@ func (o DummyChallenge) ToMap() (map[string]interface{}, error) {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,23 @@ func (o *DummyChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varDummyChallenge := _DummyChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDummyChallenge)
+	err = json.Unmarshal(data, &varDummyChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DummyChallenge(varDummyChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

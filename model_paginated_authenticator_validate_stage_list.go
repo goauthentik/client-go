@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedAuthenticatorValidateStageList{}
 
 // PaginatedAuthenticatorValidateStageList struct for PaginatedAuthenticatorValidateStageList
 type PaginatedAuthenticatorValidateStageList struct {
-	Pagination   Pagination                   `json:"pagination"`
-	Results      []AuthenticatorValidateStage `json:"results"`
-	Autocomplete map[string]interface{}       `json:"autocomplete"`
+	Pagination           Pagination                   `json:"pagination"`
+	Results              []AuthenticatorValidateStage `json:"results"`
+	Autocomplete         map[string]interface{}       `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedAuthenticatorValidateStageList PaginatedAuthenticatorValidateStageList
@@ -134,6 +134,11 @@ func (o PaginatedAuthenticatorValidateStageList) ToMap() (map[string]interface{}
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedAuthenticatorValidateStageList) UnmarshalJSON(data []byte) (er
 
 	varPaginatedAuthenticatorValidateStageList := _PaginatedAuthenticatorValidateStageList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedAuthenticatorValidateStageList)
+	err = json.Unmarshal(data, &varPaginatedAuthenticatorValidateStageList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedAuthenticatorValidateStageList(varPaginatedAuthenticatorValidateStageList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

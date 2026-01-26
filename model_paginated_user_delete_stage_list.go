@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedUserDeleteStageList{}
 
 // PaginatedUserDeleteStageList struct for PaginatedUserDeleteStageList
 type PaginatedUserDeleteStageList struct {
-	Pagination   Pagination             `json:"pagination"`
-	Results      []UserDeleteStage      `json:"results"`
-	Autocomplete map[string]interface{} `json:"autocomplete"`
+	Pagination           Pagination             `json:"pagination"`
+	Results              []UserDeleteStage      `json:"results"`
+	Autocomplete         map[string]interface{} `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedUserDeleteStageList PaginatedUserDeleteStageList
@@ -134,6 +134,11 @@ func (o PaginatedUserDeleteStageList) ToMap() (map[string]interface{}, error) {
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedUserDeleteStageList) UnmarshalJSON(data []byte) (err error) {
 
 	varPaginatedUserDeleteStageList := _PaginatedUserDeleteStageList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedUserDeleteStageList)
+	err = json.Unmarshal(data, &varPaginatedUserDeleteStageList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedUserDeleteStageList(varPaginatedUserDeleteStageList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -33,9 +33,12 @@ type PatchedRadiusProviderRequest struct {
 	// Shared secret between clients and server to hash packets.
 	SharedSecret *string `json:"shared_secret,omitempty"`
 	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
-	MfaSupport  *bool          `json:"mfa_support,omitempty"`
-	Certificate NullableString `json:"certificate,omitempty"`
+	MfaSupport           *bool          `json:"mfa_support,omitempty"`
+	Certificate          NullableString `json:"certificate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PatchedRadiusProviderRequest PatchedRadiusProviderRequest
 
 // NewPatchedRadiusProviderRequest instantiates a new PatchedRadiusProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -401,7 +404,41 @@ func (o PatchedRadiusProviderRequest) ToMap() (map[string]interface{}, error) {
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PatchedRadiusProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	varPatchedRadiusProviderRequest := _PatchedRadiusProviderRequest{}
+
+	err = json.Unmarshal(data, &varPatchedRadiusProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedRadiusProviderRequest(varPatchedRadiusProviderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "authentication_flow")
+		delete(additionalProperties, "authorization_flow")
+		delete(additionalProperties, "invalidation_flow")
+		delete(additionalProperties, "property_mappings")
+		delete(additionalProperties, "client_networks")
+		delete(additionalProperties, "shared_secret")
+		delete(additionalProperties, "mfa_support")
+		delete(additionalProperties, "certificate")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePatchedRadiusProviderRequest struct {

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,6 +30,7 @@ type SessionEndChallenge struct {
 	ApplicationLaunchUrl *string                   `json:"application_launch_url,omitempty"`
 	InvalidationFlowUrl  *string                   `json:"invalidation_flow_url,omitempty"`
 	BrandName            string                    `json:"brand_name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SessionEndChallenge SessionEndChallenge
@@ -354,6 +354,11 @@ func (o SessionEndChallenge) ToMap() (map[string]interface{}, error) {
 		toSerialize["invalidation_flow_url"] = o.InvalidationFlowUrl
 	}
 	toSerialize["brand_name"] = o.BrandName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -383,15 +388,28 @@ func (o *SessionEndChallenge) UnmarshalJSON(data []byte) (err error) {
 
 	varSessionEndChallenge := _SessionEndChallenge{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSessionEndChallenge)
+	err = json.Unmarshal(data, &varSessionEndChallenge)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SessionEndChallenge(varSessionEndChallenge)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "flow_info")
+		delete(additionalProperties, "component")
+		delete(additionalProperties, "response_errors")
+		delete(additionalProperties, "pending_user")
+		delete(additionalProperties, "pending_user_avatar")
+		delete(additionalProperties, "application_name")
+		delete(additionalProperties, "application_launch_url")
+		delete(additionalProperties, "invalidation_flow_url")
+		delete(additionalProperties, "brand_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &Process{}
 
 // Process struct for Process
 type Process struct {
-	Id   int32   `json:"id"`
-	Name string  `json:"name"`
-	User *string `json:"user,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 string  `json:"name"`
+	User                 *string `json:"user,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Process Process
@@ -143,6 +143,11 @@ func (o Process) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *Process) UnmarshalJSON(data []byte) (err error) {
 
 	varProcess := _Process{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProcess)
+	err = json.Unmarshal(data, &varProcess)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Process(varProcess)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "user")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

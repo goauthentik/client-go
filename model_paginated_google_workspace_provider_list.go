@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &PaginatedGoogleWorkspaceProviderList{}
 
 // PaginatedGoogleWorkspaceProviderList struct for PaginatedGoogleWorkspaceProviderList
 type PaginatedGoogleWorkspaceProviderList struct {
-	Pagination   Pagination                `json:"pagination"`
-	Results      []GoogleWorkspaceProvider `json:"results"`
-	Autocomplete map[string]interface{}    `json:"autocomplete"`
+	Pagination           Pagination                `json:"pagination"`
+	Results              []GoogleWorkspaceProvider `json:"results"`
+	Autocomplete         map[string]interface{}    `json:"autocomplete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginatedGoogleWorkspaceProviderList PaginatedGoogleWorkspaceProviderList
@@ -134,6 +134,11 @@ func (o PaginatedGoogleWorkspaceProviderList) ToMap() (map[string]interface{}, e
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
 	toSerialize["autocomplete"] = o.Autocomplete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *PaginatedGoogleWorkspaceProviderList) UnmarshalJSON(data []byte) (err e
 
 	varPaginatedGoogleWorkspaceProviderList := _PaginatedGoogleWorkspaceProviderList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginatedGoogleWorkspaceProviderList)
+	err = json.Unmarshal(data, &varPaginatedGoogleWorkspaceProviderList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginatedGoogleWorkspaceProviderList(varPaginatedGoogleWorkspaceProviderList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pagination")
+		delete(additionalProperties, "results")
+		delete(additionalProperties, "autocomplete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

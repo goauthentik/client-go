@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,8 +25,9 @@ type OperatingSystem struct {
 	// Operating System name, such as 'Server 2022' or 'Ubuntu'
 	Name *string `json:"name,omitempty"`
 	// Operating System version, must always be the version number but may contain build name
-	Version *string `json:"version,omitempty"`
-	Arch    string  `json:"arch"`
+	Version              *string `json:"version,omitempty"`
+	Arch                 string  `json:"arch"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OperatingSystem OperatingSystem
@@ -181,6 +181,11 @@ func (o OperatingSystem) ToMap() (map[string]interface{}, error) {
 		toSerialize["version"] = o.Version
 	}
 	toSerialize["arch"] = o.Arch
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -209,15 +214,23 @@ func (o *OperatingSystem) UnmarshalJSON(data []byte) (err error) {
 
 	varOperatingSystem := _OperatingSystem{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOperatingSystem)
+	err = json.Unmarshal(data, &varOperatingSystem)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OperatingSystem(varOperatingSystem)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "family")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "arch")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &SCIMSourceGroup{}
 
 // SCIMSourceGroup SCIMSourceGroup Serializer
 type SCIMSourceGroup struct {
-	Id         *string                `json:"id,omitempty"`
-	ExternalId string                 `json:"external_id"`
-	Group      string                 `json:"group"`
-	GroupObj   PartialGroup           `json:"group_obj"`
-	Source     string                 `json:"source"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Id                   *string                `json:"id,omitempty"`
+	ExternalId           string                 `json:"external_id"`
+	Group                string                 `json:"group"`
+	GroupObj             PartialGroup           `json:"group_obj"`
+	Source               string                 `json:"source"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SCIMSourceGroup SCIMSourceGroup
@@ -233,6 +233,11 @@ func (o SCIMSourceGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -263,15 +268,25 @@ func (o *SCIMSourceGroup) UnmarshalJSON(data []byte) (err error) {
 
 	varSCIMSourceGroup := _SCIMSourceGroup{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSCIMSourceGroup)
+	err = json.Unmarshal(data, &varSCIMSourceGroup)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SCIMSourceGroup(varSCIMSourceGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "external_id")
+		delete(additionalProperties, "group")
+		delete(additionalProperties, "group_obj")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "attributes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
