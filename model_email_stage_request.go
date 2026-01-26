@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -22,7 +22,8 @@ var _ MappedNullable = &EmailStageRequest{}
 
 // EmailStageRequest EmailStage Serializer
 type EmailStageRequest struct {
-	Name string `json:"name"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// When enabled, global Email connection settings will be used and connection settings below will be ignored.
 	UseGlobalSettings *bool   `json:"use_global_settings,omitempty"`
 	Host              *string `json:"host,omitempty"`
@@ -86,6 +87,38 @@ func (o *EmailStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *EmailStageRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *EmailStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *EmailStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *EmailStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetUseGlobalSettings returns the UseGlobalSettings field value if set, zero value otherwise.
@@ -579,6 +612,9 @@ func (o EmailStageRequest) MarshalJSON() ([]byte, error) {
 func (o EmailStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.UseGlobalSettings) {
 		toSerialize["use_global_settings"] = o.UseGlobalSettings
 	}

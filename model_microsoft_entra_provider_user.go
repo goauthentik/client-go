@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type MicrosoftEntraProviderUser struct {
 	Id          string                 `json:"id"`
 	MicrosoftId string                 `json:"microsoft_id"`
 	User        int32                  `json:"user"`
-	UserObj     PartialUser            `json:"user_obj"`
+	UserObj     GroupMember            `json:"user_obj"`
 	Provider    int32                  `json:"provider"`
 	Attributes  map[string]interface{} `json:"attributes"`
 }
@@ -36,7 +36,7 @@ type _MicrosoftEntraProviderUser MicrosoftEntraProviderUser
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMicrosoftEntraProviderUser(id string, microsoftId string, user int32, userObj PartialUser, provider int32, attributes map[string]interface{}) *MicrosoftEntraProviderUser {
+func NewMicrosoftEntraProviderUser(id string, microsoftId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}) *MicrosoftEntraProviderUser {
 	this := MicrosoftEntraProviderUser{}
 	this.Id = id
 	this.MicrosoftId = microsoftId
@@ -128,9 +128,9 @@ func (o *MicrosoftEntraProviderUser) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *MicrosoftEntraProviderUser) GetUserObj() PartialUser {
+func (o *MicrosoftEntraProviderUser) GetUserObj() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *MicrosoftEntraProviderUser) GetUserObj() PartialUser {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *MicrosoftEntraProviderUser) GetUserObjOk() (*PartialUser, bool) {
+func (o *MicrosoftEntraProviderUser) GetUserObjOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *MicrosoftEntraProviderUser) GetUserObjOk() (*PartialUser, bool) {
 }
 
 // SetUserObj sets field value
-func (o *MicrosoftEntraProviderUser) SetUserObj(v PartialUser) {
+func (o *MicrosoftEntraProviderUser) SetUserObj(v GroupMember) {
 	o.UserObj = v
 }
 

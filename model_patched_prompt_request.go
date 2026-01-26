@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -29,11 +29,12 @@ type PatchedPromptRequest struct {
 	// Optionally provide a short hint that describes the expected input value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple choices.
 	Placeholder *string `json:"placeholder,omitempty"`
 	// Optionally pre-fill the input with an initial value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple default choices.
-	InitialValue           *string `json:"initial_value,omitempty"`
-	Order                  *int32  `json:"order,omitempty"`
-	SubText                *string `json:"sub_text,omitempty"`
-	PlaceholderExpression  *bool   `json:"placeholder_expression,omitempty"`
-	InitialValueExpression *bool   `json:"initial_value_expression,omitempty"`
+	InitialValue           *string        `json:"initial_value,omitempty"`
+	Order                  *int32         `json:"order,omitempty"`
+	PromptstageSet         []StageRequest `json:"promptstage_set,omitempty"`
+	SubText                *string        `json:"sub_text,omitempty"`
+	PlaceholderExpression  *bool          `json:"placeholder_expression,omitempty"`
+	InitialValueExpression *bool          `json:"initial_value_expression,omitempty"`
 }
 
 // NewPatchedPromptRequest instantiates a new PatchedPromptRequest object
@@ -309,6 +310,38 @@ func (o *PatchedPromptRequest) SetOrder(v int32) {
 	o.Order = &v
 }
 
+// GetPromptstageSet returns the PromptstageSet field value if set, zero value otherwise.
+func (o *PatchedPromptRequest) GetPromptstageSet() []StageRequest {
+	if o == nil || IsNil(o.PromptstageSet) {
+		var ret []StageRequest
+		return ret
+	}
+	return o.PromptstageSet
+}
+
+// GetPromptstageSetOk returns a tuple with the PromptstageSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedPromptRequest) GetPromptstageSetOk() ([]StageRequest, bool) {
+	if o == nil || IsNil(o.PromptstageSet) {
+		return nil, false
+	}
+	return o.PromptstageSet, true
+}
+
+// HasPromptstageSet returns a boolean if a field has been set.
+func (o *PatchedPromptRequest) HasPromptstageSet() bool {
+	if o != nil && !IsNil(o.PromptstageSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetPromptstageSet gets a reference to the given []StageRequest and assigns it to the PromptstageSet field.
+func (o *PatchedPromptRequest) SetPromptstageSet(v []StageRequest) {
+	o.PromptstageSet = v
+}
+
 // GetSubText returns the SubText field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetSubText() string {
 	if o == nil || IsNil(o.SubText) {
@@ -438,6 +471,9 @@ func (o PatchedPromptRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Order) {
 		toSerialize["order"] = o.Order
+	}
+	if !IsNil(o.PromptstageSet) {
+		toSerialize["promptstage_set"] = o.PromptstageSet
 	}
 	if !IsNil(o.SubText) {
 		toSerialize["sub_text"] = o.SubText

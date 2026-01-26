@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -26,7 +26,7 @@ type SMSDevice struct {
 	Name        string      `json:"name"`
 	Pk          int32       `json:"pk"`
 	PhoneNumber string      `json:"phone_number"`
-	User        PartialUser `json:"user"`
+	User        GroupMember `json:"user"`
 }
 
 type _SMSDevice SMSDevice
@@ -35,7 +35,7 @@ type _SMSDevice SMSDevice
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSMSDevice(name string, pk int32, phoneNumber string, user PartialUser) *SMSDevice {
+func NewSMSDevice(name string, pk int32, phoneNumber string, user GroupMember) *SMSDevice {
 	this := SMSDevice{}
 	this.Name = name
 	this.Pk = pk
@@ -125,9 +125,9 @@ func (o *SMSDevice) SetPhoneNumber(v string) {
 }
 
 // GetUser returns the User field value
-func (o *SMSDevice) GetUser() PartialUser {
+func (o *SMSDevice) GetUser() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -136,7 +136,7 @@ func (o *SMSDevice) GetUser() PartialUser {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *SMSDevice) GetUserOk() (*PartialUser, bool) {
+func (o *SMSDevice) GetUserOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *SMSDevice) GetUserOk() (*PartialUser, bool) {
 }
 
 // SetUser sets field value
-func (o *SMSDevice) SetUser(v PartialUser) {
+func (o *SMSDevice) SetUser(v GroupMember) {
 	o.User = v
 }
 

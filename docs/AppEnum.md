@@ -3,8 +3,6 @@
 ## Enum
 
 
-* `AUTHENTIK_COMMANDS` (value: `"authentik.commands"`)
-
 * `AUTHENTIK_TENANTS` (value: `"authentik.tenants"`)
 
 * `AUTHENTIK_TASKS` (value: `"authentik.tasks"`)
@@ -17,15 +15,9 @@
 
 * `AUTHENTIK_CRYPTO` (value: `"authentik.crypto"`)
 
-* `AUTHENTIK_ENDPOINTS` (value: `"authentik.endpoints"`)
-
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT` (value: `"authentik.endpoints.connectors.agent"`)
-
 * `AUTHENTIK_ENTERPRISE` (value: `"authentik.enterprise"`)
 
 * `AUTHENTIK_EVENTS` (value: `"authentik.events"`)
-
-* `AUTHENTIK_ADMIN_FILES` (value: `"authentik.admin.files"`)
 
 * `AUTHENTIK_FLOWS` (value: `"authentik.flows"`)
 
@@ -76,8 +68,6 @@
 * `AUTHENTIK_SOURCES_SAML` (value: `"authentik.sources.saml"`)
 
 * `AUTHENTIK_SOURCES_SCIM` (value: `"authentik.sources.scim"`)
-
-* `AUTHENTIK_SOURCES_TELEGRAM` (value: `"authentik.sources.telegram"`)
 
 * `AUTHENTIK_STAGES_AUTHENTICATOR` (value: `"authentik.stages.authenticator"`)
 
@@ -131,23 +121,13 @@
 
 * `AUTHENTIK_ENTERPRISE_AUDIT` (value: `"authentik.enterprise.audit"`)
 
-* `AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT` (value: `"authentik.enterprise.endpoints.connectors.agent"`)
-
-* `AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_FLEET` (value: `"authentik.enterprise.endpoints.connectors.fleet"`)
-
 * `AUTHENTIK_ENTERPRISE_POLICIES_UNIQUE_PASSWORD` (value: `"authentik.enterprise.policies.unique_password"`)
 
 * `AUTHENTIK_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE` (value: `"authentik.enterprise.providers.google_workspace"`)
 
 * `AUTHENTIK_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA` (value: `"authentik.enterprise.providers.microsoft_entra"`)
 
-* `AUTHENTIK_ENTERPRISE_PROVIDERS_RADIUS` (value: `"authentik.enterprise.providers.radius"`)
-
-* `AUTHENTIK_ENTERPRISE_PROVIDERS_SCIM` (value: `"authentik.enterprise.providers.scim"`)
-
 * `AUTHENTIK_ENTERPRISE_PROVIDERS_SSF` (value: `"authentik.enterprise.providers.ssf"`)
-
-* `AUTHENTIK_ENTERPRISE_REPORTS` (value: `"authentik.enterprise.reports"`)
 
 * `AUTHENTIK_ENTERPRISE_SEARCH` (value: `"authentik.enterprise.search"`)
 

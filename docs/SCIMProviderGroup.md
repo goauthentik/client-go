@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **ScimId** | **string** |  | 
 **Group** | **string** |  | 
-**GroupObj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] 
+**GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Provider** | **int32** |  | 
 **Attributes** | **map[string]interface{}** |  | [readonly] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMProviderGroup
 
-`func NewSCIMProviderGroup(id string, scimId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}, ) *SCIMProviderGroup`
+`func NewSCIMProviderGroup(id string, scimId string, group string, groupObj UserGroup, provider int32, attributes map[string]interface{}, ) *SCIMProviderGroup`
 
 NewSCIMProviderGroup instantiates a new SCIMProviderGroup object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetGroup sets Group field to given value.
 
 ### GetGroupObj
 
-`func (o *SCIMProviderGroup) GetGroupObj() PartialGroup`
+`func (o *SCIMProviderGroup) GetGroupObj() UserGroup`
 
 GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
 ### GetGroupObjOk
 
-`func (o *SCIMProviderGroup) GetGroupObjOk() (*PartialGroup, bool)`
+`func (o *SCIMProviderGroup) GetGroupObjOk() (*UserGroup, bool)`
 
 GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupObj
 
-`func (o *SCIMProviderGroup) SetGroupObj(v PartialGroup)`
+`func (o *SCIMProviderGroup) SetGroupObj(v UserGroup)`
 
 SetGroupObj sets GroupObj field to given value.
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -25,18 +25,18 @@ var _ MappedNullable = &CertificateKeyPair{}
 type CertificateKeyPair struct {
 	Pk   string `json:"pk"`
 	Name string `json:"name"`
-	// SHA256 fingerprint of the certificate
+	// Get certificate Hash (SHA256)
 	FingerprintSha256 NullableString `json:"fingerprint_sha256"`
-	// SHA1 fingerprint of the certificate
+	// Get certificate Hash (SHA1)
 	FingerprintSha1 NullableString `json:"fingerprint_sha1"`
-	// Certificate expiry date
+	// Get certificate expiry
 	CertExpiry NullableTime `json:"cert_expiry"`
-	// Certificate subject as RFC4514 string
+	// Get certificate subject as full rfc4514
 	CertSubject NullableString `json:"cert_subject"`
 	// Show if this keypair has a private key configured or not
 	PrivateKeyAvailable bool `json:"private_key_available"`
-	// Key algorithm type detected from the certificate's public key
-	KeyType NullableKeyTypeEnum `json:"key_type"`
+	// Get the private key's type, if set
+	PrivateKeyType NullableString `json:"private_key_type"`
 	// Get URL to download certificate
 	CertificateDownloadUrl string `json:"certificate_download_url"`
 	// Get URL to download private key
@@ -51,7 +51,7 @@ type _CertificateKeyPair CertificateKeyPair
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, keyType NullableKeyTypeEnum, certificateDownloadUrl string, privateKeyDownloadUrl string, managed NullableString) *CertificateKeyPair {
+func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string, managed NullableString) *CertificateKeyPair {
 	this := CertificateKeyPair{}
 	this.Pk = pk
 	this.Name = name
@@ -60,7 +60,7 @@ func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableStr
 	this.CertExpiry = certExpiry
 	this.CertSubject = certSubject
 	this.PrivateKeyAvailable = privateKeyAvailable
-	this.KeyType = keyType
+	this.PrivateKeyType = privateKeyType
 	this.CertificateDownloadUrl = certificateDownloadUrl
 	this.PrivateKeyDownloadUrl = privateKeyDownloadUrl
 	this.Managed = managed
@@ -251,30 +251,30 @@ func (o *CertificateKeyPair) SetPrivateKeyAvailable(v bool) {
 	o.PrivateKeyAvailable = v
 }
 
-// GetKeyType returns the KeyType field value
-// If the value is explicit nil, the zero value for KeyTypeEnum will be returned
-func (o *CertificateKeyPair) GetKeyType() KeyTypeEnum {
-	if o == nil || o.KeyType.Get() == nil {
-		var ret KeyTypeEnum
+// GetPrivateKeyType returns the PrivateKeyType field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *CertificateKeyPair) GetPrivateKeyType() string {
+	if o == nil || o.PrivateKeyType.Get() == nil {
+		var ret string
 		return ret
 	}
 
-	return *o.KeyType.Get()
+	return *o.PrivateKeyType.Get()
 }
 
-// GetKeyTypeOk returns a tuple with the KeyType field value
+// GetPrivateKeyTypeOk returns a tuple with the PrivateKeyType field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CertificateKeyPair) GetKeyTypeOk() (*KeyTypeEnum, bool) {
+func (o *CertificateKeyPair) GetPrivateKeyTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KeyType.Get(), o.KeyType.IsSet()
+	return o.PrivateKeyType.Get(), o.PrivateKeyType.IsSet()
 }
 
-// SetKeyType sets field value
-func (o *CertificateKeyPair) SetKeyType(v KeyTypeEnum) {
-	o.KeyType.Set(&v)
+// SetPrivateKeyType sets field value
+func (o *CertificateKeyPair) SetPrivateKeyType(v string) {
+	o.PrivateKeyType.Set(&v)
 }
 
 // GetCertificateDownloadUrl returns the CertificateDownloadUrl field value
@@ -368,7 +368,7 @@ func (o CertificateKeyPair) ToMap() (map[string]interface{}, error) {
 	toSerialize["cert_expiry"] = o.CertExpiry.Get()
 	toSerialize["cert_subject"] = o.CertSubject.Get()
 	toSerialize["private_key_available"] = o.PrivateKeyAvailable
-	toSerialize["key_type"] = o.KeyType.Get()
+	toSerialize["private_key_type"] = o.PrivateKeyType.Get()
 	toSerialize["certificate_download_url"] = o.CertificateDownloadUrl
 	toSerialize["private_key_download_url"] = o.PrivateKeyDownloadUrl
 	toSerialize["managed"] = o.Managed.Get()
@@ -387,7 +387,7 @@ func (o *CertificateKeyPair) UnmarshalJSON(data []byte) (err error) {
 		"cert_expiry",
 		"cert_subject",
 		"private_key_available",
-		"key_type",
+		"private_key_type",
 		"certificate_download_url",
 		"private_key_download_url",
 		"managed",

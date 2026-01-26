@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -21,25 +21,19 @@ type LastTaskStatusEnum string
 
 // List of LastTaskStatusEnum
 const (
-	LASTTASKSTATUSENUM_QUEUED      LastTaskStatusEnum = "queued"
-	LASTTASKSTATUSENUM_CONSUMED    LastTaskStatusEnum = "consumed"
-	LASTTASKSTATUSENUM_PREPROCESS  LastTaskStatusEnum = "preprocess"
-	LASTTASKSTATUSENUM_RUNNING     LastTaskStatusEnum = "running"
-	LASTTASKSTATUSENUM_POSTPROCESS LastTaskStatusEnum = "postprocess"
-	LASTTASKSTATUSENUM_REJECTED    LastTaskStatusEnum = "rejected"
-	LASTTASKSTATUSENUM_DONE        LastTaskStatusEnum = "done"
-	LASTTASKSTATUSENUM_INFO        LastTaskStatusEnum = "info"
-	LASTTASKSTATUSENUM_WARNING     LastTaskStatusEnum = "warning"
-	LASTTASKSTATUSENUM_ERROR       LastTaskStatusEnum = "error"
+	LASTTASKSTATUSENUM_QUEUED   LastTaskStatusEnum = "queued"
+	LASTTASKSTATUSENUM_CONSUMED LastTaskStatusEnum = "consumed"
+	LASTTASKSTATUSENUM_REJECTED LastTaskStatusEnum = "rejected"
+	LASTTASKSTATUSENUM_DONE     LastTaskStatusEnum = "done"
+	LASTTASKSTATUSENUM_INFO     LastTaskStatusEnum = "info"
+	LASTTASKSTATUSENUM_WARNING  LastTaskStatusEnum = "warning"
+	LASTTASKSTATUSENUM_ERROR    LastTaskStatusEnum = "error"
 )
 
 // All allowed values of LastTaskStatusEnum enum
 var AllowedLastTaskStatusEnumEnumValues = []LastTaskStatusEnum{
 	"queued",
 	"consumed",
-	"preprocess",
-	"running",
-	"postprocess",
 	"rejected",
 	"done",
 	"info",

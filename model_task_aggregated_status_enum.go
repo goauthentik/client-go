@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -21,25 +21,19 @@ type TaskAggregatedStatusEnum string
 
 // List of TaskAggregatedStatusEnum
 const (
-	TASKAGGREGATEDSTATUSENUM_QUEUED      TaskAggregatedStatusEnum = "queued"
-	TASKAGGREGATEDSTATUSENUM_CONSUMED    TaskAggregatedStatusEnum = "consumed"
-	TASKAGGREGATEDSTATUSENUM_PREPROCESS  TaskAggregatedStatusEnum = "preprocess"
-	TASKAGGREGATEDSTATUSENUM_RUNNING     TaskAggregatedStatusEnum = "running"
-	TASKAGGREGATEDSTATUSENUM_POSTPROCESS TaskAggregatedStatusEnum = "postprocess"
-	TASKAGGREGATEDSTATUSENUM_REJECTED    TaskAggregatedStatusEnum = "rejected"
-	TASKAGGREGATEDSTATUSENUM_DONE        TaskAggregatedStatusEnum = "done"
-	TASKAGGREGATEDSTATUSENUM_INFO        TaskAggregatedStatusEnum = "info"
-	TASKAGGREGATEDSTATUSENUM_WARNING     TaskAggregatedStatusEnum = "warning"
-	TASKAGGREGATEDSTATUSENUM_ERROR       TaskAggregatedStatusEnum = "error"
+	TASKAGGREGATEDSTATUSENUM_QUEUED   TaskAggregatedStatusEnum = "queued"
+	TASKAGGREGATEDSTATUSENUM_CONSUMED TaskAggregatedStatusEnum = "consumed"
+	TASKAGGREGATEDSTATUSENUM_REJECTED TaskAggregatedStatusEnum = "rejected"
+	TASKAGGREGATEDSTATUSENUM_DONE     TaskAggregatedStatusEnum = "done"
+	TASKAGGREGATEDSTATUSENUM_INFO     TaskAggregatedStatusEnum = "info"
+	TASKAGGREGATEDSTATUSENUM_WARNING  TaskAggregatedStatusEnum = "warning"
+	TASKAGGREGATEDSTATUSENUM_ERROR    TaskAggregatedStatusEnum = "error"
 )
 
 // All allowed values of TaskAggregatedStatusEnum enum
 var AllowedTaskAggregatedStatusEnumEnumValues = []TaskAggregatedStatusEnum{
 	"queued",
 	"consumed",
-	"preprocess",
-	"running",
-	"postprocess",
 	"rejected",
 	"done",
 	"info",

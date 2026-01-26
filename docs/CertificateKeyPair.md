@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **string** |  | [readonly] 
 **Name** | **string** |  | 
-**FingerprintSha256** | **NullableString** | SHA256 fingerprint of the certificate | [readonly] 
-**FingerprintSha1** | **NullableString** | SHA1 fingerprint of the certificate | [readonly] 
-**CertExpiry** | **NullableTime** | Certificate expiry date | [readonly] 
-**CertSubject** | **NullableString** | Certificate subject as RFC4514 string | [readonly] 
+**FingerprintSha256** | **NullableString** | Get certificate Hash (SHA256) | [readonly] 
+**FingerprintSha1** | **NullableString** | Get certificate Hash (SHA1) | [readonly] 
+**CertExpiry** | **NullableTime** | Get certificate expiry | [readonly] 
+**CertSubject** | **NullableString** | Get certificate subject as full rfc4514 | [readonly] 
 **PrivateKeyAvailable** | **bool** | Show if this keypair has a private key configured or not | [readonly] 
-**KeyType** | [**NullableKeyTypeEnum**](KeyTypeEnum.md) | Key algorithm type detected from the certificate&#39;s public key | [readonly] 
+**PrivateKeyType** | **NullableString** | Get the private key&#39;s type, if set | [readonly] 
 **CertificateDownloadUrl** | **string** | Get URL to download certificate | [readonly] 
 **PrivateKeyDownloadUrl** | **string** | Get URL to download private key | [readonly] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewCertificateKeyPair
 
-`func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, keyType NullableKeyTypeEnum, certificateDownloadUrl string, privateKeyDownloadUrl string, managed NullableString, ) *CertificateKeyPair`
+`func NewCertificateKeyPair(pk string, name string, fingerprintSha256 NullableString, fingerprintSha1 NullableString, certExpiry NullableTime, certSubject NullableString, privateKeyAvailable bool, privateKeyType NullableString, certificateDownloadUrl string, privateKeyDownloadUrl string, managed NullableString, ) *CertificateKeyPair`
 
 NewCertificateKeyPair instantiates a new CertificateKeyPair object
 This constructor will assign default values to properties that have it defined,
@@ -215,36 +215,36 @@ and a boolean to check if the value has been set.
 SetPrivateKeyAvailable sets PrivateKeyAvailable field to given value.
 
 
-### GetKeyType
+### GetPrivateKeyType
 
-`func (o *CertificateKeyPair) GetKeyType() KeyTypeEnum`
+`func (o *CertificateKeyPair) GetPrivateKeyType() string`
 
-GetKeyType returns the KeyType field if non-nil, zero value otherwise.
+GetPrivateKeyType returns the PrivateKeyType field if non-nil, zero value otherwise.
 
-### GetKeyTypeOk
+### GetPrivateKeyTypeOk
 
-`func (o *CertificateKeyPair) GetKeyTypeOk() (*KeyTypeEnum, bool)`
+`func (o *CertificateKeyPair) GetPrivateKeyTypeOk() (*string, bool)`
 
-GetKeyTypeOk returns a tuple with the KeyType field if it's non-nil, zero value otherwise
+GetPrivateKeyTypeOk returns a tuple with the PrivateKeyType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKeyType
+### SetPrivateKeyType
 
-`func (o *CertificateKeyPair) SetKeyType(v KeyTypeEnum)`
+`func (o *CertificateKeyPair) SetPrivateKeyType(v string)`
 
-SetKeyType sets KeyType field to given value.
+SetPrivateKeyType sets PrivateKeyType field to given value.
 
 
-### SetKeyTypeNil
+### SetPrivateKeyTypeNil
 
-`func (o *CertificateKeyPair) SetKeyTypeNil(b bool)`
+`func (o *CertificateKeyPair) SetPrivateKeyTypeNil(b bool)`
 
- SetKeyTypeNil sets the value for KeyType to be an explicit nil
+ SetPrivateKeyTypeNil sets the value for PrivateKeyType to be an explicit nil
 
-### UnsetKeyType
-`func (o *CertificateKeyPair) UnsetKeyType()`
+### UnsetPrivateKeyType
+`func (o *CertificateKeyPair) UnsetPrivateKeyType()`
 
-UnsetKeyType ensures that no value is present for KeyType, not even an explicit nil
+UnsetPrivateKeyType ensures that no value is present for PrivateKeyType, not even an explicit nil
 ### GetCertificateDownloadUrl
 
 `func (o *CertificateKeyPair) GetCertificateDownloadUrl() string`

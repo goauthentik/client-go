@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type SCIMProviderUser struct {
 	Id         string                 `json:"id"`
 	ScimId     string                 `json:"scim_id"`
 	User       int32                  `json:"user"`
-	UserObj    PartialUser            `json:"user_obj"`
+	UserObj    GroupMember            `json:"user_obj"`
 	Provider   int32                  `json:"provider"`
 	Attributes map[string]interface{} `json:"attributes"`
 }
@@ -36,7 +36,7 @@ type _SCIMProviderUser SCIMProviderUser
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProviderUser(id string, scimId string, user int32, userObj PartialUser, provider int32, attributes map[string]interface{}) *SCIMProviderUser {
+func NewSCIMProviderUser(id string, scimId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}) *SCIMProviderUser {
 	this := SCIMProviderUser{}
 	this.Id = id
 	this.ScimId = scimId
@@ -128,9 +128,9 @@ func (o *SCIMProviderUser) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *SCIMProviderUser) GetUserObj() PartialUser {
+func (o *SCIMProviderUser) GetUserObj() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *SCIMProviderUser) GetUserObj() PartialUser {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMProviderUser) GetUserObjOk() (*PartialUser, bool) {
+func (o *SCIMProviderUser) GetUserObjOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *SCIMProviderUser) GetUserObjOk() (*PartialUser, bool) {
 }
 
 // SetUserObj sets field value
-func (o *SCIMProviderUser) SetUserObj(v PartialUser) {
+func (o *SCIMProviderUser) SetUserObj(v GroupMember) {
 	o.UserObj = v
 }
 

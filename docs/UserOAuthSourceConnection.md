@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **Identifier** | **string** |  | 
 **Created** | **time.Time** |  | [readonly] 
 **LastUpdated** | **time.Time** |  | [readonly] 
-**Expires** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -171,31 +170,6 @@ and a boolean to check if the value has been set.
 
 SetLastUpdated sets LastUpdated field to given value.
 
-
-### GetExpires
-
-`func (o *UserOAuthSourceConnection) GetExpires() time.Time`
-
-GetExpires returns the Expires field if non-nil, zero value otherwise.
-
-### GetExpiresOk
-
-`func (o *UserOAuthSourceConnection) GetExpiresOk() (*time.Time, bool)`
-
-GetExpiresOk returns a tuple with the Expires field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExpires
-
-`func (o *UserOAuthSourceConnection) SetExpires(v time.Time)`
-
-SetExpires sets Expires field to given value.
-
-### HasExpires
-
-`func (o *UserOAuthSourceConnection) HasExpires() bool`
-
-HasExpires returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

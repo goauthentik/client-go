@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type MicrosoftEntraProviderGroup struct {
 	Id          string                 `json:"id"`
 	MicrosoftId string                 `json:"microsoft_id"`
 	Group       string                 `json:"group"`
-	GroupObj    PartialGroup           `json:"group_obj"`
+	GroupObj    UserGroup              `json:"group_obj"`
 	Provider    int32                  `json:"provider"`
 	Attributes  map[string]interface{} `json:"attributes"`
 }
@@ -36,7 +36,7 @@ type _MicrosoftEntraProviderGroup MicrosoftEntraProviderGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}) *MicrosoftEntraProviderGroup {
+func NewMicrosoftEntraProviderGroup(id string, microsoftId string, group string, groupObj UserGroup, provider int32, attributes map[string]interface{}) *MicrosoftEntraProviderGroup {
 	this := MicrosoftEntraProviderGroup{}
 	this.Id = id
 	this.MicrosoftId = microsoftId
@@ -128,9 +128,9 @@ func (o *MicrosoftEntraProviderGroup) SetGroup(v string) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *MicrosoftEntraProviderGroup) GetGroupObj() PartialGroup {
+func (o *MicrosoftEntraProviderGroup) GetGroupObj() UserGroup {
 	if o == nil {
-		var ret PartialGroup
+		var ret UserGroup
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *MicrosoftEntraProviderGroup) GetGroupObj() PartialGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *MicrosoftEntraProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
+func (o *MicrosoftEntraProviderGroup) GetGroupObjOk() (*UserGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *MicrosoftEntraProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *MicrosoftEntraProviderGroup) SetGroupObj(v PartialGroup) {
+func (o *MicrosoftEntraProviderGroup) SetGroupObj(v UserGroup) {
 	o.GroupObj = v
 }
 

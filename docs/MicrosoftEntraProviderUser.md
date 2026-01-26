@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **MicrosoftId** | **string** |  | 
 **User** | **int32** |  | 
-**UserObj** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**UserObj** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 **Provider** | **int32** |  | 
 **Attributes** | **map[string]interface{}** |  | [readonly] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewMicrosoftEntraProviderUser
 
-`func NewMicrosoftEntraProviderUser(id string, microsoftId string, user int32, userObj PartialUser, provider int32, attributes map[string]interface{}, ) *MicrosoftEntraProviderUser`
+`func NewMicrosoftEntraProviderUser(id string, microsoftId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}, ) *MicrosoftEntraProviderUser`
 
 NewMicrosoftEntraProviderUser instantiates a new MicrosoftEntraProviderUser object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetUser sets User field to given value.
 
 ### GetUserObj
 
-`func (o *MicrosoftEntraProviderUser) GetUserObj() PartialUser`
+`func (o *MicrosoftEntraProviderUser) GetUserObj() GroupMember`
 
 GetUserObj returns the UserObj field if non-nil, zero value otherwise.
 
 ### GetUserObjOk
 
-`func (o *MicrosoftEntraProviderUser) GetUserObjOk() (*PartialUser, bool)`
+`func (o *MicrosoftEntraProviderUser) GetUserObjOk() (*GroupMember, bool)`
 
 GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserObj
 
-`func (o *MicrosoftEntraProviderUser) SetUserObj(v PartialUser)`
+`func (o *MicrosoftEntraProviderUser) SetUserObj(v GroupMember)`
 
 SetUserObj sets UserObj field to given value.
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type GoogleWorkspaceProviderUser struct {
 	Id         string                 `json:"id"`
 	GoogleId   string                 `json:"google_id"`
 	User       int32                  `json:"user"`
-	UserObj    PartialUser            `json:"user_obj"`
+	UserObj    GroupMember            `json:"user_obj"`
 	Provider   int32                  `json:"provider"`
 	Attributes map[string]interface{} `json:"attributes"`
 }
@@ -36,7 +36,7 @@ type _GoogleWorkspaceProviderUser GoogleWorkspaceProviderUser
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj PartialUser, provider int32, attributes map[string]interface{}) *GoogleWorkspaceProviderUser {
+func NewGoogleWorkspaceProviderUser(id string, googleId string, user int32, userObj GroupMember, provider int32, attributes map[string]interface{}) *GoogleWorkspaceProviderUser {
 	this := GoogleWorkspaceProviderUser{}
 	this.Id = id
 	this.GoogleId = googleId
@@ -128,9 +128,9 @@ func (o *GoogleWorkspaceProviderUser) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *GoogleWorkspaceProviderUser) GetUserObj() PartialUser {
+func (o *GoogleWorkspaceProviderUser) GetUserObj() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *GoogleWorkspaceProviderUser) GetUserObj() PartialUser {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *GoogleWorkspaceProviderUser) GetUserObjOk() (*PartialUser, bool) {
+func (o *GoogleWorkspaceProviderUser) GetUserObjOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *GoogleWorkspaceProviderUser) GetUserObjOk() (*PartialUser, bool) {
 }
 
 // SetUserObj sets field value
-func (o *GoogleWorkspaceProviderUser) SetUserObj(v PartialUser) {
+func (o *GoogleWorkspaceProviderUser) SetUserObj(v GroupMember) {
 	o.UserObj = v
 }
 

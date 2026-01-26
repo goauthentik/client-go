@@ -55,8 +55,6 @@
 
 * `UPDATE_AVAILABLE` (value: `"update_available"`)
 
-* `EXPORT_READY` (value: `"export_ready"`)
-
 * `CUSTOM` (value: `"custom_"`)
 
 

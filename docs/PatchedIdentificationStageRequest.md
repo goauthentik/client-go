@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
 **UserFields** | Pointer to [**[]UserFieldsEnum**](UserFieldsEnum.md) | Fields of the user object to match against. (Hold shift to select multiple options) | [optional] 
 **PasswordStage** | Pointer to **NullableString** | When set, shows a password field, instead of showing the password field as separate step. | [optional] 
 **CaptchaStage** | Pointer to **NullableString** | When set, adds functionality exactly like a Captcha stage, but baked into the Identification stage. | [optional] 
@@ -17,7 +18,6 @@ Name | Type | Description | Notes
 **ShowSourceLabels** | Pointer to **bool** |  | [optional] 
 **PretendUserExists** | Pointer to **bool** | When enabled, the stage will succeed and continue even when incorrect user info is entered. | [optional] 
 **EnableRememberMe** | Pointer to **bool** | Show the user the &#39;Remember me on this device&#39; toggle, allowing repeat users to skip straight to entering their password. | [optional] 
-**WebauthnStage** | Pointer to **NullableString** | When set, and conditional WebAuthn is available, allow the user to use their passkey as a first factor. | [optional] 
 
 ## Methods
 
@@ -62,6 +62,31 @@ SetName sets Name field to given value.
 `func (o *PatchedIdentificationStageRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetFlowSet
+
+`func (o *PatchedIdentificationStageRequest) GetFlowSet() []FlowSetRequest`
+
+GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
+
+### GetFlowSetOk
+
+`func (o *PatchedIdentificationStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
+
+GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowSet
+
+`func (o *PatchedIdentificationStageRequest) SetFlowSet(v []FlowSetRequest)`
+
+SetFlowSet sets FlowSet field to given value.
+
+### HasFlowSet
+
+`func (o *PatchedIdentificationStageRequest) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetUserFields
 
@@ -413,41 +438,6 @@ SetEnableRememberMe sets EnableRememberMe field to given value.
 
 HasEnableRememberMe returns a boolean if a field has been set.
 
-### GetWebauthnStage
-
-`func (o *PatchedIdentificationStageRequest) GetWebauthnStage() string`
-
-GetWebauthnStage returns the WebauthnStage field if non-nil, zero value otherwise.
-
-### GetWebauthnStageOk
-
-`func (o *PatchedIdentificationStageRequest) GetWebauthnStageOk() (*string, bool)`
-
-GetWebauthnStageOk returns a tuple with the WebauthnStage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWebauthnStage
-
-`func (o *PatchedIdentificationStageRequest) SetWebauthnStage(v string)`
-
-SetWebauthnStage sets WebauthnStage field to given value.
-
-### HasWebauthnStage
-
-`func (o *PatchedIdentificationStageRequest) HasWebauthnStage() bool`
-
-HasWebauthnStage returns a boolean if a field has been set.
-
-### SetWebauthnStageNil
-
-`func (o *PatchedIdentificationStageRequest) SetWebauthnStageNil(b bool)`
-
- SetWebauthnStageNil sets the value for WebauthnStage to be an explicit nil
-
-### UnsetWebauthnStage
-`func (o *PatchedIdentificationStageRequest) UnsetWebauthnStage()`
-
-UnsetWebauthnStage ensures that no value is present for WebauthnStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

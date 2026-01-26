@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -28,7 +28,6 @@ type PatchedUserRequest struct {
 	IsActive   *bool                  `json:"is_active,omitempty"`
 	LastLogin  NullableTime           `json:"last_login,omitempty"`
 	Groups     []string               `json:"groups,omitempty"`
-	Roles      []string               `json:"roles,omitempty"`
 	Email      *string                `json:"email,omitempty"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	Path       *string                `json:"path,omitempty"`
@@ -223,38 +222,6 @@ func (o *PatchedUserRequest) SetGroups(v []string) {
 	o.Groups = v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *PatchedUserRequest) GetRoles() []string {
-	if o == nil || IsNil(o.Roles) {
-		var ret []string
-		return ret
-	}
-	return o.Roles
-}
-
-// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedUserRequest) GetRolesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Roles) {
-		return nil, false
-	}
-	return o.Roles, true
-}
-
-// HasRoles returns a boolean if a field has been set.
-func (o *PatchedUserRequest) HasRoles() bool {
-	if o != nil && !IsNil(o.Roles) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoles gets a reference to the given []string and assigns it to the Roles field.
-func (o *PatchedUserRequest) SetRoles(v []string) {
-	o.Roles = v
-}
-
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *PatchedUserRequest) GetEmail() string {
 	if o == nil || IsNil(o.Email) {
@@ -407,9 +374,6 @@ func (o PatchedUserRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
-	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
 	}
 	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email

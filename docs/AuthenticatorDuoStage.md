@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
-**FriendlyName** | Pointer to **string** |  | [optional] 
+**FriendlyName** | Pointer to **NullableString** |  | [optional] 
 **ClientId** | **string** |  | 
 **ApiHostname** | **string** |  | 
 **AdminIntegrationKey** | Pointer to **string** |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorDuoStage
 
-`func NewAuthenticatorDuoStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, clientId string, apiHostname string, ) *AuthenticatorDuoStage`
+`func NewAuthenticatorDuoStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, apiHostname string, ) *AuthenticatorDuoStage`
 
 NewAuthenticatorDuoStage instantiates a new AuthenticatorDuoStage object
 This constructor will assign default values to properties that have it defined,
@@ -175,6 +175,11 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
+### HasFlowSet
+
+`func (o *AuthenticatorDuoStage) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetConfigureFlow
 
@@ -236,6 +241,16 @@ SetFriendlyName sets FriendlyName field to given value.
 
 HasFriendlyName returns a boolean if a field has been set.
 
+### SetFriendlyNameNil
+
+`func (o *AuthenticatorDuoStage) SetFriendlyNameNil(b bool)`
+
+ SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+
+### UnsetFriendlyName
+`func (o *AuthenticatorDuoStage) UnsetFriendlyName()`
+
+UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
 ### GetClientId
 
 `func (o *AuthenticatorDuoStage) GetClientId() string`

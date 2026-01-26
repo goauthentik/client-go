@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -28,7 +28,6 @@ type TypeCreate struct {
 	ModelName          string  `json:"model_name"`
 	IconUrl            *string `json:"icon_url,omitempty"`
 	RequiresEnterprise *bool   `json:"requires_enterprise,omitempty"`
-	Deprecated         *bool   `json:"deprecated,omitempty"`
 }
 
 type _TypeCreate TypeCreate
@@ -45,8 +44,6 @@ func NewTypeCreate(name string, description string, component string, modelName 
 	this.ModelName = modelName
 	var requiresEnterprise bool = false
 	this.RequiresEnterprise = &requiresEnterprise
-	var deprecated bool = false
-	this.Deprecated = &deprecated
 	return &this
 }
 
@@ -57,8 +54,6 @@ func NewTypeCreateWithDefaults() *TypeCreate {
 	this := TypeCreate{}
 	var requiresEnterprise bool = false
 	this.RequiresEnterprise = &requiresEnterprise
-	var deprecated bool = false
-	this.Deprecated = &deprecated
 	return &this
 }
 
@@ -222,38 +217,6 @@ func (o *TypeCreate) SetRequiresEnterprise(v bool) {
 	o.RequiresEnterprise = &v
 }
 
-// GetDeprecated returns the Deprecated field value if set, zero value otherwise.
-func (o *TypeCreate) GetDeprecated() bool {
-	if o == nil || IsNil(o.Deprecated) {
-		var ret bool
-		return ret
-	}
-	return *o.Deprecated
-}
-
-// GetDeprecatedOk returns a tuple with the Deprecated field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TypeCreate) GetDeprecatedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Deprecated) {
-		return nil, false
-	}
-	return o.Deprecated, true
-}
-
-// HasDeprecated returns a boolean if a field has been set.
-func (o *TypeCreate) HasDeprecated() bool {
-	if o != nil && !IsNil(o.Deprecated) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeprecated gets a reference to the given bool and assigns it to the Deprecated field.
-func (o *TypeCreate) SetDeprecated(v bool) {
-	o.Deprecated = &v
-}
-
 func (o TypeCreate) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -273,9 +236,6 @@ func (o TypeCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RequiresEnterprise) {
 		toSerialize["requires_enterprise"] = o.RequiresEnterprise
-	}
-	if !IsNil(o.Deprecated) {
-		toSerialize["deprecated"] = o.Deprecated
 	}
 	return toSerialize, nil
 }

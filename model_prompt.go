@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -32,12 +32,12 @@ type Prompt struct {
 	// Optionally provide a short hint that describes the expected input value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple choices.
 	Placeholder *string `json:"placeholder,omitempty"`
 	// Optionally pre-fill the input with an initial value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple default choices.
-	InitialValue           *string       `json:"initial_value,omitempty"`
-	Order                  *int32        `json:"order,omitempty"`
-	PromptStagesObj        []PromptStage `json:"prompt_stages_obj"`
-	SubText                *string       `json:"sub_text,omitempty"`
-	PlaceholderExpression  *bool         `json:"placeholder_expression,omitempty"`
-	InitialValueExpression *bool         `json:"initial_value_expression,omitempty"`
+	InitialValue           *string `json:"initial_value,omitempty"`
+	Order                  *int32  `json:"order,omitempty"`
+	PromptstageSet         []Stage `json:"promptstage_set,omitempty"`
+	SubText                *string `json:"sub_text,omitempty"`
+	PlaceholderExpression  *bool   `json:"placeholder_expression,omitempty"`
+	InitialValueExpression *bool   `json:"initial_value_expression,omitempty"`
 }
 
 type _Prompt Prompt
@@ -46,14 +46,13 @@ type _Prompt Prompt
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrompt(pk string, name string, fieldKey string, label string, type_ PromptTypeEnum, promptStagesObj []PromptStage) *Prompt {
+func NewPrompt(pk string, name string, fieldKey string, label string, type_ PromptTypeEnum) *Prompt {
 	this := Prompt{}
 	this.Pk = pk
 	this.Name = name
 	this.FieldKey = fieldKey
 	this.Label = label
 	this.Type = type_
-	this.PromptStagesObj = promptStagesObj
 	return &this
 }
 
@@ -313,28 +312,36 @@ func (o *Prompt) SetOrder(v int32) {
 	o.Order = &v
 }
 
-// GetPromptStagesObj returns the PromptStagesObj field value
-func (o *Prompt) GetPromptStagesObj() []PromptStage {
-	if o == nil {
-		var ret []PromptStage
+// GetPromptstageSet returns the PromptstageSet field value if set, zero value otherwise.
+func (o *Prompt) GetPromptstageSet() []Stage {
+	if o == nil || IsNil(o.PromptstageSet) {
+		var ret []Stage
 		return ret
 	}
-
-	return o.PromptStagesObj
+	return o.PromptstageSet
 }
 
-// GetPromptStagesObjOk returns a tuple with the PromptStagesObj field value
+// GetPromptstageSetOk returns a tuple with the PromptstageSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Prompt) GetPromptStagesObjOk() ([]PromptStage, bool) {
-	if o == nil {
+func (o *Prompt) GetPromptstageSetOk() ([]Stage, bool) {
+	if o == nil || IsNil(o.PromptstageSet) {
 		return nil, false
 	}
-	return o.PromptStagesObj, true
+	return o.PromptstageSet, true
 }
 
-// SetPromptStagesObj sets field value
-func (o *Prompt) SetPromptStagesObj(v []PromptStage) {
-	o.PromptStagesObj = v
+// HasPromptstageSet returns a boolean if a field has been set.
+func (o *Prompt) HasPromptstageSet() bool {
+	if o != nil && !IsNil(o.PromptstageSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetPromptstageSet gets a reference to the given []Stage and assigns it to the PromptstageSet field.
+func (o *Prompt) SetPromptstageSet(v []Stage) {
+	o.PromptstageSet = v
 }
 
 // GetSubText returns the SubText field value if set, zero value otherwise.
@@ -460,7 +467,9 @@ func (o Prompt) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Order) {
 		toSerialize["order"] = o.Order
 	}
-	toSerialize["prompt_stages_obj"] = o.PromptStagesObj
+	if !IsNil(o.PromptstageSet) {
+		toSerialize["promptstage_set"] = o.PromptstageSet
+	}
 	if !IsNil(o.SubText) {
 		toSerialize["sub_text"] = o.SubText
 	}
@@ -483,7 +492,6 @@ func (o *Prompt) UnmarshalJSON(data []byte) (err error) {
 		"field_key",
 		"label",
 		"type",
-		"prompt_stages_obj",
 	}
 
 	allProperties := make(map[string]interface{})

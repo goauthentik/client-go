@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Slug** | Pointer to **string** | Visible in the URL. | [optional] 
 **Title** | Pointer to **string** | Shown as the Title in Flow pages. | [optional] 
 **Designation** | Pointer to [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | [optional] 
-**Background** | Pointer to **string** | Background shown during execution | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **CompatibilityMode** | Pointer to **bool** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] 
 **Layout** | Pointer to [**FlowLayoutEnum**](FlowLayoutEnum.md) |  | [optional] 
@@ -133,31 +132,6 @@ SetDesignation sets Designation field to given value.
 `func (o *PatchedFlowRequest) HasDesignation() bool`
 
 HasDesignation returns a boolean if a field has been set.
-
-### GetBackground
-
-`func (o *PatchedFlowRequest) GetBackground() string`
-
-GetBackground returns the Background field if non-nil, zero value otherwise.
-
-### GetBackgroundOk
-
-`func (o *PatchedFlowRequest) GetBackgroundOk() (*string, bool)`
-
-GetBackgroundOk returns a tuple with the Background field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBackground
-
-`func (o *PatchedFlowRequest) SetBackground(v string)`
-
-SetBackground sets Background field to given value.
-
-### HasBackground
-
-`func (o *PatchedFlowRequest) HasBackground() bool`
-
-HasBackground returns a boolean if a field has been set.
 
 ### GetPolicyEngineMode
 

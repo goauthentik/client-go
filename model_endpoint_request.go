@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -28,7 +28,7 @@ type EndpointRequest struct {
 	Host               string                 `json:"host"`
 	Settings           map[string]interface{} `json:"settings,omitempty"`
 	PropertyMappings   []string               `json:"property_mappings,omitempty"`
-	AuthMode           EndpointAuthModeEnum   `json:"auth_mode"`
+	AuthMode           AuthModeEnum           `json:"auth_mode"`
 	MaximumConnections *int32                 `json:"maximum_connections,omitempty"`
 }
 
@@ -38,7 +38,7 @@ type _EndpointRequest EndpointRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEndpointRequest(name string, provider int32, protocol ProtocolEnum, host string, authMode EndpointAuthModeEnum) *EndpointRequest {
+func NewEndpointRequest(name string, provider int32, protocol ProtocolEnum, host string, authMode AuthModeEnum) *EndpointRequest {
 	this := EndpointRequest{}
 	this.Name = name
 	this.Provider = provider
@@ -217,9 +217,9 @@ func (o *EndpointRequest) SetPropertyMappings(v []string) {
 }
 
 // GetAuthMode returns the AuthMode field value
-func (o *EndpointRequest) GetAuthMode() EndpointAuthModeEnum {
+func (o *EndpointRequest) GetAuthMode() AuthModeEnum {
 	if o == nil {
-		var ret EndpointAuthModeEnum
+		var ret AuthModeEnum
 		return ret
 	}
 
@@ -228,7 +228,7 @@ func (o *EndpointRequest) GetAuthMode() EndpointAuthModeEnum {
 
 // GetAuthModeOk returns a tuple with the AuthMode field value
 // and a boolean to check if the value has been set.
-func (o *EndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool) {
+func (o *EndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -236,7 +236,7 @@ func (o *EndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool) {
 }
 
 // SetAuthMode sets field value
-func (o *EndpointRequest) SetAuthMode(v EndpointAuthModeEnum) {
+func (o *EndpointRequest) SetAuthMode(v AuthModeEnum) {
 	o.AuthMode = v
 }
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -28,8 +28,6 @@ type Source struct {
 	// Internal source name, used in URLs.
 	Slug    string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool  `json:"enabled,omitempty"`
-	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
-	Promoted *bool `json:"promoted,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
@@ -50,9 +48,8 @@ type Source struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	Icon             *string        `json:"icon,omitempty"`
-	// Get the URL to the source icon
-	IconUrl NullableString `json:"icon_url"`
+	// Get the URL to the Icon. If the name is /static or starts with http it is returned as-is
+	Icon NullableString `json:"icon"`
 }
 
 type _Source Source
@@ -61,7 +58,7 @@ type _Source Source
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString) *Source {
+func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString) *Source {
 	this := Source{}
 	this.Pk = pk
 	this.Name = name
@@ -71,7 +68,7 @@ func NewSource(pk string, name string, slug string, component string, verboseNam
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.Managed = managed
-	this.IconUrl = iconUrl
+	this.Icon = icon
 	return &this
 }
 
@@ -185,38 +182,6 @@ func (o *Source) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *Source) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetPromoted returns the Promoted field value if set, zero value otherwise.
-func (o *Source) GetPromoted() bool {
-	if o == nil || IsNil(o.Promoted) {
-		var ret bool
-		return ret
-	}
-	return *o.Promoted
-}
-
-// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Source) GetPromotedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Promoted) {
-		return nil, false
-	}
-	return o.Promoted, true
-}
-
-// HasPromoted returns a boolean if a field has been set.
-func (o *Source) HasPromoted() bool {
-	if o != nil && !IsNil(o.Promoted) {
-		return true
-	}
-
-	return false
-}
-
-// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
-func (o *Source) SetPromoted(v bool) {
-	o.Promoted = &v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -587,62 +552,30 @@ func (o *Source) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
 }
 
-// GetIcon returns the Icon field value if set, zero value otherwise.
-func (o *Source) GetIcon() string {
-	if o == nil || IsNil(o.Icon) {
-		var ret string
-		return ret
-	}
-	return *o.Icon
-}
-
-// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Source) GetIconOk() (*string, bool) {
-	if o == nil || IsNil(o.Icon) {
-		return nil, false
-	}
-	return o.Icon, true
-}
-
-// HasIcon returns a boolean if a field has been set.
-func (o *Source) HasIcon() bool {
-	if o != nil && !IsNil(o.Icon) {
-		return true
-	}
-
-	return false
-}
-
-// SetIcon gets a reference to the given string and assigns it to the Icon field.
-func (o *Source) SetIcon(v string) {
-	o.Icon = &v
-}
-
-// GetIconUrl returns the IconUrl field value
+// GetIcon returns the Icon field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *Source) GetIconUrl() string {
-	if o == nil || o.IconUrl.Get() == nil {
+func (o *Source) GetIcon() string {
+	if o == nil || o.Icon.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.IconUrl.Get()
+	return *o.Icon.Get()
 }
 
-// GetIconUrlOk returns a tuple with the IconUrl field value
+// GetIconOk returns a tuple with the Icon field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Source) GetIconUrlOk() (*string, bool) {
+func (o *Source) GetIconOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.IconUrl.Get(), o.IconUrl.IsSet()
+	return o.Icon.Get(), o.Icon.IsSet()
 }
 
-// SetIconUrl sets field value
-func (o *Source) SetIconUrl(v string) {
-	o.IconUrl.Set(&v)
+// SetIcon sets field value
+func (o *Source) SetIcon(v string) {
+	o.Icon.Set(&v)
 }
 
 func (o Source) MarshalJSON() ([]byte, error) {
@@ -660,9 +593,6 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	toSerialize["slug"] = o.Slug
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Promoted) {
-		toSerialize["promoted"] = o.Promoted
 	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
@@ -690,10 +620,7 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if !IsNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
-	toSerialize["icon_url"] = o.IconUrl.Get()
+	toSerialize["icon"] = o.Icon.Get()
 	return toSerialize, nil
 }
 
@@ -710,7 +637,7 @@ func (o *Source) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name_plural",
 		"meta_model_name",
 		"managed",
-		"icon_url",
+		"icon",
 	}
 
 	allProperties := make(map[string]interface{})

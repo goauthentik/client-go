@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type SCIMSourceUser struct {
 	Id         *string                `json:"id,omitempty"`
 	ExternalId string                 `json:"external_id"`
 	User       int32                  `json:"user"`
-	UserObj    PartialUser            `json:"user_obj"`
+	UserObj    GroupMember            `json:"user_obj"`
 	Source     string                 `json:"source"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
@@ -36,7 +36,7 @@ type _SCIMSourceUser SCIMSourceUser
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSourceUser(externalId string, user int32, userObj PartialUser, source string) *SCIMSourceUser {
+func NewSCIMSourceUser(externalId string, user int32, userObj GroupMember, source string) *SCIMSourceUser {
 	this := SCIMSourceUser{}
 	this.ExternalId = externalId
 	this.User = user
@@ -134,9 +134,9 @@ func (o *SCIMSourceUser) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *SCIMSourceUser) GetUserObj() PartialUser {
+func (o *SCIMSourceUser) GetUserObj() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -145,7 +145,7 @@ func (o *SCIMSourceUser) GetUserObj() PartialUser {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMSourceUser) GetUserObjOk() (*PartialUser, bool) {
+func (o *SCIMSourceUser) GetUserObjOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -153,7 +153,7 @@ func (o *SCIMSourceUser) GetUserObjOk() (*PartialUser, bool) {
 }
 
 // SetUserObj sets field value
-func (o *SCIMSourceUser) SetUserObj(v PartialUser) {
+func (o *SCIMSourceUser) SetUserObj(v GroupMember) {
 	o.UserObj = v
 }
 

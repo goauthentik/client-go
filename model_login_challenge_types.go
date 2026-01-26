@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -21,7 +21,6 @@ type LoginChallengeTypes struct {
 	AppleLoginChallenge         *AppleLoginChallenge
 	PlexAuthenticationChallenge *PlexAuthenticationChallenge
 	RedirectChallenge           *RedirectChallenge
-	TelegramLoginChallenge      *TelegramLoginChallenge
 }
 
 // AppleLoginChallengeAsLoginChallengeTypes is a convenience function that returns AppleLoginChallenge wrapped in LoginChallengeTypes
@@ -42,13 +41,6 @@ func PlexAuthenticationChallengeAsLoginChallengeTypes(v *PlexAuthenticationChall
 func RedirectChallengeAsLoginChallengeTypes(v *RedirectChallenge) LoginChallengeTypes {
 	return LoginChallengeTypes{
 		RedirectChallenge: v,
-	}
-}
-
-// TelegramLoginChallengeAsLoginChallengeTypes is a convenience function that returns TelegramLoginChallenge wrapped in LoginChallengeTypes
-func TelegramLoginChallengeAsLoginChallengeTypes(v *TelegramLoginChallenge) LoginChallengeTypes {
-	return LoginChallengeTypes{
-		TelegramLoginChallenge: v,
 	}
 }
 
@@ -86,18 +78,6 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'ak-source-telegram'
-	if jsonDict["component"] == "ak-source-telegram" {
-		// try to unmarshal JSON data into TelegramLoginChallenge
-		err = json.Unmarshal(data, &dst.TelegramLoginChallenge)
-		if err == nil {
-			return nil // data stored in dst.TelegramLoginChallenge, return on the first match
-		} else {
-			dst.TelegramLoginChallenge = nil
-			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as TelegramLoginChallenge: %s", err.Error())
-		}
-	}
-
 	// check if the discriminator value is 'xak-flow-redirect'
 	if jsonDict["component"] == "xak-flow-redirect" {
 		// try to unmarshal JSON data into RedirectChallenge
@@ -127,10 +107,6 @@ func (src LoginChallengeTypes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RedirectChallenge)
 	}
 
-	if src.TelegramLoginChallenge != nil {
-		return json.Marshal(&src.TelegramLoginChallenge)
-	}
-
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -151,10 +127,6 @@ func (obj *LoginChallengeTypes) GetActualInstance() interface{} {
 		return obj.RedirectChallenge
 	}
 
-	if obj.TelegramLoginChallenge != nil {
-		return obj.TelegramLoginChallenge
-	}
-
 	// all schemas are nil
 	return nil
 }
@@ -171,10 +143,6 @@ func (obj LoginChallengeTypes) GetActualInstanceValue() interface{} {
 
 	if obj.RedirectChallenge != nil {
 		return *obj.RedirectChallenge
-	}
-
-	if obj.TelegramLoginChallenge != nil {
-		return *obj.TelegramLoginChallenge
 	}
 
 	// all schemas are nil

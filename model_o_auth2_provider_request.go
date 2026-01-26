@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -40,18 +40,14 @@ type OAuth2ProviderRequest struct {
 	AccessTokenValidity *string `json:"access_token_validity,omitempty"`
 	// Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
 	RefreshTokenValidity *string `json:"refresh_token_validity,omitempty"`
-	// When refreshing a token, if the refresh token is valid for less than this duration, it will be renewed. When set to seconds=0, token will always be renewed. (Format: hours=1;minutes=2;seconds=3).
-	RefreshTokenThreshold *string `json:"refresh_token_threshold,omitempty"`
 	// Include User claims from scopes in the id_token, for applications that don't access the userinfo endpoint.
 	IncludeClaimsInIdToken *bool `json:"include_claims_in_id_token,omitempty"`
 	// Key used to sign the tokens.
 	SigningKey NullableString `json:"signing_key,omitempty"`
 	// Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs.
-	EncryptionKey NullableString       `json:"encryption_key,omitempty"`
-	RedirectUris  []RedirectURIRequest `json:"redirect_uris"`
-	LogoutUri     *string              `json:"logout_uri,omitempty"`
-	// Backchannel logs out with server to server calls. Frontchannel uses iframes in your browser
-	LogoutMethod *OAuth2ProviderLogoutMethodEnum `json:"logout_method,omitempty"`
+	EncryptionKey        NullableString       `json:"encryption_key,omitempty"`
+	RedirectUris         []RedirectURIRequest `json:"redirect_uris"`
+	BackchannelLogoutUri *string              `json:"backchannel_logout_uri,omitempty"`
 	// Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
 	SubMode *SubModeEnum `json:"sub_mode,omitempty"`
 	// Configure how the issuer field of the ID Token should be filled.
@@ -422,38 +418,6 @@ func (o *OAuth2ProviderRequest) SetRefreshTokenValidity(v string) {
 	o.RefreshTokenValidity = &v
 }
 
-// GetRefreshTokenThreshold returns the RefreshTokenThreshold field value if set, zero value otherwise.
-func (o *OAuth2ProviderRequest) GetRefreshTokenThreshold() string {
-	if o == nil || IsNil(o.RefreshTokenThreshold) {
-		var ret string
-		return ret
-	}
-	return *o.RefreshTokenThreshold
-}
-
-// GetRefreshTokenThresholdOk returns a tuple with the RefreshTokenThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OAuth2ProviderRequest) GetRefreshTokenThresholdOk() (*string, bool) {
-	if o == nil || IsNil(o.RefreshTokenThreshold) {
-		return nil, false
-	}
-	return o.RefreshTokenThreshold, true
-}
-
-// HasRefreshTokenThreshold returns a boolean if a field has been set.
-func (o *OAuth2ProviderRequest) HasRefreshTokenThreshold() bool {
-	if o != nil && !IsNil(o.RefreshTokenThreshold) {
-		return true
-	}
-
-	return false
-}
-
-// SetRefreshTokenThreshold gets a reference to the given string and assigns it to the RefreshTokenThreshold field.
-func (o *OAuth2ProviderRequest) SetRefreshTokenThreshold(v string) {
-	o.RefreshTokenThreshold = &v
-}
-
 // GetIncludeClaimsInIdToken returns the IncludeClaimsInIdToken field value if set, zero value otherwise.
 func (o *OAuth2ProviderRequest) GetIncludeClaimsInIdToken() bool {
 	if o == nil || IsNil(o.IncludeClaimsInIdToken) {
@@ -596,68 +560,36 @@ func (o *OAuth2ProviderRequest) SetRedirectUris(v []RedirectURIRequest) {
 	o.RedirectUris = v
 }
 
-// GetLogoutUri returns the LogoutUri field value if set, zero value otherwise.
-func (o *OAuth2ProviderRequest) GetLogoutUri() string {
-	if o == nil || IsNil(o.LogoutUri) {
+// GetBackchannelLogoutUri returns the BackchannelLogoutUri field value if set, zero value otherwise.
+func (o *OAuth2ProviderRequest) GetBackchannelLogoutUri() string {
+	if o == nil || IsNil(o.BackchannelLogoutUri) {
 		var ret string
 		return ret
 	}
-	return *o.LogoutUri
+	return *o.BackchannelLogoutUri
 }
 
-// GetLogoutUriOk returns a tuple with the LogoutUri field value if set, nil otherwise
+// GetBackchannelLogoutUriOk returns a tuple with the BackchannelLogoutUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OAuth2ProviderRequest) GetLogoutUriOk() (*string, bool) {
-	if o == nil || IsNil(o.LogoutUri) {
+func (o *OAuth2ProviderRequest) GetBackchannelLogoutUriOk() (*string, bool) {
+	if o == nil || IsNil(o.BackchannelLogoutUri) {
 		return nil, false
 	}
-	return o.LogoutUri, true
+	return o.BackchannelLogoutUri, true
 }
 
-// HasLogoutUri returns a boolean if a field has been set.
-func (o *OAuth2ProviderRequest) HasLogoutUri() bool {
-	if o != nil && !IsNil(o.LogoutUri) {
+// HasBackchannelLogoutUri returns a boolean if a field has been set.
+func (o *OAuth2ProviderRequest) HasBackchannelLogoutUri() bool {
+	if o != nil && !IsNil(o.BackchannelLogoutUri) {
 		return true
 	}
 
 	return false
 }
 
-// SetLogoutUri gets a reference to the given string and assigns it to the LogoutUri field.
-func (o *OAuth2ProviderRequest) SetLogoutUri(v string) {
-	o.LogoutUri = &v
-}
-
-// GetLogoutMethod returns the LogoutMethod field value if set, zero value otherwise.
-func (o *OAuth2ProviderRequest) GetLogoutMethod() OAuth2ProviderLogoutMethodEnum {
-	if o == nil || IsNil(o.LogoutMethod) {
-		var ret OAuth2ProviderLogoutMethodEnum
-		return ret
-	}
-	return *o.LogoutMethod
-}
-
-// GetLogoutMethodOk returns a tuple with the LogoutMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OAuth2ProviderRequest) GetLogoutMethodOk() (*OAuth2ProviderLogoutMethodEnum, bool) {
-	if o == nil || IsNil(o.LogoutMethod) {
-		return nil, false
-	}
-	return o.LogoutMethod, true
-}
-
-// HasLogoutMethod returns a boolean if a field has been set.
-func (o *OAuth2ProviderRequest) HasLogoutMethod() bool {
-	if o != nil && !IsNil(o.LogoutMethod) {
-		return true
-	}
-
-	return false
-}
-
-// SetLogoutMethod gets a reference to the given OAuth2ProviderLogoutMethodEnum and assigns it to the LogoutMethod field.
-func (o *OAuth2ProviderRequest) SetLogoutMethod(v OAuth2ProviderLogoutMethodEnum) {
-	o.LogoutMethod = &v
+// SetBackchannelLogoutUri gets a reference to the given string and assigns it to the BackchannelLogoutUri field.
+func (o *OAuth2ProviderRequest) SetBackchannelLogoutUri(v string) {
+	o.BackchannelLogoutUri = &v
 }
 
 // GetSubMode returns the SubMode field value if set, zero value otherwise.
@@ -825,9 +757,6 @@ func (o OAuth2ProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RefreshTokenValidity) {
 		toSerialize["refresh_token_validity"] = o.RefreshTokenValidity
 	}
-	if !IsNil(o.RefreshTokenThreshold) {
-		toSerialize["refresh_token_threshold"] = o.RefreshTokenThreshold
-	}
 	if !IsNil(o.IncludeClaimsInIdToken) {
 		toSerialize["include_claims_in_id_token"] = o.IncludeClaimsInIdToken
 	}
@@ -838,11 +767,8 @@ func (o OAuth2ProviderRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["encryption_key"] = o.EncryptionKey.Get()
 	}
 	toSerialize["redirect_uris"] = o.RedirectUris
-	if !IsNil(o.LogoutUri) {
-		toSerialize["logout_uri"] = o.LogoutUri
-	}
-	if !IsNil(o.LogoutMethod) {
-		toSerialize["logout_method"] = o.LogoutMethod
+	if !IsNil(o.BackchannelLogoutUri) {
+		toSerialize["backchannel_logout_uri"] = o.BackchannelLogoutUri
 	}
 	if !IsNil(o.SubMode) {
 		toSerialize["sub_mode"] = o.SubMode

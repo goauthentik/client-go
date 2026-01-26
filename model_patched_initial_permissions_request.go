@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -20,9 +20,10 @@ var _ MappedNullable = &PatchedInitialPermissionsRequest{}
 
 // PatchedInitialPermissionsRequest InitialPermissions serializer
 type PatchedInitialPermissionsRequest struct {
-	Name        *string `json:"name,omitempty"`
-	Role        *string `json:"role,omitempty"`
-	Permissions []int32 `json:"permissions,omitempty"`
+	Name        *string                     `json:"name,omitempty"`
+	Mode        *InitialPermissionsModeEnum `json:"mode,omitempty"`
+	Role        *string                     `json:"role,omitempty"`
+	Permissions []int32                     `json:"permissions,omitempty"`
 }
 
 // NewPatchedInitialPermissionsRequest instantiates a new PatchedInitialPermissionsRequest object
@@ -72,6 +73,38 @@ func (o *PatchedInitialPermissionsRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchedInitialPermissionsRequest) SetName(v string) {
 	o.Name = &v
+}
+
+// GetMode returns the Mode field value if set, zero value otherwise.
+func (o *PatchedInitialPermissionsRequest) GetMode() InitialPermissionsModeEnum {
+	if o == nil || IsNil(o.Mode) {
+		var ret InitialPermissionsModeEnum
+		return ret
+	}
+	return *o.Mode
+}
+
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedInitialPermissionsRequest) GetModeOk() (*InitialPermissionsModeEnum, bool) {
+	if o == nil || IsNil(o.Mode) {
+		return nil, false
+	}
+	return o.Mode, true
+}
+
+// HasMode returns a boolean if a field has been set.
+func (o *PatchedInitialPermissionsRequest) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given InitialPermissionsModeEnum and assigns it to the Mode field.
+func (o *PatchedInitialPermissionsRequest) SetMode(v InitialPermissionsModeEnum) {
+	o.Mode = &v
 }
 
 // GetRole returns the Role field value if set, zero value otherwise.
@@ -150,6 +183,9 @@ func (o PatchedInitialPermissionsRequest) ToMap() (map[string]interface{}, error
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
 	}
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role

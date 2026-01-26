@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type SCIMSourceGroup struct {
 	Id         *string                `json:"id,omitempty"`
 	ExternalId string                 `json:"external_id"`
 	Group      string                 `json:"group"`
-	GroupObj   PartialGroup           `json:"group_obj"`
+	GroupObj   UserGroup              `json:"group_obj"`
 	Source     string                 `json:"source"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
@@ -36,7 +36,7 @@ type _SCIMSourceGroup SCIMSourceGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSourceGroup(externalId string, group string, groupObj PartialGroup, source string) *SCIMSourceGroup {
+func NewSCIMSourceGroup(externalId string, group string, groupObj UserGroup, source string) *SCIMSourceGroup {
 	this := SCIMSourceGroup{}
 	this.ExternalId = externalId
 	this.Group = group
@@ -134,9 +134,9 @@ func (o *SCIMSourceGroup) SetGroup(v string) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *SCIMSourceGroup) GetGroupObj() PartialGroup {
+func (o *SCIMSourceGroup) GetGroupObj() UserGroup {
 	if o == nil {
-		var ret PartialGroup
+		var ret UserGroup
 		return ret
 	}
 
@@ -145,7 +145,7 @@ func (o *SCIMSourceGroup) GetGroupObj() PartialGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMSourceGroup) GetGroupObjOk() (*PartialGroup, bool) {
+func (o *SCIMSourceGroup) GetGroupObjOk() (*UserGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -153,7 +153,7 @@ func (o *SCIMSourceGroup) GetGroupObjOk() (*PartialGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *SCIMSourceGroup) SetGroupObj(v PartialGroup) {
+func (o *SCIMSourceGroup) SetGroupObj(v UserGroup) {
 	o.GroupObj = v
 }
 

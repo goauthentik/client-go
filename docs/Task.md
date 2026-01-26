@@ -9,14 +9,12 @@ Name | Type | Description | Notes
 **ActorName** | **string** | Dramatiq actor name | 
 **State** | Pointer to [**StateEnum**](StateEnum.md) | Task status | [optional] 
 **Mtime** | Pointer to **time.Time** | Task last modified time | [optional] 
-**Retries** | Pointer to **int64** | Number of retries | [optional] 
-**Eta** | Pointer to **NullableTime** | Planned execution time | [optional] 
 **RelObjAppLabel** | **string** |  | [readonly] 
 **RelObjModel** | **string** |  | [readonly] 
 **RelObjId** | Pointer to **NullableString** |  | [optional] 
 **Uid** | **string** |  | [readonly] 
-**Logs** | [**[]LogEvent**](LogEvent.md) |  | [readonly] 
-**PreviousLogs** | [**[]LogEvent**](LogEvent.md) |  | [readonly] 
+**Messages** | [**[]LogEvent**](LogEvent.md) |  | 
+**PreviousMessages** | [**[]LogEvent**](LogEvent.md) |  | 
 **AggregatedStatus** | [**TaskAggregatedStatusEnum**](TaskAggregatedStatusEnum.md) |  | 
 **Description** | **NullableString** |  | [readonly] 
 
@@ -24,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewTask
 
-`func NewTask(actorName string, relObjAppLabel string, relObjModel string, uid string, logs []LogEvent, previousLogs []LogEvent, aggregatedStatus TaskAggregatedStatusEnum, description NullableString, ) *Task`
+`func NewTask(actorName string, relObjAppLabel string, relObjModel string, uid string, messages []LogEvent, previousMessages []LogEvent, aggregatedStatus TaskAggregatedStatusEnum, description NullableString, ) *Task`
 
 NewTask instantiates a new Task object
 This constructor will assign default values to properties that have it defined,
@@ -159,66 +157,6 @@ SetMtime sets Mtime field to given value.
 
 HasMtime returns a boolean if a field has been set.
 
-### GetRetries
-
-`func (o *Task) GetRetries() int64`
-
-GetRetries returns the Retries field if non-nil, zero value otherwise.
-
-### GetRetriesOk
-
-`func (o *Task) GetRetriesOk() (*int64, bool)`
-
-GetRetriesOk returns a tuple with the Retries field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRetries
-
-`func (o *Task) SetRetries(v int64)`
-
-SetRetries sets Retries field to given value.
-
-### HasRetries
-
-`func (o *Task) HasRetries() bool`
-
-HasRetries returns a boolean if a field has been set.
-
-### GetEta
-
-`func (o *Task) GetEta() time.Time`
-
-GetEta returns the Eta field if non-nil, zero value otherwise.
-
-### GetEtaOk
-
-`func (o *Task) GetEtaOk() (*time.Time, bool)`
-
-GetEtaOk returns a tuple with the Eta field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEta
-
-`func (o *Task) SetEta(v time.Time)`
-
-SetEta sets Eta field to given value.
-
-### HasEta
-
-`func (o *Task) HasEta() bool`
-
-HasEta returns a boolean if a field has been set.
-
-### SetEtaNil
-
-`func (o *Task) SetEtaNil(b bool)`
-
- SetEtaNil sets the value for Eta to be an explicit nil
-
-### UnsetEta
-`func (o *Task) UnsetEta()`
-
-UnsetEta ensures that no value is present for Eta, not even an explicit nil
 ### GetRelObjAppLabel
 
 `func (o *Task) GetRelObjAppLabel() string`
@@ -314,44 +252,44 @@ and a boolean to check if the value has been set.
 SetUid sets Uid field to given value.
 
 
-### GetLogs
+### GetMessages
 
-`func (o *Task) GetLogs() []LogEvent`
+`func (o *Task) GetMessages() []LogEvent`
 
-GetLogs returns the Logs field if non-nil, zero value otherwise.
+GetMessages returns the Messages field if non-nil, zero value otherwise.
 
-### GetLogsOk
+### GetMessagesOk
 
-`func (o *Task) GetLogsOk() (*[]LogEvent, bool)`
+`func (o *Task) GetMessagesOk() (*[]LogEvent, bool)`
 
-GetLogsOk returns a tuple with the Logs field if it's non-nil, zero value otherwise
+GetMessagesOk returns a tuple with the Messages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLogs
+### SetMessages
 
-`func (o *Task) SetLogs(v []LogEvent)`
+`func (o *Task) SetMessages(v []LogEvent)`
 
-SetLogs sets Logs field to given value.
+SetMessages sets Messages field to given value.
 
 
-### GetPreviousLogs
+### GetPreviousMessages
 
-`func (o *Task) GetPreviousLogs() []LogEvent`
+`func (o *Task) GetPreviousMessages() []LogEvent`
 
-GetPreviousLogs returns the PreviousLogs field if non-nil, zero value otherwise.
+GetPreviousMessages returns the PreviousMessages field if non-nil, zero value otherwise.
 
-### GetPreviousLogsOk
+### GetPreviousMessagesOk
 
-`func (o *Task) GetPreviousLogsOk() (*[]LogEvent, bool)`
+`func (o *Task) GetPreviousMessagesOk() (*[]LogEvent, bool)`
 
-GetPreviousLogsOk returns a tuple with the PreviousLogs field if it's non-nil, zero value otherwise
+GetPreviousMessagesOk returns a tuple with the PreviousMessages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPreviousLogs
+### SetPreviousMessages
 
-`func (o *Task) SetPreviousLogs(v []LogEvent)`
+`func (o *Task) SetPreviousMessages(v []LogEvent)`
 
-SetPreviousLogs sets PreviousLogs field to given value.
+SetPreviousMessages sets PreviousMessages field to given value.
 
 
 ### GetAggregatedStatus

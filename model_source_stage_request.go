@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -22,8 +22,9 @@ var _ MappedNullable = &SourceStageRequest{}
 
 // SourceStageRequest SourceStage Serializer
 type SourceStageRequest struct {
-	Name   string `json:"name"`
-	Source string `json:"source"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
+	Source  string           `json:"source"`
 	// Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
 	ResumeTimeout *string `json:"resume_timeout,omitempty"`
 }
@@ -71,6 +72,38 @@ func (o *SourceStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *SourceStageRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *SourceStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SourceStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *SourceStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *SourceStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetSource returns the Source field value
@@ -140,6 +173,9 @@ func (o SourceStageRequest) MarshalJSON() ([]byte, error) {
 func (o SourceStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	toSerialize["source"] = o.Source
 	if !IsNil(o.ResumeTimeout) {
 		toSerialize["resume_timeout"] = o.ResumeTimeout

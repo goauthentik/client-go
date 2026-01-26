@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Mode** | [**StageModeEnum**](StageModeEnum.md) |  | 
+**FlowSet** | Pointer to [**[]FlowSetRequest**](FlowSetRequest.md) |  | [optional] 
+**Mode** | [**MutualTLSStageModeEnum**](MutualTLSStageModeEnum.md) |  | 
 **CertificateAuthorities** | Pointer to **[]string** | Configure certificate authorities to validate the certificate against. This option has a higher priority than the &#x60;client_certificate&#x60; option on &#x60;Brand&#x60;. | [optional] 
 **CertAttribute** | [**CertAttributeEnum**](CertAttributeEnum.md) |  | 
 **UserAttribute** | [**UserAttributeEnum**](UserAttributeEnum.md) |  | 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewMutualTLSStageRequest
 
-`func NewMutualTLSStageRequest(name string, mode StageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum, ) *MutualTLSStageRequest`
+`func NewMutualTLSStageRequest(name string, mode MutualTLSStageModeEnum, certAttribute CertAttributeEnum, userAttribute UserAttributeEnum, ) *MutualTLSStageRequest`
 
 NewMutualTLSStageRequest instantiates a new MutualTLSStageRequest object
 This constructor will assign default values to properties that have it defined,
@@ -49,22 +50,47 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetFlowSet
+
+`func (o *MutualTLSStageRequest) GetFlowSet() []FlowSetRequest`
+
+GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
+
+### GetFlowSetOk
+
+`func (o *MutualTLSStageRequest) GetFlowSetOk() (*[]FlowSetRequest, bool)`
+
+GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowSet
+
+`func (o *MutualTLSStageRequest) SetFlowSet(v []FlowSetRequest)`
+
+SetFlowSet sets FlowSet field to given value.
+
+### HasFlowSet
+
+`func (o *MutualTLSStageRequest) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
+
 ### GetMode
 
-`func (o *MutualTLSStageRequest) GetMode() StageModeEnum`
+`func (o *MutualTLSStageRequest) GetMode() MutualTLSStageModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *MutualTLSStageRequest) GetModeOk() (*StageModeEnum, bool)`
+`func (o *MutualTLSStageRequest) GetModeOk() (*MutualTLSStageModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *MutualTLSStageRequest) SetMode(v StageModeEnum)`
+`func (o *MutualTLSStageRequest) SetMode(v MutualTLSStageModeEnum)`
 
 SetMode sets Mode field to given value.
 

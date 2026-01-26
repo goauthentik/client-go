@@ -107,13 +107,6 @@ Method | HTTP request | Description
 [**StagesEmailTemplatesList**](StagesAPI.md#StagesEmailTemplatesList) | **Get** /stages/email/templates/ | 
 [**StagesEmailUpdate**](StagesAPI.md#StagesEmailUpdate) | **Put** /stages/email/{stage_uuid}/ | 
 [**StagesEmailUsedByList**](StagesAPI.md#StagesEmailUsedByList) | **Get** /stages/email/{stage_uuid}/used_by/ | 
-[**StagesEndpointsCreate**](StagesAPI.md#StagesEndpointsCreate) | **Post** /stages/endpoints/ | 
-[**StagesEndpointsDestroy**](StagesAPI.md#StagesEndpointsDestroy) | **Delete** /stages/endpoints/{stage_uuid}/ | 
-[**StagesEndpointsList**](StagesAPI.md#StagesEndpointsList) | **Get** /stages/endpoints/ | 
-[**StagesEndpointsPartialUpdate**](StagesAPI.md#StagesEndpointsPartialUpdate) | **Patch** /stages/endpoints/{stage_uuid}/ | 
-[**StagesEndpointsRetrieve**](StagesAPI.md#StagesEndpointsRetrieve) | **Get** /stages/endpoints/{stage_uuid}/ | 
-[**StagesEndpointsUpdate**](StagesAPI.md#StagesEndpointsUpdate) | **Put** /stages/endpoints/{stage_uuid}/ | 
-[**StagesEndpointsUsedByList**](StagesAPI.md#StagesEndpointsUsedByList) | **Get** /stages/endpoints/{stage_uuid}/used_by/ | 
 [**StagesIdentificationCreate**](StagesAPI.md#StagesIdentificationCreate) | **Post** /stages/identification/ | 
 [**StagesIdentificationDestroy**](StagesAPI.md#StagesIdentificationDestroy) | **Delete** /stages/identification/{stage_uuid}/ | 
 [**StagesIdentificationList**](StagesAPI.md#StagesIdentificationList) | **Get** /stages/identification/ | 
@@ -805,7 +798,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[authentik](../README.md#authentik)
 
 ### HTTP request headers
 
@@ -7566,498 +7559,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## StagesEndpointsCreate
-
-> EndpointStage StagesEndpointsCreate(ctx).EndpointStageRequest(endpointStageRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	endpointStageRequest := *openapiclient.NewEndpointStageRequest("Name_example", "Connector_example") // EndpointStageRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StagesAPI.StagesEndpointsCreate(context.Background()).EndpointStageRequest(endpointStageRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEndpointsCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `StagesEndpointsCreate`: EndpointStage
-	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEndpointsCreate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStagesEndpointsCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **endpointStageRequest** | [**EndpointStageRequest**](EndpointStageRequest.md) |  | 
-
-### Return type
-
-[**EndpointStage**](EndpointStage.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## StagesEndpointsDestroy
-
-> StagesEndpointsDestroy(ctx, stageUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Stage.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.StagesAPI.StagesEndpointsDestroy(context.Background(), stageUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEndpointsDestroy``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Endpoint Stage. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStagesEndpointsDestroyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## StagesEndpointsList
-
-> PaginatedEndpointStageList StagesEndpointsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	name := "name_example" // string |  (optional)
-	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
-	page := int32(56) // int32 | A page number within the paginated result set. (optional)
-	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
-	search := "search_example" // string | A search term. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StagesAPI.StagesEndpointsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEndpointsList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `StagesEndpointsList`: PaginatedEndpointStageList
-	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEndpointsList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStagesEndpointsListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string** |  | 
- **ordering** | **string** | Which field to use when ordering the results. | 
- **page** | **int32** | A page number within the paginated result set. | 
- **pageSize** | **int32** | Number of results to return per page. | 
- **search** | **string** | A search term. | 
-
-### Return type
-
-[**PaginatedEndpointStageList**](PaginatedEndpointStageList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## StagesEndpointsPartialUpdate
-
-> EndpointStage StagesEndpointsPartialUpdate(ctx, stageUuid).PatchedEndpointStageRequest(patchedEndpointStageRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Stage.
-	patchedEndpointStageRequest := *openapiclient.NewPatchedEndpointStageRequest() // PatchedEndpointStageRequest |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StagesAPI.StagesEndpointsPartialUpdate(context.Background(), stageUuid).PatchedEndpointStageRequest(patchedEndpointStageRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEndpointsPartialUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `StagesEndpointsPartialUpdate`: EndpointStage
-	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEndpointsPartialUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Endpoint Stage. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStagesEndpointsPartialUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **patchedEndpointStageRequest** | [**PatchedEndpointStageRequest**](PatchedEndpointStageRequest.md) |  | 
-
-### Return type
-
-[**EndpointStage**](EndpointStage.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## StagesEndpointsRetrieve
-
-> EndpointStage StagesEndpointsRetrieve(ctx, stageUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Stage.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StagesAPI.StagesEndpointsRetrieve(context.Background(), stageUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEndpointsRetrieve``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `StagesEndpointsRetrieve`: EndpointStage
-	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEndpointsRetrieve`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Endpoint Stage. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStagesEndpointsRetrieveRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**EndpointStage**](EndpointStage.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## StagesEndpointsUpdate
-
-> EndpointStage StagesEndpointsUpdate(ctx, stageUuid).EndpointStageRequest(endpointStageRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Stage.
-	endpointStageRequest := *openapiclient.NewEndpointStageRequest("Name_example", "Connector_example") // EndpointStageRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StagesAPI.StagesEndpointsUpdate(context.Background(), stageUuid).EndpointStageRequest(endpointStageRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEndpointsUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `StagesEndpointsUpdate`: EndpointStage
-	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEndpointsUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Endpoint Stage. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStagesEndpointsUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **endpointStageRequest** | [**EndpointStageRequest**](EndpointStageRequest.md) |  | 
-
-### Return type
-
-[**EndpointStage**](EndpointStage.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## StagesEndpointsUsedByList
-
-> []UsedBy StagesEndpointsUsedByList(ctx, stageUuid).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Endpoint Stage.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StagesAPI.StagesEndpointsUsedByList(context.Background(), stageUuid).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesEndpointsUsedByList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `StagesEndpointsUsedByList`: []UsedBy
-	fmt.Fprintf(os.Stdout, "Response from `StagesAPI.StagesEndpointsUsedByList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**stageUuid** | **string** | A UUID string identifying this Endpoint Stage. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiStagesEndpointsUsedByListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]UsedBy**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## StagesIdentificationCreate
 
 > IdentificationStage StagesIdentificationCreate(ctx).IdentificationStageRequest(identificationStageRequest).Execute()
@@ -8194,7 +7695,7 @@ Name | Type | Description  | Notes
 
 ## StagesIdentificationList
 
-> PaginatedIdentificationStageList StagesIdentificationList(ctx).CaptchaStage(captchaStage).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).WebauthnStage(webauthnStage).Execute()
+> PaginatedIdentificationStageList StagesIdentificationList(ctx).CaptchaStage(captchaStage).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
 
 
 
@@ -8226,11 +7727,10 @@ func main() {
 	search := "search_example" // string | A search term. (optional)
 	showMatchedUser := true // bool |  (optional)
 	showSourceLabels := true // bool |  (optional)
-	webauthnStage := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StagesAPI.StagesIdentificationList(context.Background()).CaptchaStage(captchaStage).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).WebauthnStage(webauthnStage).Execute()
+	resp, r, err := apiClient.StagesAPI.StagesIdentificationList(context.Background()).CaptchaStage(captchaStage).CaseInsensitiveMatching(caseInsensitiveMatching).EnrollmentFlow(enrollmentFlow).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).PasswordStage(passwordStage).PasswordlessFlow(passwordlessFlow).RecoveryFlow(recoveryFlow).Search(search).ShowMatchedUser(showMatchedUser).ShowSourceLabels(showSourceLabels).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesIdentificationList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -8264,7 +7764,6 @@ Name | Type | Description  | Notes
  **search** | **string** | A search term. | 
  **showMatchedUser** | **bool** |  | 
  **showSourceLabels** | **bool** |  | 
- **webauthnStage** | **string** |  | 
 
 ### Return type
 
@@ -9586,7 +9085,7 @@ import (
 )
 
 func main() {
-	mutualTLSStageRequest := *openapiclient.NewMutualTLSStageRequest("Name_example", openapiclient.StageModeEnum("optional"), openapiclient.CertAttributeEnum("subject"), openapiclient.UserAttributeEnum("username")) // MutualTLSStageRequest | 
+	mutualTLSStageRequest := *openapiclient.NewMutualTLSStageRequest("Name_example", openapiclient.MutualTLSStageModeEnum("optional"), openapiclient.CertAttributeEnum("subject"), openapiclient.UserAttributeEnum("username")) // MutualTLSStageRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -9947,7 +9446,7 @@ import (
 
 func main() {
 	stageUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Mutual TLS Stage.
-	mutualTLSStageRequest := *openapiclient.NewMutualTLSStageRequest("Name_example", openapiclient.StageModeEnum("optional"), openapiclient.CertAttributeEnum("subject"), openapiclient.UserAttributeEnum("username")) // MutualTLSStageRequest | 
+	mutualTLSStageRequest := *openapiclient.NewMutualTLSStageRequest("Name_example", openapiclient.MutualTLSStageModeEnum("optional"), openapiclient.CertAttributeEnum("subject"), openapiclient.UserAttributeEnum("username")) // MutualTLSStageRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

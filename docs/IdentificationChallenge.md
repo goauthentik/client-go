@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
 **EnableRememberMe** | Pointer to **bool** |  | [optional] [default to true]
-**PasskeyChallenge** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -436,41 +435,6 @@ SetEnableRememberMe sets EnableRememberMe field to given value.
 
 HasEnableRememberMe returns a boolean if a field has been set.
 
-### GetPasskeyChallenge
-
-`func (o *IdentificationChallenge) GetPasskeyChallenge() map[string]interface{}`
-
-GetPasskeyChallenge returns the PasskeyChallenge field if non-nil, zero value otherwise.
-
-### GetPasskeyChallengeOk
-
-`func (o *IdentificationChallenge) GetPasskeyChallengeOk() (*map[string]interface{}, bool)`
-
-GetPasskeyChallengeOk returns a tuple with the PasskeyChallenge field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPasskeyChallenge
-
-`func (o *IdentificationChallenge) SetPasskeyChallenge(v map[string]interface{})`
-
-SetPasskeyChallenge sets PasskeyChallenge field to given value.
-
-### HasPasskeyChallenge
-
-`func (o *IdentificationChallenge) HasPasskeyChallenge() bool`
-
-HasPasskeyChallenge returns a boolean if a field has been set.
-
-### SetPasskeyChallengeNil
-
-`func (o *IdentificationChallenge) SetPasskeyChallengeNil(b bool)`
-
- SetPasskeyChallengeNil sets the value for PasskeyChallenge to be an explicit nil
-
-### UnsetPasskeyChallenge
-`func (o *IdentificationChallenge) UnsetPasskeyChallenge()`
-
-UnsetPasskeyChallenge ensures that no value is present for PasskeyChallenge, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

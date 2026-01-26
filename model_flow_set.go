@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -31,8 +31,8 @@ type FlowSet struct {
 	Title string `json:"title"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
 	Designation FlowDesignationEnum `json:"designation"`
-	// Get the URL to the background image
-	BackgroundUrl    string            `json:"background_url"`
+	// Get the URL to the background image. If the name is /static or starts with http it is returned as-is
+	Background       string            `json:"background"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool `json:"compatibility_mode,omitempty"`
@@ -49,7 +49,7 @@ type _FlowSet FlowSet
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlowSet(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, backgroundUrl string, exportUrl string) *FlowSet {
+func NewFlowSet(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, background string, exportUrl string) *FlowSet {
 	this := FlowSet{}
 	this.Pk = pk
 	this.PolicybindingmodelPtrId = policybindingmodelPtrId
@@ -57,7 +57,7 @@ func NewFlowSet(pk string, policybindingmodelPtrId string, name string, slug str
 	this.Slug = slug
 	this.Title = title
 	this.Designation = designation
-	this.BackgroundUrl = backgroundUrl
+	this.Background = background
 	this.ExportUrl = exportUrl
 	return &this
 }
@@ -214,28 +214,28 @@ func (o *FlowSet) SetDesignation(v FlowDesignationEnum) {
 	o.Designation = v
 }
 
-// GetBackgroundUrl returns the BackgroundUrl field value
-func (o *FlowSet) GetBackgroundUrl() string {
+// GetBackground returns the Background field value
+func (o *FlowSet) GetBackground() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.BackgroundUrl
+	return o.Background
 }
 
-// GetBackgroundUrlOk returns a tuple with the BackgroundUrl field value
+// GetBackgroundOk returns a tuple with the Background field value
 // and a boolean to check if the value has been set.
-func (o *FlowSet) GetBackgroundUrlOk() (*string, bool) {
+func (o *FlowSet) GetBackgroundOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.BackgroundUrl, true
+	return &o.Background, true
 }
 
-// SetBackgroundUrl sets field value
-func (o *FlowSet) SetBackgroundUrl(v string) {
-	o.BackgroundUrl = v
+// SetBackground sets field value
+func (o *FlowSet) SetBackground(v string) {
+	o.Background = v
 }
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
@@ -406,7 +406,7 @@ func (o FlowSet) ToMap() (map[string]interface{}, error) {
 	toSerialize["slug"] = o.Slug
 	toSerialize["title"] = o.Title
 	toSerialize["designation"] = o.Designation
-	toSerialize["background_url"] = o.BackgroundUrl
+	toSerialize["background"] = o.Background
 	if !IsNil(o.PolicyEngineMode) {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
@@ -434,7 +434,7 @@ func (o *FlowSet) UnmarshalJSON(data []byte) (err error) {
 		"slug",
 		"title",
 		"designation",
-		"background_url",
+		"background",
 		"export_url",
 	}
 

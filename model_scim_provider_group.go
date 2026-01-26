@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type SCIMProviderGroup struct {
 	Id         string                 `json:"id"`
 	ScimId     string                 `json:"scim_id"`
 	Group      string                 `json:"group"`
-	GroupObj   PartialGroup           `json:"group_obj"`
+	GroupObj   UserGroup              `json:"group_obj"`
 	Provider   int32                  `json:"provider"`
 	Attributes map[string]interface{} `json:"attributes"`
 }
@@ -36,7 +36,7 @@ type _SCIMProviderGroup SCIMProviderGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProviderGroup(id string, scimId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}) *SCIMProviderGroup {
+func NewSCIMProviderGroup(id string, scimId string, group string, groupObj UserGroup, provider int32, attributes map[string]interface{}) *SCIMProviderGroup {
 	this := SCIMProviderGroup{}
 	this.Id = id
 	this.ScimId = scimId
@@ -128,9 +128,9 @@ func (o *SCIMProviderGroup) SetGroup(v string) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *SCIMProviderGroup) GetGroupObj() PartialGroup {
+func (o *SCIMProviderGroup) GetGroupObj() UserGroup {
 	if o == nil {
-		var ret PartialGroup
+		var ret UserGroup
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *SCIMProviderGroup) GetGroupObj() PartialGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
+func (o *SCIMProviderGroup) GetGroupObjOk() (*UserGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *SCIMProviderGroup) GetGroupObjOk() (*PartialGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *SCIMProviderGroup) SetGroupObj(v PartialGroup) {
+func (o *SCIMProviderGroup) SetGroupObj(v UserGroup) {
 	o.GroupObj = v
 }
 

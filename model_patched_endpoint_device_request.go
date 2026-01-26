@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -13,21 +13,16 @@ package api
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the PatchedEndpointDeviceRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PatchedEndpointDeviceRequest{}
 
-// PatchedEndpointDeviceRequest struct for PatchedEndpointDeviceRequest
+// PatchedEndpointDeviceRequest Serializer for Endpoint authenticator devices
 type PatchedEndpointDeviceRequest struct {
-	DeviceUuid     *string                   `json:"device_uuid,omitempty"`
-	Name           *string                   `json:"name,omitempty"`
-	AccessGroup    NullableString            `json:"access_group,omitempty"`
-	AccessGroupObj *DeviceAccessGroupRequest `json:"access_group_obj,omitempty"`
-	Expiring       *bool                     `json:"expiring,omitempty"`
-	Expires        NullableTime              `json:"expires,omitempty"`
-	Attributes     map[string]interface{}    `json:"attributes,omitempty"`
+	Pk *string `json:"pk,omitempty"`
+	// The human-readable name of this device.
+	Name *string `json:"name,omitempty"`
 }
 
 // NewPatchedEndpointDeviceRequest instantiates a new PatchedEndpointDeviceRequest object
@@ -47,36 +42,36 @@ func NewPatchedEndpointDeviceRequestWithDefaults() *PatchedEndpointDeviceRequest
 	return &this
 }
 
-// GetDeviceUuid returns the DeviceUuid field value if set, zero value otherwise.
-func (o *PatchedEndpointDeviceRequest) GetDeviceUuid() string {
-	if o == nil || IsNil(o.DeviceUuid) {
+// GetPk returns the Pk field value if set, zero value otherwise.
+func (o *PatchedEndpointDeviceRequest) GetPk() string {
+	if o == nil || IsNil(o.Pk) {
 		var ret string
 		return ret
 	}
-	return *o.DeviceUuid
+	return *o.Pk
 }
 
-// GetDeviceUuidOk returns a tuple with the DeviceUuid field value if set, nil otherwise
+// GetPkOk returns a tuple with the Pk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEndpointDeviceRequest) GetDeviceUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.DeviceUuid) {
+func (o *PatchedEndpointDeviceRequest) GetPkOk() (*string, bool) {
+	if o == nil || IsNil(o.Pk) {
 		return nil, false
 	}
-	return o.DeviceUuid, true
+	return o.Pk, true
 }
 
-// HasDeviceUuid returns a boolean if a field has been set.
-func (o *PatchedEndpointDeviceRequest) HasDeviceUuid() bool {
-	if o != nil && !IsNil(o.DeviceUuid) {
+// HasPk returns a boolean if a field has been set.
+func (o *PatchedEndpointDeviceRequest) HasPk() bool {
+	if o != nil && !IsNil(o.Pk) {
 		return true
 	}
 
 	return false
 }
 
-// SetDeviceUuid gets a reference to the given string and assigns it to the DeviceUuid field.
-func (o *PatchedEndpointDeviceRequest) SetDeviceUuid(v string) {
-	o.DeviceUuid = &v
+// SetPk gets a reference to the given string and assigns it to the Pk field.
+func (o *PatchedEndpointDeviceRequest) SetPk(v string) {
+	o.Pk = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -111,188 +106,6 @@ func (o *PatchedEndpointDeviceRequest) SetName(v string) {
 	o.Name = &v
 }
 
-// GetAccessGroup returns the AccessGroup field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedEndpointDeviceRequest) GetAccessGroup() string {
-	if o == nil || IsNil(o.AccessGroup.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AccessGroup.Get()
-}
-
-// GetAccessGroupOk returns a tuple with the AccessGroup field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedEndpointDeviceRequest) GetAccessGroupOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AccessGroup.Get(), o.AccessGroup.IsSet()
-}
-
-// HasAccessGroup returns a boolean if a field has been set.
-func (o *PatchedEndpointDeviceRequest) HasAccessGroup() bool {
-	if o != nil && o.AccessGroup.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessGroup gets a reference to the given NullableString and assigns it to the AccessGroup field.
-func (o *PatchedEndpointDeviceRequest) SetAccessGroup(v string) {
-	o.AccessGroup.Set(&v)
-}
-
-// SetAccessGroupNil sets the value for AccessGroup to be an explicit nil
-func (o *PatchedEndpointDeviceRequest) SetAccessGroupNil() {
-	o.AccessGroup.Set(nil)
-}
-
-// UnsetAccessGroup ensures that no value is present for AccessGroup, not even an explicit nil
-func (o *PatchedEndpointDeviceRequest) UnsetAccessGroup() {
-	o.AccessGroup.Unset()
-}
-
-// GetAccessGroupObj returns the AccessGroupObj field value if set, zero value otherwise.
-func (o *PatchedEndpointDeviceRequest) GetAccessGroupObj() DeviceAccessGroupRequest {
-	if o == nil || IsNil(o.AccessGroupObj) {
-		var ret DeviceAccessGroupRequest
-		return ret
-	}
-	return *o.AccessGroupObj
-}
-
-// GetAccessGroupObjOk returns a tuple with the AccessGroupObj field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedEndpointDeviceRequest) GetAccessGroupObjOk() (*DeviceAccessGroupRequest, bool) {
-	if o == nil || IsNil(o.AccessGroupObj) {
-		return nil, false
-	}
-	return o.AccessGroupObj, true
-}
-
-// HasAccessGroupObj returns a boolean if a field has been set.
-func (o *PatchedEndpointDeviceRequest) HasAccessGroupObj() bool {
-	if o != nil && !IsNil(o.AccessGroupObj) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessGroupObj gets a reference to the given DeviceAccessGroupRequest and assigns it to the AccessGroupObj field.
-func (o *PatchedEndpointDeviceRequest) SetAccessGroupObj(v DeviceAccessGroupRequest) {
-	o.AccessGroupObj = &v
-}
-
-// GetExpiring returns the Expiring field value if set, zero value otherwise.
-func (o *PatchedEndpointDeviceRequest) GetExpiring() bool {
-	if o == nil || IsNil(o.Expiring) {
-		var ret bool
-		return ret
-	}
-	return *o.Expiring
-}
-
-// GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedEndpointDeviceRequest) GetExpiringOk() (*bool, bool) {
-	if o == nil || IsNil(o.Expiring) {
-		return nil, false
-	}
-	return o.Expiring, true
-}
-
-// HasExpiring returns a boolean if a field has been set.
-func (o *PatchedEndpointDeviceRequest) HasExpiring() bool {
-	if o != nil && !IsNil(o.Expiring) {
-		return true
-	}
-
-	return false
-}
-
-// SetExpiring gets a reference to the given bool and assigns it to the Expiring field.
-func (o *PatchedEndpointDeviceRequest) SetExpiring(v bool) {
-	o.Expiring = &v
-}
-
-// GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchedEndpointDeviceRequest) GetExpires() time.Time {
-	if o == nil || IsNil(o.Expires.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Expires.Get()
-}
-
-// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchedEndpointDeviceRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Expires.Get(), o.Expires.IsSet()
-}
-
-// HasExpires returns a boolean if a field has been set.
-func (o *PatchedEndpointDeviceRequest) HasExpires() bool {
-	if o != nil && o.Expires.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetExpires gets a reference to the given NullableTime and assigns it to the Expires field.
-func (o *PatchedEndpointDeviceRequest) SetExpires(v time.Time) {
-	o.Expires.Set(&v)
-}
-
-// SetExpiresNil sets the value for Expires to be an explicit nil
-func (o *PatchedEndpointDeviceRequest) SetExpiresNil() {
-	o.Expires.Set(nil)
-}
-
-// UnsetExpires ensures that no value is present for Expires, not even an explicit nil
-func (o *PatchedEndpointDeviceRequest) UnsetExpires() {
-	o.Expires.Unset()
-}
-
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *PatchedEndpointDeviceRequest) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedEndpointDeviceRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
-	}
-	return o.Attributes, true
-}
-
-// HasAttributes returns a boolean if a field has been set.
-func (o *PatchedEndpointDeviceRequest) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
-		return true
-	}
-
-	return false
-}
-
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *PatchedEndpointDeviceRequest) SetAttributes(v map[string]interface{}) {
-	o.Attributes = v
-}
-
 func (o PatchedEndpointDeviceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -303,26 +116,11 @@ func (o PatchedEndpointDeviceRequest) MarshalJSON() ([]byte, error) {
 
 func (o PatchedEndpointDeviceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DeviceUuid) {
-		toSerialize["device_uuid"] = o.DeviceUuid
+	if !IsNil(o.Pk) {
+		toSerialize["pk"] = o.Pk
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
-	}
-	if o.AccessGroup.IsSet() {
-		toSerialize["access_group"] = o.AccessGroup.Get()
-	}
-	if !IsNil(o.AccessGroupObj) {
-		toSerialize["access_group_obj"] = o.AccessGroupObj
-	}
-	if !IsNil(o.Expiring) {
-		toSerialize["expiring"] = o.Expiring
-	}
-	if o.Expires.IsSet() {
-		toSerialize["expires"] = o.Expires.Get()
-	}
-	if !IsNil(o.Attributes) {
-		toSerialize["attributes"] = o.Attributes
 	}
 	return toSerialize, nil
 }

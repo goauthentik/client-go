@@ -12,27 +12,19 @@ Name | Type | Description | Notes
 **SelectedStage** | Pointer to **string** |  | [optional] 
 **Webauthn** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **Duo** | Pointer to **int32** |  | [optional] 
-**Response** | **NullableString** |  | 
+**Response** | **map[string]map[string]interface{}** |  | 
 **Token** | **string** |  | 
-**UidField** | Pointer to **NullableString** |  | [optional] 
+**UidField** | **string** |  | 
 **Password** | **string** |  | 
 **CaptchaToken** | Pointer to **NullableString** |  | [optional] 
-**Passkey** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **To** | **string** |  | 
-**Id** | **int32** |  | 
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
-**Username** | Pointer to **string** |  | [optional] 
-**PhotoUrl** | Pointer to **string** |  | [optional] 
-**AuthDate** | **int32** |  | 
-**Hash** | **string** |  | 
 **RememberMe** | **bool** |  | 
 
 ## Methods
 
 ### NewFlowChallengeResponseRequest
 
-`func NewFlowChallengeResponseRequest(code string, response NullableString, token string, password string, to string, id int32, authDate int32, hash string, rememberMe bool, ) *FlowChallengeResponseRequest`
+`func NewFlowChallengeResponseRequest(code string, response map[string]map[string]interface{}, token string, uidField string, password string, to string, rememberMe bool, ) *FlowChallengeResponseRequest`
 
 NewFlowChallengeResponseRequest instantiates a new FlowChallengeResponseRequest object
 This constructor will assign default values to properties that have it defined,
@@ -244,34 +236,24 @@ HasDuo returns a boolean if a field has been set.
 
 ### GetResponse
 
-`func (o *FlowChallengeResponseRequest) GetResponse() string`
+`func (o *FlowChallengeResponseRequest) GetResponse() map[string]map[string]interface{}`
 
 GetResponse returns the Response field if non-nil, zero value otherwise.
 
 ### GetResponseOk
 
-`func (o *FlowChallengeResponseRequest) GetResponseOk() (*string, bool)`
+`func (o *FlowChallengeResponseRequest) GetResponseOk() (*map[string]map[string]interface{}, bool)`
 
 GetResponseOk returns a tuple with the Response field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResponse
 
-`func (o *FlowChallengeResponseRequest) SetResponse(v string)`
+`func (o *FlowChallengeResponseRequest) SetResponse(v map[string]map[string]interface{})`
 
 SetResponse sets Response field to given value.
 
 
-### SetResponseNil
-
-`func (o *FlowChallengeResponseRequest) SetResponseNil(b bool)`
-
- SetResponseNil sets the value for Response to be an explicit nil
-
-### UnsetResponse
-`func (o *FlowChallengeResponseRequest) UnsetResponse()`
-
-UnsetResponse ensures that no value is present for Response, not even an explicit nil
 ### GetToken
 
 `func (o *FlowChallengeResponseRequest) GetToken() string`
@@ -311,22 +293,7 @@ and a boolean to check if the value has been set.
 
 SetUidField sets UidField field to given value.
 
-### HasUidField
 
-`func (o *FlowChallengeResponseRequest) HasUidField() bool`
-
-HasUidField returns a boolean if a field has been set.
-
-### SetUidFieldNil
-
-`func (o *FlowChallengeResponseRequest) SetUidFieldNil(b bool)`
-
- SetUidFieldNil sets the value for UidField to be an explicit nil
-
-### UnsetUidField
-`func (o *FlowChallengeResponseRequest) UnsetUidField()`
-
-UnsetUidField ensures that no value is present for UidField, not even an explicit nil
 ### GetPassword
 
 `func (o *FlowChallengeResponseRequest) GetPassword() string`
@@ -382,41 +349,6 @@ HasCaptchaToken returns a boolean if a field has been set.
 `func (o *FlowChallengeResponseRequest) UnsetCaptchaToken()`
 
 UnsetCaptchaToken ensures that no value is present for CaptchaToken, not even an explicit nil
-### GetPasskey
-
-`func (o *FlowChallengeResponseRequest) GetPasskey() map[string]map[string]interface{}`
-
-GetPasskey returns the Passkey field if non-nil, zero value otherwise.
-
-### GetPasskeyOk
-
-`func (o *FlowChallengeResponseRequest) GetPasskeyOk() (*map[string]map[string]interface{}, bool)`
-
-GetPasskeyOk returns a tuple with the Passkey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPasskey
-
-`func (o *FlowChallengeResponseRequest) SetPasskey(v map[string]map[string]interface{})`
-
-SetPasskey sets Passkey field to given value.
-
-### HasPasskey
-
-`func (o *FlowChallengeResponseRequest) HasPasskey() bool`
-
-HasPasskey returns a boolean if a field has been set.
-
-### SetPasskeyNil
-
-`func (o *FlowChallengeResponseRequest) SetPasskeyNil(b bool)`
-
- SetPasskeyNil sets the value for Passkey to be an explicit nil
-
-### UnsetPasskey
-`func (o *FlowChallengeResponseRequest) UnsetPasskey()`
-
-UnsetPasskey ensures that no value is present for Passkey, not even an explicit nil
 ### GetTo
 
 `func (o *FlowChallengeResponseRequest) GetTo() string`
@@ -435,166 +367,6 @@ and a boolean to check if the value has been set.
 `func (o *FlowChallengeResponseRequest) SetTo(v string)`
 
 SetTo sets To field to given value.
-
-
-### GetId
-
-`func (o *FlowChallengeResponseRequest) GetId() int32`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *FlowChallengeResponseRequest) GetIdOk() (*int32, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *FlowChallengeResponseRequest) SetId(v int32)`
-
-SetId sets Id field to given value.
-
-
-### GetFirstName
-
-`func (o *FlowChallengeResponseRequest) GetFirstName() string`
-
-GetFirstName returns the FirstName field if non-nil, zero value otherwise.
-
-### GetFirstNameOk
-
-`func (o *FlowChallengeResponseRequest) GetFirstNameOk() (*string, bool)`
-
-GetFirstNameOk returns a tuple with the FirstName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFirstName
-
-`func (o *FlowChallengeResponseRequest) SetFirstName(v string)`
-
-SetFirstName sets FirstName field to given value.
-
-### HasFirstName
-
-`func (o *FlowChallengeResponseRequest) HasFirstName() bool`
-
-HasFirstName returns a boolean if a field has been set.
-
-### GetLastName
-
-`func (o *FlowChallengeResponseRequest) GetLastName() string`
-
-GetLastName returns the LastName field if non-nil, zero value otherwise.
-
-### GetLastNameOk
-
-`func (o *FlowChallengeResponseRequest) GetLastNameOk() (*string, bool)`
-
-GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastName
-
-`func (o *FlowChallengeResponseRequest) SetLastName(v string)`
-
-SetLastName sets LastName field to given value.
-
-### HasLastName
-
-`func (o *FlowChallengeResponseRequest) HasLastName() bool`
-
-HasLastName returns a boolean if a field has been set.
-
-### GetUsername
-
-`func (o *FlowChallengeResponseRequest) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *FlowChallengeResponseRequest) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *FlowChallengeResponseRequest) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *FlowChallengeResponseRequest) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
-
-### GetPhotoUrl
-
-`func (o *FlowChallengeResponseRequest) GetPhotoUrl() string`
-
-GetPhotoUrl returns the PhotoUrl field if non-nil, zero value otherwise.
-
-### GetPhotoUrlOk
-
-`func (o *FlowChallengeResponseRequest) GetPhotoUrlOk() (*string, bool)`
-
-GetPhotoUrlOk returns a tuple with the PhotoUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPhotoUrl
-
-`func (o *FlowChallengeResponseRequest) SetPhotoUrl(v string)`
-
-SetPhotoUrl sets PhotoUrl field to given value.
-
-### HasPhotoUrl
-
-`func (o *FlowChallengeResponseRequest) HasPhotoUrl() bool`
-
-HasPhotoUrl returns a boolean if a field has been set.
-
-### GetAuthDate
-
-`func (o *FlowChallengeResponseRequest) GetAuthDate() int32`
-
-GetAuthDate returns the AuthDate field if non-nil, zero value otherwise.
-
-### GetAuthDateOk
-
-`func (o *FlowChallengeResponseRequest) GetAuthDateOk() (*int32, bool)`
-
-GetAuthDateOk returns a tuple with the AuthDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthDate
-
-`func (o *FlowChallengeResponseRequest) SetAuthDate(v int32)`
-
-SetAuthDate sets AuthDate field to given value.
-
-
-### GetHash
-
-`func (o *FlowChallengeResponseRequest) GetHash() string`
-
-GetHash returns the Hash field if non-nil, zero value otherwise.
-
-### GetHashOk
-
-`func (o *FlowChallengeResponseRequest) GetHashOk() (*string, bool)`
-
-GetHashOk returns a tuple with the Hash field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHash
-
-`func (o *FlowChallengeResponseRequest) SetHash(v string)`
-
-SetHash sets Hash field to given value.
 
 
 ### GetRememberMe

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -26,10 +26,8 @@ type PatchedFlowRequest struct {
 	// Shown as the Title in Flow pages.
 	Title *string `json:"title,omitempty"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
-	Designation *FlowDesignationEnum `json:"designation,omitempty"`
-	// Background shown during execution
-	Background       *string           `json:"background,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
+	Designation      *FlowDesignationEnum `json:"designation,omitempty"`
+	PolicyEngineMode *PolicyEngineMode    `json:"policy_engine_mode,omitempty"`
 	// Enable compatibility mode, increases compatibility with password managers on mobile devices.
 	CompatibilityMode *bool           `json:"compatibility_mode,omitempty"`
 	Layout            *FlowLayoutEnum `json:"layout,omitempty"`
@@ -182,38 +180,6 @@ func (o *PatchedFlowRequest) HasDesignation() bool {
 // SetDesignation gets a reference to the given FlowDesignationEnum and assigns it to the Designation field.
 func (o *PatchedFlowRequest) SetDesignation(v FlowDesignationEnum) {
 	o.Designation = &v
-}
-
-// GetBackground returns the Background field value if set, zero value otherwise.
-func (o *PatchedFlowRequest) GetBackground() string {
-	if o == nil || IsNil(o.Background) {
-		var ret string
-		return ret
-	}
-	return *o.Background
-}
-
-// GetBackgroundOk returns a tuple with the Background field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedFlowRequest) GetBackgroundOk() (*string, bool) {
-	if o == nil || IsNil(o.Background) {
-		return nil, false
-	}
-	return o.Background, true
-}
-
-// HasBackground returns a boolean if a field has been set.
-func (o *PatchedFlowRequest) HasBackground() bool {
-	if o != nil && !IsNil(o.Background) {
-		return true
-	}
-
-	return false
-}
-
-// SetBackground gets a reference to the given string and assigns it to the Background field.
-func (o *PatchedFlowRequest) SetBackground(v string) {
-	o.Background = &v
 }
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
@@ -397,9 +363,6 @@ func (o PatchedFlowRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Designation) {
 		toSerialize["designation"] = o.Designation
-	}
-	if !IsNil(o.Background) {
-		toSerialize["background"] = o.Background
 	}
 	if !IsNil(o.PolicyEngineMode) {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode

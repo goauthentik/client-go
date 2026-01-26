@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Name** | **string** | Source&#39;s display Name. | 
 **Slug** | **string** | Internal source name, used in URLs. | 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**Promoted** | Pointer to **bool** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
@@ -15,14 +14,12 @@ Name | Type | Description | Notes
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | Pointer to **string** |  | [optional] 
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ProviderType** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
 **AccessTokenUrl** | Pointer to **NullableString** | URL used by authentik to retrieve tokens. | [optional] 
 **ProfileUrl** | Pointer to **NullableString** | URL used by authentik to get user information. | [optional] 
-**Pkce** | Pointer to [**PKCEMethodEnum**](PKCEMethodEnum.md) |  | [optional] 
 **ConsumerKey** | **string** |  | 
 **ConsumerSecret** | **string** |  | 
 **AdditionalScopes** | Pointer to **string** |  | [optional] 
@@ -114,31 +111,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *OAuthSourceRequest) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
-### GetPromoted
-
-`func (o *OAuthSourceRequest) GetPromoted() bool`
-
-GetPromoted returns the Promoted field if non-nil, zero value otherwise.
-
-### GetPromotedOk
-
-`func (o *OAuthSourceRequest) GetPromotedOk() (*bool, bool)`
-
-GetPromotedOk returns a tuple with the Promoted field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPromoted
-
-`func (o *OAuthSourceRequest) SetPromoted(v bool)`
-
-SetPromoted sets Promoted field to given value.
-
-### HasPromoted
-
-`func (o *OAuthSourceRequest) HasPromoted() bool`
-
-HasPromoted returns a boolean if a field has been set.
 
 ### GetAuthenticationFlow
 
@@ -335,31 +307,6 @@ SetUserPathTemplate sets UserPathTemplate field to given value.
 
 HasUserPathTemplate returns a boolean if a field has been set.
 
-### GetIcon
-
-`func (o *OAuthSourceRequest) GetIcon() string`
-
-GetIcon returns the Icon field if non-nil, zero value otherwise.
-
-### GetIconOk
-
-`func (o *OAuthSourceRequest) GetIconOk() (*string, bool)`
-
-GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIcon
-
-`func (o *OAuthSourceRequest) SetIcon(v string)`
-
-SetIcon sets Icon field to given value.
-
-### HasIcon
-
-`func (o *OAuthSourceRequest) HasIcon() bool`
-
-HasIcon returns a boolean if a field has been set.
-
 ### GetGroupMatchingMode
 
 `func (o *OAuthSourceRequest) GetGroupMatchingMode() GroupMatchingModeEnum`
@@ -545,31 +492,6 @@ HasProfileUrl returns a boolean if a field has been set.
 `func (o *OAuthSourceRequest) UnsetProfileUrl()`
 
 UnsetProfileUrl ensures that no value is present for ProfileUrl, not even an explicit nil
-### GetPkce
-
-`func (o *OAuthSourceRequest) GetPkce() PKCEMethodEnum`
-
-GetPkce returns the Pkce field if non-nil, zero value otherwise.
-
-### GetPkceOk
-
-`func (o *OAuthSourceRequest) GetPkceOk() (*PKCEMethodEnum, bool)`
-
-GetPkceOk returns a tuple with the Pkce field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPkce
-
-`func (o *OAuthSourceRequest) SetPkce(v PKCEMethodEnum)`
-
-SetPkce sets Pkce field to given value.
-
-### HasPkce
-
-`func (o *OAuthSourceRequest) HasPkce() bool`
-
-HasPkce returns a boolean if a field has been set.
-
 ### GetConsumerKey
 
 `func (o *OAuthSourceRequest) GetConsumerKey() string`

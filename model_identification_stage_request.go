@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -22,7 +22,8 @@ var _ MappedNullable = &IdentificationStageRequest{}
 
 // IdentificationStageRequest IdentificationStage Serializer
 type IdentificationStageRequest struct {
-	Name string `json:"name"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Fields of the user object to match against. (Hold shift to select multiple options)
 	UserFields []UserFieldsEnum `json:"user_fields,omitempty"`
 	// When set, shows a password field, instead of showing the password field as separate step.
@@ -46,8 +47,6 @@ type IdentificationStageRequest struct {
 	PretendUserExists *bool `json:"pretend_user_exists,omitempty"`
 	// Show the user the 'Remember me on this device' toggle, allowing repeat users to skip straight to entering their password.
 	EnableRememberMe *bool `json:"enable_remember_me,omitempty"`
-	// When set, and conditional WebAuthn is available, allow the user to use their passkey as a first factor.
-	WebauthnStage NullableString `json:"webauthn_stage,omitempty"`
 }
 
 type _IdentificationStageRequest IdentificationStageRequest
@@ -92,6 +91,38 @@ func (o *IdentificationStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *IdentificationStageRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *IdentificationStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentificationStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *IdentificationStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *IdentificationStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetUserFields returns the UserFields field value if set, zero value otherwise.
@@ -533,49 +564,6 @@ func (o *IdentificationStageRequest) SetEnableRememberMe(v bool) {
 	o.EnableRememberMe = &v
 }
 
-// GetWebauthnStage returns the WebauthnStage field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IdentificationStageRequest) GetWebauthnStage() string {
-	if o == nil || IsNil(o.WebauthnStage.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.WebauthnStage.Get()
-}
-
-// GetWebauthnStageOk returns a tuple with the WebauthnStage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IdentificationStageRequest) GetWebauthnStageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.WebauthnStage.Get(), o.WebauthnStage.IsSet()
-}
-
-// HasWebauthnStage returns a boolean if a field has been set.
-func (o *IdentificationStageRequest) HasWebauthnStage() bool {
-	if o != nil && o.WebauthnStage.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetWebauthnStage gets a reference to the given NullableString and assigns it to the WebauthnStage field.
-func (o *IdentificationStageRequest) SetWebauthnStage(v string) {
-	o.WebauthnStage.Set(&v)
-}
-
-// SetWebauthnStageNil sets the value for WebauthnStage to be an explicit nil
-func (o *IdentificationStageRequest) SetWebauthnStageNil() {
-	o.WebauthnStage.Set(nil)
-}
-
-// UnsetWebauthnStage ensures that no value is present for WebauthnStage, not even an explicit nil
-func (o *IdentificationStageRequest) UnsetWebauthnStage() {
-	o.WebauthnStage.Unset()
-}
-
 func (o IdentificationStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -587,6 +575,9 @@ func (o IdentificationStageRequest) MarshalJSON() ([]byte, error) {
 func (o IdentificationStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.UserFields) {
 		toSerialize["user_fields"] = o.UserFields
 	}
@@ -622,9 +613,6 @@ func (o IdentificationStageRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableRememberMe) {
 		toSerialize["enable_remember_me"] = o.EnableRememberMe
-	}
-	if o.WebauthnStage.IsSet() {
-		toSerialize["webauthn_stage"] = o.WebauthnStage.Get()
 	}
 	return toSerialize, nil
 }

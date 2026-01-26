@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -25,8 +25,6 @@ type PatchedSAMLSourceRequest struct {
 	// Internal source name, used in URLs.
 	Slug    *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool   `json:"enabled,omitempty"`
-	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
-	Promoted *bool `json:"promoted,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
@@ -37,7 +35,6 @@ type PatchedSAMLSourceRequest struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	UserPathTemplate *string               `json:"user_path_template,omitempty"`
-	Icon             *string               `json:"icon,omitempty"`
 	// How the source determines if an existing group should be used or a new group created.
 	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	// Flow used before authentication.
@@ -62,9 +59,7 @@ type PatchedSAMLSourceRequest struct {
 	// Time offset when temporary users should be deleted. This only applies if your IDP uses the NameID Format 'transient', and the user doesn't log out manually. (Format: hours=1;minutes=2;seconds=3).
 	TemporaryUserDeleteAfter *string `json:"temporary_user_delete_after,omitempty"`
 	// When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
-	EncryptionKp    NullableString `json:"encryption_kp,omitempty"`
-	SignedAssertion *bool          `json:"signed_assertion,omitempty"`
-	SignedResponse  *bool          `json:"signed_response,omitempty"`
+	EncryptionKp NullableString `json:"encryption_kp,omitempty"`
 }
 
 // NewPatchedSAMLSourceRequest instantiates a new PatchedSAMLSourceRequest object
@@ -178,38 +173,6 @@ func (o *PatchedSAMLSourceRequest) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *PatchedSAMLSourceRequest) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetPromoted returns the Promoted field value if set, zero value otherwise.
-func (o *PatchedSAMLSourceRequest) GetPromoted() bool {
-	if o == nil || IsNil(o.Promoted) {
-		var ret bool
-		return ret
-	}
-	return *o.Promoted
-}
-
-// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSAMLSourceRequest) GetPromotedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Promoted) {
-		return nil, false
-	}
-	return o.Promoted, true
-}
-
-// HasPromoted returns a boolean if a field has been set.
-func (o *PatchedSAMLSourceRequest) HasPromoted() bool {
-	if o != nil && !IsNil(o.Promoted) {
-		return true
-	}
-
-	return false
-}
-
-// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
-func (o *PatchedSAMLSourceRequest) SetPromoted(v bool) {
-	o.Promoted = &v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -456,38 +419,6 @@ func (o *PatchedSAMLSourceRequest) HasUserPathTemplate() bool {
 // SetUserPathTemplate gets a reference to the given string and assigns it to the UserPathTemplate field.
 func (o *PatchedSAMLSourceRequest) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
-}
-
-// GetIcon returns the Icon field value if set, zero value otherwise.
-func (o *PatchedSAMLSourceRequest) GetIcon() string {
-	if o == nil || IsNil(o.Icon) {
-		var ret string
-		return ret
-	}
-	return *o.Icon
-}
-
-// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSAMLSourceRequest) GetIconOk() (*string, bool) {
-	if o == nil || IsNil(o.Icon) {
-		return nil, false
-	}
-	return o.Icon, true
-}
-
-// HasIcon returns a boolean if a field has been set.
-func (o *PatchedSAMLSourceRequest) HasIcon() bool {
-	if o != nil && !IsNil(o.Icon) {
-		return true
-	}
-
-	return false
-}
-
-// SetIcon gets a reference to the given string and assigns it to the Icon field.
-func (o *PatchedSAMLSourceRequest) SetIcon(v string) {
-	o.Icon = &v
 }
 
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
@@ -982,70 +913,6 @@ func (o *PatchedSAMLSourceRequest) UnsetEncryptionKp() {
 	o.EncryptionKp.Unset()
 }
 
-// GetSignedAssertion returns the SignedAssertion field value if set, zero value otherwise.
-func (o *PatchedSAMLSourceRequest) GetSignedAssertion() bool {
-	if o == nil || IsNil(o.SignedAssertion) {
-		var ret bool
-		return ret
-	}
-	return *o.SignedAssertion
-}
-
-// GetSignedAssertionOk returns a tuple with the SignedAssertion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSAMLSourceRequest) GetSignedAssertionOk() (*bool, bool) {
-	if o == nil || IsNil(o.SignedAssertion) {
-		return nil, false
-	}
-	return o.SignedAssertion, true
-}
-
-// HasSignedAssertion returns a boolean if a field has been set.
-func (o *PatchedSAMLSourceRequest) HasSignedAssertion() bool {
-	if o != nil && !IsNil(o.SignedAssertion) {
-		return true
-	}
-
-	return false
-}
-
-// SetSignedAssertion gets a reference to the given bool and assigns it to the SignedAssertion field.
-func (o *PatchedSAMLSourceRequest) SetSignedAssertion(v bool) {
-	o.SignedAssertion = &v
-}
-
-// GetSignedResponse returns the SignedResponse field value if set, zero value otherwise.
-func (o *PatchedSAMLSourceRequest) GetSignedResponse() bool {
-	if o == nil || IsNil(o.SignedResponse) {
-		var ret bool
-		return ret
-	}
-	return *o.SignedResponse
-}
-
-// GetSignedResponseOk returns a tuple with the SignedResponse field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSAMLSourceRequest) GetSignedResponseOk() (*bool, bool) {
-	if o == nil || IsNil(o.SignedResponse) {
-		return nil, false
-	}
-	return o.SignedResponse, true
-}
-
-// HasSignedResponse returns a boolean if a field has been set.
-func (o *PatchedSAMLSourceRequest) HasSignedResponse() bool {
-	if o != nil && !IsNil(o.SignedResponse) {
-		return true
-	}
-
-	return false
-}
-
-// SetSignedResponse gets a reference to the given bool and assigns it to the SignedResponse field.
-func (o *PatchedSAMLSourceRequest) SetSignedResponse(v bool) {
-	o.SignedResponse = &v
-}
-
 func (o PatchedSAMLSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1064,9 +931,6 @@ func (o PatchedSAMLSourceRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Promoted) {
-		toSerialize["promoted"] = o.Promoted
 	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
@@ -1088,9 +952,6 @@ func (o PatchedSAMLSourceRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
-	}
-	if !IsNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
 	}
 	if !IsNil(o.GroupMatchingMode) {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode
@@ -1133,12 +994,6 @@ func (o PatchedSAMLSourceRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.EncryptionKp.IsSet() {
 		toSerialize["encryption_kp"] = o.EncryptionKp.Get()
-	}
-	if !IsNil(o.SignedAssertion) {
-		toSerialize["signed_assertion"] = o.SignedAssertion
-	}
-	if !IsNil(o.SignedResponse) {
-		toSerialize["signed_response"] = o.SignedResponse
 	}
 	return toSerialize, nil
 }

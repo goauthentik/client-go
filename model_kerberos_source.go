@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -28,8 +28,6 @@ type KerberosSource struct {
 	// Internal source name, used in URLs.
 	Slug    string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool  `json:"enabled,omitempty"`
-	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
-	Promoted *bool `json:"promoted,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
@@ -50,8 +48,7 @@ type KerberosSource struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
 	Managed          NullableString `json:"managed"`
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	Icon             *string        `json:"icon,omitempty"`
-	IconUrl          string         `json:"icon_url"`
+	Icon             string         `json:"icon"`
 	// How the source determines if an existing group should be used or a new group created.
 	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	// Kerberos realm
@@ -76,8 +73,6 @@ type KerberosSource struct {
 	SpnegoCcache *string `json:"spnego_ccache,omitempty"`
 	// If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend
 	PasswordLoginUpdateInternalPassword *bool `json:"password_login_update_internal_password,omitempty"`
-	// When to trigger sync for outgoing providers
-	SyncOutgoingTriggerMode *SyncOutgoingTriggerModeEnum `json:"sync_outgoing_trigger_mode,omitempty"`
 }
 
 type _KerberosSource KerberosSource
@@ -86,7 +81,7 @@ type _KerberosSource KerberosSource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKerberosSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, realm string, connectivity map[string]string) *KerberosSource {
+func NewKerberosSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon string, realm string, connectivity map[string]string) *KerberosSource {
 	this := KerberosSource{}
 	this.Pk = pk
 	this.Name = name
@@ -96,7 +91,7 @@ func NewKerberosSource(pk string, name string, slug string, component string, ve
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.Managed = managed
-	this.IconUrl = iconUrl
+	this.Icon = icon
 	this.Realm = realm
 	this.Connectivity = connectivity
 	return &this
@@ -212,38 +207,6 @@ func (o *KerberosSource) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *KerberosSource) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetPromoted returns the Promoted field value if set, zero value otherwise.
-func (o *KerberosSource) GetPromoted() bool {
-	if o == nil || IsNil(o.Promoted) {
-		var ret bool
-		return ret
-	}
-	return *o.Promoted
-}
-
-// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KerberosSource) GetPromotedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Promoted) {
-		return nil, false
-	}
-	return o.Promoted, true
-}
-
-// HasPromoted returns a boolean if a field has been set.
-func (o *KerberosSource) HasPromoted() bool {
-	if o != nil && !IsNil(o.Promoted) {
-		return true
-	}
-
-	return false
-}
-
-// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
-func (o *KerberosSource) SetPromoted(v bool) {
-	o.Promoted = &v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -614,60 +577,28 @@ func (o *KerberosSource) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
 }
 
-// GetIcon returns the Icon field value if set, zero value otherwise.
+// GetIcon returns the Icon field value
 func (o *KerberosSource) GetIcon() string {
-	if o == nil || IsNil(o.Icon) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Icon
+
+	return o.Icon
 }
 
-// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// GetIconOk returns a tuple with the Icon field value
 // and a boolean to check if the value has been set.
 func (o *KerberosSource) GetIconOk() (*string, bool) {
-	if o == nil || IsNil(o.Icon) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Icon, true
+	return &o.Icon, true
 }
 
-// HasIcon returns a boolean if a field has been set.
-func (o *KerberosSource) HasIcon() bool {
-	if o != nil && !IsNil(o.Icon) {
-		return true
-	}
-
-	return false
-}
-
-// SetIcon gets a reference to the given string and assigns it to the Icon field.
+// SetIcon sets field value
 func (o *KerberosSource) SetIcon(v string) {
-	o.Icon = &v
-}
-
-// GetIconUrl returns the IconUrl field value
-func (o *KerberosSource) GetIconUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.IconUrl
-}
-
-// GetIconUrlOk returns a tuple with the IconUrl field value
-// and a boolean to check if the value has been set.
-func (o *KerberosSource) GetIconUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IconUrl, true
-}
-
-// SetIconUrl sets field value
-func (o *KerberosSource) SetIconUrl(v string) {
-	o.IconUrl = v
+	o.Icon = v
 }
 
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
@@ -1040,38 +971,6 @@ func (o *KerberosSource) SetPasswordLoginUpdateInternalPassword(v bool) {
 	o.PasswordLoginUpdateInternalPassword = &v
 }
 
-// GetSyncOutgoingTriggerMode returns the SyncOutgoingTriggerMode field value if set, zero value otherwise.
-func (o *KerberosSource) GetSyncOutgoingTriggerMode() SyncOutgoingTriggerModeEnum {
-	if o == nil || IsNil(o.SyncOutgoingTriggerMode) {
-		var ret SyncOutgoingTriggerModeEnum
-		return ret
-	}
-	return *o.SyncOutgoingTriggerMode
-}
-
-// GetSyncOutgoingTriggerModeOk returns a tuple with the SyncOutgoingTriggerMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KerberosSource) GetSyncOutgoingTriggerModeOk() (*SyncOutgoingTriggerModeEnum, bool) {
-	if o == nil || IsNil(o.SyncOutgoingTriggerMode) {
-		return nil, false
-	}
-	return o.SyncOutgoingTriggerMode, true
-}
-
-// HasSyncOutgoingTriggerMode returns a boolean if a field has been set.
-func (o *KerberosSource) HasSyncOutgoingTriggerMode() bool {
-	if o != nil && !IsNil(o.SyncOutgoingTriggerMode) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncOutgoingTriggerMode gets a reference to the given SyncOutgoingTriggerModeEnum and assigns it to the SyncOutgoingTriggerMode field.
-func (o *KerberosSource) SetSyncOutgoingTriggerMode(v SyncOutgoingTriggerModeEnum) {
-	o.SyncOutgoingTriggerMode = &v
-}
-
 func (o KerberosSource) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1087,9 +986,6 @@ func (o KerberosSource) ToMap() (map[string]interface{}, error) {
 	toSerialize["slug"] = o.Slug
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Promoted) {
-		toSerialize["promoted"] = o.Promoted
 	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
@@ -1117,10 +1013,7 @@ func (o KerberosSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if !IsNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
-	toSerialize["icon_url"] = o.IconUrl
+	toSerialize["icon"] = o.Icon
 	if !IsNil(o.GroupMatchingMode) {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
@@ -1155,9 +1048,6 @@ func (o KerberosSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PasswordLoginUpdateInternalPassword) {
 		toSerialize["password_login_update_internal_password"] = o.PasswordLoginUpdateInternalPassword
 	}
-	if !IsNil(o.SyncOutgoingTriggerMode) {
-		toSerialize["sync_outgoing_trigger_mode"] = o.SyncOutgoingTriggerMode
-	}
 	return toSerialize, nil
 }
 
@@ -1174,7 +1064,7 @@ func (o *KerberosSource) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name_plural",
 		"meta_model_name",
 		"managed",
-		"icon_url",
+		"icon",
 		"realm",
 		"connectivity",
 	}

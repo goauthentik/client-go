@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -2886,6 +2886,251 @@ func (a *FlowsAPIService) FlowsInstancesRetrieveExecute(r ApiFlowsInstancesRetri
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiFlowsInstancesSetBackgroundCreateRequest struct {
+	ctx        context.Context
+	ApiService *FlowsAPIService
+	slug       string
+	file       *os.File
+	clear      *bool
+}
+
+func (r ApiFlowsInstancesSetBackgroundCreateRequest) File(file *os.File) ApiFlowsInstancesSetBackgroundCreateRequest {
+	r.file = file
+	return r
+}
+
+func (r ApiFlowsInstancesSetBackgroundCreateRequest) Clear(clear bool) ApiFlowsInstancesSetBackgroundCreateRequest {
+	r.clear = &clear
+	return r
+}
+
+func (r ApiFlowsInstancesSetBackgroundCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.FlowsInstancesSetBackgroundCreateExecute(r)
+}
+
+/*
+FlowsInstancesSetBackgroundCreate Method for FlowsInstancesSetBackgroundCreate
+
+Set Flow background
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesSetBackgroundCreateRequest
+*/
+func (a *FlowsAPIService) FlowsInstancesSetBackgroundCreate(ctx context.Context, slug string) ApiFlowsInstancesSetBackgroundCreateRequest {
+	return ApiFlowsInstancesSetBackgroundCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		slug:       slug,
+	}
+}
+
+// Execute executes the request
+func (a *FlowsAPIService) FlowsInstancesSetBackgroundCreateExecute(r ApiFlowsInstancesSetBackgroundCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsAPIService.FlowsInstancesSetBackgroundCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/flows/instances/{slug}/set_background/"
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName string
+	var fileLocalVarFileBytes []byte
+
+	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
+
+	if fileLocalVarFile != nil {
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	}
+	if r.clear != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "clear", r.clear, "", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiFlowsInstancesSetBackgroundUrlCreateRequest struct {
+	ctx             context.Context
+	ApiService      *FlowsAPIService
+	slug            string
+	filePathRequest *FilePathRequest
+}
+
+func (r ApiFlowsInstancesSetBackgroundUrlCreateRequest) FilePathRequest(filePathRequest FilePathRequest) ApiFlowsInstancesSetBackgroundUrlCreateRequest {
+	r.filePathRequest = &filePathRequest
+	return r
+}
+
+func (r ApiFlowsInstancesSetBackgroundUrlCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.FlowsInstancesSetBackgroundUrlCreateExecute(r)
+}
+
+/*
+FlowsInstancesSetBackgroundUrlCreate Method for FlowsInstancesSetBackgroundUrlCreate
+
+Set Flow background (as URL)
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param slug
+	@return ApiFlowsInstancesSetBackgroundUrlCreateRequest
+*/
+func (a *FlowsAPIService) FlowsInstancesSetBackgroundUrlCreate(ctx context.Context, slug string) ApiFlowsInstancesSetBackgroundUrlCreateRequest {
+	return ApiFlowsInstancesSetBackgroundUrlCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		slug:       slug,
+	}
+}
+
+// Execute executes the request
+func (a *FlowsAPIService) FlowsInstancesSetBackgroundUrlCreateExecute(r ApiFlowsInstancesSetBackgroundUrlCreateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlowsAPIService.FlowsInstancesSetBackgroundUrlCreate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/flows/instances/{slug}/set_background_url/"
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.filePathRequest == nil {
+		return nil, reportError("filePathRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.filePathRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiFlowsInstancesUpdateRequest struct {

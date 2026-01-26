@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **ExternalId** | **string** |  | 
 **Group** | **string** |  | 
-**GroupObj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] 
+**GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Source** | **string** |  | 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMSourceGroup
 
-`func NewSCIMSourceGroup(externalId string, group string, groupObj PartialGroup, source string, ) *SCIMSourceGroup`
+`func NewSCIMSourceGroup(externalId string, group string, groupObj UserGroup, source string, ) *SCIMSourceGroup`
 
 NewSCIMSourceGroup instantiates a new SCIMSourceGroup object
 This constructor will assign default values to properties that have it defined,
@@ -97,20 +97,20 @@ SetGroup sets Group field to given value.
 
 ### GetGroupObj
 
-`func (o *SCIMSourceGroup) GetGroupObj() PartialGroup`
+`func (o *SCIMSourceGroup) GetGroupObj() UserGroup`
 
 GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
 ### GetGroupObjOk
 
-`func (o *SCIMSourceGroup) GetGroupObjOk() (*PartialGroup, bool)`
+`func (o *SCIMSourceGroup) GetGroupObjOk() (*UserGroup, bool)`
 
 GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupObj
 
-`func (o *SCIMSourceGroup) SetGroupObj(v PartialGroup)`
+`func (o *SCIMSourceGroup) SetGroupObj(v UserGroup)`
 
 SetGroupObj sets GroupObj field to given value.
 

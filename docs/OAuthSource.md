@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Name** | **string** | Source&#39;s display Name. | 
 **Slug** | **string** | Internal source name, used in URLs. | 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**Promoted** | Pointer to **bool** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
@@ -21,15 +20,13 @@ Name | Type | Description | Notes
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | Pointer to **string** |  | [optional] 
-**IconUrl** | **NullableString** |  | [readonly] 
+**Icon** | **NullableString** |  | [readonly] 
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ProviderType** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
 **AuthorizationUrl** | Pointer to **NullableString** | URL the user is redirect to to conest the flow. | [optional] 
 **AccessTokenUrl** | Pointer to **NullableString** | URL used by authentik to retrieve tokens. | [optional] 
 **ProfileUrl** | Pointer to **NullableString** | URL used by authentik to get user information. | [optional] 
-**Pkce** | Pointer to [**PKCEMethodEnum**](PKCEMethodEnum.md) |  | [optional] 
 **ConsumerKey** | **string** |  | 
 **CallbackUrl** | **string** | Get OAuth Callback URL | [readonly] 
 **AdditionalScopes** | Pointer to **string** |  | [optional] 
@@ -43,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewOAuthSource
 
-`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType, ) *OAuthSource`
+`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType, ) *OAuthSource`
 
 NewOAuthSource instantiates a new OAuthSource object
 This constructor will assign default values to properties that have it defined,
@@ -142,31 +139,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *OAuthSource) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
-### GetPromoted
-
-`func (o *OAuthSource) GetPromoted() bool`
-
-GetPromoted returns the Promoted field if non-nil, zero value otherwise.
-
-### GetPromotedOk
-
-`func (o *OAuthSource) GetPromotedOk() (*bool, bool)`
-
-GetPromotedOk returns a tuple with the Promoted field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPromoted
-
-`func (o *OAuthSource) SetPromoted(v bool)`
-
-SetPromoted sets Promoted field to given value.
-
-### HasPromoted
-
-`func (o *OAuthSource) HasPromoted() bool`
-
-HasPromoted returns a boolean if a field has been set.
 
 ### GetAuthenticationFlow
 
@@ -492,42 +464,17 @@ and a boolean to check if the value has been set.
 
 SetIcon sets Icon field to given value.
 
-### HasIcon
 
-`func (o *OAuthSource) HasIcon() bool`
+### SetIconNil
 
-HasIcon returns a boolean if a field has been set.
+`func (o *OAuthSource) SetIconNil(b bool)`
 
-### GetIconUrl
+ SetIconNil sets the value for Icon to be an explicit nil
 
-`func (o *OAuthSource) GetIconUrl() string`
+### UnsetIcon
+`func (o *OAuthSource) UnsetIcon()`
 
-GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
-
-### GetIconUrlOk
-
-`func (o *OAuthSource) GetIconUrlOk() (*string, bool)`
-
-GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIconUrl
-
-`func (o *OAuthSource) SetIconUrl(v string)`
-
-SetIconUrl sets IconUrl field to given value.
-
-
-### SetIconUrlNil
-
-`func (o *OAuthSource) SetIconUrlNil(b bool)`
-
- SetIconUrlNil sets the value for IconUrl to be an explicit nil
-
-### UnsetIconUrl
-`func (o *OAuthSource) UnsetIconUrl()`
-
-UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
+UnsetIcon ensures that no value is present for Icon, not even an explicit nil
 ### GetGroupMatchingMode
 
 `func (o *OAuthSource) GetGroupMatchingMode() GroupMatchingModeEnum`
@@ -713,31 +660,6 @@ HasProfileUrl returns a boolean if a field has been set.
 `func (o *OAuthSource) UnsetProfileUrl()`
 
 UnsetProfileUrl ensures that no value is present for ProfileUrl, not even an explicit nil
-### GetPkce
-
-`func (o *OAuthSource) GetPkce() PKCEMethodEnum`
-
-GetPkce returns the Pkce field if non-nil, zero value otherwise.
-
-### GetPkceOk
-
-`func (o *OAuthSource) GetPkceOk() (*PKCEMethodEnum, bool)`
-
-GetPkceOk returns a tuple with the Pkce field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPkce
-
-`func (o *OAuthSource) SetPkce(v PKCEMethodEnum)`
-
-SetPkce sets Pkce field to given value.
-
-### HasPkce
-
-`func (o *OAuthSource) HasPkce() bool`
-
-HasPkce returns a boolean if a field has been set.
-
 ### GetConsumerKey
 
 `func (o *OAuthSource) GetConsumerKey() string`

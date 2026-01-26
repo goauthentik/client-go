@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -23,14 +23,13 @@ var _ MappedNullable = &UserOAuthSourceConnection{}
 
 // UserOAuthSourceConnection User source connection
 type UserOAuthSourceConnection struct {
-	Pk          int32      `json:"pk"`
-	User        int32      `json:"user"`
-	Source      string     `json:"source"`
-	SourceObj   Source     `json:"source_obj"`
-	Identifier  string     `json:"identifier"`
-	Created     time.Time  `json:"created"`
-	LastUpdated time.Time  `json:"last_updated"`
-	Expires     *time.Time `json:"expires,omitempty"`
+	Pk          int32     `json:"pk"`
+	User        int32     `json:"user"`
+	Source      string    `json:"source"`
+	SourceObj   Source    `json:"source_obj"`
+	Identifier  string    `json:"identifier"`
+	Created     time.Time `json:"created"`
+	LastUpdated time.Time `json:"last_updated"`
 }
 
 type _UserOAuthSourceConnection UserOAuthSourceConnection
@@ -227,38 +226,6 @@ func (o *UserOAuthSourceConnection) SetLastUpdated(v time.Time) {
 	o.LastUpdated = v
 }
 
-// GetExpires returns the Expires field value if set, zero value otherwise.
-func (o *UserOAuthSourceConnection) GetExpires() time.Time {
-	if o == nil || IsNil(o.Expires) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Expires
-}
-
-// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserOAuthSourceConnection) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Expires) {
-		return nil, false
-	}
-	return o.Expires, true
-}
-
-// HasExpires returns a boolean if a field has been set.
-func (o *UserOAuthSourceConnection) HasExpires() bool {
-	if o != nil && !IsNil(o.Expires) {
-		return true
-	}
-
-	return false
-}
-
-// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
-func (o *UserOAuthSourceConnection) SetExpires(v time.Time) {
-	o.Expires = &v
-}
-
 func (o UserOAuthSourceConnection) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -276,9 +243,6 @@ func (o UserOAuthSourceConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize["identifier"] = o.Identifier
 	toSerialize["created"] = o.Created
 	toSerialize["last_updated"] = o.LastUpdated
-	if !IsNil(o.Expires) {
-		toSerialize["expires"] = o.Expires
-	}
 	return toSerialize, nil
 }
 

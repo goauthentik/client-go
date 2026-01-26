@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -13,7 +13,6 @@ package api
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the PatchedUserOAuthSourceConnectionRequest type satisfies the MappedNullable interface at compile time
@@ -25,7 +24,6 @@ type PatchedUserOAuthSourceConnectionRequest struct {
 	Source      *string        `json:"source,omitempty"`
 	Identifier  *string        `json:"identifier,omitempty"`
 	AccessToken NullableString `json:"access_token,omitempty"`
-	Expires     *time.Time     `json:"expires,omitempty"`
 }
 
 // NewPatchedUserOAuthSourceConnectionRequest instantiates a new PatchedUserOAuthSourceConnectionRequest object
@@ -184,38 +182,6 @@ func (o *PatchedUserOAuthSourceConnectionRequest) UnsetAccessToken() {
 	o.AccessToken.Unset()
 }
 
-// GetExpires returns the Expires field value if set, zero value otherwise.
-func (o *PatchedUserOAuthSourceConnectionRequest) GetExpires() time.Time {
-	if o == nil || IsNil(o.Expires) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Expires
-}
-
-// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedUserOAuthSourceConnectionRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Expires) {
-		return nil, false
-	}
-	return o.Expires, true
-}
-
-// HasExpires returns a boolean if a field has been set.
-func (o *PatchedUserOAuthSourceConnectionRequest) HasExpires() bool {
-	if o != nil && !IsNil(o.Expires) {
-		return true
-	}
-
-	return false
-}
-
-// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
-func (o *PatchedUserOAuthSourceConnectionRequest) SetExpires(v time.Time) {
-	o.Expires = &v
-}
-
 func (o PatchedUserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -237,9 +203,6 @@ func (o PatchedUserOAuthSourceConnectionRequest) ToMap() (map[string]interface{}
 	}
 	if o.AccessToken.IsSet() {
 		toSerialize["access_token"] = o.AccessToken.Get()
-	}
-	if !IsNil(o.Expires) {
-		toSerialize["expires"] = o.Expires
 	}
 	return toSerialize, nil
 }

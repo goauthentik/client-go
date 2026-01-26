@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -26,7 +26,7 @@ type PatchedEndpointRequest struct {
 	Host               *string                `json:"host,omitempty"`
 	Settings           map[string]interface{} `json:"settings,omitempty"`
 	PropertyMappings   []string               `json:"property_mappings,omitempty"`
-	AuthMode           *EndpointAuthModeEnum  `json:"auth_mode,omitempty"`
+	AuthMode           *AuthModeEnum          `json:"auth_mode,omitempty"`
 	MaximumConnections *int32                 `json:"maximum_connections,omitempty"`
 }
 
@@ -240,9 +240,9 @@ func (o *PatchedEndpointRequest) SetPropertyMappings(v []string) {
 }
 
 // GetAuthMode returns the AuthMode field value if set, zero value otherwise.
-func (o *PatchedEndpointRequest) GetAuthMode() EndpointAuthModeEnum {
+func (o *PatchedEndpointRequest) GetAuthMode() AuthModeEnum {
 	if o == nil || IsNil(o.AuthMode) {
-		var ret EndpointAuthModeEnum
+		var ret AuthModeEnum
 		return ret
 	}
 	return *o.AuthMode
@@ -250,7 +250,7 @@ func (o *PatchedEndpointRequest) GetAuthMode() EndpointAuthModeEnum {
 
 // GetAuthModeOk returns a tuple with the AuthMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool) {
+func (o *PatchedEndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool) {
 	if o == nil || IsNil(o.AuthMode) {
 		return nil, false
 	}
@@ -266,8 +266,8 @@ func (o *PatchedEndpointRequest) HasAuthMode() bool {
 	return false
 }
 
-// SetAuthMode gets a reference to the given EndpointAuthModeEnum and assigns it to the AuthMode field.
-func (o *PatchedEndpointRequest) SetAuthMode(v EndpointAuthModeEnum) {
+// SetAuthMode gets a reference to the given AuthModeEnum and assigns it to the AuthMode field.
+func (o *PatchedEndpointRequest) SetAuthMode(v AuthModeEnum) {
 	o.AuthMode = &v
 }
 

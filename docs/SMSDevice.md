@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Name** | **string** | The human-readable name of this device. | 
 **Pk** | **int32** |  | [readonly] 
 **PhoneNumber** | **string** |  | [readonly] 
-**User** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**User** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 
 ## Methods
 
 ### NewSMSDevice
 
-`func NewSMSDevice(name string, pk int32, phoneNumber string, user PartialUser, ) *SMSDevice`
+`func NewSMSDevice(name string, pk int32, phoneNumber string, user GroupMember, ) *SMSDevice`
 
 NewSMSDevice instantiates a new SMSDevice object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetPhoneNumber sets PhoneNumber field to given value.
 
 ### GetUser
 
-`func (o *SMSDevice) GetUser() PartialUser`
+`func (o *SMSDevice) GetUser() GroupMember`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *SMSDevice) GetUserOk() (*PartialUser, bool)`
+`func (o *SMSDevice) GetUserOk() (*GroupMember, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *SMSDevice) SetUser(v PartialUser)`
+`func (o *SMSDevice) SetUser(v GroupMember)`
 
 SetUser sets User field to given value.
 

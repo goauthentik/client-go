@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Placeholder** | Pointer to **string** | Optionally provide a short hint that describes the expected input value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple choices. | [optional] 
 **InitialValue** | Pointer to **string** | Optionally pre-fill the input with an initial value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple default choices. | [optional] 
 **Order** | Pointer to **int32** |  | [optional] 
+**PromptstageSet** | Pointer to [**[]StageRequest**](StageRequest.md) |  | [optional] 
 **SubText** | Pointer to **string** |  | [optional] 
 **PlaceholderExpression** | Pointer to **bool** |  | [optional] 
 **InitialValueExpression** | Pointer to **bool** |  | [optional] 
@@ -214,6 +215,31 @@ SetOrder sets Order field to given value.
 `func (o *PromptRequest) HasOrder() bool`
 
 HasOrder returns a boolean if a field has been set.
+
+### GetPromptstageSet
+
+`func (o *PromptRequest) GetPromptstageSet() []StageRequest`
+
+GetPromptstageSet returns the PromptstageSet field if non-nil, zero value otherwise.
+
+### GetPromptstageSetOk
+
+`func (o *PromptRequest) GetPromptstageSetOk() (*[]StageRequest, bool)`
+
+GetPromptstageSetOk returns a tuple with the PromptstageSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPromptstageSet
+
+`func (o *PromptRequest) SetPromptstageSet(v []StageRequest)`
+
+SetPromptstageSet sets PromptstageSet field to given value.
+
+### HasPromptstageSet
+
+`func (o *PromptRequest) HasPromptstageSet() bool`
+
+HasPromptstageSet returns a boolean if a field has been set.
 
 ### GetSubText
 

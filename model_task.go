@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -31,17 +31,13 @@ type Task struct {
 	// Task status
 	State *StateEnum `json:"state,omitempty"`
 	// Task last modified time
-	Mtime *time.Time `json:"mtime,omitempty"`
-	// Number of retries
-	Retries *int64 `json:"retries,omitempty"`
-	// Planned execution time
-	Eta              NullableTime             `json:"eta,omitempty"`
+	Mtime            *time.Time               `json:"mtime,omitempty"`
 	RelObjAppLabel   string                   `json:"rel_obj_app_label"`
 	RelObjModel      string                   `json:"rel_obj_model"`
 	RelObjId         NullableString           `json:"rel_obj_id,omitempty"`
 	Uid              string                   `json:"uid"`
-	Logs             []LogEvent               `json:"logs"`
-	PreviousLogs     []LogEvent               `json:"previous_logs"`
+	Messages         []LogEvent               `json:"messages"`
+	PreviousMessages []LogEvent               `json:"previous_messages"`
 	AggregatedStatus TaskAggregatedStatusEnum `json:"aggregated_status"`
 	Description      NullableString           `json:"description"`
 }
@@ -52,14 +48,14 @@ type _Task Task
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTask(actorName string, relObjAppLabel string, relObjModel string, uid string, logs []LogEvent, previousLogs []LogEvent, aggregatedStatus TaskAggregatedStatusEnum, description NullableString) *Task {
+func NewTask(actorName string, relObjAppLabel string, relObjModel string, uid string, messages []LogEvent, previousMessages []LogEvent, aggregatedStatus TaskAggregatedStatusEnum, description NullableString) *Task {
 	this := Task{}
 	this.ActorName = actorName
 	this.RelObjAppLabel = relObjAppLabel
 	this.RelObjModel = relObjModel
 	this.Uid = uid
-	this.Logs = logs
-	this.PreviousLogs = previousLogs
+	this.Messages = messages
+	this.PreviousMessages = previousMessages
 	this.AggregatedStatus = aggregatedStatus
 	this.Description = description
 	return &this
@@ -225,81 +221,6 @@ func (o *Task) SetMtime(v time.Time) {
 	o.Mtime = &v
 }
 
-// GetRetries returns the Retries field value if set, zero value otherwise.
-func (o *Task) GetRetries() int64 {
-	if o == nil || IsNil(o.Retries) {
-		var ret int64
-		return ret
-	}
-	return *o.Retries
-}
-
-// GetRetriesOk returns a tuple with the Retries field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Task) GetRetriesOk() (*int64, bool) {
-	if o == nil || IsNil(o.Retries) {
-		return nil, false
-	}
-	return o.Retries, true
-}
-
-// HasRetries returns a boolean if a field has been set.
-func (o *Task) HasRetries() bool {
-	if o != nil && !IsNil(o.Retries) {
-		return true
-	}
-
-	return false
-}
-
-// SetRetries gets a reference to the given int64 and assigns it to the Retries field.
-func (o *Task) SetRetries(v int64) {
-	o.Retries = &v
-}
-
-// GetEta returns the Eta field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Task) GetEta() time.Time {
-	if o == nil || IsNil(o.Eta.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Eta.Get()
-}
-
-// GetEtaOk returns a tuple with the Eta field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Task) GetEtaOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Eta.Get(), o.Eta.IsSet()
-}
-
-// HasEta returns a boolean if a field has been set.
-func (o *Task) HasEta() bool {
-	if o != nil && o.Eta.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEta gets a reference to the given NullableTime and assigns it to the Eta field.
-func (o *Task) SetEta(v time.Time) {
-	o.Eta.Set(&v)
-}
-
-// SetEtaNil sets the value for Eta to be an explicit nil
-func (o *Task) SetEtaNil() {
-	o.Eta.Set(nil)
-}
-
-// UnsetEta ensures that no value is present for Eta, not even an explicit nil
-func (o *Task) UnsetEta() {
-	o.Eta.Unset()
-}
-
 // GetRelObjAppLabel returns the RelObjAppLabel field value
 func (o *Task) GetRelObjAppLabel() string {
 	if o == nil {
@@ -415,52 +336,52 @@ func (o *Task) SetUid(v string) {
 	o.Uid = v
 }
 
-// GetLogs returns the Logs field value
-func (o *Task) GetLogs() []LogEvent {
+// GetMessages returns the Messages field value
+func (o *Task) GetMessages() []LogEvent {
 	if o == nil {
 		var ret []LogEvent
 		return ret
 	}
 
-	return o.Logs
+	return o.Messages
 }
 
-// GetLogsOk returns a tuple with the Logs field value
+// GetMessagesOk returns a tuple with the Messages field value
 // and a boolean to check if the value has been set.
-func (o *Task) GetLogsOk() ([]LogEvent, bool) {
+func (o *Task) GetMessagesOk() ([]LogEvent, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Logs, true
+	return o.Messages, true
 }
 
-// SetLogs sets field value
-func (o *Task) SetLogs(v []LogEvent) {
-	o.Logs = v
+// SetMessages sets field value
+func (o *Task) SetMessages(v []LogEvent) {
+	o.Messages = v
 }
 
-// GetPreviousLogs returns the PreviousLogs field value
-func (o *Task) GetPreviousLogs() []LogEvent {
+// GetPreviousMessages returns the PreviousMessages field value
+func (o *Task) GetPreviousMessages() []LogEvent {
 	if o == nil {
 		var ret []LogEvent
 		return ret
 	}
 
-	return o.PreviousLogs
+	return o.PreviousMessages
 }
 
-// GetPreviousLogsOk returns a tuple with the PreviousLogs field value
+// GetPreviousMessagesOk returns a tuple with the PreviousMessages field value
 // and a boolean to check if the value has been set.
-func (o *Task) GetPreviousLogsOk() ([]LogEvent, bool) {
+func (o *Task) GetPreviousMessagesOk() ([]LogEvent, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.PreviousLogs, true
+	return o.PreviousMessages, true
 }
 
-// SetPreviousLogs sets field value
-func (o *Task) SetPreviousLogs(v []LogEvent) {
-	o.PreviousLogs = v
+// SetPreviousMessages sets field value
+func (o *Task) SetPreviousMessages(v []LogEvent) {
+	o.PreviousMessages = v
 }
 
 // GetAggregatedStatus returns the AggregatedStatus field value
@@ -536,20 +457,14 @@ func (o Task) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mtime) {
 		toSerialize["mtime"] = o.Mtime
 	}
-	if !IsNil(o.Retries) {
-		toSerialize["retries"] = o.Retries
-	}
-	if o.Eta.IsSet() {
-		toSerialize["eta"] = o.Eta.Get()
-	}
 	toSerialize["rel_obj_app_label"] = o.RelObjAppLabel
 	toSerialize["rel_obj_model"] = o.RelObjModel
 	if o.RelObjId.IsSet() {
 		toSerialize["rel_obj_id"] = o.RelObjId.Get()
 	}
 	toSerialize["uid"] = o.Uid
-	toSerialize["logs"] = o.Logs
-	toSerialize["previous_logs"] = o.PreviousLogs
+	toSerialize["messages"] = o.Messages
+	toSerialize["previous_messages"] = o.PreviousMessages
 	toSerialize["aggregated_status"] = o.AggregatedStatus
 	toSerialize["description"] = o.Description.Get()
 	return toSerialize, nil
@@ -564,8 +479,8 @@ func (o *Task) UnmarshalJSON(data []byte) (err error) {
 		"rel_obj_app_label",
 		"rel_obj_model",
 		"uid",
-		"logs",
-		"previous_logs",
+		"messages",
+		"previous_messages",
 		"aggregated_status",
 		"description",
 	}

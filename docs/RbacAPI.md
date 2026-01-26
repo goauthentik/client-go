@@ -14,15 +14,25 @@ Method | HTTP request | Description
 [**RbacPermissionsAssignedByRolesAssign**](RbacAPI.md#RbacPermissionsAssignedByRolesAssign) | **Post** /rbac/permissions/assigned_by_roles/{uuid}/assign/ | 
 [**RbacPermissionsAssignedByRolesList**](RbacAPI.md#RbacPermissionsAssignedByRolesList) | **Get** /rbac/permissions/assigned_by_roles/ | 
 [**RbacPermissionsAssignedByRolesUnassignPartialUpdate**](RbacAPI.md#RbacPermissionsAssignedByRolesUnassignPartialUpdate) | **Patch** /rbac/permissions/assigned_by_roles/{uuid}/unassign/ | 
+[**RbacPermissionsAssignedByUsersAssign**](RbacAPI.md#RbacPermissionsAssignedByUsersAssign) | **Post** /rbac/permissions/assigned_by_users/{id}/assign/ | 
+[**RbacPermissionsAssignedByUsersList**](RbacAPI.md#RbacPermissionsAssignedByUsersList) | **Get** /rbac/permissions/assigned_by_users/ | 
+[**RbacPermissionsAssignedByUsersUnassignPartialUpdate**](RbacAPI.md#RbacPermissionsAssignedByUsersUnassignPartialUpdate) | **Patch** /rbac/permissions/assigned_by_users/{id}/unassign/ | 
 [**RbacPermissionsList**](RbacAPI.md#RbacPermissionsList) | **Get** /rbac/permissions/ | 
 [**RbacPermissionsRetrieve**](RbacAPI.md#RbacPermissionsRetrieve) | **Get** /rbac/permissions/{id}/ | 
+[**RbacPermissionsRolesDestroy**](RbacAPI.md#RbacPermissionsRolesDestroy) | **Delete** /rbac/permissions/roles/{id}/ | 
 [**RbacPermissionsRolesList**](RbacAPI.md#RbacPermissionsRolesList) | **Get** /rbac/permissions/roles/ | 
-[**RbacRolesAddUserCreate**](RbacAPI.md#RbacRolesAddUserCreate) | **Post** /rbac/roles/{uuid}/add_user/ | 
+[**RbacPermissionsRolesPartialUpdate**](RbacAPI.md#RbacPermissionsRolesPartialUpdate) | **Patch** /rbac/permissions/roles/{id}/ | 
+[**RbacPermissionsRolesRetrieve**](RbacAPI.md#RbacPermissionsRolesRetrieve) | **Get** /rbac/permissions/roles/{id}/ | 
+[**RbacPermissionsRolesUpdate**](RbacAPI.md#RbacPermissionsRolesUpdate) | **Put** /rbac/permissions/roles/{id}/ | 
+[**RbacPermissionsUsersDestroy**](RbacAPI.md#RbacPermissionsUsersDestroy) | **Delete** /rbac/permissions/users/{id}/ | 
+[**RbacPermissionsUsersList**](RbacAPI.md#RbacPermissionsUsersList) | **Get** /rbac/permissions/users/ | 
+[**RbacPermissionsUsersPartialUpdate**](RbacAPI.md#RbacPermissionsUsersPartialUpdate) | **Patch** /rbac/permissions/users/{id}/ | 
+[**RbacPermissionsUsersRetrieve**](RbacAPI.md#RbacPermissionsUsersRetrieve) | **Get** /rbac/permissions/users/{id}/ | 
+[**RbacPermissionsUsersUpdate**](RbacAPI.md#RbacPermissionsUsersUpdate) | **Put** /rbac/permissions/users/{id}/ | 
 [**RbacRolesCreate**](RbacAPI.md#RbacRolesCreate) | **Post** /rbac/roles/ | 
 [**RbacRolesDestroy**](RbacAPI.md#RbacRolesDestroy) | **Delete** /rbac/roles/{uuid}/ | 
 [**RbacRolesList**](RbacAPI.md#RbacRolesList) | **Get** /rbac/roles/ | 
 [**RbacRolesPartialUpdate**](RbacAPI.md#RbacRolesPartialUpdate) | **Patch** /rbac/roles/{uuid}/ | 
-[**RbacRolesRemoveUserCreate**](RbacAPI.md#RbacRolesRemoveUserCreate) | **Post** /rbac/roles/{uuid}/remove_user/ | 
 [**RbacRolesRetrieve**](RbacAPI.md#RbacRolesRetrieve) | **Get** /rbac/roles/{uuid}/ | 
 [**RbacRolesUpdate**](RbacAPI.md#RbacRolesUpdate) | **Put** /rbac/roles/{uuid}/ | 
 [**RbacRolesUsedByList**](RbacAPI.md#RbacRolesUsedByList) | **Get** /rbac/roles/{uuid}/used_by/ | 
@@ -50,7 +60,7 @@ import (
 )
 
 func main() {
-	initialPermissionsRequest := *openapiclient.NewInitialPermissionsRequest("Name_example", "Role_example") // InitialPermissionsRequest | 
+	initialPermissionsRequest := *openapiclient.NewInitialPermissionsRequest("Name_example", openapiclient.InitialPermissionsModeEnum("user"), "Role_example") // InitialPermissionsRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -401,7 +411,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this Initial Permissions.
-	initialPermissionsRequest := *openapiclient.NewInitialPermissionsRequest("Name_example", "Role_example") // InitialPermissionsRequest | 
+	initialPermissionsRequest := *openapiclient.NewInitialPermissionsRequest("Name_example", openapiclient.InitialPermissionsModeEnum("user"), "Role_example") // InitialPermissionsRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -739,6 +749,224 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RbacPermissionsAssignedByUsersAssign
+
+> []PermissionAssignResult RbacPermissionsAssignedByUsersAssign(ctx, id).PermissionAssignRequest(permissionAssignRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this User.
+	permissionAssignRequest := *openapiclient.NewPermissionAssignRequest([]string{"Permissions_example"}) // PermissionAssignRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsAssignedByUsersAssign(context.Background(), id).PermissionAssignRequest(permissionAssignRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsAssignedByUsersAssign``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RbacPermissionsAssignedByUsersAssign`: []PermissionAssignResult
+	fmt.Fprintf(os.Stdout, "Response from `RbacAPI.RbacPermissionsAssignedByUsersAssign`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsAssignedByUsersAssignRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **permissionAssignRequest** | [**PermissionAssignRequest**](PermissionAssignRequest.md) |  | 
+
+### Return type
+
+[**[]PermissionAssignResult**](PermissionAssignResult.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RbacPermissionsAssignedByUsersList
+
+> PaginatedUserAssignedObjectPermissionList RbacPermissionsAssignedByUsersList(ctx).Model(model).ObjectPk(objectPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	model := "model_example" // string | 
+	objectPk := "objectPk_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsAssignedByUsersList(context.Background()).Model(model).ObjectPk(objectPk).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsAssignedByUsersList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RbacPermissionsAssignedByUsersList`: PaginatedUserAssignedObjectPermissionList
+	fmt.Fprintf(os.Stdout, "Response from `RbacAPI.RbacPermissionsAssignedByUsersList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsAssignedByUsersListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model** | **string** |  | 
+ **objectPk** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedUserAssignedObjectPermissionList**](PaginatedUserAssignedObjectPermissionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RbacPermissionsAssignedByUsersUnassignPartialUpdate
+
+> RbacPermissionsAssignedByUsersUnassignPartialUpdate(ctx, id).PatchedPermissionAssignRequest(patchedPermissionAssignRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this User.
+	patchedPermissionAssignRequest := *openapiclient.NewPatchedPermissionAssignRequest() // PatchedPermissionAssignRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.RbacAPI.RbacPermissionsAssignedByUsersUnassignPartialUpdate(context.Background(), id).PatchedPermissionAssignRequest(patchedPermissionAssignRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsAssignedByUsersUnassignPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this User. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsAssignedByUsersUnassignPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedPermissionAssignRequest** | [**PatchedPermissionAssignRequest**](PatchedPermissionAssignRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RbacPermissionsList
 
 > PaginatedPermissionList RbacPermissionsList(ctx).Codename(codename).ContentTypeAppLabel(contentTypeAppLabel).ContentTypeModel(contentTypeModel).Ordering(ordering).Page(page).PageSize(pageSize).Role(role).Search(search).User(user).Execute()
@@ -891,6 +1119,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RbacPermissionsRolesDestroy
+
+> RbacPermissionsRolesDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this group object permission.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.RbacAPI.RbacPermissionsRolesDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsRolesDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this group object permission. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsRolesDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RbacPermissionsRolesList
 
 > PaginatedExtraRoleObjectPermissionList RbacPermissionsRolesList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Uuid(uuid).Execute()
@@ -965,9 +1261,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RbacRolesAddUserCreate
+## RbacPermissionsRolesPartialUpdate
 
-> RbacRolesAddUserCreate(ctx, uuid).UserAccountSerializerForRoleRequest(userAccountSerializerForRoleRequest).Execute()
+> ExtraRoleObjectPermission RbacPermissionsRolesPartialUpdate(ctx, id).PatchedExtraRoleObjectPermissionRequest(patchedExtraRoleObjectPermissionRequest).Execute()
 
 
 
@@ -986,14 +1282,227 @@ import (
 )
 
 func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Role.
-	userAccountSerializerForRoleRequest := *openapiclient.NewUserAccountSerializerForRoleRequest(int32(123)) // UserAccountSerializerForRoleRequest | 
+	id := int32(56) // int32 | A unique integer value identifying this group object permission.
+	patchedExtraRoleObjectPermissionRequest := *openapiclient.NewPatchedExtraRoleObjectPermissionRequest() // PatchedExtraRoleObjectPermissionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RbacAPI.RbacRolesAddUserCreate(context.Background(), uuid).UserAccountSerializerForRoleRequest(userAccountSerializerForRoleRequest).Execute()
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsRolesPartialUpdate(context.Background(), id).PatchedExtraRoleObjectPermissionRequest(patchedExtraRoleObjectPermissionRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacRolesAddUserCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsRolesPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RbacPermissionsRolesPartialUpdate`: ExtraRoleObjectPermission
+	fmt.Fprintf(os.Stdout, "Response from `RbacAPI.RbacPermissionsRolesPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this group object permission. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsRolesPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedExtraRoleObjectPermissionRequest** | [**PatchedExtraRoleObjectPermissionRequest**](PatchedExtraRoleObjectPermissionRequest.md) |  | 
+
+### Return type
+
+[**ExtraRoleObjectPermission**](ExtraRoleObjectPermission.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RbacPermissionsRolesRetrieve
+
+> ExtraRoleObjectPermission RbacPermissionsRolesRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this group object permission.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsRolesRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsRolesRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RbacPermissionsRolesRetrieve`: ExtraRoleObjectPermission
+	fmt.Fprintf(os.Stdout, "Response from `RbacAPI.RbacPermissionsRolesRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this group object permission. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsRolesRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ExtraRoleObjectPermission**](ExtraRoleObjectPermission.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RbacPermissionsRolesUpdate
+
+> ExtraRoleObjectPermission RbacPermissionsRolesUpdate(ctx, id).ExtraRoleObjectPermissionRequest(extraRoleObjectPermissionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this group object permission.
+	extraRoleObjectPermissionRequest := *openapiclient.NewExtraRoleObjectPermissionRequest("ObjectPk_example") // ExtraRoleObjectPermissionRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsRolesUpdate(context.Background(), id).ExtraRoleObjectPermissionRequest(extraRoleObjectPermissionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsRolesUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RbacPermissionsRolesUpdate`: ExtraRoleObjectPermission
+	fmt.Fprintf(os.Stdout, "Response from `RbacAPI.RbacPermissionsRolesUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this group object permission. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsRolesUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **extraRoleObjectPermissionRequest** | [**ExtraRoleObjectPermissionRequest**](ExtraRoleObjectPermissionRequest.md) |  | 
+
+### Return type
+
+[**ExtraRoleObjectPermission**](ExtraRoleObjectPermission.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RbacPermissionsUsersDestroy
+
+> RbacPermissionsUsersDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this user object permission.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.RbacAPI.RbacPermissionsUsersDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsUsersDestroy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -1005,21 +1514,308 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | A UUID string identifying this Role. | 
+**id** | **int32** | A unique integer value identifying this user object permission. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRbacRolesAddUserCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRbacPermissionsUsersDestroyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **userAccountSerializerForRoleRequest** | [**UserAccountSerializerForRoleRequest**](UserAccountSerializerForRoleRequest.md) |  | 
 
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RbacPermissionsUsersList
+
+> PaginatedExtraUserObjectPermissionList RbacPermissionsUsersList(ctx).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).UserId(userId).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+	userId := int32(56) // int32 |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsUsersList(context.Background()).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).UserId(userId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsUsersList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RbacPermissionsUsersList`: PaginatedExtraUserObjectPermissionList
+	fmt.Fprintf(os.Stdout, "Response from `RbacAPI.RbacPermissionsUsersList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsUsersListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+ **userId** | **int32** |  | 
+
+### Return type
+
+[**PaginatedExtraUserObjectPermissionList**](PaginatedExtraUserObjectPermissionList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RbacPermissionsUsersPartialUpdate
+
+> ExtraUserObjectPermission RbacPermissionsUsersPartialUpdate(ctx, id).PatchedExtraUserObjectPermissionRequest(patchedExtraUserObjectPermissionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this user object permission.
+	patchedExtraUserObjectPermissionRequest := *openapiclient.NewPatchedExtraUserObjectPermissionRequest() // PatchedExtraUserObjectPermissionRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsUsersPartialUpdate(context.Background(), id).PatchedExtraUserObjectPermissionRequest(patchedExtraUserObjectPermissionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsUsersPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RbacPermissionsUsersPartialUpdate`: ExtraUserObjectPermission
+	fmt.Fprintf(os.Stdout, "Response from `RbacAPI.RbacPermissionsUsersPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this user object permission. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsUsersPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedExtraUserObjectPermissionRequest** | [**PatchedExtraUserObjectPermissionRequest**](PatchedExtraUserObjectPermissionRequest.md) |  | 
+
+### Return type
+
+[**ExtraUserObjectPermission**](ExtraUserObjectPermission.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RbacPermissionsUsersRetrieve
+
+> ExtraUserObjectPermission RbacPermissionsUsersRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this user object permission.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsUsersRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsUsersRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RbacPermissionsUsersRetrieve`: ExtraUserObjectPermission
+	fmt.Fprintf(os.Stdout, "Response from `RbacAPI.RbacPermissionsUsersRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this user object permission. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsUsersRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ExtraUserObjectPermission**](ExtraUserObjectPermission.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RbacPermissionsUsersUpdate
+
+> ExtraUserObjectPermission RbacPermissionsUsersUpdate(ctx, id).ExtraUserObjectPermissionRequest(extraUserObjectPermissionRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this user object permission.
+	extraUserObjectPermissionRequest := *openapiclient.NewExtraUserObjectPermissionRequest("ObjectPk_example") // ExtraUserObjectPermissionRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsUsersUpdate(context.Background(), id).ExtraUserObjectPermissionRequest(extraUserObjectPermissionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsUsersUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RbacPermissionsUsersUpdate`: ExtraUserObjectPermission
+	fmt.Fprintf(os.Stdout, "Response from `RbacAPI.RbacPermissionsUsersUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this user object permission. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRbacPermissionsUsersUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **extraUserObjectPermissionRequest** | [**ExtraUserObjectPermissionRequest**](ExtraUserObjectPermissionRequest.md) |  | 
+
+### Return type
+
+[**ExtraUserObjectPermission**](ExtraUserObjectPermission.md)
 
 ### Authorization
 
@@ -1171,7 +1967,7 @@ Name | Type | Description  | Notes
 
 ## RbacRolesList
 
-> PaginatedRoleList RbacRolesList(ctx).AkGroups(akGroups).Inherited(inherited).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
+> PaginatedRoleList RbacRolesList(ctx).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -1190,20 +1986,15 @@ import (
 )
 
 func main() {
-	akGroups := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	inherited := true // bool | Include inherited roles (requires users or ak_groups filter) (optional)
-	managed := []string{"Inner_example"} // []string |  (optional)
-	managedIsnull := true // bool |  (optional)
-	name := "name_example" // string |  (optional)
+	groupName := "groupName_example" // string |  (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	page := int32(56) // int32 | A page number within the paginated result set. (optional)
 	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
 	search := "search_example" // string | A search term. (optional)
-	users := int32(56) // int32 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RbacAPI.RbacRolesList(context.Background()).AkGroups(akGroups).Inherited(inherited).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
+	resp, r, err := apiClient.RbacAPI.RbacRolesList(context.Background()).GroupName(groupName).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacRolesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1224,16 +2015,11 @@ Other parameters are passed through a pointer to a apiRbacRolesListRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **akGroups** | **string** |  | 
- **inherited** | **bool** | Include inherited roles (requires users or ak_groups filter) | 
- **managed** | **[]string** |  | 
- **managedIsnull** | **bool** |  | 
- **name** | **string** |  | 
+ **groupName** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
- **users** | **int32** |  | 
 
 ### Return type
 
@@ -1310,76 +2096,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Role**](Role.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RbacRolesRemoveUserCreate
-
-> RbacRolesRemoveUserCreate(ctx, uuid).UserAccountSerializerForRoleRequest(userAccountSerializerForRoleRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	uuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Role.
-	userAccountSerializerForRoleRequest := *openapiclient.NewUserAccountSerializerForRoleRequest(int32(123)) // UserAccountSerializerForRoleRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RbacAPI.RbacRolesRemoveUserCreate(context.Background(), uuid).UserAccountSerializerForRoleRequest(userAccountSerializerForRoleRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacRolesRemoveUserCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | A UUID string identifying this Role. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRbacRolesRemoveUserCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **userAccountSerializerForRoleRequest** | [**UserAccountSerializerForRoleRequest**](UserAccountSerializerForRoleRequest.md) |  | 
-
-### Return type
-
- (empty response body)
 
 ### Authorization
 

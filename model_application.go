@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.8.0-rc4
 Contact: hello@goauthentik.io
 */
 
@@ -36,9 +36,8 @@ type Application struct {
 	// Open launch URL in a new browser tab or window.
 	OpenInNewTab  *bool   `json:"open_in_new_tab,omitempty"`
 	MetaLaunchUrl *string `json:"meta_launch_url,omitempty"`
-	MetaIcon      *string `json:"meta_icon,omitempty"`
-	// Get the URL to the App Icon image
-	MetaIconUrl      NullableString    `json:"meta_icon_url"`
+	// Get the URL to the App Icon image. If the name is /static or starts with http it is returned as-is
+	MetaIcon         NullableString    `json:"meta_icon"`
 	MetaDescription  *string           `json:"meta_description,omitempty"`
 	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
@@ -51,7 +50,7 @@ type _Application Application
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIconUrl NullableString) *Application {
+func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIcon NullableString) *Application {
 	this := Application{}
 	this.Pk = pk
 	this.Name = name
@@ -59,7 +58,7 @@ func NewApplication(pk string, name string, slug string, providerObj Provider, b
 	this.ProviderObj = providerObj
 	this.BackchannelProvidersObj = backchannelProvidersObj
 	this.LaunchUrl = launchUrl
-	this.MetaIconUrl = metaIconUrl
+	this.MetaIcon = metaIcon
 	return &this
 }
 
@@ -356,62 +355,30 @@ func (o *Application) SetMetaLaunchUrl(v string) {
 	o.MetaLaunchUrl = &v
 }
 
-// GetMetaIcon returns the MetaIcon field value if set, zero value otherwise.
-func (o *Application) GetMetaIcon() string {
-	if o == nil || IsNil(o.MetaIcon) {
-		var ret string
-		return ret
-	}
-	return *o.MetaIcon
-}
-
-// GetMetaIconOk returns a tuple with the MetaIcon field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Application) GetMetaIconOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaIcon) {
-		return nil, false
-	}
-	return o.MetaIcon, true
-}
-
-// HasMetaIcon returns a boolean if a field has been set.
-func (o *Application) HasMetaIcon() bool {
-	if o != nil && !IsNil(o.MetaIcon) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetaIcon gets a reference to the given string and assigns it to the MetaIcon field.
-func (o *Application) SetMetaIcon(v string) {
-	o.MetaIcon = &v
-}
-
-// GetMetaIconUrl returns the MetaIconUrl field value
+// GetMetaIcon returns the MetaIcon field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *Application) GetMetaIconUrl() string {
-	if o == nil || o.MetaIconUrl.Get() == nil {
+func (o *Application) GetMetaIcon() string {
+	if o == nil || o.MetaIcon.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.MetaIconUrl.Get()
+	return *o.MetaIcon.Get()
 }
 
-// GetMetaIconUrlOk returns a tuple with the MetaIconUrl field value
+// GetMetaIconOk returns a tuple with the MetaIcon field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Application) GetMetaIconUrlOk() (*string, bool) {
+func (o *Application) GetMetaIconOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.MetaIconUrl.Get(), o.MetaIconUrl.IsSet()
+	return o.MetaIcon.Get(), o.MetaIcon.IsSet()
 }
 
-// SetMetaIconUrl sets field value
-func (o *Application) SetMetaIconUrl(v string) {
-	o.MetaIconUrl.Set(&v)
+// SetMetaIcon sets field value
+func (o *Application) SetMetaIcon(v string) {
+	o.MetaIcon.Set(&v)
 }
 
 // GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
@@ -570,10 +537,7 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MetaLaunchUrl) {
 		toSerialize["meta_launch_url"] = o.MetaLaunchUrl
 	}
-	if !IsNil(o.MetaIcon) {
-		toSerialize["meta_icon"] = o.MetaIcon
-	}
-	toSerialize["meta_icon_url"] = o.MetaIconUrl.Get()
+	toSerialize["meta_icon"] = o.MetaIcon.Get()
 	if !IsNil(o.MetaDescription) {
 		toSerialize["meta_description"] = o.MetaDescription
 	}
@@ -600,7 +564,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		"provider_obj",
 		"backchannel_providers_obj",
 		"launch_url",
-		"meta_icon_url",
+		"meta_icon",
 	}
 
 	allProperties := make(map[string]interface{})

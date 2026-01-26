@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The human-readable name of this device. | 
 **Pk** | **int32** |  | [readonly] 
-**User** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**User** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 
 ## Methods
 
 ### NewTOTPDevice
 
-`func NewTOTPDevice(name string, pk int32, user PartialUser, ) *TOTPDevice`
+`func NewTOTPDevice(name string, pk int32, user GroupMember, ) *TOTPDevice`
 
 NewTOTPDevice instantiates a new TOTPDevice object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetPk sets Pk field to given value.
 
 ### GetUser
 
-`func (o *TOTPDevice) GetUser() PartialUser`
+`func (o *TOTPDevice) GetUser() GroupMember`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *TOTPDevice) GetUserOk() (*PartialUser, bool)`
+`func (o *TOTPDevice) GetUserOk() (*GroupMember, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *TOTPDevice) SetUser(v PartialUser)`
+`func (o *TOTPDevice) SetUser(v GroupMember)`
 
 SetUser sets User field to given value.
 
