@@ -17,16 +17,18 @@ import (
 
 // PatchedSettingsRequestFlags struct for PatchedSettingsRequestFlags
 type PatchedSettingsRequestFlags struct {
-	PoliciesBufferedAccessView bool `json:"policies_buffered_access_view"`
-	FlowsRefreshOthers         bool `json:"flows_refresh_others"`
+	EnterpriseAuditIncludeExpandedDiff bool `json:"enterprise_audit_include_expanded_diff"`
+	PoliciesBufferedAccessView         bool `json:"policies_buffered_access_view"`
+	FlowsRefreshOthers                 bool `json:"flows_refresh_others"`
 }
 
 // NewPatchedSettingsRequestFlags instantiates a new PatchedSettingsRequestFlags object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPatchedSettingsRequestFlags(policiesBufferedAccessView bool, flowsRefreshOthers bool) *PatchedSettingsRequestFlags {
+func NewPatchedSettingsRequestFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsRefreshOthers bool) *PatchedSettingsRequestFlags {
 	this := PatchedSettingsRequestFlags{}
+	this.EnterpriseAuditIncludeExpandedDiff = enterpriseAuditIncludeExpandedDiff
 	this.PoliciesBufferedAccessView = policiesBufferedAccessView
 	this.FlowsRefreshOthers = flowsRefreshOthers
 	return &this
@@ -38,6 +40,30 @@ func NewPatchedSettingsRequestFlags(policiesBufferedAccessView bool, flowsRefres
 func NewPatchedSettingsRequestFlagsWithDefaults() *PatchedSettingsRequestFlags {
 	this := PatchedSettingsRequestFlags{}
 	return &this
+}
+
+// GetEnterpriseAuditIncludeExpandedDiff returns the EnterpriseAuditIncludeExpandedDiff field value
+func (o *PatchedSettingsRequestFlags) GetEnterpriseAuditIncludeExpandedDiff() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.EnterpriseAuditIncludeExpandedDiff
+}
+
+// GetEnterpriseAuditIncludeExpandedDiffOk returns a tuple with the EnterpriseAuditIncludeExpandedDiff field value
+// and a boolean to check if the value has been set.
+func (o *PatchedSettingsRequestFlags) GetEnterpriseAuditIncludeExpandedDiffOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnterpriseAuditIncludeExpandedDiff, true
+}
+
+// SetEnterpriseAuditIncludeExpandedDiff sets field value
+func (o *PatchedSettingsRequestFlags) SetEnterpriseAuditIncludeExpandedDiff(v bool) {
+	o.EnterpriseAuditIncludeExpandedDiff = v
 }
 
 // GetPoliciesBufferedAccessView returns the PoliciesBufferedAccessView field value
@@ -90,6 +116,9 @@ func (o *PatchedSettingsRequestFlags) SetFlowsRefreshOthers(v bool) {
 
 func (o PatchedSettingsRequestFlags) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["enterprise_audit_include_expanded_diff"] = o.EnterpriseAuditIncludeExpandedDiff
+	}
 	if true {
 		toSerialize["policies_buffered_access_view"] = o.PoliciesBufferedAccessView
 	}

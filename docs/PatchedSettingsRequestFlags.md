@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**EnterpriseAuditIncludeExpandedDiff** | **bool** |  | 
 **PoliciesBufferedAccessView** | **bool** |  | 
 **FlowsRefreshOthers** | **bool** |  | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewPatchedSettingsRequestFlags
 
-`func NewPatchedSettingsRequestFlags(policiesBufferedAccessView bool, flowsRefreshOthers bool, ) *PatchedSettingsRequestFlags`
+`func NewPatchedSettingsRequestFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsRefreshOthers bool, ) *PatchedSettingsRequestFlags`
 
 NewPatchedSettingsRequestFlags instantiates a new PatchedSettingsRequestFlags object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewPatchedSettingsRequestFlagsWithDefaults instantiates a new PatchedSettingsRequestFlags object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEnterpriseAuditIncludeExpandedDiff
+
+`func (o *PatchedSettingsRequestFlags) GetEnterpriseAuditIncludeExpandedDiff() bool`
+
+GetEnterpriseAuditIncludeExpandedDiff returns the EnterpriseAuditIncludeExpandedDiff field if non-nil, zero value otherwise.
+
+### GetEnterpriseAuditIncludeExpandedDiffOk
+
+`func (o *PatchedSettingsRequestFlags) GetEnterpriseAuditIncludeExpandedDiffOk() (*bool, bool)`
+
+GetEnterpriseAuditIncludeExpandedDiffOk returns a tuple with the EnterpriseAuditIncludeExpandedDiff field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnterpriseAuditIncludeExpandedDiff
+
+`func (o *PatchedSettingsRequestFlags) SetEnterpriseAuditIncludeExpandedDiff(v bool)`
+
+SetEnterpriseAuditIncludeExpandedDiff sets EnterpriseAuditIncludeExpandedDiff field to given value.
+
 
 ### GetPoliciesBufferedAccessView
 

@@ -54026,6 +54026,7 @@ components:
           href: href
         flags:
           policies_buffered_access_view: true
+          enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
         flow_device_code: flow_device_code
         matched_domain: matched_domain
@@ -78484,6 +78485,7 @@ components:
         default_token_duration: default_token_duration
         flags:
           policies_buffered_access_view: true
+          enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
         default_token_length: 314780941
         event_retention: event_retention
@@ -84319,6 +84321,7 @@ components:
         default_token_duration: default_token_duration
         flags:
           policies_buffered_access_view: true
+          enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
         default_token_length: 314780941
         event_retention: event_retention
@@ -84402,6 +84405,7 @@ components:
         default_token_duration: default_token_duration
         flags:
           policies_buffered_access_view: true
+          enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
         default_token_length: 314780941
         event_retention: event_retention
@@ -88220,14 +88224,18 @@ components:
     CurrentBrand_flags:
       example:
         policies_buffered_access_view: true
+        enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
       properties:
+        enterprise_audit_include_expanded_diff:
+          type: boolean
         policies_buffered_access_view:
           type: boolean
         flows_refresh_others:
           type: boolean
       readOnly: true
       required:
+      - enterprise_audit_include_expanded_diff
       - flows_refresh_others
       - policies_buffered_access_view
       type: object
@@ -88267,13 +88275,17 @@ components:
     PatchedSettingsRequest_flags:
       example:
         policies_buffered_access_view: true
+        enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
       properties:
+        enterprise_audit_include_expanded_diff:
+          type: boolean
         policies_buffered_access_view:
           type: boolean
         flows_refresh_others:
           type: boolean
       required:
+      - enterprise_audit_include_expanded_diff
       - flows_refresh_others
       - policies_buffered_access_view
       type: object
