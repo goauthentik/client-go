@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]Source**](Source.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedSourceList
 
-`func NewPaginatedSourceList(pagination Pagination, results []Source, autocomplete map[string]interface{}, ) *PaginatedSourceList`
+`func NewPaginatedSourceList(pagination Pagination, results []Source, ) *PaginatedSourceList`
 
 NewPaginatedSourceList instantiates a new PaginatedSourceList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedSourceList) SetResults(v []Source)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedSourceList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedSourceList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedSourceList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

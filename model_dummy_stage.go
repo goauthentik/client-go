@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,7 @@ type DummyStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	ThrowError    *bool     `json:"throw_error,omitempty"`
 }
 
@@ -42,7 +42,7 @@ type _DummyStage DummyStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDummyStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet) *DummyStage {
+func NewDummyStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *DummyStage {
 	this := DummyStage{}
 	this.Pk = pk
 	this.Name = name
@@ -50,7 +50,6 @@ func NewDummyStage(pk string, name string, component string, verboseName string,
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	return &this
 }
 
@@ -206,26 +205,34 @@ func (o *DummyStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *DummyStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DummyStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *DummyStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *DummyStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -278,7 +285,9 @@ func (o DummyStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.ThrowError) {
 		toSerialize["throw_error"] = o.ThrowError
 	}
@@ -296,7 +305,6 @@ func (o *DummyStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 	}
 
 	allProperties := make(map[string]interface{})

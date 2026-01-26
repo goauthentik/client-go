@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Name** | **string** | The human-readable name of this device. | 
 **Pk** | **int32** |  | [readonly] 
 **Email** | **string** |  | [readonly] 
-**User** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**User** | [**GroupMember**](GroupMember.md) |  | [readonly] 
 
 ## Methods
 
 ### NewEmailDevice
 
-`func NewEmailDevice(name string, pk int32, email string, user PartialUser, ) *EmailDevice`
+`func NewEmailDevice(name string, pk int32, email string, user GroupMember, ) *EmailDevice`
 
 NewEmailDevice instantiates a new EmailDevice object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetEmail sets Email field to given value.
 
 ### GetUser
 
-`func (o *EmailDevice) GetUser() PartialUser`
+`func (o *EmailDevice) GetUser() GroupMember`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *EmailDevice) GetUserOk() (*PartialUser, bool)`
+`func (o *EmailDevice) GetUserOk() (*GroupMember, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *EmailDevice) SetUser(v PartialUser)`
+`func (o *EmailDevice) SetUser(v GroupMember)`
 
 SetUser sets User field to given value.
 

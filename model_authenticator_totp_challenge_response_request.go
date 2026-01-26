@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &AuthenticatorTOTPChallengeResponseRequest{}
 // AuthenticatorTOTPChallengeResponseRequest TOTP Challenge response, device is set by get_response_instance
 type AuthenticatorTOTPChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
-	Code      string  `json:"code"`
+	Code      int32   `json:"code"`
 }
 
 type _AuthenticatorTOTPChallengeResponseRequest AuthenticatorTOTPChallengeResponseRequest
@@ -32,7 +32,7 @@ type _AuthenticatorTOTPChallengeResponseRequest AuthenticatorTOTPChallengeRespon
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorTOTPChallengeResponseRequest(code string) *AuthenticatorTOTPChallengeResponseRequest {
+func NewAuthenticatorTOTPChallengeResponseRequest(code int32) *AuthenticatorTOTPChallengeResponseRequest {
 	this := AuthenticatorTOTPChallengeResponseRequest{}
 	var component string = "ak-stage-authenticator-totp"
 	this.Component = &component
@@ -83,9 +83,9 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) SetComponent(v string) {
 }
 
 // GetCode returns the Code field value
-func (o *AuthenticatorTOTPChallengeResponseRequest) GetCode() string {
+func (o *AuthenticatorTOTPChallengeResponseRequest) GetCode() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
@@ -94,7 +94,7 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) GetCode() string {
 
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorTOTPChallengeResponseRequest) GetCodeOk() (*string, bool) {
+func (o *AuthenticatorTOTPChallengeResponseRequest) GetCodeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,7 +102,7 @@ func (o *AuthenticatorTOTPChallengeResponseRequest) GetCodeOk() (*string, bool) 
 }
 
 // SetCode sets field value
-func (o *AuthenticatorTOTPChallengeResponseRequest) SetCode(v string) {
+func (o *AuthenticatorTOTPChallengeResponseRequest) SetCode(v int32) {
 	o.Code = v
 }
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | [readonly] 
 **AppLabelVerbose** | **string** | Get app label from permission&#39;s model | [readonly] 
 **ModelVerbose** | **string** | Get model label from permission&#39;s model | [readonly] 
-**ObjectDescription** | **NullableString** | Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the role has the view_ permission on the object | [readonly] 
+**ObjectDescription** | **NullableString** | Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the user/role has the view_ permission on the object | [readonly] 
 
 ## Methods
 

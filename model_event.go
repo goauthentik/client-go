@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -23,15 +23,15 @@ var _ MappedNullable = &Event{}
 
 // Event Event Serializer
 type Event struct {
-	Pk       string                 `json:"pk"`
-	User     map[string]interface{} `json:"user,omitempty"`
-	Action   EventActions           `json:"action"`
-	App      string                 `json:"app"`
-	Context  map[string]interface{} `json:"context,omitempty"`
-	ClientIp NullableString         `json:"client_ip,omitempty"`
-	Created  time.Time              `json:"created"`
-	Expires  *time.Time             `json:"expires,omitempty"`
-	Brand    map[string]interface{} `json:"brand,omitempty"`
+	Pk       string         `json:"pk"`
+	User     interface{}    `json:"user,omitempty"`
+	Action   EventActions   `json:"action"`
+	App      string         `json:"app"`
+	Context  interface{}    `json:"context,omitempty"`
+	ClientIp NullableString `json:"client_ip,omitempty"`
+	Created  time.Time      `json:"created"`
+	Expires  *time.Time     `json:"expires,omitempty"`
+	Brand    interface{}    `json:"brand,omitempty"`
 }
 
 type _Event Event
@@ -81,10 +81,10 @@ func (o *Event) SetPk(v string) {
 	o.Pk = v
 }
 
-// GetUser returns the User field value if set, zero value otherwise.
-func (o *Event) GetUser() map[string]interface{} {
-	if o == nil || IsNil(o.User) {
-		var ret map[string]interface{}
+// GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Event) GetUser() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.User
@@ -92,11 +92,12 @@ func (o *Event) GetUser() map[string]interface{} {
 
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Event) GetUserOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Event) GetUserOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.User) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.User, true
+	return &o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
@@ -108,8 +109,8 @@ func (o *Event) HasUser() bool {
 	return false
 }
 
-// SetUser gets a reference to the given map[string]interface{} and assigns it to the User field.
-func (o *Event) SetUser(v map[string]interface{}) {
+// SetUser gets a reference to the given interface{} and assigns it to the User field.
+func (o *Event) SetUser(v interface{}) {
 	o.User = v
 }
 
@@ -161,10 +162,10 @@ func (o *Event) SetApp(v string) {
 	o.App = v
 }
 
-// GetContext returns the Context field value if set, zero value otherwise.
-func (o *Event) GetContext() map[string]interface{} {
-	if o == nil || IsNil(o.Context) {
-		var ret map[string]interface{}
+// GetContext returns the Context field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Event) GetContext() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Context
@@ -172,11 +173,12 @@ func (o *Event) GetContext() map[string]interface{} {
 
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Event) GetContextOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Event) GetContextOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Context) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Context, true
+	return &o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
@@ -188,8 +190,8 @@ func (o *Event) HasContext() bool {
 	return false
 }
 
-// SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
-func (o *Event) SetContext(v map[string]interface{}) {
+// SetContext gets a reference to the given interface{} and assigns it to the Context field.
+func (o *Event) SetContext(v interface{}) {
 	o.Context = v
 }
 
@@ -292,10 +294,10 @@ func (o *Event) SetExpires(v time.Time) {
 	o.Expires = &v
 }
 
-// GetBrand returns the Brand field value if set, zero value otherwise.
-func (o *Event) GetBrand() map[string]interface{} {
-	if o == nil || IsNil(o.Brand) {
-		var ret map[string]interface{}
+// GetBrand returns the Brand field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Event) GetBrand() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Brand
@@ -303,11 +305,12 @@ func (o *Event) GetBrand() map[string]interface{} {
 
 // GetBrandOk returns a tuple with the Brand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Event) GetBrandOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Event) GetBrandOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Brand) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Brand, true
+	return &o.Brand, true
 }
 
 // HasBrand returns a boolean if a field has been set.
@@ -319,8 +322,8 @@ func (o *Event) HasBrand() bool {
 	return false
 }
 
-// SetBrand gets a reference to the given map[string]interface{} and assigns it to the Brand field.
-func (o *Event) SetBrand(v map[string]interface{}) {
+// SetBrand gets a reference to the given interface{} and assigns it to the Brand field.
+func (o *Event) SetBrand(v interface{}) {
 	o.Brand = v
 }
 
@@ -335,12 +338,12 @@ func (o Event) MarshalJSON() ([]byte, error) {
 func (o Event) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["pk"] = o.Pk
-	if !IsNil(o.User) {
+	if o.User != nil {
 		toSerialize["user"] = o.User
 	}
 	toSerialize["action"] = o.Action
 	toSerialize["app"] = o.App
-	if !IsNil(o.Context) {
+	if o.Context != nil {
 		toSerialize["context"] = o.Context
 	}
 	if o.ClientIp.IsSet() {
@@ -350,7 +353,7 @@ func (o Event) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
-	if !IsNil(o.Brand) {
+	if o.Brand != nil {
 		toSerialize["brand"] = o.Brand
 	}
 	return toSerialize, nil

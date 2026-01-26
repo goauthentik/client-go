@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]OAuth2Provider**](OAuth2Provider.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedOAuth2ProviderList
 
-`func NewPaginatedOAuth2ProviderList(pagination Pagination, results []OAuth2Provider, autocomplete map[string]interface{}, ) *PaginatedOAuth2ProviderList`
+`func NewPaginatedOAuth2ProviderList(pagination Pagination, results []OAuth2Provider, ) *PaginatedOAuth2ProviderList`
 
 NewPaginatedOAuth2ProviderList instantiates a new PaginatedOAuth2ProviderList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedOAuth2ProviderList) SetResults(v []OAuth2Provider)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedOAuth2ProviderList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedOAuth2ProviderList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedOAuth2ProviderList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

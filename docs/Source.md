@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Name** | **string** | Source&#39;s display Name. | 
 **Slug** | **string** | Internal source name, used in URLs. | 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**Promoted** | Pointer to **bool** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow to use when authenticating existing users. | [optional] 
 **EnrollmentFlow** | Pointer to **NullableString** | Flow to use when enrolling new users. | [optional] 
 **UserPropertyMappings** | Pointer to **[]string** |  | [optional] 
@@ -21,14 +20,13 @@ Name | Type | Description | Notes
 **UserMatchingMode** | Pointer to [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] 
 **Managed** | **NullableString** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] 
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
-**Icon** | Pointer to **string** |  | [optional] 
-**IconUrl** | **NullableString** | Get the URL to the source icon | [readonly] 
+**Icon** | **NullableString** | Get the URL to the Icon. If the name is /static or starts with http it is returned as-is | [readonly] 
 
 ## Methods
 
 ### NewSource
 
-`func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, ) *Source`
+`func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, icon NullableString, ) *Source`
 
 NewSource instantiates a new Source object
 This constructor will assign default values to properties that have it defined,
@@ -127,31 +125,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *Source) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
-### GetPromoted
-
-`func (o *Source) GetPromoted() bool`
-
-GetPromoted returns the Promoted field if non-nil, zero value otherwise.
-
-### GetPromotedOk
-
-`func (o *Source) GetPromotedOk() (*bool, bool)`
-
-GetPromotedOk returns a tuple with the Promoted field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPromoted
-
-`func (o *Source) SetPromoted(v bool)`
-
-SetPromoted sets Promoted field to given value.
-
-### HasPromoted
-
-`func (o *Source) HasPromoted() bool`
-
-HasPromoted returns a boolean if a field has been set.
 
 ### GetAuthenticationFlow
 
@@ -477,42 +450,17 @@ and a boolean to check if the value has been set.
 
 SetIcon sets Icon field to given value.
 
-### HasIcon
 
-`func (o *Source) HasIcon() bool`
+### SetIconNil
 
-HasIcon returns a boolean if a field has been set.
+`func (o *Source) SetIconNil(b bool)`
 
-### GetIconUrl
+ SetIconNil sets the value for Icon to be an explicit nil
 
-`func (o *Source) GetIconUrl() string`
+### UnsetIcon
+`func (o *Source) UnsetIcon()`
 
-GetIconUrl returns the IconUrl field if non-nil, zero value otherwise.
-
-### GetIconUrlOk
-
-`func (o *Source) GetIconUrlOk() (*string, bool)`
-
-GetIconUrlOk returns a tuple with the IconUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIconUrl
-
-`func (o *Source) SetIconUrl(v string)`
-
-SetIconUrl sets IconUrl field to given value.
-
-
-### SetIconUrlNil
-
-`func (o *Source) SetIconUrlNil(b bool)`
-
- SetIconUrlNil sets the value for IconUrl to be an explicit nil
-
-### UnsetIconUrl
-`func (o *Source) UnsetIconUrl()`
-
-UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
+UnsetIcon ensures that no value is present for Icon, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

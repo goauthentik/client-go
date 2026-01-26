@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **Group** | Pointer to **NullableString** |  | [optional] 
 **User** | Pointer to **NullableInt32** |  | [optional] 
 **PolicyObj** | [**Policy**](Policy.md) |  | [readonly] 
-**GroupObj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] 
-**UserObj** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**GroupObj** | [**Group**](Group.md) |  | [readonly] 
+**UserObj** | [**User**](User.md) |  | [readonly] 
 **Target** | **string** |  | 
 **Negate** | Pointer to **bool** | Negates the outcome of the policy. Messages are unaffected. | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewPolicyBinding
 
-`func NewPolicyBinding(pk string, policyObj Policy, groupObj PartialGroup, userObj PartialUser, target string, order int32, ) *PolicyBinding`
+`func NewPolicyBinding(pk string, policyObj Policy, groupObj Group, userObj User, target string, order int32, ) *PolicyBinding`
 
 NewPolicyBinding instantiates a new PolicyBinding object
 This constructor will assign default values to properties that have it defined,
@@ -184,40 +184,40 @@ SetPolicyObj sets PolicyObj field to given value.
 
 ### GetGroupObj
 
-`func (o *PolicyBinding) GetGroupObj() PartialGroup`
+`func (o *PolicyBinding) GetGroupObj() Group`
 
 GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
 ### GetGroupObjOk
 
-`func (o *PolicyBinding) GetGroupObjOk() (*PartialGroup, bool)`
+`func (o *PolicyBinding) GetGroupObjOk() (*Group, bool)`
 
 GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupObj
 
-`func (o *PolicyBinding) SetGroupObj(v PartialGroup)`
+`func (o *PolicyBinding) SetGroupObj(v Group)`
 
 SetGroupObj sets GroupObj field to given value.
 
 
 ### GetUserObj
 
-`func (o *PolicyBinding) GetUserObj() PartialUser`
+`func (o *PolicyBinding) GetUserObj() User`
 
 GetUserObj returns the UserObj field if non-nil, zero value otherwise.
 
 ### GetUserObjOk
 
-`func (o *PolicyBinding) GetUserObjOk() (*PartialUser, bool)`
+`func (o *PolicyBinding) GetUserObjOk() (*User, bool)`
 
 GetUserObjOk returns a tuple with the UserObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserObj
 
-`func (o *PolicyBinding) SetUserObj(v PartialUser)`
+`func (o *PolicyBinding) SetUserObj(v User)`
 
 SetUserObj sets UserObj field to given value.
 

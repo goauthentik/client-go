@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -27,8 +27,8 @@ type PolicyBinding struct {
 	Group     NullableString `json:"group,omitempty"`
 	User      NullableInt32  `json:"user,omitempty"`
 	PolicyObj Policy         `json:"policy_obj"`
-	GroupObj  PartialGroup   `json:"group_obj"`
-	UserObj   PartialUser    `json:"user_obj"`
+	GroupObj  Group          `json:"group_obj"`
+	UserObj   User           `json:"user_obj"`
 	Target    string         `json:"target"`
 	// Negates the outcome of the policy. Messages are unaffected.
 	Negate  *bool `json:"negate,omitempty"`
@@ -46,7 +46,7 @@ type _PolicyBinding PolicyBinding
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyBinding(pk string, policyObj Policy, groupObj PartialGroup, userObj PartialUser, target string, order int32) *PolicyBinding {
+func NewPolicyBinding(pk string, policyObj Policy, groupObj Group, userObj User, target string, order int32) *PolicyBinding {
 	this := PolicyBinding{}
 	this.Pk = pk
 	this.PolicyObj = policyObj
@@ -243,9 +243,9 @@ func (o *PolicyBinding) SetPolicyObj(v Policy) {
 }
 
 // GetGroupObj returns the GroupObj field value
-func (o *PolicyBinding) GetGroupObj() PartialGroup {
+func (o *PolicyBinding) GetGroupObj() Group {
 	if o == nil {
-		var ret PartialGroup
+		var ret Group
 		return ret
 	}
 
@@ -254,7 +254,7 @@ func (o *PolicyBinding) GetGroupObj() PartialGroup {
 
 // GetGroupObjOk returns a tuple with the GroupObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetGroupObjOk() (*PartialGroup, bool) {
+func (o *PolicyBinding) GetGroupObjOk() (*Group, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -262,14 +262,14 @@ func (o *PolicyBinding) GetGroupObjOk() (*PartialGroup, bool) {
 }
 
 // SetGroupObj sets field value
-func (o *PolicyBinding) SetGroupObj(v PartialGroup) {
+func (o *PolicyBinding) SetGroupObj(v Group) {
 	o.GroupObj = v
 }
 
 // GetUserObj returns the UserObj field value
-func (o *PolicyBinding) GetUserObj() PartialUser {
+func (o *PolicyBinding) GetUserObj() User {
 	if o == nil {
-		var ret PartialUser
+		var ret User
 		return ret
 	}
 
@@ -278,7 +278,7 @@ func (o *PolicyBinding) GetUserObj() PartialUser {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *PolicyBinding) GetUserObjOk() (*PartialUser, bool) {
+func (o *PolicyBinding) GetUserObjOk() (*User, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -286,7 +286,7 @@ func (o *PolicyBinding) GetUserObjOk() (*PartialUser, bool) {
 }
 
 // SetUserObj sets field value
-func (o *PolicyBinding) SetUserObj(v PartialUser) {
+func (o *PolicyBinding) SetUserObj(v User) {
 	o.UserObj = v
 }
 

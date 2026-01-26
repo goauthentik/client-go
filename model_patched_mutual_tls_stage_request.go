@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -20,8 +20,9 @@ var _ MappedNullable = &PatchedMutualTLSStageRequest{}
 
 // PatchedMutualTLSStageRequest MutualTLSStage Serializer
 type PatchedMutualTLSStageRequest struct {
-	Name *string        `json:"name,omitempty"`
-	Mode *StageModeEnum `json:"mode,omitempty"`
+	Name    *string                 `json:"name,omitempty"`
+	FlowSet []FlowSetRequest        `json:"flow_set,omitempty"`
+	Mode    *MutualTLSStageModeEnum `json:"mode,omitempty"`
 	// Configure certificate authorities to validate the certificate against. This option has a higher priority than the `client_certificate` option on `Brand`.
 	CertificateAuthorities []string           `json:"certificate_authorities,omitempty"`
 	CertAttribute          *CertAttributeEnum `json:"cert_attribute,omitempty"`
@@ -77,10 +78,42 @@ func (o *PatchedMutualTLSStageRequest) SetName(v string) {
 	o.Name = &v
 }
 
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *PatchedMutualTLSStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedMutualTLSStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *PatchedMutualTLSStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedMutualTLSStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
+}
+
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *PatchedMutualTLSStageRequest) GetMode() StageModeEnum {
+func (o *PatchedMutualTLSStageRequest) GetMode() MutualTLSStageModeEnum {
 	if o == nil || IsNil(o.Mode) {
-		var ret StageModeEnum
+		var ret MutualTLSStageModeEnum
 		return ret
 	}
 	return *o.Mode
@@ -88,7 +121,7 @@ func (o *PatchedMutualTLSStageRequest) GetMode() StageModeEnum {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedMutualTLSStageRequest) GetModeOk() (*StageModeEnum, bool) {
+func (o *PatchedMutualTLSStageRequest) GetModeOk() (*MutualTLSStageModeEnum, bool) {
 	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
@@ -104,8 +137,8 @@ func (o *PatchedMutualTLSStageRequest) HasMode() bool {
 	return false
 }
 
-// SetMode gets a reference to the given StageModeEnum and assigns it to the Mode field.
-func (o *PatchedMutualTLSStageRequest) SetMode(v StageModeEnum) {
+// SetMode gets a reference to the given MutualTLSStageModeEnum and assigns it to the Mode field.
+func (o *PatchedMutualTLSStageRequest) SetMode(v MutualTLSStageModeEnum) {
 	o.Mode = &v
 }
 
@@ -217,6 +250,9 @@ func (o PatchedMutualTLSStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
 	}
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode

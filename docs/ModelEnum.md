@@ -5,41 +5,7 @@
 
 * `AUTHENTIK_TENANTS_DOMAIN` (value: `"authentik_tenants.domain"`)
 
-* `AUTHENTIK_CORE_GROUP` (value: `"authentik_core.group"`)
-
-* `AUTHENTIK_CORE_USER` (value: `"authentik_core.user"`)
-
-* `AUTHENTIK_CORE_APPLICATION` (value: `"authentik_core.application"`)
-
-* `AUTHENTIK_CORE_APPLICATIONENTITLEMENT` (value: `"authentik_core.applicationentitlement"`)
-
-* `AUTHENTIK_CORE_TOKEN` (value: `"authentik_core.token"`)
-
 * `AUTHENTIK_CRYPTO_CERTIFICATEKEYPAIR` (value: `"authentik_crypto.certificatekeypair"`)
-
-* `AUTHENTIK_ENDPOINTS_DEVICEUSERBINDING` (value: `"authentik_endpoints.deviceuserbinding"`)
-
-* `AUTHENTIK_ENDPOINTS_DEVICEACCESSGROUP` (value: `"authentik_endpoints.deviceaccessgroup"`)
-
-* `AUTHENTIK_ENDPOINTS_ENDPOINTSTAGE` (value: `"authentik_endpoints.endpointstage"`)
-
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT_AGENTCONNECTOR` (value: `"authentik_endpoints_connectors_agent.agentconnector"`)
-
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT_AGENTDEVICEUSERBINDING` (value: `"authentik_endpoints_connectors_agent.agentdeviceuserbinding"`)
-
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT_ENROLLMENTTOKEN` (value: `"authentik_endpoints_connectors_agent.enrollmenttoken"`)
-
-* `AUTHENTIK_ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
-
-* `AUTHENTIK_EVENTS_EVENT` (value: `"authentik_events.event"`)
-
-* `AUTHENTIK_EVENTS_NOTIFICATIONTRANSPORT` (value: `"authentik_events.notificationtransport"`)
-
-* `AUTHENTIK_EVENTS_NOTIFICATION` (value: `"authentik_events.notification"`)
-
-* `AUTHENTIK_EVENTS_NOTIFICATIONRULE` (value: `"authentik_events.notificationrule"`)
-
-* `AUTHENTIK_EVENTS_NOTIFICATIONWEBHOOKMAPPING` (value: `"authentik_events.notificationwebhookmapping"`)
 
 * `AUTHENTIK_FLOWS_FLOW` (value: `"authentik_flows.flow"`)
 
@@ -141,14 +107,6 @@
 
 * `AUTHENTIK_SOURCES_SCIM_SCIMSOURCEPROPERTYMAPPING` (value: `"authentik_sources_scim.scimsourcepropertymapping"`)
 
-* `AUTHENTIK_SOURCES_TELEGRAM_TELEGRAMSOURCE` (value: `"authentik_sources_telegram.telegramsource"`)
-
-* `AUTHENTIK_SOURCES_TELEGRAM_TELEGRAMSOURCEPROPERTYMAPPING` (value: `"authentik_sources_telegram.telegramsourcepropertymapping"`)
-
-* `AUTHENTIK_SOURCES_TELEGRAM_USERTELEGRAMSOURCECONNECTION` (value: `"authentik_sources_telegram.usertelegramsourceconnection"`)
-
-* `AUTHENTIK_SOURCES_TELEGRAM_GROUPTELEGRAMSOURCECONNECTION` (value: `"authentik_sources_telegram.grouptelegramsourceconnection"`)
-
 * `AUTHENTIK_STAGES_AUTHENTICATOR_DUO_AUTHENTICATORDUOSTAGE` (value: `"authentik_stages_authenticator_duo.authenticatorduostage"`)
 
 * `AUTHENTIK_STAGES_AUTHENTICATOR_DUO_DUODEVICE` (value: `"authentik_stages_authenticator_duo.duodevice"`)
@@ -179,6 +137,8 @@
 
 * `AUTHENTIK_STAGES_CONSENT_CONSENTSTAGE` (value: `"authentik_stages_consent.consentstage"`)
 
+* `AUTHENTIK_STAGES_CONSENT_USERCONSENT` (value: `"authentik_stages_consent.userconsent"`)
+
 * `AUTHENTIK_STAGES_DENY_DENYSTAGE` (value: `"authentik_stages_deny.denystage"`)
 
 * `AUTHENTIK_STAGES_DUMMY_DUMMYSTAGE` (value: `"authentik_stages_dummy.dummystage"`)
@@ -207,13 +167,21 @@
 
 * `AUTHENTIK_STAGES_USER_WRITE_USERWRITESTAGE` (value: `"authentik_stages_user_write.userwritestage"`)
 
-* `AUTHENTIK_TASKS_SCHEDULES_SCHEDULE` (value: `"authentik_tasks_schedules.schedule"`)
-
 * `AUTHENTIK_BRANDS_BRAND` (value: `"authentik_brands.brand"`)
 
 * `AUTHENTIK_BLUEPRINTS_BLUEPRINTINSTANCE` (value: `"authentik_blueprints.blueprintinstance"`)
 
-* `AUTHENTIK_ENDPOINTS_CONNECTORS_FLEET_FLEETCONNECTOR` (value: `"authentik_endpoints_connectors_fleet.fleetconnector"`)
+* `AUTHENTIK_CORE_GROUP` (value: `"authentik_core.group"`)
+
+* `AUTHENTIK_CORE_USER` (value: `"authentik_core.user"`)
+
+* `AUTHENTIK_CORE_APPLICATION` (value: `"authentik_core.application"`)
+
+* `AUTHENTIK_CORE_APPLICATIONENTITLEMENT` (value: `"authentik_core.applicationentitlement"`)
+
+* `AUTHENTIK_CORE_TOKEN` (value: `"authentik_core.token"`)
+
+* `AUTHENTIK_ENTERPRISE_LICENSE` (value: `"authentik_enterprise.license"`)
 
 * `AUTHENTIK_POLICIES_UNIQUE_PASSWORD_UNIQUEPASSWORDPOLICY` (value: `"authentik_policies_unique_password.uniquepasswordpolicy"`)
 
@@ -227,13 +195,21 @@
 
 * `AUTHENTIK_PROVIDERS_SSF_SSFPROVIDER` (value: `"authentik_providers_ssf.ssfprovider"`)
 
-* `AUTHENTIK_REPORTS_DATAEXPORT` (value: `"authentik_reports.dataexport"`)
-
 * `AUTHENTIK_STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE` (value: `"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"`)
 
 * `AUTHENTIK_STAGES_MTLS_MUTUALTLSSTAGE` (value: `"authentik_stages_mtls.mutualtlsstage"`)
 
 * `AUTHENTIK_STAGES_SOURCE_SOURCESTAGE` (value: `"authentik_stages_source.sourcestage"`)
+
+* `AUTHENTIK_EVENTS_EVENT` (value: `"authentik_events.event"`)
+
+* `AUTHENTIK_EVENTS_NOTIFICATIONTRANSPORT` (value: `"authentik_events.notificationtransport"`)
+
+* `AUTHENTIK_EVENTS_NOTIFICATION` (value: `"authentik_events.notification"`)
+
+* `AUTHENTIK_EVENTS_NOTIFICATIONRULE` (value: `"authentik_events.notificationrule"`)
+
+* `AUTHENTIK_EVENTS_NOTIFICATIONWEBHOOKMAPPING` (value: `"authentik_events.notificationwebhookmapping"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

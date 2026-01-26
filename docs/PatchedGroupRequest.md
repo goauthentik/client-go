@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **IsSuperuser** | Pointer to **bool** | Users added to this group will be superusers. | [optional] 
-**Parents** | Pointer to **[]string** |  | [optional] 
+**Parent** | Pointer to **NullableString** |  | [optional] 
 **Users** | Pointer to **[]int32** |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Roles** | Pointer to **[]string** |  | [optional] 
@@ -80,31 +80,41 @@ SetIsSuperuser sets IsSuperuser field to given value.
 
 HasIsSuperuser returns a boolean if a field has been set.
 
-### GetParents
+### GetParent
 
-`func (o *PatchedGroupRequest) GetParents() []string`
+`func (o *PatchedGroupRequest) GetParent() string`
 
-GetParents returns the Parents field if non-nil, zero value otherwise.
+GetParent returns the Parent field if non-nil, zero value otherwise.
 
-### GetParentsOk
+### GetParentOk
 
-`func (o *PatchedGroupRequest) GetParentsOk() (*[]string, bool)`
+`func (o *PatchedGroupRequest) GetParentOk() (*string, bool)`
 
-GetParentsOk returns a tuple with the Parents field if it's non-nil, zero value otherwise
+GetParentOk returns a tuple with the Parent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetParents
+### SetParent
 
-`func (o *PatchedGroupRequest) SetParents(v []string)`
+`func (o *PatchedGroupRequest) SetParent(v string)`
 
-SetParents sets Parents field to given value.
+SetParent sets Parent field to given value.
 
-### HasParents
+### HasParent
 
-`func (o *PatchedGroupRequest) HasParents() bool`
+`func (o *PatchedGroupRequest) HasParent() bool`
 
-HasParents returns a boolean if a field has been set.
+HasParent returns a boolean if a field has been set.
 
+### SetParentNil
+
+`func (o *PatchedGroupRequest) SetParentNil(b bool)`
+
+ SetParentNil sets the value for Parent to be an explicit nil
+
+### UnsetParent
+`func (o *PatchedGroupRequest) UnsetParent()`
+
+UnsetParent ensures that no value is present for Parent, not even an explicit nil
 ### GetUsers
 
 `func (o *PatchedGroupRequest) GetUsers() []int32`

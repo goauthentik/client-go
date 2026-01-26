@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -32,10 +32,10 @@ type AuthenticatorStaticStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
 	ConfigureFlow NullableString `json:"configure_flow,omitempty"`
-	FriendlyName  *string        `json:"friendly_name,omitempty"`
+	FriendlyName  NullableString `json:"friendly_name,omitempty"`
 	TokenCount    *int32         `json:"token_count,omitempty"`
 	TokenLength   *int32         `json:"token_length,omitempty"`
 }
@@ -46,7 +46,7 @@ type _AuthenticatorStaticStage AuthenticatorStaticStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorStaticStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet) *AuthenticatorStaticStage {
+func NewAuthenticatorStaticStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *AuthenticatorStaticStage {
 	this := AuthenticatorStaticStage{}
 	this.Pk = pk
 	this.Name = name
@@ -54,7 +54,6 @@ func NewAuthenticatorStaticStage(pk string, name string, component string, verbo
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	return &this
 }
 
@@ -210,26 +209,34 @@ func (o *AuthenticatorStaticStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *AuthenticatorStaticStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *AuthenticatorStaticStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *AuthenticatorStaticStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -277,36 +284,47 @@ func (o *AuthenticatorStaticStage) UnsetConfigureFlow() {
 	o.ConfigureFlow.Unset()
 }
 
-// GetFriendlyName returns the FriendlyName field value if set, zero value otherwise.
+// GetFriendlyName returns the FriendlyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorStaticStage) GetFriendlyName() string {
-	if o == nil || IsNil(o.FriendlyName) {
+	if o == nil || IsNil(o.FriendlyName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FriendlyName
+	return *o.FriendlyName.Get()
 }
 
 // GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthenticatorStaticStage) GetFriendlyNameOk() (*string, bool) {
-	if o == nil || IsNil(o.FriendlyName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FriendlyName, true
+	return o.FriendlyName.Get(), o.FriendlyName.IsSet()
 }
 
 // HasFriendlyName returns a boolean if a field has been set.
 func (o *AuthenticatorStaticStage) HasFriendlyName() bool {
-	if o != nil && !IsNil(o.FriendlyName) {
+	if o != nil && o.FriendlyName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFriendlyName gets a reference to the given string and assigns it to the FriendlyName field.
+// SetFriendlyName gets a reference to the given NullableString and assigns it to the FriendlyName field.
 func (o *AuthenticatorStaticStage) SetFriendlyName(v string) {
-	o.FriendlyName = &v
+	o.FriendlyName.Set(&v)
+}
+
+// SetFriendlyNameNil sets the value for FriendlyName to be an explicit nil
+func (o *AuthenticatorStaticStage) SetFriendlyNameNil() {
+	o.FriendlyName.Set(nil)
+}
+
+// UnsetFriendlyName ensures that no value is present for FriendlyName, not even an explicit nil
+func (o *AuthenticatorStaticStage) UnsetFriendlyName() {
+	o.FriendlyName.Unset()
 }
 
 // GetTokenCount returns the TokenCount field value if set, zero value otherwise.
@@ -389,12 +407,14 @@ func (o AuthenticatorStaticStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if !IsNil(o.FriendlyName) {
-		toSerialize["friendly_name"] = o.FriendlyName
+	if o.FriendlyName.IsSet() {
+		toSerialize["friendly_name"] = o.FriendlyName.Get()
 	}
 	if !IsNil(o.TokenCount) {
 		toSerialize["token_count"] = o.TokenCount
@@ -416,7 +436,6 @@ func (o *AuthenticatorStaticStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 	}
 
 	allProperties := make(map[string]interface{})

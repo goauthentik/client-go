@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -25,8 +25,6 @@ type PatchedOAuthSourceRequest struct {
 	// Internal source name, used in URLs.
 	Slug    *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool   `json:"enabled,omitempty"`
-	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
-	Promoted *bool `json:"promoted,omitempty"`
 	// Flow to use when authenticating existing users.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
 	// Flow to use when enrolling new users.
@@ -37,7 +35,6 @@ type PatchedOAuthSourceRequest struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	UserPathTemplate *string               `json:"user_path_template,omitempty"`
-	Icon             *string               `json:"icon,omitempty"`
 	// How the source determines if an existing group should be used or a new group created.
 	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	ProviderType      *ProviderTypeEnum      `json:"provider_type,omitempty"`
@@ -48,14 +45,13 @@ type PatchedOAuthSourceRequest struct {
 	// URL used by authentik to retrieve tokens.
 	AccessTokenUrl NullableString `json:"access_token_url,omitempty"`
 	// URL used by authentik to get user information.
-	ProfileUrl       NullableString         `json:"profile_url,omitempty"`
-	Pkce             *PKCEMethodEnum        `json:"pkce,omitempty"`
-	ConsumerKey      *string                `json:"consumer_key,omitempty"`
-	ConsumerSecret   *string                `json:"consumer_secret,omitempty"`
-	AdditionalScopes *string                `json:"additional_scopes,omitempty"`
-	OidcWellKnownUrl *string                `json:"oidc_well_known_url,omitempty"`
-	OidcJwksUrl      *string                `json:"oidc_jwks_url,omitempty"`
-	OidcJwks         map[string]interface{} `json:"oidc_jwks,omitempty"`
+	ProfileUrl       NullableString `json:"profile_url,omitempty"`
+	ConsumerKey      *string        `json:"consumer_key,omitempty"`
+	ConsumerSecret   *string        `json:"consumer_secret,omitempty"`
+	AdditionalScopes *string        `json:"additional_scopes,omitempty"`
+	OidcWellKnownUrl *string        `json:"oidc_well_known_url,omitempty"`
+	OidcJwksUrl      *string        `json:"oidc_jwks_url,omitempty"`
+	OidcJwks         interface{}    `json:"oidc_jwks,omitempty"`
 	// How to perform authentication during an authorization_code token request flow
 	AuthorizationCodeAuthMethod *AuthorizationCodeAuthMethodEnum `json:"authorization_code_auth_method,omitempty"`
 }
@@ -171,38 +167,6 @@ func (o *PatchedOAuthSourceRequest) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *PatchedOAuthSourceRequest) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// GetPromoted returns the Promoted field value if set, zero value otherwise.
-func (o *PatchedOAuthSourceRequest) GetPromoted() bool {
-	if o == nil || IsNil(o.Promoted) {
-		var ret bool
-		return ret
-	}
-	return *o.Promoted
-}
-
-// GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedOAuthSourceRequest) GetPromotedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Promoted) {
-		return nil, false
-	}
-	return o.Promoted, true
-}
-
-// HasPromoted returns a boolean if a field has been set.
-func (o *PatchedOAuthSourceRequest) HasPromoted() bool {
-	if o != nil && !IsNil(o.Promoted) {
-		return true
-	}
-
-	return false
-}
-
-// SetPromoted gets a reference to the given bool and assigns it to the Promoted field.
-func (o *PatchedOAuthSourceRequest) SetPromoted(v bool) {
-	o.Promoted = &v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -451,38 +415,6 @@ func (o *PatchedOAuthSourceRequest) SetUserPathTemplate(v string) {
 	o.UserPathTemplate = &v
 }
 
-// GetIcon returns the Icon field value if set, zero value otherwise.
-func (o *PatchedOAuthSourceRequest) GetIcon() string {
-	if o == nil || IsNil(o.Icon) {
-		var ret string
-		return ret
-	}
-	return *o.Icon
-}
-
-// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedOAuthSourceRequest) GetIconOk() (*string, bool) {
-	if o == nil || IsNil(o.Icon) {
-		return nil, false
-	}
-	return o.Icon, true
-}
-
-// HasIcon returns a boolean if a field has been set.
-func (o *PatchedOAuthSourceRequest) HasIcon() bool {
-	if o != nil && !IsNil(o.Icon) {
-		return true
-	}
-
-	return false
-}
-
-// SetIcon gets a reference to the given string and assigns it to the Icon field.
-func (o *PatchedOAuthSourceRequest) SetIcon(v string) {
-	o.Icon = &v
-}
-
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
 func (o *PatchedOAuthSourceRequest) GetGroupMatchingMode() GroupMatchingModeEnum {
 	if o == nil || IsNil(o.GroupMatchingMode) {
@@ -719,38 +651,6 @@ func (o *PatchedOAuthSourceRequest) UnsetProfileUrl() {
 	o.ProfileUrl.Unset()
 }
 
-// GetPkce returns the Pkce field value if set, zero value otherwise.
-func (o *PatchedOAuthSourceRequest) GetPkce() PKCEMethodEnum {
-	if o == nil || IsNil(o.Pkce) {
-		var ret PKCEMethodEnum
-		return ret
-	}
-	return *o.Pkce
-}
-
-// GetPkceOk returns a tuple with the Pkce field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedOAuthSourceRequest) GetPkceOk() (*PKCEMethodEnum, bool) {
-	if o == nil || IsNil(o.Pkce) {
-		return nil, false
-	}
-	return o.Pkce, true
-}
-
-// HasPkce returns a boolean if a field has been set.
-func (o *PatchedOAuthSourceRequest) HasPkce() bool {
-	if o != nil && !IsNil(o.Pkce) {
-		return true
-	}
-
-	return false
-}
-
-// SetPkce gets a reference to the given PKCEMethodEnum and assigns it to the Pkce field.
-func (o *PatchedOAuthSourceRequest) SetPkce(v PKCEMethodEnum) {
-	o.Pkce = &v
-}
-
 // GetConsumerKey returns the ConsumerKey field value if set, zero value otherwise.
 func (o *PatchedOAuthSourceRequest) GetConsumerKey() string {
 	if o == nil || IsNil(o.ConsumerKey) {
@@ -911,10 +811,10 @@ func (o *PatchedOAuthSourceRequest) SetOidcJwksUrl(v string) {
 	o.OidcJwksUrl = &v
 }
 
-// GetOidcJwks returns the OidcJwks field value if set, zero value otherwise.
-func (o *PatchedOAuthSourceRequest) GetOidcJwks() map[string]interface{} {
-	if o == nil || IsNil(o.OidcJwks) {
-		var ret map[string]interface{}
+// GetOidcJwks returns the OidcJwks field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedOAuthSourceRequest) GetOidcJwks() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.OidcJwks
@@ -922,11 +822,12 @@ func (o *PatchedOAuthSourceRequest) GetOidcJwks() map[string]interface{} {
 
 // GetOidcJwksOk returns a tuple with the OidcJwks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedOAuthSourceRequest) GetOidcJwksOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedOAuthSourceRequest) GetOidcJwksOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.OidcJwks) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.OidcJwks, true
+	return &o.OidcJwks, true
 }
 
 // HasOidcJwks returns a boolean if a field has been set.
@@ -938,8 +839,8 @@ func (o *PatchedOAuthSourceRequest) HasOidcJwks() bool {
 	return false
 }
 
-// SetOidcJwks gets a reference to the given map[string]interface{} and assigns it to the OidcJwks field.
-func (o *PatchedOAuthSourceRequest) SetOidcJwks(v map[string]interface{}) {
+// SetOidcJwks gets a reference to the given interface{} and assigns it to the OidcJwks field.
+func (o *PatchedOAuthSourceRequest) SetOidcJwks(v interface{}) {
 	o.OidcJwks = v
 }
 
@@ -994,9 +895,6 @@ func (o PatchedOAuthSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.Promoted) {
-		toSerialize["promoted"] = o.Promoted
-	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
@@ -1018,9 +916,6 @@ func (o PatchedOAuthSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if !IsNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
 	if !IsNil(o.GroupMatchingMode) {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
@@ -1039,9 +934,6 @@ func (o PatchedOAuthSourceRequest) ToMap() (map[string]interface{}, error) {
 	if o.ProfileUrl.IsSet() {
 		toSerialize["profile_url"] = o.ProfileUrl.Get()
 	}
-	if !IsNil(o.Pkce) {
-		toSerialize["pkce"] = o.Pkce
-	}
 	if !IsNil(o.ConsumerKey) {
 		toSerialize["consumer_key"] = o.ConsumerKey
 	}
@@ -1057,7 +949,7 @@ func (o PatchedOAuthSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OidcJwksUrl) {
 		toSerialize["oidc_jwks_url"] = o.OidcJwksUrl
 	}
-	if !IsNil(o.OidcJwks) {
+	if o.OidcJwks != nil {
 		toSerialize["oidc_jwks"] = o.OidcJwks
 	}
 	if !IsNil(o.AuthorizationCodeAuthMethod) {

@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **GoogleId** | **string** |  | 
 **Group** | **string** |  | 
-**GroupObj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] 
+**GroupObj** | [**UserGroup**](UserGroup.md) |  | [readonly] 
 **Provider** | **int32** |  | 
-**Attributes** | **map[string]interface{}** |  | [readonly] 
+**Attributes** | **interface{}** |  | [readonly] 
 
 ## Methods
 
 ### NewGoogleWorkspaceProviderGroup
 
-`func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj PartialGroup, provider int32, attributes map[string]interface{}, ) *GoogleWorkspaceProviderGroup`
+`func NewGoogleWorkspaceProviderGroup(id string, googleId string, group string, groupObj UserGroup, provider int32, attributes interface{}, ) *GoogleWorkspaceProviderGroup`
 
 NewGoogleWorkspaceProviderGroup instantiates a new GoogleWorkspaceProviderGroup object
 This constructor will assign default values to properties that have it defined,
@@ -92,20 +92,20 @@ SetGroup sets Group field to given value.
 
 ### GetGroupObj
 
-`func (o *GoogleWorkspaceProviderGroup) GetGroupObj() PartialGroup`
+`func (o *GoogleWorkspaceProviderGroup) GetGroupObj() UserGroup`
 
 GetGroupObj returns the GroupObj field if non-nil, zero value otherwise.
 
 ### GetGroupObjOk
 
-`func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*PartialGroup, bool)`
+`func (o *GoogleWorkspaceProviderGroup) GetGroupObjOk() (*UserGroup, bool)`
 
 GetGroupObjOk returns a tuple with the GroupObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupObj
 
-`func (o *GoogleWorkspaceProviderGroup) SetGroupObj(v PartialGroup)`
+`func (o *GoogleWorkspaceProviderGroup) SetGroupObj(v UserGroup)`
 
 SetGroupObj sets GroupObj field to given value.
 
@@ -132,24 +132,34 @@ SetProvider sets Provider field to given value.
 
 ### GetAttributes
 
-`func (o *GoogleWorkspaceProviderGroup) GetAttributes() map[string]interface{}`
+`func (o *GoogleWorkspaceProviderGroup) GetAttributes() interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *GoogleWorkspaceProviderGroup) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *GoogleWorkspaceProviderGroup) GetAttributesOk() (*interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *GoogleWorkspaceProviderGroup) SetAttributes(v map[string]interface{})`
+`func (o *GoogleWorkspaceProviderGroup) SetAttributes(v interface{})`
 
 SetAttributes sets Attributes field to given value.
 
 
+### SetAttributesNil
+
+`func (o *GoogleWorkspaceProviderGroup) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *GoogleWorkspaceProviderGroup) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

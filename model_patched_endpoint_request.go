@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -20,14 +20,14 @@ var _ MappedNullable = &PatchedEndpointRequest{}
 
 // PatchedEndpointRequest Endpoint Serializer
 type PatchedEndpointRequest struct {
-	Name               *string                `json:"name,omitempty"`
-	Provider           *int32                 `json:"provider,omitempty"`
-	Protocol           *ProtocolEnum          `json:"protocol,omitempty"`
-	Host               *string                `json:"host,omitempty"`
-	Settings           map[string]interface{} `json:"settings,omitempty"`
-	PropertyMappings   []string               `json:"property_mappings,omitempty"`
-	AuthMode           *EndpointAuthModeEnum  `json:"auth_mode,omitempty"`
-	MaximumConnections *int32                 `json:"maximum_connections,omitempty"`
+	Name               *string       `json:"name,omitempty"`
+	Provider           *int32        `json:"provider,omitempty"`
+	Protocol           *ProtocolEnum `json:"protocol,omitempty"`
+	Host               *string       `json:"host,omitempty"`
+	Settings           interface{}   `json:"settings,omitempty"`
+	PropertyMappings   []string      `json:"property_mappings,omitempty"`
+	AuthMode           *AuthModeEnum `json:"auth_mode,omitempty"`
+	MaximumConnections *int32        `json:"maximum_connections,omitempty"`
 }
 
 // NewPatchedEndpointRequest instantiates a new PatchedEndpointRequest object
@@ -175,10 +175,10 @@ func (o *PatchedEndpointRequest) SetHost(v string) {
 	o.Host = &v
 }
 
-// GetSettings returns the Settings field value if set, zero value otherwise.
-func (o *PatchedEndpointRequest) GetSettings() map[string]interface{} {
-	if o == nil || IsNil(o.Settings) {
-		var ret map[string]interface{}
+// GetSettings returns the Settings field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedEndpointRequest) GetSettings() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Settings
@@ -186,11 +186,12 @@ func (o *PatchedEndpointRequest) GetSettings() map[string]interface{} {
 
 // GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEndpointRequest) GetSettingsOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedEndpointRequest) GetSettingsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Settings) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Settings, true
+	return &o.Settings, true
 }
 
 // HasSettings returns a boolean if a field has been set.
@@ -202,8 +203,8 @@ func (o *PatchedEndpointRequest) HasSettings() bool {
 	return false
 }
 
-// SetSettings gets a reference to the given map[string]interface{} and assigns it to the Settings field.
-func (o *PatchedEndpointRequest) SetSettings(v map[string]interface{}) {
+// SetSettings gets a reference to the given interface{} and assigns it to the Settings field.
+func (o *PatchedEndpointRequest) SetSettings(v interface{}) {
 	o.Settings = v
 }
 
@@ -240,9 +241,9 @@ func (o *PatchedEndpointRequest) SetPropertyMappings(v []string) {
 }
 
 // GetAuthMode returns the AuthMode field value if set, zero value otherwise.
-func (o *PatchedEndpointRequest) GetAuthMode() EndpointAuthModeEnum {
+func (o *PatchedEndpointRequest) GetAuthMode() AuthModeEnum {
 	if o == nil || IsNil(o.AuthMode) {
-		var ret EndpointAuthModeEnum
+		var ret AuthModeEnum
 		return ret
 	}
 	return *o.AuthMode
@@ -250,7 +251,7 @@ func (o *PatchedEndpointRequest) GetAuthMode() EndpointAuthModeEnum {
 
 // GetAuthModeOk returns a tuple with the AuthMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchedEndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool) {
+func (o *PatchedEndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool) {
 	if o == nil || IsNil(o.AuthMode) {
 		return nil, false
 	}
@@ -266,8 +267,8 @@ func (o *PatchedEndpointRequest) HasAuthMode() bool {
 	return false
 }
 
-// SetAuthMode gets a reference to the given EndpointAuthModeEnum and assigns it to the AuthMode field.
-func (o *PatchedEndpointRequest) SetAuthMode(v EndpointAuthModeEnum) {
+// SetAuthMode gets a reference to the given AuthModeEnum and assigns it to the AuthMode field.
+func (o *PatchedEndpointRequest) SetAuthMode(v AuthModeEnum) {
 	o.AuthMode = &v
 }
 
@@ -325,7 +326,7 @@ func (o PatchedEndpointRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
 	}
-	if !IsNil(o.Settings) {
+	if o.Settings != nil {
 		toSerialize["settings"] = o.Settings
 	}
 	if !IsNil(o.PropertyMappings) {

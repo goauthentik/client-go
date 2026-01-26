@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] [default to ""]
-**Context** | Pointer to **map[string]interface{}** |  | [optional] 
+**Context** | Pointer to **interface{}** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **Content** | Pointer to **string** |  | [optional] 
 
@@ -81,20 +81,20 @@ HasPath returns a boolean if a field has been set.
 
 ### GetContext
 
-`func (o *PatchedBlueprintInstanceRequest) GetContext() map[string]interface{}`
+`func (o *PatchedBlueprintInstanceRequest) GetContext() interface{}`
 
 GetContext returns the Context field if non-nil, zero value otherwise.
 
 ### GetContextOk
 
-`func (o *PatchedBlueprintInstanceRequest) GetContextOk() (*map[string]interface{}, bool)`
+`func (o *PatchedBlueprintInstanceRequest) GetContextOk() (*interface{}, bool)`
 
 GetContextOk returns a tuple with the Context field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContext
 
-`func (o *PatchedBlueprintInstanceRequest) SetContext(v map[string]interface{})`
+`func (o *PatchedBlueprintInstanceRequest) SetContext(v interface{})`
 
 SetContext sets Context field to given value.
 
@@ -104,6 +104,16 @@ SetContext sets Context field to given value.
 
 HasContext returns a boolean if a field has been set.
 
+### SetContextNil
+
+`func (o *PatchedBlueprintInstanceRequest) SetContextNil(b bool)`
+
+ SetContextNil sets the value for Context to be an explicit nil
+
+### UnsetContext
+`func (o *PatchedBlueprintInstanceRequest) UnsetContext()`
+
+UnsetContext ensures that no value is present for Context, not even an explicit nil
 ### GetEnabled
 
 `func (o *PatchedBlueprintInstanceRequest) GetEnabled() bool`

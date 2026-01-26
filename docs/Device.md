@@ -14,14 +14,13 @@ Name | Type | Description | Notes
 **Created** | **time.Time** |  | [readonly] 
 **LastUpdated** | **time.Time** |  | [readonly] 
 **LastUsed** | **NullableTime** |  | [readonly] 
-**ExtraDescription** | **NullableString** | Get extra description | [readonly] 
-**ExternalId** | **NullableString** | Get external Device ID | [readonly] 
+**ExtraDescription** | **string** | Get extra description | [readonly] 
 
 ## Methods
 
 ### NewDevice
 
-`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk string, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription NullableString, externalId NullableString, ) *Device`
+`func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk string, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription string, ) *Device`
 
 NewDevice instantiates a new Device object
 This constructor will assign default values to properties that have it defined,
@@ -266,46 +265,6 @@ and a boolean to check if the value has been set.
 SetExtraDescription sets ExtraDescription field to given value.
 
 
-### SetExtraDescriptionNil
-
-`func (o *Device) SetExtraDescriptionNil(b bool)`
-
- SetExtraDescriptionNil sets the value for ExtraDescription to be an explicit nil
-
-### UnsetExtraDescription
-`func (o *Device) UnsetExtraDescription()`
-
-UnsetExtraDescription ensures that no value is present for ExtraDescription, not even an explicit nil
-### GetExternalId
-
-`func (o *Device) GetExternalId() string`
-
-GetExternalId returns the ExternalId field if non-nil, zero value otherwise.
-
-### GetExternalIdOk
-
-`func (o *Device) GetExternalIdOk() (*string, bool)`
-
-GetExternalIdOk returns a tuple with the ExternalId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExternalId
-
-`func (o *Device) SetExternalId(v string)`
-
-SetExternalId sets ExternalId field to given value.
-
-
-### SetExternalIdNil
-
-`func (o *Device) SetExternalIdNil(b bool)`
-
- SetExternalIdNil sets the value for ExternalId to be an explicit nil
-
-### UnsetExternalId
-`func (o *Device) UnsetExternalId()`
-
-UnsetExternalId ensures that no value is present for ExternalId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

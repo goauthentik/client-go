@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **ModelName** | **string** |  | 
 **IconUrl** | Pointer to **string** |  | [optional] 
 **RequiresEnterprise** | Pointer to **bool** |  | [optional] [default to false]
-**Deprecated** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -160,31 +159,6 @@ SetRequiresEnterprise sets RequiresEnterprise field to given value.
 `func (o *TypeCreate) HasRequiresEnterprise() bool`
 
 HasRequiresEnterprise returns a boolean if a field has been set.
-
-### GetDeprecated
-
-`func (o *TypeCreate) GetDeprecated() bool`
-
-GetDeprecated returns the Deprecated field if non-nil, zero value otherwise.
-
-### GetDeprecatedOk
-
-`func (o *TypeCreate) GetDeprecatedOk() (*bool, bool)`
-
-GetDeprecatedOk returns a tuple with the Deprecated field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeprecated
-
-`func (o *TypeCreate) SetDeprecated(v bool)`
-
-SetDeprecated sets Deprecated field to given value.
-
-### HasDeprecated
-
-`func (o *TypeCreate) HasDeprecated() bool`
-
-HasDeprecated returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

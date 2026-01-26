@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type GroupRequest struct {
 	Name string `json:"name"`
 	// Users added to this group will be superusers.
 	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
-	Parents     []string               `json:"parents,omitempty"`
+	Parent      NullableString         `json:"parent,omitempty"`
 	Users       []int32                `json:"users,omitempty"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 	Roles       []string               `json:"roles,omitempty"`
@@ -107,36 +107,47 @@ func (o *GroupRequest) SetIsSuperuser(v bool) {
 	o.IsSuperuser = &v
 }
 
-// GetParents returns the Parents field value if set, zero value otherwise.
-func (o *GroupRequest) GetParents() []string {
-	if o == nil || IsNil(o.Parents) {
-		var ret []string
+// GetParent returns the Parent field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GroupRequest) GetParent() string {
+	if o == nil || IsNil(o.Parent.Get()) {
+		var ret string
 		return ret
 	}
-	return o.Parents
+	return *o.Parent.Get()
 }
 
-// GetParentsOk returns a tuple with the Parents field value if set, nil otherwise
+// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupRequest) GetParentsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Parents) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GroupRequest) GetParentOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Parents, true
+	return o.Parent.Get(), o.Parent.IsSet()
 }
 
-// HasParents returns a boolean if a field has been set.
-func (o *GroupRequest) HasParents() bool {
-	if o != nil && !IsNil(o.Parents) {
+// HasParent returns a boolean if a field has been set.
+func (o *GroupRequest) HasParent() bool {
+	if o != nil && o.Parent.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetParents gets a reference to the given []string and assigns it to the Parents field.
-func (o *GroupRequest) SetParents(v []string) {
-	o.Parents = v
+// SetParent gets a reference to the given NullableString and assigns it to the Parent field.
+func (o *GroupRequest) SetParent(v string) {
+	o.Parent.Set(&v)
+}
+
+// SetParentNil sets the value for Parent to be an explicit nil
+func (o *GroupRequest) SetParentNil() {
+	o.Parent.Set(nil)
+}
+
+// UnsetParent ensures that no value is present for Parent, not even an explicit nil
+func (o *GroupRequest) UnsetParent() {
+	o.Parent.Unset()
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise.
@@ -249,8 +260,8 @@ func (o GroupRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsSuperuser) {
 		toSerialize["is_superuser"] = o.IsSuperuser
 	}
-	if !IsNil(o.Parents) {
-		toSerialize["parents"] = o.Parents
+	if o.Parent.IsSet() {
+		toSerialize["parent"] = o.Parent.Get()
 	}
 	if !IsNil(o.Users) {
 		toSerialize["users"] = o.Users

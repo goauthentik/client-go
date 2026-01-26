@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -30,7 +30,7 @@ type StagePrompt struct {
 	InitialValue string         `json:"initial_value"`
 	Order        int32          `json:"order"`
 	SubText      string         `json:"sub_text"`
-	Choices      []PromptChoice `json:"choices"`
+	Choices      []string       `json:"choices"`
 }
 
 type _StagePrompt StagePrompt
@@ -39,7 +39,7 @@ type _StagePrompt StagePrompt
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, initialValue string, order int32, subText string, choices []PromptChoice) *StagePrompt {
+func NewStagePrompt(fieldKey string, label string, type_ PromptTypeEnum, required bool, placeholder string, initialValue string, order int32, subText string, choices []string) *StagePrompt {
 	this := StagePrompt{}
 	this.FieldKey = fieldKey
 	this.Label = label
@@ -254,10 +254,10 @@ func (o *StagePrompt) SetSubText(v string) {
 }
 
 // GetChoices returns the Choices field value
-// If the value is explicit nil, the zero value for []PromptChoice will be returned
-func (o *StagePrompt) GetChoices() []PromptChoice {
+// If the value is explicit nil, the zero value for []string will be returned
+func (o *StagePrompt) GetChoices() []string {
 	if o == nil {
-		var ret []PromptChoice
+		var ret []string
 		return ret
 	}
 
@@ -267,7 +267,7 @@ func (o *StagePrompt) GetChoices() []PromptChoice {
 // GetChoicesOk returns a tuple with the Choices field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StagePrompt) GetChoicesOk() ([]PromptChoice, bool) {
+func (o *StagePrompt) GetChoicesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Choices) {
 		return nil, false
 	}
@@ -275,7 +275,7 @@ func (o *StagePrompt) GetChoicesOk() ([]PromptChoice, bool) {
 }
 
 // SetChoices sets field value
-func (o *StagePrompt) SetChoices(v []PromptChoice) {
+func (o *StagePrompt) SetChoices(v []string) {
 	o.Choices = v
 }
 

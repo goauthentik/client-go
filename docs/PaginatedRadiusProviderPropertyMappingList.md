@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]RadiusProviderPropertyMapping**](RadiusProviderPropertyMapping.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedRadiusProviderPropertyMappingList
 
-`func NewPaginatedRadiusProviderPropertyMappingList(pagination Pagination, results []RadiusProviderPropertyMapping, autocomplete map[string]interface{}, ) *PaginatedRadiusProviderPropertyMappingList`
+`func NewPaginatedRadiusProviderPropertyMappingList(pagination Pagination, results []RadiusProviderPropertyMapping, ) *PaginatedRadiusProviderPropertyMappingList`
 
 NewPaginatedRadiusProviderPropertyMappingList instantiates a new PaginatedRadiusProviderPropertyMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedRadiusProviderPropertyMappingList) SetResults(v []RadiusProviderPropertyMapping)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedRadiusProviderPropertyMappingList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedRadiusProviderPropertyMappingList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedRadiusProviderPropertyMappingList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

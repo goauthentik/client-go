@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -31,12 +31,10 @@ type Flow struct {
 	Title string `json:"title"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
 	Designation FlowDesignationEnum `json:"designation"`
-	// Background shown during execution
-	Background *string `json:"background,omitempty"`
-	// Get the URL to the background image
-	BackgroundUrl string   `json:"background_url"`
-	Stages        []string `json:"stages"`
-	Policies      []string `json:"policies"`
+	// Get the URL to the background image. If the name is /static or starts with http it is returned as-is
+	Background string   `json:"background"`
+	Stages     []string `json:"stages"`
+	Policies   []string `json:"policies"`
 	// Get count of cached flows
 	CacheCount       int32             `json:"cache_count"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
@@ -57,7 +55,7 @@ type _Flow Flow
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, backgroundUrl string, stages []string, policies []string, cacheCount int32, exportUrl string) *Flow {
+func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, background string, stages []string, policies []string, cacheCount int32, exportUrl string) *Flow {
 	this := Flow{}
 	this.Pk = pk
 	this.PolicybindingmodelPtrId = policybindingmodelPtrId
@@ -65,7 +63,7 @@ func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string
 	this.Slug = slug
 	this.Title = title
 	this.Designation = designation
-	this.BackgroundUrl = backgroundUrl
+	this.Background = background
 	this.Stages = stages
 	this.Policies = policies
 	this.CacheCount = cacheCount
@@ -225,60 +223,28 @@ func (o *Flow) SetDesignation(v FlowDesignationEnum) {
 	o.Designation = v
 }
 
-// GetBackground returns the Background field value if set, zero value otherwise.
+// GetBackground returns the Background field value
 func (o *Flow) GetBackground() string {
-	if o == nil || IsNil(o.Background) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Background
+
+	return o.Background
 }
 
-// GetBackgroundOk returns a tuple with the Background field value if set, nil otherwise
+// GetBackgroundOk returns a tuple with the Background field value
 // and a boolean to check if the value has been set.
 func (o *Flow) GetBackgroundOk() (*string, bool) {
-	if o == nil || IsNil(o.Background) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Background, true
+	return &o.Background, true
 }
 
-// HasBackground returns a boolean if a field has been set.
-func (o *Flow) HasBackground() bool {
-	if o != nil && !IsNil(o.Background) {
-		return true
-	}
-
-	return false
-}
-
-// SetBackground gets a reference to the given string and assigns it to the Background field.
+// SetBackground sets field value
 func (o *Flow) SetBackground(v string) {
-	o.Background = &v
-}
-
-// GetBackgroundUrl returns the BackgroundUrl field value
-func (o *Flow) GetBackgroundUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BackgroundUrl
-}
-
-// GetBackgroundUrlOk returns a tuple with the BackgroundUrl field value
-// and a boolean to check if the value has been set.
-func (o *Flow) GetBackgroundUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BackgroundUrl, true
-}
-
-// SetBackgroundUrl sets field value
-func (o *Flow) SetBackgroundUrl(v string) {
-	o.BackgroundUrl = v
+	o.Background = v
 }
 
 // GetStages returns the Stages field value
@@ -553,10 +519,7 @@ func (o Flow) ToMap() (map[string]interface{}, error) {
 	toSerialize["slug"] = o.Slug
 	toSerialize["title"] = o.Title
 	toSerialize["designation"] = o.Designation
-	if !IsNil(o.Background) {
-		toSerialize["background"] = o.Background
-	}
-	toSerialize["background_url"] = o.BackgroundUrl
+	toSerialize["background"] = o.Background
 	toSerialize["stages"] = o.Stages
 	toSerialize["policies"] = o.Policies
 	toSerialize["cache_count"] = o.CacheCount
@@ -590,7 +553,7 @@ func (o *Flow) UnmarshalJSON(data []byte) (err error) {
 		"slug",
 		"title",
 		"designation",
-		"background_url",
+		"background",
 		"stages",
 		"policies",
 		"cache_count",

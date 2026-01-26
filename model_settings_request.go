@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -12,9 +12,7 @@ Contact: hello@goauthentik.io
 package api
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SettingsRequest type satisfies the MappedNullable interface at compile time
@@ -35,8 +33,9 @@ type SettingsRequest struct {
 	// Reputation cannot decrease lower than this value. Zero or negative.
 	ReputationLowerLimit *int32 `json:"reputation_lower_limit,omitempty"`
 	// Reputation cannot increase higher than this value. Zero or positive.
-	ReputationUpperLimit *int32      `json:"reputation_upper_limit,omitempty"`
-	FooterLinks          interface{} `json:"footer_links,omitempty"`
+	ReputationUpperLimit *int32 `json:"reputation_upper_limit,omitempty"`
+	// The option configures the footer links on the flow executor pages.
+	FooterLinks interface{} `json:"footer_links,omitempty"`
 	// When enabled, all the events caused by a user will be deleted upon the user's deletion.
 	GdprCompliance *bool `json:"gdpr_compliance,omitempty"`
 	// Globally enable/disable impersonation.
@@ -47,22 +46,14 @@ type SettingsRequest struct {
 	DefaultTokenDuration *string `json:"default_token_duration,omitempty"`
 	// Default token length
 	DefaultTokenLength *int32 `json:"default_token_length,omitempty"`
-	// Default page size for API responses, if no size was requested.
-	PaginationDefaultPageSize *int32 `json:"pagination_default_page_size,omitempty"`
-	// Maximum page size
-	PaginationMaxPageSize *int32                      `json:"pagination_max_page_size,omitempty"`
-	Flags                 PatchedSettingsRequestFlags `json:"flags"`
 }
-
-type _SettingsRequest SettingsRequest
 
 // NewSettingsRequest instantiates a new SettingsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSettingsRequest(flags PatchedSettingsRequestFlags) *SettingsRequest {
+func NewSettingsRequest() *SettingsRequest {
 	this := SettingsRequest{}
-	this.Flags = flags
 	return &this
 }
 
@@ -491,94 +482,6 @@ func (o *SettingsRequest) SetDefaultTokenLength(v int32) {
 	o.DefaultTokenLength = &v
 }
 
-// GetPaginationDefaultPageSize returns the PaginationDefaultPageSize field value if set, zero value otherwise.
-func (o *SettingsRequest) GetPaginationDefaultPageSize() int32 {
-	if o == nil || IsNil(o.PaginationDefaultPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.PaginationDefaultPageSize
-}
-
-// GetPaginationDefaultPageSizeOk returns a tuple with the PaginationDefaultPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SettingsRequest) GetPaginationDefaultPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.PaginationDefaultPageSize) {
-		return nil, false
-	}
-	return o.PaginationDefaultPageSize, true
-}
-
-// HasPaginationDefaultPageSize returns a boolean if a field has been set.
-func (o *SettingsRequest) HasPaginationDefaultPageSize() bool {
-	if o != nil && !IsNil(o.PaginationDefaultPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaginationDefaultPageSize gets a reference to the given int32 and assigns it to the PaginationDefaultPageSize field.
-func (o *SettingsRequest) SetPaginationDefaultPageSize(v int32) {
-	o.PaginationDefaultPageSize = &v
-}
-
-// GetPaginationMaxPageSize returns the PaginationMaxPageSize field value if set, zero value otherwise.
-func (o *SettingsRequest) GetPaginationMaxPageSize() int32 {
-	if o == nil || IsNil(o.PaginationMaxPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.PaginationMaxPageSize
-}
-
-// GetPaginationMaxPageSizeOk returns a tuple with the PaginationMaxPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SettingsRequest) GetPaginationMaxPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.PaginationMaxPageSize) {
-		return nil, false
-	}
-	return o.PaginationMaxPageSize, true
-}
-
-// HasPaginationMaxPageSize returns a boolean if a field has been set.
-func (o *SettingsRequest) HasPaginationMaxPageSize() bool {
-	if o != nil && !IsNil(o.PaginationMaxPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaginationMaxPageSize gets a reference to the given int32 and assigns it to the PaginationMaxPageSize field.
-func (o *SettingsRequest) SetPaginationMaxPageSize(v int32) {
-	o.PaginationMaxPageSize = &v
-}
-
-// GetFlags returns the Flags field value
-func (o *SettingsRequest) GetFlags() PatchedSettingsRequestFlags {
-	if o == nil {
-		var ret PatchedSettingsRequestFlags
-		return ret
-	}
-
-	return o.Flags
-}
-
-// GetFlagsOk returns a tuple with the Flags field value
-// and a boolean to check if the value has been set.
-func (o *SettingsRequest) GetFlagsOk() (*PatchedSettingsRequestFlags, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Flags, true
-}
-
-// SetFlags sets field value
-func (o *SettingsRequest) SetFlags(v PatchedSettingsRequestFlags) {
-	o.Flags = v
-}
-
 func (o SettingsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -628,51 +531,7 @@ func (o SettingsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DefaultTokenLength) {
 		toSerialize["default_token_length"] = o.DefaultTokenLength
 	}
-	if !IsNil(o.PaginationDefaultPageSize) {
-		toSerialize["pagination_default_page_size"] = o.PaginationDefaultPageSize
-	}
-	if !IsNil(o.PaginationMaxPageSize) {
-		toSerialize["pagination_max_page_size"] = o.PaginationMaxPageSize
-	}
-	toSerialize["flags"] = o.Flags
 	return toSerialize, nil
-}
-
-func (o *SettingsRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"flags",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSettingsRequest := _SettingsRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSettingsRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SettingsRequest(varSettingsRequest)
-
-	return err
 }
 
 type NullableSettingsRequest struct {

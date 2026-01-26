@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]InitialPermissions**](InitialPermissions.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedInitialPermissionsList
 
-`func NewPaginatedInitialPermissionsList(pagination Pagination, results []InitialPermissions, autocomplete map[string]interface{}, ) *PaginatedInitialPermissionsList`
+`func NewPaginatedInitialPermissionsList(pagination Pagination, results []InitialPermissions, ) *PaginatedInitialPermissionsList`
 
 NewPaginatedInitialPermissionsList instantiates a new PaginatedInitialPermissionsList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedInitialPermissionsList) SetResults(v []InitialPermissions)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedInitialPermissionsList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedInitialPermissionsList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedInitialPermissionsList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

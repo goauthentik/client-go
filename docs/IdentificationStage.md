@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **UserFields** | Pointer to [**[]UserFieldsEnum**](UserFieldsEnum.md) | Fields of the user object to match against. (Hold shift to select multiple options) | [optional] 
 **PasswordStage** | Pointer to **NullableString** | When set, shows a password field, instead of showing the password field as separate step. | [optional] 
 **CaptchaStage** | Pointer to **NullableString** | When set, adds functionality exactly like a Captcha stage, but baked into the Identification stage. | [optional] 
@@ -23,13 +23,12 @@ Name | Type | Description | Notes
 **ShowSourceLabels** | Pointer to **bool** |  | [optional] 
 **PretendUserExists** | Pointer to **bool** | When enabled, the stage will succeed and continue even when incorrect user info is entered. | [optional] 
 **EnableRememberMe** | Pointer to **bool** | Show the user the &#39;Remember me on this device&#39; toggle, allowing repeat users to skip straight to entering their password. | [optional] 
-**WebauthnStage** | Pointer to **NullableString** | When set, and conditional WebAuthn is available, allow the user to use their passkey as a first factor. | [optional] 
 
 ## Methods
 
 ### NewIdentificationStage
 
-`func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, ) *IdentificationStage`
+`func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, ) *IdentificationStage`
 
 NewIdentificationStage instantiates a new IdentificationStage object
 This constructor will assign default values to properties that have it defined,
@@ -183,6 +182,11 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
+### HasFlowSet
+
+`func (o *IdentificationStage) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetUserFields
 
@@ -534,41 +538,6 @@ SetEnableRememberMe sets EnableRememberMe field to given value.
 
 HasEnableRememberMe returns a boolean if a field has been set.
 
-### GetWebauthnStage
-
-`func (o *IdentificationStage) GetWebauthnStage() string`
-
-GetWebauthnStage returns the WebauthnStage field if non-nil, zero value otherwise.
-
-### GetWebauthnStageOk
-
-`func (o *IdentificationStage) GetWebauthnStageOk() (*string, bool)`
-
-GetWebauthnStageOk returns a tuple with the WebauthnStage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWebauthnStage
-
-`func (o *IdentificationStage) SetWebauthnStage(v string)`
-
-SetWebauthnStage sets WebauthnStage field to given value.
-
-### HasWebauthnStage
-
-`func (o *IdentificationStage) HasWebauthnStage() bool`
-
-HasWebauthnStage returns a boolean if a field has been set.
-
-### SetWebauthnStageNil
-
-`func (o *IdentificationStage) SetWebauthnStageNil(b bool)`
-
- SetWebauthnStageNil sets the value for WebauthnStage to be an explicit nil
-
-### UnsetWebauthnStage
-`func (o *IdentificationStage) UnsetWebauthnStage()`
-
-UnsetWebauthnStage ensures that no value is present for WebauthnStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

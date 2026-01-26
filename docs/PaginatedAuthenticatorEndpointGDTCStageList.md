@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]AuthenticatorEndpointGDTCStage**](AuthenticatorEndpointGDTCStage.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedAuthenticatorEndpointGDTCStageList
 
-`func NewPaginatedAuthenticatorEndpointGDTCStageList(pagination Pagination, results []AuthenticatorEndpointGDTCStage, autocomplete map[string]interface{}, ) *PaginatedAuthenticatorEndpointGDTCStageList`
+`func NewPaginatedAuthenticatorEndpointGDTCStageList(pagination Pagination, results []AuthenticatorEndpointGDTCStage, ) *PaginatedAuthenticatorEndpointGDTCStageList`
 
 NewPaginatedAuthenticatorEndpointGDTCStageList instantiates a new PaginatedAuthenticatorEndpointGDTCStageList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedAuthenticatorEndpointGDTCStageList) SetResults(v []AuthenticatorEndpointGDTCStage)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedAuthenticatorEndpointGDTCStageList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedAuthenticatorEndpointGDTCStageList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedAuthenticatorEndpointGDTCStageList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

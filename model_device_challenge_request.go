@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &DeviceChallengeRequest{}
 
 // DeviceChallengeRequest Single device challenge
 type DeviceChallengeRequest struct {
-	DeviceClass DeviceClassesEnum      `json:"device_class"`
+	DeviceClass string                 `json:"device_class"`
 	DeviceUid   string                 `json:"device_uid"`
 	Challenge   map[string]interface{} `json:"challenge"`
 	LastUsed    NullableTime           `json:"last_used"`
@@ -35,7 +35,7 @@ type _DeviceChallengeRequest DeviceChallengeRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceChallengeRequest(deviceClass DeviceClassesEnum, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime) *DeviceChallengeRequest {
+func NewDeviceChallengeRequest(deviceClass string, deviceUid string, challenge map[string]interface{}, lastUsed NullableTime) *DeviceChallengeRequest {
 	this := DeviceChallengeRequest{}
 	this.DeviceClass = deviceClass
 	this.DeviceUid = deviceUid
@@ -53,9 +53,9 @@ func NewDeviceChallengeRequestWithDefaults() *DeviceChallengeRequest {
 }
 
 // GetDeviceClass returns the DeviceClass field value
-func (o *DeviceChallengeRequest) GetDeviceClass() DeviceClassesEnum {
+func (o *DeviceChallengeRequest) GetDeviceClass() string {
 	if o == nil {
-		var ret DeviceClassesEnum
+		var ret string
 		return ret
 	}
 
@@ -64,7 +64,7 @@ func (o *DeviceChallengeRequest) GetDeviceClass() DeviceClassesEnum {
 
 // GetDeviceClassOk returns a tuple with the DeviceClass field value
 // and a boolean to check if the value has been set.
-func (o *DeviceChallengeRequest) GetDeviceClassOk() (*DeviceClassesEnum, bool) {
+func (o *DeviceChallengeRequest) GetDeviceClassOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -72,7 +72,7 @@ func (o *DeviceChallengeRequest) GetDeviceClassOk() (*DeviceClassesEnum, bool) {
 }
 
 // SetDeviceClass sets field value
-func (o *DeviceChallengeRequest) SetDeviceClass(v DeviceClassesEnum) {
+func (o *DeviceChallengeRequest) SetDeviceClass(v string) {
 	o.DeviceClass = v
 }
 

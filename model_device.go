@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -21,7 +21,7 @@ import (
 // checks if the Device type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Device{}
 
-// Device Serializer for authenticator devices
+// Device Serializer for Duo authenticator devices
 type Device struct {
 	// Return object's verbose_name
 	VerboseName string `json:"verbose_name"`
@@ -38,9 +38,7 @@ type Device struct {
 	LastUpdated time.Time    `json:"last_updated"`
 	LastUsed    NullableTime `json:"last_used"`
 	// Get extra description
-	ExtraDescription NullableString `json:"extra_description"`
-	// Get external Device ID
-	ExternalId NullableString `json:"external_id"`
+	ExtraDescription string `json:"extra_description"`
 }
 
 type _Device Device
@@ -49,7 +47,7 @@ type _Device Device
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk string, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription NullableString, externalId NullableString) *Device {
+func NewDevice(verboseName string, verboseNamePlural string, metaModelName string, pk string, name string, type_ string, confirmed bool, created time.Time, lastUpdated time.Time, lastUsed NullableTime, extraDescription string) *Device {
 	this := Device{}
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
@@ -62,7 +60,6 @@ func NewDevice(verboseName string, verboseNamePlural string, metaModelName strin
 	this.LastUpdated = lastUpdated
 	this.LastUsed = lastUsed
 	this.ExtraDescription = extraDescription
-	this.ExternalId = externalId
 	return &this
 }
 
@@ -317,55 +314,27 @@ func (o *Device) SetLastUsed(v time.Time) {
 }
 
 // GetExtraDescription returns the ExtraDescription field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *Device) GetExtraDescription() string {
-	if o == nil || o.ExtraDescription.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ExtraDescription.Get()
+	return o.ExtraDescription
 }
 
 // GetExtraDescriptionOk returns a tuple with the ExtraDescription field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Device) GetExtraDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExtraDescription.Get(), o.ExtraDescription.IsSet()
+	return &o.ExtraDescription, true
 }
 
 // SetExtraDescription sets field value
 func (o *Device) SetExtraDescription(v string) {
-	o.ExtraDescription.Set(&v)
-}
-
-// GetExternalId returns the ExternalId field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *Device) GetExternalId() string {
-	if o == nil || o.ExternalId.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.ExternalId.Get()
-}
-
-// GetExternalIdOk returns a tuple with the ExternalId field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Device) GetExternalIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ExternalId.Get(), o.ExternalId.IsSet()
-}
-
-// SetExternalId sets field value
-func (o *Device) SetExternalId(v string) {
-	o.ExternalId.Set(&v)
+	o.ExtraDescription = v
 }
 
 func (o Device) MarshalJSON() ([]byte, error) {
@@ -388,8 +357,7 @@ func (o Device) ToMap() (map[string]interface{}, error) {
 	toSerialize["created"] = o.Created
 	toSerialize["last_updated"] = o.LastUpdated
 	toSerialize["last_used"] = o.LastUsed.Get()
-	toSerialize["extra_description"] = o.ExtraDescription.Get()
-	toSerialize["external_id"] = o.ExternalId.Get()
+	toSerialize["extra_description"] = o.ExtraDescription
 	return toSerialize, nil
 }
 
@@ -409,7 +377,6 @@ func (o *Device) UnmarshalJSON(data []byte) (err error) {
 		"last_updated",
 		"last_used",
 		"extra_description",
-		"external_id",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -25,7 +25,7 @@ type DuoDevice struct {
 	Pk int32 `json:"pk"`
 	// The human-readable name of this device.
 	Name string      `json:"name"`
-	User PartialUser `json:"user"`
+	User GroupMember `json:"user"`
 }
 
 type _DuoDevice DuoDevice
@@ -34,7 +34,7 @@ type _DuoDevice DuoDevice
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDuoDevice(pk int32, name string, user PartialUser) *DuoDevice {
+func NewDuoDevice(pk int32, name string, user GroupMember) *DuoDevice {
 	this := DuoDevice{}
 	this.Pk = pk
 	this.Name = name
@@ -99,9 +99,9 @@ func (o *DuoDevice) SetName(v string) {
 }
 
 // GetUser returns the User field value
-func (o *DuoDevice) GetUser() PartialUser {
+func (o *DuoDevice) GetUser() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -110,7 +110,7 @@ func (o *DuoDevice) GetUser() PartialUser {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *DuoDevice) GetUserOk() (*PartialUser, bool) {
+func (o *DuoDevice) GetUserOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *DuoDevice) GetUserOk() (*PartialUser, bool) {
 }
 
 // SetUser sets field value
-func (o *DuoDevice) SetUser(v PartialUser) {
+func (o *DuoDevice) SetUser(v GroupMember) {
 	o.User = v
 }
 

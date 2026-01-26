@@ -7,8 +7,6 @@ Name | Type | Description | Notes
 **Pk** | **string** |  | [readonly] 
 **Severity** | [**SeverityEnum**](SeverityEnum.md) |  | [readonly] 
 **Body** | **string** |  | [readonly] 
-**Hyperlink** | Pointer to **NullableString** |  | [optional] 
-**HyperlinkLabel** | Pointer to **NullableString** |  | [optional] 
 **Created** | **time.Time** |  | [readonly] 
 **Event** | Pointer to [**Event**](Event.md) |  | [optional] 
 **Seen** | Pointer to **bool** |  | [optional] 
@@ -92,76 +90,6 @@ and a boolean to check if the value has been set.
 SetBody sets Body field to given value.
 
 
-### GetHyperlink
-
-`func (o *Notification) GetHyperlink() string`
-
-GetHyperlink returns the Hyperlink field if non-nil, zero value otherwise.
-
-### GetHyperlinkOk
-
-`func (o *Notification) GetHyperlinkOk() (*string, bool)`
-
-GetHyperlinkOk returns a tuple with the Hyperlink field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHyperlink
-
-`func (o *Notification) SetHyperlink(v string)`
-
-SetHyperlink sets Hyperlink field to given value.
-
-### HasHyperlink
-
-`func (o *Notification) HasHyperlink() bool`
-
-HasHyperlink returns a boolean if a field has been set.
-
-### SetHyperlinkNil
-
-`func (o *Notification) SetHyperlinkNil(b bool)`
-
- SetHyperlinkNil sets the value for Hyperlink to be an explicit nil
-
-### UnsetHyperlink
-`func (o *Notification) UnsetHyperlink()`
-
-UnsetHyperlink ensures that no value is present for Hyperlink, not even an explicit nil
-### GetHyperlinkLabel
-
-`func (o *Notification) GetHyperlinkLabel() string`
-
-GetHyperlinkLabel returns the HyperlinkLabel field if non-nil, zero value otherwise.
-
-### GetHyperlinkLabelOk
-
-`func (o *Notification) GetHyperlinkLabelOk() (*string, bool)`
-
-GetHyperlinkLabelOk returns a tuple with the HyperlinkLabel field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHyperlinkLabel
-
-`func (o *Notification) SetHyperlinkLabel(v string)`
-
-SetHyperlinkLabel sets HyperlinkLabel field to given value.
-
-### HasHyperlinkLabel
-
-`func (o *Notification) HasHyperlinkLabel() bool`
-
-HasHyperlinkLabel returns a boolean if a field has been set.
-
-### SetHyperlinkLabelNil
-
-`func (o *Notification) SetHyperlinkLabelNil(b bool)`
-
- SetHyperlinkLabelNil sets the value for HyperlinkLabel to be an explicit nil
-
-### UnsetHyperlinkLabel
-`func (o *Notification) UnsetHyperlinkLabel()`
-
-UnsetHyperlinkLabel ensures that no value is present for HyperlinkLabel, not even an explicit nil
 ### GetCreated
 
 `func (o *Notification) GetCreated() time.Time`

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,7 @@ type IdentificationStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string    `json:"meta_model_name"`
-	FlowSet       []FlowSet `json:"flow_set"`
+	FlowSet       []FlowSet `json:"flow_set,omitempty"`
 	// Fields of the user object to match against. (Hold shift to select multiple options)
 	UserFields []UserFieldsEnum `json:"user_fields,omitempty"`
 	// When set, shows a password field, instead of showing the password field as separate step.
@@ -56,8 +56,6 @@ type IdentificationStage struct {
 	PretendUserExists *bool `json:"pretend_user_exists,omitempty"`
 	// Show the user the 'Remember me on this device' toggle, allowing repeat users to skip straight to entering their password.
 	EnableRememberMe *bool `json:"enable_remember_me,omitempty"`
-	// When set, and conditional WebAuthn is available, allow the user to use their passkey as a first factor.
-	WebauthnStage NullableString `json:"webauthn_stage,omitempty"`
 }
 
 type _IdentificationStage IdentificationStage
@@ -66,7 +64,7 @@ type _IdentificationStage IdentificationStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet) *IdentificationStage {
+func NewIdentificationStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string) *IdentificationStage {
 	this := IdentificationStage{}
 	this.Pk = pk
 	this.Name = name
@@ -74,7 +72,6 @@ func NewIdentificationStage(pk string, name string, component string, verboseNam
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	return &this
 }
 
@@ -230,26 +227,34 @@ func (o *IdentificationStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *IdentificationStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentificationStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *IdentificationStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *IdentificationStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -693,49 +698,6 @@ func (o *IdentificationStage) SetEnableRememberMe(v bool) {
 	o.EnableRememberMe = &v
 }
 
-// GetWebauthnStage returns the WebauthnStage field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IdentificationStage) GetWebauthnStage() string {
-	if o == nil || IsNil(o.WebauthnStage.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.WebauthnStage.Get()
-}
-
-// GetWebauthnStageOk returns a tuple with the WebauthnStage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IdentificationStage) GetWebauthnStageOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.WebauthnStage.Get(), o.WebauthnStage.IsSet()
-}
-
-// HasWebauthnStage returns a boolean if a field has been set.
-func (o *IdentificationStage) HasWebauthnStage() bool {
-	if o != nil && o.WebauthnStage.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetWebauthnStage gets a reference to the given NullableString and assigns it to the WebauthnStage field.
-func (o *IdentificationStage) SetWebauthnStage(v string) {
-	o.WebauthnStage.Set(&v)
-}
-
-// SetWebauthnStageNil sets the value for WebauthnStage to be an explicit nil
-func (o *IdentificationStage) SetWebauthnStageNil() {
-	o.WebauthnStage.Set(nil)
-}
-
-// UnsetWebauthnStage ensures that no value is present for WebauthnStage, not even an explicit nil
-func (o *IdentificationStage) UnsetWebauthnStage() {
-	o.WebauthnStage.Unset()
-}
-
 func (o IdentificationStage) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -752,7 +714,9 @@ func (o IdentificationStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.UserFields) {
 		toSerialize["user_fields"] = o.UserFields
 	}
@@ -789,9 +753,6 @@ func (o IdentificationStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableRememberMe) {
 		toSerialize["enable_remember_me"] = o.EnableRememberMe
 	}
-	if o.WebauthnStage.IsSet() {
-		toSerialize["webauthn_stage"] = o.WebauthnStage.Get()
-	}
 	return toSerialize, nil
 }
 
@@ -806,7 +767,6 @@ func (o *IdentificationStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 	}
 
 	allProperties := make(map[string]interface{})

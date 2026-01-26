@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -21,7 +21,7 @@ import (
 // checks if the UserServiceAccountRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &UserServiceAccountRequest{}
 
-// UserServiceAccountRequest Payload to create a service account
+// UserServiceAccountRequest struct for UserServiceAccountRequest
 type UserServiceAccountRequest struct {
 	Name        string `json:"name"`
 	CreateGroup *bool  `json:"create_group,omitempty"`

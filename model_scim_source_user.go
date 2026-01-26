@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -22,12 +22,11 @@ var _ MappedNullable = &SCIMSourceUser{}
 
 // SCIMSourceUser SCIMSourceUser Serializer
 type SCIMSourceUser struct {
-	Id         *string                `json:"id,omitempty"`
-	ExternalId string                 `json:"external_id"`
-	User       int32                  `json:"user"`
-	UserObj    PartialUser            `json:"user_obj"`
-	Source     string                 `json:"source"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Id         string      `json:"id"`
+	User       int32       `json:"user"`
+	UserObj    GroupMember `json:"user_obj"`
+	Source     string      `json:"source"`
+	Attributes interface{} `json:"attributes,omitempty"`
 }
 
 type _SCIMSourceUser SCIMSourceUser
@@ -36,9 +35,9 @@ type _SCIMSourceUser SCIMSourceUser
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMSourceUser(externalId string, user int32, userObj PartialUser, source string) *SCIMSourceUser {
+func NewSCIMSourceUser(id string, user int32, userObj GroupMember, source string) *SCIMSourceUser {
 	this := SCIMSourceUser{}
-	this.ExternalId = externalId
+	this.Id = id
 	this.User = user
 	this.UserObj = userObj
 	this.Source = source
@@ -53,60 +52,28 @@ func NewSCIMSourceUserWithDefaults() *SCIMSourceUser {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *SCIMSourceUser) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *SCIMSourceUser) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *SCIMSourceUser) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *SCIMSourceUser) SetId(v string) {
-	o.Id = &v
-}
-
-// GetExternalId returns the ExternalId field value
-func (o *SCIMSourceUser) GetExternalId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ExternalId
-}
-
-// GetExternalIdOk returns a tuple with the ExternalId field value
-// and a boolean to check if the value has been set.
-func (o *SCIMSourceUser) GetExternalIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ExternalId, true
-}
-
-// SetExternalId sets field value
-func (o *SCIMSourceUser) SetExternalId(v string) {
-	o.ExternalId = v
+	o.Id = v
 }
 
 // GetUser returns the User field value
@@ -134,9 +101,9 @@ func (o *SCIMSourceUser) SetUser(v int32) {
 }
 
 // GetUserObj returns the UserObj field value
-func (o *SCIMSourceUser) GetUserObj() PartialUser {
+func (o *SCIMSourceUser) GetUserObj() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -145,7 +112,7 @@ func (o *SCIMSourceUser) GetUserObj() PartialUser {
 
 // GetUserObjOk returns a tuple with the UserObj field value
 // and a boolean to check if the value has been set.
-func (o *SCIMSourceUser) GetUserObjOk() (*PartialUser, bool) {
+func (o *SCIMSourceUser) GetUserObjOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -153,7 +120,7 @@ func (o *SCIMSourceUser) GetUserObjOk() (*PartialUser, bool) {
 }
 
 // SetUserObj sets field value
-func (o *SCIMSourceUser) SetUserObj(v PartialUser) {
+func (o *SCIMSourceUser) SetUserObj(v GroupMember) {
 	o.UserObj = v
 }
 
@@ -181,10 +148,10 @@ func (o *SCIMSourceUser) SetSource(v string) {
 	o.Source = v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *SCIMSourceUser) GetAttributes() map[string]interface{} {
-	if o == nil || IsNil(o.Attributes) {
-		var ret map[string]interface{}
+// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SCIMSourceUser) GetAttributes() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Attributes
@@ -192,11 +159,12 @@ func (o *SCIMSourceUser) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SCIMSourceUser) GetAttributesOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMSourceUser) GetAttributesOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Attributes) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Attributes, true
+	return &o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
@@ -208,8 +176,8 @@ func (o *SCIMSourceUser) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *SCIMSourceUser) SetAttributes(v map[string]interface{}) {
+// SetAttributes gets a reference to the given interface{} and assigns it to the Attributes field.
+func (o *SCIMSourceUser) SetAttributes(v interface{}) {
 	o.Attributes = v
 }
 
@@ -223,14 +191,11 @@ func (o SCIMSourceUser) MarshalJSON() ([]byte, error) {
 
 func (o SCIMSourceUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	toSerialize["external_id"] = o.ExternalId
+	toSerialize["id"] = o.Id
 	toSerialize["user"] = o.User
 	toSerialize["user_obj"] = o.UserObj
 	toSerialize["source"] = o.Source
-	if !IsNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
 	return toSerialize, nil
@@ -241,7 +206,7 @@ func (o *SCIMSourceUser) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"external_id",
+		"id",
 		"user",
 		"user_obj",
 		"source",

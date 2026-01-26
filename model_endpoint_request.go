@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -22,14 +22,14 @@ var _ MappedNullable = &EndpointRequest{}
 
 // EndpointRequest Endpoint Serializer
 type EndpointRequest struct {
-	Name               string                 `json:"name"`
-	Provider           int32                  `json:"provider"`
-	Protocol           ProtocolEnum           `json:"protocol"`
-	Host               string                 `json:"host"`
-	Settings           map[string]interface{} `json:"settings,omitempty"`
-	PropertyMappings   []string               `json:"property_mappings,omitempty"`
-	AuthMode           EndpointAuthModeEnum   `json:"auth_mode"`
-	MaximumConnections *int32                 `json:"maximum_connections,omitempty"`
+	Name               string       `json:"name"`
+	Provider           int32        `json:"provider"`
+	Protocol           ProtocolEnum `json:"protocol"`
+	Host               string       `json:"host"`
+	Settings           interface{}  `json:"settings,omitempty"`
+	PropertyMappings   []string     `json:"property_mappings,omitempty"`
+	AuthMode           AuthModeEnum `json:"auth_mode"`
+	MaximumConnections *int32       `json:"maximum_connections,omitempty"`
 }
 
 type _EndpointRequest EndpointRequest
@@ -38,7 +38,7 @@ type _EndpointRequest EndpointRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEndpointRequest(name string, provider int32, protocol ProtocolEnum, host string, authMode EndpointAuthModeEnum) *EndpointRequest {
+func NewEndpointRequest(name string, provider int32, protocol ProtocolEnum, host string, authMode AuthModeEnum) *EndpointRequest {
 	this := EndpointRequest{}
 	this.Name = name
 	this.Provider = provider
@@ -152,10 +152,10 @@ func (o *EndpointRequest) SetHost(v string) {
 	o.Host = v
 }
 
-// GetSettings returns the Settings field value if set, zero value otherwise.
-func (o *EndpointRequest) GetSettings() map[string]interface{} {
-	if o == nil || IsNil(o.Settings) {
-		var ret map[string]interface{}
+// GetSettings returns the Settings field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EndpointRequest) GetSettings() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Settings
@@ -163,11 +163,12 @@ func (o *EndpointRequest) GetSettings() map[string]interface{} {
 
 // GetSettingsOk returns a tuple with the Settings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EndpointRequest) GetSettingsOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EndpointRequest) GetSettingsOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Settings) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Settings, true
+	return &o.Settings, true
 }
 
 // HasSettings returns a boolean if a field has been set.
@@ -179,8 +180,8 @@ func (o *EndpointRequest) HasSettings() bool {
 	return false
 }
 
-// SetSettings gets a reference to the given map[string]interface{} and assigns it to the Settings field.
-func (o *EndpointRequest) SetSettings(v map[string]interface{}) {
+// SetSettings gets a reference to the given interface{} and assigns it to the Settings field.
+func (o *EndpointRequest) SetSettings(v interface{}) {
 	o.Settings = v
 }
 
@@ -217,9 +218,9 @@ func (o *EndpointRequest) SetPropertyMappings(v []string) {
 }
 
 // GetAuthMode returns the AuthMode field value
-func (o *EndpointRequest) GetAuthMode() EndpointAuthModeEnum {
+func (o *EndpointRequest) GetAuthMode() AuthModeEnum {
 	if o == nil {
-		var ret EndpointAuthModeEnum
+		var ret AuthModeEnum
 		return ret
 	}
 
@@ -228,7 +229,7 @@ func (o *EndpointRequest) GetAuthMode() EndpointAuthModeEnum {
 
 // GetAuthModeOk returns a tuple with the AuthMode field value
 // and a boolean to check if the value has been set.
-func (o *EndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool) {
+func (o *EndpointRequest) GetAuthModeOk() (*AuthModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -236,7 +237,7 @@ func (o *EndpointRequest) GetAuthModeOk() (*EndpointAuthModeEnum, bool) {
 }
 
 // SetAuthMode sets field value
-func (o *EndpointRequest) SetAuthMode(v EndpointAuthModeEnum) {
+func (o *EndpointRequest) SetAuthMode(v AuthModeEnum) {
 	o.AuthMode = v
 }
 
@@ -286,7 +287,7 @@ func (o EndpointRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["provider"] = o.Provider
 	toSerialize["protocol"] = o.Protocol
 	toSerialize["host"] = o.Host
-	if !IsNil(o.Settings) {
+	if o.Settings != nil {
 		toSerialize["settings"] = o.Settings
 	}
 	if !IsNil(o.PropertyMappings) {

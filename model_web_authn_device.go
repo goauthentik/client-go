@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -28,7 +28,7 @@ type WebAuthnDevice struct {
 	CreatedOn  time.Time                  `json:"created_on"`
 	DeviceType NullableWebAuthnDeviceType `json:"device_type"`
 	Aaguid     string                     `json:"aaguid"`
-	User       PartialUser                `json:"user"`
+	User       GroupMember                `json:"user"`
 }
 
 type _WebAuthnDevice WebAuthnDevice
@@ -37,7 +37,7 @@ type _WebAuthnDevice WebAuthnDevice
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceType, aaguid string, user PartialUser) *WebAuthnDevice {
+func NewWebAuthnDevice(pk int32, name string, createdOn time.Time, deviceType NullableWebAuthnDeviceType, aaguid string, user GroupMember) *WebAuthnDevice {
 	this := WebAuthnDevice{}
 	this.Pk = pk
 	this.Name = name
@@ -179,9 +179,9 @@ func (o *WebAuthnDevice) SetAaguid(v string) {
 }
 
 // GetUser returns the User field value
-func (o *WebAuthnDevice) GetUser() PartialUser {
+func (o *WebAuthnDevice) GetUser() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -190,7 +190,7 @@ func (o *WebAuthnDevice) GetUser() PartialUser {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *WebAuthnDevice) GetUserOk() (*PartialUser, bool) {
+func (o *WebAuthnDevice) GetUserOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -198,7 +198,7 @@ func (o *WebAuthnDevice) GetUserOk() (*PartialUser, bool) {
 }
 
 // SetUser sets field value
-func (o *WebAuthnDevice) SetUser(v PartialUser) {
+func (o *WebAuthnDevice) SetUser(v GroupMember) {
 	o.User = v
 }
 

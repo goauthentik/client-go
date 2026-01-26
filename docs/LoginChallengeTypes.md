@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
-**Component** | Pointer to **string** |  | [optional] [default to "ak-source-telegram"]
+**Component** | Pointer to **string** |  | [optional] [default to "ak-source-plex"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **To** | **string** |  | 
 **ClientId** | **string** |  | 
@@ -13,14 +13,12 @@ Name | Type | Description | Notes
 **RedirectUri** | **string** |  | 
 **State** | **string** |  | 
 **Slug** | **string** |  | 
-**BotUsername** | **string** | Telegram bot username | 
-**RequestMessageAccess** | **bool** |  | 
 
 ## Methods
 
 ### NewLoginChallengeTypes
 
-`func NewLoginChallengeTypes(to string, clientId string, scope string, redirectUri string, state string, slug string, botUsername string, requestMessageAccess bool, ) *LoginChallengeTypes`
+`func NewLoginChallengeTypes(to string, clientId string, scope string, redirectUri string, state string, slug string, ) *LoginChallengeTypes`
 
 NewLoginChallengeTypes instantiates a new LoginChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -228,46 +226,6 @@ and a boolean to check if the value has been set.
 `func (o *LoginChallengeTypes) SetSlug(v string)`
 
 SetSlug sets Slug field to given value.
-
-
-### GetBotUsername
-
-`func (o *LoginChallengeTypes) GetBotUsername() string`
-
-GetBotUsername returns the BotUsername field if non-nil, zero value otherwise.
-
-### GetBotUsernameOk
-
-`func (o *LoginChallengeTypes) GetBotUsernameOk() (*string, bool)`
-
-GetBotUsernameOk returns a tuple with the BotUsername field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBotUsername
-
-`func (o *LoginChallengeTypes) SetBotUsername(v string)`
-
-SetBotUsername sets BotUsername field to given value.
-
-
-### GetRequestMessageAccess
-
-`func (o *LoginChallengeTypes) GetRequestMessageAccess() bool`
-
-GetRequestMessageAccess returns the RequestMessageAccess field if non-nil, zero value otherwise.
-
-### GetRequestMessageAccessOk
-
-`func (o *LoginChallengeTypes) GetRequestMessageAccessOk() (*bool, bool)`
-
-GetRequestMessageAccessOk returns a tuple with the RequestMessageAccess field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestMessageAccess
-
-`func (o *LoginChallengeTypes) SetRequestMessageAccess(v bool)`
-
-SetRequestMessageAccess sets RequestMessageAccess field to given value.
 
 
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -20,8 +20,9 @@ var _ MappedNullable = &PatchedSourceStageRequest{}
 
 // PatchedSourceStageRequest SourceStage Serializer
 type PatchedSourceStageRequest struct {
-	Name   *string `json:"name,omitempty"`
-	Source *string `json:"source,omitempty"`
+	Name    *string          `json:"name,omitempty"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
+	Source  *string          `json:"source,omitempty"`
 	// Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
 	ResumeTimeout *string `json:"resume_timeout,omitempty"`
 }
@@ -73,6 +74,38 @@ func (o *PatchedSourceStageRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PatchedSourceStageRequest) SetName(v string) {
 	o.Name = &v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *PatchedSourceStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSourceStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *PatchedSourceStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *PatchedSourceStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -151,6 +184,9 @@ func (o PatchedSourceStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
 	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source

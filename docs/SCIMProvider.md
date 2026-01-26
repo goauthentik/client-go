@@ -16,23 +16,17 @@ Name | Type | Description | Notes
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
 **VerifyCertificates** | Pointer to **bool** |  | [optional] 
-**Token** | Pointer to **string** | Authentication token | [optional] 
-**AuthMode** | Pointer to [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] 
-**AuthOauth** | Pointer to **NullableString** | OAuth Source used for authentication | [optional] 
-**AuthOauthParams** | Pointer to **map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
+**Token** | **string** | Authentication token | 
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
-**ServiceProviderConfigCacheTimeout** | Pointer to **string** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
-**SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
-**SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
 ## Methods
 
 ### NewSCIMProvider
 
-`func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, url string, ) *SCIMProvider`
+`func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, url string, token string, ) *SCIMProvider`
 
 NewSCIMProvider instantiates a new SCIMProvider object
 This constructor will assign default values to properties that have it defined,
@@ -321,96 +315,6 @@ and a boolean to check if the value has been set.
 
 SetToken sets Token field to given value.
 
-### HasToken
-
-`func (o *SCIMProvider) HasToken() bool`
-
-HasToken returns a boolean if a field has been set.
-
-### GetAuthMode
-
-`func (o *SCIMProvider) GetAuthMode() SCIMAuthenticationModeEnum`
-
-GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
-
-### GetAuthModeOk
-
-`func (o *SCIMProvider) GetAuthModeOk() (*SCIMAuthenticationModeEnum, bool)`
-
-GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthMode
-
-`func (o *SCIMProvider) SetAuthMode(v SCIMAuthenticationModeEnum)`
-
-SetAuthMode sets AuthMode field to given value.
-
-### HasAuthMode
-
-`func (o *SCIMProvider) HasAuthMode() bool`
-
-HasAuthMode returns a boolean if a field has been set.
-
-### GetAuthOauth
-
-`func (o *SCIMProvider) GetAuthOauth() string`
-
-GetAuthOauth returns the AuthOauth field if non-nil, zero value otherwise.
-
-### GetAuthOauthOk
-
-`func (o *SCIMProvider) GetAuthOauthOk() (*string, bool)`
-
-GetAuthOauthOk returns a tuple with the AuthOauth field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthOauth
-
-`func (o *SCIMProvider) SetAuthOauth(v string)`
-
-SetAuthOauth sets AuthOauth field to given value.
-
-### HasAuthOauth
-
-`func (o *SCIMProvider) HasAuthOauth() bool`
-
-HasAuthOauth returns a boolean if a field has been set.
-
-### SetAuthOauthNil
-
-`func (o *SCIMProvider) SetAuthOauthNil(b bool)`
-
- SetAuthOauthNil sets the value for AuthOauth to be an explicit nil
-
-### UnsetAuthOauth
-`func (o *SCIMProvider) UnsetAuthOauth()`
-
-UnsetAuthOauth ensures that no value is present for AuthOauth, not even an explicit nil
-### GetAuthOauthParams
-
-`func (o *SCIMProvider) GetAuthOauthParams() map[string]interface{}`
-
-GetAuthOauthParams returns the AuthOauthParams field if non-nil, zero value otherwise.
-
-### GetAuthOauthParamsOk
-
-`func (o *SCIMProvider) GetAuthOauthParamsOk() (*map[string]interface{}, bool)`
-
-GetAuthOauthParamsOk returns a tuple with the AuthOauthParams field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthOauthParams
-
-`func (o *SCIMProvider) SetAuthOauthParams(v map[string]interface{})`
-
-SetAuthOauthParams sets AuthOauthParams field to given value.
-
-### HasAuthOauthParams
-
-`func (o *SCIMProvider) HasAuthOauthParams() bool`
-
-HasAuthOauthParams returns a boolean if a field has been set.
 
 ### GetCompatibilityMode
 
@@ -436,31 +340,6 @@ SetCompatibilityMode sets CompatibilityMode field to given value.
 `func (o *SCIMProvider) HasCompatibilityMode() bool`
 
 HasCompatibilityMode returns a boolean if a field has been set.
-
-### GetServiceProviderConfigCacheTimeout
-
-`func (o *SCIMProvider) GetServiceProviderConfigCacheTimeout() string`
-
-GetServiceProviderConfigCacheTimeout returns the ServiceProviderConfigCacheTimeout field if non-nil, zero value otherwise.
-
-### GetServiceProviderConfigCacheTimeoutOk
-
-`func (o *SCIMProvider) GetServiceProviderConfigCacheTimeoutOk() (*string, bool)`
-
-GetServiceProviderConfigCacheTimeoutOk returns a tuple with the ServiceProviderConfigCacheTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServiceProviderConfigCacheTimeout
-
-`func (o *SCIMProvider) SetServiceProviderConfigCacheTimeout(v string)`
-
-SetServiceProviderConfigCacheTimeout sets ServiceProviderConfigCacheTimeout field to given value.
-
-### HasServiceProviderConfigCacheTimeout
-
-`func (o *SCIMProvider) HasServiceProviderConfigCacheTimeout() bool`
-
-HasServiceProviderConfigCacheTimeout returns a boolean if a field has been set.
 
 ### GetExcludeUsersServiceAccount
 
@@ -522,56 +401,6 @@ HasFilterGroup returns a boolean if a field has been set.
 `func (o *SCIMProvider) UnsetFilterGroup()`
 
 UnsetFilterGroup ensures that no value is present for FilterGroup, not even an explicit nil
-### GetSyncPageSize
-
-`func (o *SCIMProvider) GetSyncPageSize() int32`
-
-GetSyncPageSize returns the SyncPageSize field if non-nil, zero value otherwise.
-
-### GetSyncPageSizeOk
-
-`func (o *SCIMProvider) GetSyncPageSizeOk() (*int32, bool)`
-
-GetSyncPageSizeOk returns a tuple with the SyncPageSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageSize
-
-`func (o *SCIMProvider) SetSyncPageSize(v int32)`
-
-SetSyncPageSize sets SyncPageSize field to given value.
-
-### HasSyncPageSize
-
-`func (o *SCIMProvider) HasSyncPageSize() bool`
-
-HasSyncPageSize returns a boolean if a field has been set.
-
-### GetSyncPageTimeout
-
-`func (o *SCIMProvider) GetSyncPageTimeout() string`
-
-GetSyncPageTimeout returns the SyncPageTimeout field if non-nil, zero value otherwise.
-
-### GetSyncPageTimeoutOk
-
-`func (o *SCIMProvider) GetSyncPageTimeoutOk() (*string, bool)`
-
-GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncPageTimeout
-
-`func (o *SCIMProvider) SetSyncPageTimeout(v string)`
-
-SetSyncPageTimeout sets SyncPageTimeout field to given value.
-
-### HasSyncPageTimeout
-
-`func (o *SCIMProvider) HasSyncPageTimeout() bool`
-
-HasSyncPageTimeout returns a boolean if a field has been set.
-
 ### GetDryRun
 
 `func (o *SCIMProvider) GetDryRun() bool`

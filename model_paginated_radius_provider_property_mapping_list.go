@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -22,9 +22,8 @@ var _ MappedNullable = &PaginatedRadiusProviderPropertyMappingList{}
 
 // PaginatedRadiusProviderPropertyMappingList struct for PaginatedRadiusProviderPropertyMappingList
 type PaginatedRadiusProviderPropertyMappingList struct {
-	Pagination   Pagination                      `json:"pagination"`
-	Results      []RadiusProviderPropertyMapping `json:"results"`
-	Autocomplete map[string]interface{}          `json:"autocomplete"`
+	Pagination Pagination                      `json:"pagination"`
+	Results    []RadiusProviderPropertyMapping `json:"results"`
 }
 
 type _PaginatedRadiusProviderPropertyMappingList PaginatedRadiusProviderPropertyMappingList
@@ -33,11 +32,10 @@ type _PaginatedRadiusProviderPropertyMappingList PaginatedRadiusProviderProperty
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedRadiusProviderPropertyMappingList(pagination Pagination, results []RadiusProviderPropertyMapping, autocomplete map[string]interface{}) *PaginatedRadiusProviderPropertyMappingList {
+func NewPaginatedRadiusProviderPropertyMappingList(pagination Pagination, results []RadiusProviderPropertyMapping) *PaginatedRadiusProviderPropertyMappingList {
 	this := PaginatedRadiusProviderPropertyMappingList{}
 	this.Pagination = pagination
 	this.Results = results
-	this.Autocomplete = autocomplete
 	return &this
 }
 
@@ -97,30 +95,6 @@ func (o *PaginatedRadiusProviderPropertyMappingList) SetResults(v []RadiusProvid
 	o.Results = v
 }
 
-// GetAutocomplete returns the Autocomplete field value
-func (o *PaginatedRadiusProviderPropertyMappingList) GetAutocomplete() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.Autocomplete
-}
-
-// GetAutocompleteOk returns a tuple with the Autocomplete field value
-// and a boolean to check if the value has been set.
-func (o *PaginatedRadiusProviderPropertyMappingList) GetAutocompleteOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
-	}
-	return o.Autocomplete, true
-}
-
-// SetAutocomplete sets field value
-func (o *PaginatedRadiusProviderPropertyMappingList) SetAutocomplete(v map[string]interface{}) {
-	o.Autocomplete = v
-}
-
 func (o PaginatedRadiusProviderPropertyMappingList) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -133,7 +107,6 @@ func (o PaginatedRadiusProviderPropertyMappingList) ToMap() (map[string]interfac
 	toSerialize := map[string]interface{}{}
 	toSerialize["pagination"] = o.Pagination
 	toSerialize["results"] = o.Results
-	toSerialize["autocomplete"] = o.Autocomplete
 	return toSerialize, nil
 }
 
@@ -144,7 +117,6 @@ func (o *PaginatedRadiusProviderPropertyMappingList) UnmarshalJSON(data []byte) 
 	requiredProperties := []string{
 		"pagination",
 		"results",
-		"autocomplete",
 	}
 
 	allProperties := make(map[string]interface{})

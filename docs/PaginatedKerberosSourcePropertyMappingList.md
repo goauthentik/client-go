@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]KerberosSourcePropertyMapping**](KerberosSourcePropertyMapping.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedKerberosSourcePropertyMappingList
 
-`func NewPaginatedKerberosSourcePropertyMappingList(pagination Pagination, results []KerberosSourcePropertyMapping, autocomplete map[string]interface{}, ) *PaginatedKerberosSourcePropertyMappingList`
+`func NewPaginatedKerberosSourcePropertyMappingList(pagination Pagination, results []KerberosSourcePropertyMapping, ) *PaginatedKerberosSourcePropertyMappingList`
 
 NewPaginatedKerberosSourcePropertyMappingList instantiates a new PaginatedKerberosSourcePropertyMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedKerberosSourcePropertyMappingList) SetResults(v []KerberosSourcePropertyMapping)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedKerberosSourcePropertyMappingList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedKerberosSourcePropertyMappingList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedKerberosSourcePropertyMappingList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

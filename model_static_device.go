@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -26,7 +26,7 @@ type StaticDevice struct {
 	Name     string              `json:"name"`
 	TokenSet []StaticDeviceToken `json:"token_set"`
 	Pk       int32               `json:"pk"`
-	User     PartialUser         `json:"user"`
+	User     GroupMember         `json:"user"`
 }
 
 type _StaticDevice StaticDevice
@@ -35,7 +35,7 @@ type _StaticDevice StaticDevice
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32, user PartialUser) *StaticDevice {
+func NewStaticDevice(name string, tokenSet []StaticDeviceToken, pk int32, user GroupMember) *StaticDevice {
 	this := StaticDevice{}
 	this.Name = name
 	this.TokenSet = tokenSet
@@ -125,9 +125,9 @@ func (o *StaticDevice) SetPk(v int32) {
 }
 
 // GetUser returns the User field value
-func (o *StaticDevice) GetUser() PartialUser {
+func (o *StaticDevice) GetUser() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -136,7 +136,7 @@ func (o *StaticDevice) GetUser() PartialUser {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *StaticDevice) GetUserOk() (*PartialUser, bool) {
+func (o *StaticDevice) GetUserOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *StaticDevice) GetUserOk() (*PartialUser, bool) {
 }
 
 // SetUser sets field value
-func (o *StaticDevice) SetUser(v PartialUser) {
+func (o *StaticDevice) SetUser(v GroupMember) {
 	o.User = v
 }
 

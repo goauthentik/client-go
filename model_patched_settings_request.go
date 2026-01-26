@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -33,8 +33,9 @@ type PatchedSettingsRequest struct {
 	// Reputation cannot decrease lower than this value. Zero or negative.
 	ReputationLowerLimit *int32 `json:"reputation_lower_limit,omitempty"`
 	// Reputation cannot increase higher than this value. Zero or positive.
-	ReputationUpperLimit *int32      `json:"reputation_upper_limit,omitempty"`
-	FooterLinks          interface{} `json:"footer_links,omitempty"`
+	ReputationUpperLimit *int32 `json:"reputation_upper_limit,omitempty"`
+	// The option configures the footer links on the flow executor pages.
+	FooterLinks interface{} `json:"footer_links,omitempty"`
 	// When enabled, all the events caused by a user will be deleted upon the user's deletion.
 	GdprCompliance *bool `json:"gdpr_compliance,omitempty"`
 	// Globally enable/disable impersonation.
@@ -45,11 +46,6 @@ type PatchedSettingsRequest struct {
 	DefaultTokenDuration *string `json:"default_token_duration,omitempty"`
 	// Default token length
 	DefaultTokenLength *int32 `json:"default_token_length,omitempty"`
-	// Default page size for API responses, if no size was requested.
-	PaginationDefaultPageSize *int32 `json:"pagination_default_page_size,omitempty"`
-	// Maximum page size
-	PaginationMaxPageSize *int32                       `json:"pagination_max_page_size,omitempty"`
-	Flags                 *PatchedSettingsRequestFlags `json:"flags,omitempty"`
 }
 
 // NewPatchedSettingsRequest instantiates a new PatchedSettingsRequest object
@@ -486,102 +482,6 @@ func (o *PatchedSettingsRequest) SetDefaultTokenLength(v int32) {
 	o.DefaultTokenLength = &v
 }
 
-// GetPaginationDefaultPageSize returns the PaginationDefaultPageSize field value if set, zero value otherwise.
-func (o *PatchedSettingsRequest) GetPaginationDefaultPageSize() int32 {
-	if o == nil || IsNil(o.PaginationDefaultPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.PaginationDefaultPageSize
-}
-
-// GetPaginationDefaultPageSizeOk returns a tuple with the PaginationDefaultPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSettingsRequest) GetPaginationDefaultPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.PaginationDefaultPageSize) {
-		return nil, false
-	}
-	return o.PaginationDefaultPageSize, true
-}
-
-// HasPaginationDefaultPageSize returns a boolean if a field has been set.
-func (o *PatchedSettingsRequest) HasPaginationDefaultPageSize() bool {
-	if o != nil && !IsNil(o.PaginationDefaultPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaginationDefaultPageSize gets a reference to the given int32 and assigns it to the PaginationDefaultPageSize field.
-func (o *PatchedSettingsRequest) SetPaginationDefaultPageSize(v int32) {
-	o.PaginationDefaultPageSize = &v
-}
-
-// GetPaginationMaxPageSize returns the PaginationMaxPageSize field value if set, zero value otherwise.
-func (o *PatchedSettingsRequest) GetPaginationMaxPageSize() int32 {
-	if o == nil || IsNil(o.PaginationMaxPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.PaginationMaxPageSize
-}
-
-// GetPaginationMaxPageSizeOk returns a tuple with the PaginationMaxPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSettingsRequest) GetPaginationMaxPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.PaginationMaxPageSize) {
-		return nil, false
-	}
-	return o.PaginationMaxPageSize, true
-}
-
-// HasPaginationMaxPageSize returns a boolean if a field has been set.
-func (o *PatchedSettingsRequest) HasPaginationMaxPageSize() bool {
-	if o != nil && !IsNil(o.PaginationMaxPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaginationMaxPageSize gets a reference to the given int32 and assigns it to the PaginationMaxPageSize field.
-func (o *PatchedSettingsRequest) SetPaginationMaxPageSize(v int32) {
-	o.PaginationMaxPageSize = &v
-}
-
-// GetFlags returns the Flags field value if set, zero value otherwise.
-func (o *PatchedSettingsRequest) GetFlags() PatchedSettingsRequestFlags {
-	if o == nil || IsNil(o.Flags) {
-		var ret PatchedSettingsRequestFlags
-		return ret
-	}
-	return *o.Flags
-}
-
-// GetFlagsOk returns a tuple with the Flags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedSettingsRequest) GetFlagsOk() (*PatchedSettingsRequestFlags, bool) {
-	if o == nil || IsNil(o.Flags) {
-		return nil, false
-	}
-	return o.Flags, true
-}
-
-// HasFlags returns a boolean if a field has been set.
-func (o *PatchedSettingsRequest) HasFlags() bool {
-	if o != nil && !IsNil(o.Flags) {
-		return true
-	}
-
-	return false
-}
-
-// SetFlags gets a reference to the given PatchedSettingsRequestFlags and assigns it to the Flags field.
-func (o *PatchedSettingsRequest) SetFlags(v PatchedSettingsRequestFlags) {
-	o.Flags = &v
-}
-
 func (o PatchedSettingsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -630,15 +530,6 @@ func (o PatchedSettingsRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DefaultTokenLength) {
 		toSerialize["default_token_length"] = o.DefaultTokenLength
-	}
-	if !IsNil(o.PaginationDefaultPageSize) {
-		toSerialize["pagination_default_page_size"] = o.PaginationDefaultPageSize
-	}
-	if !IsNil(o.PaginationMaxPageSize) {
-		toSerialize["pagination_max_page_size"] = o.PaginationMaxPageSize
-	}
-	if !IsNil(o.Flags) {
-		toSerialize["flags"] = o.Flags
 	}
 	return toSerialize, nil
 }

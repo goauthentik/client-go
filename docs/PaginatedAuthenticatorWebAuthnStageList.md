@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]AuthenticatorWebAuthnStage**](AuthenticatorWebAuthnStage.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedAuthenticatorWebAuthnStageList
 
-`func NewPaginatedAuthenticatorWebAuthnStageList(pagination Pagination, results []AuthenticatorWebAuthnStage, autocomplete map[string]interface{}, ) *PaginatedAuthenticatorWebAuthnStageList`
+`func NewPaginatedAuthenticatorWebAuthnStageList(pagination Pagination, results []AuthenticatorWebAuthnStage, ) *PaginatedAuthenticatorWebAuthnStageList`
 
 NewPaginatedAuthenticatorWebAuthnStageList instantiates a new PaginatedAuthenticatorWebAuthnStageList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedAuthenticatorWebAuthnStageList) SetResults(v []AuthenticatorWebAuthnStage)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedAuthenticatorWebAuthnStageList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedAuthenticatorWebAuthnStageList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedAuthenticatorWebAuthnStageList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

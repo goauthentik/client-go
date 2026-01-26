@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -26,7 +26,7 @@ type EmailDevice struct {
 	Name  string      `json:"name"`
 	Pk    int32       `json:"pk"`
 	Email string      `json:"email"`
-	User  PartialUser `json:"user"`
+	User  GroupMember `json:"user"`
 }
 
 type _EmailDevice EmailDevice
@@ -35,7 +35,7 @@ type _EmailDevice EmailDevice
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEmailDevice(name string, pk int32, email string, user PartialUser) *EmailDevice {
+func NewEmailDevice(name string, pk int32, email string, user GroupMember) *EmailDevice {
 	this := EmailDevice{}
 	this.Name = name
 	this.Pk = pk
@@ -125,9 +125,9 @@ func (o *EmailDevice) SetEmail(v string) {
 }
 
 // GetUser returns the User field value
-func (o *EmailDevice) GetUser() PartialUser {
+func (o *EmailDevice) GetUser() GroupMember {
 	if o == nil {
-		var ret PartialUser
+		var ret GroupMember
 		return ret
 	}
 
@@ -136,7 +136,7 @@ func (o *EmailDevice) GetUser() PartialUser {
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *EmailDevice) GetUserOk() (*PartialUser, bool) {
+func (o *EmailDevice) GetUserOk() (*GroupMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *EmailDevice) GetUserOk() (*PartialUser, bool) {
 }
 
 // SetUser sets field value
-func (o *EmailDevice) SetUser(v PartialUser) {
+func (o *EmailDevice) SetUser(v GroupMember) {
 	o.User = v
 }
 

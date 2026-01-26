@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -27,17 +27,13 @@ type GoogleWorkspaceProviderRequest struct {
 	// Property mappings used for group creation/updating.
 	PropertyMappingsGroup      []string                  `json:"property_mappings_group,omitempty"`
 	DelegatedSubject           string                    `json:"delegated_subject"`
-	Credentials                map[string]interface{}    `json:"credentials"`
+	Credentials                interface{}               `json:"credentials"`
 	Scopes                     *string                   `json:"scopes,omitempty"`
 	ExcludeUsersServiceAccount *bool                     `json:"exclude_users_service_account,omitempty"`
 	FilterGroup                NullableString            `json:"filter_group,omitempty"`
 	UserDeleteAction           *OutgoingSyncDeleteAction `json:"user_delete_action,omitempty"`
 	GroupDeleteAction          *OutgoingSyncDeleteAction `json:"group_delete_action,omitempty"`
 	DefaultGroupEmailDomain    string                    `json:"default_group_email_domain"`
-	// Controls the number of objects synced in a single task
-	SyncPageSize *int32 `json:"sync_page_size,omitempty"`
-	// Timeout for synchronization of a single page
-	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
 	DryRun *bool `json:"dry_run,omitempty"`
 }
@@ -48,7 +44,7 @@ type _GoogleWorkspaceProviderRequest GoogleWorkspaceProviderRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProviderRequest(name string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string) *GoogleWorkspaceProviderRequest {
+func NewGoogleWorkspaceProviderRequest(name string, delegatedSubject string, credentials interface{}, defaultGroupEmailDomain string) *GoogleWorkspaceProviderRequest {
 	this := GoogleWorkspaceProviderRequest{}
 	this.Name = name
 	this.DelegatedSubject = delegatedSubject
@@ -178,9 +174,10 @@ func (o *GoogleWorkspaceProviderRequest) SetDelegatedSubject(v string) {
 }
 
 // GetCredentials returns the Credentials field value
-func (o *GoogleWorkspaceProviderRequest) GetCredentials() map[string]interface{} {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *GoogleWorkspaceProviderRequest) GetCredentials() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -189,15 +186,16 @@ func (o *GoogleWorkspaceProviderRequest) GetCredentials() map[string]interface{}
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-func (o *GoogleWorkspaceProviderRequest) GetCredentialsOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleWorkspaceProviderRequest) GetCredentialsOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Credentials) {
+		return nil, false
 	}
-	return o.Credentials, true
+	return &o.Credentials, true
 }
 
 // SetCredentials sets field value
-func (o *GoogleWorkspaceProviderRequest) SetCredentials(v map[string]interface{}) {
+func (o *GoogleWorkspaceProviderRequest) SetCredentials(v interface{}) {
 	o.Credentials = v
 }
 
@@ -396,70 +394,6 @@ func (o *GoogleWorkspaceProviderRequest) SetDefaultGroupEmailDomain(v string) {
 	o.DefaultGroupEmailDomain = v
 }
 
-// GetSyncPageSize returns the SyncPageSize field value if set, zero value otherwise.
-func (o *GoogleWorkspaceProviderRequest) GetSyncPageSize() int32 {
-	if o == nil || IsNil(o.SyncPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.SyncPageSize
-}
-
-// GetSyncPageSizeOk returns a tuple with the SyncPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GoogleWorkspaceProviderRequest) GetSyncPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.SyncPageSize) {
-		return nil, false
-	}
-	return o.SyncPageSize, true
-}
-
-// HasSyncPageSize returns a boolean if a field has been set.
-func (o *GoogleWorkspaceProviderRequest) HasSyncPageSize() bool {
-	if o != nil && !IsNil(o.SyncPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncPageSize gets a reference to the given int32 and assigns it to the SyncPageSize field.
-func (o *GoogleWorkspaceProviderRequest) SetSyncPageSize(v int32) {
-	o.SyncPageSize = &v
-}
-
-// GetSyncPageTimeout returns the SyncPageTimeout field value if set, zero value otherwise.
-func (o *GoogleWorkspaceProviderRequest) GetSyncPageTimeout() string {
-	if o == nil || IsNil(o.SyncPageTimeout) {
-		var ret string
-		return ret
-	}
-	return *o.SyncPageTimeout
-}
-
-// GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GoogleWorkspaceProviderRequest) GetSyncPageTimeoutOk() (*string, bool) {
-	if o == nil || IsNil(o.SyncPageTimeout) {
-		return nil, false
-	}
-	return o.SyncPageTimeout, true
-}
-
-// HasSyncPageTimeout returns a boolean if a field has been set.
-func (o *GoogleWorkspaceProviderRequest) HasSyncPageTimeout() bool {
-	if o != nil && !IsNil(o.SyncPageTimeout) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncPageTimeout gets a reference to the given string and assigns it to the SyncPageTimeout field.
-func (o *GoogleWorkspaceProviderRequest) SetSyncPageTimeout(v string) {
-	o.SyncPageTimeout = &v
-}
-
 // GetDryRun returns the DryRun field value if set, zero value otherwise.
 func (o *GoogleWorkspaceProviderRequest) GetDryRun() bool {
 	if o == nil || IsNil(o.DryRun) {
@@ -510,7 +444,9 @@ func (o GoogleWorkspaceProviderRequest) ToMap() (map[string]interface{}, error) 
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
 	toSerialize["delegated_subject"] = o.DelegatedSubject
-	toSerialize["credentials"] = o.Credentials
+	if o.Credentials != nil {
+		toSerialize["credentials"] = o.Credentials
+	}
 	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
@@ -527,12 +463,6 @@ func (o GoogleWorkspaceProviderRequest) ToMap() (map[string]interface{}, error) 
 		toSerialize["group_delete_action"] = o.GroupDeleteAction
 	}
 	toSerialize["default_group_email_domain"] = o.DefaultGroupEmailDomain
-	if !IsNil(o.SyncPageSize) {
-		toSerialize["sync_page_size"] = o.SyncPageSize
-	}
-	if !IsNil(o.SyncPageTimeout) {
-		toSerialize["sync_page_timeout"] = o.SyncPageTimeout
-	}
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
 	}

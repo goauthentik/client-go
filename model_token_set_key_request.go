@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -20,7 +20,7 @@ import (
 // checks if the TokenSetKeyRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenSetKeyRequest{}
 
-// TokenSetKeyRequest Set token's key
+// TokenSetKeyRequest struct for TokenSetKeyRequest
 type TokenSetKeyRequest struct {
 	Key string `json:"key"`
 }

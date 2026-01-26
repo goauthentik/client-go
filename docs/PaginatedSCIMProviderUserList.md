@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]SCIMProviderUser**](SCIMProviderUser.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedSCIMProviderUserList
 
-`func NewPaginatedSCIMProviderUserList(pagination Pagination, results []SCIMProviderUser, autocomplete map[string]interface{}, ) *PaginatedSCIMProviderUserList`
+`func NewPaginatedSCIMProviderUserList(pagination Pagination, results []SCIMProviderUser, ) *PaginatedSCIMProviderUserList`
 
 NewPaginatedSCIMProviderUserList instantiates a new PaginatedSCIMProviderUserList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedSCIMProviderUserList) SetResults(v []SCIMProviderUser)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedSCIMProviderUserList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedSCIMProviderUserList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedSCIMProviderUserList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

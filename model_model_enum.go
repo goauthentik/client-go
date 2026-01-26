@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -22,24 +22,7 @@ type ModelEnum string
 // List of ModelEnum
 const (
 	MODELENUM_AUTHENTIK_TENANTS_DOMAIN                                                    ModelEnum = "authentik_tenants.domain"
-	MODELENUM_AUTHENTIK_CORE_GROUP                                                        ModelEnum = "authentik_core.group"
-	MODELENUM_AUTHENTIK_CORE_USER                                                         ModelEnum = "authentik_core.user"
-	MODELENUM_AUTHENTIK_CORE_APPLICATION                                                  ModelEnum = "authentik_core.application"
-	MODELENUM_AUTHENTIK_CORE_APPLICATIONENTITLEMENT                                       ModelEnum = "authentik_core.applicationentitlement"
-	MODELENUM_AUTHENTIK_CORE_TOKEN                                                        ModelEnum = "authentik_core.token"
 	MODELENUM_AUTHENTIK_CRYPTO_CERTIFICATEKEYPAIR                                         ModelEnum = "authentik_crypto.certificatekeypair"
-	MODELENUM_AUTHENTIK_ENDPOINTS_DEVICEUSERBINDING                                       ModelEnum = "authentik_endpoints.deviceuserbinding"
-	MODELENUM_AUTHENTIK_ENDPOINTS_DEVICEACCESSGROUP                                       ModelEnum = "authentik_endpoints.deviceaccessgroup"
-	MODELENUM_AUTHENTIK_ENDPOINTS_ENDPOINTSTAGE                                           ModelEnum = "authentik_endpoints.endpointstage"
-	MODELENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT_AGENTCONNECTOR                         ModelEnum = "authentik_endpoints_connectors_agent.agentconnector"
-	MODELENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT_AGENTDEVICEUSERBINDING                 ModelEnum = "authentik_endpoints_connectors_agent.agentdeviceuserbinding"
-	MODELENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_AGENT_ENROLLMENTTOKEN                        ModelEnum = "authentik_endpoints_connectors_agent.enrollmenttoken"
-	MODELENUM_AUTHENTIK_ENTERPRISE_LICENSE                                                ModelEnum = "authentik_enterprise.license"
-	MODELENUM_AUTHENTIK_EVENTS_EVENT                                                      ModelEnum = "authentik_events.event"
-	MODELENUM_AUTHENTIK_EVENTS_NOTIFICATIONTRANSPORT                                      ModelEnum = "authentik_events.notificationtransport"
-	MODELENUM_AUTHENTIK_EVENTS_NOTIFICATION                                               ModelEnum = "authentik_events.notification"
-	MODELENUM_AUTHENTIK_EVENTS_NOTIFICATIONRULE                                           ModelEnum = "authentik_events.notificationrule"
-	MODELENUM_AUTHENTIK_EVENTS_NOTIFICATIONWEBHOOKMAPPING                                 ModelEnum = "authentik_events.notificationwebhookmapping"
 	MODELENUM_AUTHENTIK_FLOWS_FLOW                                                        ModelEnum = "authentik_flows.flow"
 	MODELENUM_AUTHENTIK_FLOWS_FLOWSTAGEBINDING                                            ModelEnum = "authentik_flows.flowstagebinding"
 	MODELENUM_AUTHENTIK_OUTPOSTS_DOCKERSERVICECONNECTION                                  ModelEnum = "authentik_outposts.dockerserviceconnection"
@@ -90,10 +73,6 @@ const (
 	MODELENUM_AUTHENTIK_SOURCES_SAML_GROUPSAMLSOURCECONNECTION                            ModelEnum = "authentik_sources_saml.groupsamlsourceconnection"
 	MODELENUM_AUTHENTIK_SOURCES_SCIM_SCIMSOURCE                                           ModelEnum = "authentik_sources_scim.scimsource"
 	MODELENUM_AUTHENTIK_SOURCES_SCIM_SCIMSOURCEPROPERTYMAPPING                            ModelEnum = "authentik_sources_scim.scimsourcepropertymapping"
-	MODELENUM_AUTHENTIK_SOURCES_TELEGRAM_TELEGRAMSOURCE                                   ModelEnum = "authentik_sources_telegram.telegramsource"
-	MODELENUM_AUTHENTIK_SOURCES_TELEGRAM_TELEGRAMSOURCEPROPERTYMAPPING                    ModelEnum = "authentik_sources_telegram.telegramsourcepropertymapping"
-	MODELENUM_AUTHENTIK_SOURCES_TELEGRAM_USERTELEGRAMSOURCECONNECTION                     ModelEnum = "authentik_sources_telegram.usertelegramsourceconnection"
-	MODELENUM_AUTHENTIK_SOURCES_TELEGRAM_GROUPTELEGRAMSOURCECONNECTION                    ModelEnum = "authentik_sources_telegram.grouptelegramsourceconnection"
 	MODELENUM_AUTHENTIK_STAGES_AUTHENTICATOR_DUO_AUTHENTICATORDUOSTAGE                    ModelEnum = "authentik_stages_authenticator_duo.authenticatorduostage"
 	MODELENUM_AUTHENTIK_STAGES_AUTHENTICATOR_DUO_DUODEVICE                                ModelEnum = "authentik_stages_authenticator_duo.duodevice"
 	MODELENUM_AUTHENTIK_STAGES_AUTHENTICATOR_EMAIL_AUTHENTICATOREMAILSTAGE                ModelEnum = "authentik_stages_authenticator_email.authenticatoremailstage"
@@ -109,6 +88,7 @@ const (
 	MODELENUM_AUTHENTIK_STAGES_AUTHENTICATOR_WEBAUTHN_WEBAUTHNDEVICE                      ModelEnum = "authentik_stages_authenticator_webauthn.webauthndevice"
 	MODELENUM_AUTHENTIK_STAGES_CAPTCHA_CAPTCHASTAGE                                       ModelEnum = "authentik_stages_captcha.captchastage"
 	MODELENUM_AUTHENTIK_STAGES_CONSENT_CONSENTSTAGE                                       ModelEnum = "authentik_stages_consent.consentstage"
+	MODELENUM_AUTHENTIK_STAGES_CONSENT_USERCONSENT                                        ModelEnum = "authentik_stages_consent.userconsent"
 	MODELENUM_AUTHENTIK_STAGES_DENY_DENYSTAGE                                             ModelEnum = "authentik_stages_deny.denystage"
 	MODELENUM_AUTHENTIK_STAGES_DUMMY_DUMMYSTAGE                                           ModelEnum = "authentik_stages_dummy.dummystage"
 	MODELENUM_AUTHENTIK_STAGES_EMAIL_EMAILSTAGE                                           ModelEnum = "authentik_stages_email.emailstage"
@@ -123,43 +103,34 @@ const (
 	MODELENUM_AUTHENTIK_STAGES_USER_LOGIN_USERLOGINSTAGE                                  ModelEnum = "authentik_stages_user_login.userloginstage"
 	MODELENUM_AUTHENTIK_STAGES_USER_LOGOUT_USERLOGOUTSTAGE                                ModelEnum = "authentik_stages_user_logout.userlogoutstage"
 	MODELENUM_AUTHENTIK_STAGES_USER_WRITE_USERWRITESTAGE                                  ModelEnum = "authentik_stages_user_write.userwritestage"
-	MODELENUM_AUTHENTIK_TASKS_SCHEDULES_SCHEDULE                                          ModelEnum = "authentik_tasks_schedules.schedule"
 	MODELENUM_AUTHENTIK_BRANDS_BRAND                                                      ModelEnum = "authentik_brands.brand"
 	MODELENUM_AUTHENTIK_BLUEPRINTS_BLUEPRINTINSTANCE                                      ModelEnum = "authentik_blueprints.blueprintinstance"
-	MODELENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_FLEET_FLEETCONNECTOR                         ModelEnum = "authentik_endpoints_connectors_fleet.fleetconnector"
+	MODELENUM_AUTHENTIK_CORE_GROUP                                                        ModelEnum = "authentik_core.group"
+	MODELENUM_AUTHENTIK_CORE_USER                                                         ModelEnum = "authentik_core.user"
+	MODELENUM_AUTHENTIK_CORE_APPLICATION                                                  ModelEnum = "authentik_core.application"
+	MODELENUM_AUTHENTIK_CORE_APPLICATIONENTITLEMENT                                       ModelEnum = "authentik_core.applicationentitlement"
+	MODELENUM_AUTHENTIK_CORE_TOKEN                                                        ModelEnum = "authentik_core.token"
+	MODELENUM_AUTHENTIK_ENTERPRISE_LICENSE                                                ModelEnum = "authentik_enterprise.license"
 	MODELENUM_AUTHENTIK_POLICIES_UNIQUE_PASSWORD_UNIQUEPASSWORDPOLICY                     ModelEnum = "authentik_policies_unique_password.uniquepasswordpolicy"
 	MODELENUM_AUTHENTIK_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER                ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
 	MODELENUM_AUTHENTIK_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDERMAPPING         ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovidermapping"
 	MODELENUM_AUTHENTIK_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER                  ModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovider"
 	MODELENUM_AUTHENTIK_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDERMAPPING           ModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovidermapping"
 	MODELENUM_AUTHENTIK_PROVIDERS_SSF_SSFPROVIDER                                         ModelEnum = "authentik_providers_ssf.ssfprovider"
-	MODELENUM_AUTHENTIK_REPORTS_DATAEXPORT                                                ModelEnum = "authentik_reports.dataexport"
 	MODELENUM_AUTHENTIK_STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE ModelEnum = "authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"
 	MODELENUM_AUTHENTIK_STAGES_MTLS_MUTUALTLSSTAGE                                        ModelEnum = "authentik_stages_mtls.mutualtlsstage"
 	MODELENUM_AUTHENTIK_STAGES_SOURCE_SOURCESTAGE                                         ModelEnum = "authentik_stages_source.sourcestage"
+	MODELENUM_AUTHENTIK_EVENTS_EVENT                                                      ModelEnum = "authentik_events.event"
+	MODELENUM_AUTHENTIK_EVENTS_NOTIFICATIONTRANSPORT                                      ModelEnum = "authentik_events.notificationtransport"
+	MODELENUM_AUTHENTIK_EVENTS_NOTIFICATION                                               ModelEnum = "authentik_events.notification"
+	MODELENUM_AUTHENTIK_EVENTS_NOTIFICATIONRULE                                           ModelEnum = "authentik_events.notificationrule"
+	MODELENUM_AUTHENTIK_EVENTS_NOTIFICATIONWEBHOOKMAPPING                                 ModelEnum = "authentik_events.notificationwebhookmapping"
 )
 
 // All allowed values of ModelEnum enum
 var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_tenants.domain",
-	"authentik_core.group",
-	"authentik_core.user",
-	"authentik_core.application",
-	"authentik_core.applicationentitlement",
-	"authentik_core.token",
 	"authentik_crypto.certificatekeypair",
-	"authentik_endpoints.deviceuserbinding",
-	"authentik_endpoints.deviceaccessgroup",
-	"authentik_endpoints.endpointstage",
-	"authentik_endpoints_connectors_agent.agentconnector",
-	"authentik_endpoints_connectors_agent.agentdeviceuserbinding",
-	"authentik_endpoints_connectors_agent.enrollmenttoken",
-	"authentik_enterprise.license",
-	"authentik_events.event",
-	"authentik_events.notificationtransport",
-	"authentik_events.notification",
-	"authentik_events.notificationrule",
-	"authentik_events.notificationwebhookmapping",
 	"authentik_flows.flow",
 	"authentik_flows.flowstagebinding",
 	"authentik_outposts.dockerserviceconnection",
@@ -210,10 +181,6 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_sources_saml.groupsamlsourceconnection",
 	"authentik_sources_scim.scimsource",
 	"authentik_sources_scim.scimsourcepropertymapping",
-	"authentik_sources_telegram.telegramsource",
-	"authentik_sources_telegram.telegramsourcepropertymapping",
-	"authentik_sources_telegram.usertelegramsourceconnection",
-	"authentik_sources_telegram.grouptelegramsourceconnection",
 	"authentik_stages_authenticator_duo.authenticatorduostage",
 	"authentik_stages_authenticator_duo.duodevice",
 	"authentik_stages_authenticator_email.authenticatoremailstage",
@@ -229,6 +196,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_stages_authenticator_webauthn.webauthndevice",
 	"authentik_stages_captcha.captchastage",
 	"authentik_stages_consent.consentstage",
+	"authentik_stages_consent.userconsent",
 	"authentik_stages_deny.denystage",
 	"authentik_stages_dummy.dummystage",
 	"authentik_stages_email.emailstage",
@@ -243,20 +211,28 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_stages_user_login.userloginstage",
 	"authentik_stages_user_logout.userlogoutstage",
 	"authentik_stages_user_write.userwritestage",
-	"authentik_tasks_schedules.schedule",
 	"authentik_brands.brand",
 	"authentik_blueprints.blueprintinstance",
-	"authentik_endpoints_connectors_fleet.fleetconnector",
+	"authentik_core.group",
+	"authentik_core.user",
+	"authentik_core.application",
+	"authentik_core.applicationentitlement",
+	"authentik_core.token",
+	"authentik_enterprise.license",
 	"authentik_policies_unique_password.uniquepasswordpolicy",
 	"authentik_providers_google_workspace.googleworkspaceprovider",
 	"authentik_providers_google_workspace.googleworkspaceprovidermapping",
 	"authentik_providers_microsoft_entra.microsoftentraprovider",
 	"authentik_providers_microsoft_entra.microsoftentraprovidermapping",
 	"authentik_providers_ssf.ssfprovider",
-	"authentik_reports.dataexport",
 	"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage",
 	"authentik_stages_mtls.mutualtlsstage",
 	"authentik_stages_source.sourcestage",
+	"authentik_events.event",
+	"authentik_events.notificationtransport",
+	"authentik_events.notification",
+	"authentik_events.notificationrule",
+	"authentik_events.notificationwebhookmapping",
 }
 
 func (v *ModelEnum) UnmarshalJSON(src []byte) error {

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
+**FlowSet** | Pointer to [**[]FlowSet**](FlowSet.md) |  | [optional] 
 **Backends** | [**[]BackendsEnum**](BackendsEnum.md) | Selection of backends to test the password against. | 
 **ConfigureFlow** | Pointer to **NullableString** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] 
 **FailedAttemptsBeforeCancel** | Pointer to **int32** | How many attempts a user has before the flow is canceled. To lock the user out, use a reputation policy and a user_write stage. | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewPasswordStage
 
-`func NewPasswordStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, backends []BackendsEnum, ) *PasswordStage`
+`func NewPasswordStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, backends []BackendsEnum, ) *PasswordStage`
 
 NewPasswordStage instantiates a new PasswordStage object
 This constructor will assign default values to properties that have it defined,
@@ -174,6 +174,11 @@ and a boolean to check if the value has been set.
 
 SetFlowSet sets FlowSet field to given value.
 
+### HasFlowSet
+
+`func (o *PasswordStage) HasFlowSet() bool`
+
+HasFlowSet returns a boolean if a field has been set.
 
 ### GetBackends
 

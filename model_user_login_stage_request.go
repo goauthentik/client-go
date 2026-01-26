@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -22,7 +22,8 @@ var _ MappedNullable = &UserLoginStageRequest{}
 
 // UserLoginStageRequest UserLoginStage Serializer
 type UserLoginStageRequest struct {
-	Name string `json:"name"`
+	Name    string           `json:"name"`
+	FlowSet []FlowSetRequest `json:"flow_set,omitempty"`
 	// Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
 	SessionDuration *string `json:"session_duration,omitempty"`
 	// Terminate all other sessions of the user logging in.
@@ -33,8 +34,6 @@ type UserLoginStageRequest struct {
 	NetworkBinding *NetworkBindingEnum `json:"network_binding,omitempty"`
 	// Bind sessions created by this stage to the configured GeoIP location
 	GeoipBinding *GeoipBindingEnum `json:"geoip_binding,omitempty"`
-	// When set to a non-zero value, authentik will save a cookie with a longer expiry,to remember the device the user is logging in from. (Format: hours=-1;minutes=-2;seconds=-3)
-	RememberDevice *string `json:"remember_device,omitempty"`
 }
 
 type _UserLoginStageRequest UserLoginStageRequest
@@ -79,6 +78,38 @@ func (o *UserLoginStageRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *UserLoginStageRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
+func (o *UserLoginStageRequest) GetFlowSet() []FlowSetRequest {
+	if o == nil || IsNil(o.FlowSet) {
+		var ret []FlowSetRequest
+		return ret
+	}
+	return o.FlowSet
+}
+
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserLoginStageRequest) GetFlowSetOk() ([]FlowSetRequest, bool) {
+	if o == nil || IsNil(o.FlowSet) {
+		return nil, false
+	}
+	return o.FlowSet, true
+}
+
+// HasFlowSet returns a boolean if a field has been set.
+func (o *UserLoginStageRequest) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSetRequest and assigns it to the FlowSet field.
+func (o *UserLoginStageRequest) SetFlowSet(v []FlowSetRequest) {
+	o.FlowSet = v
 }
 
 // GetSessionDuration returns the SessionDuration field value if set, zero value otherwise.
@@ -241,38 +272,6 @@ func (o *UserLoginStageRequest) SetGeoipBinding(v GeoipBindingEnum) {
 	o.GeoipBinding = &v
 }
 
-// GetRememberDevice returns the RememberDevice field value if set, zero value otherwise.
-func (o *UserLoginStageRequest) GetRememberDevice() string {
-	if o == nil || IsNil(o.RememberDevice) {
-		var ret string
-		return ret
-	}
-	return *o.RememberDevice
-}
-
-// GetRememberDeviceOk returns a tuple with the RememberDevice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserLoginStageRequest) GetRememberDeviceOk() (*string, bool) {
-	if o == nil || IsNil(o.RememberDevice) {
-		return nil, false
-	}
-	return o.RememberDevice, true
-}
-
-// HasRememberDevice returns a boolean if a field has been set.
-func (o *UserLoginStageRequest) HasRememberDevice() bool {
-	if o != nil && !IsNil(o.RememberDevice) {
-		return true
-	}
-
-	return false
-}
-
-// SetRememberDevice gets a reference to the given string and assigns it to the RememberDevice field.
-func (o *UserLoginStageRequest) SetRememberDevice(v string) {
-	o.RememberDevice = &v
-}
-
 func (o UserLoginStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -284,6 +283,9 @@ func (o UserLoginStageRequest) MarshalJSON() ([]byte, error) {
 func (o UserLoginStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.SessionDuration) {
 		toSerialize["session_duration"] = o.SessionDuration
 	}
@@ -298,9 +300,6 @@ func (o UserLoginStageRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GeoipBinding) {
 		toSerialize["geoip_binding"] = o.GeoipBinding
-	}
-	if !IsNil(o.RememberDevice) {
-		toSerialize["remember_device"] = o.RememberDevice
 	}
 	return toSerialize, nil
 }

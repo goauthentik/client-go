@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -22,11 +22,11 @@ var _ MappedNullable = &BlueprintInstanceRequest{}
 
 // BlueprintInstanceRequest Info about a single blueprint instance file
 type BlueprintInstanceRequest struct {
-	Name    string                 `json:"name"`
-	Path    *string                `json:"path,omitempty"`
-	Context map[string]interface{} `json:"context,omitempty"`
-	Enabled *bool                  `json:"enabled,omitempty"`
-	Content *string                `json:"content,omitempty"`
+	Name    string      `json:"name"`
+	Path    *string     `json:"path,omitempty"`
+	Context interface{} `json:"context,omitempty"`
+	Enabled *bool       `json:"enabled,omitempty"`
+	Content *string     `json:"content,omitempty"`
 }
 
 type _BlueprintInstanceRequest BlueprintInstanceRequest
@@ -109,10 +109,10 @@ func (o *BlueprintInstanceRequest) SetPath(v string) {
 	o.Path = &v
 }
 
-// GetContext returns the Context field value if set, zero value otherwise.
-func (o *BlueprintInstanceRequest) GetContext() map[string]interface{} {
-	if o == nil || IsNil(o.Context) {
-		var ret map[string]interface{}
+// GetContext returns the Context field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BlueprintInstanceRequest) GetContext() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
 	return o.Context
@@ -120,11 +120,12 @@ func (o *BlueprintInstanceRequest) GetContext() map[string]interface{} {
 
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BlueprintInstanceRequest) GetContextOk() (map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BlueprintInstanceRequest) GetContextOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Context) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Context, true
+	return &o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
@@ -136,8 +137,8 @@ func (o *BlueprintInstanceRequest) HasContext() bool {
 	return false
 }
 
-// SetContext gets a reference to the given map[string]interface{} and assigns it to the Context field.
-func (o *BlueprintInstanceRequest) SetContext(v map[string]interface{}) {
+// SetContext gets a reference to the given interface{} and assigns it to the Context field.
+func (o *BlueprintInstanceRequest) SetContext(v interface{}) {
 	o.Context = v
 }
 
@@ -219,7 +220,7 @@ func (o BlueprintInstanceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Path) {
 		toSerialize["path"] = o.Path
 	}
-	if !IsNil(o.Context) {
+	if o.Context != nil {
 		toSerialize["context"] = o.Context
 	}
 	if !IsNil(o.Enabled) {

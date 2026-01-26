@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -22,21 +22,20 @@ var _ MappedNullable = &CurrentBrand{}
 
 // CurrentBrand Partial brand information for styling
 type CurrentBrand struct {
-	MatchedDomain      string            `json:"matched_domain"`
-	BrandingTitle      string            `json:"branding_title"`
-	BrandingLogo       string            `json:"branding_logo"`
-	BrandingFavicon    string            `json:"branding_favicon"`
-	BrandingCustomCss  string            `json:"branding_custom_css"`
-	UiFooterLinks      []FooterLink      `json:"ui_footer_links"`
-	UiTheme            UiThemeEnum       `json:"ui_theme"`
-	FlowAuthentication *string           `json:"flow_authentication,omitempty"`
-	FlowInvalidation   *string           `json:"flow_invalidation,omitempty"`
-	FlowRecovery       *string           `json:"flow_recovery,omitempty"`
-	FlowUnenrollment   *string           `json:"flow_unenrollment,omitempty"`
-	FlowUserSettings   *string           `json:"flow_user_settings,omitempty"`
-	FlowDeviceCode     *string           `json:"flow_device_code,omitempty"`
-	DefaultLocale      string            `json:"default_locale"`
-	Flags              CurrentBrandFlags `json:"flags"`
+	MatchedDomain      string       `json:"matched_domain"`
+	BrandingTitle      string       `json:"branding_title"`
+	BrandingLogo       string       `json:"branding_logo"`
+	BrandingFavicon    string       `json:"branding_favicon"`
+	BrandingCustomCss  string       `json:"branding_custom_css"`
+	UiFooterLinks      []FooterLink `json:"ui_footer_links"`
+	UiTheme            UiThemeEnum  `json:"ui_theme"`
+	FlowAuthentication *string      `json:"flow_authentication,omitempty"`
+	FlowInvalidation   *string      `json:"flow_invalidation,omitempty"`
+	FlowRecovery       *string      `json:"flow_recovery,omitempty"`
+	FlowUnenrollment   *string      `json:"flow_unenrollment,omitempty"`
+	FlowUserSettings   *string      `json:"flow_user_settings,omitempty"`
+	FlowDeviceCode     *string      `json:"flow_device_code,omitempty"`
+	DefaultLocale      string       `json:"default_locale"`
 }
 
 type _CurrentBrand CurrentBrand
@@ -45,7 +44,7 @@ type _CurrentBrand CurrentBrand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags) *CurrentBrand {
+func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string) *CurrentBrand {
 	this := CurrentBrand{}
 	this.MatchedDomain = matchedDomain
 	this.BrandingTitle = brandingTitle
@@ -55,7 +54,6 @@ func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo st
 	this.UiFooterLinks = uiFooterLinks
 	this.UiTheme = uiTheme
 	this.DefaultLocale = defaultLocale
-	this.Flags = flags
 	return &this
 }
 
@@ -451,30 +449,6 @@ func (o *CurrentBrand) SetDefaultLocale(v string) {
 	o.DefaultLocale = v
 }
 
-// GetFlags returns the Flags field value
-func (o *CurrentBrand) GetFlags() CurrentBrandFlags {
-	if o == nil {
-		var ret CurrentBrandFlags
-		return ret
-	}
-
-	return o.Flags
-}
-
-// GetFlagsOk returns a tuple with the Flags field value
-// and a boolean to check if the value has been set.
-func (o *CurrentBrand) GetFlagsOk() (*CurrentBrandFlags, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Flags, true
-}
-
-// SetFlags sets field value
-func (o *CurrentBrand) SetFlags(v CurrentBrandFlags) {
-	o.Flags = v
-}
-
 func (o CurrentBrand) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -511,7 +485,6 @@ func (o CurrentBrand) ToMap() (map[string]interface{}, error) {
 		toSerialize["flow_device_code"] = o.FlowDeviceCode
 	}
 	toSerialize["default_locale"] = o.DefaultLocale
-	toSerialize["flags"] = o.Flags
 	return toSerialize, nil
 }
 
@@ -528,7 +501,6 @@ func (o *CurrentBrand) UnmarshalJSON(data []byte) (err error) {
 		"ui_footer_links",
 		"ui_theme",
 		"default_locale",
-		"flags",
 	}
 
 	allProperties := make(map[string]interface{})

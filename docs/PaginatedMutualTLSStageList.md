@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]MutualTLSStage**](MutualTLSStage.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedMutualTLSStageList
 
-`func NewPaginatedMutualTLSStageList(pagination Pagination, results []MutualTLSStage, autocomplete map[string]interface{}, ) *PaginatedMutualTLSStageList`
+`func NewPaginatedMutualTLSStageList(pagination Pagination, results []MutualTLSStage, ) *PaginatedMutualTLSStageList`
 
 NewPaginatedMutualTLSStageList instantiates a new PaginatedMutualTLSStageList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedMutualTLSStageList) SetResults(v []MutualTLSStage)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedMutualTLSStageList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedMutualTLSStageList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedMutualTLSStageList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

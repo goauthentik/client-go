@@ -36,8 +36,6 @@ Name | Type | Description | Notes
 **AdditionalPermissions** | [**[]ConsentPermission**](ConsentPermission.md) |  | 
 **Token** | **string** |  | 
 **Name** | **string** |  | 
-**Challenge** | **string** |  | 
-**ChallengeIdleTimeout** | **int32** |  | 
 **RequestId** | **string** |  | 
 **Error** | Pointer to **string** |  | [optional] 
 **Traceback** | Pointer to **string** |  | [optional] 
@@ -56,15 +54,6 @@ Name | Type | Description | Notes
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
 **EnableRememberMe** | Pointer to **bool** |  | [optional] [default to true]
-**PasskeyChallenge** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
-**LogoutUrls** | Pointer to **[]map[string]map[string]interface{}** |  | [optional] 
-**PostUrl** | Pointer to **string** |  | [optional] 
-**SamlRequest** | Pointer to **string** |  | [optional] 
-**RelayState** | Pointer to **string** |  | [optional] 
-**ProviderName** | Pointer to **string** |  | [optional] 
-**Binding** | Pointer to **string** |  | [optional] 
-**RedirectUrl** | Pointer to **string** |  | [optional] 
-**IsComplete** | Pointer to **bool** |  | [optional] [default to false]
 **Slug** | **string** |  | 
 **Fields** | [**[]StagePrompt**](StagePrompt.md) |  | 
 **To** | **string** |  | 
@@ -73,14 +62,12 @@ Name | Type | Description | Notes
 **InvalidationFlowUrl** | Pointer to **string** |  | [optional] 
 **BrandName** | **string** |  | 
 **Body** | **string** |  | 
-**BotUsername** | **string** | Telegram bot username | 
-**RequestMessageAccess** | **bool** |  | 
 
 ## Methods
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, challenge string, challengeIdleTimeout int32, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, botUsername string, requestMessageAccess bool, ) *ChallengeTypes`
+`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -790,46 +777,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetChallenge
-
-`func (o *ChallengeTypes) GetChallenge() string`
-
-GetChallenge returns the Challenge field if non-nil, zero value otherwise.
-
-### GetChallengeOk
-
-`func (o *ChallengeTypes) GetChallengeOk() (*string, bool)`
-
-GetChallengeOk returns a tuple with the Challenge field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChallenge
-
-`func (o *ChallengeTypes) SetChallenge(v string)`
-
-SetChallenge sets Challenge field to given value.
-
-
-### GetChallengeIdleTimeout
-
-`func (o *ChallengeTypes) GetChallengeIdleTimeout() int32`
-
-GetChallengeIdleTimeout returns the ChallengeIdleTimeout field if non-nil, zero value otherwise.
-
-### GetChallengeIdleTimeoutOk
-
-`func (o *ChallengeTypes) GetChallengeIdleTimeoutOk() (*int32, bool)`
-
-GetChallengeIdleTimeoutOk returns a tuple with the ChallengeIdleTimeout field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetChallengeIdleTimeout
-
-`func (o *ChallengeTypes) SetChallengeIdleTimeout(v int32)`
-
-SetChallengeIdleTimeout sets ChallengeIdleTimeout field to given value.
-
-
 ### GetRequestId
 
 `func (o *ChallengeTypes) GetRequestId() string`
@@ -1265,241 +1212,6 @@ SetEnableRememberMe sets EnableRememberMe field to given value.
 
 HasEnableRememberMe returns a boolean if a field has been set.
 
-### GetPasskeyChallenge
-
-`func (o *ChallengeTypes) GetPasskeyChallenge() map[string]map[string]interface{}`
-
-GetPasskeyChallenge returns the PasskeyChallenge field if non-nil, zero value otherwise.
-
-### GetPasskeyChallengeOk
-
-`func (o *ChallengeTypes) GetPasskeyChallengeOk() (*map[string]map[string]interface{}, bool)`
-
-GetPasskeyChallengeOk returns a tuple with the PasskeyChallenge field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPasskeyChallenge
-
-`func (o *ChallengeTypes) SetPasskeyChallenge(v map[string]map[string]interface{})`
-
-SetPasskeyChallenge sets PasskeyChallenge field to given value.
-
-### HasPasskeyChallenge
-
-`func (o *ChallengeTypes) HasPasskeyChallenge() bool`
-
-HasPasskeyChallenge returns a boolean if a field has been set.
-
-### SetPasskeyChallengeNil
-
-`func (o *ChallengeTypes) SetPasskeyChallengeNil(b bool)`
-
- SetPasskeyChallengeNil sets the value for PasskeyChallenge to be an explicit nil
-
-### UnsetPasskeyChallenge
-`func (o *ChallengeTypes) UnsetPasskeyChallenge()`
-
-UnsetPasskeyChallenge ensures that no value is present for PasskeyChallenge, not even an explicit nil
-### GetLogoutUrls
-
-`func (o *ChallengeTypes) GetLogoutUrls() []map[string]map[string]interface{}`
-
-GetLogoutUrls returns the LogoutUrls field if non-nil, zero value otherwise.
-
-### GetLogoutUrlsOk
-
-`func (o *ChallengeTypes) GetLogoutUrlsOk() (*[]map[string]map[string]interface{}, bool)`
-
-GetLogoutUrlsOk returns a tuple with the LogoutUrls field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLogoutUrls
-
-`func (o *ChallengeTypes) SetLogoutUrls(v []map[string]map[string]interface{})`
-
-SetLogoutUrls sets LogoutUrls field to given value.
-
-### HasLogoutUrls
-
-`func (o *ChallengeTypes) HasLogoutUrls() bool`
-
-HasLogoutUrls returns a boolean if a field has been set.
-
-### GetPostUrl
-
-`func (o *ChallengeTypes) GetPostUrl() string`
-
-GetPostUrl returns the PostUrl field if non-nil, zero value otherwise.
-
-### GetPostUrlOk
-
-`func (o *ChallengeTypes) GetPostUrlOk() (*string, bool)`
-
-GetPostUrlOk returns a tuple with the PostUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPostUrl
-
-`func (o *ChallengeTypes) SetPostUrl(v string)`
-
-SetPostUrl sets PostUrl field to given value.
-
-### HasPostUrl
-
-`func (o *ChallengeTypes) HasPostUrl() bool`
-
-HasPostUrl returns a boolean if a field has been set.
-
-### GetSamlRequest
-
-`func (o *ChallengeTypes) GetSamlRequest() string`
-
-GetSamlRequest returns the SamlRequest field if non-nil, zero value otherwise.
-
-### GetSamlRequestOk
-
-`func (o *ChallengeTypes) GetSamlRequestOk() (*string, bool)`
-
-GetSamlRequestOk returns a tuple with the SamlRequest field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSamlRequest
-
-`func (o *ChallengeTypes) SetSamlRequest(v string)`
-
-SetSamlRequest sets SamlRequest field to given value.
-
-### HasSamlRequest
-
-`func (o *ChallengeTypes) HasSamlRequest() bool`
-
-HasSamlRequest returns a boolean if a field has been set.
-
-### GetRelayState
-
-`func (o *ChallengeTypes) GetRelayState() string`
-
-GetRelayState returns the RelayState field if non-nil, zero value otherwise.
-
-### GetRelayStateOk
-
-`func (o *ChallengeTypes) GetRelayStateOk() (*string, bool)`
-
-GetRelayStateOk returns a tuple with the RelayState field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRelayState
-
-`func (o *ChallengeTypes) SetRelayState(v string)`
-
-SetRelayState sets RelayState field to given value.
-
-### HasRelayState
-
-`func (o *ChallengeTypes) HasRelayState() bool`
-
-HasRelayState returns a boolean if a field has been set.
-
-### GetProviderName
-
-`func (o *ChallengeTypes) GetProviderName() string`
-
-GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
-
-### GetProviderNameOk
-
-`func (o *ChallengeTypes) GetProviderNameOk() (*string, bool)`
-
-GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProviderName
-
-`func (o *ChallengeTypes) SetProviderName(v string)`
-
-SetProviderName sets ProviderName field to given value.
-
-### HasProviderName
-
-`func (o *ChallengeTypes) HasProviderName() bool`
-
-HasProviderName returns a boolean if a field has been set.
-
-### GetBinding
-
-`func (o *ChallengeTypes) GetBinding() string`
-
-GetBinding returns the Binding field if non-nil, zero value otherwise.
-
-### GetBindingOk
-
-`func (o *ChallengeTypes) GetBindingOk() (*string, bool)`
-
-GetBindingOk returns a tuple with the Binding field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBinding
-
-`func (o *ChallengeTypes) SetBinding(v string)`
-
-SetBinding sets Binding field to given value.
-
-### HasBinding
-
-`func (o *ChallengeTypes) HasBinding() bool`
-
-HasBinding returns a boolean if a field has been set.
-
-### GetRedirectUrl
-
-`func (o *ChallengeTypes) GetRedirectUrl() string`
-
-GetRedirectUrl returns the RedirectUrl field if non-nil, zero value otherwise.
-
-### GetRedirectUrlOk
-
-`func (o *ChallengeTypes) GetRedirectUrlOk() (*string, bool)`
-
-GetRedirectUrlOk returns a tuple with the RedirectUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRedirectUrl
-
-`func (o *ChallengeTypes) SetRedirectUrl(v string)`
-
-SetRedirectUrl sets RedirectUrl field to given value.
-
-### HasRedirectUrl
-
-`func (o *ChallengeTypes) HasRedirectUrl() bool`
-
-HasRedirectUrl returns a boolean if a field has been set.
-
-### GetIsComplete
-
-`func (o *ChallengeTypes) GetIsComplete() bool`
-
-GetIsComplete returns the IsComplete field if non-nil, zero value otherwise.
-
-### GetIsCompleteOk
-
-`func (o *ChallengeTypes) GetIsCompleteOk() (*bool, bool)`
-
-GetIsCompleteOk returns a tuple with the IsComplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsComplete
-
-`func (o *ChallengeTypes) SetIsComplete(v bool)`
-
-SetIsComplete sets IsComplete field to given value.
-
-### HasIsComplete
-
-`func (o *ChallengeTypes) HasIsComplete() bool`
-
-HasIsComplete returns a boolean if a field has been set.
-
 ### GetSlug
 
 `func (o *ChallengeTypes) GetSlug() string`
@@ -1673,46 +1385,6 @@ and a boolean to check if the value has been set.
 `func (o *ChallengeTypes) SetBody(v string)`
 
 SetBody sets Body field to given value.
-
-
-### GetBotUsername
-
-`func (o *ChallengeTypes) GetBotUsername() string`
-
-GetBotUsername returns the BotUsername field if non-nil, zero value otherwise.
-
-### GetBotUsernameOk
-
-`func (o *ChallengeTypes) GetBotUsernameOk() (*string, bool)`
-
-GetBotUsernameOk returns a tuple with the BotUsername field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBotUsername
-
-`func (o *ChallengeTypes) SetBotUsername(v string)`
-
-SetBotUsername sets BotUsername field to given value.
-
-
-### GetRequestMessageAccess
-
-`func (o *ChallengeTypes) GetRequestMessageAccess() bool`
-
-GetRequestMessageAccess returns the RequestMessageAccess field if non-nil, zero value otherwise.
-
-### GetRequestMessageAccessOk
-
-`func (o *ChallengeTypes) GetRequestMessageAccessOk() (*bool, bool)`
-
-GetRequestMessageAccessOk returns a tuple with the RequestMessageAccess field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestMessageAccess
-
-`func (o *ChallengeTypes) SetRequestMessageAccess(v bool)`
-
-SetRequestMessageAccess sets RequestMessageAccess field to given value.
 
 
 

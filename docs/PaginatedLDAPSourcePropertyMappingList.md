@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]LDAPSourcePropertyMapping**](LDAPSourcePropertyMapping.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedLDAPSourcePropertyMappingList
 
-`func NewPaginatedLDAPSourcePropertyMappingList(pagination Pagination, results []LDAPSourcePropertyMapping, autocomplete map[string]interface{}, ) *PaginatedLDAPSourcePropertyMappingList`
+`func NewPaginatedLDAPSourcePropertyMappingList(pagination Pagination, results []LDAPSourcePropertyMapping, ) *PaginatedLDAPSourcePropertyMappingList`
 
 NewPaginatedLDAPSourcePropertyMappingList instantiates a new PaginatedLDAPSourcePropertyMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedLDAPSourcePropertyMappingList) SetResults(v []LDAPSourcePropertyMapping)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedLDAPSourcePropertyMappingList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedLDAPSourcePropertyMappingList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedLDAPSourcePropertyMappingList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

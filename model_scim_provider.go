@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -43,22 +43,11 @@ type SCIMProvider struct {
 	Url                string `json:"url"`
 	VerifyCertificates *bool  `json:"verify_certificates,omitempty"`
 	// Authentication token
-	Token    *string                     `json:"token,omitempty"`
-	AuthMode *SCIMAuthenticationModeEnum `json:"auth_mode,omitempty"`
-	// OAuth Source used for authentication
-	AuthOauth NullableString `json:"auth_oauth,omitempty"`
-	// Additional OAuth parameters, such as grant_type
-	AuthOauthParams map[string]interface{} `json:"auth_oauth_params,omitempty"`
+	Token string `json:"token"`
 	// Alter authentik behavior for vendor-specific SCIM implementations.
-	CompatibilityMode *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
-	// Cache duration for ServiceProviderConfig responses. Set minutes=0 to disable.
-	ServiceProviderConfigCacheTimeout *string        `json:"service_provider_config_cache_timeout,omitempty"`
-	ExcludeUsersServiceAccount        *bool          `json:"exclude_users_service_account,omitempty"`
-	FilterGroup                       NullableString `json:"filter_group,omitempty"`
-	// Controls the number of objects synced in a single task
-	SyncPageSize *int32 `json:"sync_page_size,omitempty"`
-	// Timeout for synchronization of a single page
-	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
+	CompatibilityMode          *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
+	ExcludeUsersServiceAccount *bool                  `json:"exclude_users_service_account,omitempty"`
+	FilterGroup                NullableString         `json:"filter_group,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
 	DryRun *bool `json:"dry_run,omitempty"`
 }
@@ -69,7 +58,7 @@ type _SCIMProvider SCIMProvider
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, url string) *SCIMProvider {
+func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, url string, token string) *SCIMProvider {
 	this := SCIMProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -80,6 +69,7 @@ func NewSCIMProvider(pk int32, name string, component string, assignedBackchanne
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.Url = url
+	this.Token = token
 	return &this
 }
 
@@ -403,143 +393,28 @@ func (o *SCIMProvider) SetVerifyCertificates(v bool) {
 	o.VerifyCertificates = &v
 }
 
-// GetToken returns the Token field value if set, zero value otherwise.
+// GetToken returns the Token field value
 func (o *SCIMProvider) GetToken() string {
-	if o == nil || IsNil(o.Token) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Token
+
+	return o.Token
 }
 
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// GetTokenOk returns a tuple with the Token field value
 // and a boolean to check if the value has been set.
 func (o *SCIMProvider) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
-		return nil, false
-	}
-	return o.Token, true
-}
-
-// HasToken returns a boolean if a field has been set.
-func (o *SCIMProvider) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *SCIMProvider) SetToken(v string) {
-	o.Token = &v
-}
-
-// GetAuthMode returns the AuthMode field value if set, zero value otherwise.
-func (o *SCIMProvider) GetAuthMode() SCIMAuthenticationModeEnum {
-	if o == nil || IsNil(o.AuthMode) {
-		var ret SCIMAuthenticationModeEnum
-		return ret
-	}
-	return *o.AuthMode
-}
-
-// GetAuthModeOk returns a tuple with the AuthMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SCIMProvider) GetAuthModeOk() (*SCIMAuthenticationModeEnum, bool) {
-	if o == nil || IsNil(o.AuthMode) {
-		return nil, false
-	}
-	return o.AuthMode, true
-}
-
-// HasAuthMode returns a boolean if a field has been set.
-func (o *SCIMProvider) HasAuthMode() bool {
-	if o != nil && !IsNil(o.AuthMode) {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthMode gets a reference to the given SCIMAuthenticationModeEnum and assigns it to the AuthMode field.
-func (o *SCIMProvider) SetAuthMode(v SCIMAuthenticationModeEnum) {
-	o.AuthMode = &v
-}
-
-// GetAuthOauth returns the AuthOauth field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SCIMProvider) GetAuthOauth() string {
-	if o == nil || IsNil(o.AuthOauth.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AuthOauth.Get()
-}
-
-// GetAuthOauthOk returns a tuple with the AuthOauth field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SCIMProvider) GetAuthOauthOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AuthOauth.Get(), o.AuthOauth.IsSet()
+	return &o.Token, true
 }
 
-// HasAuthOauth returns a boolean if a field has been set.
-func (o *SCIMProvider) HasAuthOauth() bool {
-	if o != nil && o.AuthOauth.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthOauth gets a reference to the given NullableString and assigns it to the AuthOauth field.
-func (o *SCIMProvider) SetAuthOauth(v string) {
-	o.AuthOauth.Set(&v)
-}
-
-// SetAuthOauthNil sets the value for AuthOauth to be an explicit nil
-func (o *SCIMProvider) SetAuthOauthNil() {
-	o.AuthOauth.Set(nil)
-}
-
-// UnsetAuthOauth ensures that no value is present for AuthOauth, not even an explicit nil
-func (o *SCIMProvider) UnsetAuthOauth() {
-	o.AuthOauth.Unset()
-}
-
-// GetAuthOauthParams returns the AuthOauthParams field value if set, zero value otherwise.
-func (o *SCIMProvider) GetAuthOauthParams() map[string]interface{} {
-	if o == nil || IsNil(o.AuthOauthParams) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.AuthOauthParams
-}
-
-// GetAuthOauthParamsOk returns a tuple with the AuthOauthParams field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SCIMProvider) GetAuthOauthParamsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.AuthOauthParams) {
-		return map[string]interface{}{}, false
-	}
-	return o.AuthOauthParams, true
-}
-
-// HasAuthOauthParams returns a boolean if a field has been set.
-func (o *SCIMProvider) HasAuthOauthParams() bool {
-	if o != nil && !IsNil(o.AuthOauthParams) {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthOauthParams gets a reference to the given map[string]interface{} and assigns it to the AuthOauthParams field.
-func (o *SCIMProvider) SetAuthOauthParams(v map[string]interface{}) {
-	o.AuthOauthParams = v
+// SetToken sets field value
+func (o *SCIMProvider) SetToken(v string) {
+	o.Token = v
 }
 
 // GetCompatibilityMode returns the CompatibilityMode field value if set, zero value otherwise.
@@ -572,38 +447,6 @@ func (o *SCIMProvider) HasCompatibilityMode() bool {
 // SetCompatibilityMode gets a reference to the given CompatibilityModeEnum and assigns it to the CompatibilityMode field.
 func (o *SCIMProvider) SetCompatibilityMode(v CompatibilityModeEnum) {
 	o.CompatibilityMode = &v
-}
-
-// GetServiceProviderConfigCacheTimeout returns the ServiceProviderConfigCacheTimeout field value if set, zero value otherwise.
-func (o *SCIMProvider) GetServiceProviderConfigCacheTimeout() string {
-	if o == nil || IsNil(o.ServiceProviderConfigCacheTimeout) {
-		var ret string
-		return ret
-	}
-	return *o.ServiceProviderConfigCacheTimeout
-}
-
-// GetServiceProviderConfigCacheTimeoutOk returns a tuple with the ServiceProviderConfigCacheTimeout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SCIMProvider) GetServiceProviderConfigCacheTimeoutOk() (*string, bool) {
-	if o == nil || IsNil(o.ServiceProviderConfigCacheTimeout) {
-		return nil, false
-	}
-	return o.ServiceProviderConfigCacheTimeout, true
-}
-
-// HasServiceProviderConfigCacheTimeout returns a boolean if a field has been set.
-func (o *SCIMProvider) HasServiceProviderConfigCacheTimeout() bool {
-	if o != nil && !IsNil(o.ServiceProviderConfigCacheTimeout) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceProviderConfigCacheTimeout gets a reference to the given string and assigns it to the ServiceProviderConfigCacheTimeout field.
-func (o *SCIMProvider) SetServiceProviderConfigCacheTimeout(v string) {
-	o.ServiceProviderConfigCacheTimeout = &v
 }
 
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
@@ -681,70 +524,6 @@ func (o *SCIMProvider) UnsetFilterGroup() {
 	o.FilterGroup.Unset()
 }
 
-// GetSyncPageSize returns the SyncPageSize field value if set, zero value otherwise.
-func (o *SCIMProvider) GetSyncPageSize() int32 {
-	if o == nil || IsNil(o.SyncPageSize) {
-		var ret int32
-		return ret
-	}
-	return *o.SyncPageSize
-}
-
-// GetSyncPageSizeOk returns a tuple with the SyncPageSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SCIMProvider) GetSyncPageSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.SyncPageSize) {
-		return nil, false
-	}
-	return o.SyncPageSize, true
-}
-
-// HasSyncPageSize returns a boolean if a field has been set.
-func (o *SCIMProvider) HasSyncPageSize() bool {
-	if o != nil && !IsNil(o.SyncPageSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncPageSize gets a reference to the given int32 and assigns it to the SyncPageSize field.
-func (o *SCIMProvider) SetSyncPageSize(v int32) {
-	o.SyncPageSize = &v
-}
-
-// GetSyncPageTimeout returns the SyncPageTimeout field value if set, zero value otherwise.
-func (o *SCIMProvider) GetSyncPageTimeout() string {
-	if o == nil || IsNil(o.SyncPageTimeout) {
-		var ret string
-		return ret
-	}
-	return *o.SyncPageTimeout
-}
-
-// GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SCIMProvider) GetSyncPageTimeoutOk() (*string, bool) {
-	if o == nil || IsNil(o.SyncPageTimeout) {
-		return nil, false
-	}
-	return o.SyncPageTimeout, true
-}
-
-// HasSyncPageTimeout returns a boolean if a field has been set.
-func (o *SCIMProvider) HasSyncPageTimeout() bool {
-	if o != nil && !IsNil(o.SyncPageTimeout) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncPageTimeout gets a reference to the given string and assigns it to the SyncPageTimeout field.
-func (o *SCIMProvider) SetSyncPageTimeout(v string) {
-	o.SyncPageTimeout = &v
-}
-
 // GetDryRun returns the DryRun field value if set, zero value otherwise.
 func (o *SCIMProvider) GetDryRun() bool {
 	if o == nil || IsNil(o.DryRun) {
@@ -805,35 +584,15 @@ func (o SCIMProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VerifyCertificates) {
 		toSerialize["verify_certificates"] = o.VerifyCertificates
 	}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
-	}
-	if !IsNil(o.AuthMode) {
-		toSerialize["auth_mode"] = o.AuthMode
-	}
-	if o.AuthOauth.IsSet() {
-		toSerialize["auth_oauth"] = o.AuthOauth.Get()
-	}
-	if !IsNil(o.AuthOauthParams) {
-		toSerialize["auth_oauth_params"] = o.AuthOauthParams
-	}
+	toSerialize["token"] = o.Token
 	if !IsNil(o.CompatibilityMode) {
 		toSerialize["compatibility_mode"] = o.CompatibilityMode
-	}
-	if !IsNil(o.ServiceProviderConfigCacheTimeout) {
-		toSerialize["service_provider_config_cache_timeout"] = o.ServiceProviderConfigCacheTimeout
 	}
 	if !IsNil(o.ExcludeUsersServiceAccount) {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
 	}
 	if o.FilterGroup.IsSet() {
 		toSerialize["filter_group"] = o.FilterGroup.Get()
-	}
-	if !IsNil(o.SyncPageSize) {
-		toSerialize["sync_page_size"] = o.SyncPageSize
-	}
-	if !IsNil(o.SyncPageTimeout) {
-		toSerialize["sync_page_timeout"] = o.SyncPageTimeout
 	}
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
@@ -855,6 +614,7 @@ func (o *SCIMProvider) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name_plural",
 		"meta_model_name",
 		"url",
+		"token",
 	}
 
 	allProperties := make(map[string]interface{})

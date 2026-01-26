@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]NotificationTransport**](NotificationTransport.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedNotificationTransportList
 
-`func NewPaginatedNotificationTransportList(pagination Pagination, results []NotificationTransport, autocomplete map[string]interface{}, ) *PaginatedNotificationTransportList`
+`func NewPaginatedNotificationTransportList(pagination Pagination, results []NotificationTransport, ) *PaginatedNotificationTransportList`
 
 NewPaginatedNotificationTransportList instantiates a new PaginatedNotificationTransportList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedNotificationTransportList) SetResults(v []NotificationTransport)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedNotificationTransportList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedNotificationTransportList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedNotificationTransportList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

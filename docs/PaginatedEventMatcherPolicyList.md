@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]EventMatcherPolicy**](EventMatcherPolicy.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedEventMatcherPolicyList
 
-`func NewPaginatedEventMatcherPolicyList(pagination Pagination, results []EventMatcherPolicy, autocomplete map[string]interface{}, ) *PaginatedEventMatcherPolicyList`
+`func NewPaginatedEventMatcherPolicyList(pagination Pagination, results []EventMatcherPolicy, ) *PaginatedEventMatcherPolicyList`
 
 NewPaginatedEventMatcherPolicyList instantiates a new PaginatedEventMatcherPolicyList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedEventMatcherPolicyList) SetResults(v []EventMatcherPolicy)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedEventMatcherPolicyList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedEventMatcherPolicyList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedEventMatcherPolicyList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

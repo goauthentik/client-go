@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -32,7 +32,7 @@ type RedirectStage struct {
 	VerboseNamePlural string `json:"verbose_name_plural"`
 	// Return internal model name
 	MetaModelName string                `json:"meta_model_name"`
-	FlowSet       []FlowSet             `json:"flow_set"`
+	FlowSet       []FlowSet             `json:"flow_set,omitempty"`
 	KeepContext   *bool                 `json:"keep_context,omitempty"`
 	Mode          RedirectStageModeEnum `json:"mode"`
 	TargetStatic  *string               `json:"target_static,omitempty"`
@@ -45,7 +45,7 @@ type _RedirectStage RedirectStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRedirectStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, mode RedirectStageModeEnum) *RedirectStage {
+func NewRedirectStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, mode RedirectStageModeEnum) *RedirectStage {
 	this := RedirectStage{}
 	this.Pk = pk
 	this.Name = name
@@ -53,7 +53,6 @@ func NewRedirectStage(pk string, name string, component string, verboseName stri
 	this.VerboseName = verboseName
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
-	this.FlowSet = flowSet
 	this.Mode = mode
 	return &this
 }
@@ -210,26 +209,34 @@ func (o *RedirectStage) SetMetaModelName(v string) {
 	o.MetaModelName = v
 }
 
-// GetFlowSet returns the FlowSet field value
+// GetFlowSet returns the FlowSet field value if set, zero value otherwise.
 func (o *RedirectStage) GetFlowSet() []FlowSet {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		var ret []FlowSet
 		return ret
 	}
-
 	return o.FlowSet
 }
 
-// GetFlowSetOk returns a tuple with the FlowSet field value
+// GetFlowSetOk returns a tuple with the FlowSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RedirectStage) GetFlowSetOk() ([]FlowSet, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlowSet) {
 		return nil, false
 	}
 	return o.FlowSet, true
 }
 
-// SetFlowSet sets field value
+// HasFlowSet returns a boolean if a field has been set.
+func (o *RedirectStage) HasFlowSet() bool {
+	if o != nil && !IsNil(o.FlowSet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowSet gets a reference to the given []FlowSet and assigns it to the FlowSet field.
 func (o *RedirectStage) SetFlowSet(v []FlowSet) {
 	o.FlowSet = v
 }
@@ -381,7 +388,9 @@ func (o RedirectStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
-	toSerialize["flow_set"] = o.FlowSet
+	if !IsNil(o.FlowSet) {
+		toSerialize["flow_set"] = o.FlowSet
+	}
 	if !IsNil(o.KeepContext) {
 		toSerialize["keep_context"] = o.KeepContext
 	}
@@ -406,7 +415,6 @@ func (o *RedirectStage) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name",
 		"verbose_name_plural",
 		"meta_model_name",
-		"flow_set",
 		"mode",
 	}
 

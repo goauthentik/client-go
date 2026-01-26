@@ -10,8 +10,7 @@ Name | Type | Description | Notes
 **Slug** | **string** | Visible in the URL. | 
 **Title** | **string** | Shown as the Title in Flow pages. | 
 **Designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. | 
-**Background** | Pointer to **string** | Background shown during execution | [optional] 
-**BackgroundUrl** | **string** | Get the URL to the background image | [readonly] 
+**Background** | **string** | Get the URL to the background image. If the name is /static or starts with http it is returned as-is | [readonly] 
 **Stages** | **[]string** |  | [readonly] 
 **Policies** | **[]string** |  | [readonly] 
 **CacheCount** | **int32** | Get count of cached flows | [readonly] 
@@ -26,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewFlow
 
-`func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, backgroundUrl string, stages []string, policies []string, cacheCount int32, exportUrl string, ) *Flow`
+`func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, background string, stages []string, policies []string, cacheCount int32, exportUrl string, ) *Flow`
 
 NewFlow instantiates a new Flow object
 This constructor will assign default values to properties that have it defined,
@@ -179,31 +178,6 @@ and a boolean to check if the value has been set.
 `func (o *Flow) SetBackground(v string)`
 
 SetBackground sets Background field to given value.
-
-### HasBackground
-
-`func (o *Flow) HasBackground() bool`
-
-HasBackground returns a boolean if a field has been set.
-
-### GetBackgroundUrl
-
-`func (o *Flow) GetBackgroundUrl() string`
-
-GetBackgroundUrl returns the BackgroundUrl field if non-nil, zero value otherwise.
-
-### GetBackgroundUrlOk
-
-`func (o *Flow) GetBackgroundUrlOk() (*string, bool)`
-
-GetBackgroundUrlOk returns a tuple with the BackgroundUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBackgroundUrl
-
-`func (o *Flow) SetBackgroundUrl(v string)`
-
-SetBackgroundUrl sets BackgroundUrl field to given value.
 
 
 ### GetStages

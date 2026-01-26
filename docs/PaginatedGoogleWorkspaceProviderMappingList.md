@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pagination** | [**Pagination**](Pagination.md) |  | 
 **Results** | [**[]GoogleWorkspaceProviderMapping**](GoogleWorkspaceProviderMapping.md) |  | 
-**Autocomplete** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewPaginatedGoogleWorkspaceProviderMappingList
 
-`func NewPaginatedGoogleWorkspaceProviderMappingList(pagination Pagination, results []GoogleWorkspaceProviderMapping, autocomplete map[string]interface{}, ) *PaginatedGoogleWorkspaceProviderMappingList`
+`func NewPaginatedGoogleWorkspaceProviderMappingList(pagination Pagination, results []GoogleWorkspaceProviderMapping, ) *PaginatedGoogleWorkspaceProviderMappingList`
 
 NewPaginatedGoogleWorkspaceProviderMappingList instantiates a new PaginatedGoogleWorkspaceProviderMappingList object
 This constructor will assign default values to properties that have it defined,
@@ -65,26 +64,6 @@ and a boolean to check if the value has been set.
 `func (o *PaginatedGoogleWorkspaceProviderMappingList) SetResults(v []GoogleWorkspaceProviderMapping)`
 
 SetResults sets Results field to given value.
-
-
-### GetAutocomplete
-
-`func (o *PaginatedGoogleWorkspaceProviderMappingList) GetAutocomplete() map[string]interface{}`
-
-GetAutocomplete returns the Autocomplete field if non-nil, zero value otherwise.
-
-### GetAutocompleteOk
-
-`func (o *PaginatedGoogleWorkspaceProviderMappingList) GetAutocompleteOk() (*map[string]interface{}, bool)`
-
-GetAutocompleteOk returns a tuple with the Autocomplete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutocomplete
-
-`func (o *PaginatedGoogleWorkspaceProviderMappingList) SetAutocomplete(v map[string]interface{})`
-
-SetAutocomplete sets Autocomplete field to given value.
 
 
 

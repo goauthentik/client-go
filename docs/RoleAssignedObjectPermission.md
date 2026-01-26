@@ -6,14 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RolePk** | **string** |  | [readonly] 
 **Name** | **string** |  | [readonly] 
-**ObjectPermissions** | [**[]RoleObjectPermission**](RoleObjectPermission.md) |  | 
-**ModelPermissions** | [**[]RoleModelPermission**](RoleModelPermission.md) |  | 
+**Permissions** | [**[]RoleObjectPermission**](RoleObjectPermission.md) |  | 
 
 ## Methods
 
 ### NewRoleAssignedObjectPermission
 
-`func NewRoleAssignedObjectPermission(rolePk string, name string, objectPermissions []RoleObjectPermission, modelPermissions []RoleModelPermission, ) *RoleAssignedObjectPermission`
+`func NewRoleAssignedObjectPermission(rolePk string, name string, permissions []RoleObjectPermission, ) *RoleAssignedObjectPermission`
 
 NewRoleAssignedObjectPermission instantiates a new RoleAssignedObjectPermission object
 This constructor will assign default values to properties that have it defined,
@@ -68,44 +67,24 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetObjectPermissions
+### GetPermissions
 
-`func (o *RoleAssignedObjectPermission) GetObjectPermissions() []RoleObjectPermission`
+`func (o *RoleAssignedObjectPermission) GetPermissions() []RoleObjectPermission`
 
-GetObjectPermissions returns the ObjectPermissions field if non-nil, zero value otherwise.
+GetPermissions returns the Permissions field if non-nil, zero value otherwise.
 
-### GetObjectPermissionsOk
+### GetPermissionsOk
 
-`func (o *RoleAssignedObjectPermission) GetObjectPermissionsOk() (*[]RoleObjectPermission, bool)`
+`func (o *RoleAssignedObjectPermission) GetPermissionsOk() (*[]RoleObjectPermission, bool)`
 
-GetObjectPermissionsOk returns a tuple with the ObjectPermissions field if it's non-nil, zero value otherwise
+GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetObjectPermissions
+### SetPermissions
 
-`func (o *RoleAssignedObjectPermission) SetObjectPermissions(v []RoleObjectPermission)`
+`func (o *RoleAssignedObjectPermission) SetPermissions(v []RoleObjectPermission)`
 
-SetObjectPermissions sets ObjectPermissions field to given value.
-
-
-### GetModelPermissions
-
-`func (o *RoleAssignedObjectPermission) GetModelPermissions() []RoleModelPermission`
-
-GetModelPermissions returns the ModelPermissions field if non-nil, zero value otherwise.
-
-### GetModelPermissionsOk
-
-`func (o *RoleAssignedObjectPermission) GetModelPermissionsOk() (*[]RoleModelPermission, bool)`
-
-GetModelPermissionsOk returns a tuple with the ModelPermissions field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModelPermissions
-
-`func (o *RoleAssignedObjectPermission) SetModelPermissions(v []RoleModelPermission)`
-
-SetModelPermissions sets ModelPermissions field to given value.
+SetPermissions sets Permissions field to given value.
 
 
 

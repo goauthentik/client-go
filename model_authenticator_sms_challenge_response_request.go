@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &AuthenticatorSMSChallengeResponseRequest{}
 // AuthenticatorSMSChallengeResponseRequest SMS Challenge response, device is set by get_response_instance
 type AuthenticatorSMSChallengeResponseRequest struct {
 	Component   *string `json:"component,omitempty"`
-	Code        *string `json:"code,omitempty"`
+	Code        *int32  `json:"code,omitempty"`
 	PhoneNumber *string `json:"phone_number,omitempty"`
 }
 
@@ -79,9 +79,9 @@ func (o *AuthenticatorSMSChallengeResponseRequest) SetComponent(v string) {
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
-func (o *AuthenticatorSMSChallengeResponseRequest) GetCode() string {
+func (o *AuthenticatorSMSChallengeResponseRequest) GetCode() int32 {
 	if o == nil || IsNil(o.Code) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.Code
@@ -89,7 +89,7 @@ func (o *AuthenticatorSMSChallengeResponseRequest) GetCode() string {
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthenticatorSMSChallengeResponseRequest) GetCodeOk() (*string, bool) {
+func (o *AuthenticatorSMSChallengeResponseRequest) GetCodeOk() (*int32, bool) {
 	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *AuthenticatorSMSChallengeResponseRequest) HasCode() bool {
 	return false
 }
 
-// SetCode gets a reference to the given string and assigns it to the Code field.
-func (o *AuthenticatorSMSChallengeResponseRequest) SetCode(v string) {
+// SetCode gets a reference to the given int32 and assigns it to the Code field.
+func (o *AuthenticatorSMSChallengeResponseRequest) SetCode(v int32) {
 	o.Code = &v
 }
 

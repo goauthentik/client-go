@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc1
+API version: 2025.6.0
 Contact: hello@goauthentik.io
 */
 
@@ -11409,7 +11409,7 @@ func (r ApiProvidersSamlImportMetadataCreateRequest) File(file *os.File) ApiProv
 	return r
 }
 
-func (r ApiProvidersSamlImportMetadataCreateRequest) Execute() (*SAMLProvider, *http.Response, error) {
+func (r ApiProvidersSamlImportMetadataCreateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ProvidersSamlImportMetadataCreateExecute(r)
 }
 
@@ -11429,19 +11429,16 @@ func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreate(ctx context.Cont
 }
 
 // Execute executes the request
-//
-//	@return SAMLProvider
-func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProvidersSamlImportMetadataCreateRequest) (*SAMLProvider, *http.Response, error) {
+func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProvidersSamlImportMetadataCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SAMLProvider
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersSamlImportMetadataCreate")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/providers/saml/import_metadata/"
@@ -11450,19 +11447,19 @@ func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.name == nil {
-		return localVarReturnValue, nil, reportError("name is required and must be specified")
+		return nil, reportError("name is required and must be specified")
 	}
 	if strlen(*r.name) < 1 {
-		return localVarReturnValue, nil, reportError("name must have at least 1 elements")
+		return nil, reportError("name must have at least 1 elements")
 	}
 	if r.authorizationFlow == nil {
-		return localVarReturnValue, nil, reportError("authorizationFlow is required and must be specified")
+		return nil, reportError("authorizationFlow is required and must be specified")
 	}
 	if r.invalidationFlow == nil {
-		return localVarReturnValue, nil, reportError("invalidationFlow is required and must be specified")
+		return nil, reportError("invalidationFlow is required and must be specified")
 	}
 	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
+		return nil, reportError("file is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -11502,19 +11499,19 @@ func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -11527,24 +11524,15 @@ func (a *ProvidersAPIService) ProvidersSamlImportMetadataCreateExecute(r ApiProv
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiProvidersSamlListRequest struct {
@@ -11558,14 +11546,12 @@ type ApiProvidersSamlListRequest struct {
 	authnContextClassRefMapping *string
 	authorizationFlow           *string
 	backchannelApplication      *string
-	defaultNameIdPolicy         *string
 	defaultRelayState           *string
 	digestAlgorithm             *string
 	encryptionKp                *string
 	invalidationFlow            *string
 	isBackchannel               *bool
 	issuer                      *string
-	logoutMethod                *string
 	name                        *string
 	nameIdMapping               *string
 	ordering                    *string
@@ -11575,12 +11561,9 @@ type ApiProvidersSamlListRequest struct {
 	search                      *string
 	sessionValidNotOnOrAfter    *string
 	signAssertion               *bool
-	signLogoutRequest           *bool
 	signResponse                *bool
 	signatureAlgorithm          *string
 	signingKp                   *string
-	slsBinding                  *string
-	slsUrl                      *string
 	spBinding                   *string
 	verificationKp              *string
 }
@@ -11625,11 +11608,6 @@ func (r ApiProvidersSamlListRequest) BackchannelApplication(backchannelApplicati
 	return r
 }
 
-func (r ApiProvidersSamlListRequest) DefaultNameIdPolicy(defaultNameIdPolicy string) ApiProvidersSamlListRequest {
-	r.defaultNameIdPolicy = &defaultNameIdPolicy
-	return r
-}
-
 func (r ApiProvidersSamlListRequest) DefaultRelayState(defaultRelayState string) ApiProvidersSamlListRequest {
 	r.defaultRelayState = &defaultRelayState
 	return r
@@ -11657,12 +11635,6 @@ func (r ApiProvidersSamlListRequest) IsBackchannel(isBackchannel bool) ApiProvid
 
 func (r ApiProvidersSamlListRequest) Issuer(issuer string) ApiProvidersSamlListRequest {
 	r.issuer = &issuer
-	return r
-}
-
-// Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).
-func (r ApiProvidersSamlListRequest) LogoutMethod(logoutMethod string) ApiProvidersSamlListRequest {
-	r.logoutMethod = &logoutMethod
 	return r
 }
 
@@ -11715,11 +11687,6 @@ func (r ApiProvidersSamlListRequest) SignAssertion(signAssertion bool) ApiProvid
 	return r
 }
 
-func (r ApiProvidersSamlListRequest) SignLogoutRequest(signLogoutRequest bool) ApiProvidersSamlListRequest {
-	r.signLogoutRequest = &signLogoutRequest
-	return r
-}
-
 func (r ApiProvidersSamlListRequest) SignResponse(signResponse bool) ApiProvidersSamlListRequest {
 	r.signResponse = &signResponse
 	return r
@@ -11732,17 +11699,6 @@ func (r ApiProvidersSamlListRequest) SignatureAlgorithm(signatureAlgorithm strin
 
 func (r ApiProvidersSamlListRequest) SigningKp(signingKp string) ApiProvidersSamlListRequest {
 	r.signingKp = &signingKp
-	return r
-}
-
-// This determines how authentik sends the logout response back to the Service Provider.
-func (r ApiProvidersSamlListRequest) SlsBinding(slsBinding string) ApiProvidersSamlListRequest {
-	r.slsBinding = &slsBinding
-	return r
-}
-
-func (r ApiProvidersSamlListRequest) SlsUrl(slsUrl string) ApiProvidersSamlListRequest {
-	r.slsUrl = &slsUrl
 	return r
 }
 
@@ -11822,9 +11778,6 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	if r.backchannelApplication != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "backchannel_application", r.backchannelApplication, "form", "")
 	}
-	if r.defaultNameIdPolicy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "default_name_id_policy", r.defaultNameIdPolicy, "form", "")
-	}
 	if r.defaultRelayState != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "default_relay_state", r.defaultRelayState, "form", "")
 	}
@@ -11842,9 +11795,6 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.issuer != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "issuer", r.issuer, "form", "")
-	}
-	if r.logoutMethod != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "logout_method", r.logoutMethod, "form", "")
 	}
 	if r.name != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
@@ -11881,9 +11831,6 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	if r.signAssertion != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_assertion", r.signAssertion, "form", "")
 	}
-	if r.signLogoutRequest != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_logout_request", r.signLogoutRequest, "form", "")
-	}
 	if r.signResponse != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_response", r.signResponse, "form", "")
 	}
@@ -11892,12 +11839,6 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.signingKp != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "signing_kp", r.signingKp, "form", "")
-	}
-	if r.slsBinding != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sls_binding", r.slsBinding, "form", "")
-	}
-	if r.slsUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sls_url", r.slsUrl, "form", "")
 	}
 	if r.spBinding != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sp_binding", r.spBinding, "form", "")
