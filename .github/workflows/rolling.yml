@@ -69,10 +69,12 @@ jobs:
 
           echo "version=$version" >> "$GITHUB_OUTPUT"
       - name: Update in main repo
+        if: "${{ steps.changes.outputs.schema_has_changes == 'true' }}"
         working-directory: authentik
         run: |
           go get 'goauthentik.io/api/v3@${{ steps.publish.outputs.version }}'
       - name: Create pull request in main repo
+        if: "${{ steps.changes.outputs.schema_has_changes == 'true' }}"
         uses: peter-evans/create-pull-request@v7
         with:
           path: authentik
