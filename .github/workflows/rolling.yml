@@ -37,9 +37,6 @@ jobs:
           token: "${{ steps.app-token.outputs.token }}"
           ref: main
           path: authentik
-          sparse-checkout: |
-            schema.yml
-          sparse-checkout-cone-mode: false
       - id: changes
         name: Check for changes
         working-directory: authentik
@@ -49,7 +46,8 @@ jobs:
           else
             echo "schema_has_changes=true" >> "$GITHUB_OUTPUT"
           fi
-      - name: Publish to GitHub
+      - id: publish
+        name: Publish to GitHub
         if: "${{ steps.changes.outputs.schema_has_changes == 'true' }}"
         working-directory: client-go
         env:
@@ -68,3 +66,20 @@ jobs:
           git push --tags
           truncate -s '<125000' diff.test
           gh release create v$version -F diff.test --prerelease
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+      - name: Update in main repo
+        working-directory: authentik
+        run: |
+          go get 'goauthentik.io/api/v3@${{ steps.publish.outputs.version }}'
+      - name: Create pull request in main repo
+        uses: peter-evans/create-pull-request@v7
+        with:
+          path: authentik
+          token: "${{ steps.app-token.outputs.token }}"
+          branch: deps/bump-client-go
+          commit-message: "core: bump goauthentik.io/api/v3 to ${{ steps.publish.outputs.version }}"
+          title: "core: bump goauthentik.io/api/v3 to ${{ steps.publish.outputs.version }}"
+          delete-branch: true
+          signoff: true
+          author: "${{ steps.app-token.outputs.app-slug }}[bot] <${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com>"
