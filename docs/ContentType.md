@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **Id** | **int32** |  | [readonly] 
 **AppLabel** | **string** |  | [readonly] 
 **Model** | **string** |  | [readonly] 
+**VerboseNamePlural** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewContentType
 
-`func NewContentType(id int32, appLabel string, model string, ) *ContentType`
+`func NewContentType(id int32, appLabel string, model string, verboseNamePlural string, ) *ContentType`
 
 NewContentType instantiates a new ContentType object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *ContentType) SetModel(v string)`
 
 SetModel sets Model field to given value.
+
+
+### GetVerboseNamePlural
+
+`func (o *ContentType) GetVerboseNamePlural() string`
+
+GetVerboseNamePlural returns the VerboseNamePlural field if non-nil, zero value otherwise.
+
+### GetVerboseNamePluralOk
+
+`func (o *ContentType) GetVerboseNamePluralOk() (*string, bool)`
+
+GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerboseNamePlural
+
+`func (o *ContentType) SetVerboseNamePlural(v string)`
+
+SetVerboseNamePlural sets VerboseNamePlural field to given value.
 
 
 

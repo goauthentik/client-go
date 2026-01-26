@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2025.12.0-rc2
+  version: 2025.12.0-rc3
 servers:
 - url: /api/v3
 paths:
@@ -5283,6 +5283,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: include_inherited_roles
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: include_parents
         required: false
         schema:
@@ -5467,6 +5475,14 @@ paths:
       - explode: true
         in: query
         name: include_children
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: include_inherited_roles
         required: false
         schema:
           default: false
@@ -30656,6 +30672,22 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: ak_groups
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Include inherited roles (requires users or ak_groups filter)
+        explode: true
+        in: query
+        name: inherited
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: managed
         required: false
         schema:
@@ -30714,9 +30746,7 @@ paths:
         name: users
         required: false
         schema:
-          items:
-            type: integer
-          type: array
+          type: integer
         style: form
       responses:
         "200":
@@ -52579,6 +52609,7 @@ components:
     CapabilitiesEnum:
       enum:
       - can_save_media
+      - can_save_reports
       - can_geo_ip
       - can_asn
       - can_impersonate
@@ -53314,10 +53345,14 @@ components:
         model:
           readOnly: true
           type: string
+        verbose_name_plural:
+          readOnly: true
+          type: string
       required:
       - app_label
       - id
       - model
+      - verbose_name_plural
       type: object
     ContextualFlowInfo:
       description: Contextual flow information for a challenge
@@ -53692,7 +53727,7 @@ components:
           type: string
         requested_by:
           allOf:
-          - $ref: "#/components/schemas/RequestedBy"
+          - $ref: "#/components/schemas/PartialUser"
           readOnly: true
         requested_on:
           format: date-time
@@ -57567,6 +57602,11 @@ components:
     Group:
       description: Group Serializer
       example:
+        inherited_roles_obj:
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         roles_obj:
         - name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -57683,6 +57723,12 @@ components:
             $ref: "#/components/schemas/Role"
           readOnly: true
           type: array
+        inherited_roles_obj:
+          items:
+            $ref: "#/components/schemas/Role"
+          nullable: true
+          readOnly: true
+          type: array
         children:
           items:
             format: uuid
@@ -57698,6 +57744,7 @@ components:
       required:
       - children
       - children_obj
+      - inherited_roles_obj
       - name
       - num_pk
       - parents_obj
@@ -66260,7 +66307,12 @@ components:
         autocomplete:
           key: ""
         results:
-        - roles_obj:
+        - inherited_roles_obj:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          roles_obj:
           - name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - name: name
@@ -66328,7 +66380,12 @@ components:
           parents:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - roles_obj:
+        - inherited_roles_obj:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          roles_obj:
           - name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - name: name
@@ -81153,22 +81210,6 @@ components:
           type: integer
       required:
       - name
-      type: object
-    RequestedBy:
-      properties:
-        pk:
-          readOnly: true
-          title: ID
-          type: integer
-        username:
-          description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_\
-            \ only."
-          maxLength: 150
-          pattern: "^[\\w.@+-]+$"
-          type: string
-      required:
-      - pk
-      - username
       type: object
     ResidentKeyRequirementEnum:
       enum:

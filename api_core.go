@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.12.0-rc2
+API version: 2025.12.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -4227,20 +4227,21 @@ func (a *CoreAPIService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 }
 
 type ApiCoreGroupsListRequest struct {
-	ctx               context.Context
-	ApiService        *CoreAPIService
-	attributes        *string
-	includeChildren   *bool
-	includeParents    *bool
-	includeUsers      *bool
-	isSuperuser       *bool
-	membersByPk       *[]int32
-	membersByUsername *[]string
-	name              *string
-	ordering          *string
-	page              *int32
-	pageSize          *int32
-	search            *string
+	ctx                   context.Context
+	ApiService            *CoreAPIService
+	attributes            *string
+	includeChildren       *bool
+	includeInheritedRoles *bool
+	includeParents        *bool
+	includeUsers          *bool
+	isSuperuser           *bool
+	membersByPk           *[]int32
+	membersByUsername     *[]string
+	name                  *string
+	ordering              *string
+	page                  *int32
+	pageSize              *int32
+	search                *string
 }
 
 // Attributes
@@ -4251,6 +4252,11 @@ func (r ApiCoreGroupsListRequest) Attributes(attributes string) ApiCoreGroupsLis
 
 func (r ApiCoreGroupsListRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsListRequest {
 	r.includeChildren = &includeChildren
+	return r
+}
+
+func (r ApiCoreGroupsListRequest) IncludeInheritedRoles(includeInheritedRoles bool) ApiCoreGroupsListRequest {
+	r.includeInheritedRoles = &includeInheritedRoles
 	return r
 }
 
@@ -4359,6 +4365,13 @@ func (a *CoreAPIService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 		var defaultValue bool = false
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", defaultValue, "form", "")
 		r.includeChildren = &defaultValue
+	}
+	if r.includeInheritedRoles != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", r.includeInheritedRoles, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", defaultValue, "form", "")
+		r.includeInheritedRoles = &defaultValue
 	}
 	if r.includeParents != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", r.includeParents, "form", "")
@@ -4747,16 +4760,22 @@ func (a *CoreAPIService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 }
 
 type ApiCoreGroupsRetrieveRequest struct {
-	ctx             context.Context
-	ApiService      *CoreAPIService
-	groupUuid       string
-	includeChildren *bool
-	includeParents  *bool
-	includeUsers    *bool
+	ctx                   context.Context
+	ApiService            *CoreAPIService
+	groupUuid             string
+	includeChildren       *bool
+	includeInheritedRoles *bool
+	includeParents        *bool
+	includeUsers          *bool
 }
 
 func (r ApiCoreGroupsRetrieveRequest) IncludeChildren(includeChildren bool) ApiCoreGroupsRetrieveRequest {
 	r.includeChildren = &includeChildren
+	return r
+}
+
+func (r ApiCoreGroupsRetrieveRequest) IncludeInheritedRoles(includeInheritedRoles bool) ApiCoreGroupsRetrieveRequest {
+	r.includeInheritedRoles = &includeInheritedRoles
 	return r
 }
 
@@ -4820,6 +4839,13 @@ func (a *CoreAPIService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 		var defaultValue bool = false
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", defaultValue, "form", "")
 		r.includeChildren = &defaultValue
+	}
+	if r.includeInheritedRoles != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", r.includeInheritedRoles, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", defaultValue, "form", "")
+		r.includeInheritedRoles = &defaultValue
 	}
 	if r.includeParents != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", r.includeParents, "form", "")

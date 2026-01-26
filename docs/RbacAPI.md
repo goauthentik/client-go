@@ -1171,7 +1171,7 @@ Name | Type | Description  | Notes
 
 ## RbacRolesList
 
-> PaginatedRoleList RbacRolesList(ctx).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
+> PaginatedRoleList RbacRolesList(ctx).AkGroups(akGroups).Inherited(inherited).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
 
 
 
@@ -1190,6 +1190,8 @@ import (
 )
 
 func main() {
+	akGroups := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	inherited := true // bool | Include inherited roles (requires users or ak_groups filter) (optional)
 	managed := []string{"Inner_example"} // []string |  (optional)
 	managedIsnull := true // bool |  (optional)
 	name := "name_example" // string |  (optional)
@@ -1197,11 +1199,11 @@ func main() {
 	page := int32(56) // int32 | A page number within the paginated result set. (optional)
 	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
 	search := "search_example" // string | A search term. (optional)
-	users := []int32{int32(123)} // []int32 |  (optional)
+	users := int32(56) // int32 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RbacAPI.RbacRolesList(context.Background()).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
+	resp, r, err := apiClient.RbacAPI.RbacRolesList(context.Background()).AkGroups(akGroups).Inherited(inherited).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacRolesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1222,6 +1224,8 @@ Other parameters are passed through a pointer to a apiRbacRolesListRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **akGroups** | **string** |  | 
+ **inherited** | **bool** | Include inherited roles (requires users or ak_groups filter) | 
  **managed** | **[]string** |  | 
  **managedIsnull** | **bool** |  | 
  **name** | **string** |  | 
@@ -1229,7 +1233,7 @@ Name | Type | Description  | Notes
  **page** | **int32** | A page number within the paginated result set. | 
  **pageSize** | **int32** | Number of results to return per page. | 
  **search** | **string** | A search term. | 
- **users** | **[]int32** |  | 
+ **users** | **int32** |  | 
 
 ### Return type
 

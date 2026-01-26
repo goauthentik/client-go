@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.12.0-rc2
+API version: 2025.12.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -22,9 +22,10 @@ var _ MappedNullable = &ContentType{}
 
 // ContentType struct for ContentType
 type ContentType struct {
-	Id       int32  `json:"id"`
-	AppLabel string `json:"app_label"`
-	Model    string `json:"model"`
+	Id                int32  `json:"id"`
+	AppLabel          string `json:"app_label"`
+	Model             string `json:"model"`
+	VerboseNamePlural string `json:"verbose_name_plural"`
 }
 
 type _ContentType ContentType
@@ -33,11 +34,12 @@ type _ContentType ContentType
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContentType(id int32, appLabel string, model string) *ContentType {
+func NewContentType(id int32, appLabel string, model string, verboseNamePlural string) *ContentType {
 	this := ContentType{}
 	this.Id = id
 	this.AppLabel = appLabel
 	this.Model = model
+	this.VerboseNamePlural = verboseNamePlural
 	return &this
 }
 
@@ -121,6 +123,30 @@ func (o *ContentType) SetModel(v string) {
 	o.Model = v
 }
 
+// GetVerboseNamePlural returns the VerboseNamePlural field value
+func (o *ContentType) GetVerboseNamePlural() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.VerboseNamePlural
+}
+
+// GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field value
+// and a boolean to check if the value has been set.
+func (o *ContentType) GetVerboseNamePluralOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VerboseNamePlural, true
+}
+
+// SetVerboseNamePlural sets field value
+func (o *ContentType) SetVerboseNamePlural(v string) {
+	o.VerboseNamePlural = v
+}
+
 func (o ContentType) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -134,6 +160,7 @@ func (o ContentType) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["app_label"] = o.AppLabel
 	toSerialize["model"] = o.Model
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	return toSerialize, nil
 }
 
@@ -145,6 +172,7 @@ func (o *ContentType) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"app_label",
 		"model",
+		"verbose_name_plural",
 	}
 
 	allProperties := make(map[string]interface{})

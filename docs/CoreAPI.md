@@ -2222,7 +2222,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsList
 
-> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+> PaginatedGroupList CoreGroupsList(ctx).Attributes(attributes).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 
 
 
@@ -2243,6 +2243,7 @@ import (
 func main() {
 	attributes := "attributes_example" // string | Attributes (optional)
 	includeChildren := true // bool |  (optional) (default to false)
+	includeInheritedRoles := true // bool |  (optional) (default to false)
 	includeParents := true // bool |  (optional) (default to false)
 	includeUsers := true // bool |  (optional) (default to true)
 	isSuperuser := true // bool |  (optional)
@@ -2256,7 +2257,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreGroupsList(context.Background()).Attributes(attributes).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreGroupsList(context.Background()).Attributes(attributes).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).IsSuperuser(isSuperuser).MembersByPk(membersByPk).MembersByUsername(membersByUsername).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreGroupsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2279,6 +2280,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributes** | **string** | Attributes | 
  **includeChildren** | **bool** |  | [default to false]
+ **includeInheritedRoles** | **bool** |  | [default to false]
  **includeParents** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
  **isSuperuser** | **bool** |  | 
@@ -2452,7 +2454,7 @@ Name | Type | Description  | Notes
 
 ## CoreGroupsRetrieve
 
-> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
+> Group CoreGroupsRetrieve(ctx, groupUuid).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
 
 
 
@@ -2473,12 +2475,13 @@ import (
 func main() {
 	groupUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Group.
 	includeChildren := true // bool |  (optional) (default to false)
+	includeInheritedRoles := true // bool |  (optional) (default to false)
 	includeParents := true // bool |  (optional) (default to false)
 	includeUsers := true // bool |  (optional) (default to true)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeChildren(includeChildren).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreGroupsRetrieve(context.Background(), groupUuid).IncludeChildren(includeChildren).IncludeInheritedRoles(includeInheritedRoles).IncludeParents(includeParents).IncludeUsers(includeUsers).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreGroupsRetrieve``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2505,6 +2508,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **includeChildren** | **bool** |  | [default to false]
+ **includeInheritedRoles** | **bool** |  | [default to false]
  **includeParents** | **bool** |  | [default to false]
  **includeUsers** | **bool** |  | [default to true]
 
