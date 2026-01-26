@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the UserLoginChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserLoginChallenge{}
 
 // UserLoginChallenge Empty challenge
 type UserLoginChallenge struct {
@@ -23,6 +28,8 @@ type UserLoginChallenge struct {
 	PendingUser       string                    `json:"pending_user"`
 	PendingUserAvatar string                    `json:"pending_user_avatar"`
 }
+
+type _UserLoginChallenge UserLoginChallenge
 
 // NewUserLoginChallenge instantiates a new UserLoginChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -49,7 +56,7 @@ func NewUserLoginChallengeWithDefaults() *UserLoginChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *UserLoginChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -59,7 +66,7 @@ func (o *UserLoginChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -67,7 +74,7 @@ func (o *UserLoginChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *UserLoginChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -81,7 +88,7 @@ func (o *UserLoginChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *UserLoginChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -91,7 +98,7 @@ func (o *UserLoginChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -99,7 +106,7 @@ func (o *UserLoginChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *UserLoginChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -113,7 +120,7 @@ func (o *UserLoginChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *UserLoginChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -123,7 +130,7 @@ func (o *UserLoginChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLoginChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -131,7 +138,7 @@ func (o *UserLoginChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, b
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *UserLoginChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -192,23 +199,65 @@ func (o *UserLoginChallenge) SetPendingUserAvatar(v string) {
 }
 
 func (o UserLoginChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["pending_user"] = o.PendingUser
-	}
-	if true {
-		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserLoginChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["pending_user"] = o.PendingUser
+	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
+	return toSerialize, nil
+}
+
+func (o *UserLoginChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pending_user",
+		"pending_user_avatar",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserLoginChallenge := _UserLoginChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserLoginChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserLoginChallenge(varUserLoginChallenge)
+
+	return err
 }
 
 type NullableUserLoginChallenge struct {

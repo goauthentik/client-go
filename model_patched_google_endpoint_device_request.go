@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedGoogleEndpointDeviceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedGoogleEndpointDeviceRequest{}
+
 // PatchedGoogleEndpointDeviceRequest Serializer for Endpoint authenticator devices
 type PatchedGoogleEndpointDeviceRequest struct {
 	Pk *string `json:"pk,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedGoogleEndpointDeviceRequestWithDefaults() *PatchedGoogleEndpointD
 
 // GetPk returns the Pk field value if set, zero value otherwise.
 func (o *PatchedGoogleEndpointDeviceRequest) GetPk() string {
-	if o == nil || o.Pk == nil {
+	if o == nil || IsNil(o.Pk) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedGoogleEndpointDeviceRequest) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGoogleEndpointDeviceRequest) GetPkOk() (*string, bool) {
-	if o == nil || o.Pk == nil {
+	if o == nil || IsNil(o.Pk) {
 		return nil, false
 	}
 	return o.Pk, true
@@ -59,7 +62,7 @@ func (o *PatchedGoogleEndpointDeviceRequest) GetPkOk() (*string, bool) {
 
 // HasPk returns a boolean if a field has been set.
 func (o *PatchedGoogleEndpointDeviceRequest) HasPk() bool {
-	if o != nil && o.Pk != nil {
+	if o != nil && !IsNil(o.Pk) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedGoogleEndpointDeviceRequest) SetPk(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedGoogleEndpointDeviceRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedGoogleEndpointDeviceRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGoogleEndpointDeviceRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -91,7 +94,7 @@ func (o *PatchedGoogleEndpointDeviceRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedGoogleEndpointDeviceRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *PatchedGoogleEndpointDeviceRequest) SetName(v string) {
 }
 
 func (o PatchedGoogleEndpointDeviceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Pk != nil {
-		toSerialize["pk"] = o.Pk
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedGoogleEndpointDeviceRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Pk) {
+		toSerialize["pk"] = o.Pk
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedGoogleEndpointDeviceRequest struct {

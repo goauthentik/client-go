@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the MDMConfigResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MDMConfigResponse{}
 
 // MDMConfigResponse Base serializer class which doesn't implement create/update methods
 type MDMConfigResponse struct {
@@ -21,6 +26,8 @@ type MDMConfigResponse struct {
 	MimeType string `json:"mime_type"`
 	Filename string `json:"filename"`
 }
+
+type _MDMConfigResponse MDMConfigResponse
 
 // NewMDMConfigResponse instantiates a new MDMConfigResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -115,17 +122,58 @@ func (o *MDMConfigResponse) SetFilename(v string) {
 }
 
 func (o MDMConfigResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["config"] = o.Config
-	}
-	if true {
-		toSerialize["mime_type"] = o.MimeType
-	}
-	if true {
-		toSerialize["filename"] = o.Filename
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MDMConfigResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["config"] = o.Config
+	toSerialize["mime_type"] = o.MimeType
+	toSerialize["filename"] = o.Filename
+	return toSerialize, nil
+}
+
+func (o *MDMConfigResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"config",
+		"mime_type",
+		"filename",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMDMConfigResponse := _MDMConfigResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMDMConfigResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MDMConfigResponse(varMDMConfigResponse)
+
+	return err
 }
 
 type NullableMDMConfigResponse struct {

@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the GlobalTaskStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GlobalTaskStatus{}
 
 // GlobalTaskStatus struct for GlobalTaskStatus
 type GlobalTaskStatus struct {
@@ -28,6 +33,8 @@ type GlobalTaskStatus struct {
 	Warning     int32 `json:"warning"`
 	Error       int32 `json:"error"`
 }
+
+type _GlobalTaskStatus GlobalTaskStatus
 
 // NewGlobalTaskStatus instantiates a new GlobalTaskStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -297,38 +304,72 @@ func (o *GlobalTaskStatus) SetError(v int32) {
 }
 
 func (o GlobalTaskStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["queued"] = o.Queued
-	}
-	if true {
-		toSerialize["consumed"] = o.Consumed
-	}
-	if true {
-		toSerialize["preprocess"] = o.Preprocess
-	}
-	if true {
-		toSerialize["running"] = o.Running
-	}
-	if true {
-		toSerialize["postprocess"] = o.Postprocess
-	}
-	if true {
-		toSerialize["rejected"] = o.Rejected
-	}
-	if true {
-		toSerialize["done"] = o.Done
-	}
-	if true {
-		toSerialize["info"] = o.Info
-	}
-	if true {
-		toSerialize["warning"] = o.Warning
-	}
-	if true {
-		toSerialize["error"] = o.Error
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GlobalTaskStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["queued"] = o.Queued
+	toSerialize["consumed"] = o.Consumed
+	toSerialize["preprocess"] = o.Preprocess
+	toSerialize["running"] = o.Running
+	toSerialize["postprocess"] = o.Postprocess
+	toSerialize["rejected"] = o.Rejected
+	toSerialize["done"] = o.Done
+	toSerialize["info"] = o.Info
+	toSerialize["warning"] = o.Warning
+	toSerialize["error"] = o.Error
+	return toSerialize, nil
+}
+
+func (o *GlobalTaskStatus) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"queued",
+		"consumed",
+		"preprocess",
+		"running",
+		"postprocess",
+		"rejected",
+		"done",
+		"info",
+		"warning",
+		"error",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGlobalTaskStatus := _GlobalTaskStatus{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGlobalTaskStatus)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GlobalTaskStatus(varGlobalTaskStatus)
+
+	return err
 }
 
 type NullableGlobalTaskStatus struct {

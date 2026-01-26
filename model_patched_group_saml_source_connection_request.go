@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedGroupSAMLSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedGroupSAMLSourceConnectionRequest{}
+
 // PatchedGroupSAMLSourceConnectionRequest Group Source Connection
 type PatchedGroupSAMLSourceConnectionRequest struct {
 	Group      *string `json:"group,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedGroupSAMLSourceConnectionRequestWithDefaults() *PatchedGroupSAMLS
 
 // GetGroup returns the Group field value if set, zero value otherwise.
 func (o *PatchedGroupSAMLSourceConnectionRequest) GetGroup() string {
-	if o == nil || o.Group == nil {
+	if o == nil || IsNil(o.Group) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedGroupSAMLSourceConnectionRequest) GetGroup() string {
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupSAMLSourceConnectionRequest) GetGroupOk() (*string, bool) {
-	if o == nil || o.Group == nil {
+	if o == nil || IsNil(o.Group) {
 		return nil, false
 	}
 	return o.Group, true
@@ -59,7 +62,7 @@ func (o *PatchedGroupSAMLSourceConnectionRequest) GetGroupOk() (*string, bool) {
 
 // HasGroup returns a boolean if a field has been set.
 func (o *PatchedGroupSAMLSourceConnectionRequest) HasGroup() bool {
-	if o != nil && o.Group != nil {
+	if o != nil && !IsNil(o.Group) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedGroupSAMLSourceConnectionRequest) SetGroup(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PatchedGroupSAMLSourceConnectionRequest) GetSource() string {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedGroupSAMLSourceConnectionRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupSAMLSourceConnectionRequest) GetSourceOk() (*string, bool) {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -91,7 +94,7 @@ func (o *PatchedGroupSAMLSourceConnectionRequest) GetSourceOk() (*string, bool) 
 
 // HasSource returns a boolean if a field has been set.
 func (o *PatchedGroupSAMLSourceConnectionRequest) HasSource() bool {
-	if o != nil && o.Source != nil {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedGroupSAMLSourceConnectionRequest) SetSource(v string) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *PatchedGroupSAMLSourceConnectionRequest) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PatchedGroupSAMLSourceConnectionRequest) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupSAMLSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -123,7 +126,7 @@ func (o *PatchedGroupSAMLSourceConnectionRequest) GetIdentifierOk() (*string, bo
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *PatchedGroupSAMLSourceConnectionRequest) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedGroupSAMLSourceConnectionRequest) SetIdentifier(v string) {
 }
 
 func (o PatchedGroupSAMLSourceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Group != nil {
-		toSerialize["group"] = o.Group
-	}
-	if o.Source != nil {
-		toSerialize["source"] = o.Source
-	}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedGroupSAMLSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Group) {
+		toSerialize["group"] = o.Group
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedGroupSAMLSourceConnectionRequest struct {

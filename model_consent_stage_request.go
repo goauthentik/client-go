@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the ConsentStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConsentStageRequest{}
 
 // ConsentStageRequest ConsentStage Serializer
 type ConsentStageRequest struct {
@@ -22,6 +27,8 @@ type ConsentStageRequest struct {
 	// Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
 	ConsentExpireIn *string `json:"consent_expire_in,omitempty"`
 }
+
+type _ConsentStageRequest ConsentStageRequest
 
 // NewConsentStageRequest instantiates a new ConsentStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -67,7 +74,7 @@ func (o *ConsentStageRequest) SetName(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *ConsentStageRequest) GetMode() ConsentStageModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret ConsentStageModeEnum
 		return ret
 	}
@@ -77,7 +84,7 @@ func (o *ConsentStageRequest) GetMode() ConsentStageModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentStageRequest) GetModeOk() (*ConsentStageModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -85,7 +92,7 @@ func (o *ConsentStageRequest) GetModeOk() (*ConsentStageModeEnum, bool) {
 
 // HasMode returns a boolean if a field has been set.
 func (o *ConsentStageRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -99,7 +106,7 @@ func (o *ConsentStageRequest) SetMode(v ConsentStageModeEnum) {
 
 // GetConsentExpireIn returns the ConsentExpireIn field value if set, zero value otherwise.
 func (o *ConsentStageRequest) GetConsentExpireIn() string {
-	if o == nil || o.ConsentExpireIn == nil {
+	if o == nil || IsNil(o.ConsentExpireIn) {
 		var ret string
 		return ret
 	}
@@ -109,7 +116,7 @@ func (o *ConsentStageRequest) GetConsentExpireIn() string {
 // GetConsentExpireInOk returns a tuple with the ConsentExpireIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConsentStageRequest) GetConsentExpireInOk() (*string, bool) {
-	if o == nil || o.ConsentExpireIn == nil {
+	if o == nil || IsNil(o.ConsentExpireIn) {
 		return nil, false
 	}
 	return o.ConsentExpireIn, true
@@ -117,7 +124,7 @@ func (o *ConsentStageRequest) GetConsentExpireInOk() (*string, bool) {
 
 // HasConsentExpireIn returns a boolean if a field has been set.
 func (o *ConsentStageRequest) HasConsentExpireIn() bool {
-	if o != nil && o.ConsentExpireIn != nil {
+	if o != nil && !IsNil(o.ConsentExpireIn) {
 		return true
 	}
 
@@ -130,17 +137,60 @@ func (o *ConsentStageRequest) SetConsentExpireIn(v string) {
 }
 
 func (o ConsentStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
-	}
-	if o.ConsentExpireIn != nil {
-		toSerialize["consent_expire_in"] = o.ConsentExpireIn
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConsentStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	if !IsNil(o.ConsentExpireIn) {
+		toSerialize["consent_expire_in"] = o.ConsentExpireIn
+	}
+	return toSerialize, nil
+}
+
+func (o *ConsentStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConsentStageRequest := _ConsentStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConsentStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConsentStageRequest(varConsentStageRequest)
+
+	return err
 }
 
 type NullableConsentStageRequest struct {

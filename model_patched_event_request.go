@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the PatchedEventRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedEventRequest{}
+
 // PatchedEventRequest Event Serializer
 type PatchedEventRequest struct {
 	User     map[string]interface{} `json:"user,omitempty"`
@@ -46,7 +49,7 @@ func NewPatchedEventRequestWithDefaults() *PatchedEventRequest {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *PatchedEventRequest) GetUser() map[string]interface{} {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -56,15 +59,15 @@ func (o *PatchedEventRequest) GetUser() map[string]interface{} {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEventRequest) GetUserOk() (map[string]interface{}, bool) {
-	if o == nil || o.User == nil {
-		return nil, false
+	if o == nil || IsNil(o.User) {
+		return map[string]interface{}{}, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *PatchedEventRequest) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *PatchedEventRequest) SetUser(v map[string]interface{}) {
 
 // GetAction returns the Action field value if set, zero value otherwise.
 func (o *PatchedEventRequest) GetAction() EventActions {
-	if o == nil || o.Action == nil {
+	if o == nil || IsNil(o.Action) {
 		var ret EventActions
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *PatchedEventRequest) GetAction() EventActions {
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEventRequest) GetActionOk() (*EventActions, bool) {
-	if o == nil || o.Action == nil {
+	if o == nil || IsNil(o.Action) {
 		return nil, false
 	}
 	return o.Action, true
@@ -96,7 +99,7 @@ func (o *PatchedEventRequest) GetActionOk() (*EventActions, bool) {
 
 // HasAction returns a boolean if a field has been set.
 func (o *PatchedEventRequest) HasAction() bool {
-	if o != nil && o.Action != nil {
+	if o != nil && !IsNil(o.Action) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *PatchedEventRequest) SetAction(v EventActions) {
 
 // GetApp returns the App field value if set, zero value otherwise.
 func (o *PatchedEventRequest) GetApp() string {
-	if o == nil || o.App == nil {
+	if o == nil || IsNil(o.App) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *PatchedEventRequest) GetApp() string {
 // GetAppOk returns a tuple with the App field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEventRequest) GetAppOk() (*string, bool) {
-	if o == nil || o.App == nil {
+	if o == nil || IsNil(o.App) {
 		return nil, false
 	}
 	return o.App, true
@@ -128,7 +131,7 @@ func (o *PatchedEventRequest) GetAppOk() (*string, bool) {
 
 // HasApp returns a boolean if a field has been set.
 func (o *PatchedEventRequest) HasApp() bool {
-	if o != nil && o.App != nil {
+	if o != nil && !IsNil(o.App) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *PatchedEventRequest) SetApp(v string) {
 
 // GetContext returns the Context field value if set, zero value otherwise.
 func (o *PatchedEventRequest) GetContext() map[string]interface{} {
-	if o == nil || o.Context == nil {
+	if o == nil || IsNil(o.Context) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -152,15 +155,15 @@ func (o *PatchedEventRequest) GetContext() map[string]interface{} {
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEventRequest) GetContextOk() (map[string]interface{}, bool) {
-	if o == nil || o.Context == nil {
-		return nil, false
+	if o == nil || IsNil(o.Context) {
+		return map[string]interface{}{}, false
 	}
 	return o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
 func (o *PatchedEventRequest) HasContext() bool {
-	if o != nil && o.Context != nil {
+	if o != nil && !IsNil(o.Context) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *PatchedEventRequest) SetContext(v map[string]interface{}) {
 
 // GetClientIp returns the ClientIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEventRequest) GetClientIp() string {
-	if o == nil || o.ClientIp.Get() == nil {
+	if o == nil || IsNil(o.ClientIp.Get()) {
 		var ret string
 		return ret
 	}
@@ -217,7 +220,7 @@ func (o *PatchedEventRequest) UnsetClientIp() {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *PatchedEventRequest) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -227,7 +230,7 @@ func (o *PatchedEventRequest) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEventRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -235,7 +238,7 @@ func (o *PatchedEventRequest) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *PatchedEventRequest) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -249,7 +252,7 @@ func (o *PatchedEventRequest) SetExpires(v time.Time) {
 
 // GetBrand returns the Brand field value if set, zero value otherwise.
 func (o *PatchedEventRequest) GetBrand() map[string]interface{} {
-	if o == nil || o.Brand == nil {
+	if o == nil || IsNil(o.Brand) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -259,15 +262,15 @@ func (o *PatchedEventRequest) GetBrand() map[string]interface{} {
 // GetBrandOk returns a tuple with the Brand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEventRequest) GetBrandOk() (map[string]interface{}, bool) {
-	if o == nil || o.Brand == nil {
-		return nil, false
+	if o == nil || IsNil(o.Brand) {
+		return map[string]interface{}{}, false
 	}
 	return o.Brand, true
 }
 
 // HasBrand returns a boolean if a field has been set.
 func (o *PatchedEventRequest) HasBrand() bool {
-	if o != nil && o.Brand != nil {
+	if o != nil && !IsNil(o.Brand) {
 		return true
 	}
 
@@ -280,29 +283,37 @@ func (o *PatchedEventRequest) SetBrand(v map[string]interface{}) {
 }
 
 func (o PatchedEventRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedEventRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.User != nil {
+	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
-	if o.Action != nil {
+	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
-	if o.App != nil {
+	if !IsNil(o.App) {
 		toSerialize["app"] = o.App
 	}
-	if o.Context != nil {
+	if !IsNil(o.Context) {
 		toSerialize["context"] = o.Context
 	}
 	if o.ClientIp.IsSet() {
 		toSerialize["client_ip"] = o.ClientIp.Get()
 	}
-	if o.Expires != nil {
+	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
-	if o.Brand != nil {
+	if !IsNil(o.Brand) {
 		toSerialize["brand"] = o.Brand
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedEventRequest struct {

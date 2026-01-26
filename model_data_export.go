@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the DataExport type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DataExport{}
 
 // DataExport Mixin to validate that a valid enterprise license exists before allowing to save the object
 type DataExport struct {
@@ -26,6 +31,8 @@ type DataExport struct {
 	FileUrl     string                 `json:"file_url"`
 	Completed   bool                   `json:"completed"`
 }
+
+type _DataExport DataExport
 
 // NewDataExport instantiates a new DataExport object
 // This constructor will assign default values to properties that have it defined,
@@ -161,7 +168,7 @@ func (o *DataExport) GetQueryParams() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *DataExport) GetQueryParamsOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.QueryParams, true
 }
@@ -220,29 +227,66 @@ func (o *DataExport) SetCompleted(v bool) {
 }
 
 func (o DataExport) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["requested_by"] = o.RequestedBy
-	}
-	if true {
-		toSerialize["requested_on"] = o.RequestedOn
-	}
-	if true {
-		toSerialize["content_type"] = o.ContentType
-	}
-	if true {
-		toSerialize["query_params"] = o.QueryParams
-	}
-	if true {
-		toSerialize["file_url"] = o.FileUrl
-	}
-	if true {
-		toSerialize["completed"] = o.Completed
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DataExport) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["requested_by"] = o.RequestedBy
+	toSerialize["requested_on"] = o.RequestedOn
+	toSerialize["content_type"] = o.ContentType
+	toSerialize["query_params"] = o.QueryParams
+	toSerialize["file_url"] = o.FileUrl
+	toSerialize["completed"] = o.Completed
+	return toSerialize, nil
+}
+
+func (o *DataExport) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"requested_by",
+		"requested_on",
+		"content_type",
+		"query_params",
+		"file_url",
+		"completed",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDataExport := _DataExport{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDataExport)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DataExport(varDataExport)
+
+	return err
 }
 
 type NullableDataExport struct {

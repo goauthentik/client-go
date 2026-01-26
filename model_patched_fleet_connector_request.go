@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedFleetConnectorRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedFleetConnectorRequest{}
+
 // PatchedFleetConnectorRequest FleetConnector Serializer
 type PatchedFleetConnectorRequest struct {
 	ConnectorUuid *string `json:"connector_uuid,omitempty"`
@@ -47,7 +50,7 @@ func NewPatchedFleetConnectorRequestWithDefaults() *PatchedFleetConnectorRequest
 
 // GetConnectorUuid returns the ConnectorUuid field value if set, zero value otherwise.
 func (o *PatchedFleetConnectorRequest) GetConnectorUuid() string {
-	if o == nil || o.ConnectorUuid == nil {
+	if o == nil || IsNil(o.ConnectorUuid) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *PatchedFleetConnectorRequest) GetConnectorUuid() string {
 // GetConnectorUuidOk returns a tuple with the ConnectorUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFleetConnectorRequest) GetConnectorUuidOk() (*string, bool) {
-	if o == nil || o.ConnectorUuid == nil {
+	if o == nil || IsNil(o.ConnectorUuid) {
 		return nil, false
 	}
 	return o.ConnectorUuid, true
@@ -65,7 +68,7 @@ func (o *PatchedFleetConnectorRequest) GetConnectorUuidOk() (*string, bool) {
 
 // HasConnectorUuid returns a boolean if a field has been set.
 func (o *PatchedFleetConnectorRequest) HasConnectorUuid() bool {
-	if o != nil && o.ConnectorUuid != nil {
+	if o != nil && !IsNil(o.ConnectorUuid) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *PatchedFleetConnectorRequest) SetConnectorUuid(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedFleetConnectorRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *PatchedFleetConnectorRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFleetConnectorRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -97,7 +100,7 @@ func (o *PatchedFleetConnectorRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedFleetConnectorRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *PatchedFleetConnectorRequest) SetName(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PatchedFleetConnectorRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *PatchedFleetConnectorRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFleetConnectorRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -129,7 +132,7 @@ func (o *PatchedFleetConnectorRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *PatchedFleetConnectorRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *PatchedFleetConnectorRequest) SetEnabled(v bool) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *PatchedFleetConnectorRequest) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *PatchedFleetConnectorRequest) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFleetConnectorRequest) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -161,7 +164,7 @@ func (o *PatchedFleetConnectorRequest) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *PatchedFleetConnectorRequest) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *PatchedFleetConnectorRequest) SetUrl(v string) {
 
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *PatchedFleetConnectorRequest) GetToken() string {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *PatchedFleetConnectorRequest) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFleetConnectorRequest) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
 	return o.Token, true
@@ -193,7 +196,7 @@ func (o *PatchedFleetConnectorRequest) GetTokenOk() (*string, bool) {
 
 // HasToken returns a boolean if a field has been set.
 func (o *PatchedFleetConnectorRequest) HasToken() bool {
-	if o != nil && o.Token != nil {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *PatchedFleetConnectorRequest) SetToken(v string) {
 
 // GetHeadersMapping returns the HeadersMapping field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedFleetConnectorRequest) GetHeadersMapping() string {
-	if o == nil || o.HeadersMapping.Get() == nil {
+	if o == nil || IsNil(o.HeadersMapping.Get()) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *PatchedFleetConnectorRequest) UnsetHeadersMapping() {
 
 // GetMapUsers returns the MapUsers field value if set, zero value otherwise.
 func (o *PatchedFleetConnectorRequest) GetMapUsers() bool {
-	if o == nil || o.MapUsers == nil {
+	if o == nil || IsNil(o.MapUsers) {
 		var ret bool
 		return ret
 	}
@@ -260,7 +263,7 @@ func (o *PatchedFleetConnectorRequest) GetMapUsers() bool {
 // GetMapUsersOk returns a tuple with the MapUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFleetConnectorRequest) GetMapUsersOk() (*bool, bool) {
-	if o == nil || o.MapUsers == nil {
+	if o == nil || IsNil(o.MapUsers) {
 		return nil, false
 	}
 	return o.MapUsers, true
@@ -268,7 +271,7 @@ func (o *PatchedFleetConnectorRequest) GetMapUsersOk() (*bool, bool) {
 
 // HasMapUsers returns a boolean if a field has been set.
 func (o *PatchedFleetConnectorRequest) HasMapUsers() bool {
-	if o != nil && o.MapUsers != nil {
+	if o != nil && !IsNil(o.MapUsers) {
 		return true
 	}
 
@@ -282,7 +285,7 @@ func (o *PatchedFleetConnectorRequest) SetMapUsers(v bool) {
 
 // GetMapTeamsAccessGroup returns the MapTeamsAccessGroup field value if set, zero value otherwise.
 func (o *PatchedFleetConnectorRequest) GetMapTeamsAccessGroup() bool {
-	if o == nil || o.MapTeamsAccessGroup == nil {
+	if o == nil || IsNil(o.MapTeamsAccessGroup) {
 		var ret bool
 		return ret
 	}
@@ -292,7 +295,7 @@ func (o *PatchedFleetConnectorRequest) GetMapTeamsAccessGroup() bool {
 // GetMapTeamsAccessGroupOk returns a tuple with the MapTeamsAccessGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedFleetConnectorRequest) GetMapTeamsAccessGroupOk() (*bool, bool) {
-	if o == nil || o.MapTeamsAccessGroup == nil {
+	if o == nil || IsNil(o.MapTeamsAccessGroup) {
 		return nil, false
 	}
 	return o.MapTeamsAccessGroup, true
@@ -300,7 +303,7 @@ func (o *PatchedFleetConnectorRequest) GetMapTeamsAccessGroupOk() (*bool, bool) 
 
 // HasMapTeamsAccessGroup returns a boolean if a field has been set.
 func (o *PatchedFleetConnectorRequest) HasMapTeamsAccessGroup() bool {
-	if o != nil && o.MapTeamsAccessGroup != nil {
+	if o != nil && !IsNil(o.MapTeamsAccessGroup) {
 		return true
 	}
 
@@ -313,32 +316,40 @@ func (o *PatchedFleetConnectorRequest) SetMapTeamsAccessGroup(v bool) {
 }
 
 func (o PatchedFleetConnectorRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedFleetConnectorRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ConnectorUuid != nil {
+	if !IsNil(o.ConnectorUuid) {
 		toSerialize["connector_uuid"] = o.ConnectorUuid
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Enabled != nil {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Url != nil {
+	if !IsNil(o.Url) {
 		toSerialize["url"] = o.Url
 	}
-	if o.Token != nil {
+	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
 	}
 	if o.HeadersMapping.IsSet() {
 		toSerialize["headers_mapping"] = o.HeadersMapping.Get()
 	}
-	if o.MapUsers != nil {
+	if !IsNil(o.MapUsers) {
 		toSerialize["map_users"] = o.MapUsers
 	}
-	if o.MapTeamsAccessGroup != nil {
+	if !IsNil(o.MapTeamsAccessGroup) {
 		toSerialize["map_teams_access_group"] = o.MapTeamsAccessGroup
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedFleetConnectorRequest struct {

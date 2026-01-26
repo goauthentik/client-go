@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the InitialPermissions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InitialPermissions{}
 
 // InitialPermissions InitialPermissions serializer
 type InitialPermissions struct {
@@ -23,6 +28,8 @@ type InitialPermissions struct {
 	Permissions    []int32      `json:"permissions,omitempty"`
 	PermissionsObj []Permission `json:"permissions_obj"`
 }
+
+type _InitialPermissions InitialPermissions
 
 // NewInitialPermissions instantiates a new InitialPermissions object
 // This constructor will assign default values to properties that have it defined,
@@ -119,7 +126,7 @@ func (o *InitialPermissions) SetRole(v string) {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *InitialPermissions) GetPermissions() []int32 {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		var ret []int32
 		return ret
 	}
@@ -129,7 +136,7 @@ func (o *InitialPermissions) GetPermissions() []int32 {
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InitialPermissions) GetPermissionsOk() ([]int32, bool) {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -137,7 +144,7 @@ func (o *InitialPermissions) GetPermissionsOk() ([]int32, bool) {
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *InitialPermissions) HasPermissions() bool {
-	if o != nil && o.Permissions != nil {
+	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}
 
@@ -174,23 +181,63 @@ func (o *InitialPermissions) SetPermissionsObj(v []Permission) {
 }
 
 func (o InitialPermissions) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["role"] = o.Role
-	}
-	if o.Permissions != nil {
-		toSerialize["permissions"] = o.Permissions
-	}
-	if true {
-		toSerialize["permissions_obj"] = o.PermissionsObj
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InitialPermissions) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["role"] = o.Role
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
+	toSerialize["permissions_obj"] = o.PermissionsObj
+	return toSerialize, nil
+}
+
+func (o *InitialPermissions) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"role",
+		"permissions_obj",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInitialPermissions := _InitialPermissions{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInitialPermissions)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InitialPermissions(varInitialPermissions)
+
+	return err
 }
 
 type NullableInitialPermissions struct {

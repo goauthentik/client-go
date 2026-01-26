@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the GroupTelegramSourceConnection type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupTelegramSourceConnection{}
 
 // GroupTelegramSourceConnection Group Source Connection
 type GroupTelegramSourceConnection struct {
@@ -26,6 +31,8 @@ type GroupTelegramSourceConnection struct {
 	Created     time.Time `json:"created"`
 	LastUpdated time.Time `json:"last_updated"`
 }
+
+type _GroupTelegramSourceConnection GroupTelegramSourceConnection
 
 // NewGroupTelegramSourceConnection instantiates a new GroupTelegramSourceConnection object
 // This constructor will assign default values to properties that have it defined,
@@ -220,29 +227,66 @@ func (o *GroupTelegramSourceConnection) SetLastUpdated(v time.Time) {
 }
 
 func (o GroupTelegramSourceConnection) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["group"] = o.Group
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["source_obj"] = o.SourceObj
-	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
-	if true {
-		toSerialize["last_updated"] = o.LastUpdated
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GroupTelegramSourceConnection) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["group"] = o.Group
+	toSerialize["source"] = o.Source
+	toSerialize["source_obj"] = o.SourceObj
+	toSerialize["identifier"] = o.Identifier
+	toSerialize["created"] = o.Created
+	toSerialize["last_updated"] = o.LastUpdated
+	return toSerialize, nil
+}
+
+func (o *GroupTelegramSourceConnection) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"group",
+		"source",
+		"source_obj",
+		"identifier",
+		"created",
+		"last_updated",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGroupTelegramSourceConnection := _GroupTelegramSourceConnection{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGroupTelegramSourceConnection)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupTelegramSourceConnection(varGroupTelegramSourceConnection)
+
+	return err
 }
 
 type NullableGroupTelegramSourceConnection struct {

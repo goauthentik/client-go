@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedUserDeleteStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedUserDeleteStageRequest{}
+
 // PatchedUserDeleteStageRequest UserDeleteStage Serializer
 type PatchedUserDeleteStageRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -39,7 +42,7 @@ func NewPatchedUserDeleteStageRequestWithDefaults() *PatchedUserDeleteStageReque
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedUserDeleteStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *PatchedUserDeleteStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserDeleteStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -57,7 +60,7 @@ func (o *PatchedUserDeleteStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedUserDeleteStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *PatchedUserDeleteStageRequest) SetName(v string) {
 }
 
 func (o PatchedUserDeleteStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedUserDeleteStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedUserDeleteStageRequest struct {

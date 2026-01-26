@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the PatchedEnrollmentTokenRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedEnrollmentTokenRequest{}
+
 // PatchedEnrollmentTokenRequest struct for PatchedEnrollmentTokenRequest
 type PatchedEnrollmentTokenRequest struct {
 	DeviceGroup NullableString `json:"device_group,omitempty"`
@@ -44,7 +47,7 @@ func NewPatchedEnrollmentTokenRequestWithDefaults() *PatchedEnrollmentTokenReque
 
 // GetDeviceGroup returns the DeviceGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEnrollmentTokenRequest) GetDeviceGroup() string {
-	if o == nil || o.DeviceGroup.Get() == nil {
+	if o == nil || IsNil(o.DeviceGroup.Get()) {
 		var ret string
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *PatchedEnrollmentTokenRequest) UnsetDeviceGroup() {
 
 // GetConnector returns the Connector field value if set, zero value otherwise.
 func (o *PatchedEnrollmentTokenRequest) GetConnector() string {
-	if o == nil || o.Connector == nil {
+	if o == nil || IsNil(o.Connector) {
 		var ret string
 		return ret
 	}
@@ -97,7 +100,7 @@ func (o *PatchedEnrollmentTokenRequest) GetConnector() string {
 // GetConnectorOk returns a tuple with the Connector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEnrollmentTokenRequest) GetConnectorOk() (*string, bool) {
-	if o == nil || o.Connector == nil {
+	if o == nil || IsNil(o.Connector) {
 		return nil, false
 	}
 	return o.Connector, true
@@ -105,7 +108,7 @@ func (o *PatchedEnrollmentTokenRequest) GetConnectorOk() (*string, bool) {
 
 // HasConnector returns a boolean if a field has been set.
 func (o *PatchedEnrollmentTokenRequest) HasConnector() bool {
-	if o != nil && o.Connector != nil {
+	if o != nil && !IsNil(o.Connector) {
 		return true
 	}
 
@@ -119,7 +122,7 @@ func (o *PatchedEnrollmentTokenRequest) SetConnector(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedEnrollmentTokenRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -129,7 +132,7 @@ func (o *PatchedEnrollmentTokenRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEnrollmentTokenRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -137,7 +140,7 @@ func (o *PatchedEnrollmentTokenRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedEnrollmentTokenRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -151,7 +154,7 @@ func (o *PatchedEnrollmentTokenRequest) SetName(v string) {
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
 func (o *PatchedEnrollmentTokenRequest) GetExpiring() bool {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		var ret bool
 		return ret
 	}
@@ -161,7 +164,7 @@ func (o *PatchedEnrollmentTokenRequest) GetExpiring() bool {
 // GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEnrollmentTokenRequest) GetExpiringOk() (*bool, bool) {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		return nil, false
 	}
 	return o.Expiring, true
@@ -169,7 +172,7 @@ func (o *PatchedEnrollmentTokenRequest) GetExpiringOk() (*bool, bool) {
 
 // HasExpiring returns a boolean if a field has been set.
 func (o *PatchedEnrollmentTokenRequest) HasExpiring() bool {
-	if o != nil && o.Expiring != nil {
+	if o != nil && !IsNil(o.Expiring) {
 		return true
 	}
 
@@ -183,7 +186,7 @@ func (o *PatchedEnrollmentTokenRequest) SetExpiring(v bool) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedEnrollmentTokenRequest) GetExpires() time.Time {
-	if o == nil || o.Expires.Get() == nil {
+	if o == nil || IsNil(o.Expires.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -225,23 +228,31 @@ func (o *PatchedEnrollmentTokenRequest) UnsetExpires() {
 }
 
 func (o PatchedEnrollmentTokenRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedEnrollmentTokenRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeviceGroup.IsSet() {
 		toSerialize["device_group"] = o.DeviceGroup.Get()
 	}
-	if o.Connector != nil {
+	if !IsNil(o.Connector) {
 		toSerialize["connector"] = o.Connector
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Expiring != nil {
+	if !IsNil(o.Expiring) {
 		toSerialize["expiring"] = o.Expiring
 	}
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedEnrollmentTokenRequest struct {

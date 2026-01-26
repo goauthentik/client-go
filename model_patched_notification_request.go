@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedNotificationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedNotificationRequest{}
+
 // PatchedNotificationRequest Notification Serializer
 type PatchedNotificationRequest struct {
 	Hyperlink      NullableString `json:"hyperlink,omitempty"`
@@ -42,7 +45,7 @@ func NewPatchedNotificationRequestWithDefaults() *PatchedNotificationRequest {
 
 // GetHyperlink returns the Hyperlink field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedNotificationRequest) GetHyperlink() string {
-	if o == nil || o.Hyperlink.Get() == nil {
+	if o == nil || IsNil(o.Hyperlink.Get()) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PatchedNotificationRequest) UnsetHyperlink() {
 
 // GetHyperlinkLabel returns the HyperlinkLabel field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedNotificationRequest) GetHyperlinkLabel() string {
-	if o == nil || o.HyperlinkLabel.Get() == nil {
+	if o == nil || IsNil(o.HyperlinkLabel.Get()) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *PatchedNotificationRequest) UnsetHyperlinkLabel() {
 
 // GetEvent returns the Event field value if set, zero value otherwise.
 func (o *PatchedNotificationRequest) GetEvent() EventRequest {
-	if o == nil || o.Event == nil {
+	if o == nil || IsNil(o.Event) {
 		var ret EventRequest
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *PatchedNotificationRequest) GetEvent() EventRequest {
 // GetEventOk returns a tuple with the Event field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationRequest) GetEventOk() (*EventRequest, bool) {
-	if o == nil || o.Event == nil {
+	if o == nil || IsNil(o.Event) {
 		return nil, false
 	}
 	return o.Event, true
@@ -146,7 +149,7 @@ func (o *PatchedNotificationRequest) GetEventOk() (*EventRequest, bool) {
 
 // HasEvent returns a boolean if a field has been set.
 func (o *PatchedNotificationRequest) HasEvent() bool {
-	if o != nil && o.Event != nil {
+	if o != nil && !IsNil(o.Event) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *PatchedNotificationRequest) SetEvent(v EventRequest) {
 
 // GetSeen returns the Seen field value if set, zero value otherwise.
 func (o *PatchedNotificationRequest) GetSeen() bool {
-	if o == nil || o.Seen == nil {
+	if o == nil || IsNil(o.Seen) {
 		var ret bool
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *PatchedNotificationRequest) GetSeen() bool {
 // GetSeenOk returns a tuple with the Seen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationRequest) GetSeenOk() (*bool, bool) {
-	if o == nil || o.Seen == nil {
+	if o == nil || IsNil(o.Seen) {
 		return nil, false
 	}
 	return o.Seen, true
@@ -178,7 +181,7 @@ func (o *PatchedNotificationRequest) GetSeenOk() (*bool, bool) {
 
 // HasSeen returns a boolean if a field has been set.
 func (o *PatchedNotificationRequest) HasSeen() bool {
-	if o != nil && o.Seen != nil {
+	if o != nil && !IsNil(o.Seen) {
 		return true
 	}
 
@@ -191,6 +194,14 @@ func (o *PatchedNotificationRequest) SetSeen(v bool) {
 }
 
 func (o PatchedNotificationRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedNotificationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Hyperlink.IsSet() {
 		toSerialize["hyperlink"] = o.Hyperlink.Get()
@@ -198,13 +209,13 @@ func (o PatchedNotificationRequest) MarshalJSON() ([]byte, error) {
 	if o.HyperlinkLabel.IsSet() {
 		toSerialize["hyperlink_label"] = o.HyperlinkLabel.Get()
 	}
-	if o.Event != nil {
+	if !IsNil(o.Event) {
 		toSerialize["event"] = o.Event
 	}
-	if o.Seen != nil {
+	if !IsNil(o.Seen) {
 		toSerialize["seen"] = o.Seen
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedNotificationRequest struct {

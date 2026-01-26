@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the LDAPProviderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LDAPProviderRequest{}
 
 // LDAPProviderRequest LDAPProvider Serializer
 type LDAPProviderRequest struct {
@@ -38,6 +43,8 @@ type LDAPProviderRequest struct {
 	// When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
 	MfaSupport *bool `json:"mfa_support,omitempty"`
 }
+
+type _LDAPProviderRequest LDAPProviderRequest
 
 // NewLDAPProviderRequest instantiates a new LDAPProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +92,7 @@ func (o *LDAPProviderRequest) SetName(v string) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPProviderRequest) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -176,7 +183,7 @@ func (o *LDAPProviderRequest) SetInvalidationFlow(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *LDAPProviderRequest) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -186,7 +193,7 @@ func (o *LDAPProviderRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -194,7 +201,7 @@ func (o *LDAPProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *LDAPProviderRequest) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -208,7 +215,7 @@ func (o *LDAPProviderRequest) SetPropertyMappings(v []string) {
 
 // GetBaseDn returns the BaseDn field value if set, zero value otherwise.
 func (o *LDAPProviderRequest) GetBaseDn() string {
-	if o == nil || o.BaseDn == nil {
+	if o == nil || IsNil(o.BaseDn) {
 		var ret string
 		return ret
 	}
@@ -218,7 +225,7 @@ func (o *LDAPProviderRequest) GetBaseDn() string {
 // GetBaseDnOk returns a tuple with the BaseDn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPProviderRequest) GetBaseDnOk() (*string, bool) {
-	if o == nil || o.BaseDn == nil {
+	if o == nil || IsNil(o.BaseDn) {
 		return nil, false
 	}
 	return o.BaseDn, true
@@ -226,7 +233,7 @@ func (o *LDAPProviderRequest) GetBaseDnOk() (*string, bool) {
 
 // HasBaseDn returns a boolean if a field has been set.
 func (o *LDAPProviderRequest) HasBaseDn() bool {
-	if o != nil && o.BaseDn != nil {
+	if o != nil && !IsNil(o.BaseDn) {
 		return true
 	}
 
@@ -240,7 +247,7 @@ func (o *LDAPProviderRequest) SetBaseDn(v string) {
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPProviderRequest) GetCertificate() string {
-	if o == nil || o.Certificate.Get() == nil {
+	if o == nil || IsNil(o.Certificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -283,7 +290,7 @@ func (o *LDAPProviderRequest) UnsetCertificate() {
 
 // GetTlsServerName returns the TlsServerName field value if set, zero value otherwise.
 func (o *LDAPProviderRequest) GetTlsServerName() string {
-	if o == nil || o.TlsServerName == nil {
+	if o == nil || IsNil(o.TlsServerName) {
 		var ret string
 		return ret
 	}
@@ -293,7 +300,7 @@ func (o *LDAPProviderRequest) GetTlsServerName() string {
 // GetTlsServerNameOk returns a tuple with the TlsServerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPProviderRequest) GetTlsServerNameOk() (*string, bool) {
-	if o == nil || o.TlsServerName == nil {
+	if o == nil || IsNil(o.TlsServerName) {
 		return nil, false
 	}
 	return o.TlsServerName, true
@@ -301,7 +308,7 @@ func (o *LDAPProviderRequest) GetTlsServerNameOk() (*string, bool) {
 
 // HasTlsServerName returns a boolean if a field has been set.
 func (o *LDAPProviderRequest) HasTlsServerName() bool {
-	if o != nil && o.TlsServerName != nil {
+	if o != nil && !IsNil(o.TlsServerName) {
 		return true
 	}
 
@@ -315,7 +322,7 @@ func (o *LDAPProviderRequest) SetTlsServerName(v string) {
 
 // GetUidStartNumber returns the UidStartNumber field value if set, zero value otherwise.
 func (o *LDAPProviderRequest) GetUidStartNumber() int32 {
-	if o == nil || o.UidStartNumber == nil {
+	if o == nil || IsNil(o.UidStartNumber) {
 		var ret int32
 		return ret
 	}
@@ -325,7 +332,7 @@ func (o *LDAPProviderRequest) GetUidStartNumber() int32 {
 // GetUidStartNumberOk returns a tuple with the UidStartNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPProviderRequest) GetUidStartNumberOk() (*int32, bool) {
-	if o == nil || o.UidStartNumber == nil {
+	if o == nil || IsNil(o.UidStartNumber) {
 		return nil, false
 	}
 	return o.UidStartNumber, true
@@ -333,7 +340,7 @@ func (o *LDAPProviderRequest) GetUidStartNumberOk() (*int32, bool) {
 
 // HasUidStartNumber returns a boolean if a field has been set.
 func (o *LDAPProviderRequest) HasUidStartNumber() bool {
-	if o != nil && o.UidStartNumber != nil {
+	if o != nil && !IsNil(o.UidStartNumber) {
 		return true
 	}
 
@@ -347,7 +354,7 @@ func (o *LDAPProviderRequest) SetUidStartNumber(v int32) {
 
 // GetGidStartNumber returns the GidStartNumber field value if set, zero value otherwise.
 func (o *LDAPProviderRequest) GetGidStartNumber() int32 {
-	if o == nil || o.GidStartNumber == nil {
+	if o == nil || IsNil(o.GidStartNumber) {
 		var ret int32
 		return ret
 	}
@@ -357,7 +364,7 @@ func (o *LDAPProviderRequest) GetGidStartNumber() int32 {
 // GetGidStartNumberOk returns a tuple with the GidStartNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPProviderRequest) GetGidStartNumberOk() (*int32, bool) {
-	if o == nil || o.GidStartNumber == nil {
+	if o == nil || IsNil(o.GidStartNumber) {
 		return nil, false
 	}
 	return o.GidStartNumber, true
@@ -365,7 +372,7 @@ func (o *LDAPProviderRequest) GetGidStartNumberOk() (*int32, bool) {
 
 // HasGidStartNumber returns a boolean if a field has been set.
 func (o *LDAPProviderRequest) HasGidStartNumber() bool {
-	if o != nil && o.GidStartNumber != nil {
+	if o != nil && !IsNil(o.GidStartNumber) {
 		return true
 	}
 
@@ -379,7 +386,7 @@ func (o *LDAPProviderRequest) SetGidStartNumber(v int32) {
 
 // GetSearchMode returns the SearchMode field value if set, zero value otherwise.
 func (o *LDAPProviderRequest) GetSearchMode() LDAPAPIAccessMode {
-	if o == nil || o.SearchMode == nil {
+	if o == nil || IsNil(o.SearchMode) {
 		var ret LDAPAPIAccessMode
 		return ret
 	}
@@ -389,7 +396,7 @@ func (o *LDAPProviderRequest) GetSearchMode() LDAPAPIAccessMode {
 // GetSearchModeOk returns a tuple with the SearchMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPProviderRequest) GetSearchModeOk() (*LDAPAPIAccessMode, bool) {
-	if o == nil || o.SearchMode == nil {
+	if o == nil || IsNil(o.SearchMode) {
 		return nil, false
 	}
 	return o.SearchMode, true
@@ -397,7 +404,7 @@ func (o *LDAPProviderRequest) GetSearchModeOk() (*LDAPAPIAccessMode, bool) {
 
 // HasSearchMode returns a boolean if a field has been set.
 func (o *LDAPProviderRequest) HasSearchMode() bool {
-	if o != nil && o.SearchMode != nil {
+	if o != nil && !IsNil(o.SearchMode) {
 		return true
 	}
 
@@ -411,7 +418,7 @@ func (o *LDAPProviderRequest) SetSearchMode(v LDAPAPIAccessMode) {
 
 // GetBindMode returns the BindMode field value if set, zero value otherwise.
 func (o *LDAPProviderRequest) GetBindMode() LDAPAPIAccessMode {
-	if o == nil || o.BindMode == nil {
+	if o == nil || IsNil(o.BindMode) {
 		var ret LDAPAPIAccessMode
 		return ret
 	}
@@ -421,7 +428,7 @@ func (o *LDAPProviderRequest) GetBindMode() LDAPAPIAccessMode {
 // GetBindModeOk returns a tuple with the BindMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPProviderRequest) GetBindModeOk() (*LDAPAPIAccessMode, bool) {
-	if o == nil || o.BindMode == nil {
+	if o == nil || IsNil(o.BindMode) {
 		return nil, false
 	}
 	return o.BindMode, true
@@ -429,7 +436,7 @@ func (o *LDAPProviderRequest) GetBindModeOk() (*LDAPAPIAccessMode, bool) {
 
 // HasBindMode returns a boolean if a field has been set.
 func (o *LDAPProviderRequest) HasBindMode() bool {
-	if o != nil && o.BindMode != nil {
+	if o != nil && !IsNil(o.BindMode) {
 		return true
 	}
 
@@ -443,7 +450,7 @@ func (o *LDAPProviderRequest) SetBindMode(v LDAPAPIAccessMode) {
 
 // GetMfaSupport returns the MfaSupport field value if set, zero value otherwise.
 func (o *LDAPProviderRequest) GetMfaSupport() bool {
-	if o == nil || o.MfaSupport == nil {
+	if o == nil || IsNil(o.MfaSupport) {
 		var ret bool
 		return ret
 	}
@@ -453,7 +460,7 @@ func (o *LDAPProviderRequest) GetMfaSupport() bool {
 // GetMfaSupportOk returns a tuple with the MfaSupport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPProviderRequest) GetMfaSupportOk() (*bool, bool) {
-	if o == nil || o.MfaSupport == nil {
+	if o == nil || IsNil(o.MfaSupport) {
 		return nil, false
 	}
 	return o.MfaSupport, true
@@ -461,7 +468,7 @@ func (o *LDAPProviderRequest) GetMfaSupportOk() (*bool, bool) {
 
 // HasMfaSupport returns a boolean if a field has been set.
 func (o *LDAPProviderRequest) HasMfaSupport() bool {
-	if o != nil && o.MfaSupport != nil {
+	if o != nil && !IsNil(o.MfaSupport) {
 		return true
 	}
 
@@ -474,47 +481,88 @@ func (o *LDAPProviderRequest) SetMfaSupport(v bool) {
 }
 
 func (o LDAPProviderRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LDAPProviderRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
-	if true {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow
-	}
-	if true {
-		toSerialize["invalidation_flow"] = o.InvalidationFlow
-	}
-	if o.PropertyMappings != nil {
+	toSerialize["authorization_flow"] = o.AuthorizationFlow
+	toSerialize["invalidation_flow"] = o.InvalidationFlow
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if o.BaseDn != nil {
+	if !IsNil(o.BaseDn) {
 		toSerialize["base_dn"] = o.BaseDn
 	}
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
-	if o.TlsServerName != nil {
+	if !IsNil(o.TlsServerName) {
 		toSerialize["tls_server_name"] = o.TlsServerName
 	}
-	if o.UidStartNumber != nil {
+	if !IsNil(o.UidStartNumber) {
 		toSerialize["uid_start_number"] = o.UidStartNumber
 	}
-	if o.GidStartNumber != nil {
+	if !IsNil(o.GidStartNumber) {
 		toSerialize["gid_start_number"] = o.GidStartNumber
 	}
-	if o.SearchMode != nil {
+	if !IsNil(o.SearchMode) {
 		toSerialize["search_mode"] = o.SearchMode
 	}
-	if o.BindMode != nil {
+	if !IsNil(o.BindMode) {
 		toSerialize["bind_mode"] = o.BindMode
 	}
-	if o.MfaSupport != nil {
+	if !IsNil(o.MfaSupport) {
 		toSerialize["mfa_support"] = o.MfaSupport
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *LDAPProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"authorization_flow",
+		"invalidation_flow",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLDAPProviderRequest := _LDAPProviderRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLDAPProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LDAPProviderRequest(varLDAPProviderRequest)
+
+	return err
 }
 
 type NullableLDAPProviderRequest struct {

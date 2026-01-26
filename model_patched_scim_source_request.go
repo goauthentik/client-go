@@ -15,12 +15,15 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedSCIMSourceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedSCIMSourceRequest{}
+
 // PatchedSCIMSourceRequest SCIMSource Serializer
 type PatchedSCIMSourceRequest struct {
 	// Source's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal source name, used in URLs.
-	Slug                  *string  `json:"slug,omitempty"`
+	Slug                  *string  `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled               *bool    `json:"enabled,omitempty"`
 	UserPropertyMappings  []string `json:"user_property_mappings,omitempty"`
 	GroupPropertyMappings []string `json:"group_property_mappings,omitempty"`
@@ -46,7 +49,7 @@ func NewPatchedSCIMSourceRequestWithDefaults() *PatchedSCIMSourceRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *PatchedSCIMSourceRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -64,7 +67,7 @@ func (o *PatchedSCIMSourceRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *PatchedSCIMSourceRequest) SetName(v string) {
 
 // GetSlug returns the Slug field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceRequest) GetSlug() string {
-	if o == nil || o.Slug == nil {
+	if o == nil || IsNil(o.Slug) {
 		var ret string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *PatchedSCIMSourceRequest) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceRequest) GetSlugOk() (*string, bool) {
-	if o == nil || o.Slug == nil {
+	if o == nil || IsNil(o.Slug) {
 		return nil, false
 	}
 	return o.Slug, true
@@ -96,7 +99,7 @@ func (o *PatchedSCIMSourceRequest) GetSlugOk() (*string, bool) {
 
 // HasSlug returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceRequest) HasSlug() bool {
-	if o != nil && o.Slug != nil {
+	if o != nil && !IsNil(o.Slug) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *PatchedSCIMSourceRequest) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *PatchedSCIMSourceRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -128,7 +131,7 @@ func (o *PatchedSCIMSourceRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *PatchedSCIMSourceRequest) SetEnabled(v bool) {
 
 // GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceRequest) GetUserPropertyMappings() []string {
-	if o == nil || o.UserPropertyMappings == nil {
+	if o == nil || IsNil(o.UserPropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *PatchedSCIMSourceRequest) GetUserPropertyMappings() []string {
 // GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceRequest) GetUserPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.UserPropertyMappings == nil {
+	if o == nil || IsNil(o.UserPropertyMappings) {
 		return nil, false
 	}
 	return o.UserPropertyMappings, true
@@ -160,7 +163,7 @@ func (o *PatchedSCIMSourceRequest) GetUserPropertyMappingsOk() ([]string, bool) 
 
 // HasUserPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceRequest) HasUserPropertyMappings() bool {
-	if o != nil && o.UserPropertyMappings != nil {
+	if o != nil && !IsNil(o.UserPropertyMappings) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *PatchedSCIMSourceRequest) SetUserPropertyMappings(v []string) {
 
 // GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceRequest) GetGroupPropertyMappings() []string {
-	if o == nil || o.GroupPropertyMappings == nil {
+	if o == nil || IsNil(o.GroupPropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *PatchedSCIMSourceRequest) GetGroupPropertyMappings() []string {
 // GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceRequest) GetGroupPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.GroupPropertyMappings == nil {
+	if o == nil || IsNil(o.GroupPropertyMappings) {
 		return nil, false
 	}
 	return o.GroupPropertyMappings, true
@@ -192,7 +195,7 @@ func (o *PatchedSCIMSourceRequest) GetGroupPropertyMappingsOk() ([]string, bool)
 
 // HasGroupPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceRequest) HasGroupPropertyMappings() bool {
-	if o != nil && o.GroupPropertyMappings != nil {
+	if o != nil && !IsNil(o.GroupPropertyMappings) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *PatchedSCIMSourceRequest) SetGroupPropertyMappings(v []string) {
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceRequest) GetUserPathTemplate() string {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		var ret string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *PatchedSCIMSourceRequest) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceRequest) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -224,7 +227,7 @@ func (o *PatchedSCIMSourceRequest) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceRequest) HasUserPathTemplate() bool {
-	if o != nil && o.UserPathTemplate != nil {
+	if o != nil && !IsNil(o.UserPathTemplate) {
 		return true
 	}
 
@@ -237,26 +240,34 @@ func (o *PatchedSCIMSourceRequest) SetUserPathTemplate(v string) {
 }
 
 func (o PatchedSCIMSourceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Slug != nil {
-		toSerialize["slug"] = o.Slug
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.UserPropertyMappings != nil {
-		toSerialize["user_property_mappings"] = o.UserPropertyMappings
-	}
-	if o.GroupPropertyMappings != nil {
-		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
-	}
-	if o.UserPathTemplate != nil {
-		toSerialize["user_path_template"] = o.UserPathTemplate
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedSCIMSourceRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Slug) {
+		toSerialize["slug"] = o.Slug
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.UserPropertyMappings) {
+		toSerialize["user_property_mappings"] = o.UserPropertyMappings
+	}
+	if !IsNil(o.GroupPropertyMappings) {
+		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
+	}
+	if !IsNil(o.UserPathTemplate) {
+		toSerialize["user_path_template"] = o.UserPathTemplate
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedSCIMSourceRequest struct {

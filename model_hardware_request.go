@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the HardwareRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HardwareRequest{}
 
 // HardwareRequest struct for HardwareRequest
 type HardwareRequest struct {
@@ -24,6 +29,8 @@ type HardwareRequest struct {
 	CpuCount     *int32  `json:"cpu_count,omitempty"`
 	MemoryBytes  *int64  `json:"memory_bytes,omitempty"`
 }
+
+type _HardwareRequest HardwareRequest
 
 // NewHardwareRequest instantiates a new HardwareRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -45,7 +52,7 @@ func NewHardwareRequestWithDefaults() *HardwareRequest {
 
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *HardwareRequest) GetModel() string {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		var ret string
 		return ret
 	}
@@ -55,7 +62,7 @@ func (o *HardwareRequest) GetModel() string {
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HardwareRequest) GetModelOk() (*string, bool) {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		return nil, false
 	}
 	return o.Model, true
@@ -63,7 +70,7 @@ func (o *HardwareRequest) GetModelOk() (*string, bool) {
 
 // HasModel returns a boolean if a field has been set.
 func (o *HardwareRequest) HasModel() bool {
-	if o != nil && o.Model != nil {
+	if o != nil && !IsNil(o.Model) {
 		return true
 	}
 
@@ -77,7 +84,7 @@ func (o *HardwareRequest) SetModel(v string) {
 
 // GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
 func (o *HardwareRequest) GetManufacturer() string {
-	if o == nil || o.Manufacturer == nil {
+	if o == nil || IsNil(o.Manufacturer) {
 		var ret string
 		return ret
 	}
@@ -87,7 +94,7 @@ func (o *HardwareRequest) GetManufacturer() string {
 // GetManufacturerOk returns a tuple with the Manufacturer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HardwareRequest) GetManufacturerOk() (*string, bool) {
-	if o == nil || o.Manufacturer == nil {
+	if o == nil || IsNil(o.Manufacturer) {
 		return nil, false
 	}
 	return o.Manufacturer, true
@@ -95,7 +102,7 @@ func (o *HardwareRequest) GetManufacturerOk() (*string, bool) {
 
 // HasManufacturer returns a boolean if a field has been set.
 func (o *HardwareRequest) HasManufacturer() bool {
-	if o != nil && o.Manufacturer != nil {
+	if o != nil && !IsNil(o.Manufacturer) {
 		return true
 	}
 
@@ -133,7 +140,7 @@ func (o *HardwareRequest) SetSerial(v string) {
 
 // GetCpuName returns the CpuName field value if set, zero value otherwise.
 func (o *HardwareRequest) GetCpuName() string {
-	if o == nil || o.CpuName == nil {
+	if o == nil || IsNil(o.CpuName) {
 		var ret string
 		return ret
 	}
@@ -143,7 +150,7 @@ func (o *HardwareRequest) GetCpuName() string {
 // GetCpuNameOk returns a tuple with the CpuName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HardwareRequest) GetCpuNameOk() (*string, bool) {
-	if o == nil || o.CpuName == nil {
+	if o == nil || IsNil(o.CpuName) {
 		return nil, false
 	}
 	return o.CpuName, true
@@ -151,7 +158,7 @@ func (o *HardwareRequest) GetCpuNameOk() (*string, bool) {
 
 // HasCpuName returns a boolean if a field has been set.
 func (o *HardwareRequest) HasCpuName() bool {
-	if o != nil && o.CpuName != nil {
+	if o != nil && !IsNil(o.CpuName) {
 		return true
 	}
 
@@ -165,7 +172,7 @@ func (o *HardwareRequest) SetCpuName(v string) {
 
 // GetCpuCount returns the CpuCount field value if set, zero value otherwise.
 func (o *HardwareRequest) GetCpuCount() int32 {
-	if o == nil || o.CpuCount == nil {
+	if o == nil || IsNil(o.CpuCount) {
 		var ret int32
 		return ret
 	}
@@ -175,7 +182,7 @@ func (o *HardwareRequest) GetCpuCount() int32 {
 // GetCpuCountOk returns a tuple with the CpuCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HardwareRequest) GetCpuCountOk() (*int32, bool) {
-	if o == nil || o.CpuCount == nil {
+	if o == nil || IsNil(o.CpuCount) {
 		return nil, false
 	}
 	return o.CpuCount, true
@@ -183,7 +190,7 @@ func (o *HardwareRequest) GetCpuCountOk() (*int32, bool) {
 
 // HasCpuCount returns a boolean if a field has been set.
 func (o *HardwareRequest) HasCpuCount() bool {
-	if o != nil && o.CpuCount != nil {
+	if o != nil && !IsNil(o.CpuCount) {
 		return true
 	}
 
@@ -197,7 +204,7 @@ func (o *HardwareRequest) SetCpuCount(v int32) {
 
 // GetMemoryBytes returns the MemoryBytes field value if set, zero value otherwise.
 func (o *HardwareRequest) GetMemoryBytes() int64 {
-	if o == nil || o.MemoryBytes == nil {
+	if o == nil || IsNil(o.MemoryBytes) {
 		var ret int64
 		return ret
 	}
@@ -207,7 +214,7 @@ func (o *HardwareRequest) GetMemoryBytes() int64 {
 // GetMemoryBytesOk returns a tuple with the MemoryBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HardwareRequest) GetMemoryBytesOk() (*int64, bool) {
-	if o == nil || o.MemoryBytes == nil {
+	if o == nil || IsNil(o.MemoryBytes) {
 		return nil, false
 	}
 	return o.MemoryBytes, true
@@ -215,7 +222,7 @@ func (o *HardwareRequest) GetMemoryBytesOk() (*int64, bool) {
 
 // HasMemoryBytes returns a boolean if a field has been set.
 func (o *HardwareRequest) HasMemoryBytes() bool {
-	if o != nil && o.MemoryBytes != nil {
+	if o != nil && !IsNil(o.MemoryBytes) {
 		return true
 	}
 
@@ -228,26 +235,69 @@ func (o *HardwareRequest) SetMemoryBytes(v int64) {
 }
 
 func (o HardwareRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Model != nil {
-		toSerialize["model"] = o.Model
-	}
-	if o.Manufacturer != nil {
-		toSerialize["manufacturer"] = o.Manufacturer
-	}
-	if true {
-		toSerialize["serial"] = o.Serial
-	}
-	if o.CpuName != nil {
-		toSerialize["cpu_name"] = o.CpuName
-	}
-	if o.CpuCount != nil {
-		toSerialize["cpu_count"] = o.CpuCount
-	}
-	if o.MemoryBytes != nil {
-		toSerialize["memory_bytes"] = o.MemoryBytes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o HardwareRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Model) {
+		toSerialize["model"] = o.Model
+	}
+	if !IsNil(o.Manufacturer) {
+		toSerialize["manufacturer"] = o.Manufacturer
+	}
+	toSerialize["serial"] = o.Serial
+	if !IsNil(o.CpuName) {
+		toSerialize["cpu_name"] = o.CpuName
+	}
+	if !IsNil(o.CpuCount) {
+		toSerialize["cpu_count"] = o.CpuCount
+	}
+	if !IsNil(o.MemoryBytes) {
+		toSerialize["memory_bytes"] = o.MemoryBytes
+	}
+	return toSerialize, nil
+}
+
+func (o *HardwareRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"serial",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHardwareRequest := _HardwareRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHardwareRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HardwareRequest(varHardwareRequest)
+
+	return err
 }
 
 type NullableHardwareRequest struct {

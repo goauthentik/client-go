@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the ConnectionToken type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectionToken{}
 
 // ConnectionToken ConnectionToken Serializer
 type ConnectionToken struct {
@@ -24,6 +29,8 @@ type ConnectionToken struct {
 	EndpointObj Endpoint    `json:"endpoint_obj"`
 	User        PartialUser `json:"user"`
 }
+
+type _ConnectionToken ConnectionToken
 
 // NewConnectionToken instantiates a new ConnectionToken object
 // This constructor will assign default values to properties that have it defined,
@@ -49,7 +56,7 @@ func NewConnectionTokenWithDefaults() *ConnectionToken {
 
 // GetPk returns the Pk field value if set, zero value otherwise.
 func (o *ConnectionToken) GetPk() string {
-	if o == nil || o.Pk == nil {
+	if o == nil || IsNil(o.Pk) {
 		var ret string
 		return ret
 	}
@@ -59,7 +66,7 @@ func (o *ConnectionToken) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectionToken) GetPkOk() (*string, bool) {
-	if o == nil || o.Pk == nil {
+	if o == nil || IsNil(o.Pk) {
 		return nil, false
 	}
 	return o.Pk, true
@@ -67,7 +74,7 @@ func (o *ConnectionToken) GetPkOk() (*string, bool) {
 
 // HasPk returns a boolean if a field has been set.
 func (o *ConnectionToken) HasPk() bool {
-	if o != nil && o.Pk != nil {
+	if o != nil && !IsNil(o.Pk) {
 		return true
 	}
 
@@ -200,26 +207,65 @@ func (o *ConnectionToken) SetUser(v PartialUser) {
 }
 
 func (o ConnectionToken) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Pk != nil {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
-	if true {
-		toSerialize["provider_obj"] = o.ProviderObj
-	}
-	if true {
-		toSerialize["endpoint"] = o.Endpoint
-	}
-	if true {
-		toSerialize["endpoint_obj"] = o.EndpointObj
-	}
-	if true {
-		toSerialize["user"] = o.User
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConnectionToken) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Pk) {
+		toSerialize["pk"] = o.Pk
+	}
+	toSerialize["provider"] = o.Provider
+	toSerialize["provider_obj"] = o.ProviderObj
+	toSerialize["endpoint"] = o.Endpoint
+	toSerialize["endpoint_obj"] = o.EndpointObj
+	toSerialize["user"] = o.User
+	return toSerialize, nil
+}
+
+func (o *ConnectionToken) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"provider",
+		"provider_obj",
+		"endpoint",
+		"endpoint_obj",
+		"user",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConnectionToken := _ConnectionToken{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConnectionToken)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConnectionToken(varConnectionToken)
+
+	return err
 }
 
 type NullableConnectionToken struct {

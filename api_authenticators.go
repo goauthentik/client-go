@@ -14,18 +14,18 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// AuthenticatorsApiService AuthenticatorsApi service
-type AuthenticatorsApiService service
+// AuthenticatorsAPIService AuthenticatorsAPI service
+type AuthenticatorsAPIService service
 
 type ApiAuthenticatorsAdminAllListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	user       *int32
 }
 
@@ -46,7 +46,7 @@ Get all devices for current user
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminAllListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminAllList(ctx context.Context) ApiAuthenticatorsAdminAllListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminAllList(ctx context.Context) ApiAuthenticatorsAdminAllListRequest {
 	return ApiAuthenticatorsAdminAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -56,7 +56,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminAllList(ctx context.Contex
 // Execute executes the request
 //
 //	@return []Device
-func (a *AuthenticatorsApiService) AuthenticatorsAdminAllListExecute(r ApiAuthenticatorsAdminAllListRequest) ([]Device, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminAllListExecute(r ApiAuthenticatorsAdminAllListRequest) ([]Device, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -64,7 +64,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminAllListExecute(r ApiAuthen
 		localVarReturnValue []Device
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminAllList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminAllList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -76,7 +76,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminAllListExecute(r ApiAuthen
 	localVarFormParams := url.Values{}
 
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -105,9 +105,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminAllListExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -124,6 +124,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminAllListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -134,6 +135,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminAllListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -153,7 +155,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminAllListExecute(r ApiAuthen
 
 type ApiAuthenticatorsAdminDuoCreateRequest struct {
 	ctx              context.Context
-	ApiService       *AuthenticatorsApiService
+	ApiService       *AuthenticatorsAPIService
 	duoDeviceRequest *DuoDeviceRequest
 }
 
@@ -174,7 +176,7 @@ Viewset for Duo authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminDuoCreateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreate(ctx context.Context) ApiAuthenticatorsAdminDuoCreateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoCreate(ctx context.Context) ApiAuthenticatorsAdminDuoCreateRequest {
 	return ApiAuthenticatorsAdminDuoCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -184,7 +186,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreate(ctx context.Cont
 // Execute executes the request
 //
 //	@return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuthenticatorsAdminDuoCreateRequest) (*DuoDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoCreateExecute(r ApiAuthenticatorsAdminDuoCreateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -192,7 +194,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 		localVarReturnValue *DuoDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminDuoCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -235,9 +237,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -254,6 +256,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -264,6 +267,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -283,7 +287,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoCreateExecute(r ApiAuth
 
 type ApiAuthenticatorsAdminDuoDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -300,7 +304,7 @@ Viewset for Duo authenticator devices (for admins)
 	@param id A unique integer value identifying this Duo Device.
 	@return ApiAuthenticatorsAdminDuoDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoDestroyRequest {
 	return ApiAuthenticatorsAdminDuoDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -309,20 +313,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroy(ctx context.Con
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAuthenticatorsAdminDuoDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoDestroyExecute(r ApiAuthenticatorsAdminDuoDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminDuoDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -355,9 +359,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -374,6 +378,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -384,6 +389,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -394,7 +400,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoDestroyExecute(r ApiAut
 
 type ApiAuthenticatorsAdminDuoListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -443,7 +449,7 @@ Viewset for Duo authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminDuoListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoList(ctx context.Context) ApiAuthenticatorsAdminDuoListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoList(ctx context.Context) ApiAuthenticatorsAdminDuoListRequest {
 	return ApiAuthenticatorsAdminDuoListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -453,7 +459,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoList(ctx context.Contex
 // Execute executes the request
 //
 //	@return PaginatedDuoDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthenticatorsAdminDuoListRequest) (*PaginatedDuoDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoListExecute(r ApiAuthenticatorsAdminDuoListRequest) (*PaginatedDuoDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -461,7 +467,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 		localVarReturnValue *PaginatedDuoDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminDuoList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -473,19 +479,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -514,9 +520,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -533,6 +539,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -543,6 +550,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -562,7 +570,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoListExecute(r ApiAuthen
 
 type ApiAuthenticatorsAdminDuoPartialUpdateRequest struct {
 	ctx                     context.Context
-	ApiService              *AuthenticatorsApiService
+	ApiService              *AuthenticatorsAPIService
 	id                      int32
 	patchedDuoDeviceRequest *PatchedDuoDeviceRequest
 }
@@ -585,7 +593,7 @@ Viewset for Duo authenticator devices (for admins)
 	@param id A unique integer value identifying this Duo Device.
 	@return ApiAuthenticatorsAdminDuoPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoPartialUpdateRequest {
 	return ApiAuthenticatorsAdminDuoPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -596,7 +604,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdate(ctx conte
 // Execute executes the request
 //
 //	@return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r ApiAuthenticatorsAdminDuoPartialUpdateRequest) (*DuoDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoPartialUpdateExecute(r ApiAuthenticatorsAdminDuoPartialUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -604,13 +612,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 		localVarReturnValue *DuoDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminDuoPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -645,9 +653,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -664,6 +672,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -674,6 +683,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -693,7 +703,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoPartialUpdateExecute(r 
 
 type ApiAuthenticatorsAdminDuoRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -710,7 +720,7 @@ Viewset for Duo authenticator devices (for admins)
 	@param id A unique integer value identifying this Duo Device.
 	@return ApiAuthenticatorsAdminDuoRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoRetrieveRequest {
 	return ApiAuthenticatorsAdminDuoRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -721,7 +731,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieve(ctx context.Co
 // Execute executes the request
 //
 //	@return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAuthenticatorsAdminDuoRetrieveRequest) (*DuoDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAuthenticatorsAdminDuoRetrieveRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -729,13 +739,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 		localVarReturnValue *DuoDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminDuoRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -768,9 +778,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -787,6 +797,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -797,6 +808,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -816,7 +828,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoRetrieveExecute(r ApiAu
 
 type ApiAuthenticatorsAdminDuoUpdateRequest struct {
 	ctx              context.Context
-	ApiService       *AuthenticatorsApiService
+	ApiService       *AuthenticatorsAPIService
 	id               int32
 	duoDeviceRequest *DuoDeviceRequest
 }
@@ -839,7 +851,7 @@ Viewset for Duo authenticator devices (for admins)
 	@param id A unique integer value identifying this Duo Device.
 	@return ApiAuthenticatorsAdminDuoUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminDuoUpdateRequest {
 	return ApiAuthenticatorsAdminDuoUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -850,7 +862,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdate(ctx context.Cont
 // Execute executes the request
 //
 //	@return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuthenticatorsAdminDuoUpdateRequest) (*DuoDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuthenticatorsAdminDuoUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -858,13 +870,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 		localVarReturnValue *DuoDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminDuoUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminDuoUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -902,9 +914,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -921,6 +933,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -931,6 +944,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -950,7 +964,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminDuoUpdateExecute(r ApiAuth
 
 type ApiAuthenticatorsAdminEmailCreateRequest struct {
 	ctx                context.Context
-	ApiService         *AuthenticatorsApiService
+	ApiService         *AuthenticatorsAPIService
 	emailDeviceRequest *EmailDeviceRequest
 }
 
@@ -971,7 +985,7 @@ Viewset for email authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminEmailCreateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailCreate(ctx context.Context) ApiAuthenticatorsAdminEmailCreateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailCreate(ctx context.Context) ApiAuthenticatorsAdminEmailCreateRequest {
 	return ApiAuthenticatorsAdminEmailCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -981,7 +995,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailCreate(ctx context.Co
 // Execute executes the request
 //
 //	@return EmailDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailCreateExecute(r ApiAuthenticatorsAdminEmailCreateRequest) (*EmailDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailCreateExecute(r ApiAuthenticatorsAdminEmailCreateRequest) (*EmailDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -989,7 +1003,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailCreateExecute(r ApiAu
 		localVarReturnValue *EmailDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEmailCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEmailCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1032,9 +1046,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailCreateExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1051,6 +1065,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailCreateExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1061,6 +1076,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailCreateExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1080,7 +1096,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailCreateExecute(r ApiAu
 
 type ApiAuthenticatorsAdminEmailDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -1097,7 +1113,7 @@ Viewset for email authenticator devices (for admins)
 	@param id A unique integer value identifying this Email Device.
 	@return ApiAuthenticatorsAdminEmailDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminEmailDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminEmailDestroyRequest {
 	return ApiAuthenticatorsAdminEmailDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1106,20 +1122,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailDestroy(ctx context.C
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailDestroyExecute(r ApiAuthenticatorsAdminEmailDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailDestroyExecute(r ApiAuthenticatorsAdminEmailDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEmailDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEmailDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/email/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1152,9 +1168,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailDestroyExecute(r ApiA
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1171,6 +1187,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailDestroyExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1181,6 +1198,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailDestroyExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1191,7 +1209,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailDestroyExecute(r ApiA
 
 type ApiAuthenticatorsAdminEmailListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -1240,7 +1258,7 @@ Viewset for email authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminEmailListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailList(ctx context.Context) ApiAuthenticatorsAdminEmailListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailList(ctx context.Context) ApiAuthenticatorsAdminEmailListRequest {
 	return ApiAuthenticatorsAdminEmailListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1250,7 +1268,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailList(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedEmailDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailListExecute(r ApiAuthenticatorsAdminEmailListRequest) (*PaginatedEmailDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailListExecute(r ApiAuthenticatorsAdminEmailListRequest) (*PaginatedEmailDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1258,7 +1276,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailListExecute(r ApiAuth
 		localVarReturnValue *PaginatedEmailDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEmailList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEmailList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1270,19 +1288,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailListExecute(r ApiAuth
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1311,9 +1329,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailListExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1330,6 +1348,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailListExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1340,6 +1359,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailListExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1359,7 +1379,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailListExecute(r ApiAuth
 
 type ApiAuthenticatorsAdminEmailPartialUpdateRequest struct {
 	ctx                       context.Context
-	ApiService                *AuthenticatorsApiService
+	ApiService                *AuthenticatorsAPIService
 	id                        int32
 	patchedEmailDeviceRequest *PatchedEmailDeviceRequest
 }
@@ -1382,7 +1402,7 @@ Viewset for email authenticator devices (for admins)
 	@param id A unique integer value identifying this Email Device.
 	@return ApiAuthenticatorsAdminEmailPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminEmailPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminEmailPartialUpdateRequest {
 	return ApiAuthenticatorsAdminEmailPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1393,7 +1413,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailPartialUpdate(ctx con
 // Execute executes the request
 //
 //	@return EmailDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailPartialUpdateExecute(r ApiAuthenticatorsAdminEmailPartialUpdateRequest) (*EmailDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailPartialUpdateExecute(r ApiAuthenticatorsAdminEmailPartialUpdateRequest) (*EmailDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1401,13 +1421,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailPartialUpdateExecute(
 		localVarReturnValue *EmailDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEmailPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEmailPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/email/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1442,9 +1462,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailPartialUpdateExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1461,6 +1481,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailPartialUpdateExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1471,6 +1492,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailPartialUpdateExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1490,7 +1512,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailPartialUpdateExecute(
 
 type ApiAuthenticatorsAdminEmailRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -1507,7 +1529,7 @@ Viewset for email authenticator devices (for admins)
 	@param id A unique integer value identifying this Email Device.
 	@return ApiAuthenticatorsAdminEmailRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminEmailRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminEmailRetrieveRequest {
 	return ApiAuthenticatorsAdminEmailRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1518,7 +1540,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailRetrieve(ctx context.
 // Execute executes the request
 //
 //	@return EmailDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailRetrieveExecute(r ApiAuthenticatorsAdminEmailRetrieveRequest) (*EmailDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailRetrieveExecute(r ApiAuthenticatorsAdminEmailRetrieveRequest) (*EmailDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1526,13 +1548,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailRetrieveExecute(r Api
 		localVarReturnValue *EmailDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEmailRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEmailRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/email/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1565,9 +1587,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailRetrieveExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1584,6 +1606,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1594,6 +1617,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1613,7 +1637,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailRetrieveExecute(r Api
 
 type ApiAuthenticatorsAdminEmailUpdateRequest struct {
 	ctx                context.Context
-	ApiService         *AuthenticatorsApiService
+	ApiService         *AuthenticatorsAPIService
 	id                 int32
 	emailDeviceRequest *EmailDeviceRequest
 }
@@ -1636,7 +1660,7 @@ Viewset for email authenticator devices (for admins)
 	@param id A unique integer value identifying this Email Device.
 	@return ApiAuthenticatorsAdminEmailUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminEmailUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminEmailUpdateRequest {
 	return ApiAuthenticatorsAdminEmailUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1647,7 +1671,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailUpdate(ctx context.Co
 // Execute executes the request
 //
 //	@return EmailDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailUpdateExecute(r ApiAuthenticatorsAdminEmailUpdateRequest) (*EmailDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEmailUpdateExecute(r ApiAuthenticatorsAdminEmailUpdateRequest) (*EmailDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1655,13 +1679,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailUpdateExecute(r ApiAu
 		localVarReturnValue *EmailDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEmailUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEmailUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/email/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1699,9 +1723,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailUpdateExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1718,6 +1742,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailUpdateExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1728,6 +1753,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailUpdateExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1747,7 +1773,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEmailUpdateExecute(r ApiAu
 
 type ApiAuthenticatorsAdminEndpointCreateRequest struct {
 	ctx                         context.Context
-	ApiService                  *AuthenticatorsApiService
+	ApiService                  *AuthenticatorsAPIService
 	googleEndpointDeviceRequest *GoogleEndpointDeviceRequest
 }
 
@@ -1768,7 +1794,7 @@ Viewset for Endpoint authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminEndpointCreateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreate(ctx context.Context) ApiAuthenticatorsAdminEndpointCreateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointCreate(ctx context.Context) ApiAuthenticatorsAdminEndpointCreateRequest {
 	return ApiAuthenticatorsAdminEndpointCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1778,7 +1804,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreate(ctx context
 // Execute executes the request
 //
 //	@return GoogleEndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r ApiAuthenticatorsAdminEndpointCreateRequest) (*GoogleEndpointDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointCreateExecute(r ApiAuthenticatorsAdminEndpointCreateRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1786,7 +1812,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r Ap
 		localVarReturnValue *GoogleEndpointDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEndpointCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1829,9 +1855,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1848,6 +1874,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1858,6 +1885,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1877,7 +1905,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointCreateExecute(r Ap
 
 type ApiAuthenticatorsAdminEndpointDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	uuid       string
 }
 
@@ -1894,7 +1922,7 @@ Viewset for Endpoint authenticator devices (for admins)
 	@param uuid A UUID string identifying this Endpoint Device.
 	@return ApiAuthenticatorsAdminEndpointDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointDestroy(ctx context.Context, uuid string) ApiAuthenticatorsAdminEndpointDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointDestroy(ctx context.Context, uuid string) ApiAuthenticatorsAdminEndpointDestroyRequest {
 	return ApiAuthenticatorsAdminEndpointDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1903,20 +1931,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointDestroy(ctx contex
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointDestroyExecute(r ApiAuthenticatorsAdminEndpointDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointDestroyExecute(r ApiAuthenticatorsAdminEndpointDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEndpointDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/endpoint/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1949,9 +1977,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointDestroyExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1968,6 +1996,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointDestroyExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1978,6 +2007,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointDestroyExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1988,7 +2018,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointDestroyExecute(r A
 
 type ApiAuthenticatorsAdminEndpointListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -2037,7 +2067,7 @@ Viewset for Endpoint authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminEndpointListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointList(ctx context.Context) ApiAuthenticatorsAdminEndpointListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointList(ctx context.Context) ApiAuthenticatorsAdminEndpointListRequest {
 	return ApiAuthenticatorsAdminEndpointListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2047,7 +2077,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointList(ctx context.C
 // Execute executes the request
 //
 //	@return PaginatedGoogleEndpointDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiAuthenticatorsAdminEndpointListRequest) (*PaginatedGoogleEndpointDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointListExecute(r ApiAuthenticatorsAdminEndpointListRequest) (*PaginatedGoogleEndpointDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2055,7 +2085,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiA
 		localVarReturnValue *PaginatedGoogleEndpointDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEndpointList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2067,19 +2097,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiA
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2108,9 +2138,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2127,6 +2157,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2137,6 +2168,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2156,7 +2188,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointListExecute(r ApiA
 
 type ApiAuthenticatorsAdminEndpointPartialUpdateRequest struct {
 	ctx                                context.Context
-	ApiService                         *AuthenticatorsApiService
+	ApiService                         *AuthenticatorsAPIService
 	uuid                               string
 	patchedGoogleEndpointDeviceRequest *PatchedGoogleEndpointDeviceRequest
 }
@@ -2179,7 +2211,7 @@ Viewset for Endpoint authenticator devices (for admins)
 	@param uuid A UUID string identifying this Endpoint Device.
 	@return ApiAuthenticatorsAdminEndpointPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdate(ctx context.Context, uuid string) ApiAuthenticatorsAdminEndpointPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointPartialUpdate(ctx context.Context, uuid string) ApiAuthenticatorsAdminEndpointPartialUpdateRequest {
 	return ApiAuthenticatorsAdminEndpointPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2190,7 +2222,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdate(ctx 
 // Execute executes the request
 //
 //	@return GoogleEndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdateExecute(r ApiAuthenticatorsAdminEndpointPartialUpdateRequest) (*GoogleEndpointDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointPartialUpdateExecute(r ApiAuthenticatorsAdminEndpointPartialUpdateRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2198,13 +2230,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdateExecu
 		localVarReturnValue *GoogleEndpointDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEndpointPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/endpoint/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2239,9 +2271,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdateExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2258,6 +2290,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdateExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2268,6 +2301,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdateExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2287,7 +2321,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointPartialUpdateExecu
 
 type ApiAuthenticatorsAdminEndpointRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	uuid       string
 }
 
@@ -2304,7 +2338,7 @@ Viewset for Endpoint authenticator devices (for admins)
 	@param uuid A UUID string identifying this Endpoint Device.
 	@return ApiAuthenticatorsAdminEndpointRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieve(ctx context.Context, uuid string) ApiAuthenticatorsAdminEndpointRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointRetrieve(ctx context.Context, uuid string) ApiAuthenticatorsAdminEndpointRetrieveRequest {
 	return ApiAuthenticatorsAdminEndpointRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2315,7 +2349,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieve(ctx conte
 // Execute executes the request
 //
 //	@return GoogleEndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieveExecute(r ApiAuthenticatorsAdminEndpointRetrieveRequest) (*GoogleEndpointDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointRetrieveExecute(r ApiAuthenticatorsAdminEndpointRetrieveRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2323,13 +2357,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieveExecute(r 
 		localVarReturnValue *GoogleEndpointDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEndpointRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/endpoint/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2362,9 +2396,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieveExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2381,6 +2415,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieveExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2391,6 +2426,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieveExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2410,7 +2446,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointRetrieveExecute(r 
 
 type ApiAuthenticatorsAdminEndpointUpdateRequest struct {
 	ctx                         context.Context
-	ApiService                  *AuthenticatorsApiService
+	ApiService                  *AuthenticatorsAPIService
 	uuid                        string
 	googleEndpointDeviceRequest *GoogleEndpointDeviceRequest
 }
@@ -2433,7 +2469,7 @@ Viewset for Endpoint authenticator devices (for admins)
 	@param uuid A UUID string identifying this Endpoint Device.
 	@return ApiAuthenticatorsAdminEndpointUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdate(ctx context.Context, uuid string) ApiAuthenticatorsAdminEndpointUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointUpdate(ctx context.Context, uuid string) ApiAuthenticatorsAdminEndpointUpdateRequest {
 	return ApiAuthenticatorsAdminEndpointUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2444,7 +2480,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdate(ctx context
 // Execute executes the request
 //
 //	@return GoogleEndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r ApiAuthenticatorsAdminEndpointUpdateRequest) (*GoogleEndpointDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminEndpointUpdateExecute(r ApiAuthenticatorsAdminEndpointUpdateRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -2452,13 +2488,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r Ap
 		localVarReturnValue *GoogleEndpointDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminEndpointUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminEndpointUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/endpoint/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2496,9 +2532,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2515,6 +2551,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2525,6 +2562,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2544,7 +2582,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminEndpointUpdateExecute(r Ap
 
 type ApiAuthenticatorsAdminSmsCreateRequest struct {
 	ctx              context.Context
-	ApiService       *AuthenticatorsApiService
+	ApiService       *AuthenticatorsAPIService
 	sMSDeviceRequest *SMSDeviceRequest
 }
 
@@ -2565,7 +2603,7 @@ Viewset for sms authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminSmsCreateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreate(ctx context.Context) ApiAuthenticatorsAdminSmsCreateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsCreate(ctx context.Context) ApiAuthenticatorsAdminSmsCreateRequest {
 	return ApiAuthenticatorsAdminSmsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2575,7 +2613,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreate(ctx context.Cont
 // Execute executes the request
 //
 //	@return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreateExecute(r ApiAuthenticatorsAdminSmsCreateRequest) (*SMSDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsCreateExecute(r ApiAuthenticatorsAdminSmsCreateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2583,7 +2621,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreateExecute(r ApiAuth
 		localVarReturnValue *SMSDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminSmsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminSmsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2626,9 +2664,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreateExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2645,6 +2683,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2655,6 +2694,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2674,7 +2714,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsCreateExecute(r ApiAuth
 
 type ApiAuthenticatorsAdminSmsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -2691,7 +2731,7 @@ Viewset for sms authenticator devices (for admins)
 	@param id A unique integer value identifying this SMS Device.
 	@return ApiAuthenticatorsAdminSmsDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsDestroyRequest {
 	return ApiAuthenticatorsAdminSmsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2700,20 +2740,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsDestroy(ctx context.Con
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsDestroyExecute(r ApiAuthenticatorsAdminSmsDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsDestroyExecute(r ApiAuthenticatorsAdminSmsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminSmsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminSmsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2746,9 +2786,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsDestroyExecute(r ApiAut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2765,6 +2805,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsDestroyExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2775,6 +2816,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsDestroyExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2785,7 +2827,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsDestroyExecute(r ApiAut
 
 type ApiAuthenticatorsAdminSmsListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -2834,7 +2876,7 @@ Viewset for sms authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminSmsListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsList(ctx context.Context) ApiAuthenticatorsAdminSmsListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsList(ctx context.Context) ApiAuthenticatorsAdminSmsListRequest {
 	return ApiAuthenticatorsAdminSmsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2844,7 +2886,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsList(ctx context.Contex
 // Execute executes the request
 //
 //	@return PaginatedSMSDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthenticatorsAdminSmsListRequest) (*PaginatedSMSDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsListExecute(r ApiAuthenticatorsAdminSmsListRequest) (*PaginatedSMSDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2852,7 +2894,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 		localVarReturnValue *PaginatedSMSDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminSmsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminSmsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2864,19 +2906,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2905,9 +2947,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2924,6 +2966,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2934,6 +2977,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2953,7 +2997,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsListExecute(r ApiAuthen
 
 type ApiAuthenticatorsAdminSmsPartialUpdateRequest struct {
 	ctx                     context.Context
-	ApiService              *AuthenticatorsApiService
+	ApiService              *AuthenticatorsAPIService
 	id                      int32
 	patchedSMSDeviceRequest *PatchedSMSDeviceRequest
 }
@@ -2976,7 +3020,7 @@ Viewset for sms authenticator devices (for admins)
 	@param id A unique integer value identifying this SMS Device.
 	@return ApiAuthenticatorsAdminSmsPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsPartialUpdateRequest {
 	return ApiAuthenticatorsAdminSmsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2987,7 +3031,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdate(ctx conte
 // Execute executes the request
 //
 //	@return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdateExecute(r ApiAuthenticatorsAdminSmsPartialUpdateRequest) (*SMSDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsPartialUpdateExecute(r ApiAuthenticatorsAdminSmsPartialUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2995,13 +3039,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdateExecute(r 
 		localVarReturnValue *SMSDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminSmsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminSmsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3036,9 +3080,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3055,6 +3099,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3065,6 +3110,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3084,7 +3130,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsPartialUpdateExecute(r 
 
 type ApiAuthenticatorsAdminSmsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -3101,7 +3147,7 @@ Viewset for sms authenticator devices (for admins)
 	@param id A unique integer value identifying this SMS Device.
 	@return ApiAuthenticatorsAdminSmsRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsRetrieveRequest {
 	return ApiAuthenticatorsAdminSmsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3112,7 +3158,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieve(ctx context.Co
 // Execute executes the request
 //
 //	@return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAuthenticatorsAdminSmsRetrieveRequest) (*SMSDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAuthenticatorsAdminSmsRetrieveRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3120,13 +3166,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAu
 		localVarReturnValue *SMSDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminSmsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminSmsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3159,9 +3205,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3178,6 +3224,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3188,6 +3235,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3207,7 +3255,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsRetrieveExecute(r ApiAu
 
 type ApiAuthenticatorsAdminSmsUpdateRequest struct {
 	ctx              context.Context
-	ApiService       *AuthenticatorsApiService
+	ApiService       *AuthenticatorsAPIService
 	id               int32
 	sMSDeviceRequest *SMSDeviceRequest
 }
@@ -3230,7 +3278,7 @@ Viewset for sms authenticator devices (for admins)
 	@param id A unique integer value identifying this SMS Device.
 	@return ApiAuthenticatorsAdminSmsUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminSmsUpdateRequest {
 	return ApiAuthenticatorsAdminSmsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3241,7 +3289,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdate(ctx context.Cont
 // Execute executes the request
 //
 //	@return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdateExecute(r ApiAuthenticatorsAdminSmsUpdateRequest) (*SMSDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminSmsUpdateExecute(r ApiAuthenticatorsAdminSmsUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -3249,13 +3297,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdateExecute(r ApiAuth
 		localVarReturnValue *SMSDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminSmsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminSmsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3293,9 +3341,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdateExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3312,6 +3360,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3322,6 +3371,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3341,7 +3391,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminSmsUpdateExecute(r ApiAuth
 
 type ApiAuthenticatorsAdminStaticCreateRequest struct {
 	ctx                 context.Context
-	ApiService          *AuthenticatorsApiService
+	ApiService          *AuthenticatorsAPIService
 	staticDeviceRequest *StaticDeviceRequest
 }
 
@@ -3362,7 +3412,7 @@ Viewset for static authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminStaticCreateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreate(ctx context.Context) ApiAuthenticatorsAdminStaticCreateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticCreate(ctx context.Context) ApiAuthenticatorsAdminStaticCreateRequest {
 	return ApiAuthenticatorsAdminStaticCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3372,7 +3422,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreate(ctx context.C
 // Execute executes the request
 //
 //	@return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreateExecute(r ApiAuthenticatorsAdminStaticCreateRequest) (*StaticDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticCreateExecute(r ApiAuthenticatorsAdminStaticCreateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -3380,7 +3430,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreateExecute(r ApiA
 		localVarReturnValue *StaticDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminStaticCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminStaticCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3423,9 +3473,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreateExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3442,6 +3492,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreateExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3452,6 +3503,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreateExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3471,7 +3523,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticCreateExecute(r ApiA
 
 type ApiAuthenticatorsAdminStaticDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -3488,7 +3540,7 @@ Viewset for static authenticator devices (for admins)
 	@param id A unique integer value identifying this Static Device.
 	@return ApiAuthenticatorsAdminStaticDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticDestroyRequest {
 	return ApiAuthenticatorsAdminStaticDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3497,20 +3549,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticDestroy(ctx context.
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticDestroyExecute(r ApiAuthenticatorsAdminStaticDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticDestroyExecute(r ApiAuthenticatorsAdminStaticDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminStaticDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminStaticDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3543,9 +3595,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticDestroyExecute(r Api
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3562,6 +3614,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticDestroyExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3572,6 +3625,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticDestroyExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3582,7 +3636,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticDestroyExecute(r Api
 
 type ApiAuthenticatorsAdminStaticListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -3631,7 +3685,7 @@ Viewset for static authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminStaticListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticList(ctx context.Context) ApiAuthenticatorsAdminStaticListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticList(ctx context.Context) ApiAuthenticatorsAdminStaticListRequest {
 	return ApiAuthenticatorsAdminStaticListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3641,7 +3695,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticList(ctx context.Con
 // Execute executes the request
 //
 //	@return PaginatedStaticDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAuthenticatorsAdminStaticListRequest) (*PaginatedStaticDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticListExecute(r ApiAuthenticatorsAdminStaticListRequest) (*PaginatedStaticDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3649,7 +3703,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 		localVarReturnValue *PaginatedStaticDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminStaticList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminStaticList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3661,19 +3715,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3702,9 +3756,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3721,6 +3775,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3731,6 +3786,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3750,7 +3806,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticListExecute(r ApiAut
 
 type ApiAuthenticatorsAdminStaticPartialUpdateRequest struct {
 	ctx                        context.Context
-	ApiService                 *AuthenticatorsApiService
+	ApiService                 *AuthenticatorsAPIService
 	id                         int32
 	patchedStaticDeviceRequest *PatchedStaticDeviceRequest
 }
@@ -3773,7 +3829,7 @@ Viewset for static authenticator devices (for admins)
 	@param id A unique integer value identifying this Static Device.
 	@return ApiAuthenticatorsAdminStaticPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticPartialUpdateRequest {
 	return ApiAuthenticatorsAdminStaticPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3784,7 +3840,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdate(ctx co
 // Execute executes the request
 //
 //	@return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdateExecute(r ApiAuthenticatorsAdminStaticPartialUpdateRequest) (*StaticDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticPartialUpdateExecute(r ApiAuthenticatorsAdminStaticPartialUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -3792,13 +3848,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdateExecute
 		localVarReturnValue *StaticDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminStaticPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminStaticPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3833,9 +3889,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdateExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3852,6 +3908,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdateExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3862,6 +3919,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdateExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3881,7 +3939,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticPartialUpdateExecute
 
 type ApiAuthenticatorsAdminStaticRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -3898,7 +3956,7 @@ Viewset for static authenticator devices (for admins)
 	@param id A unique integer value identifying this Static Device.
 	@return ApiAuthenticatorsAdminStaticRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticRetrieveRequest {
 	return ApiAuthenticatorsAdminStaticRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3909,7 +3967,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieve(ctx context
 // Execute executes the request
 //
 //	@return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r ApiAuthenticatorsAdminStaticRetrieveRequest) (*StaticDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticRetrieveExecute(r ApiAuthenticatorsAdminStaticRetrieveRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3917,13 +3975,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 		localVarReturnValue *StaticDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminStaticRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminStaticRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3956,9 +4014,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3975,6 +4033,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3985,6 +4044,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4004,7 +4064,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticRetrieveExecute(r Ap
 
 type ApiAuthenticatorsAdminStaticUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *AuthenticatorsApiService
+	ApiService          *AuthenticatorsAPIService
 	id                  int32
 	staticDeviceRequest *StaticDeviceRequest
 }
@@ -4027,7 +4087,7 @@ Viewset for static authenticator devices (for admins)
 	@param id A unique integer value identifying this Static Device.
 	@return ApiAuthenticatorsAdminStaticUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminStaticUpdateRequest {
 	return ApiAuthenticatorsAdminStaticUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4038,7 +4098,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdate(ctx context.C
 // Execute executes the request
 //
 //	@return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdateExecute(r ApiAuthenticatorsAdminStaticUpdateRequest) (*StaticDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminStaticUpdateExecute(r ApiAuthenticatorsAdminStaticUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -4046,13 +4106,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdateExecute(r ApiA
 		localVarReturnValue *StaticDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminStaticUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminStaticUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4090,9 +4150,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdateExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4109,6 +4169,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdateExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4119,6 +4180,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdateExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4138,7 +4200,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminStaticUpdateExecute(r ApiA
 
 type ApiAuthenticatorsAdminTotpCreateRequest struct {
 	ctx               context.Context
-	ApiService        *AuthenticatorsApiService
+	ApiService        *AuthenticatorsAPIService
 	tOTPDeviceRequest *TOTPDeviceRequest
 }
 
@@ -4159,7 +4221,7 @@ Viewset for totp authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminTotpCreateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreate(ctx context.Context) ApiAuthenticatorsAdminTotpCreateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpCreate(ctx context.Context) ApiAuthenticatorsAdminTotpCreateRequest {
 	return ApiAuthenticatorsAdminTotpCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4169,7 +4231,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreate(ctx context.Con
 // Execute executes the request
 //
 //	@return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreateExecute(r ApiAuthenticatorsAdminTotpCreateRequest) (*TOTPDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpCreateExecute(r ApiAuthenticatorsAdminTotpCreateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4177,7 +4239,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreateExecute(r ApiAut
 		localVarReturnValue *TOTPDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminTotpCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminTotpCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4220,9 +4282,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreateExecute(r ApiAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4239,6 +4301,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreateExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4249,6 +4312,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreateExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4268,7 +4332,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpCreateExecute(r ApiAut
 
 type ApiAuthenticatorsAdminTotpDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -4285,7 +4349,7 @@ Viewset for totp authenticator devices (for admins)
 	@param id A unique integer value identifying this TOTP Device.
 	@return ApiAuthenticatorsAdminTotpDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpDestroyRequest {
 	return ApiAuthenticatorsAdminTotpDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4294,20 +4358,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpDestroy(ctx context.Co
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpDestroyExecute(r ApiAuthenticatorsAdminTotpDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpDestroyExecute(r ApiAuthenticatorsAdminTotpDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminTotpDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminTotpDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4340,9 +4404,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpDestroyExecute(r ApiAu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4359,6 +4423,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpDestroyExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4369,6 +4434,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpDestroyExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4379,7 +4445,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpDestroyExecute(r ApiAu
 
 type ApiAuthenticatorsAdminTotpListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -4428,7 +4494,7 @@ Viewset for totp authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminTotpListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpList(ctx context.Context) ApiAuthenticatorsAdminTotpListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpList(ctx context.Context) ApiAuthenticatorsAdminTotpListRequest {
 	return ApiAuthenticatorsAdminTotpListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4438,7 +4504,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpList(ctx context.Conte
 // Execute executes the request
 //
 //	@return PaginatedTOTPDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthenticatorsAdminTotpListRequest) (*PaginatedTOTPDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpListExecute(r ApiAuthenticatorsAdminTotpListRequest) (*PaginatedTOTPDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4446,7 +4512,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 		localVarReturnValue *PaginatedTOTPDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminTotpList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminTotpList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4458,19 +4524,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4499,9 +4565,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4518,6 +4584,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4528,6 +4595,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4547,7 +4615,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpListExecute(r ApiAuthe
 
 type ApiAuthenticatorsAdminTotpPartialUpdateRequest struct {
 	ctx                      context.Context
-	ApiService               *AuthenticatorsApiService
+	ApiService               *AuthenticatorsAPIService
 	id                       int32
 	patchedTOTPDeviceRequest *PatchedTOTPDeviceRequest
 }
@@ -4570,7 +4638,7 @@ Viewset for totp authenticator devices (for admins)
 	@param id A unique integer value identifying this TOTP Device.
 	@return ApiAuthenticatorsAdminTotpPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpPartialUpdateRequest {
 	return ApiAuthenticatorsAdminTotpPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4581,7 +4649,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdate(ctx cont
 // Execute executes the request
 //
 //	@return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdateExecute(r ApiAuthenticatorsAdminTotpPartialUpdateRequest) (*TOTPDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpPartialUpdateExecute(r ApiAuthenticatorsAdminTotpPartialUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -4589,13 +4657,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdateExecute(r
 		localVarReturnValue *TOTPDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminTotpPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminTotpPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4630,9 +4698,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4649,6 +4717,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4659,6 +4728,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4678,7 +4748,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpPartialUpdateExecute(r
 
 type ApiAuthenticatorsAdminTotpRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -4695,7 +4765,7 @@ Viewset for totp authenticator devices (for admins)
 	@param id A unique integer value identifying this TOTP Device.
 	@return ApiAuthenticatorsAdminTotpRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpRetrieveRequest {
 	return ApiAuthenticatorsAdminTotpRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4706,7 +4776,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieve(ctx context.C
 // Execute executes the request
 //
 //	@return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiAuthenticatorsAdminTotpRetrieveRequest) (*TOTPDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpRetrieveExecute(r ApiAuthenticatorsAdminTotpRetrieveRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4714,13 +4784,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 		localVarReturnValue *TOTPDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminTotpRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminTotpRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4753,9 +4823,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4772,6 +4842,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4782,6 +4853,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4801,7 +4873,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpRetrieveExecute(r ApiA
 
 type ApiAuthenticatorsAdminTotpUpdateRequest struct {
 	ctx               context.Context
-	ApiService        *AuthenticatorsApiService
+	ApiService        *AuthenticatorsAPIService
 	id                int32
 	tOTPDeviceRequest *TOTPDeviceRequest
 }
@@ -4824,7 +4896,7 @@ Viewset for totp authenticator devices (for admins)
 	@param id A unique integer value identifying this TOTP Device.
 	@return ApiAuthenticatorsAdminTotpUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminTotpUpdateRequest {
 	return ApiAuthenticatorsAdminTotpUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4835,7 +4907,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdate(ctx context.Con
 // Execute executes the request
 //
 //	@return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdateExecute(r ApiAuthenticatorsAdminTotpUpdateRequest) (*TOTPDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminTotpUpdateExecute(r ApiAuthenticatorsAdminTotpUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -4843,13 +4915,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdateExecute(r ApiAut
 		localVarReturnValue *TOTPDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminTotpUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminTotpUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4887,9 +4959,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdateExecute(r ApiAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4906,6 +4978,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdateExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4916,6 +4989,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdateExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4935,7 +5009,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminTotpUpdateExecute(r ApiAut
 
 type ApiAuthenticatorsAdminWebauthnCreateRequest struct {
 	ctx                   context.Context
-	ApiService            *AuthenticatorsApiService
+	ApiService            *AuthenticatorsAPIService
 	webAuthnDeviceRequest *WebAuthnDeviceRequest
 }
 
@@ -4956,7 +5030,7 @@ Viewset for WebAuthn authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminWebauthnCreateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreate(ctx context.Context) ApiAuthenticatorsAdminWebauthnCreateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnCreate(ctx context.Context) ApiAuthenticatorsAdminWebauthnCreateRequest {
 	return ApiAuthenticatorsAdminWebauthnCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4966,7 +5040,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreate(ctx context
 // Execute executes the request
 //
 //	@return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreateExecute(r ApiAuthenticatorsAdminWebauthnCreateRequest) (*WebAuthnDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnCreateExecute(r ApiAuthenticatorsAdminWebauthnCreateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4974,7 +5048,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreateExecute(r Ap
 		localVarReturnValue *WebAuthnDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminWebauthnCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminWebauthnCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5017,9 +5091,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5036,6 +5110,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5046,6 +5121,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5065,7 +5141,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnCreateExecute(r Ap
 
 type ApiAuthenticatorsAdminWebauthnDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -5082,7 +5158,7 @@ Viewset for WebAuthn authenticator devices (for admins)
 	@param id A unique integer value identifying this WebAuthn Device.
 	@return ApiAuthenticatorsAdminWebauthnDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnDestroy(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnDestroyRequest {
 	return ApiAuthenticatorsAdminWebauthnDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5091,20 +5167,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnDestroy(ctx contex
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnDestroyExecute(r ApiAuthenticatorsAdminWebauthnDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnDestroyExecute(r ApiAuthenticatorsAdminWebauthnDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminWebauthnDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminWebauthnDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5137,9 +5213,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnDestroyExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5156,6 +5232,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnDestroyExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5166,6 +5243,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnDestroyExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -5176,7 +5254,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnDestroyExecute(r A
 
 type ApiAuthenticatorsAdminWebauthnListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -5225,7 +5303,7 @@ Viewset for WebAuthn authenticator devices (for admins)
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAdminWebauthnListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnList(ctx context.Context) ApiAuthenticatorsAdminWebauthnListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnList(ctx context.Context) ApiAuthenticatorsAdminWebauthnListRequest {
 	return ApiAuthenticatorsAdminWebauthnListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5235,7 +5313,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnList(ctx context.C
 // Execute executes the request
 //
 //	@return PaginatedWebAuthnDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiAuthenticatorsAdminWebauthnListRequest) (*PaginatedWebAuthnDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnListExecute(r ApiAuthenticatorsAdminWebauthnListRequest) (*PaginatedWebAuthnDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5243,7 +5321,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 		localVarReturnValue *PaginatedWebAuthnDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminWebauthnList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminWebauthnList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5255,19 +5333,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5296,9 +5374,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5315,6 +5393,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5325,6 +5404,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5344,7 +5424,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnListExecute(r ApiA
 
 type ApiAuthenticatorsAdminWebauthnPartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *AuthenticatorsApiService
+	ApiService                   *AuthenticatorsAPIService
 	id                           int32
 	patchedWebAuthnDeviceRequest *PatchedWebAuthnDeviceRequest
 }
@@ -5367,7 +5447,7 @@ Viewset for WebAuthn authenticator devices (for admins)
 	@param id A unique integer value identifying this WebAuthn Device.
 	@return ApiAuthenticatorsAdminWebauthnPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnPartialUpdateRequest {
 	return ApiAuthenticatorsAdminWebauthnPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5378,7 +5458,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdate(ctx 
 // Execute executes the request
 //
 //	@return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdateExecute(r ApiAuthenticatorsAdminWebauthnPartialUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnPartialUpdateExecute(r ApiAuthenticatorsAdminWebauthnPartialUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -5386,13 +5466,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdateExecu
 		localVarReturnValue *WebAuthnDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminWebauthnPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminWebauthnPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5427,9 +5507,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdateExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5446,6 +5526,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdateExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5456,6 +5537,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdateExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5475,7 +5557,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnPartialUpdateExecu
 
 type ApiAuthenticatorsAdminWebauthnRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -5492,7 +5574,7 @@ Viewset for WebAuthn authenticator devices (for admins)
 	@param id A unique integer value identifying this WebAuthn Device.
 	@return ApiAuthenticatorsAdminWebauthnRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnRetrieve(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnRetrieveRequest {
 	return ApiAuthenticatorsAdminWebauthnRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5503,7 +5585,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieve(ctx conte
 // Execute executes the request
 //
 //	@return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r ApiAuthenticatorsAdminWebauthnRetrieveRequest) (*WebAuthnDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnRetrieveExecute(r ApiAuthenticatorsAdminWebauthnRetrieveRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5511,13 +5593,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 		localVarReturnValue *WebAuthnDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminWebauthnRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminWebauthnRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5550,9 +5632,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5569,6 +5651,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5579,6 +5662,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5598,7 +5682,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnRetrieveExecute(r 
 
 type ApiAuthenticatorsAdminWebauthnUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *AuthenticatorsApiService
+	ApiService            *AuthenticatorsAPIService
 	id                    int32
 	webAuthnDeviceRequest *WebAuthnDeviceRequest
 }
@@ -5621,7 +5705,7 @@ Viewset for WebAuthn authenticator devices (for admins)
 	@param id A unique integer value identifying this WebAuthn Device.
 	@return ApiAuthenticatorsAdminWebauthnUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnUpdate(ctx context.Context, id int32) ApiAuthenticatorsAdminWebauthnUpdateRequest {
 	return ApiAuthenticatorsAdminWebauthnUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5632,7 +5716,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdate(ctx context
 // Execute executes the request
 //
 //	@return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdateExecute(r ApiAuthenticatorsAdminWebauthnUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAdminWebauthnUpdateExecute(r ApiAuthenticatorsAdminWebauthnUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -5640,13 +5724,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdateExecute(r Ap
 		localVarReturnValue *WebAuthnDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAdminWebauthnUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAdminWebauthnUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/admin/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5684,9 +5768,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5703,6 +5787,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5713,6 +5798,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5732,7 +5818,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAdminWebauthnUpdateExecute(r Ap
 
 type ApiAuthenticatorsAllListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 }
 
 func (r ApiAuthenticatorsAllListRequest) Execute() ([]Device, *http.Response, error) {
@@ -5747,7 +5833,7 @@ Get all devices for current user
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsAllListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsAllList(ctx context.Context) ApiAuthenticatorsAllListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsAllList(ctx context.Context) ApiAuthenticatorsAllListRequest {
 	return ApiAuthenticatorsAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5757,7 +5843,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllList(ctx context.Context) Ap
 // Execute executes the request
 //
 //	@return []Device
-func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticatorsAllListRequest) ([]Device, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsAllListExecute(r ApiAuthenticatorsAllListRequest) ([]Device, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5765,7 +5851,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticat
 		localVarReturnValue []Device
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsAllList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsAllList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5803,9 +5889,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5822,6 +5908,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5832,6 +5919,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5851,7 +5939,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsAllListExecute(r ApiAuthenticat
 
 type ApiAuthenticatorsDuoDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -5868,7 +5956,7 @@ Viewset for Duo authenticator devices
 	@param id A unique integer value identifying this Duo Device.
 	@return ApiAuthenticatorsDuoDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroy(ctx context.Context, id int32) ApiAuthenticatorsDuoDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoDestroy(ctx context.Context, id int32) ApiAuthenticatorsDuoDestroyRequest {
 	return ApiAuthenticatorsDuoDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5877,20 +5965,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroy(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenticatorsDuoDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoDestroyExecute(r ApiAuthenticatorsDuoDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsDuoDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5923,9 +6011,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenti
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5942,6 +6030,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5952,6 +6041,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -5962,7 +6052,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoDestroyExecute(r ApiAuthenti
 
 type ApiAuthenticatorsDuoListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -6011,7 +6101,7 @@ Viewset for Duo authenticator devices
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsDuoListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoList(ctx context.Context) ApiAuthenticatorsDuoListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoList(ctx context.Context) ApiAuthenticatorsDuoListRequest {
 	return ApiAuthenticatorsDuoListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6021,7 +6111,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoList(ctx context.Context) Ap
 // Execute executes the request
 //
 //	@return PaginatedDuoDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticatorsDuoListRequest) (*PaginatedDuoDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoListExecute(r ApiAuthenticatorsDuoListRequest) (*PaginatedDuoDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6029,7 +6119,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 		localVarReturnValue *PaginatedDuoDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsDuoList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6041,19 +6131,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6082,9 +6172,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6101,6 +6191,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6111,6 +6202,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6130,7 +6222,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoListExecute(r ApiAuthenticat
 
 type ApiAuthenticatorsDuoPartialUpdateRequest struct {
 	ctx                     context.Context
-	ApiService              *AuthenticatorsApiService
+	ApiService              *AuthenticatorsAPIService
 	id                      int32
 	patchedDuoDeviceRequest *PatchedDuoDeviceRequest
 }
@@ -6153,7 +6245,7 @@ Viewset for Duo authenticator devices
 	@param id A unique integer value identifying this Duo Device.
 	@return ApiAuthenticatorsDuoPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsDuoPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsDuoPartialUpdateRequest {
 	return ApiAuthenticatorsDuoPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6164,7 +6256,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdate(ctx context.Co
 // Execute executes the request
 //
 //	@return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAuthenticatorsDuoPartialUpdateRequest) (*DuoDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoPartialUpdateExecute(r ApiAuthenticatorsDuoPartialUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -6172,13 +6264,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 		localVarReturnValue *DuoDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsDuoPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6213,9 +6305,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6232,6 +6324,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6242,6 +6335,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6261,7 +6355,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoPartialUpdateExecute(r ApiAu
 
 type ApiAuthenticatorsDuoRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -6278,7 +6372,7 @@ Viewset for Duo authenticator devices
 	@param id A unique integer value identifying this Duo Device.
 	@return ApiAuthenticatorsDuoRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieve(ctx context.Context, id int32) ApiAuthenticatorsDuoRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoRetrieve(ctx context.Context, id int32) ApiAuthenticatorsDuoRetrieveRequest {
 	return ApiAuthenticatorsDuoRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6289,7 +6383,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieve(ctx context.Context
 // Execute executes the request
 //
 //	@return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthenticatorsDuoRetrieveRequest) (*DuoDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoRetrieveExecute(r ApiAuthenticatorsDuoRetrieveRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6297,13 +6391,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 		localVarReturnValue *DuoDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsDuoRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6336,9 +6430,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6355,6 +6449,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6365,6 +6460,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6384,7 +6480,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoRetrieveExecute(r ApiAuthent
 
 type ApiAuthenticatorsDuoUpdateRequest struct {
 	ctx              context.Context
-	ApiService       *AuthenticatorsApiService
+	ApiService       *AuthenticatorsAPIService
 	id               int32
 	duoDeviceRequest *DuoDeviceRequest
 }
@@ -6407,7 +6503,7 @@ Viewset for Duo authenticator devices
 	@param id A unique integer value identifying this Duo Device.
 	@return ApiAuthenticatorsDuoUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdate(ctx context.Context, id int32) ApiAuthenticatorsDuoUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoUpdate(ctx context.Context, id int32) ApiAuthenticatorsDuoUpdateRequest {
 	return ApiAuthenticatorsDuoUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6418,7 +6514,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdate(ctx context.Context, 
 // Execute executes the request
 //
 //	@return DuoDevice
-func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthenticatorsDuoUpdateRequest) (*DuoDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoUpdateExecute(r ApiAuthenticatorsDuoUpdateRequest) (*DuoDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -6426,13 +6522,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 		localVarReturnValue *DuoDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsDuoUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6470,9 +6566,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6489,6 +6585,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6499,6 +6596,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6518,7 +6616,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUpdateExecute(r ApiAuthentic
 
 type ApiAuthenticatorsDuoUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -6535,7 +6633,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Duo Device.
 	@return ApiAuthenticatorsDuoUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByList(ctx context.Context, id int32) ApiAuthenticatorsDuoUsedByListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoUsedByList(ctx context.Context, id int32) ApiAuthenticatorsDuoUsedByListRequest {
 	return ApiAuthenticatorsDuoUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6546,7 +6644,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByList(ctx context.Conte
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthenticatorsDuoUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsDuoUsedByListExecute(r ApiAuthenticatorsDuoUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6554,13 +6652,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsDuoUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsDuoUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/duo/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6593,9 +6691,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6612,6 +6710,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6622,6 +6721,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6641,7 +6741,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsDuoUsedByListExecute(r ApiAuthe
 
 type ApiAuthenticatorsEmailDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -6658,7 +6758,7 @@ Viewset for email authenticator devices
 	@param id A unique integer value identifying this Email Device.
 	@return ApiAuthenticatorsEmailDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsEmailDestroy(ctx context.Context, id int32) ApiAuthenticatorsEmailDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailDestroy(ctx context.Context, id int32) ApiAuthenticatorsEmailDestroyRequest {
 	return ApiAuthenticatorsEmailDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6667,20 +6767,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailDestroy(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsEmailDestroyExecute(r ApiAuthenticatorsEmailDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailDestroyExecute(r ApiAuthenticatorsEmailDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEmailDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsEmailDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/email/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6713,9 +6813,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailDestroyExecute(r ApiAuthen
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -6732,6 +6832,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailDestroyExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -6742,6 +6843,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailDestroyExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -6752,7 +6854,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailDestroyExecute(r ApiAuthen
 
 type ApiAuthenticatorsEmailListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -6801,7 +6903,7 @@ Viewset for email authenticator devices
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsEmailListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsEmailList(ctx context.Context) ApiAuthenticatorsEmailListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailList(ctx context.Context) ApiAuthenticatorsEmailListRequest {
 	return ApiAuthenticatorsEmailListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6811,7 +6913,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailList(ctx context.Context) 
 // Execute executes the request
 //
 //	@return PaginatedEmailDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsEmailListExecute(r ApiAuthenticatorsEmailListRequest) (*PaginatedEmailDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailListExecute(r ApiAuthenticatorsEmailListRequest) (*PaginatedEmailDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6819,7 +6921,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailListExecute(r ApiAuthentic
 		localVarReturnValue *PaginatedEmailDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEmailList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsEmailList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6831,19 +6933,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailListExecute(r ApiAuthentic
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6872,9 +6974,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailListExecute(r ApiAuthentic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6891,6 +6993,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailListExecute(r ApiAuthentic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6901,6 +7004,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailListExecute(r ApiAuthentic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6920,7 +7024,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailListExecute(r ApiAuthentic
 
 type ApiAuthenticatorsEmailPartialUpdateRequest struct {
 	ctx                       context.Context
-	ApiService                *AuthenticatorsApiService
+	ApiService                *AuthenticatorsAPIService
 	id                        int32
 	patchedEmailDeviceRequest *PatchedEmailDeviceRequest
 }
@@ -6943,7 +7047,7 @@ Viewset for email authenticator devices
 	@param id A unique integer value identifying this Email Device.
 	@return ApiAuthenticatorsEmailPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsEmailPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsEmailPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsEmailPartialUpdateRequest {
 	return ApiAuthenticatorsEmailPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6954,7 +7058,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailPartialUpdate(ctx context.
 // Execute executes the request
 //
 //	@return EmailDevice
-func (a *AuthenticatorsApiService) AuthenticatorsEmailPartialUpdateExecute(r ApiAuthenticatorsEmailPartialUpdateRequest) (*EmailDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailPartialUpdateExecute(r ApiAuthenticatorsEmailPartialUpdateRequest) (*EmailDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -6962,13 +7066,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailPartialUpdateExecute(r Api
 		localVarReturnValue *EmailDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEmailPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsEmailPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/email/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7003,9 +7107,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7022,6 +7126,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7032,6 +7137,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7051,7 +7157,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailPartialUpdateExecute(r Api
 
 type ApiAuthenticatorsEmailRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -7068,7 +7174,7 @@ Viewset for email authenticator devices
 	@param id A unique integer value identifying this Email Device.
 	@return ApiAuthenticatorsEmailRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsEmailRetrieve(ctx context.Context, id int32) ApiAuthenticatorsEmailRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailRetrieve(ctx context.Context, id int32) ApiAuthenticatorsEmailRetrieveRequest {
 	return ApiAuthenticatorsEmailRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7079,7 +7185,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return EmailDevice
-func (a *AuthenticatorsApiService) AuthenticatorsEmailRetrieveExecute(r ApiAuthenticatorsEmailRetrieveRequest) (*EmailDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailRetrieveExecute(r ApiAuthenticatorsEmailRetrieveRequest) (*EmailDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7087,13 +7193,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailRetrieveExecute(r ApiAuthe
 		localVarReturnValue *EmailDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEmailRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsEmailRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/email/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7126,9 +7232,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailRetrieveExecute(r ApiAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7145,6 +7251,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailRetrieveExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7155,6 +7262,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailRetrieveExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7174,7 +7282,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailRetrieveExecute(r ApiAuthe
 
 type ApiAuthenticatorsEmailUpdateRequest struct {
 	ctx                context.Context
-	ApiService         *AuthenticatorsApiService
+	ApiService         *AuthenticatorsAPIService
 	id                 int32
 	emailDeviceRequest *EmailDeviceRequest
 }
@@ -7197,7 +7305,7 @@ Viewset for email authenticator devices
 	@param id A unique integer value identifying this Email Device.
 	@return ApiAuthenticatorsEmailUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsEmailUpdate(ctx context.Context, id int32) ApiAuthenticatorsEmailUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailUpdate(ctx context.Context, id int32) ApiAuthenticatorsEmailUpdateRequest {
 	return ApiAuthenticatorsEmailUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7208,7 +7316,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUpdate(ctx context.Context
 // Execute executes the request
 //
 //	@return EmailDevice
-func (a *AuthenticatorsApiService) AuthenticatorsEmailUpdateExecute(r ApiAuthenticatorsEmailUpdateRequest) (*EmailDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailUpdateExecute(r ApiAuthenticatorsEmailUpdateRequest) (*EmailDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -7216,13 +7324,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUpdateExecute(r ApiAuthent
 		localVarReturnValue *EmailDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEmailUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsEmailUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/email/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7260,9 +7368,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUpdateExecute(r ApiAuthent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7279,6 +7387,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUpdateExecute(r ApiAuthent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7289,6 +7398,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUpdateExecute(r ApiAuthent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7308,7 +7418,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUpdateExecute(r ApiAuthent
 
 type ApiAuthenticatorsEmailUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -7325,7 +7435,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Email Device.
 	@return ApiAuthenticatorsEmailUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsEmailUsedByList(ctx context.Context, id int32) ApiAuthenticatorsEmailUsedByListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailUsedByList(ctx context.Context, id int32) ApiAuthenticatorsEmailUsedByListRequest {
 	return ApiAuthenticatorsEmailUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7336,7 +7446,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUsedByList(ctx context.Con
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsEmailUsedByListExecute(r ApiAuthenticatorsEmailUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsEmailUsedByListExecute(r ApiAuthenticatorsEmailUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7344,13 +7454,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUsedByListExecute(r ApiAut
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEmailUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsEmailUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/email/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7383,9 +7493,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUsedByListExecute(r ApiAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7402,6 +7512,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUsedByListExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7412,6 +7523,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUsedByListExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7431,7 +7543,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEmailUsedByListExecute(r ApiAut
 
 type ApiAuthenticatorsEndpointListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -7480,7 +7592,7 @@ Viewset for Endpoint authenticator devices
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsEndpointListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsEndpointList(ctx context.Context) ApiAuthenticatorsEndpointListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsEndpointList(ctx context.Context) ApiAuthenticatorsEndpointListRequest {
 	return ApiAuthenticatorsEndpointListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7490,7 +7602,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointList(ctx context.Contex
 // Execute executes the request
 //
 //	@return PaginatedGoogleEndpointDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsEndpointListExecute(r ApiAuthenticatorsEndpointListRequest) (*PaginatedGoogleEndpointDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsEndpointListExecute(r ApiAuthenticatorsEndpointListRequest) (*PaginatedGoogleEndpointDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7498,7 +7610,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointListExecute(r ApiAuthen
 		localVarReturnValue *PaginatedGoogleEndpointDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEndpointList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsEndpointList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -7510,19 +7622,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointListExecute(r ApiAuthen
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7551,9 +7663,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointListExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7570,6 +7682,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7580,6 +7693,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7599,7 +7713,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointListExecute(r ApiAuthen
 
 type ApiAuthenticatorsEndpointRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	uuid       string
 }
 
@@ -7616,7 +7730,7 @@ Viewset for Endpoint authenticator devices
 	@param uuid A UUID string identifying this Endpoint Device.
 	@return ApiAuthenticatorsEndpointRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieve(ctx context.Context, uuid string) ApiAuthenticatorsEndpointRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsEndpointRetrieve(ctx context.Context, uuid string) ApiAuthenticatorsEndpointRetrieveRequest {
 	return ApiAuthenticatorsEndpointRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7627,7 +7741,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieve(ctx context.Co
 // Execute executes the request
 //
 //	@return GoogleEndpointDevice
-func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieveExecute(r ApiAuthenticatorsEndpointRetrieveRequest) (*GoogleEndpointDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsEndpointRetrieveExecute(r ApiAuthenticatorsEndpointRetrieveRequest) (*GoogleEndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7635,13 +7749,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieveExecute(r ApiAu
 		localVarReturnValue *GoogleEndpointDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEndpointRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsEndpointRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/endpoint/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7674,9 +7788,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieveExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7693,6 +7807,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieveExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7703,6 +7818,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieveExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7722,7 +7838,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointRetrieveExecute(r ApiAu
 
 type ApiAuthenticatorsEndpointUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	uuid       string
 }
 
@@ -7739,7 +7855,7 @@ Get a list of all objects that use this object
 	@param uuid A UUID string identifying this Endpoint Device.
 	@return ApiAuthenticatorsEndpointUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsEndpointUsedByList(ctx context.Context, uuid string) ApiAuthenticatorsEndpointUsedByListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsEndpointUsedByList(ctx context.Context, uuid string) ApiAuthenticatorsEndpointUsedByListRequest {
 	return ApiAuthenticatorsEndpointUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7750,7 +7866,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointUsedByList(ctx context.
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsEndpointUsedByListExecute(r ApiAuthenticatorsEndpointUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsEndpointUsedByListExecute(r ApiAuthenticatorsEndpointUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7758,13 +7874,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointUsedByListExecute(r Api
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsEndpointUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsEndpointUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/endpoint/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7797,9 +7913,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointUsedByListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7816,6 +7932,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7826,6 +7943,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7845,7 +7963,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsEndpointUsedByListExecute(r Api
 
 type ApiAuthenticatorsSmsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -7862,7 +7980,7 @@ Viewset for sms authenticator devices
 	@param id A unique integer value identifying this SMS Device.
 	@return ApiAuthenticatorsSmsDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroy(ctx context.Context, id int32) ApiAuthenticatorsSmsDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsDestroy(ctx context.Context, id int32) ApiAuthenticatorsSmsDestroyRequest {
 	return ApiAuthenticatorsSmsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7871,20 +7989,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroy(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenticatorsSmsDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsDestroyExecute(r ApiAuthenticatorsSmsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsSmsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7917,9 +8035,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenti
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -7936,6 +8054,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -7946,6 +8065,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -7956,7 +8076,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsDestroyExecute(r ApiAuthenti
 
 type ApiAuthenticatorsSmsListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -8005,7 +8125,7 @@ Viewset for sms authenticator devices
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsSmsListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsList(ctx context.Context) ApiAuthenticatorsSmsListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsList(ctx context.Context) ApiAuthenticatorsSmsListRequest {
 	return ApiAuthenticatorsSmsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8015,7 +8135,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsList(ctx context.Context) Ap
 // Execute executes the request
 //
 //	@return PaginatedSMSDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticatorsSmsListRequest) (*PaginatedSMSDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsListExecute(r ApiAuthenticatorsSmsListRequest) (*PaginatedSMSDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8023,7 +8143,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 		localVarReturnValue *PaginatedSMSDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsSmsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8035,19 +8155,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8076,9 +8196,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8095,6 +8215,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8105,6 +8226,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8124,7 +8246,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsListExecute(r ApiAuthenticat
 
 type ApiAuthenticatorsSmsPartialUpdateRequest struct {
 	ctx                     context.Context
-	ApiService              *AuthenticatorsApiService
+	ApiService              *AuthenticatorsAPIService
 	id                      int32
 	patchedSMSDeviceRequest *PatchedSMSDeviceRequest
 }
@@ -8147,7 +8269,7 @@ Viewset for sms authenticator devices
 	@param id A unique integer value identifying this SMS Device.
 	@return ApiAuthenticatorsSmsPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsSmsPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsSmsPartialUpdateRequest {
 	return ApiAuthenticatorsSmsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8158,7 +8280,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdate(ctx context.Co
 // Execute executes the request
 //
 //	@return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAuthenticatorsSmsPartialUpdateRequest) (*SMSDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsPartialUpdateExecute(r ApiAuthenticatorsSmsPartialUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -8166,13 +8288,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAu
 		localVarReturnValue *SMSDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsSmsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8207,9 +8329,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8226,6 +8348,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8236,6 +8359,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8255,7 +8379,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsPartialUpdateExecute(r ApiAu
 
 type ApiAuthenticatorsSmsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -8272,7 +8396,7 @@ Viewset for sms authenticator devices
 	@param id A unique integer value identifying this SMS Device.
 	@return ApiAuthenticatorsSmsRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieve(ctx context.Context, id int32) ApiAuthenticatorsSmsRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsRetrieve(ctx context.Context, id int32) ApiAuthenticatorsSmsRetrieveRequest {
 	return ApiAuthenticatorsSmsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8283,7 +8407,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieve(ctx context.Context
 // Execute executes the request
 //
 //	@return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthenticatorsSmsRetrieveRequest) (*SMSDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsRetrieveExecute(r ApiAuthenticatorsSmsRetrieveRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8291,13 +8415,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthent
 		localVarReturnValue *SMSDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsSmsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8330,9 +8454,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8349,6 +8473,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8359,6 +8484,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8378,7 +8504,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsRetrieveExecute(r ApiAuthent
 
 type ApiAuthenticatorsSmsUpdateRequest struct {
 	ctx              context.Context
-	ApiService       *AuthenticatorsApiService
+	ApiService       *AuthenticatorsAPIService
 	id               int32
 	sMSDeviceRequest *SMSDeviceRequest
 }
@@ -8401,7 +8527,7 @@ Viewset for sms authenticator devices
 	@param id A unique integer value identifying this SMS Device.
 	@return ApiAuthenticatorsSmsUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdate(ctx context.Context, id int32) ApiAuthenticatorsSmsUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsUpdate(ctx context.Context, id int32) ApiAuthenticatorsSmsUpdateRequest {
 	return ApiAuthenticatorsSmsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8412,7 +8538,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdate(ctx context.Context, 
 // Execute executes the request
 //
 //	@return SMSDevice
-func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthenticatorsSmsUpdateRequest) (*SMSDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsUpdateExecute(r ApiAuthenticatorsSmsUpdateRequest) (*SMSDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -8420,13 +8546,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthentic
 		localVarReturnValue *SMSDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsSmsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8464,9 +8590,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthentic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8483,6 +8609,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthentic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8493,6 +8620,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthentic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8512,7 +8640,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUpdateExecute(r ApiAuthentic
 
 type ApiAuthenticatorsSmsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -8529,7 +8657,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this SMS Device.
 	@return ApiAuthenticatorsSmsUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByList(ctx context.Context, id int32) ApiAuthenticatorsSmsUsedByListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsUsedByList(ctx context.Context, id int32) ApiAuthenticatorsSmsUsedByListRequest {
 	return ApiAuthenticatorsSmsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8540,7 +8668,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByList(ctx context.Conte
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthenticatorsSmsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsSmsUsedByListExecute(r ApiAuthenticatorsSmsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8548,13 +8676,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthe
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsSmsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsSmsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/sms/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8587,9 +8715,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8606,6 +8734,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8616,6 +8745,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8635,7 +8765,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsSmsUsedByListExecute(r ApiAuthe
 
 type ApiAuthenticatorsStaticDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -8652,7 +8782,7 @@ Viewset for static authenticator devices
 	@param id A unique integer value identifying this Static Device.
 	@return ApiAuthenticatorsStaticDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroy(ctx context.Context, id int32) ApiAuthenticatorsStaticDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticDestroy(ctx context.Context, id int32) ApiAuthenticatorsStaticDestroyRequest {
 	return ApiAuthenticatorsStaticDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8661,20 +8791,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroy(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthenticatorsStaticDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticDestroyExecute(r ApiAuthenticatorsStaticDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsStaticDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8707,9 +8837,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -8726,6 +8856,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -8736,6 +8867,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -8746,7 +8878,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticDestroyExecute(r ApiAuthe
 
 type ApiAuthenticatorsStaticListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -8795,7 +8927,7 @@ Viewset for static authenticator devices
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsStaticListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticList(ctx context.Context) ApiAuthenticatorsStaticListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticList(ctx context.Context) ApiAuthenticatorsStaticListRequest {
 	return ApiAuthenticatorsStaticListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8805,7 +8937,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticList(ctx context.Context)
 // Execute executes the request
 //
 //	@return PaginatedStaticDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenticatorsStaticListRequest) (*PaginatedStaticDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticListExecute(r ApiAuthenticatorsStaticListRequest) (*PaginatedStaticDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8813,7 +8945,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 		localVarReturnValue *PaginatedStaticDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsStaticList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8825,19 +8957,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8866,9 +8998,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8885,6 +9017,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8895,6 +9028,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8914,7 +9048,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticListExecute(r ApiAuthenti
 
 type ApiAuthenticatorsStaticPartialUpdateRequest struct {
 	ctx                        context.Context
-	ApiService                 *AuthenticatorsApiService
+	ApiService                 *AuthenticatorsAPIService
 	id                         int32
 	patchedStaticDeviceRequest *PatchedStaticDeviceRequest
 }
@@ -8937,7 +9071,7 @@ Viewset for static authenticator devices
 	@param id A unique integer value identifying this Static Device.
 	@return ApiAuthenticatorsStaticPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticPartialUpdateRequest {
 	return ApiAuthenticatorsStaticPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8948,7 +9082,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdate(ctx context
 // Execute executes the request
 //
 //	@return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r ApiAuthenticatorsStaticPartialUpdateRequest) (*StaticDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticPartialUpdateExecute(r ApiAuthenticatorsStaticPartialUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -8956,13 +9090,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 		localVarReturnValue *StaticDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsStaticPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8997,9 +9131,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9016,6 +9150,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9026,6 +9161,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9045,7 +9181,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticPartialUpdateExecute(r Ap
 
 type ApiAuthenticatorsStaticRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -9062,7 +9198,7 @@ Viewset for static authenticator devices
 	@param id A unique integer value identifying this Static Device.
 	@return ApiAuthenticatorsStaticRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsStaticRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticRetrieve(ctx context.Context, id int32) ApiAuthenticatorsStaticRetrieveRequest {
 	return ApiAuthenticatorsStaticRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9073,7 +9209,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieve(ctx context.Cont
 // Execute executes the request
 //
 //	@return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuthenticatorsStaticRetrieveRequest) (*StaticDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticRetrieveExecute(r ApiAuthenticatorsStaticRetrieveRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9081,13 +9217,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 		localVarReturnValue *StaticDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsStaticRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9120,9 +9256,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9139,6 +9275,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9149,6 +9286,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9168,7 +9306,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticRetrieveExecute(r ApiAuth
 
 type ApiAuthenticatorsStaticUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *AuthenticatorsApiService
+	ApiService          *AuthenticatorsAPIService
 	id                  int32
 	staticDeviceRequest *StaticDeviceRequest
 }
@@ -9191,7 +9329,7 @@ Viewset for static authenticator devices
 	@param id A unique integer value identifying this Static Device.
 	@return ApiAuthenticatorsStaticUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticUpdate(ctx context.Context, id int32) ApiAuthenticatorsStaticUpdateRequest {
 	return ApiAuthenticatorsStaticUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9202,7 +9340,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdate(ctx context.Contex
 // Execute executes the request
 //
 //	@return StaticDevice
-func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthenticatorsStaticUpdateRequest) (*StaticDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticUpdateExecute(r ApiAuthenticatorsStaticUpdateRequest) (*StaticDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -9210,13 +9348,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 		localVarReturnValue *StaticDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsStaticUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9254,9 +9392,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9273,6 +9411,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9283,6 +9422,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9302,7 +9442,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUpdateExecute(r ApiAuthen
 
 type ApiAuthenticatorsStaticUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -9319,7 +9459,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Static Device.
 	@return ApiAuthenticatorsStaticUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByList(ctx context.Context, id int32) ApiAuthenticatorsStaticUsedByListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticUsedByList(ctx context.Context, id int32) ApiAuthenticatorsStaticUsedByListRequest {
 	return ApiAuthenticatorsStaticUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9330,7 +9470,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByList(ctx context.Co
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAuthenticatorsStaticUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsStaticUsedByListExecute(r ApiAuthenticatorsStaticUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9338,13 +9478,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsStaticUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsStaticUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/static/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9377,9 +9517,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9396,6 +9536,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9406,6 +9547,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9425,7 +9567,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsStaticUsedByListExecute(r ApiAu
 
 type ApiAuthenticatorsTotpDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -9442,7 +9584,7 @@ Viewset for totp authenticator devices
 	@param id A unique integer value identifying this TOTP Device.
 	@return ApiAuthenticatorsTotpDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroy(ctx context.Context, id int32) ApiAuthenticatorsTotpDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpDestroy(ctx context.Context, id int32) ApiAuthenticatorsTotpDestroyRequest {
 	return ApiAuthenticatorsTotpDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9451,20 +9593,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroy(ctx context.Context
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthenticatorsTotpDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpDestroyExecute(r ApiAuthenticatorsTotpDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsTotpDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9497,9 +9639,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthent
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -9516,6 +9658,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthent
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -9526,6 +9669,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthent
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -9536,7 +9680,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpDestroyExecute(r ApiAuthent
 
 type ApiAuthenticatorsTotpListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -9585,7 +9729,7 @@ Viewset for totp authenticator devices
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsTotpListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpList(ctx context.Context) ApiAuthenticatorsTotpListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpList(ctx context.Context) ApiAuthenticatorsTotpListRequest {
 	return ApiAuthenticatorsTotpListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9595,7 +9739,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpList(ctx context.Context) A
 // Execute executes the request
 //
 //	@return PaginatedTOTPDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthenticatorsTotpListRequest) (*PaginatedTOTPDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpListExecute(r ApiAuthenticatorsTotpListRequest) (*PaginatedTOTPDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9603,7 +9747,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 		localVarReturnValue *PaginatedTOTPDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsTotpList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -9615,19 +9759,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -9656,9 +9800,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9675,6 +9819,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9685,6 +9830,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9704,7 +9850,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpListExecute(r ApiAuthentica
 
 type ApiAuthenticatorsTotpPartialUpdateRequest struct {
 	ctx                      context.Context
-	ApiService               *AuthenticatorsApiService
+	ApiService               *AuthenticatorsAPIService
 	id                       int32
 	patchedTOTPDeviceRequest *PatchedTOTPDeviceRequest
 }
@@ -9727,7 +9873,7 @@ Viewset for totp authenticator devices
 	@param id A unique integer value identifying this TOTP Device.
 	@return ApiAuthenticatorsTotpPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsTotpPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsTotpPartialUpdateRequest {
 	return ApiAuthenticatorsTotpPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9738,7 +9884,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdate(ctx context.C
 // Execute executes the request
 //
 //	@return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiAuthenticatorsTotpPartialUpdateRequest) (*TOTPDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpPartialUpdateExecute(r ApiAuthenticatorsTotpPartialUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -9746,13 +9892,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 		localVarReturnValue *TOTPDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsTotpPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9787,9 +9933,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9806,6 +9952,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9816,6 +9963,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9835,7 +9983,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpPartialUpdateExecute(r ApiA
 
 type ApiAuthenticatorsTotpRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -9852,7 +10000,7 @@ Viewset for totp authenticator devices
 	@param id A unique integer value identifying this TOTP Device.
 	@return ApiAuthenticatorsTotpRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieve(ctx context.Context, id int32) ApiAuthenticatorsTotpRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpRetrieve(ctx context.Context, id int32) ApiAuthenticatorsTotpRetrieveRequest {
 	return ApiAuthenticatorsTotpRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9863,7 +10011,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieve(ctx context.Contex
 // Execute executes the request
 //
 //	@return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthenticatorsTotpRetrieveRequest) (*TOTPDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpRetrieveExecute(r ApiAuthenticatorsTotpRetrieveRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9871,13 +10019,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 		localVarReturnValue *TOTPDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsTotpRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9910,9 +10058,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9929,6 +10077,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9939,6 +10088,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9958,7 +10108,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpRetrieveExecute(r ApiAuthen
 
 type ApiAuthenticatorsTotpUpdateRequest struct {
 	ctx               context.Context
-	ApiService        *AuthenticatorsApiService
+	ApiService        *AuthenticatorsAPIService
 	id                int32
 	tOTPDeviceRequest *TOTPDeviceRequest
 }
@@ -9981,7 +10131,7 @@ Viewset for totp authenticator devices
 	@param id A unique integer value identifying this TOTP Device.
 	@return ApiAuthenticatorsTotpUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdate(ctx context.Context, id int32) ApiAuthenticatorsTotpUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpUpdate(ctx context.Context, id int32) ApiAuthenticatorsTotpUpdateRequest {
 	return ApiAuthenticatorsTotpUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9992,7 +10142,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdate(ctx context.Context,
 // Execute executes the request
 //
 //	@return TOTPDevice
-func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenticatorsTotpUpdateRequest) (*TOTPDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpUpdateExecute(r ApiAuthenticatorsTotpUpdateRequest) (*TOTPDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -10000,13 +10150,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 		localVarReturnValue *TOTPDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsTotpUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10044,9 +10194,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10063,6 +10213,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10073,6 +10224,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10092,7 +10244,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUpdateExecute(r ApiAuthenti
 
 type ApiAuthenticatorsTotpUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -10109,7 +10261,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this TOTP Device.
 	@return ApiAuthenticatorsTotpUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByList(ctx context.Context, id int32) ApiAuthenticatorsTotpUsedByListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpUsedByList(ctx context.Context, id int32) ApiAuthenticatorsTotpUsedByListRequest {
 	return ApiAuthenticatorsTotpUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10120,7 +10272,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByList(ctx context.Cont
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuthenticatorsTotpUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsTotpUsedByListExecute(r ApiAuthenticatorsTotpUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10128,13 +10280,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsTotpUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsTotpUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/totp/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10167,9 +10319,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10186,6 +10338,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10196,6 +10349,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10215,7 +10369,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsTotpUsedByListExecute(r ApiAuth
 
 type ApiAuthenticatorsWebauthnDestroyRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -10232,7 +10386,7 @@ Viewset for WebAuthn authenticator devices
 	@param id A unique integer value identifying this WebAuthn Device.
 	@return ApiAuthenticatorsWebauthnDestroyRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroy(ctx context.Context, id int32) ApiAuthenticatorsWebauthnDestroyRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnDestroy(ctx context.Context, id int32) ApiAuthenticatorsWebauthnDestroyRequest {
 	return ApiAuthenticatorsWebauthnDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10241,20 +10395,20 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroy(ctx context.Con
 }
 
 // Execute executes the request
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAuthenticatorsWebauthnDestroyRequest) (*http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnDestroyExecute(r ApiAuthenticatorsWebauthnDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsWebauthnDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10287,9 +10441,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -10306,6 +10460,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -10316,6 +10471,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -10326,7 +10482,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnDestroyExecute(r ApiAut
 
 type ApiAuthenticatorsWebauthnListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -10375,7 +10531,7 @@ Viewset for WebAuthn authenticator devices
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiAuthenticatorsWebauthnListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnList(ctx context.Context) ApiAuthenticatorsWebauthnListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnList(ctx context.Context) ApiAuthenticatorsWebauthnListRequest {
 	return ApiAuthenticatorsWebauthnListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10385,7 +10541,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnList(ctx context.Contex
 // Execute executes the request
 //
 //	@return PaginatedWebAuthnDeviceList
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthenticatorsWebauthnListRequest) (*PaginatedWebAuthnDeviceList, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnListExecute(r ApiAuthenticatorsWebauthnListRequest) (*PaginatedWebAuthnDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10393,7 +10549,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 		localVarReturnValue *PaginatedWebAuthnDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsWebauthnList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -10405,19 +10561,19 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10446,9 +10602,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10465,6 +10621,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10475,6 +10632,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10494,7 +10652,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnListExecute(r ApiAuthen
 
 type ApiAuthenticatorsWebauthnPartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *AuthenticatorsApiService
+	ApiService                   *AuthenticatorsAPIService
 	id                           int32
 	patchedWebAuthnDeviceRequest *PatchedWebAuthnDeviceRequest
 }
@@ -10517,7 +10675,7 @@ Viewset for WebAuthn authenticator devices
 	@param id A unique integer value identifying this WebAuthn Device.
 	@return ApiAuthenticatorsWebauthnPartialUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsWebauthnPartialUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnPartialUpdate(ctx context.Context, id int32) ApiAuthenticatorsWebauthnPartialUpdateRequest {
 	return ApiAuthenticatorsWebauthnPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10528,7 +10686,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdate(ctx conte
 // Execute executes the request
 //
 //	@return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r ApiAuthenticatorsWebauthnPartialUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnPartialUpdateExecute(r ApiAuthenticatorsWebauthnPartialUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -10536,13 +10694,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 		localVarReturnValue *WebAuthnDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsWebauthnPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10577,9 +10735,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10596,6 +10754,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10606,6 +10765,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10625,7 +10785,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnPartialUpdateExecute(r 
 
 type ApiAuthenticatorsWebauthnRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -10642,7 +10802,7 @@ Viewset for WebAuthn authenticator devices
 	@param id A unique integer value identifying this WebAuthn Device.
 	@return ApiAuthenticatorsWebauthnRetrieveRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieve(ctx context.Context, id int32) ApiAuthenticatorsWebauthnRetrieveRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnRetrieve(ctx context.Context, id int32) ApiAuthenticatorsWebauthnRetrieveRequest {
 	return ApiAuthenticatorsWebauthnRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10653,7 +10813,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieve(ctx context.Co
 // Execute executes the request
 //
 //	@return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAuthenticatorsWebauthnRetrieveRequest) (*WebAuthnDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnRetrieveExecute(r ApiAuthenticatorsWebauthnRetrieveRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10661,13 +10821,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 		localVarReturnValue *WebAuthnDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsWebauthnRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10700,9 +10860,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10719,6 +10879,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10729,6 +10890,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10748,7 +10910,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnRetrieveExecute(r ApiAu
 
 type ApiAuthenticatorsWebauthnUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *AuthenticatorsApiService
+	ApiService            *AuthenticatorsAPIService
 	id                    int32
 	webAuthnDeviceRequest *WebAuthnDeviceRequest
 }
@@ -10771,7 +10933,7 @@ Viewset for WebAuthn authenticator devices
 	@param id A unique integer value identifying this WebAuthn Device.
 	@return ApiAuthenticatorsWebauthnUpdateRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdate(ctx context.Context, id int32) ApiAuthenticatorsWebauthnUpdateRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnUpdate(ctx context.Context, id int32) ApiAuthenticatorsWebauthnUpdateRequest {
 	return ApiAuthenticatorsWebauthnUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10782,7 +10944,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdate(ctx context.Cont
 // Execute executes the request
 //
 //	@return WebAuthnDevice
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuthenticatorsWebauthnUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnUpdateExecute(r ApiAuthenticatorsWebauthnUpdateRequest) (*WebAuthnDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -10790,13 +10952,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 		localVarReturnValue *WebAuthnDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsWebauthnUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10834,9 +10996,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10853,6 +11015,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10863,6 +11026,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10882,7 +11046,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUpdateExecute(r ApiAuth
 
 type ApiAuthenticatorsWebauthnUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *AuthenticatorsApiService
+	ApiService *AuthenticatorsAPIService
 	id         int32
 }
 
@@ -10899,7 +11063,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this WebAuthn Device.
 	@return ApiAuthenticatorsWebauthnUsedByListRequest
 */
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByList(ctx context.Context, id int32) ApiAuthenticatorsWebauthnUsedByListRequest {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnUsedByList(ctx context.Context, id int32) ApiAuthenticatorsWebauthnUsedByListRequest {
 	return ApiAuthenticatorsWebauthnUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10910,7 +11074,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByList(ctx context.
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r ApiAuthenticatorsWebauthnUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *AuthenticatorsAPIService) AuthenticatorsWebauthnUsedByListExecute(r ApiAuthenticatorsWebauthnUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10918,13 +11082,13 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r Api
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsApiService.AuthenticatorsWebauthnUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthenticatorsAPIService.AuthenticatorsWebauthnUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/authenticators/webauthn/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10957,9 +11121,9 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10976,6 +11140,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10986,6 +11151,7 @@ func (a *AuthenticatorsApiService) AuthenticatorsWebauthnUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

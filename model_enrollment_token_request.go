@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the EnrollmentTokenRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentTokenRequest{}
 
 // EnrollmentTokenRequest struct for EnrollmentTokenRequest
 type EnrollmentTokenRequest struct {
@@ -24,6 +29,8 @@ type EnrollmentTokenRequest struct {
 	Expiring    *bool          `json:"expiring,omitempty"`
 	Expires     NullableTime   `json:"expires,omitempty"`
 }
+
+type _EnrollmentTokenRequest EnrollmentTokenRequest
 
 // NewEnrollmentTokenRequest instantiates a new EnrollmentTokenRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -46,7 +53,7 @@ func NewEnrollmentTokenRequestWithDefaults() *EnrollmentTokenRequest {
 
 // GetDeviceGroup returns the DeviceGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnrollmentTokenRequest) GetDeviceGroup() string {
-	if o == nil || o.DeviceGroup.Get() == nil {
+	if o == nil || IsNil(o.DeviceGroup.Get()) {
 		var ret string
 		return ret
 	}
@@ -137,7 +144,7 @@ func (o *EnrollmentTokenRequest) SetName(v string) {
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
 func (o *EnrollmentTokenRequest) GetExpiring() bool {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		var ret bool
 		return ret
 	}
@@ -147,7 +154,7 @@ func (o *EnrollmentTokenRequest) GetExpiring() bool {
 // GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentTokenRequest) GetExpiringOk() (*bool, bool) {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		return nil, false
 	}
 	return o.Expiring, true
@@ -155,7 +162,7 @@ func (o *EnrollmentTokenRequest) GetExpiringOk() (*bool, bool) {
 
 // HasExpiring returns a boolean if a field has been set.
 func (o *EnrollmentTokenRequest) HasExpiring() bool {
-	if o != nil && o.Expiring != nil {
+	if o != nil && !IsNil(o.Expiring) {
 		return true
 	}
 
@@ -169,7 +176,7 @@ func (o *EnrollmentTokenRequest) SetExpiring(v bool) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnrollmentTokenRequest) GetExpires() time.Time {
-	if o == nil || o.Expires.Get() == nil {
+	if o == nil || IsNil(o.Expires.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -211,23 +218,65 @@ func (o *EnrollmentTokenRequest) UnsetExpires() {
 }
 
 func (o EnrollmentTokenRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentTokenRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeviceGroup.IsSet() {
 		toSerialize["device_group"] = o.DeviceGroup.Get()
 	}
-	if true {
-		toSerialize["connector"] = o.Connector
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Expiring != nil {
+	toSerialize["connector"] = o.Connector
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Expiring) {
 		toSerialize["expiring"] = o.Expiring
 	}
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *EnrollmentTokenRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"connector",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnrollmentTokenRequest := _EnrollmentTokenRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnrollmentTokenRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnrollmentTokenRequest(varEnrollmentTokenRequest)
+
+	return err
 }
 
 type NullableEnrollmentTokenRequest struct {

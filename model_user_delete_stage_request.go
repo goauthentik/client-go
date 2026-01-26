@@ -12,13 +12,20 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the UserDeleteStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserDeleteStageRequest{}
 
 // UserDeleteStageRequest UserDeleteStage Serializer
 type UserDeleteStageRequest struct {
 	Name string `json:"name"`
 }
+
+type _UserDeleteStageRequest UserDeleteStageRequest
 
 // NewUserDeleteStageRequest instantiates a new UserDeleteStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -63,11 +70,54 @@ func (o *UserDeleteStageRequest) SetName(v string) {
 }
 
 func (o UserDeleteStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserDeleteStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
+}
+
+func (o *UserDeleteStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserDeleteStageRequest := _UserDeleteStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserDeleteStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserDeleteStageRequest(varUserDeleteStageRequest)
+
+	return err
 }
 
 type NullableUserDeleteStageRequest struct {

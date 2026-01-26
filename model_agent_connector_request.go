@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AgentConnectorRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgentConnectorRequest{}
 
 // AgentConnectorRequest struct for AgentConnectorRequest
 type AgentConnectorRequest struct {
@@ -32,6 +37,8 @@ type AgentConnectorRequest struct {
 	ChallengeTriggerCheckIn      *bool          `json:"challenge_trigger_check_in,omitempty"`
 	JwtFederationProviders       []int32        `json:"jwt_federation_providers,omitempty"`
 }
+
+type _AgentConnectorRequest AgentConnectorRequest
 
 // NewAgentConnectorRequest instantiates a new AgentConnectorRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -53,7 +60,7 @@ func NewAgentConnectorRequestWithDefaults() *AgentConnectorRequest {
 
 // GetConnectorUuid returns the ConnectorUuid field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetConnectorUuid() string {
-	if o == nil || o.ConnectorUuid == nil {
+	if o == nil || IsNil(o.ConnectorUuid) {
 		var ret string
 		return ret
 	}
@@ -63,7 +70,7 @@ func (o *AgentConnectorRequest) GetConnectorUuid() string {
 // GetConnectorUuidOk returns a tuple with the ConnectorUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetConnectorUuidOk() (*string, bool) {
-	if o == nil || o.ConnectorUuid == nil {
+	if o == nil || IsNil(o.ConnectorUuid) {
 		return nil, false
 	}
 	return o.ConnectorUuid, true
@@ -71,7 +78,7 @@ func (o *AgentConnectorRequest) GetConnectorUuidOk() (*string, bool) {
 
 // HasConnectorUuid returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasConnectorUuid() bool {
-	if o != nil && o.ConnectorUuid != nil {
+	if o != nil && !IsNil(o.ConnectorUuid) {
 		return true
 	}
 
@@ -109,7 +116,7 @@ func (o *AgentConnectorRequest) SetName(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -119,7 +126,7 @@ func (o *AgentConnectorRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -127,7 +134,7 @@ func (o *AgentConnectorRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -141,7 +148,7 @@ func (o *AgentConnectorRequest) SetEnabled(v bool) {
 
 // GetSnapshotExpiry returns the SnapshotExpiry field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetSnapshotExpiry() string {
-	if o == nil || o.SnapshotExpiry == nil {
+	if o == nil || IsNil(o.SnapshotExpiry) {
 		var ret string
 		return ret
 	}
@@ -151,7 +158,7 @@ func (o *AgentConnectorRequest) GetSnapshotExpiry() string {
 // GetSnapshotExpiryOk returns a tuple with the SnapshotExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetSnapshotExpiryOk() (*string, bool) {
-	if o == nil || o.SnapshotExpiry == nil {
+	if o == nil || IsNil(o.SnapshotExpiry) {
 		return nil, false
 	}
 	return o.SnapshotExpiry, true
@@ -159,7 +166,7 @@ func (o *AgentConnectorRequest) GetSnapshotExpiryOk() (*string, bool) {
 
 // HasSnapshotExpiry returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasSnapshotExpiry() bool {
-	if o != nil && o.SnapshotExpiry != nil {
+	if o != nil && !IsNil(o.SnapshotExpiry) {
 		return true
 	}
 
@@ -173,7 +180,7 @@ func (o *AgentConnectorRequest) SetSnapshotExpiry(v string) {
 
 // GetAuthSessionDuration returns the AuthSessionDuration field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetAuthSessionDuration() string {
-	if o == nil || o.AuthSessionDuration == nil {
+	if o == nil || IsNil(o.AuthSessionDuration) {
 		var ret string
 		return ret
 	}
@@ -183,7 +190,7 @@ func (o *AgentConnectorRequest) GetAuthSessionDuration() string {
 // GetAuthSessionDurationOk returns a tuple with the AuthSessionDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetAuthSessionDurationOk() (*string, bool) {
-	if o == nil || o.AuthSessionDuration == nil {
+	if o == nil || IsNil(o.AuthSessionDuration) {
 		return nil, false
 	}
 	return o.AuthSessionDuration, true
@@ -191,7 +198,7 @@ func (o *AgentConnectorRequest) GetAuthSessionDurationOk() (*string, bool) {
 
 // HasAuthSessionDuration returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasAuthSessionDuration() bool {
-	if o != nil && o.AuthSessionDuration != nil {
+	if o != nil && !IsNil(o.AuthSessionDuration) {
 		return true
 	}
 
@@ -205,7 +212,7 @@ func (o *AgentConnectorRequest) SetAuthSessionDuration(v string) {
 
 // GetAuthTerminateSessionOnExpiry returns the AuthTerminateSessionOnExpiry field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetAuthTerminateSessionOnExpiry() bool {
-	if o == nil || o.AuthTerminateSessionOnExpiry == nil {
+	if o == nil || IsNil(o.AuthTerminateSessionOnExpiry) {
 		var ret bool
 		return ret
 	}
@@ -215,7 +222,7 @@ func (o *AgentConnectorRequest) GetAuthTerminateSessionOnExpiry() bool {
 // GetAuthTerminateSessionOnExpiryOk returns a tuple with the AuthTerminateSessionOnExpiry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetAuthTerminateSessionOnExpiryOk() (*bool, bool) {
-	if o == nil || o.AuthTerminateSessionOnExpiry == nil {
+	if o == nil || IsNil(o.AuthTerminateSessionOnExpiry) {
 		return nil, false
 	}
 	return o.AuthTerminateSessionOnExpiry, true
@@ -223,7 +230,7 @@ func (o *AgentConnectorRequest) GetAuthTerminateSessionOnExpiryOk() (*bool, bool
 
 // HasAuthTerminateSessionOnExpiry returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasAuthTerminateSessionOnExpiry() bool {
-	if o != nil && o.AuthTerminateSessionOnExpiry != nil {
+	if o != nil && !IsNil(o.AuthTerminateSessionOnExpiry) {
 		return true
 	}
 
@@ -237,7 +244,7 @@ func (o *AgentConnectorRequest) SetAuthTerminateSessionOnExpiry(v bool) {
 
 // GetRefreshInterval returns the RefreshInterval field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetRefreshInterval() string {
-	if o == nil || o.RefreshInterval == nil {
+	if o == nil || IsNil(o.RefreshInterval) {
 		var ret string
 		return ret
 	}
@@ -247,7 +254,7 @@ func (o *AgentConnectorRequest) GetRefreshInterval() string {
 // GetRefreshIntervalOk returns a tuple with the RefreshInterval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetRefreshIntervalOk() (*string, bool) {
-	if o == nil || o.RefreshInterval == nil {
+	if o == nil || IsNil(o.RefreshInterval) {
 		return nil, false
 	}
 	return o.RefreshInterval, true
@@ -255,7 +262,7 @@ func (o *AgentConnectorRequest) GetRefreshIntervalOk() (*string, bool) {
 
 // HasRefreshInterval returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasRefreshInterval() bool {
-	if o != nil && o.RefreshInterval != nil {
+	if o != nil && !IsNil(o.RefreshInterval) {
 		return true
 	}
 
@@ -269,7 +276,7 @@ func (o *AgentConnectorRequest) SetRefreshInterval(v string) {
 
 // GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AgentConnectorRequest) GetAuthorizationFlow() string {
-	if o == nil || o.AuthorizationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthorizationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -312,7 +319,7 @@ func (o *AgentConnectorRequest) UnsetAuthorizationFlow() {
 
 // GetNssUidOffset returns the NssUidOffset field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetNssUidOffset() int32 {
-	if o == nil || o.NssUidOffset == nil {
+	if o == nil || IsNil(o.NssUidOffset) {
 		var ret int32
 		return ret
 	}
@@ -322,7 +329,7 @@ func (o *AgentConnectorRequest) GetNssUidOffset() int32 {
 // GetNssUidOffsetOk returns a tuple with the NssUidOffset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetNssUidOffsetOk() (*int32, bool) {
-	if o == nil || o.NssUidOffset == nil {
+	if o == nil || IsNil(o.NssUidOffset) {
 		return nil, false
 	}
 	return o.NssUidOffset, true
@@ -330,7 +337,7 @@ func (o *AgentConnectorRequest) GetNssUidOffsetOk() (*int32, bool) {
 
 // HasNssUidOffset returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasNssUidOffset() bool {
-	if o != nil && o.NssUidOffset != nil {
+	if o != nil && !IsNil(o.NssUidOffset) {
 		return true
 	}
 
@@ -344,7 +351,7 @@ func (o *AgentConnectorRequest) SetNssUidOffset(v int32) {
 
 // GetNssGidOffset returns the NssGidOffset field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetNssGidOffset() int32 {
-	if o == nil || o.NssGidOffset == nil {
+	if o == nil || IsNil(o.NssGidOffset) {
 		var ret int32
 		return ret
 	}
@@ -354,7 +361,7 @@ func (o *AgentConnectorRequest) GetNssGidOffset() int32 {
 // GetNssGidOffsetOk returns a tuple with the NssGidOffset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetNssGidOffsetOk() (*int32, bool) {
-	if o == nil || o.NssGidOffset == nil {
+	if o == nil || IsNil(o.NssGidOffset) {
 		return nil, false
 	}
 	return o.NssGidOffset, true
@@ -362,7 +369,7 @@ func (o *AgentConnectorRequest) GetNssGidOffsetOk() (*int32, bool) {
 
 // HasNssGidOffset returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasNssGidOffset() bool {
-	if o != nil && o.NssGidOffset != nil {
+	if o != nil && !IsNil(o.NssGidOffset) {
 		return true
 	}
 
@@ -376,7 +383,7 @@ func (o *AgentConnectorRequest) SetNssGidOffset(v int32) {
 
 // GetChallengeKey returns the ChallengeKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AgentConnectorRequest) GetChallengeKey() string {
-	if o == nil || o.ChallengeKey.Get() == nil {
+	if o == nil || IsNil(o.ChallengeKey.Get()) {
 		var ret string
 		return ret
 	}
@@ -419,7 +426,7 @@ func (o *AgentConnectorRequest) UnsetChallengeKey() {
 
 // GetChallengeIdleTimeout returns the ChallengeIdleTimeout field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetChallengeIdleTimeout() string {
-	if o == nil || o.ChallengeIdleTimeout == nil {
+	if o == nil || IsNil(o.ChallengeIdleTimeout) {
 		var ret string
 		return ret
 	}
@@ -429,7 +436,7 @@ func (o *AgentConnectorRequest) GetChallengeIdleTimeout() string {
 // GetChallengeIdleTimeoutOk returns a tuple with the ChallengeIdleTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetChallengeIdleTimeoutOk() (*string, bool) {
-	if o == nil || o.ChallengeIdleTimeout == nil {
+	if o == nil || IsNil(o.ChallengeIdleTimeout) {
 		return nil, false
 	}
 	return o.ChallengeIdleTimeout, true
@@ -437,7 +444,7 @@ func (o *AgentConnectorRequest) GetChallengeIdleTimeoutOk() (*string, bool) {
 
 // HasChallengeIdleTimeout returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasChallengeIdleTimeout() bool {
-	if o != nil && o.ChallengeIdleTimeout != nil {
+	if o != nil && !IsNil(o.ChallengeIdleTimeout) {
 		return true
 	}
 
@@ -451,7 +458,7 @@ func (o *AgentConnectorRequest) SetChallengeIdleTimeout(v string) {
 
 // GetChallengeTriggerCheckIn returns the ChallengeTriggerCheckIn field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetChallengeTriggerCheckIn() bool {
-	if o == nil || o.ChallengeTriggerCheckIn == nil {
+	if o == nil || IsNil(o.ChallengeTriggerCheckIn) {
 		var ret bool
 		return ret
 	}
@@ -461,7 +468,7 @@ func (o *AgentConnectorRequest) GetChallengeTriggerCheckIn() bool {
 // GetChallengeTriggerCheckInOk returns a tuple with the ChallengeTriggerCheckIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetChallengeTriggerCheckInOk() (*bool, bool) {
-	if o == nil || o.ChallengeTriggerCheckIn == nil {
+	if o == nil || IsNil(o.ChallengeTriggerCheckIn) {
 		return nil, false
 	}
 	return o.ChallengeTriggerCheckIn, true
@@ -469,7 +476,7 @@ func (o *AgentConnectorRequest) GetChallengeTriggerCheckInOk() (*bool, bool) {
 
 // HasChallengeTriggerCheckIn returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasChallengeTriggerCheckIn() bool {
-	if o != nil && o.ChallengeTriggerCheckIn != nil {
+	if o != nil && !IsNil(o.ChallengeTriggerCheckIn) {
 		return true
 	}
 
@@ -483,7 +490,7 @@ func (o *AgentConnectorRequest) SetChallengeTriggerCheckIn(v bool) {
 
 // GetJwtFederationProviders returns the JwtFederationProviders field value if set, zero value otherwise.
 func (o *AgentConnectorRequest) GetJwtFederationProviders() []int32 {
-	if o == nil || o.JwtFederationProviders == nil {
+	if o == nil || IsNil(o.JwtFederationProviders) {
 		var ret []int32
 		return ret
 	}
@@ -493,7 +500,7 @@ func (o *AgentConnectorRequest) GetJwtFederationProviders() []int32 {
 // GetJwtFederationProvidersOk returns a tuple with the JwtFederationProviders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentConnectorRequest) GetJwtFederationProvidersOk() ([]int32, bool) {
-	if o == nil || o.JwtFederationProviders == nil {
+	if o == nil || IsNil(o.JwtFederationProviders) {
 		return nil, false
 	}
 	return o.JwtFederationProviders, true
@@ -501,7 +508,7 @@ func (o *AgentConnectorRequest) GetJwtFederationProvidersOk() ([]int32, bool) {
 
 // HasJwtFederationProviders returns a boolean if a field has been set.
 func (o *AgentConnectorRequest) HasJwtFederationProviders() bool {
-	if o != nil && o.JwtFederationProviders != nil {
+	if o != nil && !IsNil(o.JwtFederationProviders) {
 		return true
 	}
 
@@ -514,50 +521,93 @@ func (o *AgentConnectorRequest) SetJwtFederationProviders(v []int32) {
 }
 
 func (o AgentConnectorRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AgentConnectorRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ConnectorUuid != nil {
+	if !IsNil(o.ConnectorUuid) {
 		toSerialize["connector_uuid"] = o.ConnectorUuid
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Enabled != nil {
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.SnapshotExpiry != nil {
+	if !IsNil(o.SnapshotExpiry) {
 		toSerialize["snapshot_expiry"] = o.SnapshotExpiry
 	}
-	if o.AuthSessionDuration != nil {
+	if !IsNil(o.AuthSessionDuration) {
 		toSerialize["auth_session_duration"] = o.AuthSessionDuration
 	}
-	if o.AuthTerminateSessionOnExpiry != nil {
+	if !IsNil(o.AuthTerminateSessionOnExpiry) {
 		toSerialize["auth_terminate_session_on_expiry"] = o.AuthTerminateSessionOnExpiry
 	}
-	if o.RefreshInterval != nil {
+	if !IsNil(o.RefreshInterval) {
 		toSerialize["refresh_interval"] = o.RefreshInterval
 	}
 	if o.AuthorizationFlow.IsSet() {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
 	}
-	if o.NssUidOffset != nil {
+	if !IsNil(o.NssUidOffset) {
 		toSerialize["nss_uid_offset"] = o.NssUidOffset
 	}
-	if o.NssGidOffset != nil {
+	if !IsNil(o.NssGidOffset) {
 		toSerialize["nss_gid_offset"] = o.NssGidOffset
 	}
 	if o.ChallengeKey.IsSet() {
 		toSerialize["challenge_key"] = o.ChallengeKey.Get()
 	}
-	if o.ChallengeIdleTimeout != nil {
+	if !IsNil(o.ChallengeIdleTimeout) {
 		toSerialize["challenge_idle_timeout"] = o.ChallengeIdleTimeout
 	}
-	if o.ChallengeTriggerCheckIn != nil {
+	if !IsNil(o.ChallengeTriggerCheckIn) {
 		toSerialize["challenge_trigger_check_in"] = o.ChallengeTriggerCheckIn
 	}
-	if o.JwtFederationProviders != nil {
+	if !IsNil(o.JwtFederationProviders) {
 		toSerialize["jwt_federation_providers"] = o.JwtFederationProviders
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *AgentConnectorRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAgentConnectorRequest := _AgentConnectorRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAgentConnectorRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AgentConnectorRequest(varAgentConnectorRequest)
+
+	return err
 }
 
 type NullableAgentConnectorRequest struct {

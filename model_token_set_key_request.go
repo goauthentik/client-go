@@ -12,13 +12,20 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the TokenSetKeyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenSetKeyRequest{}
 
 // TokenSetKeyRequest Set token's key
 type TokenSetKeyRequest struct {
 	Key string `json:"key"`
 }
+
+type _TokenSetKeyRequest TokenSetKeyRequest
 
 // NewTokenSetKeyRequest instantiates a new TokenSetKeyRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -63,11 +70,54 @@ func (o *TokenSetKeyRequest) SetKey(v string) {
 }
 
 func (o TokenSetKeyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TokenSetKeyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
+	return toSerialize, nil
+}
+
+func (o *TokenSetKeyRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"key",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTokenSetKeyRequest := _TokenSetKeyRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTokenSetKeyRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TokenSetKeyRequest(varTokenSetKeyRequest)
+
+	return err
 }
 
 type NullableTokenSetKeyRequest struct {

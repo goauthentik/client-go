@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the EventVolume type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventVolume{}
 
 // EventVolume Count of events of action created on day
 type EventVolume struct {
@@ -22,6 +27,8 @@ type EventVolume struct {
 	Time   time.Time    `json:"time"`
 	Count  int32        `json:"count"`
 }
+
+type _EventVolume EventVolume
 
 // NewEventVolume instantiates a new EventVolume object
 // This constructor will assign default values to properties that have it defined,
@@ -116,17 +123,58 @@ func (o *EventVolume) SetCount(v int32) {
 }
 
 func (o EventVolume) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["action"] = o.Action
-	}
-	if true {
-		toSerialize["time"] = o.Time
-	}
-	if true {
-		toSerialize["count"] = o.Count
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EventVolume) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["action"] = o.Action
+	toSerialize["time"] = o.Time
+	toSerialize["count"] = o.Count
+	return toSerialize, nil
+}
+
+func (o *EventVolume) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"action",
+		"time",
+		"count",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEventVolume := _EventVolume{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEventVolume)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EventVolume(varEventVolume)
+
+	return err
 }
 
 type NullableEventVolume struct {

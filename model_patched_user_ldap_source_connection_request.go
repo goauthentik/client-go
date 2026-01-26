@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedUserLDAPSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedUserLDAPSourceConnectionRequest{}
+
 // PatchedUserLDAPSourceConnectionRequest User source connection
 type PatchedUserLDAPSourceConnectionRequest struct {
 	User       *int32  `json:"user,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedUserLDAPSourceConnectionRequestWithDefaults() *PatchedUserLDAPSou
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *PatchedUserLDAPSourceConnectionRequest) GetUser() int32 {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret int32
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedUserLDAPSourceConnectionRequest) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLDAPSourceConnectionRequest) GetUserOk() (*int32, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -59,7 +62,7 @@ func (o *PatchedUserLDAPSourceConnectionRequest) GetUserOk() (*int32, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *PatchedUserLDAPSourceConnectionRequest) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedUserLDAPSourceConnectionRequest) SetUser(v int32) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PatchedUserLDAPSourceConnectionRequest) GetSource() string {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedUserLDAPSourceConnectionRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLDAPSourceConnectionRequest) GetSourceOk() (*string, bool) {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -91,7 +94,7 @@ func (o *PatchedUserLDAPSourceConnectionRequest) GetSourceOk() (*string, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *PatchedUserLDAPSourceConnectionRequest) HasSource() bool {
-	if o != nil && o.Source != nil {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedUserLDAPSourceConnectionRequest) SetSource(v string) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *PatchedUserLDAPSourceConnectionRequest) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PatchedUserLDAPSourceConnectionRequest) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserLDAPSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -123,7 +126,7 @@ func (o *PatchedUserLDAPSourceConnectionRequest) GetIdentifierOk() (*string, boo
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *PatchedUserLDAPSourceConnectionRequest) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedUserLDAPSourceConnectionRequest) SetIdentifier(v string) {
 }
 
 func (o PatchedUserLDAPSourceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.User != nil {
-		toSerialize["user"] = o.User
-	}
-	if o.Source != nil {
-		toSerialize["source"] = o.Source
-	}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedUserLDAPSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.User) {
+		toSerialize["user"] = o.User
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedUserLDAPSourceConnectionRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedNotificationTransportRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedNotificationTransportRequest{}
+
 // PatchedNotificationTransportRequest NotificationTransport Serializer
 type PatchedNotificationTransportRequest struct {
 	Name       *string                        `json:"name,omitempty"`
@@ -49,7 +52,7 @@ func NewPatchedNotificationTransportRequestWithDefaults() *PatchedNotificationTr
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *PatchedNotificationTransportRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +70,7 @@ func (o *PatchedNotificationTransportRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *PatchedNotificationTransportRequest) SetName(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetMode() NotificationTransportModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret NotificationTransportModeEnum
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *PatchedNotificationTransportRequest) GetMode() NotificationTransportMod
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetModeOk() (*NotificationTransportModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -99,7 +102,7 @@ func (o *PatchedNotificationTransportRequest) GetModeOk() (*NotificationTranspor
 
 // HasMode returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *PatchedNotificationTransportRequest) SetMode(v NotificationTransportMod
 
 // GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetWebhookUrl() string {
-	if o == nil || o.WebhookUrl == nil {
+	if o == nil || IsNil(o.WebhookUrl) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *PatchedNotificationTransportRequest) GetWebhookUrl() string {
 // GetWebhookUrlOk returns a tuple with the WebhookUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetWebhookUrlOk() (*string, bool) {
-	if o == nil || o.WebhookUrl == nil {
+	if o == nil || IsNil(o.WebhookUrl) {
 		return nil, false
 	}
 	return o.WebhookUrl, true
@@ -131,7 +134,7 @@ func (o *PatchedNotificationTransportRequest) GetWebhookUrlOk() (*string, bool) 
 
 // HasWebhookUrl returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasWebhookUrl() bool {
-	if o != nil && o.WebhookUrl != nil {
+	if o != nil && !IsNil(o.WebhookUrl) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *PatchedNotificationTransportRequest) SetWebhookUrl(v string) {
 
 // GetWebhookMappingBody returns the WebhookMappingBody field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedNotificationTransportRequest) GetWebhookMappingBody() string {
-	if o == nil || o.WebhookMappingBody.Get() == nil {
+	if o == nil || IsNil(o.WebhookMappingBody.Get()) {
 		var ret string
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *PatchedNotificationTransportRequest) UnsetWebhookMappingBody() {
 
 // GetWebhookMappingHeaders returns the WebhookMappingHeaders field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedNotificationTransportRequest) GetWebhookMappingHeaders() string {
-	if o == nil || o.WebhookMappingHeaders.Get() == nil {
+	if o == nil || IsNil(o.WebhookMappingHeaders.Get()) {
 		var ret string
 		return ret
 	}
@@ -231,7 +234,7 @@ func (o *PatchedNotificationTransportRequest) UnsetWebhookMappingHeaders() {
 
 // GetEmailSubjectPrefix returns the EmailSubjectPrefix field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetEmailSubjectPrefix() string {
-	if o == nil || o.EmailSubjectPrefix == nil {
+	if o == nil || IsNil(o.EmailSubjectPrefix) {
 		var ret string
 		return ret
 	}
@@ -241,7 +244,7 @@ func (o *PatchedNotificationTransportRequest) GetEmailSubjectPrefix() string {
 // GetEmailSubjectPrefixOk returns a tuple with the EmailSubjectPrefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetEmailSubjectPrefixOk() (*string, bool) {
-	if o == nil || o.EmailSubjectPrefix == nil {
+	if o == nil || IsNil(o.EmailSubjectPrefix) {
 		return nil, false
 	}
 	return o.EmailSubjectPrefix, true
@@ -249,7 +252,7 @@ func (o *PatchedNotificationTransportRequest) GetEmailSubjectPrefixOk() (*string
 
 // HasEmailSubjectPrefix returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasEmailSubjectPrefix() bool {
-	if o != nil && o.EmailSubjectPrefix != nil {
+	if o != nil && !IsNil(o.EmailSubjectPrefix) {
 		return true
 	}
 
@@ -263,7 +266,7 @@ func (o *PatchedNotificationTransportRequest) SetEmailSubjectPrefix(v string) {
 
 // GetEmailTemplate returns the EmailTemplate field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetEmailTemplate() string {
-	if o == nil || o.EmailTemplate == nil {
+	if o == nil || IsNil(o.EmailTemplate) {
 		var ret string
 		return ret
 	}
@@ -273,7 +276,7 @@ func (o *PatchedNotificationTransportRequest) GetEmailTemplate() string {
 // GetEmailTemplateOk returns a tuple with the EmailTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetEmailTemplateOk() (*string, bool) {
-	if o == nil || o.EmailTemplate == nil {
+	if o == nil || IsNil(o.EmailTemplate) {
 		return nil, false
 	}
 	return o.EmailTemplate, true
@@ -281,7 +284,7 @@ func (o *PatchedNotificationTransportRequest) GetEmailTemplateOk() (*string, boo
 
 // HasEmailTemplate returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasEmailTemplate() bool {
-	if o != nil && o.EmailTemplate != nil {
+	if o != nil && !IsNil(o.EmailTemplate) {
 		return true
 	}
 
@@ -295,7 +298,7 @@ func (o *PatchedNotificationTransportRequest) SetEmailTemplate(v string) {
 
 // GetSendOnce returns the SendOnce field value if set, zero value otherwise.
 func (o *PatchedNotificationTransportRequest) GetSendOnce() bool {
-	if o == nil || o.SendOnce == nil {
+	if o == nil || IsNil(o.SendOnce) {
 		var ret bool
 		return ret
 	}
@@ -305,7 +308,7 @@ func (o *PatchedNotificationTransportRequest) GetSendOnce() bool {
 // GetSendOnceOk returns a tuple with the SendOnce field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedNotificationTransportRequest) GetSendOnceOk() (*bool, bool) {
-	if o == nil || o.SendOnce == nil {
+	if o == nil || IsNil(o.SendOnce) {
 		return nil, false
 	}
 	return o.SendOnce, true
@@ -313,7 +316,7 @@ func (o *PatchedNotificationTransportRequest) GetSendOnceOk() (*bool, bool) {
 
 // HasSendOnce returns a boolean if a field has been set.
 func (o *PatchedNotificationTransportRequest) HasSendOnce() bool {
-	if o != nil && o.SendOnce != nil {
+	if o != nil && !IsNil(o.SendOnce) {
 		return true
 	}
 
@@ -326,14 +329,22 @@ func (o *PatchedNotificationTransportRequest) SetSendOnce(v bool) {
 }
 
 func (o PatchedNotificationTransportRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedNotificationTransportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Mode != nil {
+	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
-	if o.WebhookUrl != nil {
+	if !IsNil(o.WebhookUrl) {
 		toSerialize["webhook_url"] = o.WebhookUrl
 	}
 	if o.WebhookMappingBody.IsSet() {
@@ -342,16 +353,16 @@ func (o PatchedNotificationTransportRequest) MarshalJSON() ([]byte, error) {
 	if o.WebhookMappingHeaders.IsSet() {
 		toSerialize["webhook_mapping_headers"] = o.WebhookMappingHeaders.Get()
 	}
-	if o.EmailSubjectPrefix != nil {
+	if !IsNil(o.EmailSubjectPrefix) {
 		toSerialize["email_subject_prefix"] = o.EmailSubjectPrefix
 	}
-	if o.EmailTemplate != nil {
+	if !IsNil(o.EmailTemplate) {
 		toSerialize["email_template"] = o.EmailTemplate
 	}
-	if o.SendOnce != nil {
+	if !IsNil(o.SendOnce) {
 		toSerialize["send_once"] = o.SendOnce
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedNotificationTransportRequest struct {

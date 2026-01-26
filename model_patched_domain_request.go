@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedDomainRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedDomainRequest{}
+
 // PatchedDomainRequest Domain Serializer
 type PatchedDomainRequest struct {
 	Domain    *string `json:"domain,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedDomainRequestWithDefaults() *PatchedDomainRequest {
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *PatchedDomainRequest) GetDomain() string {
-	if o == nil || o.Domain == nil {
+	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedDomainRequest) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDomainRequest) GetDomainOk() (*string, bool) {
-	if o == nil || o.Domain == nil {
+	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
 	return o.Domain, true
@@ -59,7 +62,7 @@ func (o *PatchedDomainRequest) GetDomainOk() (*string, bool) {
 
 // HasDomain returns a boolean if a field has been set.
 func (o *PatchedDomainRequest) HasDomain() bool {
-	if o != nil && o.Domain != nil {
+	if o != nil && !IsNil(o.Domain) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedDomainRequest) SetDomain(v string) {
 
 // GetIsPrimary returns the IsPrimary field value if set, zero value otherwise.
 func (o *PatchedDomainRequest) GetIsPrimary() bool {
-	if o == nil || o.IsPrimary == nil {
+	if o == nil || IsNil(o.IsPrimary) {
 		var ret bool
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedDomainRequest) GetIsPrimary() bool {
 // GetIsPrimaryOk returns a tuple with the IsPrimary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDomainRequest) GetIsPrimaryOk() (*bool, bool) {
-	if o == nil || o.IsPrimary == nil {
+	if o == nil || IsNil(o.IsPrimary) {
 		return nil, false
 	}
 	return o.IsPrimary, true
@@ -91,7 +94,7 @@ func (o *PatchedDomainRequest) GetIsPrimaryOk() (*bool, bool) {
 
 // HasIsPrimary returns a boolean if a field has been set.
 func (o *PatchedDomainRequest) HasIsPrimary() bool {
-	if o != nil && o.IsPrimary != nil {
+	if o != nil && !IsNil(o.IsPrimary) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedDomainRequest) SetIsPrimary(v bool) {
 
 // GetTenant returns the Tenant field value if set, zero value otherwise.
 func (o *PatchedDomainRequest) GetTenant() string {
-	if o == nil || o.Tenant == nil {
+	if o == nil || IsNil(o.Tenant) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PatchedDomainRequest) GetTenant() string {
 // GetTenantOk returns a tuple with the Tenant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDomainRequest) GetTenantOk() (*string, bool) {
-	if o == nil || o.Tenant == nil {
+	if o == nil || IsNil(o.Tenant) {
 		return nil, false
 	}
 	return o.Tenant, true
@@ -123,7 +126,7 @@ func (o *PatchedDomainRequest) GetTenantOk() (*string, bool) {
 
 // HasTenant returns a boolean if a field has been set.
 func (o *PatchedDomainRequest) HasTenant() bool {
-	if o != nil && o.Tenant != nil {
+	if o != nil && !IsNil(o.Tenant) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedDomainRequest) SetTenant(v string) {
 }
 
 func (o PatchedDomainRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Domain != nil {
-		toSerialize["domain"] = o.Domain
-	}
-	if o.IsPrimary != nil {
-		toSerialize["is_primary"] = o.IsPrimary
-	}
-	if o.Tenant != nil {
-		toSerialize["tenant"] = o.Tenant
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedDomainRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Domain) {
+		toSerialize["domain"] = o.Domain
+	}
+	if !IsNil(o.IsPrimary) {
+		toSerialize["is_primary"] = o.IsPrimary
+	}
+	if !IsNil(o.Tenant) {
+		toSerialize["tenant"] = o.Tenant
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedDomainRequest struct {

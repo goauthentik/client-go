@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedMutualTLSStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedMutualTLSStageRequest{}
+
 // PatchedMutualTLSStageRequest MutualTLSStage Serializer
 type PatchedMutualTLSStageRequest struct {
 	Name *string        `json:"name,omitempty"`
@@ -44,7 +47,7 @@ func NewPatchedMutualTLSStageRequestWithDefaults() *PatchedMutualTLSStageRequest
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedMutualTLSStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *PatchedMutualTLSStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMutualTLSStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -62,7 +65,7 @@ func (o *PatchedMutualTLSStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedMutualTLSStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *PatchedMutualTLSStageRequest) SetName(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *PatchedMutualTLSStageRequest) GetMode() StageModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret StageModeEnum
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *PatchedMutualTLSStageRequest) GetMode() StageModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMutualTLSStageRequest) GetModeOk() (*StageModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -94,7 +97,7 @@ func (o *PatchedMutualTLSStageRequest) GetModeOk() (*StageModeEnum, bool) {
 
 // HasMode returns a boolean if a field has been set.
 func (o *PatchedMutualTLSStageRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *PatchedMutualTLSStageRequest) SetMode(v StageModeEnum) {
 
 // GetCertificateAuthorities returns the CertificateAuthorities field value if set, zero value otherwise.
 func (o *PatchedMutualTLSStageRequest) GetCertificateAuthorities() []string {
-	if o == nil || o.CertificateAuthorities == nil {
+	if o == nil || IsNil(o.CertificateAuthorities) {
 		var ret []string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *PatchedMutualTLSStageRequest) GetCertificateAuthorities() []string {
 // GetCertificateAuthoritiesOk returns a tuple with the CertificateAuthorities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMutualTLSStageRequest) GetCertificateAuthoritiesOk() ([]string, bool) {
-	if o == nil || o.CertificateAuthorities == nil {
+	if o == nil || IsNil(o.CertificateAuthorities) {
 		return nil, false
 	}
 	return o.CertificateAuthorities, true
@@ -126,7 +129,7 @@ func (o *PatchedMutualTLSStageRequest) GetCertificateAuthoritiesOk() ([]string, 
 
 // HasCertificateAuthorities returns a boolean if a field has been set.
 func (o *PatchedMutualTLSStageRequest) HasCertificateAuthorities() bool {
-	if o != nil && o.CertificateAuthorities != nil {
+	if o != nil && !IsNil(o.CertificateAuthorities) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *PatchedMutualTLSStageRequest) SetCertificateAuthorities(v []string) {
 
 // GetCertAttribute returns the CertAttribute field value if set, zero value otherwise.
 func (o *PatchedMutualTLSStageRequest) GetCertAttribute() CertAttributeEnum {
-	if o == nil || o.CertAttribute == nil {
+	if o == nil || IsNil(o.CertAttribute) {
 		var ret CertAttributeEnum
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *PatchedMutualTLSStageRequest) GetCertAttribute() CertAttributeEnum {
 // GetCertAttributeOk returns a tuple with the CertAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMutualTLSStageRequest) GetCertAttributeOk() (*CertAttributeEnum, bool) {
-	if o == nil || o.CertAttribute == nil {
+	if o == nil || IsNil(o.CertAttribute) {
 		return nil, false
 	}
 	return o.CertAttribute, true
@@ -158,7 +161,7 @@ func (o *PatchedMutualTLSStageRequest) GetCertAttributeOk() (*CertAttributeEnum,
 
 // HasCertAttribute returns a boolean if a field has been set.
 func (o *PatchedMutualTLSStageRequest) HasCertAttribute() bool {
-	if o != nil && o.CertAttribute != nil {
+	if o != nil && !IsNil(o.CertAttribute) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *PatchedMutualTLSStageRequest) SetCertAttribute(v CertAttributeEnum) {
 
 // GetUserAttribute returns the UserAttribute field value if set, zero value otherwise.
 func (o *PatchedMutualTLSStageRequest) GetUserAttribute() UserAttributeEnum {
-	if o == nil || o.UserAttribute == nil {
+	if o == nil || IsNil(o.UserAttribute) {
 		var ret UserAttributeEnum
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *PatchedMutualTLSStageRequest) GetUserAttribute() UserAttributeEnum {
 // GetUserAttributeOk returns a tuple with the UserAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMutualTLSStageRequest) GetUserAttributeOk() (*UserAttributeEnum, bool) {
-	if o == nil || o.UserAttribute == nil {
+	if o == nil || IsNil(o.UserAttribute) {
 		return nil, false
 	}
 	return o.UserAttribute, true
@@ -190,7 +193,7 @@ func (o *PatchedMutualTLSStageRequest) GetUserAttributeOk() (*UserAttributeEnum,
 
 // HasUserAttribute returns a boolean if a field has been set.
 func (o *PatchedMutualTLSStageRequest) HasUserAttribute() bool {
-	if o != nil && o.UserAttribute != nil {
+	if o != nil && !IsNil(o.UserAttribute) {
 		return true
 	}
 
@@ -203,23 +206,31 @@ func (o *PatchedMutualTLSStageRequest) SetUserAttribute(v UserAttributeEnum) {
 }
 
 func (o PatchedMutualTLSStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
-	}
-	if o.CertificateAuthorities != nil {
-		toSerialize["certificate_authorities"] = o.CertificateAuthorities
-	}
-	if o.CertAttribute != nil {
-		toSerialize["cert_attribute"] = o.CertAttribute
-	}
-	if o.UserAttribute != nil {
-		toSerialize["user_attribute"] = o.UserAttribute
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedMutualTLSStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	if !IsNil(o.CertificateAuthorities) {
+		toSerialize["certificate_authorities"] = o.CertificateAuthorities
+	}
+	if !IsNil(o.CertAttribute) {
+		toSerialize["cert_attribute"] = o.CertAttribute
+	}
+	if !IsNil(o.UserAttribute) {
+		toSerialize["user_attribute"] = o.UserAttribute
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedMutualTLSStageRequest struct {

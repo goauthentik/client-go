@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PaginatedPromptStageList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedPromptStageList{}
 
 // PaginatedPromptStageList struct for PaginatedPromptStageList
 type PaginatedPromptStageList struct {
@@ -21,6 +26,8 @@ type PaginatedPromptStageList struct {
 	Results      []PromptStage          `json:"results"`
 	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
+
+type _PaginatedPromptStageList PaginatedPromptStageList
 
 // NewPaginatedPromptStageList instantiates a new PaginatedPromptStageList object
 // This constructor will assign default values to properties that have it defined,
@@ -104,7 +111,7 @@ func (o *PaginatedPromptStageList) GetAutocomplete() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *PaginatedPromptStageList) GetAutocompleteOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Autocomplete, true
 }
@@ -115,17 +122,58 @@ func (o *PaginatedPromptStageList) SetAutocomplete(v map[string]interface{}) {
 }
 
 func (o PaginatedPromptStageList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
-	}
-	if true {
-		toSerialize["autocomplete"] = o.Autocomplete
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedPromptStageList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	toSerialize["autocomplete"] = o.Autocomplete
+	return toSerialize, nil
+}
+
+func (o *PaginatedPromptStageList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pagination",
+		"results",
+		"autocomplete",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaginatedPromptStageList := _PaginatedPromptStageList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaginatedPromptStageList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaginatedPromptStageList(varPaginatedPromptStageList)
+
+	return err
 }
 
 type NullablePaginatedPromptStageList struct {

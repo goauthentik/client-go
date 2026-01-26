@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AgentPSSODeviceRegistrationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgentPSSODeviceRegistrationResponse{}
 
 // AgentPSSODeviceRegistrationResponse authentik settings for Platform SSO tokens
 type AgentPSSODeviceRegistrationResponse struct {
@@ -24,6 +29,8 @@ type AgentPSSODeviceRegistrationResponse struct {
 	Audience      string `json:"audience"`
 	NonceEndpoint string `json:"nonce_endpoint"`
 }
+
+type _AgentPSSODeviceRegistrationResponse AgentPSSODeviceRegistrationResponse
 
 // NewAgentPSSODeviceRegistrationResponse instantiates a new AgentPSSODeviceRegistrationResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -193,26 +200,64 @@ func (o *AgentPSSODeviceRegistrationResponse) SetNonceEndpoint(v string) {
 }
 
 func (o AgentPSSODeviceRegistrationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["client_id"] = o.ClientId
-	}
-	if true {
-		toSerialize["issuer"] = o.Issuer
-	}
-	if true {
-		toSerialize["token_endpoint"] = o.TokenEndpoint
-	}
-	if true {
-		toSerialize["jwks_endpoint"] = o.JwksEndpoint
-	}
-	if true {
-		toSerialize["audience"] = o.Audience
-	}
-	if true {
-		toSerialize["nonce_endpoint"] = o.NonceEndpoint
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AgentPSSODeviceRegistrationResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["client_id"] = o.ClientId
+	toSerialize["issuer"] = o.Issuer
+	toSerialize["token_endpoint"] = o.TokenEndpoint
+	toSerialize["jwks_endpoint"] = o.JwksEndpoint
+	toSerialize["audience"] = o.Audience
+	toSerialize["nonce_endpoint"] = o.NonceEndpoint
+	return toSerialize, nil
+}
+
+func (o *AgentPSSODeviceRegistrationResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"client_id",
+		"issuer",
+		"token_endpoint",
+		"jwks_endpoint",
+		"audience",
+		"nonce_endpoint",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAgentPSSODeviceRegistrationResponse := _AgentPSSODeviceRegistrationResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAgentPSSODeviceRegistrationResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AgentPSSODeviceRegistrationResponse(varAgentPSSODeviceRegistrationResponse)
+
+	return err
 }
 
 type NullableAgentPSSODeviceRegistrationResponse struct {

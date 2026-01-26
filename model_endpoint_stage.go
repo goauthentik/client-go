@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the EndpointStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EndpointStage{}
 
 // EndpointStage EndpointStage Serializer
 type EndpointStage struct {
@@ -32,6 +37,8 @@ type EndpointStage struct {
 	ConnectorObj  Connector      `json:"connector_obj"`
 	Mode          *StageModeEnum `json:"mode,omitempty"`
 }
+
+type _EndpointStage EndpointStage
 
 // NewEndpointStage instantiates a new EndpointStage object
 // This constructor will assign default values to properties that have it defined,
@@ -277,7 +284,7 @@ func (o *EndpointStage) SetConnectorObj(v Connector) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *EndpointStage) GetMode() StageModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret StageModeEnum
 		return ret
 	}
@@ -287,7 +294,7 @@ func (o *EndpointStage) GetMode() StageModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointStage) GetModeOk() (*StageModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -295,7 +302,7 @@ func (o *EndpointStage) GetModeOk() (*StageModeEnum, bool) {
 
 // HasMode returns a boolean if a field has been set.
 func (o *EndpointStage) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -308,38 +315,73 @@ func (o *EndpointStage) SetMode(v StageModeEnum) {
 }
 
 func (o EndpointStage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if true {
-		toSerialize["connector"] = o.Connector
-	}
-	if true {
-		toSerialize["connector_obj"] = o.ConnectorObj
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EndpointStage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize["flow_set"] = o.FlowSet
+	toSerialize["connector"] = o.Connector
+	toSerialize["connector_obj"] = o.ConnectorObj
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	return toSerialize, nil
+}
+
+func (o *EndpointStage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"flow_set",
+		"connector",
+		"connector_obj",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEndpointStage := _EndpointStage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEndpointStage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EndpointStage(varEndpointStage)
+
+	return err
 }
 
 type NullableEndpointStage struct {

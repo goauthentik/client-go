@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedUserPlexSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedUserPlexSourceConnectionRequest{}
+
 // PatchedUserPlexSourceConnectionRequest User source connection
 type PatchedUserPlexSourceConnectionRequest struct {
 	User       *int32  `json:"user,omitempty"`
@@ -42,7 +45,7 @@ func NewPatchedUserPlexSourceConnectionRequestWithDefaults() *PatchedUserPlexSou
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *PatchedUserPlexSourceConnectionRequest) GetUser() int32 {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret int32
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserPlexSourceConnectionRequest) GetUserOk() (*int32, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -60,7 +63,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) GetUserOk() (*int32, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *PatchedUserPlexSourceConnectionRequest) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) SetUser(v int32) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PatchedUserPlexSourceConnectionRequest) GetSource() string {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserPlexSourceConnectionRequest) GetSourceOk() (*string, bool) {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -92,7 +95,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) GetSourceOk() (*string, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *PatchedUserPlexSourceConnectionRequest) HasSource() bool {
-	if o != nil && o.Source != nil {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) SetSource(v string) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *PatchedUserPlexSourceConnectionRequest) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserPlexSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -124,7 +127,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) GetIdentifierOk() (*string, boo
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *PatchedUserPlexSourceConnectionRequest) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) SetIdentifier(v string) {
 
 // GetPlexToken returns the PlexToken field value if set, zero value otherwise.
 func (o *PatchedUserPlexSourceConnectionRequest) GetPlexToken() string {
-	if o == nil || o.PlexToken == nil {
+	if o == nil || IsNil(o.PlexToken) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) GetPlexToken() string {
 // GetPlexTokenOk returns a tuple with the PlexToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserPlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool) {
-	if o == nil || o.PlexToken == nil {
+	if o == nil || IsNil(o.PlexToken) {
 		return nil, false
 	}
 	return o.PlexToken, true
@@ -156,7 +159,7 @@ func (o *PatchedUserPlexSourceConnectionRequest) GetPlexTokenOk() (*string, bool
 
 // HasPlexToken returns a boolean if a field has been set.
 func (o *PatchedUserPlexSourceConnectionRequest) HasPlexToken() bool {
-	if o != nil && o.PlexToken != nil {
+	if o != nil && !IsNil(o.PlexToken) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *PatchedUserPlexSourceConnectionRequest) SetPlexToken(v string) {
 }
 
 func (o PatchedUserPlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.User != nil {
-		toSerialize["user"] = o.User
-	}
-	if o.Source != nil {
-		toSerialize["source"] = o.Source
-	}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
-	}
-	if o.PlexToken != nil {
-		toSerialize["plex_token"] = o.PlexToken
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedUserPlexSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.User) {
+		toSerialize["user"] = o.User
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	if !IsNil(o.PlexToken) {
+		toSerialize["plex_token"] = o.PlexToken
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedUserPlexSourceConnectionRequest struct {

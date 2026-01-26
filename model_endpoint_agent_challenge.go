@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the EndpointAgentChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EndpointAgentChallenge{}
 
 // EndpointAgentChallenge Signed challenge for authentik agent to respond to
 type EndpointAgentChallenge struct {
@@ -23,6 +28,8 @@ type EndpointAgentChallenge struct {
 	Challenge            string                    `json:"challenge"`
 	ChallengeIdleTimeout int32                     `json:"challenge_idle_timeout"`
 }
+
+type _EndpointAgentChallenge EndpointAgentChallenge
 
 // NewEndpointAgentChallenge instantiates a new EndpointAgentChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -49,7 +56,7 @@ func NewEndpointAgentChallengeWithDefaults() *EndpointAgentChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *EndpointAgentChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -59,7 +66,7 @@ func (o *EndpointAgentChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointAgentChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -67,7 +74,7 @@ func (o *EndpointAgentChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *EndpointAgentChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -81,7 +88,7 @@ func (o *EndpointAgentChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *EndpointAgentChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -91,7 +98,7 @@ func (o *EndpointAgentChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointAgentChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -99,7 +106,7 @@ func (o *EndpointAgentChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *EndpointAgentChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -113,7 +120,7 @@ func (o *EndpointAgentChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *EndpointAgentChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -123,7 +130,7 @@ func (o *EndpointAgentChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointAgentChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -131,7 +138,7 @@ func (o *EndpointAgentChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetai
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *EndpointAgentChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -192,23 +199,65 @@ func (o *EndpointAgentChallenge) SetChallengeIdleTimeout(v int32) {
 }
 
 func (o EndpointAgentChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["challenge"] = o.Challenge
-	}
-	if true {
-		toSerialize["challenge_idle_timeout"] = o.ChallengeIdleTimeout
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EndpointAgentChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["challenge"] = o.Challenge
+	toSerialize["challenge_idle_timeout"] = o.ChallengeIdleTimeout
+	return toSerialize, nil
+}
+
+func (o *EndpointAgentChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"challenge",
+		"challenge_idle_timeout",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEndpointAgentChallenge := _EndpointAgentChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEndpointAgentChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EndpointAgentChallenge(varEndpointAgentChallenge)
+
+	return err
 }
 
 type NullableEndpointAgentChallenge struct {

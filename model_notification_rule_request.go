@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the NotificationRuleRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationRuleRequest{}
 
 // NotificationRuleRequest NotificationRule Serializer
 type NotificationRuleRequest struct {
@@ -27,6 +32,8 @@ type NotificationRuleRequest struct {
 	// When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both.
 	DestinationEventUser *bool `json:"destination_event_user,omitempty"`
 }
+
+type _NotificationRuleRequest NotificationRuleRequest
 
 // NewNotificationRuleRequest instantiates a new NotificationRuleRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -72,7 +79,7 @@ func (o *NotificationRuleRequest) SetName(v string) {
 
 // GetTransports returns the Transports field value if set, zero value otherwise.
 func (o *NotificationRuleRequest) GetTransports() []string {
-	if o == nil || o.Transports == nil {
+	if o == nil || IsNil(o.Transports) {
 		var ret []string
 		return ret
 	}
@@ -82,7 +89,7 @@ func (o *NotificationRuleRequest) GetTransports() []string {
 // GetTransportsOk returns a tuple with the Transports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRuleRequest) GetTransportsOk() ([]string, bool) {
-	if o == nil || o.Transports == nil {
+	if o == nil || IsNil(o.Transports) {
 		return nil, false
 	}
 	return o.Transports, true
@@ -90,7 +97,7 @@ func (o *NotificationRuleRequest) GetTransportsOk() ([]string, bool) {
 
 // HasTransports returns a boolean if a field has been set.
 func (o *NotificationRuleRequest) HasTransports() bool {
-	if o != nil && o.Transports != nil {
+	if o != nil && !IsNil(o.Transports) {
 		return true
 	}
 
@@ -104,7 +111,7 @@ func (o *NotificationRuleRequest) SetTransports(v []string) {
 
 // GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *NotificationRuleRequest) GetSeverity() SeverityEnum {
-	if o == nil || o.Severity == nil {
+	if o == nil || IsNil(o.Severity) {
 		var ret SeverityEnum
 		return ret
 	}
@@ -114,7 +121,7 @@ func (o *NotificationRuleRequest) GetSeverity() SeverityEnum {
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRuleRequest) GetSeverityOk() (*SeverityEnum, bool) {
-	if o == nil || o.Severity == nil {
+	if o == nil || IsNil(o.Severity) {
 		return nil, false
 	}
 	return o.Severity, true
@@ -122,7 +129,7 @@ func (o *NotificationRuleRequest) GetSeverityOk() (*SeverityEnum, bool) {
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *NotificationRuleRequest) HasSeverity() bool {
-	if o != nil && o.Severity != nil {
+	if o != nil && !IsNil(o.Severity) {
 		return true
 	}
 
@@ -136,7 +143,7 @@ func (o *NotificationRuleRequest) SetSeverity(v SeverityEnum) {
 
 // GetDestinationGroup returns the DestinationGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationRuleRequest) GetDestinationGroup() string {
-	if o == nil || o.DestinationGroup.Get() == nil {
+	if o == nil || IsNil(o.DestinationGroup.Get()) {
 		var ret string
 		return ret
 	}
@@ -179,7 +186,7 @@ func (o *NotificationRuleRequest) UnsetDestinationGroup() {
 
 // GetDestinationEventUser returns the DestinationEventUser field value if set, zero value otherwise.
 func (o *NotificationRuleRequest) GetDestinationEventUser() bool {
-	if o == nil || o.DestinationEventUser == nil {
+	if o == nil || IsNil(o.DestinationEventUser) {
 		var ret bool
 		return ret
 	}
@@ -189,7 +196,7 @@ func (o *NotificationRuleRequest) GetDestinationEventUser() bool {
 // GetDestinationEventUserOk returns a tuple with the DestinationEventUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationRuleRequest) GetDestinationEventUserOk() (*bool, bool) {
-	if o == nil || o.DestinationEventUser == nil {
+	if o == nil || IsNil(o.DestinationEventUser) {
 		return nil, false
 	}
 	return o.DestinationEventUser, true
@@ -197,7 +204,7 @@ func (o *NotificationRuleRequest) GetDestinationEventUserOk() (*bool, bool) {
 
 // HasDestinationEventUser returns a boolean if a field has been set.
 func (o *NotificationRuleRequest) HasDestinationEventUser() bool {
-	if o != nil && o.DestinationEventUser != nil {
+	if o != nil && !IsNil(o.DestinationEventUser) {
 		return true
 	}
 
@@ -210,23 +217,66 @@ func (o *NotificationRuleRequest) SetDestinationEventUser(v bool) {
 }
 
 func (o NotificationRuleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.Transports != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o NotificationRuleRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Transports) {
 		toSerialize["transports"] = o.Transports
 	}
-	if o.Severity != nil {
+	if !IsNil(o.Severity) {
 		toSerialize["severity"] = o.Severity
 	}
 	if o.DestinationGroup.IsSet() {
 		toSerialize["destination_group"] = o.DestinationGroup.Get()
 	}
-	if o.DestinationEventUser != nil {
+	if !IsNil(o.DestinationEventUser) {
 		toSerialize["destination_event_user"] = o.DestinationEventUser
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *NotificationRuleRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNotificationRuleRequest := _NotificationRuleRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varNotificationRuleRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NotificationRuleRequest(varNotificationRuleRequest)
+
+	return err
 }
 
 type NullableNotificationRuleRequest struct {

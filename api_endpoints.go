@@ -14,19 +14,19 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
 	"strings"
 )
 
-// EndpointsApiService EndpointsApi service
-type EndpointsApiService service
+// EndpointsAPIService EndpointsAPI service
+type EndpointsAPIService service
 
 type ApiEndpointsAgentsConnectorsAgentConfigRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 }
 
 func (r ApiEndpointsAgentsConnectorsAgentConfigRetrieveRequest) Execute() (*AgentConfig, *http.Response, error) {
@@ -41,7 +41,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsConnectorsAgentConfigRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsAgentConfigRetrieve(ctx context.Context) ApiEndpointsAgentsConnectorsAgentConfigRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsAgentConfigRetrieve(ctx context.Context) ApiEndpointsAgentsConnectorsAgentConfigRetrieveRequest {
 	return ApiEndpointsAgentsConnectorsAgentConfigRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -51,7 +51,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAgentConfigRetrieve(ctx c
 // Execute executes the request
 //
 //	@return AgentConfig
-func (a *EndpointsApiService) EndpointsAgentsConnectorsAgentConfigRetrieveExecute(r ApiEndpointsAgentsConnectorsAgentConfigRetrieveRequest) (*AgentConfig, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsAgentConfigRetrieveExecute(r ApiEndpointsAgentsConnectorsAgentConfigRetrieveRequest) (*AgentConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -59,7 +59,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAgentConfigRetrieveExecut
 		localVarReturnValue *AgentConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsAgentConfigRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsAgentConfigRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -97,9 +97,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAgentConfigRetrieveExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -116,6 +116,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAgentConfigRetrieveExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -126,6 +127,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAgentConfigRetrieveExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -145,7 +147,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAgentConfigRetrieveExecut
 
 type ApiEndpointsAgentsConnectorsAuthFedCreateRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	device     *string
 }
 
@@ -166,7 +168,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsConnectorsAuthFedCreateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreate(ctx context.Context) ApiEndpointsAgentsConnectorsAuthFedCreateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsAuthFedCreate(ctx context.Context) ApiEndpointsAgentsConnectorsAuthFedCreateRequest {
 	return ApiEndpointsAgentsConnectorsAuthFedCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -176,7 +178,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreate(ctx context
 // Execute executes the request
 //
 //	@return AgentTokenResponse
-func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreateExecute(r ApiEndpointsAgentsConnectorsAuthFedCreateRequest) (*AgentTokenResponse, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsAuthFedCreateExecute(r ApiEndpointsAgentsConnectorsAuthFedCreateRequest) (*AgentTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -184,7 +186,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreateExecute(r Ap
 		localVarReturnValue *AgentTokenResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsAuthFedCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsAuthFedCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -198,7 +200,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreateExecute(r Ap
 		return localVarReturnValue, nil, reportError("device is required and must be specified")
 	}
 
-	localVarQueryParams.Add("device", parameterToString(*r.device, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "device", r.device, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -226,9 +228,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -245,6 +247,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -255,6 +258,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -274,7 +278,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthFedCreateExecute(r Ap
 
 type ApiEndpointsAgentsConnectorsAuthIaCreateRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 }
 
 func (r ApiEndpointsAgentsConnectorsAuthIaCreateRequest) Execute() (*AgentAuthenticationResponse, *http.Response, error) {
@@ -289,7 +293,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsConnectorsAuthIaCreateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreate(ctx context.Context) ApiEndpointsAgentsConnectorsAuthIaCreateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsAuthIaCreate(ctx context.Context) ApiEndpointsAgentsConnectorsAuthIaCreateRequest {
 	return ApiEndpointsAgentsConnectorsAuthIaCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -299,7 +303,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreate(ctx context.
 // Execute executes the request
 //
 //	@return AgentAuthenticationResponse
-func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreateExecute(r ApiEndpointsAgentsConnectorsAuthIaCreateRequest) (*AgentAuthenticationResponse, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsAuthIaCreateExecute(r ApiEndpointsAgentsConnectorsAuthIaCreateRequest) (*AgentAuthenticationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -307,7 +311,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreateExecute(r Api
 		localVarReturnValue *AgentAuthenticationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsAuthIaCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsAuthIaCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -345,9 +349,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -364,6 +368,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -374,6 +379,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -393,7 +399,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsAuthIaCreateExecute(r Api
 
 type ApiEndpointsAgentsConnectorsCheckInCreateRequest struct {
 	ctx                context.Context
-	ApiService         *EndpointsApiService
+	ApiService         *EndpointsAPIService
 	deviceFactsRequest *DeviceFactsRequest
 }
 
@@ -414,7 +420,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsConnectorsCheckInCreateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsCheckInCreate(ctx context.Context) ApiEndpointsAgentsConnectorsCheckInCreateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsCheckInCreate(ctx context.Context) ApiEndpointsAgentsConnectorsCheckInCreateRequest {
 	return ApiEndpointsAgentsConnectorsCheckInCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -422,14 +428,14 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCheckInCreate(ctx context
 }
 
 // Execute executes the request
-func (a *EndpointsApiService) EndpointsAgentsConnectorsCheckInCreateExecute(r ApiEndpointsAgentsConnectorsCheckInCreateRequest) (*http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsCheckInCreateExecute(r ApiEndpointsAgentsConnectorsCheckInCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsCheckInCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsCheckInCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -469,9 +475,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCheckInCreateExecute(r Ap
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -488,6 +494,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCheckInCreateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -498,6 +505,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCheckInCreateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -508,7 +516,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCheckInCreateExecute(r Ap
 
 type ApiEndpointsAgentsConnectorsCreateRequest struct {
 	ctx                   context.Context
-	ApiService            *EndpointsApiService
+	ApiService            *EndpointsAPIService
 	agentConnectorRequest *AgentConnectorRequest
 }
 
@@ -529,7 +537,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsConnectorsCreateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsCreate(ctx context.Context) ApiEndpointsAgentsConnectorsCreateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsCreate(ctx context.Context) ApiEndpointsAgentsConnectorsCreateRequest {
 	return ApiEndpointsAgentsConnectorsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -539,7 +547,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCreate(ctx context.Contex
 // Execute executes the request
 //
 //	@return AgentConnector
-func (a *EndpointsApiService) EndpointsAgentsConnectorsCreateExecute(r ApiEndpointsAgentsConnectorsCreateRequest) (*AgentConnector, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsCreateExecute(r ApiEndpointsAgentsConnectorsCreateRequest) (*AgentConnector, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -547,7 +555,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCreateExecute(r ApiEndpoi
 		localVarReturnValue *AgentConnector
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -590,9 +598,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCreateExecute(r ApiEndpoi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -609,6 +617,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCreateExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -619,6 +628,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCreateExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -638,7 +648,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsCreateExecute(r ApiEndpoi
 
 type ApiEndpointsAgentsConnectorsDestroyRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	connectorUuid string
 }
 
@@ -655,7 +665,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param connectorUuid A UUID string identifying this Agent Connector.
 	@return ApiEndpointsAgentsConnectorsDestroyRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsDestroy(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsDestroyRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsDestroy(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsDestroyRequest {
 	return ApiEndpointsAgentsConnectorsDestroyRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -664,20 +674,20 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsDestroy(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *EndpointsApiService) EndpointsAgentsConnectorsDestroyExecute(r ApiEndpointsAgentsConnectorsDestroyRequest) (*http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsDestroyExecute(r ApiEndpointsAgentsConnectorsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -710,9 +720,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsDestroyExecute(r ApiEndpo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -729,6 +739,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsDestroyExecute(r ApiEndpo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -739,6 +750,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsDestroyExecute(r ApiEndpo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -749,7 +761,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsDestroyExecute(r ApiEndpo
 
 type ApiEndpointsAgentsConnectorsEnrollCreateRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	enrollRequest *EnrollRequest
 }
 
@@ -770,7 +782,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsConnectorsEnrollCreateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreate(ctx context.Context) ApiEndpointsAgentsConnectorsEnrollCreateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsEnrollCreate(ctx context.Context) ApiEndpointsAgentsConnectorsEnrollCreateRequest {
 	return ApiEndpointsAgentsConnectorsEnrollCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -780,7 +792,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreate(ctx context.
 // Execute executes the request
 //
 //	@return AgentTokenResponse
-func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreateExecute(r ApiEndpointsAgentsConnectorsEnrollCreateRequest) (*AgentTokenResponse, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsEnrollCreateExecute(r ApiEndpointsAgentsConnectorsEnrollCreateRequest) (*AgentTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -788,7 +800,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreateExecute(r Api
 		localVarReturnValue *AgentTokenResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsEnrollCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsEnrollCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -831,9 +843,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -850,6 +862,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -860,6 +873,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -879,7 +893,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsEnrollCreateExecute(r Api
 
 type ApiEndpointsAgentsConnectorsListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	enabled    *bool
 	name       *string
 	ordering   *string
@@ -934,7 +948,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsConnectorsListRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsList(ctx context.Context) ApiEndpointsAgentsConnectorsListRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsList(ctx context.Context) ApiEndpointsAgentsConnectorsListRequest {
 	return ApiEndpointsAgentsConnectorsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -944,7 +958,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsList(ctx context.Context)
 // Execute executes the request
 //
 //	@return PaginatedAgentConnectorList
-func (a *EndpointsApiService) EndpointsAgentsConnectorsListExecute(r ApiEndpointsAgentsConnectorsListRequest) (*PaginatedAgentConnectorList, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsListExecute(r ApiEndpointsAgentsConnectorsListRequest) (*PaginatedAgentConnectorList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -952,7 +966,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsListExecute(r ApiEndpoint
 		localVarReturnValue *PaginatedAgentConnectorList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -964,22 +978,22 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsListExecute(r ApiEndpoint
 	localVarFormParams := url.Values{}
 
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1008,9 +1022,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsListExecute(r ApiEndpoint
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1027,6 +1041,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsListExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1037,6 +1052,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsListExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1056,7 +1072,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsListExecute(r ApiEndpoint
 
 type ApiEndpointsAgentsConnectorsMdmConfigCreateRequest struct {
 	ctx              context.Context
-	ApiService       *EndpointsApiService
+	ApiService       *EndpointsAPIService
 	connectorUuid    string
 	mDMConfigRequest *MDMConfigRequest
 }
@@ -1079,7 +1095,7 @@ Generate configuration for MDM systems to deploy authentik Agent
 	@param connectorUuid A UUID string identifying this Agent Connector.
 	@return ApiEndpointsAgentsConnectorsMdmConfigCreateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsMdmConfigCreate(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsMdmConfigCreateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsMdmConfigCreate(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsMdmConfigCreateRequest {
 	return ApiEndpointsAgentsConnectorsMdmConfigCreateRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1090,7 +1106,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsMdmConfigCreate(ctx conte
 // Execute executes the request
 //
 //	@return MDMConfigResponse
-func (a *EndpointsApiService) EndpointsAgentsConnectorsMdmConfigCreateExecute(r ApiEndpointsAgentsConnectorsMdmConfigCreateRequest) (*MDMConfigResponse, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsMdmConfigCreateExecute(r ApiEndpointsAgentsConnectorsMdmConfigCreateRequest) (*MDMConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1098,13 +1114,13 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsMdmConfigCreateExecute(r 
 		localVarReturnValue *MDMConfigResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsMdmConfigCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsMdmConfigCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/connectors/{connector_uuid}/mdm_config/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1142,9 +1158,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsMdmConfigCreateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1161,6 +1177,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsMdmConfigCreateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1171,6 +1188,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsMdmConfigCreateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1190,7 +1208,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsMdmConfigCreateExecute(r 
 
 type ApiEndpointsAgentsConnectorsPartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *EndpointsApiService
+	ApiService                   *EndpointsAPIService
 	connectorUuid                string
 	patchedAgentConnectorRequest *PatchedAgentConnectorRequest
 }
@@ -1213,7 +1231,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param connectorUuid A UUID string identifying this Agent Connector.
 	@return ApiEndpointsAgentsConnectorsPartialUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsPartialUpdate(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsPartialUpdateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsPartialUpdate(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsPartialUpdateRequest {
 	return ApiEndpointsAgentsConnectorsPartialUpdateRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1224,7 +1242,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsPartialUpdate(ctx context
 // Execute executes the request
 //
 //	@return AgentConnector
-func (a *EndpointsApiService) EndpointsAgentsConnectorsPartialUpdateExecute(r ApiEndpointsAgentsConnectorsPartialUpdateRequest) (*AgentConnector, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsPartialUpdateExecute(r ApiEndpointsAgentsConnectorsPartialUpdateRequest) (*AgentConnector, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1232,13 +1250,13 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsPartialUpdateExecute(r Ap
 		localVarReturnValue *AgentConnector
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1273,9 +1291,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsPartialUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1292,6 +1310,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1302,6 +1321,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1321,7 +1341,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsPartialUpdateExecute(r Ap
 
 type ApiEndpointsAgentsConnectorsRetrieveRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	connectorUuid string
 }
 
@@ -1338,7 +1358,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param connectorUuid A UUID string identifying this Agent Connector.
 	@return ApiEndpointsAgentsConnectorsRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsRetrieve(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsRetrieve(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsRetrieveRequest {
 	return ApiEndpointsAgentsConnectorsRetrieveRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1349,7 +1369,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsRetrieve(ctx context.Cont
 // Execute executes the request
 //
 //	@return AgentConnector
-func (a *EndpointsApiService) EndpointsAgentsConnectorsRetrieveExecute(r ApiEndpointsAgentsConnectorsRetrieveRequest) (*AgentConnector, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsRetrieveExecute(r ApiEndpointsAgentsConnectorsRetrieveRequest) (*AgentConnector, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1357,13 +1377,13 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsRetrieveExecute(r ApiEndp
 		localVarReturnValue *AgentConnector
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1396,9 +1416,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsRetrieveExecute(r ApiEndp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1415,6 +1435,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsRetrieveExecute(r ApiEndp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1425,6 +1446,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsRetrieveExecute(r ApiEndp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1444,7 +1466,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsRetrieveExecute(r ApiEndp
 
 type ApiEndpointsAgentsConnectorsUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *EndpointsApiService
+	ApiService            *EndpointsAPIService
 	connectorUuid         string
 	agentConnectorRequest *AgentConnectorRequest
 }
@@ -1467,7 +1489,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param connectorUuid A UUID string identifying this Agent Connector.
 	@return ApiEndpointsAgentsConnectorsUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsUpdate(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsUpdateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsUpdate(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsUpdateRequest {
 	return ApiEndpointsAgentsConnectorsUpdateRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1478,7 +1500,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUpdate(ctx context.Contex
 // Execute executes the request
 //
 //	@return AgentConnector
-func (a *EndpointsApiService) EndpointsAgentsConnectorsUpdateExecute(r ApiEndpointsAgentsConnectorsUpdateRequest) (*AgentConnector, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsUpdateExecute(r ApiEndpointsAgentsConnectorsUpdateRequest) (*AgentConnector, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1486,13 +1508,13 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUpdateExecute(r ApiEndpoi
 		localVarReturnValue *AgentConnector
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1530,9 +1552,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUpdateExecute(r ApiEndpoi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1549,6 +1571,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUpdateExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1559,6 +1582,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUpdateExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1578,7 +1602,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUpdateExecute(r ApiEndpoi
 
 type ApiEndpointsAgentsConnectorsUsedByListRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	connectorUuid string
 }
 
@@ -1595,7 +1619,7 @@ Get a list of all objects that use this object
 	@param connectorUuid A UUID string identifying this Agent Connector.
 	@return ApiEndpointsAgentsConnectorsUsedByListRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsConnectorsUsedByList(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsUsedByListRequest {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsUsedByList(ctx context.Context, connectorUuid string) ApiEndpointsAgentsConnectorsUsedByListRequest {
 	return ApiEndpointsAgentsConnectorsUsedByListRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1606,7 +1630,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUsedByList(ctx context.Co
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EndpointsApiService) EndpointsAgentsConnectorsUsedByListExecute(r ApiEndpointsAgentsConnectorsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsConnectorsUsedByListExecute(r ApiEndpointsAgentsConnectorsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1614,13 +1638,13 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUsedByListExecute(r ApiEn
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsConnectorsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsConnectorsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/connectors/{connector_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1653,9 +1677,9 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUsedByListExecute(r ApiEn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1672,6 +1696,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUsedByListExecute(r ApiEn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1682,6 +1707,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUsedByListExecute(r ApiEn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1701,7 +1727,7 @@ func (a *EndpointsApiService) EndpointsAgentsConnectorsUsedByListExecute(r ApiEn
 
 type ApiEndpointsAgentsEnrollmentTokensCreateRequest struct {
 	ctx                    context.Context
-	ApiService             *EndpointsApiService
+	ApiService             *EndpointsAPIService
 	enrollmentTokenRequest *EnrollmentTokenRequest
 }
 
@@ -1722,7 +1748,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsEnrollmentTokensCreateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensCreate(ctx context.Context) ApiEndpointsAgentsEnrollmentTokensCreateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensCreate(ctx context.Context) ApiEndpointsAgentsEnrollmentTokensCreateRequest {
 	return ApiEndpointsAgentsEnrollmentTokensCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1732,7 +1758,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensCreate(ctx context.
 // Execute executes the request
 //
 //	@return EnrollmentToken
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensCreateExecute(r ApiEndpointsAgentsEnrollmentTokensCreateRequest) (*EnrollmentToken, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensCreateExecute(r ApiEndpointsAgentsEnrollmentTokensCreateRequest) (*EnrollmentToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1740,7 +1766,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensCreateExecute(r Api
 		localVarReturnValue *EnrollmentToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsEnrollmentTokensCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsEnrollmentTokensCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1783,9 +1809,9 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensCreateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1802,6 +1828,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1812,6 +1839,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1831,7 +1859,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensCreateExecute(r Api
 
 type ApiEndpointsAgentsEnrollmentTokensDestroyRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	tokenUuid  string
 }
 
@@ -1848,7 +1876,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param tokenUuid A UUID string identifying this Enrollment Token.
 	@return ApiEndpointsAgentsEnrollmentTokensDestroyRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensDestroy(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensDestroyRequest {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensDestroy(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensDestroyRequest {
 	return ApiEndpointsAgentsEnrollmentTokensDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1857,20 +1885,20 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensDestroy(ctx context
 }
 
 // Execute executes the request
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensDestroyExecute(r ApiEndpointsAgentsEnrollmentTokensDestroyRequest) (*http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensDestroyExecute(r ApiEndpointsAgentsEnrollmentTokensDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsEnrollmentTokensDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsEnrollmentTokensDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/enrollment_tokens/{token_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterToString(r.tokenUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterValueToString(r.tokenUuid, "tokenUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1903,9 +1931,9 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensDestroyExecute(r Ap
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1922,6 +1950,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensDestroyExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1932,6 +1961,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensDestroyExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1942,7 +1972,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensDestroyExecute(r Ap
 
 type ApiEndpointsAgentsEnrollmentTokensListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	connector  *string
 	ordering   *string
 	page       *int32
@@ -1997,7 +2027,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsEnrollmentTokensListRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensList(ctx context.Context) ApiEndpointsAgentsEnrollmentTokensListRequest {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensList(ctx context.Context) ApiEndpointsAgentsEnrollmentTokensListRequest {
 	return ApiEndpointsAgentsEnrollmentTokensListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2007,7 +2037,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensList(ctx context.Co
 // Execute executes the request
 //
 //	@return PaginatedEnrollmentTokenList
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensListExecute(r ApiEndpointsAgentsEnrollmentTokensListRequest) (*PaginatedEnrollmentTokenList, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensListExecute(r ApiEndpointsAgentsEnrollmentTokensListRequest) (*PaginatedEnrollmentTokenList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2015,7 +2045,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensListExecute(r ApiEn
 		localVarReturnValue *PaginatedEnrollmentTokenList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsEnrollmentTokensList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsEnrollmentTokensList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2027,22 +2057,22 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensListExecute(r ApiEn
 	localVarFormParams := url.Values{}
 
 	if r.connector != nil {
-		localVarQueryParams.Add("connector", parameterToString(*r.connector, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "connector", r.connector, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.tokenUuid != nil {
-		localVarQueryParams.Add("token_uuid", parameterToString(*r.tokenUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token_uuid", r.tokenUuid, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2071,9 +2101,9 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensListExecute(r ApiEn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2090,6 +2120,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensListExecute(r ApiEn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2100,6 +2131,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensListExecute(r ApiEn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2119,7 +2151,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensListExecute(r ApiEn
 
 type ApiEndpointsAgentsEnrollmentTokensPartialUpdateRequest struct {
 	ctx                           context.Context
-	ApiService                    *EndpointsApiService
+	ApiService                    *EndpointsAPIService
 	tokenUuid                     string
 	patchedEnrollmentTokenRequest *PatchedEnrollmentTokenRequest
 }
@@ -2142,7 +2174,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param tokenUuid A UUID string identifying this Enrollment Token.
 	@return ApiEndpointsAgentsEnrollmentTokensPartialUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensPartialUpdate(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensPartialUpdateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensPartialUpdate(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensPartialUpdateRequest {
 	return ApiEndpointsAgentsEnrollmentTokensPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2153,7 +2185,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensPartialUpdate(ctx c
 // Execute executes the request
 //
 //	@return EnrollmentToken
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensPartialUpdateExecute(r ApiEndpointsAgentsEnrollmentTokensPartialUpdateRequest) (*EnrollmentToken, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensPartialUpdateExecute(r ApiEndpointsAgentsEnrollmentTokensPartialUpdateRequest) (*EnrollmentToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2161,13 +2193,13 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensPartialUpdateExecut
 		localVarReturnValue *EnrollmentToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsEnrollmentTokensPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsEnrollmentTokensPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/enrollment_tokens/{token_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterToString(r.tokenUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterValueToString(r.tokenUuid, "tokenUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2202,9 +2234,9 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensPartialUpdateExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2221,6 +2253,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensPartialUpdateExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2231,6 +2264,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensPartialUpdateExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2250,7 +2284,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensPartialUpdateExecut
 
 type ApiEndpointsAgentsEnrollmentTokensRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	tokenUuid  string
 }
 
@@ -2267,7 +2301,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param tokenUuid A UUID string identifying this Enrollment Token.
 	@return ApiEndpointsAgentsEnrollmentTokensRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensRetrieve(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensRetrieve(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensRetrieveRequest {
 	return ApiEndpointsAgentsEnrollmentTokensRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2278,7 +2312,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensRetrieve(ctx contex
 // Execute executes the request
 //
 //	@return EnrollmentToken
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensRetrieveExecute(r ApiEndpointsAgentsEnrollmentTokensRetrieveRequest) (*EnrollmentToken, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensRetrieveExecute(r ApiEndpointsAgentsEnrollmentTokensRetrieveRequest) (*EnrollmentToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2286,13 +2320,13 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensRetrieveExecute(r A
 		localVarReturnValue *EnrollmentToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsEnrollmentTokensRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsEnrollmentTokensRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/enrollment_tokens/{token_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterToString(r.tokenUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterValueToString(r.tokenUuid, "tokenUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2325,9 +2359,9 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensRetrieveExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2344,6 +2378,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2354,6 +2389,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2373,7 +2409,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensRetrieveExecute(r A
 
 type ApiEndpointsAgentsEnrollmentTokensUpdateRequest struct {
 	ctx                    context.Context
-	ApiService             *EndpointsApiService
+	ApiService             *EndpointsAPIService
 	tokenUuid              string
 	enrollmentTokenRequest *EnrollmentTokenRequest
 }
@@ -2396,7 +2432,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param tokenUuid A UUID string identifying this Enrollment Token.
 	@return ApiEndpointsAgentsEnrollmentTokensUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUpdate(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensUpdateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensUpdate(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensUpdateRequest {
 	return ApiEndpointsAgentsEnrollmentTokensUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2407,7 +2443,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUpdate(ctx context.
 // Execute executes the request
 //
 //	@return EnrollmentToken
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUpdateExecute(r ApiEndpointsAgentsEnrollmentTokensUpdateRequest) (*EnrollmentToken, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensUpdateExecute(r ApiEndpointsAgentsEnrollmentTokensUpdateRequest) (*EnrollmentToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -2415,13 +2451,13 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUpdateExecute(r Api
 		localVarReturnValue *EnrollmentToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsEnrollmentTokensUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsEnrollmentTokensUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/enrollment_tokens/{token_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterToString(r.tokenUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterValueToString(r.tokenUuid, "tokenUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2459,9 +2495,9 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2478,6 +2514,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2488,6 +2525,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2507,7 +2545,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUpdateExecute(r Api
 
 type ApiEndpointsAgentsEnrollmentTokensUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	tokenUuid  string
 }
 
@@ -2524,7 +2562,7 @@ Get a list of all objects that use this object
 	@param tokenUuid A UUID string identifying this Enrollment Token.
 	@return ApiEndpointsAgentsEnrollmentTokensUsedByListRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUsedByList(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensUsedByListRequest {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensUsedByList(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensUsedByListRequest {
 	return ApiEndpointsAgentsEnrollmentTokensUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2535,7 +2573,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUsedByList(ctx cont
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUsedByListExecute(r ApiEndpointsAgentsEnrollmentTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensUsedByListExecute(r ApiEndpointsAgentsEnrollmentTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2543,13 +2581,13 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUsedByListExecute(r
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsEnrollmentTokensUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsEnrollmentTokensUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/enrollment_tokens/{token_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterToString(r.tokenUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterValueToString(r.tokenUuid, "tokenUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2582,9 +2620,9 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUsedByListExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2601,6 +2639,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUsedByListExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2611,6 +2650,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUsedByListExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2630,7 +2670,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensUsedByListExecute(r
 
 type ApiEndpointsAgentsEnrollmentTokensViewKeyRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	tokenUuid  string
 }
 
@@ -2647,7 +2687,7 @@ Return token key and log access
 	@param tokenUuid A UUID string identifying this Enrollment Token.
 	@return ApiEndpointsAgentsEnrollmentTokensViewKeyRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensViewKeyRetrieve(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensViewKeyRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensViewKeyRetrieve(ctx context.Context, tokenUuid string) ApiEndpointsAgentsEnrollmentTokensViewKeyRetrieveRequest {
 	return ApiEndpointsAgentsEnrollmentTokensViewKeyRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2658,7 +2698,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensViewKeyRetrieve(ctx
 // Execute executes the request
 //
 //	@return TokenView
-func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensViewKeyRetrieveExecute(r ApiEndpointsAgentsEnrollmentTokensViewKeyRetrieveRequest) (*TokenView, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsEnrollmentTokensViewKeyRetrieveExecute(r ApiEndpointsAgentsEnrollmentTokensViewKeyRetrieveRequest) (*TokenView, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2666,13 +2706,13 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensViewKeyRetrieveExec
 		localVarReturnValue *TokenView
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsEnrollmentTokensViewKeyRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsEnrollmentTokensViewKeyRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/agents/enrollment_tokens/{token_uuid}/view_key/"
-	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterToString(r.tokenUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"token_uuid"+"}", url.PathEscape(parameterValueToString(r.tokenUuid, "tokenUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2705,9 +2745,9 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensViewKeyRetrieveExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2724,6 +2764,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensViewKeyRetrieveExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2734,6 +2775,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensViewKeyRetrieveExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2753,7 +2795,7 @@ func (a *EndpointsApiService) EndpointsAgentsEnrollmentTokensViewKeyRetrieveExec
 
 type ApiEndpointsAgentsPssoRegisterDeviceCreateRequest struct {
 	ctx                                context.Context
-	ApiService                         *EndpointsApiService
+	ApiService                         *EndpointsAPIService
 	agentPSSODeviceRegistrationRequest *AgentPSSODeviceRegistrationRequest
 }
 
@@ -2772,7 +2814,7 @@ EndpointsAgentsPssoRegisterDeviceCreate Method for EndpointsAgentsPssoRegisterDe
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsPssoRegisterDeviceCreateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreate(ctx context.Context) ApiEndpointsAgentsPssoRegisterDeviceCreateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsPssoRegisterDeviceCreate(ctx context.Context) ApiEndpointsAgentsPssoRegisterDeviceCreateRequest {
 	return ApiEndpointsAgentsPssoRegisterDeviceCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2782,7 +2824,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreate(ctx contex
 // Execute executes the request
 //
 //	@return AgentPSSODeviceRegistrationResponse
-func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreateExecute(r ApiEndpointsAgentsPssoRegisterDeviceCreateRequest) (*AgentPSSODeviceRegistrationResponse, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsPssoRegisterDeviceCreateExecute(r ApiEndpointsAgentsPssoRegisterDeviceCreateRequest) (*AgentPSSODeviceRegistrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2790,7 +2832,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreateExecute(r A
 		localVarReturnValue *AgentPSSODeviceRegistrationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsPssoRegisterDeviceCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsPssoRegisterDeviceCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2833,9 +2875,9 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreateExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2852,6 +2894,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreateExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2862,6 +2905,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreateExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2881,7 +2925,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterDeviceCreateExecute(r A
 
 type ApiEndpointsAgentsPssoRegisterUserCreateRequest struct {
 	ctx                              context.Context
-	ApiService                       *EndpointsApiService
+	ApiService                       *EndpointsAPIService
 	agentPSSOUserRegistrationRequest *AgentPSSOUserRegistrationRequest
 }
 
@@ -2900,7 +2944,7 @@ EndpointsAgentsPssoRegisterUserCreate Method for EndpointsAgentsPssoRegisterUser
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsAgentsPssoRegisterUserCreateRequest
 */
-func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreate(ctx context.Context) ApiEndpointsAgentsPssoRegisterUserCreateRequest {
+func (a *EndpointsAPIService) EndpointsAgentsPssoRegisterUserCreate(ctx context.Context) ApiEndpointsAgentsPssoRegisterUserCreateRequest {
 	return ApiEndpointsAgentsPssoRegisterUserCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2910,7 +2954,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreate(ctx context.
 // Execute executes the request
 //
 //	@return UserSelf
-func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreateExecute(r ApiEndpointsAgentsPssoRegisterUserCreateRequest) (*UserSelf, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsAgentsPssoRegisterUserCreateExecute(r ApiEndpointsAgentsPssoRegisterUserCreateRequest) (*UserSelf, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2918,7 +2962,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreateExecute(r Api
 		localVarReturnValue *UserSelf
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsAgentsPssoRegisterUserCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsAgentsPssoRegisterUserCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2961,9 +3005,9 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2980,6 +3024,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2990,6 +3035,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3009,7 +3055,7 @@ func (a *EndpointsApiService) EndpointsAgentsPssoRegisterUserCreateExecute(r Api
 
 type ApiEndpointsConnectorsDestroyRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	connectorUuid string
 }
 
@@ -3026,7 +3072,7 @@ Connector Viewset
 	@param connectorUuid A UUID string identifying this connector.
 	@return ApiEndpointsConnectorsDestroyRequest
 */
-func (a *EndpointsApiService) EndpointsConnectorsDestroy(ctx context.Context, connectorUuid string) ApiEndpointsConnectorsDestroyRequest {
+func (a *EndpointsAPIService) EndpointsConnectorsDestroy(ctx context.Context, connectorUuid string) ApiEndpointsConnectorsDestroyRequest {
 	return ApiEndpointsConnectorsDestroyRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -3035,20 +3081,20 @@ func (a *EndpointsApiService) EndpointsConnectorsDestroy(ctx context.Context, co
 }
 
 // Execute executes the request
-func (a *EndpointsApiService) EndpointsConnectorsDestroyExecute(r ApiEndpointsConnectorsDestroyRequest) (*http.Response, error) {
+func (a *EndpointsAPIService) EndpointsConnectorsDestroyExecute(r ApiEndpointsConnectorsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsConnectorsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsConnectorsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3081,9 +3127,9 @@ func (a *EndpointsApiService) EndpointsConnectorsDestroyExecute(r ApiEndpointsCo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3100,6 +3146,7 @@ func (a *EndpointsApiService) EndpointsConnectorsDestroyExecute(r ApiEndpointsCo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3110,6 +3157,7 @@ func (a *EndpointsApiService) EndpointsConnectorsDestroyExecute(r ApiEndpointsCo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3120,7 +3168,7 @@ func (a *EndpointsApiService) EndpointsConnectorsDestroyExecute(r ApiEndpointsCo
 
 type ApiEndpointsConnectorsListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -3163,7 +3211,7 @@ Connector Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsConnectorsListRequest
 */
-func (a *EndpointsApiService) EndpointsConnectorsList(ctx context.Context) ApiEndpointsConnectorsListRequest {
+func (a *EndpointsAPIService) EndpointsConnectorsList(ctx context.Context) ApiEndpointsConnectorsListRequest {
 	return ApiEndpointsConnectorsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3173,7 +3221,7 @@ func (a *EndpointsApiService) EndpointsConnectorsList(ctx context.Context) ApiEn
 // Execute executes the request
 //
 //	@return PaginatedConnectorList
-func (a *EndpointsApiService) EndpointsConnectorsListExecute(r ApiEndpointsConnectorsListRequest) (*PaginatedConnectorList, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsConnectorsListExecute(r ApiEndpointsConnectorsListRequest) (*PaginatedConnectorList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3181,7 +3229,7 @@ func (a *EndpointsApiService) EndpointsConnectorsListExecute(r ApiEndpointsConne
 		localVarReturnValue *PaginatedConnectorList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsConnectorsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsConnectorsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3193,16 +3241,16 @@ func (a *EndpointsApiService) EndpointsConnectorsListExecute(r ApiEndpointsConne
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3231,9 +3279,9 @@ func (a *EndpointsApiService) EndpointsConnectorsListExecute(r ApiEndpointsConne
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3250,6 +3298,7 @@ func (a *EndpointsApiService) EndpointsConnectorsListExecute(r ApiEndpointsConne
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3260,6 +3309,7 @@ func (a *EndpointsApiService) EndpointsConnectorsListExecute(r ApiEndpointsConne
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3279,7 +3329,7 @@ func (a *EndpointsApiService) EndpointsConnectorsListExecute(r ApiEndpointsConne
 
 type ApiEndpointsConnectorsRetrieveRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	connectorUuid string
 }
 
@@ -3296,7 +3346,7 @@ Connector Viewset
 	@param connectorUuid A UUID string identifying this connector.
 	@return ApiEndpointsConnectorsRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsConnectorsRetrieve(ctx context.Context, connectorUuid string) ApiEndpointsConnectorsRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsConnectorsRetrieve(ctx context.Context, connectorUuid string) ApiEndpointsConnectorsRetrieveRequest {
 	return ApiEndpointsConnectorsRetrieveRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -3307,7 +3357,7 @@ func (a *EndpointsApiService) EndpointsConnectorsRetrieve(ctx context.Context, c
 // Execute executes the request
 //
 //	@return Connector
-func (a *EndpointsApiService) EndpointsConnectorsRetrieveExecute(r ApiEndpointsConnectorsRetrieveRequest) (*Connector, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsConnectorsRetrieveExecute(r ApiEndpointsConnectorsRetrieveRequest) (*Connector, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3315,13 +3365,13 @@ func (a *EndpointsApiService) EndpointsConnectorsRetrieveExecute(r ApiEndpointsC
 		localVarReturnValue *Connector
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsConnectorsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsConnectorsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3354,9 +3404,9 @@ func (a *EndpointsApiService) EndpointsConnectorsRetrieveExecute(r ApiEndpointsC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3373,6 +3423,7 @@ func (a *EndpointsApiService) EndpointsConnectorsRetrieveExecute(r ApiEndpointsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3383,6 +3434,7 @@ func (a *EndpointsApiService) EndpointsConnectorsRetrieveExecute(r ApiEndpointsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3402,7 +3454,7 @@ func (a *EndpointsApiService) EndpointsConnectorsRetrieveExecute(r ApiEndpointsC
 
 type ApiEndpointsConnectorsTypesListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 }
 
 func (r ApiEndpointsConnectorsTypesListRequest) Execute() ([]TypeCreate, *http.Response, error) {
@@ -3417,7 +3469,7 @@ Get all creatable types
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsConnectorsTypesListRequest
 */
-func (a *EndpointsApiService) EndpointsConnectorsTypesList(ctx context.Context) ApiEndpointsConnectorsTypesListRequest {
+func (a *EndpointsAPIService) EndpointsConnectorsTypesList(ctx context.Context) ApiEndpointsConnectorsTypesListRequest {
 	return ApiEndpointsConnectorsTypesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3427,7 +3479,7 @@ func (a *EndpointsApiService) EndpointsConnectorsTypesList(ctx context.Context) 
 // Execute executes the request
 //
 //	@return []TypeCreate
-func (a *EndpointsApiService) EndpointsConnectorsTypesListExecute(r ApiEndpointsConnectorsTypesListRequest) ([]TypeCreate, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsConnectorsTypesListExecute(r ApiEndpointsConnectorsTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3435,7 +3487,7 @@ func (a *EndpointsApiService) EndpointsConnectorsTypesListExecute(r ApiEndpoints
 		localVarReturnValue []TypeCreate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsConnectorsTypesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsConnectorsTypesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3473,9 +3525,9 @@ func (a *EndpointsApiService) EndpointsConnectorsTypesListExecute(r ApiEndpoints
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3492,6 +3544,7 @@ func (a *EndpointsApiService) EndpointsConnectorsTypesListExecute(r ApiEndpoints
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3502,6 +3555,7 @@ func (a *EndpointsApiService) EndpointsConnectorsTypesListExecute(r ApiEndpoints
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3521,7 +3575,7 @@ func (a *EndpointsApiService) EndpointsConnectorsTypesListExecute(r ApiEndpoints
 
 type ApiEndpointsConnectorsUsedByListRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	connectorUuid string
 }
 
@@ -3538,7 +3592,7 @@ Get a list of all objects that use this object
 	@param connectorUuid A UUID string identifying this connector.
 	@return ApiEndpointsConnectorsUsedByListRequest
 */
-func (a *EndpointsApiService) EndpointsConnectorsUsedByList(ctx context.Context, connectorUuid string) ApiEndpointsConnectorsUsedByListRequest {
+func (a *EndpointsAPIService) EndpointsConnectorsUsedByList(ctx context.Context, connectorUuid string) ApiEndpointsConnectorsUsedByListRequest {
 	return ApiEndpointsConnectorsUsedByListRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -3549,7 +3603,7 @@ func (a *EndpointsApiService) EndpointsConnectorsUsedByList(ctx context.Context,
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EndpointsApiService) EndpointsConnectorsUsedByListExecute(r ApiEndpointsConnectorsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsConnectorsUsedByListExecute(r ApiEndpointsConnectorsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3557,13 +3611,13 @@ func (a *EndpointsApiService) EndpointsConnectorsUsedByListExecute(r ApiEndpoint
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsConnectorsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsConnectorsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/connectors/{connector_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3596,9 +3650,9 @@ func (a *EndpointsApiService) EndpointsConnectorsUsedByListExecute(r ApiEndpoint
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3615,6 +3669,7 @@ func (a *EndpointsApiService) EndpointsConnectorsUsedByListExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3625,6 +3680,7 @@ func (a *EndpointsApiService) EndpointsConnectorsUsedByListExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3644,7 +3700,7 @@ func (a *EndpointsApiService) EndpointsConnectorsUsedByListExecute(r ApiEndpoint
 
 type ApiEndpointsDeviceAccessGroupsCreateRequest struct {
 	ctx                      context.Context
-	ApiService               *EndpointsApiService
+	ApiService               *EndpointsAPIService
 	deviceAccessGroupRequest *DeviceAccessGroupRequest
 }
 
@@ -3665,7 +3721,7 @@ DeviceAccessGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsDeviceAccessGroupsCreateRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreate(ctx context.Context) ApiEndpointsDeviceAccessGroupsCreateRequest {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsCreate(ctx context.Context) ApiEndpointsDeviceAccessGroupsCreateRequest {
 	return ApiEndpointsDeviceAccessGroupsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3675,7 +3731,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreate(ctx context.Cont
 // Execute executes the request
 //
 //	@return DeviceAccessGroup
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreateExecute(r ApiEndpointsDeviceAccessGroupsCreateRequest) (*DeviceAccessGroup, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsCreateExecute(r ApiEndpointsDeviceAccessGroupsCreateRequest) (*DeviceAccessGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -3683,7 +3739,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreateExecute(r ApiEndp
 		localVarReturnValue *DeviceAccessGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceAccessGroupsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3726,9 +3782,9 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreateExecute(r ApiEndp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3745,6 +3801,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreateExecute(r ApiEndp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3755,6 +3812,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreateExecute(r ApiEndp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3774,7 +3832,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsCreateExecute(r ApiEndp
 
 type ApiEndpointsDeviceAccessGroupsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	pbmUuid    string
 }
 
@@ -3791,7 +3849,7 @@ DeviceAccessGroup Viewset
 	@param pbmUuid A UUID string identifying this Device access group.
 	@return ApiEndpointsDeviceAccessGroupsDestroyRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsDestroy(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsDestroyRequest {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsDestroy(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsDestroyRequest {
 	return ApiEndpointsDeviceAccessGroupsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3800,20 +3858,20 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsDestroy(ctx context.Con
 }
 
 // Execute executes the request
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsDestroyExecute(r ApiEndpointsDeviceAccessGroupsDestroyRequest) (*http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsDestroyExecute(r ApiEndpointsDeviceAccessGroupsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceAccessGroupsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3846,9 +3904,9 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsDestroyExecute(r ApiEnd
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3865,6 +3923,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsDestroyExecute(r ApiEnd
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3875,6 +3934,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsDestroyExecute(r ApiEnd
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3885,7 +3945,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsDestroyExecute(r ApiEnd
 
 type ApiEndpointsDeviceAccessGroupsListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -3940,7 +4000,7 @@ DeviceAccessGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsDeviceAccessGroupsListRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsList(ctx context.Context) ApiEndpointsDeviceAccessGroupsListRequest {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsList(ctx context.Context) ApiEndpointsDeviceAccessGroupsListRequest {
 	return ApiEndpointsDeviceAccessGroupsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3950,7 +4010,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsList(ctx context.Contex
 // Execute executes the request
 //
 //	@return PaginatedDeviceAccessGroupList
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsListExecute(r ApiEndpointsDeviceAccessGroupsListRequest) (*PaginatedDeviceAccessGroupList, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsListExecute(r ApiEndpointsDeviceAccessGroupsListRequest) (*PaginatedDeviceAccessGroupList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3958,7 +4018,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsListExecute(r ApiEndpoi
 		localVarReturnValue *PaginatedDeviceAccessGroupList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceAccessGroupsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3970,22 +4030,22 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsListExecute(r ApiEndpoi
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4014,9 +4074,9 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsListExecute(r ApiEndpoi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4033,6 +4093,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsListExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4043,6 +4104,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsListExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4062,7 +4124,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsListExecute(r ApiEndpoi
 
 type ApiEndpointsDeviceAccessGroupsPartialUpdateRequest struct {
 	ctx                             context.Context
-	ApiService                      *EndpointsApiService
+	ApiService                      *EndpointsAPIService
 	pbmUuid                         string
 	patchedDeviceAccessGroupRequest *PatchedDeviceAccessGroupRequest
 }
@@ -4085,7 +4147,7 @@ DeviceAccessGroup Viewset
 	@param pbmUuid A UUID string identifying this Device access group.
 	@return ApiEndpointsDeviceAccessGroupsPartialUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdate(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsPartialUpdateRequest {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsPartialUpdate(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsPartialUpdateRequest {
 	return ApiEndpointsDeviceAccessGroupsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4096,7 +4158,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdate(ctx conte
 // Execute executes the request
 //
 //	@return DeviceAccessGroup
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdateExecute(r ApiEndpointsDeviceAccessGroupsPartialUpdateRequest) (*DeviceAccessGroup, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsPartialUpdateExecute(r ApiEndpointsDeviceAccessGroupsPartialUpdateRequest) (*DeviceAccessGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -4104,13 +4166,13 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdateExecute(r 
 		localVarReturnValue *DeviceAccessGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceAccessGroupsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4145,9 +4207,9 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdateExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4164,6 +4226,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4174,6 +4237,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdateExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4193,7 +4257,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsPartialUpdateExecute(r 
 
 type ApiEndpointsDeviceAccessGroupsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	pbmUuid    string
 }
 
@@ -4210,7 +4274,7 @@ DeviceAccessGroup Viewset
 	@param pbmUuid A UUID string identifying this Device access group.
 	@return ApiEndpointsDeviceAccessGroupsRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieve(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsRetrieve(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsRetrieveRequest {
 	return ApiEndpointsDeviceAccessGroupsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4221,7 +4285,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieve(ctx context.Co
 // Execute executes the request
 //
 //	@return DeviceAccessGroup
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieveExecute(r ApiEndpointsDeviceAccessGroupsRetrieveRequest) (*DeviceAccessGroup, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsRetrieveExecute(r ApiEndpointsDeviceAccessGroupsRetrieveRequest) (*DeviceAccessGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4229,13 +4293,13 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieveExecute(r ApiEn
 		localVarReturnValue *DeviceAccessGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceAccessGroupsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4268,9 +4332,9 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieveExecute(r ApiEn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4287,6 +4351,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieveExecute(r ApiEn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4297,6 +4362,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieveExecute(r ApiEn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4316,7 +4382,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsRetrieveExecute(r ApiEn
 
 type ApiEndpointsDeviceAccessGroupsUpdateRequest struct {
 	ctx                      context.Context
-	ApiService               *EndpointsApiService
+	ApiService               *EndpointsAPIService
 	pbmUuid                  string
 	deviceAccessGroupRequest *DeviceAccessGroupRequest
 }
@@ -4339,7 +4405,7 @@ DeviceAccessGroup Viewset
 	@param pbmUuid A UUID string identifying this Device access group.
 	@return ApiEndpointsDeviceAccessGroupsUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdate(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsUpdateRequest {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsUpdate(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsUpdateRequest {
 	return ApiEndpointsDeviceAccessGroupsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4350,7 +4416,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdate(ctx context.Cont
 // Execute executes the request
 //
 //	@return DeviceAccessGroup
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdateExecute(r ApiEndpointsDeviceAccessGroupsUpdateRequest) (*DeviceAccessGroup, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsUpdateExecute(r ApiEndpointsDeviceAccessGroupsUpdateRequest) (*DeviceAccessGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -4358,13 +4424,13 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdateExecute(r ApiEndp
 		localVarReturnValue *DeviceAccessGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceAccessGroupsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4402,9 +4468,9 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdateExecute(r ApiEndp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4421,6 +4487,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdateExecute(r ApiEndp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4431,6 +4498,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdateExecute(r ApiEndp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4450,7 +4518,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUpdateExecute(r ApiEndp
 
 type ApiEndpointsDeviceAccessGroupsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	pbmUuid    string
 }
 
@@ -4467,7 +4535,7 @@ Get a list of all objects that use this object
 	@param pbmUuid A UUID string identifying this Device access group.
 	@return ApiEndpointsDeviceAccessGroupsUsedByListRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByList(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsUsedByListRequest {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsUsedByList(ctx context.Context, pbmUuid string) ApiEndpointsDeviceAccessGroupsUsedByListRequest {
 	return ApiEndpointsDeviceAccessGroupsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4478,7 +4546,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByList(ctx context.
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByListExecute(r ApiEndpointsDeviceAccessGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceAccessGroupsUsedByListExecute(r ApiEndpointsDeviceAccessGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4486,13 +4554,13 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByListExecute(r Api
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceAccessGroupsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceAccessGroupsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_access_groups/{pbm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4525,9 +4593,9 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4544,6 +4612,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4554,6 +4623,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4573,7 +4643,7 @@ func (a *EndpointsApiService) EndpointsDeviceAccessGroupsUsedByListExecute(r Api
 
 type ApiEndpointsDeviceBindingsCreateRequest struct {
 	ctx                      context.Context
-	ApiService               *EndpointsApiService
+	ApiService               *EndpointsAPIService
 	deviceUserBindingRequest *DeviceUserBindingRequest
 }
 
@@ -4594,7 +4664,7 @@ PolicyBinding Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsDeviceBindingsCreateRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceBindingsCreate(ctx context.Context) ApiEndpointsDeviceBindingsCreateRequest {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsCreate(ctx context.Context) ApiEndpointsDeviceBindingsCreateRequest {
 	return ApiEndpointsDeviceBindingsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4604,7 +4674,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsCreate(ctx context.Context)
 // Execute executes the request
 //
 //	@return DeviceUserBinding
-func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpointsDeviceBindingsCreateRequest) (*DeviceUserBinding, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsCreateExecute(r ApiEndpointsDeviceBindingsCreateRequest) (*DeviceUserBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4612,7 +4682,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpoint
 		localVarReturnValue *DeviceUserBinding
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceBindingsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4655,9 +4725,9 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpoint
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4674,6 +4744,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4684,6 +4755,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4703,7 +4775,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsCreateExecute(r ApiEndpoint
 
 type ApiEndpointsDeviceBindingsDestroyRequest struct {
 	ctx               context.Context
-	ApiService        *EndpointsApiService
+	ApiService        *EndpointsAPIService
 	policyBindingUuid string
 }
 
@@ -4720,7 +4792,7 @@ PolicyBinding Viewset
 	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsDestroyRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceBindingsDestroy(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsDestroyRequest {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsDestroy(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsDestroyRequest {
 	return ApiEndpointsDeviceBindingsDestroyRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -4729,20 +4801,20 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsDestroy(ctx context.Context
 }
 
 // Execute executes the request
-func (a *EndpointsApiService) EndpointsDeviceBindingsDestroyExecute(r ApiEndpointsDeviceBindingsDestroyRequest) (*http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsDestroyExecute(r ApiEndpointsDeviceBindingsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceBindingsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4775,9 +4847,9 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsDestroyExecute(r ApiEndpoin
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4794,6 +4866,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsDestroyExecute(r ApiEndpoin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4804,6 +4877,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsDestroyExecute(r ApiEndpoin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4814,7 +4888,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsDestroyExecute(r ApiEndpoin
 
 type ApiEndpointsDeviceBindingsListRequest struct {
 	ctx          context.Context
-	ApiService   *EndpointsApiService
+	ApiService   *EndpointsAPIService
 	enabled      *bool
 	order        *int32
 	ordering     *string
@@ -4899,7 +4973,7 @@ PolicyBinding Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsDeviceBindingsListRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceBindingsList(ctx context.Context) ApiEndpointsDeviceBindingsListRequest {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsList(ctx context.Context) ApiEndpointsDeviceBindingsListRequest {
 	return ApiEndpointsDeviceBindingsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4909,7 +4983,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsList(ctx context.Context) A
 // Execute executes the request
 //
 //	@return PaginatedDeviceUserBindingList
-func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsDeviceBindingsListRequest) (*PaginatedDeviceUserBindingList, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsListExecute(r ApiEndpointsDeviceBindingsListRequest) (*PaginatedDeviceUserBindingList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4917,7 +4991,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsD
 		localVarReturnValue *PaginatedDeviceUserBindingList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceBindingsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4929,45 +5003,45 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsD
 	localVarFormParams := url.Values{}
 
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
 	}
 	if r.order != nil {
-		localVarQueryParams.Add("order", parameterToString(*r.order, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.policy != nil {
-		localVarQueryParams.Add("policy", parameterToString(*r.policy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy", r.policy, "form", "")
 	}
 	if r.policyIsnull != nil {
-		localVarQueryParams.Add("policy__isnull", parameterToString(*r.policyIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy__isnull", r.policyIsnull, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.target != nil {
-		localVarQueryParams.Add("target", parameterToString(*r.target, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "target", r.target, "form", "")
 	}
 	if r.targetIn != nil {
 		t := *r.targetIn
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("target_in", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "target_in", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("target_in", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "target_in", t, "form", "multi")
 		}
 	}
 	if r.timeout != nil {
-		localVarQueryParams.Add("timeout", parameterToString(*r.timeout, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "timeout", r.timeout, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4996,9 +5070,9 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5015,6 +5089,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5025,6 +5100,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5044,7 +5120,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsListExecute(r ApiEndpointsD
 
 type ApiEndpointsDeviceBindingsPartialUpdateRequest struct {
 	ctx                             context.Context
-	ApiService                      *EndpointsApiService
+	ApiService                      *EndpointsAPIService
 	policyBindingUuid               string
 	patchedDeviceUserBindingRequest *PatchedDeviceUserBindingRequest
 }
@@ -5067,7 +5143,7 @@ PolicyBinding Viewset
 	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsPartialUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdate(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsPartialUpdateRequest {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsPartialUpdate(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsPartialUpdateRequest {
 	return ApiEndpointsDeviceBindingsPartialUpdateRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -5078,7 +5154,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdate(ctx context.C
 // Execute executes the request
 //
 //	@return DeviceUserBinding
-func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiEndpointsDeviceBindingsPartialUpdateRequest) (*DeviceUserBinding, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiEndpointsDeviceBindingsPartialUpdateRequest) (*DeviceUserBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -5086,13 +5162,13 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiE
 		localVarReturnValue *DeviceUserBinding
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceBindingsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5127,9 +5203,9 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5146,6 +5222,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5156,6 +5233,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5175,7 +5253,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsPartialUpdateExecute(r ApiE
 
 type ApiEndpointsDeviceBindingsRetrieveRequest struct {
 	ctx               context.Context
-	ApiService        *EndpointsApiService
+	ApiService        *EndpointsAPIService
 	policyBindingUuid string
 }
 
@@ -5192,7 +5270,7 @@ PolicyBinding Viewset
 	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieve(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsRetrieve(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsRetrieveRequest {
 	return ApiEndpointsDeviceBindingsRetrieveRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -5203,7 +5281,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieve(ctx context.Contex
 // Execute executes the request
 //
 //	@return DeviceUserBinding
-func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpointsDeviceBindingsRetrieveRequest) (*DeviceUserBinding, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpointsDeviceBindingsRetrieveRequest) (*DeviceUserBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5211,13 +5289,13 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpoi
 		localVarReturnValue *DeviceUserBinding
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceBindingsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5250,9 +5328,9 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpoi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5269,6 +5347,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5279,6 +5358,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5298,7 +5378,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsRetrieveExecute(r ApiEndpoi
 
 type ApiEndpointsDeviceBindingsUpdateRequest struct {
 	ctx                      context.Context
-	ApiService               *EndpointsApiService
+	ApiService               *EndpointsAPIService
 	policyBindingUuid        string
 	deviceUserBindingRequest *DeviceUserBindingRequest
 }
@@ -5321,7 +5401,7 @@ PolicyBinding Viewset
 	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceBindingsUpdate(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsUpdateRequest {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsUpdate(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsUpdateRequest {
 	return ApiEndpointsDeviceBindingsUpdateRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -5332,7 +5412,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUpdate(ctx context.Context,
 // Execute executes the request
 //
 //	@return DeviceUserBinding
-func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpointsDeviceBindingsUpdateRequest) (*DeviceUserBinding, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpointsDeviceBindingsUpdateRequest) (*DeviceUserBinding, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -5340,13 +5420,13 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpoint
 		localVarReturnValue *DeviceUserBinding
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceBindingsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_bindings/{policy_binding_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5384,9 +5464,9 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpoint
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5403,6 +5483,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5413,6 +5494,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5432,7 +5514,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUpdateExecute(r ApiEndpoint
 
 type ApiEndpointsDeviceBindingsUsedByListRequest struct {
 	ctx               context.Context
-	ApiService        *EndpointsApiService
+	ApiService        *EndpointsAPIService
 	policyBindingUuid string
 }
 
@@ -5449,7 +5531,7 @@ Get a list of all objects that use this object
 	@param policyBindingUuid A UUID string identifying this Device User binding.
 	@return ApiEndpointsDeviceBindingsUsedByListRequest
 */
-func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByList(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsUsedByListRequest {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsUsedByList(ctx context.Context, policyBindingUuid string) ApiEndpointsDeviceBindingsUsedByListRequest {
 	return ApiEndpointsDeviceBindingsUsedByListRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -5460,7 +5542,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByList(ctx context.Cont
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByListExecute(r ApiEndpointsDeviceBindingsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDeviceBindingsUsedByListExecute(r ApiEndpointsDeviceBindingsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5468,13 +5550,13 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByListExecute(r ApiEndp
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDeviceBindingsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDeviceBindingsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/device_bindings/{policy_binding_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterToString(r.policyBindingUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policy_binding_uuid"+"}", url.PathEscape(parameterValueToString(r.policyBindingUuid, "policyBindingUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5507,9 +5589,9 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByListExecute(r ApiEndp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5526,6 +5608,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByListExecute(r ApiEndp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5536,6 +5619,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByListExecute(r ApiEndp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5555,7 +5639,7 @@ func (a *EndpointsApiService) EndpointsDeviceBindingsUsedByListExecute(r ApiEndp
 
 type ApiEndpointsDevicesDestroyRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	deviceUuid string
 }
 
@@ -5572,7 +5656,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesDestroyRequest
 */
-func (a *EndpointsApiService) EndpointsDevicesDestroy(ctx context.Context, deviceUuid string) ApiEndpointsDevicesDestroyRequest {
+func (a *EndpointsAPIService) EndpointsDevicesDestroy(ctx context.Context, deviceUuid string) ApiEndpointsDevicesDestroyRequest {
 	return ApiEndpointsDevicesDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5581,20 +5665,20 @@ func (a *EndpointsApiService) EndpointsDevicesDestroy(ctx context.Context, devic
 }
 
 // Execute executes the request
-func (a *EndpointsApiService) EndpointsDevicesDestroyExecute(r ApiEndpointsDevicesDestroyRequest) (*http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDevicesDestroyExecute(r ApiEndpointsDevicesDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDevicesDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDevicesDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/devices/{device_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterToString(r.deviceUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterValueToString(r.deviceUuid, "deviceUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5627,9 +5711,9 @@ func (a *EndpointsApiService) EndpointsDevicesDestroyExecute(r ApiEndpointsDevic
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5646,6 +5730,7 @@ func (a *EndpointsApiService) EndpointsDevicesDestroyExecute(r ApiEndpointsDevic
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5656,6 +5741,7 @@ func (a *EndpointsApiService) EndpointsDevicesDestroyExecute(r ApiEndpointsDevic
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -5666,7 +5752,7 @@ func (a *EndpointsApiService) EndpointsDevicesDestroyExecute(r ApiEndpointsDevic
 
 type ApiEndpointsDevicesListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	identifier *string
 	name       *string
 	ordering   *string
@@ -5721,7 +5807,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsDevicesListRequest
 */
-func (a *EndpointsApiService) EndpointsDevicesList(ctx context.Context) ApiEndpointsDevicesListRequest {
+func (a *EndpointsAPIService) EndpointsDevicesList(ctx context.Context) ApiEndpointsDevicesListRequest {
 	return ApiEndpointsDevicesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5731,7 +5817,7 @@ func (a *EndpointsApiService) EndpointsDevicesList(ctx context.Context) ApiEndpo
 // Execute executes the request
 //
 //	@return PaginatedEndpointDeviceList
-func (a *EndpointsApiService) EndpointsDevicesListExecute(r ApiEndpointsDevicesListRequest) (*PaginatedEndpointDeviceList, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDevicesListExecute(r ApiEndpointsDevicesListRequest) (*PaginatedEndpointDeviceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5739,7 +5825,7 @@ func (a *EndpointsApiService) EndpointsDevicesListExecute(r ApiEndpointsDevicesL
 		localVarReturnValue *PaginatedEndpointDeviceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDevicesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDevicesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5751,22 +5837,22 @@ func (a *EndpointsApiService) EndpointsDevicesListExecute(r ApiEndpointsDevicesL
 	localVarFormParams := url.Values{}
 
 	if r.identifier != nil {
-		localVarQueryParams.Add("identifier", parameterToString(*r.identifier, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "identifier", r.identifier, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5795,9 +5881,9 @@ func (a *EndpointsApiService) EndpointsDevicesListExecute(r ApiEndpointsDevicesL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5814,6 +5900,7 @@ func (a *EndpointsApiService) EndpointsDevicesListExecute(r ApiEndpointsDevicesL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5824,6 +5911,7 @@ func (a *EndpointsApiService) EndpointsDevicesListExecute(r ApiEndpointsDevicesL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5843,7 +5931,7 @@ func (a *EndpointsApiService) EndpointsDevicesListExecute(r ApiEndpointsDevicesL
 
 type ApiEndpointsDevicesPartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *EndpointsApiService
+	ApiService                   *EndpointsAPIService
 	deviceUuid                   string
 	patchedEndpointDeviceRequest *PatchedEndpointDeviceRequest
 }
@@ -5866,7 +5954,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesPartialUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsDevicesPartialUpdate(ctx context.Context, deviceUuid string) ApiEndpointsDevicesPartialUpdateRequest {
+func (a *EndpointsAPIService) EndpointsDevicesPartialUpdate(ctx context.Context, deviceUuid string) ApiEndpointsDevicesPartialUpdateRequest {
 	return ApiEndpointsDevicesPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5877,7 +5965,7 @@ func (a *EndpointsApiService) EndpointsDevicesPartialUpdate(ctx context.Context,
 // Execute executes the request
 //
 //	@return EndpointDevice
-func (a *EndpointsApiService) EndpointsDevicesPartialUpdateExecute(r ApiEndpointsDevicesPartialUpdateRequest) (*EndpointDevice, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDevicesPartialUpdateExecute(r ApiEndpointsDevicesPartialUpdateRequest) (*EndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -5885,13 +5973,13 @@ func (a *EndpointsApiService) EndpointsDevicesPartialUpdateExecute(r ApiEndpoint
 		localVarReturnValue *EndpointDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDevicesPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDevicesPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/devices/{device_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterToString(r.deviceUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterValueToString(r.deviceUuid, "deviceUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5926,9 +6014,9 @@ func (a *EndpointsApiService) EndpointsDevicesPartialUpdateExecute(r ApiEndpoint
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5945,6 +6033,7 @@ func (a *EndpointsApiService) EndpointsDevicesPartialUpdateExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5955,6 +6044,7 @@ func (a *EndpointsApiService) EndpointsDevicesPartialUpdateExecute(r ApiEndpoint
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5974,7 +6064,7 @@ func (a *EndpointsApiService) EndpointsDevicesPartialUpdateExecute(r ApiEndpoint
 
 type ApiEndpointsDevicesRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	deviceUuid string
 }
 
@@ -5991,7 +6081,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsDevicesRetrieve(ctx context.Context, deviceUuid string) ApiEndpointsDevicesRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsDevicesRetrieve(ctx context.Context, deviceUuid string) ApiEndpointsDevicesRetrieveRequest {
 	return ApiEndpointsDevicesRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6002,7 +6092,7 @@ func (a *EndpointsApiService) EndpointsDevicesRetrieve(ctx context.Context, devi
 // Execute executes the request
 //
 //	@return EndpointDeviceDetails
-func (a *EndpointsApiService) EndpointsDevicesRetrieveExecute(r ApiEndpointsDevicesRetrieveRequest) (*EndpointDeviceDetails, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDevicesRetrieveExecute(r ApiEndpointsDevicesRetrieveRequest) (*EndpointDeviceDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6010,13 +6100,13 @@ func (a *EndpointsApiService) EndpointsDevicesRetrieveExecute(r ApiEndpointsDevi
 		localVarReturnValue *EndpointDeviceDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDevicesRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDevicesRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/devices/{device_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterToString(r.deviceUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterValueToString(r.deviceUuid, "deviceUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6049,9 +6139,9 @@ func (a *EndpointsApiService) EndpointsDevicesRetrieveExecute(r ApiEndpointsDevi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6068,6 +6158,7 @@ func (a *EndpointsApiService) EndpointsDevicesRetrieveExecute(r ApiEndpointsDevi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6078,6 +6169,7 @@ func (a *EndpointsApiService) EndpointsDevicesRetrieveExecute(r ApiEndpointsDevi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6097,7 +6189,7 @@ func (a *EndpointsApiService) EndpointsDevicesRetrieveExecute(r ApiEndpointsDevi
 
 type ApiEndpointsDevicesSummaryRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 }
 
 func (r ApiEndpointsDevicesSummaryRetrieveRequest) Execute() (*DeviceSummary, *http.Response, error) {
@@ -6112,7 +6204,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsDevicesSummaryRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsDevicesSummaryRetrieve(ctx context.Context) ApiEndpointsDevicesSummaryRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsDevicesSummaryRetrieve(ctx context.Context) ApiEndpointsDevicesSummaryRetrieveRequest {
 	return ApiEndpointsDevicesSummaryRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6122,7 +6214,7 @@ func (a *EndpointsApiService) EndpointsDevicesSummaryRetrieve(ctx context.Contex
 // Execute executes the request
 //
 //	@return DeviceSummary
-func (a *EndpointsApiService) EndpointsDevicesSummaryRetrieveExecute(r ApiEndpointsDevicesSummaryRetrieveRequest) (*DeviceSummary, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDevicesSummaryRetrieveExecute(r ApiEndpointsDevicesSummaryRetrieveRequest) (*DeviceSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6130,7 +6222,7 @@ func (a *EndpointsApiService) EndpointsDevicesSummaryRetrieveExecute(r ApiEndpoi
 		localVarReturnValue *DeviceSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDevicesSummaryRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDevicesSummaryRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6168,9 +6260,9 @@ func (a *EndpointsApiService) EndpointsDevicesSummaryRetrieveExecute(r ApiEndpoi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6187,6 +6279,7 @@ func (a *EndpointsApiService) EndpointsDevicesSummaryRetrieveExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6197,6 +6290,7 @@ func (a *EndpointsApiService) EndpointsDevicesSummaryRetrieveExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6216,7 +6310,7 @@ func (a *EndpointsApiService) EndpointsDevicesSummaryRetrieveExecute(r ApiEndpoi
 
 type ApiEndpointsDevicesUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *EndpointsApiService
+	ApiService            *EndpointsAPIService
 	deviceUuid            string
 	endpointDeviceRequest *EndpointDeviceRequest
 }
@@ -6239,7 +6333,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsDevicesUpdate(ctx context.Context, deviceUuid string) ApiEndpointsDevicesUpdateRequest {
+func (a *EndpointsAPIService) EndpointsDevicesUpdate(ctx context.Context, deviceUuid string) ApiEndpointsDevicesUpdateRequest {
 	return ApiEndpointsDevicesUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6250,7 +6344,7 @@ func (a *EndpointsApiService) EndpointsDevicesUpdate(ctx context.Context, device
 // Execute executes the request
 //
 //	@return EndpointDevice
-func (a *EndpointsApiService) EndpointsDevicesUpdateExecute(r ApiEndpointsDevicesUpdateRequest) (*EndpointDevice, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDevicesUpdateExecute(r ApiEndpointsDevicesUpdateRequest) (*EndpointDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -6258,13 +6352,13 @@ func (a *EndpointsApiService) EndpointsDevicesUpdateExecute(r ApiEndpointsDevice
 		localVarReturnValue *EndpointDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDevicesUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDevicesUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/devices/{device_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterToString(r.deviceUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterValueToString(r.deviceUuid, "deviceUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6302,9 +6396,9 @@ func (a *EndpointsApiService) EndpointsDevicesUpdateExecute(r ApiEndpointsDevice
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6321,6 +6415,7 @@ func (a *EndpointsApiService) EndpointsDevicesUpdateExecute(r ApiEndpointsDevice
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6331,6 +6426,7 @@ func (a *EndpointsApiService) EndpointsDevicesUpdateExecute(r ApiEndpointsDevice
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6350,7 +6446,7 @@ func (a *EndpointsApiService) EndpointsDevicesUpdateExecute(r ApiEndpointsDevice
 
 type ApiEndpointsDevicesUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	deviceUuid string
 }
 
@@ -6367,7 +6463,7 @@ Get a list of all objects that use this object
 	@param deviceUuid A UUID string identifying this Device.
 	@return ApiEndpointsDevicesUsedByListRequest
 */
-func (a *EndpointsApiService) EndpointsDevicesUsedByList(ctx context.Context, deviceUuid string) ApiEndpointsDevicesUsedByListRequest {
+func (a *EndpointsAPIService) EndpointsDevicesUsedByList(ctx context.Context, deviceUuid string) ApiEndpointsDevicesUsedByListRequest {
 	return ApiEndpointsDevicesUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6378,7 +6474,7 @@ func (a *EndpointsApiService) EndpointsDevicesUsedByList(ctx context.Context, de
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EndpointsApiService) EndpointsDevicesUsedByListExecute(r ApiEndpointsDevicesUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsDevicesUsedByListExecute(r ApiEndpointsDevicesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6386,13 +6482,13 @@ func (a *EndpointsApiService) EndpointsDevicesUsedByListExecute(r ApiEndpointsDe
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsDevicesUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsDevicesUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/devices/{device_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterToString(r.deviceUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"device_uuid"+"}", url.PathEscape(parameterValueToString(r.deviceUuid, "deviceUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6425,9 +6521,9 @@ func (a *EndpointsApiService) EndpointsDevicesUsedByListExecute(r ApiEndpointsDe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6444,6 +6540,7 @@ func (a *EndpointsApiService) EndpointsDevicesUsedByListExecute(r ApiEndpointsDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6454,6 +6551,7 @@ func (a *EndpointsApiService) EndpointsDevicesUsedByListExecute(r ApiEndpointsDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6473,7 +6571,7 @@ func (a *EndpointsApiService) EndpointsDevicesUsedByListExecute(r ApiEndpointsDe
 
 type ApiEndpointsFleetConnectorsCreateRequest struct {
 	ctx                   context.Context
-	ApiService            *EndpointsApiService
+	ApiService            *EndpointsAPIService
 	fleetConnectorRequest *FleetConnectorRequest
 }
 
@@ -6494,7 +6592,7 @@ FleetConnector Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsFleetConnectorsCreateRequest
 */
-func (a *EndpointsApiService) EndpointsFleetConnectorsCreate(ctx context.Context) ApiEndpointsFleetConnectorsCreateRequest {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsCreate(ctx context.Context) ApiEndpointsFleetConnectorsCreateRequest {
 	return ApiEndpointsFleetConnectorsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6504,7 +6602,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsCreate(ctx context.Context
 // Execute executes the request
 //
 //	@return FleetConnector
-func (a *EndpointsApiService) EndpointsFleetConnectorsCreateExecute(r ApiEndpointsFleetConnectorsCreateRequest) (*FleetConnector, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsCreateExecute(r ApiEndpointsFleetConnectorsCreateRequest) (*FleetConnector, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -6512,7 +6610,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsCreateExecute(r ApiEndpoin
 		localVarReturnValue *FleetConnector
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsFleetConnectorsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsFleetConnectorsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6555,9 +6653,9 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsCreateExecute(r ApiEndpoin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6574,6 +6672,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsCreateExecute(r ApiEndpoin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6584,6 +6683,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsCreateExecute(r ApiEndpoin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6603,7 +6703,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsCreateExecute(r ApiEndpoin
 
 type ApiEndpointsFleetConnectorsDestroyRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	connectorUuid string
 }
 
@@ -6620,7 +6720,7 @@ FleetConnector Viewset
 	@param connectorUuid A UUID string identifying this Fleet Connector.
 	@return ApiEndpointsFleetConnectorsDestroyRequest
 */
-func (a *EndpointsApiService) EndpointsFleetConnectorsDestroy(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsDestroyRequest {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsDestroy(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsDestroyRequest {
 	return ApiEndpointsFleetConnectorsDestroyRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -6629,20 +6729,20 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsDestroy(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *EndpointsApiService) EndpointsFleetConnectorsDestroyExecute(r ApiEndpointsFleetConnectorsDestroyRequest) (*http.Response, error) {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsDestroyExecute(r ApiEndpointsFleetConnectorsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsFleetConnectorsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsFleetConnectorsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/fleet/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6675,9 +6775,9 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsDestroyExecute(r ApiEndpoi
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -6694,6 +6794,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsDestroyExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -6704,6 +6805,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsDestroyExecute(r ApiEndpoi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -6714,7 +6816,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsDestroyExecute(r ApiEndpoi
 
 type ApiEndpointsFleetConnectorsListRequest struct {
 	ctx        context.Context
-	ApiService *EndpointsApiService
+	ApiService *EndpointsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -6763,7 +6865,7 @@ FleetConnector Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiEndpointsFleetConnectorsListRequest
 */
-func (a *EndpointsApiService) EndpointsFleetConnectorsList(ctx context.Context) ApiEndpointsFleetConnectorsListRequest {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsList(ctx context.Context) ApiEndpointsFleetConnectorsListRequest {
 	return ApiEndpointsFleetConnectorsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6773,7 +6875,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsList(ctx context.Context) 
 // Execute executes the request
 //
 //	@return PaginatedFleetConnectorList
-func (a *EndpointsApiService) EndpointsFleetConnectorsListExecute(r ApiEndpointsFleetConnectorsListRequest) (*PaginatedFleetConnectorList, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsListExecute(r ApiEndpointsFleetConnectorsListRequest) (*PaginatedFleetConnectorList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6781,7 +6883,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsListExecute(r ApiEndpoints
 		localVarReturnValue *PaginatedFleetConnectorList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsFleetConnectorsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsFleetConnectorsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6793,19 +6895,19 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsListExecute(r ApiEndpoints
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6834,9 +6936,9 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsListExecute(r ApiEndpoints
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6853,6 +6955,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsListExecute(r ApiEndpoints
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6863,6 +6966,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsListExecute(r ApiEndpoints
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6882,7 +6986,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsListExecute(r ApiEndpoints
 
 type ApiEndpointsFleetConnectorsPartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *EndpointsApiService
+	ApiService                   *EndpointsAPIService
 	connectorUuid                string
 	patchedFleetConnectorRequest *PatchedFleetConnectorRequest
 }
@@ -6905,7 +7009,7 @@ FleetConnector Viewset
 	@param connectorUuid A UUID string identifying this Fleet Connector.
 	@return ApiEndpointsFleetConnectorsPartialUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsFleetConnectorsPartialUpdate(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsPartialUpdateRequest {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsPartialUpdate(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsPartialUpdateRequest {
 	return ApiEndpointsFleetConnectorsPartialUpdateRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -6916,7 +7020,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsPartialUpdate(ctx context.
 // Execute executes the request
 //
 //	@return FleetConnector
-func (a *EndpointsApiService) EndpointsFleetConnectorsPartialUpdateExecute(r ApiEndpointsFleetConnectorsPartialUpdateRequest) (*FleetConnector, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsPartialUpdateExecute(r ApiEndpointsFleetConnectorsPartialUpdateRequest) (*FleetConnector, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -6924,13 +7028,13 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsPartialUpdateExecute(r Api
 		localVarReturnValue *FleetConnector
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsFleetConnectorsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsFleetConnectorsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/fleet/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6965,9 +7069,9 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6984,6 +7088,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6994,6 +7099,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7013,7 +7119,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsPartialUpdateExecute(r Api
 
 type ApiEndpointsFleetConnectorsRetrieveRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	connectorUuid string
 }
 
@@ -7030,7 +7136,7 @@ FleetConnector Viewset
 	@param connectorUuid A UUID string identifying this Fleet Connector.
 	@return ApiEndpointsFleetConnectorsRetrieveRequest
 */
-func (a *EndpointsApiService) EndpointsFleetConnectorsRetrieve(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsRetrieveRequest {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsRetrieve(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsRetrieveRequest {
 	return ApiEndpointsFleetConnectorsRetrieveRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -7041,7 +7147,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return FleetConnector
-func (a *EndpointsApiService) EndpointsFleetConnectorsRetrieveExecute(r ApiEndpointsFleetConnectorsRetrieveRequest) (*FleetConnector, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsRetrieveExecute(r ApiEndpointsFleetConnectorsRetrieveRequest) (*FleetConnector, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7049,13 +7155,13 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsRetrieveExecute(r ApiEndpo
 		localVarReturnValue *FleetConnector
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsFleetConnectorsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsFleetConnectorsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/fleet/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7088,9 +7194,9 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsRetrieveExecute(r ApiEndpo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7107,6 +7213,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsRetrieveExecute(r ApiEndpo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7117,6 +7224,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsRetrieveExecute(r ApiEndpo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7136,7 +7244,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsRetrieveExecute(r ApiEndpo
 
 type ApiEndpointsFleetConnectorsUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *EndpointsApiService
+	ApiService            *EndpointsAPIService
 	connectorUuid         string
 	fleetConnectorRequest *FleetConnectorRequest
 }
@@ -7159,7 +7267,7 @@ FleetConnector Viewset
 	@param connectorUuid A UUID string identifying this Fleet Connector.
 	@return ApiEndpointsFleetConnectorsUpdateRequest
 */
-func (a *EndpointsApiService) EndpointsFleetConnectorsUpdate(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsUpdateRequest {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsUpdate(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsUpdateRequest {
 	return ApiEndpointsFleetConnectorsUpdateRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -7170,7 +7278,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUpdate(ctx context.Context
 // Execute executes the request
 //
 //	@return FleetConnector
-func (a *EndpointsApiService) EndpointsFleetConnectorsUpdateExecute(r ApiEndpointsFleetConnectorsUpdateRequest) (*FleetConnector, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsUpdateExecute(r ApiEndpointsFleetConnectorsUpdateRequest) (*FleetConnector, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -7178,13 +7286,13 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUpdateExecute(r ApiEndpoin
 		localVarReturnValue *FleetConnector
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsFleetConnectorsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsFleetConnectorsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/fleet/connectors/{connector_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7222,9 +7330,9 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUpdateExecute(r ApiEndpoin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7241,6 +7349,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUpdateExecute(r ApiEndpoin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7251,6 +7360,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUpdateExecute(r ApiEndpoin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7270,7 +7380,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUpdateExecute(r ApiEndpoin
 
 type ApiEndpointsFleetConnectorsUsedByListRequest struct {
 	ctx           context.Context
-	ApiService    *EndpointsApiService
+	ApiService    *EndpointsAPIService
 	connectorUuid string
 }
 
@@ -7287,7 +7397,7 @@ Get a list of all objects that use this object
 	@param connectorUuid A UUID string identifying this Fleet Connector.
 	@return ApiEndpointsFleetConnectorsUsedByListRequest
 */
-func (a *EndpointsApiService) EndpointsFleetConnectorsUsedByList(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsUsedByListRequest {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsUsedByList(ctx context.Context, connectorUuid string) ApiEndpointsFleetConnectorsUsedByListRequest {
 	return ApiEndpointsFleetConnectorsUsedByListRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -7298,7 +7408,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUsedByList(ctx context.Con
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *EndpointsApiService) EndpointsFleetConnectorsUsedByListExecute(r ApiEndpointsFleetConnectorsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *EndpointsAPIService) EndpointsFleetConnectorsUsedByListExecute(r ApiEndpointsFleetConnectorsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7306,13 +7416,13 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUsedByListExecute(r ApiEnd
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsApiService.EndpointsFleetConnectorsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsFleetConnectorsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/endpoints/fleet/connectors/{connector_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterToString(r.connectorUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7345,9 +7455,9 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUsedByListExecute(r ApiEnd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7364,6 +7474,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUsedByListExecute(r ApiEnd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7374,6 +7485,7 @@ func (a *EndpointsApiService) EndpointsFleetConnectorsUsedByListExecute(r ApiEnd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

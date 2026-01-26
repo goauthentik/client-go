@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PatchedSettingsRequestFlags type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedSettingsRequestFlags{}
 
 // PatchedSettingsRequestFlags struct for PatchedSettingsRequestFlags
 type PatchedSettingsRequestFlags struct {
@@ -21,6 +26,8 @@ type PatchedSettingsRequestFlags struct {
 	PoliciesBufferedAccessView         bool `json:"policies_buffered_access_view"`
 	FlowsRefreshOthers                 bool `json:"flows_refresh_others"`
 }
+
+type _PatchedSettingsRequestFlags PatchedSettingsRequestFlags
 
 // NewPatchedSettingsRequestFlags instantiates a new PatchedSettingsRequestFlags object
 // This constructor will assign default values to properties that have it defined,
@@ -115,17 +122,58 @@ func (o *PatchedSettingsRequestFlags) SetFlowsRefreshOthers(v bool) {
 }
 
 func (o PatchedSettingsRequestFlags) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enterprise_audit_include_expanded_diff"] = o.EnterpriseAuditIncludeExpandedDiff
-	}
-	if true {
-		toSerialize["policies_buffered_access_view"] = o.PoliciesBufferedAccessView
-	}
-	if true {
-		toSerialize["flows_refresh_others"] = o.FlowsRefreshOthers
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedSettingsRequestFlags) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enterprise_audit_include_expanded_diff"] = o.EnterpriseAuditIncludeExpandedDiff
+	toSerialize["policies_buffered_access_view"] = o.PoliciesBufferedAccessView
+	toSerialize["flows_refresh_others"] = o.FlowsRefreshOthers
+	return toSerialize, nil
+}
+
+func (o *PatchedSettingsRequestFlags) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"enterprise_audit_include_expanded_diff",
+		"policies_buffered_access_view",
+		"flows_refresh_others",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPatchedSettingsRequestFlags := _PatchedSettingsRequestFlags{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPatchedSettingsRequestFlags)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PatchedSettingsRequestFlags(varPatchedSettingsRequestFlags)
+
+	return err
 }
 
 type NullablePatchedSettingsRequestFlags struct {

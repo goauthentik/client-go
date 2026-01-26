@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the PatchedUserOAuthSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedUserOAuthSourceConnectionRequest{}
+
 // PatchedUserOAuthSourceConnectionRequest User source connection
 type PatchedUserOAuthSourceConnectionRequest struct {
 	User        *int32         `json:"user,omitempty"`
@@ -44,7 +47,7 @@ func NewPatchedUserOAuthSourceConnectionRequestWithDefaults() *PatchedUserOAuthS
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetUser() int32 {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret int32
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetUserOk() (*int32, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -62,7 +65,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetUserOk() (*int32, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) SetUser(v int32) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetSource() string {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetSourceOk() (*string, bool) {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -94,7 +97,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetSourceOk() (*string, bool) 
 
 // HasSource returns a boolean if a field has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) HasSource() bool {
-	if o != nil && o.Source != nil {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) SetSource(v string) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -126,7 +129,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetIdentifierOk() (*string, bo
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) SetIdentifier(v string) {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedUserOAuthSourceConnectionRequest) GetAccessToken() string {
-	if o == nil || o.AccessToken.Get() == nil {
+	if o == nil || IsNil(o.AccessToken.Get()) {
 		var ret string
 		return ret
 	}
@@ -183,7 +186,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) UnsetAccessToken() {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -193,7 +196,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -201,7 +204,7 @@ func (o *PatchedUserOAuthSourceConnectionRequest) GetExpiresOk() (*time.Time, bo
 
 // HasExpires returns a boolean if a field has been set.
 func (o *PatchedUserOAuthSourceConnectionRequest) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -214,23 +217,31 @@ func (o *PatchedUserOAuthSourceConnectionRequest) SetExpires(v time.Time) {
 }
 
 func (o PatchedUserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedUserOAuthSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.User != nil {
+	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
-	if o.Source != nil {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if o.Identifier != nil {
+	if !IsNil(o.Identifier) {
 		toSerialize["identifier"] = o.Identifier
 	}
 	if o.AccessToken.IsSet() {
 		toSerialize["access_token"] = o.AccessToken.Get()
 	}
-	if o.Expires != nil {
+	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedUserOAuthSourceConnectionRequest struct {

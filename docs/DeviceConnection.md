@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Device** | **string** |  | 
 **Connector** | **string** |  | 
 **ConnectorObj** | [**Connector**](Connector.md) |  | [readonly] 
-**LatestSnapshot** | [**NullableDeviceConnectionLatestSnapshot**](DeviceConnectionLatestSnapshot.md) |  | 
+**LatestSnapshot** | [**NullableDeviceFactSnapshot**](DeviceFactSnapshot.md) |  | [readonly] 
 
 ## Methods
 
 ### NewDeviceConnection
 
-`func NewDeviceConnection(device string, connector string, connectorObj Connector, latestSnapshot NullableDeviceConnectionLatestSnapshot, ) *DeviceConnection`
+`func NewDeviceConnection(device string, connector string, connectorObj Connector, latestSnapshot NullableDeviceFactSnapshot, ) *DeviceConnection`
 
 NewDeviceConnection instantiates a new DeviceConnection object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetConnectorObj sets ConnectorObj field to given value.
 
 ### GetLatestSnapshot
 
-`func (o *DeviceConnection) GetLatestSnapshot() DeviceConnectionLatestSnapshot`
+`func (o *DeviceConnection) GetLatestSnapshot() DeviceFactSnapshot`
 
 GetLatestSnapshot returns the LatestSnapshot field if non-nil, zero value otherwise.
 
 ### GetLatestSnapshotOk
 
-`func (o *DeviceConnection) GetLatestSnapshotOk() (*DeviceConnectionLatestSnapshot, bool)`
+`func (o *DeviceConnection) GetLatestSnapshotOk() (*DeviceFactSnapshot, bool)`
 
 GetLatestSnapshotOk returns a tuple with the LatestSnapshot field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLatestSnapshot
 
-`func (o *DeviceConnection) SetLatestSnapshot(v DeviceConnectionLatestSnapshot)`
+`func (o *DeviceConnection) SetLatestSnapshot(v DeviceFactSnapshot)`
 
 SetLatestSnapshot sets LatestSnapshot field to given value.
 

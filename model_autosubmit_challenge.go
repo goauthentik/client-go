@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AutosubmitChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AutosubmitChallenge{}
 
 // AutosubmitChallenge Autosubmit challenge used to send and navigate a POST request
 type AutosubmitChallenge struct {
@@ -24,6 +29,8 @@ type AutosubmitChallenge struct {
 	Attrs          map[string]string         `json:"attrs"`
 	Title          *string                   `json:"title,omitempty"`
 }
+
+type _AutosubmitChallenge AutosubmitChallenge
 
 // NewAutosubmitChallenge instantiates a new AutosubmitChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -50,7 +57,7 @@ func NewAutosubmitChallengeWithDefaults() *AutosubmitChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *AutosubmitChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -60,7 +67,7 @@ func (o *AutosubmitChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AutosubmitChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -68,7 +75,7 @@ func (o *AutosubmitChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *AutosubmitChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -82,7 +89,7 @@ func (o *AutosubmitChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AutosubmitChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -92,7 +99,7 @@ func (o *AutosubmitChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AutosubmitChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -100,7 +107,7 @@ func (o *AutosubmitChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AutosubmitChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -114,7 +121,7 @@ func (o *AutosubmitChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *AutosubmitChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -124,7 +131,7 @@ func (o *AutosubmitChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AutosubmitChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -132,7 +139,7 @@ func (o *AutosubmitChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, 
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *AutosubmitChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -194,7 +201,7 @@ func (o *AutosubmitChallenge) SetAttrs(v map[string]string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *AutosubmitChallenge) GetTitle() string {
-	if o == nil || o.Title == nil {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -204,7 +211,7 @@ func (o *AutosubmitChallenge) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AutosubmitChallenge) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
+	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
 	return o.Title, true
@@ -212,7 +219,7 @@ func (o *AutosubmitChallenge) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *AutosubmitChallenge) HasTitle() bool {
-	if o != nil && o.Title != nil {
+	if o != nil && !IsNil(o.Title) {
 		return true
 	}
 
@@ -225,26 +232,68 @@ func (o *AutosubmitChallenge) SetTitle(v string) {
 }
 
 func (o AutosubmitChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if true {
-		toSerialize["attrs"] = o.Attrs
-	}
-	if o.Title != nil {
-		toSerialize["title"] = o.Title
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AutosubmitChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["url"] = o.Url
+	toSerialize["attrs"] = o.Attrs
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	return toSerialize, nil
+}
+
+func (o *AutosubmitChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"url",
+		"attrs",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAutosubmitChallenge := _AutosubmitChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAutosubmitChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AutosubmitChallenge(varAutosubmitChallenge)
+
+	return err
 }
 
 type NullableAutosubmitChallenge struct {

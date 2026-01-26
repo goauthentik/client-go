@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedScheduleRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedScheduleRequest{}
+
 // PatchedScheduleRequest struct for PatchedScheduleRequest
 type PatchedScheduleRequest struct {
 	RelObjId NullableString `json:"rel_obj_id,omitempty"`
@@ -43,7 +46,7 @@ func NewPatchedScheduleRequestWithDefaults() *PatchedScheduleRequest {
 
 // GetRelObjId returns the RelObjId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedScheduleRequest) GetRelObjId() string {
-	if o == nil || o.RelObjId.Get() == nil {
+	if o == nil || IsNil(o.RelObjId.Get()) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *PatchedScheduleRequest) UnsetRelObjId() {
 
 // GetCrontab returns the Crontab field value if set, zero value otherwise.
 func (o *PatchedScheduleRequest) GetCrontab() string {
-	if o == nil || o.Crontab == nil {
+	if o == nil || IsNil(o.Crontab) {
 		var ret string
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *PatchedScheduleRequest) GetCrontab() string {
 // GetCrontabOk returns a tuple with the Crontab field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedScheduleRequest) GetCrontabOk() (*string, bool) {
-	if o == nil || o.Crontab == nil {
+	if o == nil || IsNil(o.Crontab) {
 		return nil, false
 	}
 	return o.Crontab, true
@@ -104,7 +107,7 @@ func (o *PatchedScheduleRequest) GetCrontabOk() (*string, bool) {
 
 // HasCrontab returns a boolean if a field has been set.
 func (o *PatchedScheduleRequest) HasCrontab() bool {
-	if o != nil && o.Crontab != nil {
+	if o != nil && !IsNil(o.Crontab) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *PatchedScheduleRequest) SetCrontab(v string) {
 
 // GetPaused returns the Paused field value if set, zero value otherwise.
 func (o *PatchedScheduleRequest) GetPaused() bool {
-	if o == nil || o.Paused == nil {
+	if o == nil || IsNil(o.Paused) {
 		var ret bool
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *PatchedScheduleRequest) GetPaused() bool {
 // GetPausedOk returns a tuple with the Paused field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedScheduleRequest) GetPausedOk() (*bool, bool) {
-	if o == nil || o.Paused == nil {
+	if o == nil || IsNil(o.Paused) {
 		return nil, false
 	}
 	return o.Paused, true
@@ -136,7 +139,7 @@ func (o *PatchedScheduleRequest) GetPausedOk() (*bool, bool) {
 
 // HasPaused returns a boolean if a field has been set.
 func (o *PatchedScheduleRequest) HasPaused() bool {
-	if o != nil && o.Paused != nil {
+	if o != nil && !IsNil(o.Paused) {
 		return true
 	}
 
@@ -149,17 +152,25 @@ func (o *PatchedScheduleRequest) SetPaused(v bool) {
 }
 
 func (o PatchedScheduleRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedScheduleRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.RelObjId.IsSet() {
 		toSerialize["rel_obj_id"] = o.RelObjId.Get()
 	}
-	if o.Crontab != nil {
+	if !IsNil(o.Crontab) {
 		toSerialize["crontab"] = o.Crontab
 	}
-	if o.Paused != nil {
+	if !IsNil(o.Paused) {
 		toSerialize["paused"] = o.Paused
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedScheduleRequest struct {

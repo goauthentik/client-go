@@ -14,17 +14,17 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
-// RootApiService RootApi service
-type RootApiService service
+// RootAPIService RootAPI service
+type RootAPIService service
 
 type ApiRootConfigRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *RootApiService
+	ApiService *RootAPIService
 }
 
 func (r ApiRootConfigRetrieveRequest) Execute() (*Config, *http.Response, error) {
@@ -39,7 +39,7 @@ Retrieve public configuration options
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiRootConfigRetrieveRequest
 */
-func (a *RootApiService) RootConfigRetrieve(ctx context.Context) ApiRootConfigRetrieveRequest {
+func (a *RootAPIService) RootConfigRetrieve(ctx context.Context) ApiRootConfigRetrieveRequest {
 	return ApiRootConfigRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -49,7 +49,7 @@ func (a *RootApiService) RootConfigRetrieve(ctx context.Context) ApiRootConfigRe
 // Execute executes the request
 //
 //	@return Config
-func (a *RootApiService) RootConfigRetrieveExecute(r ApiRootConfigRetrieveRequest) (*Config, *http.Response, error) {
+func (a *RootAPIService) RootConfigRetrieveExecute(r ApiRootConfigRetrieveRequest) (*Config, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -57,7 +57,7 @@ func (a *RootApiService) RootConfigRetrieveExecute(r ApiRootConfigRetrieveReques
 		localVarReturnValue *Config
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootApiService.RootConfigRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootAPIService.RootConfigRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -95,9 +95,9 @@ func (a *RootApiService) RootConfigRetrieveExecute(r ApiRootConfigRetrieveReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -114,6 +114,7 @@ func (a *RootApiService) RootConfigRetrieveExecute(r ApiRootConfigRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -124,6 +125,7 @@ func (a *RootApiService) RootConfigRetrieveExecute(r ApiRootConfigRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

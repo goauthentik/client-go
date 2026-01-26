@@ -14,7 +14,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -22,12 +22,12 @@ import (
 	"time"
 )
 
-// CoreApiService CoreApi service
-type CoreApiService service
+// CoreAPIService CoreAPI service
+type CoreAPIService service
 
 type ApiCoreApplicationEntitlementsCreateRequest struct {
 	ctx                           context.Context
-	ApiService                    *CoreApiService
+	ApiService                    *CoreAPIService
 	applicationEntitlementRequest *ApplicationEntitlementRequest
 }
 
@@ -48,7 +48,7 @@ ApplicationEntitlement Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreApplicationEntitlementsCreateRequest
 */
-func (a *CoreApiService) CoreApplicationEntitlementsCreate(ctx context.Context) ApiCoreApplicationEntitlementsCreateRequest {
+func (a *CoreAPIService) CoreApplicationEntitlementsCreate(ctx context.Context) ApiCoreApplicationEntitlementsCreateRequest {
 	return ApiCoreApplicationEntitlementsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -58,7 +58,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsCreate(ctx context.Context) 
 // Execute executes the request
 //
 //	@return ApplicationEntitlement
-func (a *CoreApiService) CoreApplicationEntitlementsCreateExecute(r ApiCoreApplicationEntitlementsCreateRequest) (*ApplicationEntitlement, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationEntitlementsCreateExecute(r ApiCoreApplicationEntitlementsCreateRequest) (*ApplicationEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,7 +66,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsCreateExecute(r ApiCoreAppli
 		localVarReturnValue *ApplicationEntitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationEntitlementsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -109,9 +109,9 @@ func (a *CoreApiService) CoreApplicationEntitlementsCreateExecute(r ApiCoreAppli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -128,6 +128,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsCreateExecute(r ApiCoreAppli
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -138,6 +139,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsCreateExecute(r ApiCoreAppli
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -157,7 +159,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsCreateExecute(r ApiCoreAppli
 
 type ApiCoreApplicationEntitlementsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	pbmUuid    string
 }
 
@@ -174,7 +176,7 @@ ApplicationEntitlement Viewset
 	@param pbmUuid A UUID string identifying this Application Entitlement.
 	@return ApiCoreApplicationEntitlementsDestroyRequest
 */
-func (a *CoreApiService) CoreApplicationEntitlementsDestroy(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsDestroyRequest {
+func (a *CoreAPIService) CoreApplicationEntitlementsDestroy(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsDestroyRequest {
 	return ApiCoreApplicationEntitlementsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -183,20 +185,20 @@ func (a *CoreApiService) CoreApplicationEntitlementsDestroy(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreApplicationEntitlementsDestroyExecute(r ApiCoreApplicationEntitlementsDestroyRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreApplicationEntitlementsDestroyExecute(r ApiCoreApplicationEntitlementsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationEntitlementsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -229,9 +231,9 @@ func (a *CoreApiService) CoreApplicationEntitlementsDestroyExecute(r ApiCoreAppl
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -248,6 +250,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsDestroyExecute(r ApiCoreAppl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -258,6 +261,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsDestroyExecute(r ApiCoreAppl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -268,7 +272,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsDestroyExecute(r ApiCoreAppl
 
 type ApiCoreApplicationEntitlementsListRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	app        *string
 	name       *string
 	ordering   *string
@@ -329,7 +333,7 @@ ApplicationEntitlement Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreApplicationEntitlementsListRequest
 */
-func (a *CoreApiService) CoreApplicationEntitlementsList(ctx context.Context) ApiCoreApplicationEntitlementsListRequest {
+func (a *CoreAPIService) CoreApplicationEntitlementsList(ctx context.Context) ApiCoreApplicationEntitlementsListRequest {
 	return ApiCoreApplicationEntitlementsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -339,7 +343,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsList(ctx context.Context) Ap
 // Execute executes the request
 //
 //	@return PaginatedApplicationEntitlementList
-func (a *CoreApiService) CoreApplicationEntitlementsListExecute(r ApiCoreApplicationEntitlementsListRequest) (*PaginatedApplicationEntitlementList, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationEntitlementsListExecute(r ApiCoreApplicationEntitlementsListRequest) (*PaginatedApplicationEntitlementList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -347,7 +351,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsListExecute(r ApiCoreApplica
 		localVarReturnValue *PaginatedApplicationEntitlementList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationEntitlementsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -359,25 +363,25 @@ func (a *CoreApiService) CoreApplicationEntitlementsListExecute(r ApiCoreApplica
 	localVarFormParams := url.Values{}
 
 	if r.app != nil {
-		localVarQueryParams.Add("app", parameterToString(*r.app, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app", r.app, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -406,9 +410,9 @@ func (a *CoreApiService) CoreApplicationEntitlementsListExecute(r ApiCoreApplica
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -425,6 +429,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsListExecute(r ApiCoreApplica
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -435,6 +440,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsListExecute(r ApiCoreApplica
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -454,7 +460,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsListExecute(r ApiCoreApplica
 
 type ApiCoreApplicationEntitlementsPartialUpdateRequest struct {
 	ctx                                  context.Context
-	ApiService                           *CoreApiService
+	ApiService                           *CoreAPIService
 	pbmUuid                              string
 	patchedApplicationEntitlementRequest *PatchedApplicationEntitlementRequest
 }
@@ -477,7 +483,7 @@ ApplicationEntitlement Viewset
 	@param pbmUuid A UUID string identifying this Application Entitlement.
 	@return ApiCoreApplicationEntitlementsPartialUpdateRequest
 */
-func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdate(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsPartialUpdateRequest {
+func (a *CoreAPIService) CoreApplicationEntitlementsPartialUpdate(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsPartialUpdateRequest {
 	return ApiCoreApplicationEntitlementsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -488,7 +494,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdate(ctx context.Co
 // Execute executes the request
 //
 //	@return ApplicationEntitlement
-func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdateExecute(r ApiCoreApplicationEntitlementsPartialUpdateRequest) (*ApplicationEntitlement, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationEntitlementsPartialUpdateExecute(r ApiCoreApplicationEntitlementsPartialUpdateRequest) (*ApplicationEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -496,13 +502,13 @@ func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdateExecute(r ApiCo
 		localVarReturnValue *ApplicationEntitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationEntitlementsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -537,9 +543,9 @@ func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdateExecute(r ApiCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -556,6 +562,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdateExecute(r ApiCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -566,6 +573,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdateExecute(r ApiCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -585,7 +593,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsPartialUpdateExecute(r ApiCo
 
 type ApiCoreApplicationEntitlementsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	pbmUuid    string
 }
 
@@ -602,7 +610,7 @@ ApplicationEntitlement Viewset
 	@param pbmUuid A UUID string identifying this Application Entitlement.
 	@return ApiCoreApplicationEntitlementsRetrieveRequest
 */
-func (a *CoreApiService) CoreApplicationEntitlementsRetrieve(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsRetrieveRequest {
+func (a *CoreAPIService) CoreApplicationEntitlementsRetrieve(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsRetrieveRequest {
 	return ApiCoreApplicationEntitlementsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -613,7 +621,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsRetrieve(ctx context.Context
 // Execute executes the request
 //
 //	@return ApplicationEntitlement
-func (a *CoreApiService) CoreApplicationEntitlementsRetrieveExecute(r ApiCoreApplicationEntitlementsRetrieveRequest) (*ApplicationEntitlement, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationEntitlementsRetrieveExecute(r ApiCoreApplicationEntitlementsRetrieveRequest) (*ApplicationEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -621,13 +629,13 @@ func (a *CoreApiService) CoreApplicationEntitlementsRetrieveExecute(r ApiCoreApp
 		localVarReturnValue *ApplicationEntitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationEntitlementsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -660,9 +668,9 @@ func (a *CoreApiService) CoreApplicationEntitlementsRetrieveExecute(r ApiCoreApp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -679,6 +687,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsRetrieveExecute(r ApiCoreApp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -689,6 +698,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsRetrieveExecute(r ApiCoreApp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -708,7 +718,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsRetrieveExecute(r ApiCoreApp
 
 type ApiCoreApplicationEntitlementsUpdateRequest struct {
 	ctx                           context.Context
-	ApiService                    *CoreApiService
+	ApiService                    *CoreAPIService
 	pbmUuid                       string
 	applicationEntitlementRequest *ApplicationEntitlementRequest
 }
@@ -731,7 +741,7 @@ ApplicationEntitlement Viewset
 	@param pbmUuid A UUID string identifying this Application Entitlement.
 	@return ApiCoreApplicationEntitlementsUpdateRequest
 */
-func (a *CoreApiService) CoreApplicationEntitlementsUpdate(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsUpdateRequest {
+func (a *CoreAPIService) CoreApplicationEntitlementsUpdate(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsUpdateRequest {
 	return ApiCoreApplicationEntitlementsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -742,7 +752,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsUpdate(ctx context.Context, 
 // Execute executes the request
 //
 //	@return ApplicationEntitlement
-func (a *CoreApiService) CoreApplicationEntitlementsUpdateExecute(r ApiCoreApplicationEntitlementsUpdateRequest) (*ApplicationEntitlement, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationEntitlementsUpdateExecute(r ApiCoreApplicationEntitlementsUpdateRequest) (*ApplicationEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -750,13 +760,13 @@ func (a *CoreApiService) CoreApplicationEntitlementsUpdateExecute(r ApiCoreAppli
 		localVarReturnValue *ApplicationEntitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationEntitlementsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -794,9 +804,9 @@ func (a *CoreApiService) CoreApplicationEntitlementsUpdateExecute(r ApiCoreAppli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -813,6 +823,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsUpdateExecute(r ApiCoreAppli
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -823,6 +834,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsUpdateExecute(r ApiCoreAppli
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -842,7 +854,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsUpdateExecute(r ApiCoreAppli
 
 type ApiCoreApplicationEntitlementsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	pbmUuid    string
 }
 
@@ -859,7 +871,7 @@ Get a list of all objects that use this object
 	@param pbmUuid A UUID string identifying this Application Entitlement.
 	@return ApiCoreApplicationEntitlementsUsedByListRequest
 */
-func (a *CoreApiService) CoreApplicationEntitlementsUsedByList(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsUsedByListRequest {
+func (a *CoreAPIService) CoreApplicationEntitlementsUsedByList(ctx context.Context, pbmUuid string) ApiCoreApplicationEntitlementsUsedByListRequest {
 	return ApiCoreApplicationEntitlementsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -870,7 +882,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsUsedByList(ctx context.Conte
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *CoreApiService) CoreApplicationEntitlementsUsedByListExecute(r ApiCoreApplicationEntitlementsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationEntitlementsUsedByListExecute(r ApiCoreApplicationEntitlementsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -878,13 +890,13 @@ func (a *CoreApiService) CoreApplicationEntitlementsUsedByListExecute(r ApiCoreA
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationEntitlementsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationEntitlementsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/application_entitlements/{pbm_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterToString(r.pbmUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pbm_uuid"+"}", url.PathEscape(parameterValueToString(r.pbmUuid, "pbmUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -917,9 +929,9 @@ func (a *CoreApiService) CoreApplicationEntitlementsUsedByListExecute(r ApiCoreA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -936,6 +948,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsUsedByListExecute(r ApiCoreA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -946,6 +959,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsUsedByListExecute(r ApiCoreA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -965,7 +979,7 @@ func (a *CoreApiService) CoreApplicationEntitlementsUsedByListExecute(r ApiCoreA
 
 type ApiCoreApplicationsCheckAccessRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	slug       string
 	forUser    *int32
 }
@@ -988,7 +1002,7 @@ Check access to a single application by slug
 	@param slug
 	@return ApiCoreApplicationsCheckAccessRetrieveRequest
 */
-func (a *CoreApiService) CoreApplicationsCheckAccessRetrieve(ctx context.Context, slug string) ApiCoreApplicationsCheckAccessRetrieveRequest {
+func (a *CoreAPIService) CoreApplicationsCheckAccessRetrieve(ctx context.Context, slug string) ApiCoreApplicationsCheckAccessRetrieveRequest {
 	return ApiCoreApplicationsCheckAccessRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -999,7 +1013,7 @@ func (a *CoreApiService) CoreApplicationsCheckAccessRetrieve(ctx context.Context
 // Execute executes the request
 //
 //	@return PolicyTestResult
-func (a *CoreApiService) CoreApplicationsCheckAccessRetrieveExecute(r ApiCoreApplicationsCheckAccessRetrieveRequest) (*PolicyTestResult, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationsCheckAccessRetrieveExecute(r ApiCoreApplicationsCheckAccessRetrieveRequest) (*PolicyTestResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1007,20 +1021,20 @@ func (a *CoreApiService) CoreApplicationsCheckAccessRetrieveExecute(r ApiCoreApp
 		localVarReturnValue *PolicyTestResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationsCheckAccessRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsCheckAccessRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/applications/{slug}/check_access/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.forUser != nil {
-		localVarQueryParams.Add("for_user", parameterToString(*r.forUser, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for_user", r.forUser, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1049,9 +1063,9 @@ func (a *CoreApiService) CoreApplicationsCheckAccessRetrieveExecute(r ApiCoreApp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1068,6 +1082,7 @@ func (a *CoreApiService) CoreApplicationsCheckAccessRetrieveExecute(r ApiCoreApp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1078,6 +1093,7 @@ func (a *CoreApiService) CoreApplicationsCheckAccessRetrieveExecute(r ApiCoreApp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1097,7 +1113,7 @@ func (a *CoreApiService) CoreApplicationsCheckAccessRetrieveExecute(r ApiCoreApp
 
 type ApiCoreApplicationsCreateRequest struct {
 	ctx                context.Context
-	ApiService         *CoreApiService
+	ApiService         *CoreAPIService
 	applicationRequest *ApplicationRequest
 }
 
@@ -1118,7 +1134,7 @@ Application Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreApplicationsCreateRequest
 */
-func (a *CoreApiService) CoreApplicationsCreate(ctx context.Context) ApiCoreApplicationsCreateRequest {
+func (a *CoreAPIService) CoreApplicationsCreate(ctx context.Context) ApiCoreApplicationsCreateRequest {
 	return ApiCoreApplicationsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1128,7 +1144,7 @@ func (a *CoreApiService) CoreApplicationsCreate(ctx context.Context) ApiCoreAppl
 // Execute executes the request
 //
 //	@return Application
-func (a *CoreApiService) CoreApplicationsCreateExecute(r ApiCoreApplicationsCreateRequest) (*Application, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationsCreateExecute(r ApiCoreApplicationsCreateRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1136,7 +1152,7 @@ func (a *CoreApiService) CoreApplicationsCreateExecute(r ApiCoreApplicationsCrea
 		localVarReturnValue *Application
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1179,9 +1195,9 @@ func (a *CoreApiService) CoreApplicationsCreateExecute(r ApiCoreApplicationsCrea
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1198,6 +1214,7 @@ func (a *CoreApiService) CoreApplicationsCreateExecute(r ApiCoreApplicationsCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1208,6 +1225,7 @@ func (a *CoreApiService) CoreApplicationsCreateExecute(r ApiCoreApplicationsCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1227,7 +1245,7 @@ func (a *CoreApiService) CoreApplicationsCreateExecute(r ApiCoreApplicationsCrea
 
 type ApiCoreApplicationsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	slug       string
 }
 
@@ -1244,7 +1262,7 @@ Application Viewset
 	@param slug
 	@return ApiCoreApplicationsDestroyRequest
 */
-func (a *CoreApiService) CoreApplicationsDestroy(ctx context.Context, slug string) ApiCoreApplicationsDestroyRequest {
+func (a *CoreAPIService) CoreApplicationsDestroy(ctx context.Context, slug string) ApiCoreApplicationsDestroyRequest {
 	return ApiCoreApplicationsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1253,20 +1271,20 @@ func (a *CoreApiService) CoreApplicationsDestroy(ctx context.Context, slug strin
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDestroyRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/applications/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1299,9 +1317,9 @@ func (a *CoreApiService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDes
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1318,6 +1336,7 @@ func (a *CoreApiService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1328,6 +1347,7 @@ func (a *CoreApiService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1338,7 +1358,7 @@ func (a *CoreApiService) CoreApplicationsDestroyExecute(r ApiCoreApplicationsDes
 
 type ApiCoreApplicationsListRequest struct {
 	ctx               context.Context
-	ApiService        *CoreApiService
+	ApiService        *CoreAPIService
 	forUser           *int32
 	group             *string
 	metaDescription   *string
@@ -1435,7 +1455,7 @@ Custom list method that checks Policy based access instead of guardian
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreApplicationsListRequest
 */
-func (a *CoreApiService) CoreApplicationsList(ctx context.Context) ApiCoreApplicationsListRequest {
+func (a *CoreAPIService) CoreApplicationsList(ctx context.Context) ApiCoreApplicationsListRequest {
 	return ApiCoreApplicationsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1445,7 +1465,7 @@ func (a *CoreApiService) CoreApplicationsList(ctx context.Context) ApiCoreApplic
 // Execute executes the request
 //
 //	@return PaginatedApplicationList
-func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRequest) (*PaginatedApplicationList, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationsListExecute(r ApiCoreApplicationsListRequest) (*PaginatedApplicationList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1453,7 +1473,7 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 		localVarReturnValue *PaginatedApplicationList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1465,43 +1485,43 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 	localVarFormParams := url.Values{}
 
 	if r.forUser != nil {
-		localVarQueryParams.Add("for_user", parameterToString(*r.forUser, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for_user", r.forUser, "form", "")
 	}
 	if r.group != nil {
-		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group", r.group, "form", "")
 	}
 	if r.metaDescription != nil {
-		localVarQueryParams.Add("meta_description", parameterToString(*r.metaDescription, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "meta_description", r.metaDescription, "form", "")
 	}
 	if r.metaLaunchUrl != nil {
-		localVarQueryParams.Add("meta_launch_url", parameterToString(*r.metaLaunchUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "meta_launch_url", r.metaLaunchUrl, "form", "")
 	}
 	if r.metaPublisher != nil {
-		localVarQueryParams.Add("meta_publisher", parameterToString(*r.metaPublisher, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "meta_publisher", r.metaPublisher, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.onlyWithLaunchUrl != nil {
-		localVarQueryParams.Add("only_with_launch_url", parameterToString(*r.onlyWithLaunchUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "only_with_launch_url", r.onlyWithLaunchUrl, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	if r.superuserFullList != nil {
-		localVarQueryParams.Add("superuser_full_list", parameterToString(*r.superuserFullList, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "superuser_full_list", r.superuserFullList, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1530,9 +1550,9 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1549,6 +1569,7 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1559,6 +1580,7 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1578,7 +1600,7 @@ func (a *CoreApiService) CoreApplicationsListExecute(r ApiCoreApplicationsListRe
 
 type ApiCoreApplicationsPartialUpdateRequest struct {
 	ctx                       context.Context
-	ApiService                *CoreApiService
+	ApiService                *CoreAPIService
 	slug                      string
 	patchedApplicationRequest *PatchedApplicationRequest
 }
@@ -1601,7 +1623,7 @@ Application Viewset
 	@param slug
 	@return ApiCoreApplicationsPartialUpdateRequest
 */
-func (a *CoreApiService) CoreApplicationsPartialUpdate(ctx context.Context, slug string) ApiCoreApplicationsPartialUpdateRequest {
+func (a *CoreAPIService) CoreApplicationsPartialUpdate(ctx context.Context, slug string) ApiCoreApplicationsPartialUpdateRequest {
 	return ApiCoreApplicationsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1612,7 +1634,7 @@ func (a *CoreApiService) CoreApplicationsPartialUpdate(ctx context.Context, slug
 // Execute executes the request
 //
 //	@return Application
-func (a *CoreApiService) CoreApplicationsPartialUpdateExecute(r ApiCoreApplicationsPartialUpdateRequest) (*Application, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationsPartialUpdateExecute(r ApiCoreApplicationsPartialUpdateRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1620,13 +1642,13 @@ func (a *CoreApiService) CoreApplicationsPartialUpdateExecute(r ApiCoreApplicati
 		localVarReturnValue *Application
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/applications/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1661,9 +1683,9 @@ func (a *CoreApiService) CoreApplicationsPartialUpdateExecute(r ApiCoreApplicati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1680,6 +1702,7 @@ func (a *CoreApiService) CoreApplicationsPartialUpdateExecute(r ApiCoreApplicati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1690,6 +1713,7 @@ func (a *CoreApiService) CoreApplicationsPartialUpdateExecute(r ApiCoreApplicati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1709,7 +1733,7 @@ func (a *CoreApiService) CoreApplicationsPartialUpdateExecute(r ApiCoreApplicati
 
 type ApiCoreApplicationsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	slug       string
 }
 
@@ -1726,7 +1750,7 @@ Application Viewset
 	@param slug
 	@return ApiCoreApplicationsRetrieveRequest
 */
-func (a *CoreApiService) CoreApplicationsRetrieve(ctx context.Context, slug string) ApiCoreApplicationsRetrieveRequest {
+func (a *CoreAPIService) CoreApplicationsRetrieve(ctx context.Context, slug string) ApiCoreApplicationsRetrieveRequest {
 	return ApiCoreApplicationsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1737,7 +1761,7 @@ func (a *CoreApiService) CoreApplicationsRetrieve(ctx context.Context, slug stri
 // Execute executes the request
 //
 //	@return Application
-func (a *CoreApiService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRetrieveRequest) (*Application, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRetrieveRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1745,13 +1769,13 @@ func (a *CoreApiService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRe
 		localVarReturnValue *Application
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/applications/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1784,9 +1808,9 @@ func (a *CoreApiService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1803,6 +1827,7 @@ func (a *CoreApiService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1813,6 +1838,7 @@ func (a *CoreApiService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1832,7 +1858,7 @@ func (a *CoreApiService) CoreApplicationsRetrieveExecute(r ApiCoreApplicationsRe
 
 type ApiCoreApplicationsUpdateRequest struct {
 	ctx                context.Context
-	ApiService         *CoreApiService
+	ApiService         *CoreAPIService
 	slug               string
 	applicationRequest *ApplicationRequest
 }
@@ -1855,7 +1881,7 @@ Application Viewset
 	@param slug
 	@return ApiCoreApplicationsUpdateRequest
 */
-func (a *CoreApiService) CoreApplicationsUpdate(ctx context.Context, slug string) ApiCoreApplicationsUpdateRequest {
+func (a *CoreAPIService) CoreApplicationsUpdate(ctx context.Context, slug string) ApiCoreApplicationsUpdateRequest {
 	return ApiCoreApplicationsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1866,7 +1892,7 @@ func (a *CoreApiService) CoreApplicationsUpdate(ctx context.Context, slug string
 // Execute executes the request
 //
 //	@return Application
-func (a *CoreApiService) CoreApplicationsUpdateExecute(r ApiCoreApplicationsUpdateRequest) (*Application, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationsUpdateExecute(r ApiCoreApplicationsUpdateRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1874,13 +1900,13 @@ func (a *CoreApiService) CoreApplicationsUpdateExecute(r ApiCoreApplicationsUpda
 		localVarReturnValue *Application
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/applications/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1918,9 +1944,9 @@ func (a *CoreApiService) CoreApplicationsUpdateExecute(r ApiCoreApplicationsUpda
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1937,6 +1963,7 @@ func (a *CoreApiService) CoreApplicationsUpdateExecute(r ApiCoreApplicationsUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1947,6 +1974,7 @@ func (a *CoreApiService) CoreApplicationsUpdateExecute(r ApiCoreApplicationsUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1966,7 +1994,7 @@ func (a *CoreApiService) CoreApplicationsUpdateExecute(r ApiCoreApplicationsUpda
 
 type ApiCoreApplicationsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	slug       string
 }
 
@@ -1983,7 +2011,7 @@ Get a list of all objects that use this object
 	@param slug
 	@return ApiCoreApplicationsUsedByListRequest
 */
-func (a *CoreApiService) CoreApplicationsUsedByList(ctx context.Context, slug string) ApiCoreApplicationsUsedByListRequest {
+func (a *CoreAPIService) CoreApplicationsUsedByList(ctx context.Context, slug string) ApiCoreApplicationsUsedByListRequest {
 	return ApiCoreApplicationsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1994,7 +2022,7 @@ func (a *CoreApiService) CoreApplicationsUsedByList(ctx context.Context, slug st
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *CoreApiService) CoreApplicationsUsedByListExecute(r ApiCoreApplicationsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *CoreAPIService) CoreApplicationsUsedByListExecute(r ApiCoreApplicationsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2002,13 +2030,13 @@ func (a *CoreApiService) CoreApplicationsUsedByListExecute(r ApiCoreApplications
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreApplicationsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreApplicationsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/applications/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2041,9 +2069,9 @@ func (a *CoreApiService) CoreApplicationsUsedByListExecute(r ApiCoreApplications
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2060,6 +2088,7 @@ func (a *CoreApiService) CoreApplicationsUsedByListExecute(r ApiCoreApplications
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2070,6 +2099,7 @@ func (a *CoreApiService) CoreApplicationsUsedByListExecute(r ApiCoreApplications
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2089,7 +2119,7 @@ func (a *CoreApiService) CoreApplicationsUsedByListExecute(r ApiCoreApplications
 
 type ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	userPks    *[]int32
 }
 
@@ -2111,7 +2141,7 @@ Bulk revoke all sessions for multiple users
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest
 */
-func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroy(ctx context.Context) ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest {
+func (a *CoreAPIService) CoreAuthenticatedSessionsBulkDeleteDestroy(ctx context.Context) ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest {
 	return ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2121,7 +2151,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroy(ctx context.
 // Execute executes the request
 //
 //	@return BulkDeleteSessionResponse
-func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) (*BulkDeleteSessionResponse, *http.Response, error) {
+func (a *CoreAPIService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r ApiCoreAuthenticatedSessionsBulkDeleteDestroyRequest) (*BulkDeleteSessionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -2129,7 +2159,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r Api
 		localVarReturnValue *BulkDeleteSessionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreAuthenticatedSessionsBulkDeleteDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreAuthenticatedSessionsBulkDeleteDestroy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2148,10 +2178,10 @@ func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r Api
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("user_pks", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "user_pks", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("user_pks", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "user_pks", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -2181,9 +2211,9 @@ func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2200,6 +2230,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2210,6 +2241,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2229,7 +2261,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsBulkDeleteDestroyExecute(r Api
 
 type ApiCoreAuthenticatedSessionsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	uuid       string
 }
 
@@ -2246,7 +2278,7 @@ AuthenticatedSession Viewset
 	@param uuid
 	@return ApiCoreAuthenticatedSessionsDestroyRequest
 */
-func (a *CoreApiService) CoreAuthenticatedSessionsDestroy(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsDestroyRequest {
+func (a *CoreAPIService) CoreAuthenticatedSessionsDestroy(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsDestroyRequest {
 	return ApiCoreAuthenticatedSessionsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2255,20 +2287,20 @@ func (a *CoreApiService) CoreAuthenticatedSessionsDestroy(ctx context.Context, u
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreAuthenticatedSessionsDestroyExecute(r ApiCoreAuthenticatedSessionsDestroyRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreAuthenticatedSessionsDestroyExecute(r ApiCoreAuthenticatedSessionsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreAuthenticatedSessionsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreAuthenticatedSessionsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/authenticated_sessions/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2301,9 +2333,9 @@ func (a *CoreApiService) CoreAuthenticatedSessionsDestroyExecute(r ApiCoreAuthen
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2320,6 +2352,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsDestroyExecute(r ApiCoreAuthen
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2330,6 +2363,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsDestroyExecute(r ApiCoreAuthen
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2340,7 +2374,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsDestroyExecute(r ApiCoreAuthen
 
 type ApiCoreAuthenticatedSessionsListRequest struct {
 	ctx                  context.Context
-	ApiService           *CoreApiService
+	ApiService           *CoreAPIService
 	ordering             *string
 	page                 *int32
 	pageSize             *int32
@@ -2401,7 +2435,7 @@ AuthenticatedSession Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreAuthenticatedSessionsListRequest
 */
-func (a *CoreApiService) CoreAuthenticatedSessionsList(ctx context.Context) ApiCoreAuthenticatedSessionsListRequest {
+func (a *CoreAPIService) CoreAuthenticatedSessionsList(ctx context.Context) ApiCoreAuthenticatedSessionsListRequest {
 	return ApiCoreAuthenticatedSessionsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2411,7 +2445,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsList(ctx context.Context) ApiC
 // Execute executes the request
 //
 //	@return PaginatedAuthenticatedSessionList
-func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthenticatedSessionsListRequest) (*PaginatedAuthenticatedSessionList, *http.Response, error) {
+func (a *CoreAPIService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthenticatedSessionsListRequest) (*PaginatedAuthenticatedSessionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2419,7 +2453,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthentic
 		localVarReturnValue *PaginatedAuthenticatedSessionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreAuthenticatedSessionsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreAuthenticatedSessionsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2431,25 +2465,25 @@ func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthentic
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sessionLastIp != nil {
-		localVarQueryParams.Add("session__last_ip", parameterToString(*r.sessionLastIp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "session__last_ip", r.sessionLastIp, "form", "")
 	}
 	if r.sessionLastUserAgent != nil {
-		localVarQueryParams.Add("session__last_user_agent", parameterToString(*r.sessionLastUserAgent, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "session__last_user_agent", r.sessionLastUserAgent, "form", "")
 	}
 	if r.userUsername != nil {
-		localVarQueryParams.Add("user__username", parameterToString(*r.userUsername, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user__username", r.userUsername, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2478,9 +2512,9 @@ func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthentic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2497,6 +2531,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthentic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2507,6 +2542,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthentic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2526,7 +2562,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsListExecute(r ApiCoreAuthentic
 
 type ApiCoreAuthenticatedSessionsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	uuid       string
 }
 
@@ -2543,7 +2579,7 @@ AuthenticatedSession Viewset
 	@param uuid
 	@return ApiCoreAuthenticatedSessionsRetrieveRequest
 */
-func (a *CoreApiService) CoreAuthenticatedSessionsRetrieve(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsRetrieveRequest {
+func (a *CoreAPIService) CoreAuthenticatedSessionsRetrieve(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsRetrieveRequest {
 	return ApiCoreAuthenticatedSessionsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2554,7 +2590,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsRetrieve(ctx context.Context, 
 // Execute executes the request
 //
 //	@return AuthenticatedSession
-func (a *CoreApiService) CoreAuthenticatedSessionsRetrieveExecute(r ApiCoreAuthenticatedSessionsRetrieveRequest) (*AuthenticatedSession, *http.Response, error) {
+func (a *CoreAPIService) CoreAuthenticatedSessionsRetrieveExecute(r ApiCoreAuthenticatedSessionsRetrieveRequest) (*AuthenticatedSession, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2562,13 +2598,13 @@ func (a *CoreApiService) CoreAuthenticatedSessionsRetrieveExecute(r ApiCoreAuthe
 		localVarReturnValue *AuthenticatedSession
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreAuthenticatedSessionsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreAuthenticatedSessionsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/authenticated_sessions/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2601,9 +2637,9 @@ func (a *CoreApiService) CoreAuthenticatedSessionsRetrieveExecute(r ApiCoreAuthe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2620,6 +2656,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsRetrieveExecute(r ApiCoreAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2630,6 +2667,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsRetrieveExecute(r ApiCoreAuthe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2649,7 +2687,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsRetrieveExecute(r ApiCoreAuthe
 
 type ApiCoreAuthenticatedSessionsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	uuid       string
 }
 
@@ -2666,7 +2704,7 @@ Get a list of all objects that use this object
 	@param uuid
 	@return ApiCoreAuthenticatedSessionsUsedByListRequest
 */
-func (a *CoreApiService) CoreAuthenticatedSessionsUsedByList(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsUsedByListRequest {
+func (a *CoreAPIService) CoreAuthenticatedSessionsUsedByList(ctx context.Context, uuid string) ApiCoreAuthenticatedSessionsUsedByListRequest {
 	return ApiCoreAuthenticatedSessionsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2677,7 +2715,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsUsedByList(ctx context.Context
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *CoreApiService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAuthenticatedSessionsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *CoreAPIService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAuthenticatedSessionsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2685,13 +2723,13 @@ func (a *CoreApiService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAut
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreAuthenticatedSessionsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreAuthenticatedSessionsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/authenticated_sessions/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2724,9 +2762,9 @@ func (a *CoreApiService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2743,6 +2781,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2753,6 +2792,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2772,7 +2812,7 @@ func (a *CoreApiService) CoreAuthenticatedSessionsUsedByListExecute(r ApiCoreAut
 
 type ApiCoreBrandsCreateRequest struct {
 	ctx          context.Context
-	ApiService   *CoreApiService
+	ApiService   *CoreAPIService
 	brandRequest *BrandRequest
 }
 
@@ -2793,7 +2833,7 @@ Brand Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreBrandsCreateRequest
 */
-func (a *CoreApiService) CoreBrandsCreate(ctx context.Context) ApiCoreBrandsCreateRequest {
+func (a *CoreAPIService) CoreBrandsCreate(ctx context.Context) ApiCoreBrandsCreateRequest {
 	return ApiCoreBrandsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2803,7 +2843,7 @@ func (a *CoreApiService) CoreBrandsCreate(ctx context.Context) ApiCoreBrandsCrea
 // Execute executes the request
 //
 //	@return Brand
-func (a *CoreApiService) CoreBrandsCreateExecute(r ApiCoreBrandsCreateRequest) (*Brand, *http.Response, error) {
+func (a *CoreAPIService) CoreBrandsCreateExecute(r ApiCoreBrandsCreateRequest) (*Brand, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2811,7 +2851,7 @@ func (a *CoreApiService) CoreBrandsCreateExecute(r ApiCoreBrandsCreateRequest) (
 		localVarReturnValue *Brand
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreBrandsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBrandsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2854,9 +2894,9 @@ func (a *CoreApiService) CoreBrandsCreateExecute(r ApiCoreBrandsCreateRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2873,6 +2913,7 @@ func (a *CoreApiService) CoreBrandsCreateExecute(r ApiCoreBrandsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2883,6 +2924,7 @@ func (a *CoreApiService) CoreBrandsCreateExecute(r ApiCoreBrandsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2902,7 +2944,7 @@ func (a *CoreApiService) CoreBrandsCreateExecute(r ApiCoreBrandsCreateRequest) (
 
 type ApiCoreBrandsCurrentRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 }
 
 func (r ApiCoreBrandsCurrentRetrieveRequest) Execute() (*CurrentBrand, *http.Response, error) {
@@ -2917,7 +2959,7 @@ Get current brand
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreBrandsCurrentRetrieveRequest
 */
-func (a *CoreApiService) CoreBrandsCurrentRetrieve(ctx context.Context) ApiCoreBrandsCurrentRetrieveRequest {
+func (a *CoreAPIService) CoreBrandsCurrentRetrieve(ctx context.Context) ApiCoreBrandsCurrentRetrieveRequest {
 	return ApiCoreBrandsCurrentRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2927,7 +2969,7 @@ func (a *CoreApiService) CoreBrandsCurrentRetrieve(ctx context.Context) ApiCoreB
 // Execute executes the request
 //
 //	@return CurrentBrand
-func (a *CoreApiService) CoreBrandsCurrentRetrieveExecute(r ApiCoreBrandsCurrentRetrieveRequest) (*CurrentBrand, *http.Response, error) {
+func (a *CoreAPIService) CoreBrandsCurrentRetrieveExecute(r ApiCoreBrandsCurrentRetrieveRequest) (*CurrentBrand, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2935,7 +2977,7 @@ func (a *CoreApiService) CoreBrandsCurrentRetrieveExecute(r ApiCoreBrandsCurrent
 		localVarReturnValue *CurrentBrand
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreBrandsCurrentRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBrandsCurrentRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2973,9 +3015,9 @@ func (a *CoreApiService) CoreBrandsCurrentRetrieveExecute(r ApiCoreBrandsCurrent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2992,6 +3034,7 @@ func (a *CoreApiService) CoreBrandsCurrentRetrieveExecute(r ApiCoreBrandsCurrent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3002,6 +3045,7 @@ func (a *CoreApiService) CoreBrandsCurrentRetrieveExecute(r ApiCoreBrandsCurrent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3021,7 +3065,7 @@ func (a *CoreApiService) CoreBrandsCurrentRetrieveExecute(r ApiCoreBrandsCurrent
 
 type ApiCoreBrandsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	brandUuid  string
 }
 
@@ -3038,7 +3082,7 @@ Brand Viewset
 	@param brandUuid A UUID string identifying this Brand.
 	@return ApiCoreBrandsDestroyRequest
 */
-func (a *CoreApiService) CoreBrandsDestroy(ctx context.Context, brandUuid string) ApiCoreBrandsDestroyRequest {
+func (a *CoreAPIService) CoreBrandsDestroy(ctx context.Context, brandUuid string) ApiCoreBrandsDestroyRequest {
 	return ApiCoreBrandsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3047,20 +3091,20 @@ func (a *CoreApiService) CoreBrandsDestroy(ctx context.Context, brandUuid string
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreBrandsDestroyExecute(r ApiCoreBrandsDestroyRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreBrandsDestroyExecute(r ApiCoreBrandsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreBrandsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBrandsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/brands/{brand_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterToString(r.brandUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterValueToString(r.brandUuid, "brandUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3093,9 +3137,9 @@ func (a *CoreApiService) CoreBrandsDestroyExecute(r ApiCoreBrandsDestroyRequest)
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3112,6 +3156,7 @@ func (a *CoreApiService) CoreBrandsDestroyExecute(r ApiCoreBrandsDestroyRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3122,6 +3167,7 @@ func (a *CoreApiService) CoreBrandsDestroyExecute(r ApiCoreBrandsDestroyRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3132,7 +3178,7 @@ func (a *CoreApiService) CoreBrandsDestroyExecute(r ApiCoreBrandsDestroyRequest)
 
 type ApiCoreBrandsListRequest struct {
 	ctx                           context.Context
-	ApiService                    *CoreApiService
+	ApiService                    *CoreAPIService
 	brandUuid                     *string
 	brandingDefaultFlowBackground *string
 	brandingFavicon               *string
@@ -3265,7 +3311,7 @@ Brand Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreBrandsListRequest
 */
-func (a *CoreApiService) CoreBrandsList(ctx context.Context) ApiCoreBrandsListRequest {
+func (a *CoreAPIService) CoreBrandsList(ctx context.Context) ApiCoreBrandsListRequest {
 	return ApiCoreBrandsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3275,7 +3321,7 @@ func (a *CoreApiService) CoreBrandsList(ctx context.Context) ApiCoreBrandsListRe
 // Execute executes the request
 //
 //	@return PaginatedBrandList
-func (a *CoreApiService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*PaginatedBrandList, *http.Response, error) {
+func (a *CoreAPIService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*PaginatedBrandList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3283,7 +3329,7 @@ func (a *CoreApiService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*Pag
 		localVarReturnValue *PaginatedBrandList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreBrandsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBrandsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3295,69 +3341,69 @@ func (a *CoreApiService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*Pag
 	localVarFormParams := url.Values{}
 
 	if r.brandUuid != nil {
-		localVarQueryParams.Add("brand_uuid", parameterToString(*r.brandUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "brand_uuid", r.brandUuid, "form", "")
 	}
 	if r.brandingDefaultFlowBackground != nil {
-		localVarQueryParams.Add("branding_default_flow_background", parameterToString(*r.brandingDefaultFlowBackground, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "branding_default_flow_background", r.brandingDefaultFlowBackground, "form", "")
 	}
 	if r.brandingFavicon != nil {
-		localVarQueryParams.Add("branding_favicon", parameterToString(*r.brandingFavicon, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "branding_favicon", r.brandingFavicon, "form", "")
 	}
 	if r.brandingLogo != nil {
-		localVarQueryParams.Add("branding_logo", parameterToString(*r.brandingLogo, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "branding_logo", r.brandingLogo, "form", "")
 	}
 	if r.brandingTitle != nil {
-		localVarQueryParams.Add("branding_title", parameterToString(*r.brandingTitle, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "branding_title", r.brandingTitle, "form", "")
 	}
 	if r.clientCertificates != nil {
 		t := *r.clientCertificates
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("client_certificates", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "client_certificates", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("client_certificates", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "client_certificates", t, "form", "multi")
 		}
 	}
 	if r.default_ != nil {
-		localVarQueryParams.Add("default", parameterToString(*r.default_, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "default", r.default_, "form", "")
 	}
 	if r.domain != nil {
-		localVarQueryParams.Add("domain", parameterToString(*r.domain, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "domain", r.domain, "form", "")
 	}
 	if r.flowAuthentication != nil {
-		localVarQueryParams.Add("flow_authentication", parameterToString(*r.flowAuthentication, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "flow_authentication", r.flowAuthentication, "form", "")
 	}
 	if r.flowDeviceCode != nil {
-		localVarQueryParams.Add("flow_device_code", parameterToString(*r.flowDeviceCode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "flow_device_code", r.flowDeviceCode, "form", "")
 	}
 	if r.flowInvalidation != nil {
-		localVarQueryParams.Add("flow_invalidation", parameterToString(*r.flowInvalidation, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "flow_invalidation", r.flowInvalidation, "form", "")
 	}
 	if r.flowRecovery != nil {
-		localVarQueryParams.Add("flow_recovery", parameterToString(*r.flowRecovery, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "flow_recovery", r.flowRecovery, "form", "")
 	}
 	if r.flowUnenrollment != nil {
-		localVarQueryParams.Add("flow_unenrollment", parameterToString(*r.flowUnenrollment, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "flow_unenrollment", r.flowUnenrollment, "form", "")
 	}
 	if r.flowUserSettings != nil {
-		localVarQueryParams.Add("flow_user_settings", parameterToString(*r.flowUserSettings, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "flow_user_settings", r.flowUserSettings, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.webCertificate != nil {
-		localVarQueryParams.Add("web_certificate", parameterToString(*r.webCertificate, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "web_certificate", r.webCertificate, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3386,9 +3432,9 @@ func (a *CoreApiService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*Pag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3405,6 +3451,7 @@ func (a *CoreApiService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*Pag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3415,6 +3462,7 @@ func (a *CoreApiService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*Pag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3434,7 +3482,7 @@ func (a *CoreApiService) CoreBrandsListExecute(r ApiCoreBrandsListRequest) (*Pag
 
 type ApiCoreBrandsPartialUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *CoreApiService
+	ApiService          *CoreAPIService
 	brandUuid           string
 	patchedBrandRequest *PatchedBrandRequest
 }
@@ -3457,7 +3505,7 @@ Brand Viewset
 	@param brandUuid A UUID string identifying this Brand.
 	@return ApiCoreBrandsPartialUpdateRequest
 */
-func (a *CoreApiService) CoreBrandsPartialUpdate(ctx context.Context, brandUuid string) ApiCoreBrandsPartialUpdateRequest {
+func (a *CoreAPIService) CoreBrandsPartialUpdate(ctx context.Context, brandUuid string) ApiCoreBrandsPartialUpdateRequest {
 	return ApiCoreBrandsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3468,7 +3516,7 @@ func (a *CoreApiService) CoreBrandsPartialUpdate(ctx context.Context, brandUuid 
 // Execute executes the request
 //
 //	@return Brand
-func (a *CoreApiService) CoreBrandsPartialUpdateExecute(r ApiCoreBrandsPartialUpdateRequest) (*Brand, *http.Response, error) {
+func (a *CoreAPIService) CoreBrandsPartialUpdateExecute(r ApiCoreBrandsPartialUpdateRequest) (*Brand, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -3476,13 +3524,13 @@ func (a *CoreApiService) CoreBrandsPartialUpdateExecute(r ApiCoreBrandsPartialUp
 		localVarReturnValue *Brand
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreBrandsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBrandsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/brands/{brand_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterToString(r.brandUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterValueToString(r.brandUuid, "brandUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3517,9 +3565,9 @@ func (a *CoreApiService) CoreBrandsPartialUpdateExecute(r ApiCoreBrandsPartialUp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3536,6 +3584,7 @@ func (a *CoreApiService) CoreBrandsPartialUpdateExecute(r ApiCoreBrandsPartialUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3546,6 +3595,7 @@ func (a *CoreApiService) CoreBrandsPartialUpdateExecute(r ApiCoreBrandsPartialUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3565,7 +3615,7 @@ func (a *CoreApiService) CoreBrandsPartialUpdateExecute(r ApiCoreBrandsPartialUp
 
 type ApiCoreBrandsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	brandUuid  string
 }
 
@@ -3582,7 +3632,7 @@ Brand Viewset
 	@param brandUuid A UUID string identifying this Brand.
 	@return ApiCoreBrandsRetrieveRequest
 */
-func (a *CoreApiService) CoreBrandsRetrieve(ctx context.Context, brandUuid string) ApiCoreBrandsRetrieveRequest {
+func (a *CoreAPIService) CoreBrandsRetrieve(ctx context.Context, brandUuid string) ApiCoreBrandsRetrieveRequest {
 	return ApiCoreBrandsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3593,7 +3643,7 @@ func (a *CoreApiService) CoreBrandsRetrieve(ctx context.Context, brandUuid strin
 // Execute executes the request
 //
 //	@return Brand
-func (a *CoreApiService) CoreBrandsRetrieveExecute(r ApiCoreBrandsRetrieveRequest) (*Brand, *http.Response, error) {
+func (a *CoreAPIService) CoreBrandsRetrieveExecute(r ApiCoreBrandsRetrieveRequest) (*Brand, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3601,13 +3651,13 @@ func (a *CoreApiService) CoreBrandsRetrieveExecute(r ApiCoreBrandsRetrieveReques
 		localVarReturnValue *Brand
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreBrandsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBrandsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/brands/{brand_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterToString(r.brandUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterValueToString(r.brandUuid, "brandUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3640,9 +3690,9 @@ func (a *CoreApiService) CoreBrandsRetrieveExecute(r ApiCoreBrandsRetrieveReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3659,6 +3709,7 @@ func (a *CoreApiService) CoreBrandsRetrieveExecute(r ApiCoreBrandsRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3669,6 +3720,7 @@ func (a *CoreApiService) CoreBrandsRetrieveExecute(r ApiCoreBrandsRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3688,7 +3740,7 @@ func (a *CoreApiService) CoreBrandsRetrieveExecute(r ApiCoreBrandsRetrieveReques
 
 type ApiCoreBrandsUpdateRequest struct {
 	ctx          context.Context
-	ApiService   *CoreApiService
+	ApiService   *CoreAPIService
 	brandUuid    string
 	brandRequest *BrandRequest
 }
@@ -3711,7 +3763,7 @@ Brand Viewset
 	@param brandUuid A UUID string identifying this Brand.
 	@return ApiCoreBrandsUpdateRequest
 */
-func (a *CoreApiService) CoreBrandsUpdate(ctx context.Context, brandUuid string) ApiCoreBrandsUpdateRequest {
+func (a *CoreAPIService) CoreBrandsUpdate(ctx context.Context, brandUuid string) ApiCoreBrandsUpdateRequest {
 	return ApiCoreBrandsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3722,7 +3774,7 @@ func (a *CoreApiService) CoreBrandsUpdate(ctx context.Context, brandUuid string)
 // Execute executes the request
 //
 //	@return Brand
-func (a *CoreApiService) CoreBrandsUpdateExecute(r ApiCoreBrandsUpdateRequest) (*Brand, *http.Response, error) {
+func (a *CoreAPIService) CoreBrandsUpdateExecute(r ApiCoreBrandsUpdateRequest) (*Brand, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -3730,13 +3782,13 @@ func (a *CoreApiService) CoreBrandsUpdateExecute(r ApiCoreBrandsUpdateRequest) (
 		localVarReturnValue *Brand
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreBrandsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBrandsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/brands/{brand_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterToString(r.brandUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterValueToString(r.brandUuid, "brandUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3774,9 +3826,9 @@ func (a *CoreApiService) CoreBrandsUpdateExecute(r ApiCoreBrandsUpdateRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3793,6 +3845,7 @@ func (a *CoreApiService) CoreBrandsUpdateExecute(r ApiCoreBrandsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3803,6 +3856,7 @@ func (a *CoreApiService) CoreBrandsUpdateExecute(r ApiCoreBrandsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3822,7 +3876,7 @@ func (a *CoreApiService) CoreBrandsUpdateExecute(r ApiCoreBrandsUpdateRequest) (
 
 type ApiCoreBrandsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	brandUuid  string
 }
 
@@ -3839,7 +3893,7 @@ Get a list of all objects that use this object
 	@param brandUuid A UUID string identifying this Brand.
 	@return ApiCoreBrandsUsedByListRequest
 */
-func (a *CoreApiService) CoreBrandsUsedByList(ctx context.Context, brandUuid string) ApiCoreBrandsUsedByListRequest {
+func (a *CoreAPIService) CoreBrandsUsedByList(ctx context.Context, brandUuid string) ApiCoreBrandsUsedByListRequest {
 	return ApiCoreBrandsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3850,7 +3904,7 @@ func (a *CoreApiService) CoreBrandsUsedByList(ctx context.Context, brandUuid str
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *CoreApiService) CoreBrandsUsedByListExecute(r ApiCoreBrandsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *CoreAPIService) CoreBrandsUsedByListExecute(r ApiCoreBrandsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3858,13 +3912,13 @@ func (a *CoreApiService) CoreBrandsUsedByListExecute(r ApiCoreBrandsUsedByListRe
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreBrandsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreBrandsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/brands/{brand_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterToString(r.brandUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"brand_uuid"+"}", url.PathEscape(parameterValueToString(r.brandUuid, "brandUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3897,9 +3951,9 @@ func (a *CoreApiService) CoreBrandsUsedByListExecute(r ApiCoreBrandsUsedByListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3916,6 +3970,7 @@ func (a *CoreApiService) CoreBrandsUsedByListExecute(r ApiCoreBrandsUsedByListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3926,6 +3981,7 @@ func (a *CoreApiService) CoreBrandsUsedByListExecute(r ApiCoreBrandsUsedByListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3945,7 +4001,7 @@ func (a *CoreApiService) CoreBrandsUsedByListExecute(r ApiCoreBrandsUsedByListRe
 
 type ApiCoreGroupsAddUserCreateRequest struct {
 	ctx                context.Context
-	ApiService         *CoreApiService
+	ApiService         *CoreAPIService
 	groupUuid          string
 	userAccountRequest *UserAccountRequest
 }
@@ -3968,7 +4024,7 @@ Add user to group
 	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsAddUserCreateRequest
 */
-func (a *CoreApiService) CoreGroupsAddUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsAddUserCreateRequest {
+func (a *CoreAPIService) CoreGroupsAddUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsAddUserCreateRequest {
 	return ApiCoreGroupsAddUserCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3977,20 +4033,20 @@ func (a *CoreApiService) CoreGroupsAddUserCreate(ctx context.Context, groupUuid 
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreGroupsAddUserCreateExecute(r ApiCoreGroupsAddUserCreateRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreGroupsAddUserCreateExecute(r ApiCoreGroupsAddUserCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsAddUserCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreGroupsAddUserCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/groups/{group_uuid}/add_user/"
-	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterToString(r.groupUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterValueToString(r.groupUuid, "groupUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4028,9 +4084,9 @@ func (a *CoreApiService) CoreGroupsAddUserCreateExecute(r ApiCoreGroupsAddUserCr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4047,6 +4103,7 @@ func (a *CoreApiService) CoreGroupsAddUserCreateExecute(r ApiCoreGroupsAddUserCr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4057,6 +4114,7 @@ func (a *CoreApiService) CoreGroupsAddUserCreateExecute(r ApiCoreGroupsAddUserCr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4067,7 +4125,7 @@ func (a *CoreApiService) CoreGroupsAddUserCreateExecute(r ApiCoreGroupsAddUserCr
 
 type ApiCoreGroupsCreateRequest struct {
 	ctx          context.Context
-	ApiService   *CoreApiService
+	ApiService   *CoreAPIService
 	groupRequest *GroupRequest
 }
 
@@ -4088,7 +4146,7 @@ Group Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreGroupsCreateRequest
 */
-func (a *CoreApiService) CoreGroupsCreate(ctx context.Context) ApiCoreGroupsCreateRequest {
+func (a *CoreAPIService) CoreGroupsCreate(ctx context.Context) ApiCoreGroupsCreateRequest {
 	return ApiCoreGroupsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4098,7 +4156,7 @@ func (a *CoreApiService) CoreGroupsCreate(ctx context.Context) ApiCoreGroupsCrea
 // Execute executes the request
 //
 //	@return Group
-func (a *CoreApiService) CoreGroupsCreateExecute(r ApiCoreGroupsCreateRequest) (*Group, *http.Response, error) {
+func (a *CoreAPIService) CoreGroupsCreateExecute(r ApiCoreGroupsCreateRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4106,7 +4164,7 @@ func (a *CoreApiService) CoreGroupsCreateExecute(r ApiCoreGroupsCreateRequest) (
 		localVarReturnValue *Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreGroupsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4149,9 +4207,9 @@ func (a *CoreApiService) CoreGroupsCreateExecute(r ApiCoreGroupsCreateRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4168,6 +4226,7 @@ func (a *CoreApiService) CoreGroupsCreateExecute(r ApiCoreGroupsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4178,6 +4237,7 @@ func (a *CoreApiService) CoreGroupsCreateExecute(r ApiCoreGroupsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4197,7 +4257,7 @@ func (a *CoreApiService) CoreGroupsCreateExecute(r ApiCoreGroupsCreateRequest) (
 
 type ApiCoreGroupsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	groupUuid  string
 }
 
@@ -4214,7 +4274,7 @@ Group Viewset
 	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsDestroyRequest
 */
-func (a *CoreApiService) CoreGroupsDestroy(ctx context.Context, groupUuid string) ApiCoreGroupsDestroyRequest {
+func (a *CoreAPIService) CoreGroupsDestroy(ctx context.Context, groupUuid string) ApiCoreGroupsDestroyRequest {
 	return ApiCoreGroupsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4223,20 +4283,20 @@ func (a *CoreApiService) CoreGroupsDestroy(ctx context.Context, groupUuid string
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreGroupsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/groups/{group_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterToString(r.groupUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterValueToString(r.groupUuid, "groupUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4269,9 +4329,9 @@ func (a *CoreApiService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4288,6 +4348,7 @@ func (a *CoreApiService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4298,6 +4359,7 @@ func (a *CoreApiService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4308,7 +4370,7 @@ func (a *CoreApiService) CoreGroupsDestroyExecute(r ApiCoreGroupsDestroyRequest)
 
 type ApiCoreGroupsListRequest struct {
 	ctx                   context.Context
-	ApiService            *CoreApiService
+	ApiService            *CoreAPIService
 	attributes            *string
 	includeChildren       *bool
 	includeInheritedRoles *bool
@@ -4407,7 +4469,7 @@ Group Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreGroupsListRequest
 */
-func (a *CoreApiService) CoreGroupsList(ctx context.Context) ApiCoreGroupsListRequest {
+func (a *CoreAPIService) CoreGroupsList(ctx context.Context) ApiCoreGroupsListRequest {
 	return ApiCoreGroupsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4417,7 +4479,7 @@ func (a *CoreApiService) CoreGroupsList(ctx context.Context) ApiCoreGroupsListRe
 // Execute executes the request
 //
 //	@return PaginatedGroupList
-func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*PaginatedGroupList, *http.Response, error) {
+func (a *CoreAPIService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*PaginatedGroupList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4425,7 +4487,7 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 		localVarReturnValue *PaginatedGroupList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreGroupsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4437,32 +4499,48 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 	localVarFormParams := url.Values{}
 
 	if r.attributes != nil {
-		localVarQueryParams.Add("attributes", parameterToString(*r.attributes, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attributes", r.attributes, "form", "")
 	}
 	if r.includeChildren != nil {
-		localVarQueryParams.Add("include_children", parameterToString(*r.includeChildren, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", r.includeChildren, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", defaultValue, "form", "")
+		r.includeChildren = &defaultValue
 	}
 	if r.includeInheritedRoles != nil {
-		localVarQueryParams.Add("include_inherited_roles", parameterToString(*r.includeInheritedRoles, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", r.includeInheritedRoles, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", defaultValue, "form", "")
+		r.includeInheritedRoles = &defaultValue
 	}
 	if r.includeParents != nil {
-		localVarQueryParams.Add("include_parents", parameterToString(*r.includeParents, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", r.includeParents, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", defaultValue, "form", "")
+		r.includeParents = &defaultValue
 	}
 	if r.includeUsers != nil {
-		localVarQueryParams.Add("include_users", parameterToString(*r.includeUsers, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_users", r.includeUsers, "form", "")
+	} else {
+		var defaultValue bool = true
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_users", defaultValue, "form", "")
+		r.includeUsers = &defaultValue
 	}
 	if r.isSuperuser != nil {
-		localVarQueryParams.Add("is_superuser", parameterToString(*r.isSuperuser, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_superuser", r.isSuperuser, "form", "")
 	}
 	if r.membersByPk != nil {
 		t := *r.membersByPk
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("members_by_pk", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "members_by_pk", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("members_by_pk", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "members_by_pk", t, "form", "multi")
 		}
 	}
 	if r.membersByUsername != nil {
@@ -4470,26 +4548,26 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("members_by_username", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "members_by_username", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("members_by_username", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "members_by_username", t, "form", "multi")
 		}
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4518,9 +4596,9 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4537,6 +4615,7 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4547,6 +4626,7 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4566,7 +4646,7 @@ func (a *CoreApiService) CoreGroupsListExecute(r ApiCoreGroupsListRequest) (*Pag
 
 type ApiCoreGroupsPartialUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *CoreApiService
+	ApiService          *CoreAPIService
 	groupUuid           string
 	patchedGroupRequest *PatchedGroupRequest
 }
@@ -4589,7 +4669,7 @@ Group Viewset
 	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsPartialUpdateRequest
 */
-func (a *CoreApiService) CoreGroupsPartialUpdate(ctx context.Context, groupUuid string) ApiCoreGroupsPartialUpdateRequest {
+func (a *CoreAPIService) CoreGroupsPartialUpdate(ctx context.Context, groupUuid string) ApiCoreGroupsPartialUpdateRequest {
 	return ApiCoreGroupsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4600,7 +4680,7 @@ func (a *CoreApiService) CoreGroupsPartialUpdate(ctx context.Context, groupUuid 
 // Execute executes the request
 //
 //	@return Group
-func (a *CoreApiService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUpdateRequest) (*Group, *http.Response, error) {
+func (a *CoreAPIService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUpdateRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -4608,13 +4688,13 @@ func (a *CoreApiService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUp
 		localVarReturnValue *Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreGroupsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/groups/{group_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterToString(r.groupUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterValueToString(r.groupUuid, "groupUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4649,9 +4729,9 @@ func (a *CoreApiService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4668,6 +4748,7 @@ func (a *CoreApiService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4678,6 +4759,7 @@ func (a *CoreApiService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4697,7 +4779,7 @@ func (a *CoreApiService) CoreGroupsPartialUpdateExecute(r ApiCoreGroupsPartialUp
 
 type ApiCoreGroupsRemoveUserCreateRequest struct {
 	ctx                context.Context
-	ApiService         *CoreApiService
+	ApiService         *CoreAPIService
 	groupUuid          string
 	userAccountRequest *UserAccountRequest
 }
@@ -4720,7 +4802,7 @@ Remove user from group
 	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsRemoveUserCreateRequest
 */
-func (a *CoreApiService) CoreGroupsRemoveUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsRemoveUserCreateRequest {
+func (a *CoreAPIService) CoreGroupsRemoveUserCreate(ctx context.Context, groupUuid string) ApiCoreGroupsRemoveUserCreateRequest {
 	return ApiCoreGroupsRemoveUserCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4729,20 +4811,20 @@ func (a *CoreApiService) CoreGroupsRemoveUserCreate(ctx context.Context, groupUu
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemoveUserCreateRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemoveUserCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsRemoveUserCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreGroupsRemoveUserCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/groups/{group_uuid}/remove_user/"
-	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterToString(r.groupUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterValueToString(r.groupUuid, "groupUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4780,9 +4862,9 @@ func (a *CoreApiService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4799,6 +4881,7 @@ func (a *CoreApiService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4809,6 +4892,7 @@ func (a *CoreApiService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4819,7 +4903,7 @@ func (a *CoreApiService) CoreGroupsRemoveUserCreateExecute(r ApiCoreGroupsRemove
 
 type ApiCoreGroupsRetrieveRequest struct {
 	ctx                   context.Context
-	ApiService            *CoreApiService
+	ApiService            *CoreAPIService
 	groupUuid             string
 	includeChildren       *bool
 	includeInheritedRoles *bool
@@ -4860,7 +4944,7 @@ Group Viewset
 	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsRetrieveRequest
 */
-func (a *CoreApiService) CoreGroupsRetrieve(ctx context.Context, groupUuid string) ApiCoreGroupsRetrieveRequest {
+func (a *CoreAPIService) CoreGroupsRetrieve(ctx context.Context, groupUuid string) ApiCoreGroupsRetrieveRequest {
 	return ApiCoreGroupsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4871,7 +4955,7 @@ func (a *CoreApiService) CoreGroupsRetrieve(ctx context.Context, groupUuid strin
 // Execute executes the request
 //
 //	@return Group
-func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveRequest) (*Group, *http.Response, error) {
+func (a *CoreAPIService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4879,29 +4963,45 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 		localVarReturnValue *Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreGroupsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/groups/{group_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterToString(r.groupUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterValueToString(r.groupUuid, "groupUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.includeChildren != nil {
-		localVarQueryParams.Add("include_children", parameterToString(*r.includeChildren, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", r.includeChildren, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_children", defaultValue, "form", "")
+		r.includeChildren = &defaultValue
 	}
 	if r.includeInheritedRoles != nil {
-		localVarQueryParams.Add("include_inherited_roles", parameterToString(*r.includeInheritedRoles, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", r.includeInheritedRoles, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_inherited_roles", defaultValue, "form", "")
+		r.includeInheritedRoles = &defaultValue
 	}
 	if r.includeParents != nil {
-		localVarQueryParams.Add("include_parents", parameterToString(*r.includeParents, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", r.includeParents, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_parents", defaultValue, "form", "")
+		r.includeParents = &defaultValue
 	}
 	if r.includeUsers != nil {
-		localVarQueryParams.Add("include_users", parameterToString(*r.includeUsers, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_users", r.includeUsers, "form", "")
+	} else {
+		var defaultValue bool = true
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_users", defaultValue, "form", "")
+		r.includeUsers = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4930,9 +5030,9 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4949,6 +5049,7 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4959,6 +5060,7 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4978,7 +5080,7 @@ func (a *CoreApiService) CoreGroupsRetrieveExecute(r ApiCoreGroupsRetrieveReques
 
 type ApiCoreGroupsUpdateRequest struct {
 	ctx          context.Context
-	ApiService   *CoreApiService
+	ApiService   *CoreAPIService
 	groupUuid    string
 	groupRequest *GroupRequest
 }
@@ -5001,7 +5103,7 @@ Group Viewset
 	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsUpdateRequest
 */
-func (a *CoreApiService) CoreGroupsUpdate(ctx context.Context, groupUuid string) ApiCoreGroupsUpdateRequest {
+func (a *CoreAPIService) CoreGroupsUpdate(ctx context.Context, groupUuid string) ApiCoreGroupsUpdateRequest {
 	return ApiCoreGroupsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5012,7 +5114,7 @@ func (a *CoreApiService) CoreGroupsUpdate(ctx context.Context, groupUuid string)
 // Execute executes the request
 //
 //	@return Group
-func (a *CoreApiService) CoreGroupsUpdateExecute(r ApiCoreGroupsUpdateRequest) (*Group, *http.Response, error) {
+func (a *CoreAPIService) CoreGroupsUpdateExecute(r ApiCoreGroupsUpdateRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -5020,13 +5122,13 @@ func (a *CoreApiService) CoreGroupsUpdateExecute(r ApiCoreGroupsUpdateRequest) (
 		localVarReturnValue *Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreGroupsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/groups/{group_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterToString(r.groupUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterValueToString(r.groupUuid, "groupUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5064,9 +5166,9 @@ func (a *CoreApiService) CoreGroupsUpdateExecute(r ApiCoreGroupsUpdateRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5083,6 +5185,7 @@ func (a *CoreApiService) CoreGroupsUpdateExecute(r ApiCoreGroupsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5093,6 +5196,7 @@ func (a *CoreApiService) CoreGroupsUpdateExecute(r ApiCoreGroupsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5112,7 +5216,7 @@ func (a *CoreApiService) CoreGroupsUpdateExecute(r ApiCoreGroupsUpdateRequest) (
 
 type ApiCoreGroupsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	groupUuid  string
 }
 
@@ -5129,7 +5233,7 @@ Get a list of all objects that use this object
 	@param groupUuid A UUID string identifying this Group.
 	@return ApiCoreGroupsUsedByListRequest
 */
-func (a *CoreApiService) CoreGroupsUsedByList(ctx context.Context, groupUuid string) ApiCoreGroupsUsedByListRequest {
+func (a *CoreAPIService) CoreGroupsUsedByList(ctx context.Context, groupUuid string) ApiCoreGroupsUsedByListRequest {
 	return ApiCoreGroupsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5140,7 +5244,7 @@ func (a *CoreApiService) CoreGroupsUsedByList(ctx context.Context, groupUuid str
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *CoreApiService) CoreGroupsUsedByListExecute(r ApiCoreGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *CoreAPIService) CoreGroupsUsedByListExecute(r ApiCoreGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5148,13 +5252,13 @@ func (a *CoreApiService) CoreGroupsUsedByListExecute(r ApiCoreGroupsUsedByListRe
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreGroupsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreGroupsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/groups/{group_uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterToString(r.groupUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"group_uuid"+"}", url.PathEscape(parameterValueToString(r.groupUuid, "groupUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5187,9 +5291,9 @@ func (a *CoreApiService) CoreGroupsUsedByListExecute(r ApiCoreGroupsUsedByListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5206,6 +5310,7 @@ func (a *CoreApiService) CoreGroupsUsedByListExecute(r ApiCoreGroupsUsedByListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5216,6 +5321,7 @@ func (a *CoreApiService) CoreGroupsUsedByListExecute(r ApiCoreGroupsUsedByListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5235,7 +5341,7 @@ func (a *CoreApiService) CoreGroupsUsedByListExecute(r ApiCoreGroupsUsedByListRe
 
 type ApiCoreTokensCreateRequest struct {
 	ctx          context.Context
-	ApiService   *CoreApiService
+	ApiService   *CoreAPIService
 	tokenRequest *TokenRequest
 }
 
@@ -5256,7 +5362,7 @@ Token Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreTokensCreateRequest
 */
-func (a *CoreApiService) CoreTokensCreate(ctx context.Context) ApiCoreTokensCreateRequest {
+func (a *CoreAPIService) CoreTokensCreate(ctx context.Context) ApiCoreTokensCreateRequest {
 	return ApiCoreTokensCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5266,7 +5372,7 @@ func (a *CoreApiService) CoreTokensCreate(ctx context.Context) ApiCoreTokensCrea
 // Execute executes the request
 //
 //	@return Token
-func (a *CoreApiService) CoreTokensCreateExecute(r ApiCoreTokensCreateRequest) (*Token, *http.Response, error) {
+func (a *CoreAPIService) CoreTokensCreateExecute(r ApiCoreTokensCreateRequest) (*Token, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -5274,7 +5380,7 @@ func (a *CoreApiService) CoreTokensCreateExecute(r ApiCoreTokensCreateRequest) (
 		localVarReturnValue *Token
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTokensCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5317,9 +5423,9 @@ func (a *CoreApiService) CoreTokensCreateExecute(r ApiCoreTokensCreateRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5336,6 +5442,7 @@ func (a *CoreApiService) CoreTokensCreateExecute(r ApiCoreTokensCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5346,6 +5453,7 @@ func (a *CoreApiService) CoreTokensCreateExecute(r ApiCoreTokensCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5365,7 +5473,7 @@ func (a *CoreApiService) CoreTokensCreateExecute(r ApiCoreTokensCreateRequest) (
 
 type ApiCoreTokensDestroyRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	identifier string
 }
 
@@ -5382,7 +5490,7 @@ Token Viewset
 	@param identifier
 	@return ApiCoreTokensDestroyRequest
 */
-func (a *CoreApiService) CoreTokensDestroy(ctx context.Context, identifier string) ApiCoreTokensDestroyRequest {
+func (a *CoreAPIService) CoreTokensDestroy(ctx context.Context, identifier string) ApiCoreTokensDestroyRequest {
 	return ApiCoreTokensDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5391,20 +5499,20 @@ func (a *CoreApiService) CoreTokensDestroy(ctx context.Context, identifier strin
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreTokensDestroyExecute(r ApiCoreTokensDestroyRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreTokensDestroyExecute(r ApiCoreTokensDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTokensDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/tokens/{identifier}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterToString(r.identifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5437,9 +5545,9 @@ func (a *CoreApiService) CoreTokensDestroyExecute(r ApiCoreTokensDestroyRequest)
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5456,6 +5564,7 @@ func (a *CoreApiService) CoreTokensDestroyExecute(r ApiCoreTokensDestroyRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5466,6 +5575,7 @@ func (a *CoreApiService) CoreTokensDestroyExecute(r ApiCoreTokensDestroyRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -5476,7 +5586,7 @@ func (a *CoreApiService) CoreTokensDestroyExecute(r ApiCoreTokensDestroyRequest)
 
 type ApiCoreTokensListRequest struct {
 	ctx          context.Context
-	ApiService   *CoreApiService
+	ApiService   *CoreAPIService
 	description  *string
 	expires      *time.Time
 	expiring     *bool
@@ -5561,7 +5671,7 @@ Token Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreTokensListRequest
 */
-func (a *CoreApiService) CoreTokensList(ctx context.Context) ApiCoreTokensListRequest {
+func (a *CoreAPIService) CoreTokensList(ctx context.Context) ApiCoreTokensListRequest {
 	return ApiCoreTokensListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5571,7 +5681,7 @@ func (a *CoreApiService) CoreTokensList(ctx context.Context) ApiCoreTokensListRe
 // Execute executes the request
 //
 //	@return PaginatedTokenList
-func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (*PaginatedTokenList, *http.Response, error) {
+func (a *CoreAPIService) CoreTokensListExecute(r ApiCoreTokensListRequest) (*PaginatedTokenList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5579,7 +5689,7 @@ func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (*Pag
 		localVarReturnValue *PaginatedTokenList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTokensList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5591,37 +5701,37 @@ func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (*Pag
 	localVarFormParams := url.Values{}
 
 	if r.description != nil {
-		localVarQueryParams.Add("description", parameterToString(*r.description, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
 	}
 	if r.expires != nil {
-		localVarQueryParams.Add("expires", parameterToString(*r.expires, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "expires", r.expires, "form", "")
 	}
 	if r.expiring != nil {
-		localVarQueryParams.Add("expiring", parameterToString(*r.expiring, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "expiring", r.expiring, "form", "")
 	}
 	if r.identifier != nil {
-		localVarQueryParams.Add("identifier", parameterToString(*r.identifier, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "identifier", r.identifier, "form", "")
 	}
 	if r.intent != nil {
-		localVarQueryParams.Add("intent", parameterToString(*r.intent, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "intent", r.intent, "form", "")
 	}
 	if r.managed != nil {
-		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed", r.managed, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.userUsername != nil {
-		localVarQueryParams.Add("user__username", parameterToString(*r.userUsername, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user__username", r.userUsername, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5650,9 +5760,9 @@ func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (*Pag
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5669,6 +5779,7 @@ func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (*Pag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5679,6 +5790,7 @@ func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (*Pag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5698,7 +5810,7 @@ func (a *CoreApiService) CoreTokensListExecute(r ApiCoreTokensListRequest) (*Pag
 
 type ApiCoreTokensPartialUpdateRequest struct {
 	ctx                 context.Context
-	ApiService          *CoreApiService
+	ApiService          *CoreAPIService
 	identifier          string
 	patchedTokenRequest *PatchedTokenRequest
 }
@@ -5721,7 +5833,7 @@ Token Viewset
 	@param identifier
 	@return ApiCoreTokensPartialUpdateRequest
 */
-func (a *CoreApiService) CoreTokensPartialUpdate(ctx context.Context, identifier string) ApiCoreTokensPartialUpdateRequest {
+func (a *CoreAPIService) CoreTokensPartialUpdate(ctx context.Context, identifier string) ApiCoreTokensPartialUpdateRequest {
 	return ApiCoreTokensPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5732,7 +5844,7 @@ func (a *CoreApiService) CoreTokensPartialUpdate(ctx context.Context, identifier
 // Execute executes the request
 //
 //	@return Token
-func (a *CoreApiService) CoreTokensPartialUpdateExecute(r ApiCoreTokensPartialUpdateRequest) (*Token, *http.Response, error) {
+func (a *CoreAPIService) CoreTokensPartialUpdateExecute(r ApiCoreTokensPartialUpdateRequest) (*Token, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -5740,13 +5852,13 @@ func (a *CoreApiService) CoreTokensPartialUpdateExecute(r ApiCoreTokensPartialUp
 		localVarReturnValue *Token
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTokensPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/tokens/{identifier}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterToString(r.identifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5781,9 +5893,9 @@ func (a *CoreApiService) CoreTokensPartialUpdateExecute(r ApiCoreTokensPartialUp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5800,6 +5912,7 @@ func (a *CoreApiService) CoreTokensPartialUpdateExecute(r ApiCoreTokensPartialUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5810,6 +5923,7 @@ func (a *CoreApiService) CoreTokensPartialUpdateExecute(r ApiCoreTokensPartialUp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5829,7 +5943,7 @@ func (a *CoreApiService) CoreTokensPartialUpdateExecute(r ApiCoreTokensPartialUp
 
 type ApiCoreTokensRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	identifier string
 }
 
@@ -5846,7 +5960,7 @@ Token Viewset
 	@param identifier
 	@return ApiCoreTokensRetrieveRequest
 */
-func (a *CoreApiService) CoreTokensRetrieve(ctx context.Context, identifier string) ApiCoreTokensRetrieveRequest {
+func (a *CoreAPIService) CoreTokensRetrieve(ctx context.Context, identifier string) ApiCoreTokensRetrieveRequest {
 	return ApiCoreTokensRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5857,7 +5971,7 @@ func (a *CoreApiService) CoreTokensRetrieve(ctx context.Context, identifier stri
 // Execute executes the request
 //
 //	@return Token
-func (a *CoreApiService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveRequest) (*Token, *http.Response, error) {
+func (a *CoreAPIService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveRequest) (*Token, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5865,13 +5979,13 @@ func (a *CoreApiService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveReques
 		localVarReturnValue *Token
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTokensRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/tokens/{identifier}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterToString(r.identifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5904,9 +6018,9 @@ func (a *CoreApiService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5923,6 +6037,7 @@ func (a *CoreApiService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5933,6 +6048,7 @@ func (a *CoreApiService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5952,7 +6068,7 @@ func (a *CoreApiService) CoreTokensRetrieveExecute(r ApiCoreTokensRetrieveReques
 
 type ApiCoreTokensSetKeyCreateRequest struct {
 	ctx                context.Context
-	ApiService         *CoreApiService
+	ApiService         *CoreAPIService
 	identifier         string
 	tokenSetKeyRequest *TokenSetKeyRequest
 }
@@ -5976,7 +6092,7 @@ is required.
 	@param identifier
 	@return ApiCoreTokensSetKeyCreateRequest
 */
-func (a *CoreApiService) CoreTokensSetKeyCreate(ctx context.Context, identifier string) ApiCoreTokensSetKeyCreateRequest {
+func (a *CoreAPIService) CoreTokensSetKeyCreate(ctx context.Context, identifier string) ApiCoreTokensSetKeyCreateRequest {
 	return ApiCoreTokensSetKeyCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5985,20 +6101,20 @@ func (a *CoreApiService) CoreTokensSetKeyCreate(ctx context.Context, identifier 
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreTokensSetKeyCreateExecute(r ApiCoreTokensSetKeyCreateRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreTokensSetKeyCreateExecute(r ApiCoreTokensSetKeyCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensSetKeyCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTokensSetKeyCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/tokens/{identifier}/set_key/"
-	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterToString(r.identifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6036,9 +6152,9 @@ func (a *CoreApiService) CoreTokensSetKeyCreateExecute(r ApiCoreTokensSetKeyCrea
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -6055,6 +6171,7 @@ func (a *CoreApiService) CoreTokensSetKeyCreateExecute(r ApiCoreTokensSetKeyCrea
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -6065,7 +6182,7 @@ func (a *CoreApiService) CoreTokensSetKeyCreateExecute(r ApiCoreTokensSetKeyCrea
 
 type ApiCoreTokensUpdateRequest struct {
 	ctx          context.Context
-	ApiService   *CoreApiService
+	ApiService   *CoreAPIService
 	identifier   string
 	tokenRequest *TokenRequest
 }
@@ -6088,7 +6205,7 @@ Token Viewset
 	@param identifier
 	@return ApiCoreTokensUpdateRequest
 */
-func (a *CoreApiService) CoreTokensUpdate(ctx context.Context, identifier string) ApiCoreTokensUpdateRequest {
+func (a *CoreAPIService) CoreTokensUpdate(ctx context.Context, identifier string) ApiCoreTokensUpdateRequest {
 	return ApiCoreTokensUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6099,7 +6216,7 @@ func (a *CoreApiService) CoreTokensUpdate(ctx context.Context, identifier string
 // Execute executes the request
 //
 //	@return Token
-func (a *CoreApiService) CoreTokensUpdateExecute(r ApiCoreTokensUpdateRequest) (*Token, *http.Response, error) {
+func (a *CoreAPIService) CoreTokensUpdateExecute(r ApiCoreTokensUpdateRequest) (*Token, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -6107,13 +6224,13 @@ func (a *CoreApiService) CoreTokensUpdateExecute(r ApiCoreTokensUpdateRequest) (
 		localVarReturnValue *Token
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTokensUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/tokens/{identifier}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterToString(r.identifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6151,9 +6268,9 @@ func (a *CoreApiService) CoreTokensUpdateExecute(r ApiCoreTokensUpdateRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6170,6 +6287,7 @@ func (a *CoreApiService) CoreTokensUpdateExecute(r ApiCoreTokensUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6180,6 +6298,7 @@ func (a *CoreApiService) CoreTokensUpdateExecute(r ApiCoreTokensUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6199,7 +6318,7 @@ func (a *CoreApiService) CoreTokensUpdateExecute(r ApiCoreTokensUpdateRequest) (
 
 type ApiCoreTokensUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	identifier string
 }
 
@@ -6216,7 +6335,7 @@ Get a list of all objects that use this object
 	@param identifier
 	@return ApiCoreTokensUsedByListRequest
 */
-func (a *CoreApiService) CoreTokensUsedByList(ctx context.Context, identifier string) ApiCoreTokensUsedByListRequest {
+func (a *CoreAPIService) CoreTokensUsedByList(ctx context.Context, identifier string) ApiCoreTokensUsedByListRequest {
 	return ApiCoreTokensUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6227,7 +6346,7 @@ func (a *CoreApiService) CoreTokensUsedByList(ctx context.Context, identifier st
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *CoreApiService) CoreTokensUsedByListExecute(r ApiCoreTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *CoreAPIService) CoreTokensUsedByListExecute(r ApiCoreTokensUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6235,13 +6354,13 @@ func (a *CoreApiService) CoreTokensUsedByListExecute(r ApiCoreTokensUsedByListRe
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTokensUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/tokens/{identifier}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterToString(r.identifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6274,9 +6393,9 @@ func (a *CoreApiService) CoreTokensUsedByListExecute(r ApiCoreTokensUsedByListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6293,6 +6412,7 @@ func (a *CoreApiService) CoreTokensUsedByListExecute(r ApiCoreTokensUsedByListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6303,6 +6423,7 @@ func (a *CoreApiService) CoreTokensUsedByListExecute(r ApiCoreTokensUsedByListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6322,7 +6443,7 @@ func (a *CoreApiService) CoreTokensUsedByListExecute(r ApiCoreTokensUsedByListRe
 
 type ApiCoreTokensViewKeyRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	identifier string
 }
 
@@ -6339,7 +6460,7 @@ Return token key and log access
 	@param identifier
 	@return ApiCoreTokensViewKeyRetrieveRequest
 */
-func (a *CoreApiService) CoreTokensViewKeyRetrieve(ctx context.Context, identifier string) ApiCoreTokensViewKeyRetrieveRequest {
+func (a *CoreAPIService) CoreTokensViewKeyRetrieve(ctx context.Context, identifier string) ApiCoreTokensViewKeyRetrieveRequest {
 	return ApiCoreTokensViewKeyRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6350,7 +6471,7 @@ func (a *CoreApiService) CoreTokensViewKeyRetrieve(ctx context.Context, identifi
 // Execute executes the request
 //
 //	@return TokenView
-func (a *CoreApiService) CoreTokensViewKeyRetrieveExecute(r ApiCoreTokensViewKeyRetrieveRequest) (*TokenView, *http.Response, error) {
+func (a *CoreAPIService) CoreTokensViewKeyRetrieveExecute(r ApiCoreTokensViewKeyRetrieveRequest) (*TokenView, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6358,13 +6479,13 @@ func (a *CoreApiService) CoreTokensViewKeyRetrieveExecute(r ApiCoreTokensViewKey
 		localVarReturnValue *TokenView
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTokensViewKeyRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTokensViewKeyRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/tokens/{identifier}/view_key/"
-	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterToString(r.identifier, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6397,9 +6518,9 @@ func (a *CoreApiService) CoreTokensViewKeyRetrieveExecute(r ApiCoreTokensViewKey
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6416,6 +6537,7 @@ func (a *CoreApiService) CoreTokensViewKeyRetrieveExecute(r ApiCoreTokensViewKey
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6426,6 +6548,7 @@ func (a *CoreApiService) CoreTokensViewKeyRetrieveExecute(r ApiCoreTokensViewKey
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6445,7 +6568,7 @@ func (a *CoreApiService) CoreTokensViewKeyRetrieveExecute(r ApiCoreTokensViewKey
 
 type ApiCoreTransactionalApplicationsUpdateRequest struct {
 	ctx                           context.Context
-	ApiService                    *CoreApiService
+	ApiService                    *CoreAPIService
 	transactionApplicationRequest *TransactionApplicationRequest
 }
 
@@ -6466,7 +6589,7 @@ Convert data into a blueprint, validate it and apply it
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreTransactionalApplicationsUpdateRequest
 */
-func (a *CoreApiService) CoreTransactionalApplicationsUpdate(ctx context.Context) ApiCoreTransactionalApplicationsUpdateRequest {
+func (a *CoreAPIService) CoreTransactionalApplicationsUpdate(ctx context.Context) ApiCoreTransactionalApplicationsUpdateRequest {
 	return ApiCoreTransactionalApplicationsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6476,7 +6599,7 @@ func (a *CoreApiService) CoreTransactionalApplicationsUpdate(ctx context.Context
 // Execute executes the request
 //
 //	@return TransactionApplicationResponse
-func (a *CoreApiService) CoreTransactionalApplicationsUpdateExecute(r ApiCoreTransactionalApplicationsUpdateRequest) (*TransactionApplicationResponse, *http.Response, error) {
+func (a *CoreAPIService) CoreTransactionalApplicationsUpdateExecute(r ApiCoreTransactionalApplicationsUpdateRequest) (*TransactionApplicationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -6484,7 +6607,7 @@ func (a *CoreApiService) CoreTransactionalApplicationsUpdateExecute(r ApiCoreTra
 		localVarReturnValue *TransactionApplicationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreTransactionalApplicationsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreTransactionalApplicationsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6527,9 +6650,9 @@ func (a *CoreApiService) CoreTransactionalApplicationsUpdateExecute(r ApiCoreTra
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6546,6 +6669,7 @@ func (a *CoreApiService) CoreTransactionalApplicationsUpdateExecute(r ApiCoreTra
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6556,6 +6680,7 @@ func (a *CoreApiService) CoreTransactionalApplicationsUpdateExecute(r ApiCoreTra
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6575,7 +6700,7 @@ func (a *CoreApiService) CoreTransactionalApplicationsUpdateExecute(r ApiCoreTra
 
 type ApiCoreUserConsentDestroyRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	id         int32
 }
 
@@ -6592,7 +6717,7 @@ UserConsent Viewset
 	@param id A unique integer value identifying this User Consent.
 	@return ApiCoreUserConsentDestroyRequest
 */
-func (a *CoreApiService) CoreUserConsentDestroy(ctx context.Context, id int32) ApiCoreUserConsentDestroyRequest {
+func (a *CoreAPIService) CoreUserConsentDestroy(ctx context.Context, id int32) ApiCoreUserConsentDestroyRequest {
 	return ApiCoreUserConsentDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6601,20 +6726,20 @@ func (a *CoreApiService) CoreUserConsentDestroy(ctx context.Context, id int32) A
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreUserConsentDestroyExecute(r ApiCoreUserConsentDestroyRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreUserConsentDestroyExecute(r ApiCoreUserConsentDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUserConsentDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUserConsentDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/user_consent/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6647,9 +6772,9 @@ func (a *CoreApiService) CoreUserConsentDestroyExecute(r ApiCoreUserConsentDestr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -6666,6 +6791,7 @@ func (a *CoreApiService) CoreUserConsentDestroyExecute(r ApiCoreUserConsentDestr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -6676,6 +6802,7 @@ func (a *CoreApiService) CoreUserConsentDestroyExecute(r ApiCoreUserConsentDestr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -6686,7 +6813,7 @@ func (a *CoreApiService) CoreUserConsentDestroyExecute(r ApiCoreUserConsentDestr
 
 type ApiCoreUserConsentListRequest struct {
 	ctx         context.Context
-	ApiService  *CoreApiService
+	ApiService  *CoreAPIService
 	application *string
 	ordering    *string
 	page        *int32
@@ -6741,7 +6868,7 @@ UserConsent Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreUserConsentListRequest
 */
-func (a *CoreApiService) CoreUserConsentList(ctx context.Context) ApiCoreUserConsentListRequest {
+func (a *CoreAPIService) CoreUserConsentList(ctx context.Context) ApiCoreUserConsentListRequest {
 	return ApiCoreUserConsentListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6751,7 +6878,7 @@ func (a *CoreApiService) CoreUserConsentList(ctx context.Context) ApiCoreUserCon
 // Execute executes the request
 //
 //	@return PaginatedUserConsentList
-func (a *CoreApiService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequest) (*PaginatedUserConsentList, *http.Response, error) {
+func (a *CoreAPIService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequest) (*PaginatedUserConsentList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6759,7 +6886,7 @@ func (a *CoreApiService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequ
 		localVarReturnValue *PaginatedUserConsentList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUserConsentList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUserConsentList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6771,22 +6898,22 @@ func (a *CoreApiService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequ
 	localVarFormParams := url.Values{}
 
 	if r.application != nil {
-		localVarQueryParams.Add("application", parameterToString(*r.application, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "application", r.application, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6815,9 +6942,9 @@ func (a *CoreApiService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6834,6 +6961,7 @@ func (a *CoreApiService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6844,6 +6972,7 @@ func (a *CoreApiService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6863,7 +6992,7 @@ func (a *CoreApiService) CoreUserConsentListExecute(r ApiCoreUserConsentListRequ
 
 type ApiCoreUserConsentRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	id         int32
 }
 
@@ -6880,7 +7009,7 @@ UserConsent Viewset
 	@param id A unique integer value identifying this User Consent.
 	@return ApiCoreUserConsentRetrieveRequest
 */
-func (a *CoreApiService) CoreUserConsentRetrieve(ctx context.Context, id int32) ApiCoreUserConsentRetrieveRequest {
+func (a *CoreAPIService) CoreUserConsentRetrieve(ctx context.Context, id int32) ApiCoreUserConsentRetrieveRequest {
 	return ApiCoreUserConsentRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6891,7 +7020,7 @@ func (a *CoreApiService) CoreUserConsentRetrieve(ctx context.Context, id int32) 
 // Execute executes the request
 //
 //	@return UserConsent
-func (a *CoreApiService) CoreUserConsentRetrieveExecute(r ApiCoreUserConsentRetrieveRequest) (*UserConsent, *http.Response, error) {
+func (a *CoreAPIService) CoreUserConsentRetrieveExecute(r ApiCoreUserConsentRetrieveRequest) (*UserConsent, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6899,13 +7028,13 @@ func (a *CoreApiService) CoreUserConsentRetrieveExecute(r ApiCoreUserConsentRetr
 		localVarReturnValue *UserConsent
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUserConsentRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUserConsentRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/user_consent/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6938,9 +7067,9 @@ func (a *CoreApiService) CoreUserConsentRetrieveExecute(r ApiCoreUserConsentRetr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6957,6 +7086,7 @@ func (a *CoreApiService) CoreUserConsentRetrieveExecute(r ApiCoreUserConsentRetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6967,6 +7097,7 @@ func (a *CoreApiService) CoreUserConsentRetrieveExecute(r ApiCoreUserConsentRetr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6986,7 +7117,7 @@ func (a *CoreApiService) CoreUserConsentRetrieveExecute(r ApiCoreUserConsentRetr
 
 type ApiCoreUserConsentUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	id         int32
 }
 
@@ -7003,7 +7134,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this User Consent.
 	@return ApiCoreUserConsentUsedByListRequest
 */
-func (a *CoreApiService) CoreUserConsentUsedByList(ctx context.Context, id int32) ApiCoreUserConsentUsedByListRequest {
+func (a *CoreAPIService) CoreUserConsentUsedByList(ctx context.Context, id int32) ApiCoreUserConsentUsedByListRequest {
 	return ApiCoreUserConsentUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7014,7 +7145,7 @@ func (a *CoreApiService) CoreUserConsentUsedByList(ctx context.Context, id int32
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *CoreApiService) CoreUserConsentUsedByListExecute(r ApiCoreUserConsentUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *CoreAPIService) CoreUserConsentUsedByListExecute(r ApiCoreUserConsentUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7022,13 +7153,13 @@ func (a *CoreApiService) CoreUserConsentUsedByListExecute(r ApiCoreUserConsentUs
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUserConsentUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUserConsentUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/user_consent/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7061,9 +7192,9 @@ func (a *CoreApiService) CoreUserConsentUsedByListExecute(r ApiCoreUserConsentUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7080,6 +7211,7 @@ func (a *CoreApiService) CoreUserConsentUsedByListExecute(r ApiCoreUserConsentUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7090,6 +7222,7 @@ func (a *CoreApiService) CoreUserConsentUsedByListExecute(r ApiCoreUserConsentUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7109,7 +7242,7 @@ func (a *CoreApiService) CoreUserConsentUsedByListExecute(r ApiCoreUserConsentUs
 
 type ApiCoreUsersCreateRequest struct {
 	ctx         context.Context
-	ApiService  *CoreApiService
+	ApiService  *CoreAPIService
 	userRequest *UserRequest
 }
 
@@ -7130,7 +7263,7 @@ User Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreUsersCreateRequest
 */
-func (a *CoreApiService) CoreUsersCreate(ctx context.Context) ApiCoreUsersCreateRequest {
+func (a *CoreAPIService) CoreUsersCreate(ctx context.Context) ApiCoreUsersCreateRequest {
 	return ApiCoreUsersCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7140,7 +7273,7 @@ func (a *CoreApiService) CoreUsersCreate(ctx context.Context) ApiCoreUsersCreate
 // Execute executes the request
 //
 //	@return User
-func (a *CoreApiService) CoreUsersCreateExecute(r ApiCoreUsersCreateRequest) (*User, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersCreateExecute(r ApiCoreUsersCreateRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -7148,7 +7281,7 @@ func (a *CoreApiService) CoreUsersCreateExecute(r ApiCoreUsersCreateRequest) (*U
 		localVarReturnValue *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -7191,9 +7324,9 @@ func (a *CoreApiService) CoreUsersCreateExecute(r ApiCoreUsersCreateRequest) (*U
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7210,6 +7343,7 @@ func (a *CoreApiService) CoreUsersCreateExecute(r ApiCoreUsersCreateRequest) (*U
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7220,6 +7354,7 @@ func (a *CoreApiService) CoreUsersCreateExecute(r ApiCoreUsersCreateRequest) (*U
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7239,7 +7374,7 @@ func (a *CoreApiService) CoreUsersCreateExecute(r ApiCoreUsersCreateRequest) (*U
 
 type ApiCoreUsersDestroyRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	id         int32
 }
 
@@ -7256,7 +7391,7 @@ User Viewset
 	@param id A unique integer value identifying this User.
 	@return ApiCoreUsersDestroyRequest
 */
-func (a *CoreApiService) CoreUsersDestroy(ctx context.Context, id int32) ApiCoreUsersDestroyRequest {
+func (a *CoreAPIService) CoreUsersDestroy(ctx context.Context, id int32) ApiCoreUsersDestroyRequest {
 	return ApiCoreUsersDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7265,20 +7400,20 @@ func (a *CoreApiService) CoreUsersDestroy(ctx context.Context, id int32) ApiCore
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7311,9 +7446,9 @@ func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -7330,6 +7465,7 @@ func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -7340,6 +7476,7 @@ func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -7350,7 +7487,7 @@ func (a *CoreApiService) CoreUsersDestroyExecute(r ApiCoreUsersDestroyRequest) (
 
 type ApiCoreUsersExportCreateRequest struct {
 	ctx             context.Context
-	ApiService      *CoreApiService
+	ApiService      *CoreAPIService
 	attributes      *string
 	dateJoined      *time.Time
 	dateJoinedGt    *time.Time
@@ -7528,7 +7665,7 @@ contain a URL to download
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreUsersExportCreateRequest
 */
-func (a *CoreApiService) CoreUsersExportCreate(ctx context.Context) ApiCoreUsersExportCreateRequest {
+func (a *CoreAPIService) CoreUsersExportCreate(ctx context.Context) ApiCoreUsersExportCreateRequest {
 	return ApiCoreUsersExportCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7538,7 +7675,7 @@ func (a *CoreApiService) CoreUsersExportCreate(ctx context.Context) ApiCoreUsers
 // Execute executes the request
 //
 //	@return DataExport
-func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreateRequest) (*DataExport, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreateRequest) (*DataExport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -7546,7 +7683,7 @@ func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 		localVarReturnValue *DataExport
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersExportCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersExportCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -7558,29 +7695,29 @@ func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 	localVarFormParams := url.Values{}
 
 	if r.attributes != nil {
-		localVarQueryParams.Add("attributes", parameterToString(*r.attributes, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attributes", r.attributes, "form", "")
 	}
 	if r.dateJoined != nil {
-		localVarQueryParams.Add("date_joined", parameterToString(*r.dateJoined, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined", r.dateJoined, "form", "")
 	}
 	if r.dateJoinedGt != nil {
-		localVarQueryParams.Add("date_joined__gt", parameterToString(*r.dateJoinedGt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined__gt", r.dateJoinedGt, "form", "")
 	}
 	if r.dateJoinedLt != nil {
-		localVarQueryParams.Add("date_joined__lt", parameterToString(*r.dateJoinedLt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined__lt", r.dateJoinedLt, "form", "")
 	}
 	if r.email != nil {
-		localVarQueryParams.Add("email", parameterToString(*r.email, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "email", r.email, "form", "")
 	}
 	if r.groupsByName != nil {
 		t := *r.groupsByName
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("groups_by_name", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_name", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("groups_by_name", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_name", t, "form", "multi")
 		}
 	}
 	if r.groupsByPk != nil {
@@ -7588,60 +7725,60 @@ func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("groups_by_pk", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_pk", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("groups_by_pk", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_pk", t, "form", "multi")
 		}
 	}
 	if r.isActive != nil {
-		localVarQueryParams.Add("is_active", parameterToString(*r.isActive, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_active", r.isActive, "form", "")
 	}
 	if r.isSuperuser != nil {
-		localVarQueryParams.Add("is_superuser", parameterToString(*r.isSuperuser, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_superuser", r.isSuperuser, "form", "")
 	}
 	if r.lastLogin != nil {
-		localVarQueryParams.Add("last_login", parameterToString(*r.lastLogin, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login", r.lastLogin, "form", "")
 	}
 	if r.lastLoginGt != nil {
-		localVarQueryParams.Add("last_login__gt", parameterToString(*r.lastLoginGt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__gt", r.lastLoginGt, "form", "")
 	}
 	if r.lastLoginIsnull != nil {
-		localVarQueryParams.Add("last_login__isnull", parameterToString(*r.lastLoginIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__isnull", r.lastLoginIsnull, "form", "")
 	}
 	if r.lastLoginLt != nil {
-		localVarQueryParams.Add("last_login__lt", parameterToString(*r.lastLoginLt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__lt", r.lastLoginLt, "form", "")
 	}
 	if r.lastUpdated != nil {
-		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "form", "")
 	}
 	if r.lastUpdatedGt != nil {
-		localVarQueryParams.Add("last_updated__gt", parameterToString(*r.lastUpdatedGt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated__gt", r.lastUpdatedGt, "form", "")
 	}
 	if r.lastUpdatedLt != nil {
-		localVarQueryParams.Add("last_updated__lt", parameterToString(*r.lastUpdatedLt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated__lt", r.lastUpdatedLt, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.path != nil {
-		localVarQueryParams.Add("path", parameterToString(*r.path, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "path", r.path, "form", "")
 	}
 	if r.pathStartswith != nil {
-		localVarQueryParams.Add("path_startswith", parameterToString(*r.pathStartswith, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "path_startswith", r.pathStartswith, "form", "")
 	}
 	if r.rolesByName != nil {
 		t := *r.rolesByName
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("roles_by_name", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_name", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("roles_by_name", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_name", t, "form", "multi")
 		}
 	}
 	if r.rolesByPk != nil {
@@ -7649,31 +7786,31 @@ func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("roles_by_pk", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_pk", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("roles_by_pk", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_pk", t, "form", "multi")
 		}
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.type_ != nil {
 		t := *r.type_
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("type", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "type", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("type", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "type", t, "form", "multi")
 		}
 	}
 	if r.username != nil {
-		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "form", "")
 	}
 	if r.uuid != nil {
-		localVarQueryParams.Add("uuid", parameterToString(*r.uuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "uuid", r.uuid, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7702,9 +7839,9 @@ func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7721,6 +7858,7 @@ func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7731,6 +7869,7 @@ func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7750,7 +7889,7 @@ func (a *CoreApiService) CoreUsersExportCreateExecute(r ApiCoreUsersExportCreate
 
 type ApiCoreUsersImpersonateCreateRequest struct {
 	ctx                  context.Context
-	ApiService           *CoreApiService
+	ApiService           *CoreAPIService
 	id                   int32
 	impersonationRequest *ImpersonationRequest
 }
@@ -7773,7 +7912,7 @@ Impersonate a user
 	@param id A unique integer value identifying this User.
 	@return ApiCoreUsersImpersonateCreateRequest
 */
-func (a *CoreApiService) CoreUsersImpersonateCreate(ctx context.Context, id int32) ApiCoreUsersImpersonateCreateRequest {
+func (a *CoreAPIService) CoreUsersImpersonateCreate(ctx context.Context, id int32) ApiCoreUsersImpersonateCreateRequest {
 	return ApiCoreUsersImpersonateCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7782,20 +7921,20 @@ func (a *CoreApiService) CoreUsersImpersonateCreate(ctx context.Context, id int3
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreUsersImpersonateCreateExecute(r ApiCoreUsersImpersonateCreateRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreUsersImpersonateCreateExecute(r ApiCoreUsersImpersonateCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersImpersonateCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersImpersonateCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/users/{id}/impersonate/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7833,9 +7972,9 @@ func (a *CoreApiService) CoreUsersImpersonateCreateExecute(r ApiCoreUsersImperso
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -7852,6 +7991,7 @@ func (a *CoreApiService) CoreUsersImpersonateCreateExecute(r ApiCoreUsersImperso
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -7862,6 +8002,7 @@ func (a *CoreApiService) CoreUsersImpersonateCreateExecute(r ApiCoreUsersImperso
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -7872,7 +8013,7 @@ func (a *CoreApiService) CoreUsersImpersonateCreateExecute(r ApiCoreUsersImperso
 
 type ApiCoreUsersImpersonateEndRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 }
 
 func (r ApiCoreUsersImpersonateEndRetrieveRequest) Execute() (*http.Response, error) {
@@ -7887,7 +8028,7 @@ End Impersonation a user
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreUsersImpersonateEndRetrieveRequest
 */
-func (a *CoreApiService) CoreUsersImpersonateEndRetrieve(ctx context.Context) ApiCoreUsersImpersonateEndRetrieveRequest {
+func (a *CoreAPIService) CoreUsersImpersonateEndRetrieve(ctx context.Context) ApiCoreUsersImpersonateEndRetrieveRequest {
 	return ApiCoreUsersImpersonateEndRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7895,14 +8036,14 @@ func (a *CoreApiService) CoreUsersImpersonateEndRetrieve(ctx context.Context) Ap
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreUsersImpersonateEndRetrieveExecute(r ApiCoreUsersImpersonateEndRetrieveRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreUsersImpersonateEndRetrieveExecute(r ApiCoreUsersImpersonateEndRetrieveRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersImpersonateEndRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersImpersonateEndRetrieve")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -7940,9 +8081,9 @@ func (a *CoreApiService) CoreUsersImpersonateEndRetrieveExecute(r ApiCoreUsersIm
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -7959,6 +8100,7 @@ func (a *CoreApiService) CoreUsersImpersonateEndRetrieveExecute(r ApiCoreUsersIm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -7969,6 +8111,7 @@ func (a *CoreApiService) CoreUsersImpersonateEndRetrieveExecute(r ApiCoreUsersIm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -7979,7 +8122,7 @@ func (a *CoreApiService) CoreUsersImpersonateEndRetrieveExecute(r ApiCoreUsersIm
 
 type ApiCoreUsersListRequest struct {
 	ctx             context.Context
-	ApiService      *CoreApiService
+	ApiService      *CoreAPIService
 	attributes      *string
 	dateJoined      *time.Time
 	dateJoinedGt    *time.Time
@@ -8179,7 +8322,7 @@ User Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreUsersListRequest
 */
-func (a *CoreApiService) CoreUsersList(ctx context.Context) ApiCoreUsersListRequest {
+func (a *CoreAPIService) CoreUsersList(ctx context.Context) ApiCoreUsersListRequest {
 	return ApiCoreUsersListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8189,7 +8332,7 @@ func (a *CoreApiService) CoreUsersList(ctx context.Context) ApiCoreUsersListRequ
 // Execute executes the request
 //
 //	@return PaginatedUserList
-func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*PaginatedUserList, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*PaginatedUserList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8197,7 +8340,7 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 		localVarReturnValue *PaginatedUserList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8209,29 +8352,29 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 	localVarFormParams := url.Values{}
 
 	if r.attributes != nil {
-		localVarQueryParams.Add("attributes", parameterToString(*r.attributes, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attributes", r.attributes, "form", "")
 	}
 	if r.dateJoined != nil {
-		localVarQueryParams.Add("date_joined", parameterToString(*r.dateJoined, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined", r.dateJoined, "form", "")
 	}
 	if r.dateJoinedGt != nil {
-		localVarQueryParams.Add("date_joined__gt", parameterToString(*r.dateJoinedGt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined__gt", r.dateJoinedGt, "form", "")
 	}
 	if r.dateJoinedLt != nil {
-		localVarQueryParams.Add("date_joined__lt", parameterToString(*r.dateJoinedLt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "date_joined__lt", r.dateJoinedLt, "form", "")
 	}
 	if r.email != nil {
-		localVarQueryParams.Add("email", parameterToString(*r.email, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "email", r.email, "form", "")
 	}
 	if r.groupsByName != nil {
 		t := *r.groupsByName
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("groups_by_name", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_name", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("groups_by_name", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_name", t, "form", "multi")
 		}
 	}
 	if r.groupsByPk != nil {
@@ -8239,72 +8382,80 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("groups_by_pk", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_pk", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("groups_by_pk", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "groups_by_pk", t, "form", "multi")
 		}
 	}
 	if r.includeGroups != nil {
-		localVarQueryParams.Add("include_groups", parameterToString(*r.includeGroups, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_groups", r.includeGroups, "form", "")
+	} else {
+		var defaultValue bool = true
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_groups", defaultValue, "form", "")
+		r.includeGroups = &defaultValue
 	}
 	if r.includeRoles != nil {
-		localVarQueryParams.Add("include_roles", parameterToString(*r.includeRoles, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_roles", r.includeRoles, "form", "")
+	} else {
+		var defaultValue bool = true
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_roles", defaultValue, "form", "")
+		r.includeRoles = &defaultValue
 	}
 	if r.isActive != nil {
-		localVarQueryParams.Add("is_active", parameterToString(*r.isActive, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_active", r.isActive, "form", "")
 	}
 	if r.isSuperuser != nil {
-		localVarQueryParams.Add("is_superuser", parameterToString(*r.isSuperuser, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_superuser", r.isSuperuser, "form", "")
 	}
 	if r.lastLogin != nil {
-		localVarQueryParams.Add("last_login", parameterToString(*r.lastLogin, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login", r.lastLogin, "form", "")
 	}
 	if r.lastLoginGt != nil {
-		localVarQueryParams.Add("last_login__gt", parameterToString(*r.lastLoginGt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__gt", r.lastLoginGt, "form", "")
 	}
 	if r.lastLoginIsnull != nil {
-		localVarQueryParams.Add("last_login__isnull", parameterToString(*r.lastLoginIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__isnull", r.lastLoginIsnull, "form", "")
 	}
 	if r.lastLoginLt != nil {
-		localVarQueryParams.Add("last_login__lt", parameterToString(*r.lastLoginLt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_login__lt", r.lastLoginLt, "form", "")
 	}
 	if r.lastUpdated != nil {
-		localVarQueryParams.Add("last_updated", parameterToString(*r.lastUpdated, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated", r.lastUpdated, "form", "")
 	}
 	if r.lastUpdatedGt != nil {
-		localVarQueryParams.Add("last_updated__gt", parameterToString(*r.lastUpdatedGt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated__gt", r.lastUpdatedGt, "form", "")
 	}
 	if r.lastUpdatedLt != nil {
-		localVarQueryParams.Add("last_updated__lt", parameterToString(*r.lastUpdatedLt, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "last_updated__lt", r.lastUpdatedLt, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.path != nil {
-		localVarQueryParams.Add("path", parameterToString(*r.path, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "path", r.path, "form", "")
 	}
 	if r.pathStartswith != nil {
-		localVarQueryParams.Add("path_startswith", parameterToString(*r.pathStartswith, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "path_startswith", r.pathStartswith, "form", "")
 	}
 	if r.rolesByName != nil {
 		t := *r.rolesByName
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("roles_by_name", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_name", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("roles_by_name", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_name", t, "form", "multi")
 		}
 	}
 	if r.rolesByPk != nil {
@@ -8312,31 +8463,31 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("roles_by_pk", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_pk", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("roles_by_pk", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "roles_by_pk", t, "form", "multi")
 		}
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.type_ != nil {
 		t := *r.type_
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("type", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "type", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("type", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "type", t, "form", "multi")
 		}
 	}
 	if r.username != nil {
-		localVarQueryParams.Add("username", parameterToString(*r.username, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "form", "")
 	}
 	if r.uuid != nil {
-		localVarQueryParams.Add("uuid", parameterToString(*r.uuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "uuid", r.uuid, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8365,9 +8516,9 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8384,6 +8535,7 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8394,6 +8546,7 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8413,7 +8566,7 @@ func (a *CoreApiService) CoreUsersListExecute(r ApiCoreUsersListRequest) (*Pagin
 
 type ApiCoreUsersMeRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 }
 
 func (r ApiCoreUsersMeRetrieveRequest) Execute() (*SessionUser, *http.Response, error) {
@@ -8428,7 +8581,7 @@ Get information about current user
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreUsersMeRetrieveRequest
 */
-func (a *CoreApiService) CoreUsersMeRetrieve(ctx context.Context) ApiCoreUsersMeRetrieveRequest {
+func (a *CoreAPIService) CoreUsersMeRetrieve(ctx context.Context) ApiCoreUsersMeRetrieveRequest {
 	return ApiCoreUsersMeRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8438,7 +8591,7 @@ func (a *CoreApiService) CoreUsersMeRetrieve(ctx context.Context) ApiCoreUsersMe
 // Execute executes the request
 //
 //	@return SessionUser
-func (a *CoreApiService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequest) (*SessionUser, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequest) (*SessionUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8446,7 +8599,7 @@ func (a *CoreApiService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequ
 		localVarReturnValue *SessionUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersMeRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersMeRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8484,9 +8637,9 @@ func (a *CoreApiService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8503,6 +8656,7 @@ func (a *CoreApiService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8513,6 +8667,7 @@ func (a *CoreApiService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8532,7 +8687,7 @@ func (a *CoreApiService) CoreUsersMeRetrieveExecute(r ApiCoreUsersMeRetrieveRequ
 
 type ApiCoreUsersPartialUpdateRequest struct {
 	ctx                context.Context
-	ApiService         *CoreApiService
+	ApiService         *CoreAPIService
 	id                 int32
 	patchedUserRequest *PatchedUserRequest
 }
@@ -8555,7 +8710,7 @@ User Viewset
 	@param id A unique integer value identifying this User.
 	@return ApiCoreUsersPartialUpdateRequest
 */
-func (a *CoreApiService) CoreUsersPartialUpdate(ctx context.Context, id int32) ApiCoreUsersPartialUpdateRequest {
+func (a *CoreAPIService) CoreUsersPartialUpdate(ctx context.Context, id int32) ApiCoreUsersPartialUpdateRequest {
 	return ApiCoreUsersPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8566,7 +8721,7 @@ func (a *CoreApiService) CoreUsersPartialUpdate(ctx context.Context, id int32) A
 // Execute executes the request
 //
 //	@return User
-func (a *CoreApiService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpdateRequest) (*User, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpdateRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -8574,13 +8729,13 @@ func (a *CoreApiService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpda
 		localVarReturnValue *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8615,9 +8770,9 @@ func (a *CoreApiService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpda
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8634,6 +8789,7 @@ func (a *CoreApiService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8644,6 +8800,7 @@ func (a *CoreApiService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8663,7 +8820,7 @@ func (a *CoreApiService) CoreUsersPartialUpdateExecute(r ApiCoreUsersPartialUpda
 
 type ApiCoreUsersPathsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	search     *string
 }
 
@@ -8685,7 +8842,7 @@ Get all user paths
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreUsersPathsRetrieveRequest
 */
-func (a *CoreApiService) CoreUsersPathsRetrieve(ctx context.Context) ApiCoreUsersPathsRetrieveRequest {
+func (a *CoreAPIService) CoreUsersPathsRetrieve(ctx context.Context) ApiCoreUsersPathsRetrieveRequest {
 	return ApiCoreUsersPathsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8695,7 +8852,7 @@ func (a *CoreApiService) CoreUsersPathsRetrieve(ctx context.Context) ApiCoreUser
 // Execute executes the request
 //
 //	@return UserPath
-func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrieveRequest) (*UserPath, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrieveRequest) (*UserPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8703,7 +8860,7 @@ func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrie
 		localVarReturnValue *UserPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersPathsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersPathsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8715,7 +8872,7 @@ func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrie
 	localVarFormParams := url.Values{}
 
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8744,9 +8901,9 @@ func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrie
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8763,6 +8920,7 @@ func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8773,6 +8931,7 @@ func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrie
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8792,7 +8951,7 @@ func (a *CoreApiService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrie
 
 type ApiCoreUsersRecoveryCreateRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	id         int32
 }
 
@@ -8809,7 +8968,7 @@ Create a temporary link that a user can use to recover their account
 	@param id A unique integer value identifying this User.
 	@return ApiCoreUsersRecoveryCreateRequest
 */
-func (a *CoreApiService) CoreUsersRecoveryCreate(ctx context.Context, id int32) ApiCoreUsersRecoveryCreateRequest {
+func (a *CoreAPIService) CoreUsersRecoveryCreate(ctx context.Context, id int32) ApiCoreUsersRecoveryCreateRequest {
 	return ApiCoreUsersRecoveryCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8820,7 +8979,7 @@ func (a *CoreApiService) CoreUsersRecoveryCreate(ctx context.Context, id int32) 
 // Execute executes the request
 //
 //	@return Link
-func (a *CoreApiService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCreateRequest) (*Link, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCreateRequest) (*Link, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -8828,13 +8987,13 @@ func (a *CoreApiService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCr
 		localVarReturnValue *Link
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersRecoveryCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersRecoveryCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/users/{id}/recovery/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8867,9 +9026,9 @@ func (a *CoreApiService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8886,6 +9045,7 @@ func (a *CoreApiService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8896,6 +9056,7 @@ func (a *CoreApiService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8915,7 +9076,7 @@ func (a *CoreApiService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCr
 
 type ApiCoreUsersRecoveryEmailCreateRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	emailStage *string
 	id         int32
 }
@@ -8938,7 +9099,7 @@ Send an email with a temporary link that a user can use to recover their account
 	@param id A unique integer value identifying this User.
 	@return ApiCoreUsersRecoveryEmailCreateRequest
 */
-func (a *CoreApiService) CoreUsersRecoveryEmailCreate(ctx context.Context, id int32) ApiCoreUsersRecoveryEmailCreateRequest {
+func (a *CoreAPIService) CoreUsersRecoveryEmailCreate(ctx context.Context, id int32) ApiCoreUsersRecoveryEmailCreateRequest {
 	return ApiCoreUsersRecoveryEmailCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8947,20 +9108,20 @@ func (a *CoreApiService) CoreUsersRecoveryEmailCreate(ctx context.Context, id in
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecoveryEmailCreateRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecoveryEmailCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersRecoveryEmailCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersRecoveryEmailCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/users/{id}/recovery_email/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8969,7 +9130,7 @@ func (a *CoreApiService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecov
 		return nil, reportError("emailStage is required and must be specified")
 	}
 
-	localVarQueryParams.Add("email_stage", parameterToString(*r.emailStage, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "email_stage", r.emailStage, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8997,9 +9158,9 @@ func (a *CoreApiService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecov
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -9016,6 +9177,7 @@ func (a *CoreApiService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecov
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -9026,6 +9188,7 @@ func (a *CoreApiService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecov
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -9036,7 +9199,7 @@ func (a *CoreApiService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecov
 
 type ApiCoreUsersRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	id         int32
 }
 
@@ -9053,7 +9216,7 @@ User Viewset
 	@param id A unique integer value identifying this User.
 	@return ApiCoreUsersRetrieveRequest
 */
-func (a *CoreApiService) CoreUsersRetrieve(ctx context.Context, id int32) ApiCoreUsersRetrieveRequest {
+func (a *CoreAPIService) CoreUsersRetrieve(ctx context.Context, id int32) ApiCoreUsersRetrieveRequest {
 	return ApiCoreUsersRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9064,7 +9227,7 @@ func (a *CoreApiService) CoreUsersRetrieve(ctx context.Context, id int32) ApiCor
 // Execute executes the request
 //
 //	@return User
-func (a *CoreApiService) CoreUsersRetrieveExecute(r ApiCoreUsersRetrieveRequest) (*User, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersRetrieveExecute(r ApiCoreUsersRetrieveRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9072,13 +9235,13 @@ func (a *CoreApiService) CoreUsersRetrieveExecute(r ApiCoreUsersRetrieveRequest)
 		localVarReturnValue *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9111,9 +9274,9 @@ func (a *CoreApiService) CoreUsersRetrieveExecute(r ApiCoreUsersRetrieveRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9130,6 +9293,7 @@ func (a *CoreApiService) CoreUsersRetrieveExecute(r ApiCoreUsersRetrieveRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9140,6 +9304,7 @@ func (a *CoreApiService) CoreUsersRetrieveExecute(r ApiCoreUsersRetrieveRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9159,7 +9324,7 @@ func (a *CoreApiService) CoreUsersRetrieveExecute(r ApiCoreUsersRetrieveRequest)
 
 type ApiCoreUsersServiceAccountCreateRequest struct {
 	ctx                       context.Context
-	ApiService                *CoreApiService
+	ApiService                *CoreAPIService
 	userServiceAccountRequest *UserServiceAccountRequest
 }
 
@@ -9180,7 +9345,7 @@ Create a new user account that is marked as a service account
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCoreUsersServiceAccountCreateRequest
 */
-func (a *CoreApiService) CoreUsersServiceAccountCreate(ctx context.Context) ApiCoreUsersServiceAccountCreateRequest {
+func (a *CoreAPIService) CoreUsersServiceAccountCreate(ctx context.Context) ApiCoreUsersServiceAccountCreateRequest {
 	return ApiCoreUsersServiceAccountCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9190,7 +9355,7 @@ func (a *CoreApiService) CoreUsersServiceAccountCreate(ctx context.Context) ApiC
 // Execute executes the request
 //
 //	@return UserServiceAccountResponse
-func (a *CoreApiService) CoreUsersServiceAccountCreateExecute(r ApiCoreUsersServiceAccountCreateRequest) (*UserServiceAccountResponse, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersServiceAccountCreateExecute(r ApiCoreUsersServiceAccountCreateRequest) (*UserServiceAccountResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -9198,7 +9363,7 @@ func (a *CoreApiService) CoreUsersServiceAccountCreateExecute(r ApiCoreUsersServ
 		localVarReturnValue *UserServiceAccountResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersServiceAccountCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersServiceAccountCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -9241,9 +9406,9 @@ func (a *CoreApiService) CoreUsersServiceAccountCreateExecute(r ApiCoreUsersServ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9260,6 +9425,7 @@ func (a *CoreApiService) CoreUsersServiceAccountCreateExecute(r ApiCoreUsersServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9270,6 +9436,7 @@ func (a *CoreApiService) CoreUsersServiceAccountCreateExecute(r ApiCoreUsersServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9289,7 +9456,7 @@ func (a *CoreApiService) CoreUsersServiceAccountCreateExecute(r ApiCoreUsersServ
 
 type ApiCoreUsersSetPasswordCreateRequest struct {
 	ctx                    context.Context
-	ApiService             *CoreApiService
+	ApiService             *CoreAPIService
 	id                     int32
 	userPasswordSetRequest *UserPasswordSetRequest
 }
@@ -9312,7 +9479,7 @@ Set password for user
 	@param id A unique integer value identifying this User.
 	@return ApiCoreUsersSetPasswordCreateRequest
 */
-func (a *CoreApiService) CoreUsersSetPasswordCreate(ctx context.Context, id int32) ApiCoreUsersSetPasswordCreateRequest {
+func (a *CoreAPIService) CoreUsersSetPasswordCreate(ctx context.Context, id int32) ApiCoreUsersSetPasswordCreateRequest {
 	return ApiCoreUsersSetPasswordCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9321,20 +9488,20 @@ func (a *CoreApiService) CoreUsersSetPasswordCreate(ctx context.Context, id int3
 }
 
 // Execute executes the request
-func (a *CoreApiService) CoreUsersSetPasswordCreateExecute(r ApiCoreUsersSetPasswordCreateRequest) (*http.Response, error) {
+func (a *CoreAPIService) CoreUsersSetPasswordCreateExecute(r ApiCoreUsersSetPasswordCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersSetPasswordCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersSetPasswordCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/users/{id}/set_password/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9372,9 +9539,9 @@ func (a *CoreApiService) CoreUsersSetPasswordCreateExecute(r ApiCoreUsersSetPass
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -9391,6 +9558,7 @@ func (a *CoreApiService) CoreUsersSetPasswordCreateExecute(r ApiCoreUsersSetPass
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -9401,7 +9569,7 @@ func (a *CoreApiService) CoreUsersSetPasswordCreateExecute(r ApiCoreUsersSetPass
 
 type ApiCoreUsersUpdateRequest struct {
 	ctx         context.Context
-	ApiService  *CoreApiService
+	ApiService  *CoreAPIService
 	id          int32
 	userRequest *UserRequest
 }
@@ -9424,7 +9592,7 @@ User Viewset
 	@param id A unique integer value identifying this User.
 	@return ApiCoreUsersUpdateRequest
 */
-func (a *CoreApiService) CoreUsersUpdate(ctx context.Context, id int32) ApiCoreUsersUpdateRequest {
+func (a *CoreAPIService) CoreUsersUpdate(ctx context.Context, id int32) ApiCoreUsersUpdateRequest {
 	return ApiCoreUsersUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9435,7 +9603,7 @@ func (a *CoreApiService) CoreUsersUpdate(ctx context.Context, id int32) ApiCoreU
 // Execute executes the request
 //
 //	@return User
-func (a *CoreApiService) CoreUsersUpdateExecute(r ApiCoreUsersUpdateRequest) (*User, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersUpdateExecute(r ApiCoreUsersUpdateRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -9443,13 +9611,13 @@ func (a *CoreApiService) CoreUsersUpdateExecute(r ApiCoreUsersUpdateRequest) (*U
 		localVarReturnValue *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9487,9 +9655,9 @@ func (a *CoreApiService) CoreUsersUpdateExecute(r ApiCoreUsersUpdateRequest) (*U
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9506,6 +9674,7 @@ func (a *CoreApiService) CoreUsersUpdateExecute(r ApiCoreUsersUpdateRequest) (*U
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9516,6 +9685,7 @@ func (a *CoreApiService) CoreUsersUpdateExecute(r ApiCoreUsersUpdateRequest) (*U
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9535,7 +9705,7 @@ func (a *CoreApiService) CoreUsersUpdateExecute(r ApiCoreUsersUpdateRequest) (*U
 
 type ApiCoreUsersUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *CoreApiService
+	ApiService *CoreAPIService
 	id         int32
 }
 
@@ -9552,7 +9722,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this User.
 	@return ApiCoreUsersUsedByListRequest
 */
-func (a *CoreApiService) CoreUsersUsedByList(ctx context.Context, id int32) ApiCoreUsersUsedByListRequest {
+func (a *CoreAPIService) CoreUsersUsedByList(ctx context.Context, id int32) ApiCoreUsersUsedByListRequest {
 	return ApiCoreUsersUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9563,7 +9733,7 @@ func (a *CoreApiService) CoreUsersUsedByList(ctx context.Context, id int32) ApiC
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *CoreApiService) CoreUsersUsedByListExecute(r ApiCoreUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *CoreAPIService) CoreUsersUsedByListExecute(r ApiCoreUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9571,13 +9741,13 @@ func (a *CoreApiService) CoreUsersUsedByListExecute(r ApiCoreUsersUsedByListRequ
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreApiService.CoreUsersUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CoreAPIService.CoreUsersUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/core/users/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9610,9 +9780,9 @@ func (a *CoreApiService) CoreUsersUsedByListExecute(r ApiCoreUsersUsedByListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9629,6 +9799,7 @@ func (a *CoreApiService) CoreUsersUsedByListExecute(r ApiCoreUsersUsedByListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9639,6 +9810,7 @@ func (a *CoreApiService) CoreUsersUsedByListExecute(r ApiCoreUsersUsedByListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

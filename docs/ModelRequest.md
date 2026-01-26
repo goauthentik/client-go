@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **DelegatedSubject** | **string** |  | 
-**Credentials** | **map[string]interface{}** |  | 
+**Credentials** | **map[string]map[string]interface{}** |  | 
 **Scopes** | Pointer to **string** |  | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
@@ -57,7 +57,7 @@ Name | Type | Description | Notes
 **Mode** | Pointer to [**ProxyMode**](ProxyMode.md) | Enable support for forwardAuth in traefik and nginx auth_request. Exclusive with internal_host. | [optional] 
 **InterceptHeaderAuth** | Pointer to **bool** | When enabled, this provider will intercept the authorization header and authenticate requests based on its value. | [optional] 
 **CookieDomain** | Pointer to **string** |  | [optional] 
-**Settings** | Pointer to **map[string]interface{}** |  | [optional] 
+**Settings** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **ConnectionExpiry** | Pointer to **string** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
 **DeleteTokenOnDisconnect** | Pointer to **bool** | When set to true, connection tokens will be deleted upon disconnect. | [optional] 
 **ClientNetworks** | Pointer to **string** | List of CIDRs (comma-separated) that clients can connect from. A more specific CIDR will match before a looser one. Clients connecting from a non-specified CIDR will be dropped. | [optional] 
@@ -88,7 +88,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token | [optional] 
 **AuthMode** | Pointer to [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] 
 **AuthOauth** | Pointer to **NullableString** | OAuth Source used for authentication | [optional] 
-**AuthOauthParams** | Pointer to **map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
+**AuthOauthParams** | Pointer to **map[string]map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **ServiceProviderConfigCacheTimeout** | Pointer to **string** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] 
 **OidcAuthProviders** | Pointer to **[]int32** |  | [optional] 
@@ -98,7 +98,7 @@ Name | Type | Description | Notes
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials map[string]map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -205,20 +205,20 @@ SetDelegatedSubject sets DelegatedSubject field to given value.
 
 ### GetCredentials
 
-`func (o *ModelRequest) GetCredentials() map[string]interface{}`
+`func (o *ModelRequest) GetCredentials() map[string]map[string]interface{}`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *ModelRequest) GetCredentialsOk() (*map[string]interface{}, bool)`
+`func (o *ModelRequest) GetCredentialsOk() (*map[string]map[string]interface{}, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *ModelRequest) SetCredentials(v map[string]interface{})`
+`func (o *ModelRequest) SetCredentials(v map[string]map[string]interface{})`
 
 SetCredentials sets Credentials field to given value.
 
@@ -1420,20 +1420,20 @@ HasCookieDomain returns a boolean if a field has been set.
 
 ### GetSettings
 
-`func (o *ModelRequest) GetSettings() map[string]interface{}`
+`func (o *ModelRequest) GetSettings() map[string]map[string]interface{}`
 
 GetSettings returns the Settings field if non-nil, zero value otherwise.
 
 ### GetSettingsOk
 
-`func (o *ModelRequest) GetSettingsOk() (*map[string]interface{}, bool)`
+`func (o *ModelRequest) GetSettingsOk() (*map[string]map[string]interface{}, bool)`
 
 GetSettingsOk returns a tuple with the Settings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSettings
 
-`func (o *ModelRequest) SetSettings(v map[string]interface{})`
+`func (o *ModelRequest) SetSettings(v map[string]map[string]interface{})`
 
 SetSettings sets Settings field to given value.
 
@@ -2245,20 +2245,20 @@ HasAuthOauth returns a boolean if a field has been set.
 UnsetAuthOauth ensures that no value is present for AuthOauth, not even an explicit nil
 ### GetAuthOauthParams
 
-`func (o *ModelRequest) GetAuthOauthParams() map[string]interface{}`
+`func (o *ModelRequest) GetAuthOauthParams() map[string]map[string]interface{}`
 
 GetAuthOauthParams returns the AuthOauthParams field if non-nil, zero value otherwise.
 
 ### GetAuthOauthParamsOk
 
-`func (o *ModelRequest) GetAuthOauthParamsOk() (*map[string]interface{}, bool)`
+`func (o *ModelRequest) GetAuthOauthParamsOk() (*map[string]map[string]interface{}, bool)`
 
 GetAuthOauthParamsOk returns a tuple with the AuthOauthParams field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthOauthParams
 
-`func (o *ModelRequest) SetAuthOauthParams(v map[string]interface{})`
+`func (o *ModelRequest) SetAuthOauthParams(v map[string]map[string]interface{})`
 
 SetAuthOauthParams sets AuthOauthParams field to given value.
 

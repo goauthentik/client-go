@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the RoleModelPermission type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleModelPermission{}
 
 // RoleModelPermission Role-bound object level permission
 type RoleModelPermission struct {
@@ -23,6 +28,8 @@ type RoleModelPermission struct {
 	AppLabel string `json:"app_label"`
 	Name     string `json:"name"`
 }
+
+type _RoleModelPermission RoleModelPermission
 
 // NewRoleModelPermission instantiates a new RoleModelPermission object
 // This constructor will assign default values to properties that have it defined,
@@ -167,23 +174,62 @@ func (o *RoleModelPermission) SetName(v string) {
 }
 
 func (o RoleModelPermission) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["codename"] = o.Codename
-	}
-	if true {
-		toSerialize["model"] = o.Model
-	}
-	if true {
-		toSerialize["app_label"] = o.AppLabel
-	}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RoleModelPermission) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["codename"] = o.Codename
+	toSerialize["model"] = o.Model
+	toSerialize["app_label"] = o.AppLabel
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
+}
+
+func (o *RoleModelPermission) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"codename",
+		"model",
+		"app_label",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRoleModelPermission := _RoleModelPermission{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRoleModelPermission)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RoleModelPermission(varRoleModelPermission)
+
+	return err
 }
 
 type NullableRoleModelPermission struct {

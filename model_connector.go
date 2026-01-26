@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the Connector type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Connector{}
 
 // Connector struct for Connector
 type Connector struct {
@@ -29,6 +34,8 @@ type Connector struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 }
+
+type _Connector Connector
 
 // NewConnector instantiates a new Connector object
 // This constructor will assign default values to properties that have it defined,
@@ -54,7 +61,7 @@ func NewConnectorWithDefaults() *Connector {
 
 // GetConnectorUuid returns the ConnectorUuid field value if set, zero value otherwise.
 func (o *Connector) GetConnectorUuid() string {
-	if o == nil || o.ConnectorUuid == nil {
+	if o == nil || IsNil(o.ConnectorUuid) {
 		var ret string
 		return ret
 	}
@@ -64,7 +71,7 @@ func (o *Connector) GetConnectorUuid() string {
 // GetConnectorUuidOk returns a tuple with the ConnectorUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Connector) GetConnectorUuidOk() (*string, bool) {
-	if o == nil || o.ConnectorUuid == nil {
+	if o == nil || IsNil(o.ConnectorUuid) {
 		return nil, false
 	}
 	return o.ConnectorUuid, true
@@ -72,7 +79,7 @@ func (o *Connector) GetConnectorUuidOk() (*string, bool) {
 
 // HasConnectorUuid returns a boolean if a field has been set.
 func (o *Connector) HasConnectorUuid() bool {
-	if o != nil && o.ConnectorUuid != nil {
+	if o != nil && !IsNil(o.ConnectorUuid) {
 		return true
 	}
 
@@ -110,7 +117,7 @@ func (o *Connector) SetName(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *Connector) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -120,7 +127,7 @@ func (o *Connector) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Connector) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -128,7 +135,7 @@ func (o *Connector) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *Connector) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -237,29 +244,68 @@ func (o *Connector) SetMetaModelName(v string) {
 }
 
 func (o Connector) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ConnectorUuid != nil {
-		toSerialize["connector_uuid"] = o.ConnectorUuid
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Connector) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ConnectorUuid) {
+		toSerialize["connector_uuid"] = o.ConnectorUuid
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	return toSerialize, nil
+}
+
+func (o *Connector) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConnector := _Connector{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConnector)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Connector(varConnector)
+
+	return err
 }
 
 type NullableConnector struct {

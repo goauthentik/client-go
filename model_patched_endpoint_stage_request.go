@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedEndpointStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedEndpointStageRequest{}
+
 // PatchedEndpointStageRequest EndpointStage Serializer
 type PatchedEndpointStageRequest struct {
 	Name      *string        `json:"name,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedEndpointStageRequestWithDefaults() *PatchedEndpointStageRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedEndpointStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedEndpointStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *PatchedEndpointStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedEndpointStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedEndpointStageRequest) SetName(v string) {
 
 // GetConnector returns the Connector field value if set, zero value otherwise.
 func (o *PatchedEndpointStageRequest) GetConnector() string {
-	if o == nil || o.Connector == nil {
+	if o == nil || IsNil(o.Connector) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedEndpointStageRequest) GetConnector() string {
 // GetConnectorOk returns a tuple with the Connector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointStageRequest) GetConnectorOk() (*string, bool) {
-	if o == nil || o.Connector == nil {
+	if o == nil || IsNil(o.Connector) {
 		return nil, false
 	}
 	return o.Connector, true
@@ -91,7 +94,7 @@ func (o *PatchedEndpointStageRequest) GetConnectorOk() (*string, bool) {
 
 // HasConnector returns a boolean if a field has been set.
 func (o *PatchedEndpointStageRequest) HasConnector() bool {
-	if o != nil && o.Connector != nil {
+	if o != nil && !IsNil(o.Connector) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedEndpointStageRequest) SetConnector(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *PatchedEndpointStageRequest) GetMode() StageModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret StageModeEnum
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PatchedEndpointStageRequest) GetMode() StageModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedEndpointStageRequest) GetModeOk() (*StageModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -123,7 +126,7 @@ func (o *PatchedEndpointStageRequest) GetModeOk() (*StageModeEnum, bool) {
 
 // HasMode returns a boolean if a field has been set.
 func (o *PatchedEndpointStageRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedEndpointStageRequest) SetMode(v StageModeEnum) {
 }
 
 func (o PatchedEndpointStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Connector != nil {
-		toSerialize["connector"] = o.Connector
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedEndpointStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Connector) {
+		toSerialize["connector"] = o.Connector
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedEndpointStageRequest struct {

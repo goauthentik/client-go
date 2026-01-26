@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the EndpointDeviceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EndpointDeviceRequest{}
 
 // EndpointDeviceRequest struct for EndpointDeviceRequest
 type EndpointDeviceRequest struct {
@@ -26,6 +31,8 @@ type EndpointDeviceRequest struct {
 	Expires        NullableTime              `json:"expires,omitempty"`
 	Attributes     map[string]interface{}    `json:"attributes,omitempty"`
 }
+
+type _EndpointDeviceRequest EndpointDeviceRequest
 
 // NewEndpointDeviceRequest instantiates a new EndpointDeviceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -47,7 +54,7 @@ func NewEndpointDeviceRequestWithDefaults() *EndpointDeviceRequest {
 
 // GetDeviceUuid returns the DeviceUuid field value if set, zero value otherwise.
 func (o *EndpointDeviceRequest) GetDeviceUuid() string {
-	if o == nil || o.DeviceUuid == nil {
+	if o == nil || IsNil(o.DeviceUuid) {
 		var ret string
 		return ret
 	}
@@ -57,7 +64,7 @@ func (o *EndpointDeviceRequest) GetDeviceUuid() string {
 // GetDeviceUuidOk returns a tuple with the DeviceUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointDeviceRequest) GetDeviceUuidOk() (*string, bool) {
-	if o == nil || o.DeviceUuid == nil {
+	if o == nil || IsNil(o.DeviceUuid) {
 		return nil, false
 	}
 	return o.DeviceUuid, true
@@ -65,7 +72,7 @@ func (o *EndpointDeviceRequest) GetDeviceUuidOk() (*string, bool) {
 
 // HasDeviceUuid returns a boolean if a field has been set.
 func (o *EndpointDeviceRequest) HasDeviceUuid() bool {
-	if o != nil && o.DeviceUuid != nil {
+	if o != nil && !IsNil(o.DeviceUuid) {
 		return true
 	}
 
@@ -103,7 +110,7 @@ func (o *EndpointDeviceRequest) SetName(v string) {
 
 // GetAccessGroup returns the AccessGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EndpointDeviceRequest) GetAccessGroup() string {
-	if o == nil || o.AccessGroup.Get() == nil {
+	if o == nil || IsNil(o.AccessGroup.Get()) {
 		var ret string
 		return ret
 	}
@@ -146,7 +153,7 @@ func (o *EndpointDeviceRequest) UnsetAccessGroup() {
 
 // GetAccessGroupObj returns the AccessGroupObj field value if set, zero value otherwise.
 func (o *EndpointDeviceRequest) GetAccessGroupObj() DeviceAccessGroupRequest {
-	if o == nil || o.AccessGroupObj == nil {
+	if o == nil || IsNil(o.AccessGroupObj) {
 		var ret DeviceAccessGroupRequest
 		return ret
 	}
@@ -156,7 +163,7 @@ func (o *EndpointDeviceRequest) GetAccessGroupObj() DeviceAccessGroupRequest {
 // GetAccessGroupObjOk returns a tuple with the AccessGroupObj field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointDeviceRequest) GetAccessGroupObjOk() (*DeviceAccessGroupRequest, bool) {
-	if o == nil || o.AccessGroupObj == nil {
+	if o == nil || IsNil(o.AccessGroupObj) {
 		return nil, false
 	}
 	return o.AccessGroupObj, true
@@ -164,7 +171,7 @@ func (o *EndpointDeviceRequest) GetAccessGroupObjOk() (*DeviceAccessGroupRequest
 
 // HasAccessGroupObj returns a boolean if a field has been set.
 func (o *EndpointDeviceRequest) HasAccessGroupObj() bool {
-	if o != nil && o.AccessGroupObj != nil {
+	if o != nil && !IsNil(o.AccessGroupObj) {
 		return true
 	}
 
@@ -178,7 +185,7 @@ func (o *EndpointDeviceRequest) SetAccessGroupObj(v DeviceAccessGroupRequest) {
 
 // GetExpiring returns the Expiring field value if set, zero value otherwise.
 func (o *EndpointDeviceRequest) GetExpiring() bool {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		var ret bool
 		return ret
 	}
@@ -188,7 +195,7 @@ func (o *EndpointDeviceRequest) GetExpiring() bool {
 // GetExpiringOk returns a tuple with the Expiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointDeviceRequest) GetExpiringOk() (*bool, bool) {
-	if o == nil || o.Expiring == nil {
+	if o == nil || IsNil(o.Expiring) {
 		return nil, false
 	}
 	return o.Expiring, true
@@ -196,7 +203,7 @@ func (o *EndpointDeviceRequest) GetExpiringOk() (*bool, bool) {
 
 // HasExpiring returns a boolean if a field has been set.
 func (o *EndpointDeviceRequest) HasExpiring() bool {
-	if o != nil && o.Expiring != nil {
+	if o != nil && !IsNil(o.Expiring) {
 		return true
 	}
 
@@ -210,7 +217,7 @@ func (o *EndpointDeviceRequest) SetExpiring(v bool) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EndpointDeviceRequest) GetExpires() time.Time {
-	if o == nil || o.Expires.Get() == nil {
+	if o == nil || IsNil(o.Expires.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -253,7 +260,7 @@ func (o *EndpointDeviceRequest) UnsetExpires() {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *EndpointDeviceRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -263,15 +270,15 @@ func (o *EndpointDeviceRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointDeviceRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *EndpointDeviceRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -284,29 +291,72 @@ func (o *EndpointDeviceRequest) SetAttributes(v map[string]interface{}) {
 }
 
 func (o EndpointDeviceRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EndpointDeviceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DeviceUuid != nil {
+	if !IsNil(o.DeviceUuid) {
 		toSerialize["device_uuid"] = o.DeviceUuid
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if o.AccessGroup.IsSet() {
 		toSerialize["access_group"] = o.AccessGroup.Get()
 	}
-	if o.AccessGroupObj != nil {
+	if !IsNil(o.AccessGroupObj) {
 		toSerialize["access_group_obj"] = o.AccessGroupObj
 	}
-	if o.Expiring != nil {
+	if !IsNil(o.Expiring) {
 		toSerialize["expiring"] = o.Expiring
 	}
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	if o.Attributes != nil {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *EndpointDeviceRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEndpointDeviceRequest := _EndpointDeviceRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEndpointDeviceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EndpointDeviceRequest(varEndpointDeviceRequest)
+
+	return err
 }
 
 type NullableEndpointDeviceRequest struct {

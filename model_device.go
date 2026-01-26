@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the Device type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Device{}
 
 // Device Serializer for authenticator devices
 type Device struct {
@@ -37,6 +42,8 @@ type Device struct {
 	// Get external Device ID
 	ExternalId NullableString `json:"external_id"`
 }
+
+type _Device Device
 
 // NewDevice instantiates a new Device object
 // This constructor will assign default values to properties that have it defined,
@@ -362,44 +369,76 @@ func (o *Device) SetExternalId(v string) {
 }
 
 func (o Device) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["confirmed"] = o.Confirmed
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
-	if true {
-		toSerialize["last_updated"] = o.LastUpdated
-	}
-	if true {
-		toSerialize["last_used"] = o.LastUsed.Get()
-	}
-	if true {
-		toSerialize["extra_description"] = o.ExtraDescription.Get()
-	}
-	if true {
-		toSerialize["external_id"] = o.ExternalId.Get()
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Device) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
+	toSerialize["confirmed"] = o.Confirmed
+	toSerialize["created"] = o.Created
+	toSerialize["last_updated"] = o.LastUpdated
+	toSerialize["last_used"] = o.LastUsed.Get()
+	toSerialize["extra_description"] = o.ExtraDescription.Get()
+	toSerialize["external_id"] = o.ExternalId.Get()
+	return toSerialize, nil
+}
+
+func (o *Device) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"pk",
+		"name",
+		"type",
+		"confirmed",
+		"created",
+		"last_updated",
+		"last_used",
+		"extra_description",
+		"external_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDevice := _Device{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDevice)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Device(varDevice)
+
+	return err
 }
 
 type NullableDevice struct {

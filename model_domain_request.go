@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the DomainRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainRequest{}
 
 // DomainRequest Domain Serializer
 type DomainRequest struct {
@@ -21,6 +26,8 @@ type DomainRequest struct {
 	IsPrimary *bool  `json:"is_primary,omitempty"`
 	Tenant    string `json:"tenant"`
 }
+
+type _DomainRequest DomainRequest
 
 // NewDomainRequest instantiates a new DomainRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -67,7 +74,7 @@ func (o *DomainRequest) SetDomain(v string) {
 
 // GetIsPrimary returns the IsPrimary field value if set, zero value otherwise.
 func (o *DomainRequest) GetIsPrimary() bool {
-	if o == nil || o.IsPrimary == nil {
+	if o == nil || IsNil(o.IsPrimary) {
 		var ret bool
 		return ret
 	}
@@ -77,7 +84,7 @@ func (o *DomainRequest) GetIsPrimary() bool {
 // GetIsPrimaryOk returns a tuple with the IsPrimary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DomainRequest) GetIsPrimaryOk() (*bool, bool) {
-	if o == nil || o.IsPrimary == nil {
+	if o == nil || IsNil(o.IsPrimary) {
 		return nil, false
 	}
 	return o.IsPrimary, true
@@ -85,7 +92,7 @@ func (o *DomainRequest) GetIsPrimaryOk() (*bool, bool) {
 
 // HasIsPrimary returns a boolean if a field has been set.
 func (o *DomainRequest) HasIsPrimary() bool {
-	if o != nil && o.IsPrimary != nil {
+	if o != nil && !IsNil(o.IsPrimary) {
 		return true
 	}
 
@@ -122,17 +129,59 @@ func (o *DomainRequest) SetTenant(v string) {
 }
 
 func (o DomainRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["domain"] = o.Domain
-	}
-	if o.IsPrimary != nil {
-		toSerialize["is_primary"] = o.IsPrimary
-	}
-	if true {
-		toSerialize["tenant"] = o.Tenant
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DomainRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["domain"] = o.Domain
+	if !IsNil(o.IsPrimary) {
+		toSerialize["is_primary"] = o.IsPrimary
+	}
+	toSerialize["tenant"] = o.Tenant
+	return toSerialize, nil
+}
+
+func (o *DomainRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"domain",
+		"tenant",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDomainRequest := _DomainRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDomainRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DomainRequest(varDomainRequest)
+
+	return err
 }
 
 type NullableDomainRequest struct {

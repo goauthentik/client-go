@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the TenantRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TenantRequest{}
 
 // TenantRequest Tenant Serializer
 type TenantRequest struct {
@@ -21,6 +26,8 @@ type TenantRequest struct {
 	Name       string `json:"name"`
 	Ready      *bool  `json:"ready,omitempty"`
 }
+
+type _TenantRequest TenantRequest
 
 // NewTenantRequest instantiates a new TenantRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -91,7 +98,7 @@ func (o *TenantRequest) SetName(v string) {
 
 // GetReady returns the Ready field value if set, zero value otherwise.
 func (o *TenantRequest) GetReady() bool {
-	if o == nil || o.Ready == nil {
+	if o == nil || IsNil(o.Ready) {
 		var ret bool
 		return ret
 	}
@@ -101,7 +108,7 @@ func (o *TenantRequest) GetReady() bool {
 // GetReadyOk returns a tuple with the Ready field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TenantRequest) GetReadyOk() (*bool, bool) {
-	if o == nil || o.Ready == nil {
+	if o == nil || IsNil(o.Ready) {
 		return nil, false
 	}
 	return o.Ready, true
@@ -109,7 +116,7 @@ func (o *TenantRequest) GetReadyOk() (*bool, bool) {
 
 // HasReady returns a boolean if a field has been set.
 func (o *TenantRequest) HasReady() bool {
-	if o != nil && o.Ready != nil {
+	if o != nil && !IsNil(o.Ready) {
 		return true
 	}
 
@@ -122,17 +129,59 @@ func (o *TenantRequest) SetReady(v bool) {
 }
 
 func (o TenantRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["schema_name"] = o.SchemaName
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Ready != nil {
-		toSerialize["ready"] = o.Ready
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TenantRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["schema_name"] = o.SchemaName
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Ready) {
+		toSerialize["ready"] = o.Ready
+	}
+	return toSerialize, nil
+}
+
+func (o *TenantRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"schema_name",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTenantRequest := _TenantRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTenantRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TenantRequest(varTenantRequest)
+
+	return err
 }
 
 type NullableTenantRequest struct {

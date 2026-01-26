@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedAuthenticatorEndpointGDTCStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedAuthenticatorEndpointGDTCStageRequest{}
+
 // PatchedAuthenticatorEndpointGDTCStageRequest AuthenticatorEndpointGDTCStage Serializer
 type PatchedAuthenticatorEndpointGDTCStageRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -43,7 +46,7 @@ func NewPatchedAuthenticatorEndpointGDTCStageRequestWithDefaults() *PatchedAuthe
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -61,7 +64,7 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetNameOk() (*string, boo
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetName(v string) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetFriendlyName() string {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetFriendlyName() string 
 // GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetFriendlyNameOk() (*string, bool) {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		return nil, false
 	}
 	return o.FriendlyName, true
@@ -136,7 +139,7 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetFriendlyNameOk() (*str
 
 // HasFriendlyName returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) HasFriendlyName() bool {
-	if o != nil && o.FriendlyName != nil {
+	if o != nil && !IsNil(o.FriendlyName) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetFriendlyName(v string)
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentials() map[string]interface{} {
-	if o == nil || o.Credentials == nil {
+	if o == nil || IsNil(o.Credentials) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -160,15 +163,15 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentials() map[stri
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) GetCredentialsOk() (map[string]interface{}, bool) {
-	if o == nil || o.Credentials == nil {
-		return nil, false
+	if o == nil || IsNil(o.Credentials) {
+		return map[string]interface{}{}, false
 	}
 	return o.Credentials, true
 }
 
 // HasCredentials returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorEndpointGDTCStageRequest) HasCredentials() bool {
-	if o != nil && o.Credentials != nil {
+	if o != nil && !IsNil(o.Credentials) {
 		return true
 	}
 
@@ -181,20 +184,28 @@ func (o *PatchedAuthenticatorEndpointGDTCStageRequest) SetCredentials(v map[stri
 }
 
 func (o PatchedAuthenticatorEndpointGDTCStageRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedAuthenticatorEndpointGDTCStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if o.FriendlyName != nil {
+	if !IsNil(o.FriendlyName) {
 		toSerialize["friendly_name"] = o.FriendlyName
 	}
-	if o.Credentials != nil {
+	if !IsNil(o.Credentials) {
 		toSerialize["credentials"] = o.Credentials
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedAuthenticatorEndpointGDTCStageRequest struct {

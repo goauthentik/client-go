@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedSSFProviderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedSSFProviderRequest{}
+
 // PatchedSSFProviderRequest SSFProvider Serializer
 type PatchedSSFProviderRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -43,7 +46,7 @@ func NewPatchedSSFProviderRequestWithDefaults() *PatchedSSFProviderRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedSSFProviderRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *PatchedSSFProviderRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSSFProviderRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -61,7 +64,7 @@ func (o *PatchedSSFProviderRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedSSFProviderRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *PatchedSSFProviderRequest) SetName(v string) {
 
 // GetSigningKey returns the SigningKey field value if set, zero value otherwise.
 func (o *PatchedSSFProviderRequest) GetSigningKey() string {
-	if o == nil || o.SigningKey == nil {
+	if o == nil || IsNil(o.SigningKey) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PatchedSSFProviderRequest) GetSigningKey() string {
 // GetSigningKeyOk returns a tuple with the SigningKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSSFProviderRequest) GetSigningKeyOk() (*string, bool) {
-	if o == nil || o.SigningKey == nil {
+	if o == nil || IsNil(o.SigningKey) {
 		return nil, false
 	}
 	return o.SigningKey, true
@@ -93,7 +96,7 @@ func (o *PatchedSSFProviderRequest) GetSigningKeyOk() (*string, bool) {
 
 // HasSigningKey returns a boolean if a field has been set.
 func (o *PatchedSSFProviderRequest) HasSigningKey() bool {
-	if o != nil && o.SigningKey != nil {
+	if o != nil && !IsNil(o.SigningKey) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *PatchedSSFProviderRequest) SetSigningKey(v string) {
 
 // GetOidcAuthProviders returns the OidcAuthProviders field value if set, zero value otherwise.
 func (o *PatchedSSFProviderRequest) GetOidcAuthProviders() []int32 {
-	if o == nil || o.OidcAuthProviders == nil {
+	if o == nil || IsNil(o.OidcAuthProviders) {
 		var ret []int32
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *PatchedSSFProviderRequest) GetOidcAuthProviders() []int32 {
 // GetOidcAuthProvidersOk returns a tuple with the OidcAuthProviders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSSFProviderRequest) GetOidcAuthProvidersOk() ([]int32, bool) {
-	if o == nil || o.OidcAuthProviders == nil {
+	if o == nil || IsNil(o.OidcAuthProviders) {
 		return nil, false
 	}
 	return o.OidcAuthProviders, true
@@ -125,7 +128,7 @@ func (o *PatchedSSFProviderRequest) GetOidcAuthProvidersOk() ([]int32, bool) {
 
 // HasOidcAuthProviders returns a boolean if a field has been set.
 func (o *PatchedSSFProviderRequest) HasOidcAuthProviders() bool {
-	if o != nil && o.OidcAuthProviders != nil {
+	if o != nil && !IsNil(o.OidcAuthProviders) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *PatchedSSFProviderRequest) SetOidcAuthProviders(v []int32) {
 
 // GetEventRetention returns the EventRetention field value if set, zero value otherwise.
 func (o *PatchedSSFProviderRequest) GetEventRetention() string {
-	if o == nil || o.EventRetention == nil {
+	if o == nil || IsNil(o.EventRetention) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *PatchedSSFProviderRequest) GetEventRetention() string {
 // GetEventRetentionOk returns a tuple with the EventRetention field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSSFProviderRequest) GetEventRetentionOk() (*string, bool) {
-	if o == nil || o.EventRetention == nil {
+	if o == nil || IsNil(o.EventRetention) {
 		return nil, false
 	}
 	return o.EventRetention, true
@@ -157,7 +160,7 @@ func (o *PatchedSSFProviderRequest) GetEventRetentionOk() (*string, bool) {
 
 // HasEventRetention returns a boolean if a field has been set.
 func (o *PatchedSSFProviderRequest) HasEventRetention() bool {
-	if o != nil && o.EventRetention != nil {
+	if o != nil && !IsNil(o.EventRetention) {
 		return true
 	}
 
@@ -170,20 +173,28 @@ func (o *PatchedSSFProviderRequest) SetEventRetention(v string) {
 }
 
 func (o PatchedSSFProviderRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.SigningKey != nil {
-		toSerialize["signing_key"] = o.SigningKey
-	}
-	if o.OidcAuthProviders != nil {
-		toSerialize["oidc_auth_providers"] = o.OidcAuthProviders
-	}
-	if o.EventRetention != nil {
-		toSerialize["event_retention"] = o.EventRetention
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedSSFProviderRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.SigningKey) {
+		toSerialize["signing_key"] = o.SigningKey
+	}
+	if !IsNil(o.OidcAuthProviders) {
+		toSerialize["oidc_auth_providers"] = o.OidcAuthProviders
+	}
+	if !IsNil(o.EventRetention) {
+		toSerialize["event_retention"] = o.EventRetention
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedSSFProviderRequest struct {

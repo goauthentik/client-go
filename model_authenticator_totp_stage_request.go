@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatorTOTPStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorTOTPStageRequest{}
 
 // AuthenticatorTOTPStageRequest AuthenticatorTOTPStage Serializer
 type AuthenticatorTOTPStageRequest struct {
@@ -23,6 +28,8 @@ type AuthenticatorTOTPStageRequest struct {
 	FriendlyName  *string        `json:"friendly_name,omitempty"`
 	Digits        DigitsEnum     `json:"digits"`
 }
+
+type _AuthenticatorTOTPStageRequest AuthenticatorTOTPStageRequest
 
 // NewAuthenticatorTOTPStageRequest instantiates a new AuthenticatorTOTPStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -69,7 +76,7 @@ func (o *AuthenticatorTOTPStageRequest) SetName(v string) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorTOTPStageRequest) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -112,7 +119,7 @@ func (o *AuthenticatorTOTPStageRequest) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise.
 func (o *AuthenticatorTOTPStageRequest) GetFriendlyName() string {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		var ret string
 		return ret
 	}
@@ -122,7 +129,7 @@ func (o *AuthenticatorTOTPStageRequest) GetFriendlyName() string {
 // GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorTOTPStageRequest) GetFriendlyNameOk() (*string, bool) {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		return nil, false
 	}
 	return o.FriendlyName, true
@@ -130,7 +137,7 @@ func (o *AuthenticatorTOTPStageRequest) GetFriendlyNameOk() (*string, bool) {
 
 // HasFriendlyName returns a boolean if a field has been set.
 func (o *AuthenticatorTOTPStageRequest) HasFriendlyName() bool {
-	if o != nil && o.FriendlyName != nil {
+	if o != nil && !IsNil(o.FriendlyName) {
 		return true
 	}
 
@@ -167,20 +174,62 @@ func (o *AuthenticatorTOTPStageRequest) SetDigits(v DigitsEnum) {
 }
 
 func (o AuthenticatorTOTPStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorTOTPStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if o.FriendlyName != nil {
+	if !IsNil(o.FriendlyName) {
 		toSerialize["friendly_name"] = o.FriendlyName
 	}
-	if true {
-		toSerialize["digits"] = o.Digits
+	toSerialize["digits"] = o.Digits
+	return toSerialize, nil
+}
+
+func (o *AuthenticatorTOTPStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"digits",
 	}
-	return json.Marshal(toSerialize)
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatorTOTPStageRequest := _AuthenticatorTOTPStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatorTOTPStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorTOTPStageRequest(varAuthenticatorTOTPStageRequest)
+
+	return err
 }
 
 type NullableAuthenticatorTOTPStageRequest struct {

@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the Stage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Stage{}
 
 // Stage Stage Serializer
 type Stage struct {
@@ -29,6 +34,8 @@ type Stage struct {
 	MetaModelName string    `json:"meta_model_name"`
 	FlowSet       []FlowSet `json:"flow_set"`
 }
+
+type _Stage Stage
 
 // NewStage instantiates a new Stage object
 // This constructor will assign default values to properties that have it defined,
@@ -223,29 +230,66 @@ func (o *Stage) SetFlowSet(v []FlowSet) {
 }
 
 func (o Stage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["flow_set"] = o.FlowSet
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Stage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize["flow_set"] = o.FlowSet
+	return toSerialize, nil
+}
+
+func (o *Stage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"flow_set",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStage := _Stage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Stage(varStage)
+
+	return err
 }
 
 type NullableStage struct {

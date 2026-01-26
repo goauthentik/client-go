@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatorEmailChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorEmailChallenge{}
 
 // AuthenticatorEmailChallenge Authenticator Email Setup challenge
 type AuthenticatorEmailChallenge struct {
@@ -25,6 +30,8 @@ type AuthenticatorEmailChallenge struct {
 	Email             NullableString            `json:"email,omitempty"`
 	EmailRequired     *bool                     `json:"email_required,omitempty"`
 }
+
+type _AuthenticatorEmailChallenge AuthenticatorEmailChallenge
 
 // NewAuthenticatorEmailChallenge instantiates a new AuthenticatorEmailChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -55,7 +62,7 @@ func NewAuthenticatorEmailChallengeWithDefaults() *AuthenticatorEmailChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *AuthenticatorEmailChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -65,7 +72,7 @@ func (o *AuthenticatorEmailChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorEmailChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -73,7 +80,7 @@ func (o *AuthenticatorEmailChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *AuthenticatorEmailChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -87,7 +94,7 @@ func (o *AuthenticatorEmailChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorEmailChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -97,7 +104,7 @@ func (o *AuthenticatorEmailChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorEmailChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -105,7 +112,7 @@ func (o *AuthenticatorEmailChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AuthenticatorEmailChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -119,7 +126,7 @@ func (o *AuthenticatorEmailChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *AuthenticatorEmailChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -129,7 +136,7 @@ func (o *AuthenticatorEmailChallenge) GetResponseErrors() map[string][]ErrorDeta
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorEmailChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -137,7 +144,7 @@ func (o *AuthenticatorEmailChallenge) GetResponseErrorsOk() (*map[string][]Error
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *AuthenticatorEmailChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -199,7 +206,7 @@ func (o *AuthenticatorEmailChallenge) SetPendingUserAvatar(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorEmailChallenge) GetEmail() string {
-	if o == nil || o.Email.Get() == nil {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
@@ -242,7 +249,7 @@ func (o *AuthenticatorEmailChallenge) UnsetEmail() {
 
 // GetEmailRequired returns the EmailRequired field value if set, zero value otherwise.
 func (o *AuthenticatorEmailChallenge) GetEmailRequired() bool {
-	if o == nil || o.EmailRequired == nil {
+	if o == nil || IsNil(o.EmailRequired) {
 		var ret bool
 		return ret
 	}
@@ -252,7 +259,7 @@ func (o *AuthenticatorEmailChallenge) GetEmailRequired() bool {
 // GetEmailRequiredOk returns a tuple with the EmailRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorEmailChallenge) GetEmailRequiredOk() (*bool, bool) {
-	if o == nil || o.EmailRequired == nil {
+	if o == nil || IsNil(o.EmailRequired) {
 		return nil, false
 	}
 	return o.EmailRequired, true
@@ -260,7 +267,7 @@ func (o *AuthenticatorEmailChallenge) GetEmailRequiredOk() (*bool, bool) {
 
 // HasEmailRequired returns a boolean if a field has been set.
 func (o *AuthenticatorEmailChallenge) HasEmailRequired() bool {
-	if o != nil && o.EmailRequired != nil {
+	if o != nil && !IsNil(o.EmailRequired) {
 		return true
 	}
 
@@ -273,29 +280,71 @@ func (o *AuthenticatorEmailChallenge) SetEmailRequired(v bool) {
 }
 
 func (o AuthenticatorEmailChallenge) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorEmailChallenge) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
+	if !IsNil(o.FlowInfo) {
 		toSerialize["flow_info"] = o.FlowInfo
 	}
-	if o.Component != nil {
+	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
-	if o.ResponseErrors != nil {
+	if !IsNil(o.ResponseErrors) {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
-	if true {
-		toSerialize["pending_user"] = o.PendingUser
-	}
-	if true {
-		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
-	}
+	toSerialize["pending_user"] = o.PendingUser
+	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-	if o.EmailRequired != nil {
+	if !IsNil(o.EmailRequired) {
 		toSerialize["email_required"] = o.EmailRequired
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *AuthenticatorEmailChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pending_user",
+		"pending_user_avatar",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatorEmailChallenge := _AuthenticatorEmailChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatorEmailChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorEmailChallenge(varAuthenticatorEmailChallenge)
+
+	return err
 }
 
 type NullableAuthenticatorEmailChallenge struct {

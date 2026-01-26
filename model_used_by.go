@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the UsedBy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UsedBy{}
 
 // UsedBy A list of all objects referencing the queried object
 type UsedBy struct {
@@ -23,6 +28,8 @@ type UsedBy struct {
 	Name      string           `json:"name"`
 	Action    UsedByActionEnum `json:"action"`
 }
+
+type _UsedBy UsedBy
 
 // NewUsedBy instantiates a new UsedBy object
 // This constructor will assign default values to properties that have it defined,
@@ -167,23 +174,62 @@ func (o *UsedBy) SetAction(v UsedByActionEnum) {
 }
 
 func (o UsedBy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["app"] = o.App
-	}
-	if true {
-		toSerialize["model_name"] = o.ModelName
-	}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["action"] = o.Action
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UsedBy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["app"] = o.App
+	toSerialize["model_name"] = o.ModelName
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["action"] = o.Action
+	return toSerialize, nil
+}
+
+func (o *UsedBy) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"app",
+		"model_name",
+		"pk",
+		"name",
+		"action",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUsedBy := _UsedBy{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUsedBy)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UsedBy(varUsedBy)
+
+	return err
 }
 
 type NullableUsedBy struct {

@@ -15,12 +15,15 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedTelegramSourceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedTelegramSourceRequest{}
+
 // PatchedTelegramSourceRequest Source Serializer
 type PatchedTelegramSourceRequest struct {
 	// Source's display Name.
 	Name *string `json:"name,omitempty"`
 	// Internal source name, used in URLs.
-	Slug    *string `json:"slug,omitempty"`
+	Slug    *string `json:"slug,omitempty" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool   `json:"enabled,omitempty"`
 	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
 	Promoted *bool `json:"promoted,omitempty"`
@@ -64,7 +67,7 @@ func NewPatchedTelegramSourceRequestWithDefaults() *PatchedTelegramSourceRequest
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -74,7 +77,7 @@ func (o *PatchedTelegramSourceRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -82,7 +85,7 @@ func (o *PatchedTelegramSourceRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -96,7 +99,7 @@ func (o *PatchedTelegramSourceRequest) SetName(v string) {
 
 // GetSlug returns the Slug field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetSlug() string {
-	if o == nil || o.Slug == nil {
+	if o == nil || IsNil(o.Slug) {
 		var ret string
 		return ret
 	}
@@ -106,7 +109,7 @@ func (o *PatchedTelegramSourceRequest) GetSlug() string {
 // GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetSlugOk() (*string, bool) {
-	if o == nil || o.Slug == nil {
+	if o == nil || IsNil(o.Slug) {
 		return nil, false
 	}
 	return o.Slug, true
@@ -114,7 +117,7 @@ func (o *PatchedTelegramSourceRequest) GetSlugOk() (*string, bool) {
 
 // HasSlug returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasSlug() bool {
-	if o != nil && o.Slug != nil {
+	if o != nil && !IsNil(o.Slug) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *PatchedTelegramSourceRequest) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *PatchedTelegramSourceRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -146,7 +149,7 @@ func (o *PatchedTelegramSourceRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *PatchedTelegramSourceRequest) SetEnabled(v bool) {
 
 // GetPromoted returns the Promoted field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetPromoted() bool {
-	if o == nil || o.Promoted == nil {
+	if o == nil || IsNil(o.Promoted) {
 		var ret bool
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *PatchedTelegramSourceRequest) GetPromoted() bool {
 // GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetPromotedOk() (*bool, bool) {
-	if o == nil || o.Promoted == nil {
+	if o == nil || IsNil(o.Promoted) {
 		return nil, false
 	}
 	return o.Promoted, true
@@ -178,7 +181,7 @@ func (o *PatchedTelegramSourceRequest) GetPromotedOk() (*bool, bool) {
 
 // HasPromoted returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasPromoted() bool {
-	if o != nil && o.Promoted != nil {
+	if o != nil && !IsNil(o.Promoted) {
 		return true
 	}
 
@@ -192,7 +195,7 @@ func (o *PatchedTelegramSourceRequest) SetPromoted(v bool) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedTelegramSourceRequest) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -235,7 +238,7 @@ func (o *PatchedTelegramSourceRequest) UnsetAuthenticationFlow() {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedTelegramSourceRequest) GetEnrollmentFlow() string {
-	if o == nil || o.EnrollmentFlow.Get() == nil {
+	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -278,7 +281,7 @@ func (o *PatchedTelegramSourceRequest) UnsetEnrollmentFlow() {
 
 // GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetUserPropertyMappings() []string {
-	if o == nil || o.UserPropertyMappings == nil {
+	if o == nil || IsNil(o.UserPropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -288,7 +291,7 @@ func (o *PatchedTelegramSourceRequest) GetUserPropertyMappings() []string {
 // GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetUserPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.UserPropertyMappings == nil {
+	if o == nil || IsNil(o.UserPropertyMappings) {
 		return nil, false
 	}
 	return o.UserPropertyMappings, true
@@ -296,7 +299,7 @@ func (o *PatchedTelegramSourceRequest) GetUserPropertyMappingsOk() ([]string, bo
 
 // HasUserPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasUserPropertyMappings() bool {
-	if o != nil && o.UserPropertyMappings != nil {
+	if o != nil && !IsNil(o.UserPropertyMappings) {
 		return true
 	}
 
@@ -310,7 +313,7 @@ func (o *PatchedTelegramSourceRequest) SetUserPropertyMappings(v []string) {
 
 // GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetGroupPropertyMappings() []string {
-	if o == nil || o.GroupPropertyMappings == nil {
+	if o == nil || IsNil(o.GroupPropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -320,7 +323,7 @@ func (o *PatchedTelegramSourceRequest) GetGroupPropertyMappings() []string {
 // GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetGroupPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.GroupPropertyMappings == nil {
+	if o == nil || IsNil(o.GroupPropertyMappings) {
 		return nil, false
 	}
 	return o.GroupPropertyMappings, true
@@ -328,7 +331,7 @@ func (o *PatchedTelegramSourceRequest) GetGroupPropertyMappingsOk() ([]string, b
 
 // HasGroupPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasGroupPropertyMappings() bool {
-	if o != nil && o.GroupPropertyMappings != nil {
+	if o != nil && !IsNil(o.GroupPropertyMappings) {
 		return true
 	}
 
@@ -342,7 +345,7 @@ func (o *PatchedTelegramSourceRequest) SetGroupPropertyMappings(v []string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -352,7 +355,7 @@ func (o *PatchedTelegramSourceRequest) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -360,7 +363,7 @@ func (o *PatchedTelegramSourceRequest) GetPolicyEngineModeOk() (*PolicyEngineMod
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasPolicyEngineMode() bool {
-	if o != nil && o.PolicyEngineMode != nil {
+	if o != nil && !IsNil(o.PolicyEngineMode) {
 		return true
 	}
 
@@ -374,7 +377,7 @@ func (o *PatchedTelegramSourceRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		var ret UserMatchingModeEnum
 		return ret
 	}
@@ -384,7 +387,7 @@ func (o *PatchedTelegramSourceRequest) GetUserMatchingMode() UserMatchingModeEnu
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		return nil, false
 	}
 	return o.UserMatchingMode, true
@@ -392,7 +395,7 @@ func (o *PatchedTelegramSourceRequest) GetUserMatchingModeOk() (*UserMatchingMod
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
+	if o != nil && !IsNil(o.UserMatchingMode) {
 		return true
 	}
 
@@ -406,7 +409,7 @@ func (o *PatchedTelegramSourceRequest) SetUserMatchingMode(v UserMatchingModeEnu
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetUserPathTemplate() string {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		var ret string
 		return ret
 	}
@@ -416,7 +419,7 @@ func (o *PatchedTelegramSourceRequest) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -424,7 +427,7 @@ func (o *PatchedTelegramSourceRequest) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasUserPathTemplate() bool {
-	if o != nil && o.UserPathTemplate != nil {
+	if o != nil && !IsNil(o.UserPathTemplate) {
 		return true
 	}
 
@@ -438,7 +441,7 @@ func (o *PatchedTelegramSourceRequest) SetUserPathTemplate(v string) {
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetIcon() string {
-	if o == nil || o.Icon == nil {
+	if o == nil || IsNil(o.Icon) {
 		var ret string
 		return ret
 	}
@@ -448,7 +451,7 @@ func (o *PatchedTelegramSourceRequest) GetIcon() string {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetIconOk() (*string, bool) {
-	if o == nil || o.Icon == nil {
+	if o == nil || IsNil(o.Icon) {
 		return nil, false
 	}
 	return o.Icon, true
@@ -456,7 +459,7 @@ func (o *PatchedTelegramSourceRequest) GetIconOk() (*string, bool) {
 
 // HasIcon returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasIcon() bool {
-	if o != nil && o.Icon != nil {
+	if o != nil && !IsNil(o.Icon) {
 		return true
 	}
 
@@ -470,7 +473,7 @@ func (o *PatchedTelegramSourceRequest) SetIcon(v string) {
 
 // GetBotUsername returns the BotUsername field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetBotUsername() string {
-	if o == nil || o.BotUsername == nil {
+	if o == nil || IsNil(o.BotUsername) {
 		var ret string
 		return ret
 	}
@@ -480,7 +483,7 @@ func (o *PatchedTelegramSourceRequest) GetBotUsername() string {
 // GetBotUsernameOk returns a tuple with the BotUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetBotUsernameOk() (*string, bool) {
-	if o == nil || o.BotUsername == nil {
+	if o == nil || IsNil(o.BotUsername) {
 		return nil, false
 	}
 	return o.BotUsername, true
@@ -488,7 +491,7 @@ func (o *PatchedTelegramSourceRequest) GetBotUsernameOk() (*string, bool) {
 
 // HasBotUsername returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasBotUsername() bool {
-	if o != nil && o.BotUsername != nil {
+	if o != nil && !IsNil(o.BotUsername) {
 		return true
 	}
 
@@ -502,7 +505,7 @@ func (o *PatchedTelegramSourceRequest) SetBotUsername(v string) {
 
 // GetBotToken returns the BotToken field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetBotToken() string {
-	if o == nil || o.BotToken == nil {
+	if o == nil || IsNil(o.BotToken) {
 		var ret string
 		return ret
 	}
@@ -512,7 +515,7 @@ func (o *PatchedTelegramSourceRequest) GetBotToken() string {
 // GetBotTokenOk returns a tuple with the BotToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetBotTokenOk() (*string, bool) {
-	if o == nil || o.BotToken == nil {
+	if o == nil || IsNil(o.BotToken) {
 		return nil, false
 	}
 	return o.BotToken, true
@@ -520,7 +523,7 @@ func (o *PatchedTelegramSourceRequest) GetBotTokenOk() (*string, bool) {
 
 // HasBotToken returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasBotToken() bool {
-	if o != nil && o.BotToken != nil {
+	if o != nil && !IsNil(o.BotToken) {
 		return true
 	}
 
@@ -534,7 +537,7 @@ func (o *PatchedTelegramSourceRequest) SetBotToken(v string) {
 
 // GetRequestMessageAccess returns the RequestMessageAccess field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetRequestMessageAccess() bool {
-	if o == nil || o.RequestMessageAccess == nil {
+	if o == nil || IsNil(o.RequestMessageAccess) {
 		var ret bool
 		return ret
 	}
@@ -544,7 +547,7 @@ func (o *PatchedTelegramSourceRequest) GetRequestMessageAccess() bool {
 // GetRequestMessageAccessOk returns a tuple with the RequestMessageAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetRequestMessageAccessOk() (*bool, bool) {
-	if o == nil || o.RequestMessageAccess == nil {
+	if o == nil || IsNil(o.RequestMessageAccess) {
 		return nil, false
 	}
 	return o.RequestMessageAccess, true
@@ -552,7 +555,7 @@ func (o *PatchedTelegramSourceRequest) GetRequestMessageAccessOk() (*bool, bool)
 
 // HasRequestMessageAccess returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasRequestMessageAccess() bool {
-	if o != nil && o.RequestMessageAccess != nil {
+	if o != nil && !IsNil(o.RequestMessageAccess) {
 		return true
 	}
 
@@ -566,7 +569,7 @@ func (o *PatchedTelegramSourceRequest) SetRequestMessageAccess(v bool) {
 
 // GetPreAuthenticationFlow returns the PreAuthenticationFlow field value if set, zero value otherwise.
 func (o *PatchedTelegramSourceRequest) GetPreAuthenticationFlow() string {
-	if o == nil || o.PreAuthenticationFlow == nil {
+	if o == nil || IsNil(o.PreAuthenticationFlow) {
 		var ret string
 		return ret
 	}
@@ -576,7 +579,7 @@ func (o *PatchedTelegramSourceRequest) GetPreAuthenticationFlow() string {
 // GetPreAuthenticationFlowOk returns a tuple with the PreAuthenticationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedTelegramSourceRequest) GetPreAuthenticationFlowOk() (*string, bool) {
-	if o == nil || o.PreAuthenticationFlow == nil {
+	if o == nil || IsNil(o.PreAuthenticationFlow) {
 		return nil, false
 	}
 	return o.PreAuthenticationFlow, true
@@ -584,7 +587,7 @@ func (o *PatchedTelegramSourceRequest) GetPreAuthenticationFlowOk() (*string, bo
 
 // HasPreAuthenticationFlow returns a boolean if a field has been set.
 func (o *PatchedTelegramSourceRequest) HasPreAuthenticationFlow() bool {
-	if o != nil && o.PreAuthenticationFlow != nil {
+	if o != nil && !IsNil(o.PreAuthenticationFlow) {
 		return true
 	}
 
@@ -597,17 +600,25 @@ func (o *PatchedTelegramSourceRequest) SetPreAuthenticationFlow(v string) {
 }
 
 func (o PatchedTelegramSourceRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedTelegramSourceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Slug != nil {
+	if !IsNil(o.Slug) {
 		toSerialize["slug"] = o.Slug
 	}
-	if o.Enabled != nil {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Promoted != nil {
+	if !IsNil(o.Promoted) {
 		toSerialize["promoted"] = o.Promoted
 	}
 	if o.AuthenticationFlow.IsSet() {
@@ -616,37 +627,37 @@ func (o PatchedTelegramSourceRequest) MarshalJSON() ([]byte, error) {
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
 	}
-	if o.UserPropertyMappings != nil {
+	if !IsNil(o.UserPropertyMappings) {
 		toSerialize["user_property_mappings"] = o.UserPropertyMappings
 	}
-	if o.GroupPropertyMappings != nil {
+	if !IsNil(o.GroupPropertyMappings) {
 		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
 	}
-	if o.PolicyEngineMode != nil {
+	if !IsNil(o.PolicyEngineMode) {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode != nil {
+	if !IsNil(o.UserMatchingMode) {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
-	if o.UserPathTemplate != nil {
+	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if o.Icon != nil {
+	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	if o.BotUsername != nil {
+	if !IsNil(o.BotUsername) {
 		toSerialize["bot_username"] = o.BotUsername
 	}
-	if o.BotToken != nil {
+	if !IsNil(o.BotToken) {
 		toSerialize["bot_token"] = o.BotToken
 	}
-	if o.RequestMessageAccess != nil {
+	if !IsNil(o.RequestMessageAccess) {
 		toSerialize["request_message_access"] = o.RequestMessageAccess
 	}
-	if o.PreAuthenticationFlow != nil {
+	if !IsNil(o.PreAuthenticationFlow) {
 		toSerialize["pre_authentication_flow"] = o.PreAuthenticationFlow
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedTelegramSourceRequest struct {

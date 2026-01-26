@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the LicenseForecast type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseForecast{}
 
 // LicenseForecast Serializer for license forecast
 type LicenseForecast struct {
@@ -22,6 +27,8 @@ type LicenseForecast struct {
 	ForecastedInternalUsers int32 `json:"forecasted_internal_users"`
 	ForecastedExternalUsers int32 `json:"forecasted_external_users"`
 }
+
+type _LicenseForecast LicenseForecast
 
 // NewLicenseForecast instantiates a new LicenseForecast object
 // This constructor will assign default values to properties that have it defined,
@@ -141,20 +148,60 @@ func (o *LicenseForecast) SetForecastedExternalUsers(v int32) {
 }
 
 func (o LicenseForecast) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["internal_users"] = o.InternalUsers
-	}
-	if true {
-		toSerialize["external_users"] = o.ExternalUsers
-	}
-	if true {
-		toSerialize["forecasted_internal_users"] = o.ForecastedInternalUsers
-	}
-	if true {
-		toSerialize["forecasted_external_users"] = o.ForecastedExternalUsers
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseForecast) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["internal_users"] = o.InternalUsers
+	toSerialize["external_users"] = o.ExternalUsers
+	toSerialize["forecasted_internal_users"] = o.ForecastedInternalUsers
+	toSerialize["forecasted_external_users"] = o.ForecastedExternalUsers
+	return toSerialize, nil
+}
+
+func (o *LicenseForecast) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"internal_users",
+		"external_users",
+		"forecasted_internal_users",
+		"forecasted_external_users",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLicenseForecast := _LicenseForecast{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLicenseForecast)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LicenseForecast(varLicenseForecast)
+
+	return err
 }
 
 type NullableLicenseForecast struct {

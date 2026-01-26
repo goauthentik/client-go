@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the FleetConnector type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FleetConnector{}
 
 // FleetConnector FleetConnector Serializer
 type FleetConnector struct {
@@ -34,6 +39,8 @@ type FleetConnector struct {
 	MapUsers            *bool          `json:"map_users,omitempty"`
 	MapTeamsAccessGroup *bool          `json:"map_teams_access_group,omitempty"`
 }
+
+type _FleetConnector FleetConnector
 
 // NewFleetConnector instantiates a new FleetConnector object
 // This constructor will assign default values to properties that have it defined,
@@ -60,7 +67,7 @@ func NewFleetConnectorWithDefaults() *FleetConnector {
 
 // GetConnectorUuid returns the ConnectorUuid field value if set, zero value otherwise.
 func (o *FleetConnector) GetConnectorUuid() string {
-	if o == nil || o.ConnectorUuid == nil {
+	if o == nil || IsNil(o.ConnectorUuid) {
 		var ret string
 		return ret
 	}
@@ -70,7 +77,7 @@ func (o *FleetConnector) GetConnectorUuid() string {
 // GetConnectorUuidOk returns a tuple with the ConnectorUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FleetConnector) GetConnectorUuidOk() (*string, bool) {
-	if o == nil || o.ConnectorUuid == nil {
+	if o == nil || IsNil(o.ConnectorUuid) {
 		return nil, false
 	}
 	return o.ConnectorUuid, true
@@ -78,7 +85,7 @@ func (o *FleetConnector) GetConnectorUuidOk() (*string, bool) {
 
 // HasConnectorUuid returns a boolean if a field has been set.
 func (o *FleetConnector) HasConnectorUuid() bool {
-	if o != nil && o.ConnectorUuid != nil {
+	if o != nil && !IsNil(o.ConnectorUuid) {
 		return true
 	}
 
@@ -116,7 +123,7 @@ func (o *FleetConnector) SetName(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *FleetConnector) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -126,7 +133,7 @@ func (o *FleetConnector) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FleetConnector) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -134,7 +141,7 @@ func (o *FleetConnector) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *FleetConnector) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -268,7 +275,7 @@ func (o *FleetConnector) SetUrl(v string) {
 
 // GetHeadersMapping returns the HeadersMapping field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FleetConnector) GetHeadersMapping() string {
-	if o == nil || o.HeadersMapping.Get() == nil {
+	if o == nil || IsNil(o.HeadersMapping.Get()) {
 		var ret string
 		return ret
 	}
@@ -311,7 +318,7 @@ func (o *FleetConnector) UnsetHeadersMapping() {
 
 // GetMapUsers returns the MapUsers field value if set, zero value otherwise.
 func (o *FleetConnector) GetMapUsers() bool {
-	if o == nil || o.MapUsers == nil {
+	if o == nil || IsNil(o.MapUsers) {
 		var ret bool
 		return ret
 	}
@@ -321,7 +328,7 @@ func (o *FleetConnector) GetMapUsers() bool {
 // GetMapUsersOk returns a tuple with the MapUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FleetConnector) GetMapUsersOk() (*bool, bool) {
-	if o == nil || o.MapUsers == nil {
+	if o == nil || IsNil(o.MapUsers) {
 		return nil, false
 	}
 	return o.MapUsers, true
@@ -329,7 +336,7 @@ func (o *FleetConnector) GetMapUsersOk() (*bool, bool) {
 
 // HasMapUsers returns a boolean if a field has been set.
 func (o *FleetConnector) HasMapUsers() bool {
-	if o != nil && o.MapUsers != nil {
+	if o != nil && !IsNil(o.MapUsers) {
 		return true
 	}
 
@@ -343,7 +350,7 @@ func (o *FleetConnector) SetMapUsers(v bool) {
 
 // GetMapTeamsAccessGroup returns the MapTeamsAccessGroup field value if set, zero value otherwise.
 func (o *FleetConnector) GetMapTeamsAccessGroup() bool {
-	if o == nil || o.MapTeamsAccessGroup == nil {
+	if o == nil || IsNil(o.MapTeamsAccessGroup) {
 		var ret bool
 		return ret
 	}
@@ -353,7 +360,7 @@ func (o *FleetConnector) GetMapTeamsAccessGroup() bool {
 // GetMapTeamsAccessGroupOk returns a tuple with the MapTeamsAccessGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FleetConnector) GetMapTeamsAccessGroupOk() (*bool, bool) {
-	if o == nil || o.MapTeamsAccessGroup == nil {
+	if o == nil || IsNil(o.MapTeamsAccessGroup) {
 		return nil, false
 	}
 	return o.MapTeamsAccessGroup, true
@@ -361,7 +368,7 @@ func (o *FleetConnector) GetMapTeamsAccessGroupOk() (*bool, bool) {
 
 // HasMapTeamsAccessGroup returns a boolean if a field has been set.
 func (o *FleetConnector) HasMapTeamsAccessGroup() bool {
-	if o != nil && o.MapTeamsAccessGroup != nil {
+	if o != nil && !IsNil(o.MapTeamsAccessGroup) {
 		return true
 	}
 
@@ -374,41 +381,79 @@ func (o *FleetConnector) SetMapTeamsAccessGroup(v bool) {
 }
 
 func (o FleetConnector) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FleetConnector) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ConnectorUuid != nil {
+	if !IsNil(o.ConnectorUuid) {
 		toSerialize["connector_uuid"] = o.ConnectorUuid
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Enabled != nil {
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["url"] = o.Url
-	}
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize["url"] = o.Url
 	if o.HeadersMapping.IsSet() {
 		toSerialize["headers_mapping"] = o.HeadersMapping.Get()
 	}
-	if o.MapUsers != nil {
+	if !IsNil(o.MapUsers) {
 		toSerialize["map_users"] = o.MapUsers
 	}
-	if o.MapTeamsAccessGroup != nil {
+	if !IsNil(o.MapTeamsAccessGroup) {
 		toSerialize["map_teams_access_group"] = o.MapTeamsAccessGroup
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *FleetConnector) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"url",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFleetConnector := _FleetConnector{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varFleetConnector)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FleetConnector(varFleetConnector)
+
+	return err
 }
 
 type NullableFleetConnector struct {

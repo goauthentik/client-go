@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the ContentType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ContentType{}
 
 // ContentType struct for ContentType
 type ContentType struct {
@@ -22,6 +27,8 @@ type ContentType struct {
 	Model             string `json:"model"`
 	VerboseNamePlural string `json:"verbose_name_plural"`
 }
+
+type _ContentType ContentType
 
 // NewContentType instantiates a new ContentType object
 // This constructor will assign default values to properties that have it defined,
@@ -141,20 +148,60 @@ func (o *ContentType) SetVerboseNamePlural(v string) {
 }
 
 func (o ContentType) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["app_label"] = o.AppLabel
-	}
-	if true {
-		toSerialize["model"] = o.Model
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ContentType) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["app_label"] = o.AppLabel
+	toSerialize["model"] = o.Model
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	return toSerialize, nil
+}
+
+func (o *ContentType) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"app_label",
+		"model",
+		"verbose_name_plural",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varContentType := _ContentType{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varContentType)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ContentType(varContentType)
+
+	return err
 }
 
 type NullableContentType struct {

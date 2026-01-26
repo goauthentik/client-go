@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the UserSAMLSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserSAMLSourceConnectionRequest{}
 
 // UserSAMLSourceConnectionRequest User source connection
 type UserSAMLSourceConnectionRequest struct {
@@ -21,6 +26,8 @@ type UserSAMLSourceConnectionRequest struct {
 	Source     string `json:"source"`
 	Identifier string `json:"identifier"`
 }
+
+type _UserSAMLSourceConnectionRequest UserSAMLSourceConnectionRequest
 
 // NewUserSAMLSourceConnectionRequest instantiates a new UserSAMLSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -115,17 +122,58 @@ func (o *UserSAMLSourceConnectionRequest) SetIdentifier(v string) {
 }
 
 func (o UserSAMLSourceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserSAMLSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["user"] = o.User
+	toSerialize["source"] = o.Source
+	toSerialize["identifier"] = o.Identifier
+	return toSerialize, nil
+}
+
+func (o *UserSAMLSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"user",
+		"source",
+		"identifier",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserSAMLSourceConnectionRequest := _UserSAMLSourceConnectionRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserSAMLSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserSAMLSourceConnectionRequest(varUserSAMLSourceConnectionRequest)
+
+	return err
 }
 
 type NullableUserSAMLSourceConnectionRequest struct {

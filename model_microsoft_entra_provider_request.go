@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the MicrosoftEntraProviderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MicrosoftEntraProviderRequest{}
 
 // MicrosoftEntraProviderRequest MicrosoftEntraProvider Serializer
 type MicrosoftEntraProviderRequest struct {
@@ -35,6 +40,8 @@ type MicrosoftEntraProviderRequest struct {
 	// When enabled, provider will not modify or create objects in the remote system.
 	DryRun *bool `json:"dry_run,omitempty"`
 }
+
+type _MicrosoftEntraProviderRequest MicrosoftEntraProviderRequest
 
 // NewMicrosoftEntraProviderRequest instantiates a new MicrosoftEntraProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -83,7 +90,7 @@ func (o *MicrosoftEntraProviderRequest) SetName(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -93,7 +100,7 @@ func (o *MicrosoftEntraProviderRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -101,7 +108,7 @@ func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsOk() ([]string, bool)
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -115,7 +122,7 @@ func (o *MicrosoftEntraProviderRequest) SetPropertyMappings(v []string) {
 
 // GetPropertyMappingsGroup returns the PropertyMappingsGroup field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsGroup() []string {
-	if o == nil || o.PropertyMappingsGroup == nil {
+	if o == nil || IsNil(o.PropertyMappingsGroup) {
 		var ret []string
 		return ret
 	}
@@ -125,7 +132,7 @@ func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsGroup() []string {
 // GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsGroupOk() ([]string, bool) {
-	if o == nil || o.PropertyMappingsGroup == nil {
+	if o == nil || IsNil(o.PropertyMappingsGroup) {
 		return nil, false
 	}
 	return o.PropertyMappingsGroup, true
@@ -133,7 +140,7 @@ func (o *MicrosoftEntraProviderRequest) GetPropertyMappingsGroupOk() ([]string, 
 
 // HasPropertyMappingsGroup returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasPropertyMappingsGroup() bool {
-	if o != nil && o.PropertyMappingsGroup != nil {
+	if o != nil && !IsNil(o.PropertyMappingsGroup) {
 		return true
 	}
 
@@ -219,7 +226,7 @@ func (o *MicrosoftEntraProviderRequest) SetTenantId(v string) {
 
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetExcludeUsersServiceAccount() bool {
-	if o == nil || o.ExcludeUsersServiceAccount == nil {
+	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
 		var ret bool
 		return ret
 	}
@@ -229,7 +236,7 @@ func (o *MicrosoftEntraProviderRequest) GetExcludeUsersServiceAccount() bool {
 // GetExcludeUsersServiceAccountOk returns a tuple with the ExcludeUsersServiceAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetExcludeUsersServiceAccountOk() (*bool, bool) {
-	if o == nil || o.ExcludeUsersServiceAccount == nil {
+	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
 		return nil, false
 	}
 	return o.ExcludeUsersServiceAccount, true
@@ -237,7 +244,7 @@ func (o *MicrosoftEntraProviderRequest) GetExcludeUsersServiceAccountOk() (*bool
 
 // HasExcludeUsersServiceAccount returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasExcludeUsersServiceAccount() bool {
-	if o != nil && o.ExcludeUsersServiceAccount != nil {
+	if o != nil && !IsNil(o.ExcludeUsersServiceAccount) {
 		return true
 	}
 
@@ -251,7 +258,7 @@ func (o *MicrosoftEntraProviderRequest) SetExcludeUsersServiceAccount(v bool) {
 
 // GetFilterGroup returns the FilterGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MicrosoftEntraProviderRequest) GetFilterGroup() string {
-	if o == nil || o.FilterGroup.Get() == nil {
+	if o == nil || IsNil(o.FilterGroup.Get()) {
 		var ret string
 		return ret
 	}
@@ -294,7 +301,7 @@ func (o *MicrosoftEntraProviderRequest) UnsetFilterGroup() {
 
 // GetUserDeleteAction returns the UserDeleteAction field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetUserDeleteAction() OutgoingSyncDeleteAction {
-	if o == nil || o.UserDeleteAction == nil {
+	if o == nil || IsNil(o.UserDeleteAction) {
 		var ret OutgoingSyncDeleteAction
 		return ret
 	}
@@ -304,7 +311,7 @@ func (o *MicrosoftEntraProviderRequest) GetUserDeleteAction() OutgoingSyncDelete
 // GetUserDeleteActionOk returns a tuple with the UserDeleteAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetUserDeleteActionOk() (*OutgoingSyncDeleteAction, bool) {
-	if o == nil || o.UserDeleteAction == nil {
+	if o == nil || IsNil(o.UserDeleteAction) {
 		return nil, false
 	}
 	return o.UserDeleteAction, true
@@ -312,7 +319,7 @@ func (o *MicrosoftEntraProviderRequest) GetUserDeleteActionOk() (*OutgoingSyncDe
 
 // HasUserDeleteAction returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasUserDeleteAction() bool {
-	if o != nil && o.UserDeleteAction != nil {
+	if o != nil && !IsNil(o.UserDeleteAction) {
 		return true
 	}
 
@@ -326,7 +333,7 @@ func (o *MicrosoftEntraProviderRequest) SetUserDeleteAction(v OutgoingSyncDelete
 
 // GetGroupDeleteAction returns the GroupDeleteAction field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetGroupDeleteAction() OutgoingSyncDeleteAction {
-	if o == nil || o.GroupDeleteAction == nil {
+	if o == nil || IsNil(o.GroupDeleteAction) {
 		var ret OutgoingSyncDeleteAction
 		return ret
 	}
@@ -336,7 +343,7 @@ func (o *MicrosoftEntraProviderRequest) GetGroupDeleteAction() OutgoingSyncDelet
 // GetGroupDeleteActionOk returns a tuple with the GroupDeleteAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetGroupDeleteActionOk() (*OutgoingSyncDeleteAction, bool) {
-	if o == nil || o.GroupDeleteAction == nil {
+	if o == nil || IsNil(o.GroupDeleteAction) {
 		return nil, false
 	}
 	return o.GroupDeleteAction, true
@@ -344,7 +351,7 @@ func (o *MicrosoftEntraProviderRequest) GetGroupDeleteActionOk() (*OutgoingSyncD
 
 // HasGroupDeleteAction returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasGroupDeleteAction() bool {
-	if o != nil && o.GroupDeleteAction != nil {
+	if o != nil && !IsNil(o.GroupDeleteAction) {
 		return true
 	}
 
@@ -358,7 +365,7 @@ func (o *MicrosoftEntraProviderRequest) SetGroupDeleteAction(v OutgoingSyncDelet
 
 // GetSyncPageSize returns the SyncPageSize field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetSyncPageSize() int32 {
-	if o == nil || o.SyncPageSize == nil {
+	if o == nil || IsNil(o.SyncPageSize) {
 		var ret int32
 		return ret
 	}
@@ -368,7 +375,7 @@ func (o *MicrosoftEntraProviderRequest) GetSyncPageSize() int32 {
 // GetSyncPageSizeOk returns a tuple with the SyncPageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetSyncPageSizeOk() (*int32, bool) {
-	if o == nil || o.SyncPageSize == nil {
+	if o == nil || IsNil(o.SyncPageSize) {
 		return nil, false
 	}
 	return o.SyncPageSize, true
@@ -376,7 +383,7 @@ func (o *MicrosoftEntraProviderRequest) GetSyncPageSizeOk() (*int32, bool) {
 
 // HasSyncPageSize returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasSyncPageSize() bool {
-	if o != nil && o.SyncPageSize != nil {
+	if o != nil && !IsNil(o.SyncPageSize) {
 		return true
 	}
 
@@ -390,7 +397,7 @@ func (o *MicrosoftEntraProviderRequest) SetSyncPageSize(v int32) {
 
 // GetSyncPageTimeout returns the SyncPageTimeout field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetSyncPageTimeout() string {
-	if o == nil || o.SyncPageTimeout == nil {
+	if o == nil || IsNil(o.SyncPageTimeout) {
 		var ret string
 		return ret
 	}
@@ -400,7 +407,7 @@ func (o *MicrosoftEntraProviderRequest) GetSyncPageTimeout() string {
 // GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetSyncPageTimeoutOk() (*string, bool) {
-	if o == nil || o.SyncPageTimeout == nil {
+	if o == nil || IsNil(o.SyncPageTimeout) {
 		return nil, false
 	}
 	return o.SyncPageTimeout, true
@@ -408,7 +415,7 @@ func (o *MicrosoftEntraProviderRequest) GetSyncPageTimeoutOk() (*string, bool) {
 
 // HasSyncPageTimeout returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasSyncPageTimeout() bool {
-	if o != nil && o.SyncPageTimeout != nil {
+	if o != nil && !IsNil(o.SyncPageTimeout) {
 		return true
 	}
 
@@ -422,7 +429,7 @@ func (o *MicrosoftEntraProviderRequest) SetSyncPageTimeout(v string) {
 
 // GetDryRun returns the DryRun field value if set, zero value otherwise.
 func (o *MicrosoftEntraProviderRequest) GetDryRun() bool {
-	if o == nil || o.DryRun == nil {
+	if o == nil || IsNil(o.DryRun) {
 		var ret bool
 		return ret
 	}
@@ -432,7 +439,7 @@ func (o *MicrosoftEntraProviderRequest) GetDryRun() bool {
 // GetDryRunOk returns a tuple with the DryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MicrosoftEntraProviderRequest) GetDryRunOk() (*bool, bool) {
-	if o == nil || o.DryRun == nil {
+	if o == nil || IsNil(o.DryRun) {
 		return nil, false
 	}
 	return o.DryRun, true
@@ -440,7 +447,7 @@ func (o *MicrosoftEntraProviderRequest) GetDryRunOk() (*bool, bool) {
 
 // HasDryRun returns a boolean if a field has been set.
 func (o *MicrosoftEntraProviderRequest) HasDryRun() bool {
-	if o != nil && o.DryRun != nil {
+	if o != nil && !IsNil(o.DryRun) {
 		return true
 	}
 
@@ -453,47 +460,87 @@ func (o *MicrosoftEntraProviderRequest) SetDryRun(v bool) {
 }
 
 func (o MicrosoftEntraProviderRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.PropertyMappings != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o MicrosoftEntraProviderRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if o.PropertyMappingsGroup != nil {
+	if !IsNil(o.PropertyMappingsGroup) {
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
-	if true {
-		toSerialize["client_id"] = o.ClientId
-	}
-	if true {
-		toSerialize["client_secret"] = o.ClientSecret
-	}
-	if true {
-		toSerialize["tenant_id"] = o.TenantId
-	}
-	if o.ExcludeUsersServiceAccount != nil {
+	toSerialize["client_id"] = o.ClientId
+	toSerialize["client_secret"] = o.ClientSecret
+	toSerialize["tenant_id"] = o.TenantId
+	if !IsNil(o.ExcludeUsersServiceAccount) {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
 	}
 	if o.FilterGroup.IsSet() {
 		toSerialize["filter_group"] = o.FilterGroup.Get()
 	}
-	if o.UserDeleteAction != nil {
+	if !IsNil(o.UserDeleteAction) {
 		toSerialize["user_delete_action"] = o.UserDeleteAction
 	}
-	if o.GroupDeleteAction != nil {
+	if !IsNil(o.GroupDeleteAction) {
 		toSerialize["group_delete_action"] = o.GroupDeleteAction
 	}
-	if o.SyncPageSize != nil {
+	if !IsNil(o.SyncPageSize) {
 		toSerialize["sync_page_size"] = o.SyncPageSize
 	}
-	if o.SyncPageTimeout != nil {
+	if !IsNil(o.SyncPageTimeout) {
 		toSerialize["sync_page_timeout"] = o.SyncPageTimeout
 	}
-	if o.DryRun != nil {
+	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *MicrosoftEntraProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"client_id",
+		"client_secret",
+		"tenant_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMicrosoftEntraProviderRequest := _MicrosoftEntraProviderRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMicrosoftEntraProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MicrosoftEntraProviderRequest(varMicrosoftEntraProviderRequest)
+
+	return err
 }
 
 type NullableMicrosoftEntraProviderRequest struct {

@@ -14,19 +14,19 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
 	"strings"
 )
 
-// SourcesApiService SourcesApi service
-type SourcesApiService service
+// SourcesAPIService SourcesAPI service
+type SourcesAPIService service
 
 type ApiSourcesAllDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -43,7 +43,7 @@ Prevent deletion of built-in sources
 	@param slug
 	@return ApiSourcesAllDestroyRequest
 */
-func (a *SourcesApiService) SourcesAllDestroy(ctx context.Context, slug string) ApiSourcesAllDestroyRequest {
+func (a *SourcesAPIService) SourcesAllDestroy(ctx context.Context, slug string) ApiSourcesAllDestroyRequest {
 	return ApiSourcesAllDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -52,20 +52,20 @@ func (a *SourcesApiService) SourcesAllDestroy(ctx context.Context, slug string) 
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesAllDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesAllDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/all/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -98,9 +98,9 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -117,6 +117,7 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -127,6 +128,7 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -137,7 +139,7 @@ func (a *SourcesApiService) SourcesAllDestroyExecute(r ApiSourcesAllDestroyReque
 
 type ApiSourcesAllListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	managed    *string
 	name       *string
 	ordering   *string
@@ -204,7 +206,7 @@ Source Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesAllListRequest
 */
-func (a *SourcesApiService) SourcesAllList(ctx context.Context) ApiSourcesAllListRequest {
+func (a *SourcesAPIService) SourcesAllList(ctx context.Context) ApiSourcesAllListRequest {
 	return ApiSourcesAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -214,7 +216,7 @@ func (a *SourcesApiService) SourcesAllList(ctx context.Context) ApiSourcesAllLis
 // Execute executes the request
 //
 //	@return PaginatedSourceList
-func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*PaginatedSourceList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*PaginatedSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -222,7 +224,7 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 		localVarReturnValue *PaginatedSourceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesAllList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesAllList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -234,28 +236,28 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 	localVarFormParams := url.Values{}
 
 	if r.managed != nil {
-		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed", r.managed, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -284,9 +286,9 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -303,6 +305,7 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -313,6 +316,7 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -332,7 +336,7 @@ func (a *SourcesApiService) SourcesAllListExecute(r ApiSourcesAllListRequest) (*
 
 type ApiSourcesAllRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -349,7 +353,7 @@ Source Viewset
 	@param slug
 	@return ApiSourcesAllRetrieveRequest
 */
-func (a *SourcesApiService) SourcesAllRetrieve(ctx context.Context, slug string) ApiSourcesAllRetrieveRequest {
+func (a *SourcesAPIService) SourcesAllRetrieve(ctx context.Context, slug string) ApiSourcesAllRetrieveRequest {
 	return ApiSourcesAllRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -360,7 +364,7 @@ func (a *SourcesApiService) SourcesAllRetrieve(ctx context.Context, slug string)
 // Execute executes the request
 //
 //	@return Source
-func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveRequest) (*Source, *http.Response, error) {
+func (a *SourcesAPIService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveRequest) (*Source, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -368,13 +372,13 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 		localVarReturnValue *Source
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesAllRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesAllRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/all/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -407,9 +411,9 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -426,6 +430,7 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -436,6 +441,7 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -455,7 +461,7 @@ func (a *SourcesApiService) SourcesAllRetrieveExecute(r ApiSourcesAllRetrieveReq
 
 type ApiSourcesAllTypesListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 }
 
 func (r ApiSourcesAllTypesListRequest) Execute() ([]TypeCreate, *http.Response, error) {
@@ -470,7 +476,7 @@ Get all creatable types
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesAllTypesListRequest
 */
-func (a *SourcesApiService) SourcesAllTypesList(ctx context.Context) ApiSourcesAllTypesListRequest {
+func (a *SourcesAPIService) SourcesAllTypesList(ctx context.Context) ApiSourcesAllTypesListRequest {
 	return ApiSourcesAllTypesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -480,7 +486,7 @@ func (a *SourcesApiService) SourcesAllTypesList(ctx context.Context) ApiSourcesA
 // Execute executes the request
 //
 //	@return []TypeCreate
-func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
+func (a *SourcesAPIService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -488,7 +494,7 @@ func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListR
 		localVarReturnValue []TypeCreate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesAllTypesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesAllTypesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -526,9 +532,9 @@ func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -545,6 +551,7 @@ func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -555,6 +562,7 @@ func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -574,7 +582,7 @@ func (a *SourcesApiService) SourcesAllTypesListExecute(r ApiSourcesAllTypesListR
 
 type ApiSourcesAllUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -591,7 +599,7 @@ Get a list of all objects that use this object
 	@param slug
 	@return ApiSourcesAllUsedByListRequest
 */
-func (a *SourcesApiService) SourcesAllUsedByList(ctx context.Context, slug string) ApiSourcesAllUsedByListRequest {
+func (a *SourcesAPIService) SourcesAllUsedByList(ctx context.Context, slug string) ApiSourcesAllUsedByListRequest {
 	return ApiSourcesAllUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -602,7 +610,7 @@ func (a *SourcesApiService) SourcesAllUsedByList(ctx context.Context, slug strin
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -610,13 +618,13 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesAllUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesAllUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/all/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -649,9 +657,9 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -668,6 +676,7 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -678,6 +687,7 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -697,7 +707,7 @@ func (a *SourcesApiService) SourcesAllUsedByListExecute(r ApiSourcesAllUsedByLis
 
 type ApiSourcesAllUserSettingsListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 }
 
 func (r ApiSourcesAllUserSettingsListRequest) Execute() ([]UserSetting, *http.Response, error) {
@@ -712,7 +722,7 @@ Get all sources the user can configure
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesAllUserSettingsListRequest
 */
-func (a *SourcesApiService) SourcesAllUserSettingsList(ctx context.Context) ApiSourcesAllUserSettingsListRequest {
+func (a *SourcesAPIService) SourcesAllUserSettingsList(ctx context.Context) ApiSourcesAllUserSettingsListRequest {
 	return ApiSourcesAllUserSettingsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -722,7 +732,7 @@ func (a *SourcesApiService) SourcesAllUserSettingsList(ctx context.Context) ApiS
 // Execute executes the request
 //
 //	@return []UserSetting
-func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUserSettingsListRequest) ([]UserSetting, *http.Response, error) {
+func (a *SourcesAPIService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUserSettingsListRequest) ([]UserSetting, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -730,7 +740,7 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 		localVarReturnValue []UserSetting
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesAllUserSettingsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesAllUserSettingsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -768,9 +778,9 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -787,6 +797,7 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -797,6 +808,7 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -816,7 +828,7 @@ func (a *SourcesApiService) SourcesAllUserSettingsListExecute(r ApiSourcesAllUse
 
 type ApiSourcesGroupConnectionsAllDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -833,7 +845,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this group source connection.
 	@return ApiSourcesGroupConnectionsAllDestroyRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsAllDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllDestroyRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllDestroyRequest {
 	return ApiSourcesGroupConnectionsAllDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -842,20 +854,20 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllDestroy(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesGroupConnectionsAllDestroyExecute(r ApiSourcesGroupConnectionsAllDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllDestroyExecute(r ApiSourcesGroupConnectionsAllDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsAllDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -888,9 +900,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllDestroyExecute(r ApiSource
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -907,6 +919,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -917,6 +930,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -927,7 +941,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllDestroyExecute(r ApiSource
 
 type ApiSourcesGroupConnectionsAllListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	group      *string
 	ordering   *string
 	page       *int32
@@ -982,7 +996,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsAllListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsAllList(ctx context.Context) ApiSourcesGroupConnectionsAllListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllList(ctx context.Context) ApiSourcesGroupConnectionsAllListRequest {
 	return ApiSourcesGroupConnectionsAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -992,7 +1006,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllList(ctx context.Context) 
 // Execute executes the request
 //
 //	@return PaginatedGroupSourceConnectionList
-func (a *SourcesApiService) SourcesGroupConnectionsAllListExecute(r ApiSourcesGroupConnectionsAllListRequest) (*PaginatedGroupSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllListExecute(r ApiSourcesGroupConnectionsAllListRequest) (*PaginatedGroupSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1000,7 +1014,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllListExecute(r ApiSourcesGr
 		localVarReturnValue *PaginatedGroupSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsAllList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1012,22 +1026,22 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllListExecute(r ApiSourcesGr
 	localVarFormParams := url.Values{}
 
 	if r.group != nil {
-		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group", r.group, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1056,9 +1070,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllListExecute(r ApiSourcesGr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1075,6 +1089,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllListExecute(r ApiSourcesGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1085,6 +1100,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllListExecute(r ApiSourcesGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1104,7 +1120,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllListExecute(r ApiSourcesGr
 
 type ApiSourcesGroupConnectionsAllPartialUpdateRequest struct {
 	ctx                                 context.Context
-	ApiService                          *SourcesApiService
+	ApiService                          *SourcesAPIService
 	id                                  int32
 	patchedGroupSourceConnectionRequest *PatchedGroupSourceConnectionRequest
 }
@@ -1127,7 +1143,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this group source connection.
 	@return ApiSourcesGroupConnectionsAllPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllPartialUpdateRequest {
 	return ApiSourcesGroupConnectionsAllPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1138,7 +1154,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdate(ctx context.
 // Execute executes the request
 //
 //	@return GroupSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdateExecute(r ApiSourcesGroupConnectionsAllPartialUpdateRequest) (*GroupSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllPartialUpdateExecute(r ApiSourcesGroupConnectionsAllPartialUpdateRequest) (*GroupSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1146,13 +1162,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdateExecute(r Api
 		localVarReturnValue *GroupSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsAllPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1187,9 +1203,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1206,6 +1222,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1216,6 +1233,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1235,7 +1253,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllPartialUpdateExecute(r Api
 
 type ApiSourcesGroupConnectionsAllRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -1252,7 +1270,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this group source connection.
 	@return ApiSourcesGroupConnectionsAllRetrieveRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllRetrieveRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllRetrieveRequest {
 	return ApiSourcesGroupConnectionsAllRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1263,7 +1281,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return GroupSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieveExecute(r ApiSourcesGroupConnectionsAllRetrieveRequest) (*GroupSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllRetrieveExecute(r ApiSourcesGroupConnectionsAllRetrieveRequest) (*GroupSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1271,13 +1289,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieveExecute(r ApiSourc
 		localVarReturnValue *GroupSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsAllRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1310,9 +1328,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieveExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1329,6 +1347,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1339,6 +1358,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1358,7 +1378,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllRetrieveExecute(r ApiSourc
 
 type ApiSourcesGroupConnectionsAllUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *SourcesApiService
+	ApiService                   *SourcesAPIService
 	id                           int32
 	groupSourceConnectionRequest *GroupSourceConnectionRequest
 }
@@ -1381,7 +1401,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this group source connection.
 	@return ApiSourcesGroupConnectionsAllUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsAllUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllUpdateRequest {
 	return ApiSourcesGroupConnectionsAllUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1392,7 +1412,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUpdate(ctx context.Context
 // Execute executes the request
 //
 //	@return GroupSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsAllUpdateExecute(r ApiSourcesGroupConnectionsAllUpdateRequest) (*GroupSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllUpdateExecute(r ApiSourcesGroupConnectionsAllUpdateRequest) (*GroupSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1400,13 +1420,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUpdateExecute(r ApiSources
 		localVarReturnValue *GroupSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsAllUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1444,9 +1464,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUpdateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1463,6 +1483,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1473,6 +1494,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1492,7 +1514,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUpdateExecute(r ApiSources
 
 type ApiSourcesGroupConnectionsAllUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -1509,7 +1531,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this group source connection.
 	@return ApiSourcesGroupConnectionsAllUsedByListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllUsedByListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsAllUsedByListRequest {
 	return ApiSourcesGroupConnectionsAllUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1520,7 +1542,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByList(ctx context.Con
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByListExecute(r ApiSourcesGroupConnectionsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsAllUsedByListExecute(r ApiSourcesGroupConnectionsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1528,13 +1550,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByListExecute(r ApiSou
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsAllUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsAllUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/all/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1567,9 +1589,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByListExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1586,6 +1608,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1596,6 +1619,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1615,7 +1639,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsAllUsedByListExecute(r ApiSou
 
 type ApiSourcesGroupConnectionsKerberosCreateRequest struct {
 	ctx                                  context.Context
-	ApiService                           *SourcesApiService
+	ApiService                           *SourcesAPIService
 	groupKerberosSourceConnectionRequest *GroupKerberosSourceConnectionRequest
 }
 
@@ -1636,7 +1660,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsKerberosCreateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreate(ctx context.Context) ApiSourcesGroupConnectionsKerberosCreateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosCreate(ctx context.Context) ApiSourcesGroupConnectionsKerberosCreateRequest {
 	return ApiSourcesGroupConnectionsKerberosCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1646,7 +1670,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreate(ctx context.Co
 // Execute executes the request
 //
 //	@return GroupKerberosSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreateExecute(r ApiSourcesGroupConnectionsKerberosCreateRequest) (*GroupKerberosSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosCreateExecute(r ApiSourcesGroupConnectionsKerberosCreateRequest) (*GroupKerberosSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1654,7 +1678,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreateExecute(r ApiSo
 		localVarReturnValue *GroupKerberosSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsKerberosCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsKerberosCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1697,9 +1721,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreateExecute(r ApiSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1716,6 +1740,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreateExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1726,6 +1751,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreateExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1745,7 +1771,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosCreateExecute(r ApiSo
 
 type ApiSourcesGroupConnectionsKerberosDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -1762,7 +1788,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Kerberos Source Connection.
 	@return ApiSourcesGroupConnectionsKerberosDestroyRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosDestroyRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosDestroyRequest {
 	return ApiSourcesGroupConnectionsKerberosDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1771,20 +1797,20 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosDestroy(ctx context.C
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosDestroyExecute(r ApiSourcesGroupConnectionsKerberosDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosDestroyExecute(r ApiSourcesGroupConnectionsKerberosDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsKerberosDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsKerberosDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/kerberos/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1817,9 +1843,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosDestroyExecute(r ApiS
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1836,6 +1862,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosDestroyExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1846,6 +1873,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosDestroyExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1856,7 +1884,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosDestroyExecute(r ApiS
 
 type ApiSourcesGroupConnectionsKerberosListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	group      *string
 	ordering   *string
 	page       *int32
@@ -1911,7 +1939,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsKerberosListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosList(ctx context.Context) ApiSourcesGroupConnectionsKerberosListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosList(ctx context.Context) ApiSourcesGroupConnectionsKerberosListRequest {
 	return ApiSourcesGroupConnectionsKerberosListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1921,7 +1949,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosList(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedGroupKerberosSourceConnectionList
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosListExecute(r ApiSourcesGroupConnectionsKerberosListRequest) (*PaginatedGroupKerberosSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosListExecute(r ApiSourcesGroupConnectionsKerberosListRequest) (*PaginatedGroupKerberosSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1929,7 +1957,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosListExecute(r ApiSour
 		localVarReturnValue *PaginatedGroupKerberosSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsKerberosList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsKerberosList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1941,22 +1969,22 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosListExecute(r ApiSour
 	localVarFormParams := url.Values{}
 
 	if r.group != nil {
-		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group", r.group, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1985,9 +2013,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosListExecute(r ApiSour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2004,6 +2032,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosListExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2014,6 +2043,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosListExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2033,7 +2063,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosListExecute(r ApiSour
 
 type ApiSourcesGroupConnectionsKerberosPartialUpdateRequest struct {
 	ctx                                         context.Context
-	ApiService                                  *SourcesApiService
+	ApiService                                  *SourcesAPIService
 	id                                          int32
 	patchedGroupKerberosSourceConnectionRequest *PatchedGroupKerberosSourceConnectionRequest
 }
@@ -2056,7 +2086,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Kerberos Source Connection.
 	@return ApiSourcesGroupConnectionsKerberosPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosPartialUpdateRequest {
 	return ApiSourcesGroupConnectionsKerberosPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2067,7 +2097,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdate(ctx con
 // Execute executes the request
 //
 //	@return GroupKerberosSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdateExecute(r ApiSourcesGroupConnectionsKerberosPartialUpdateRequest) (*GroupKerberosSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosPartialUpdateExecute(r ApiSourcesGroupConnectionsKerberosPartialUpdateRequest) (*GroupKerberosSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2075,13 +2105,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdateExecute(
 		localVarReturnValue *GroupKerberosSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsKerberosPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsKerberosPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/kerberos/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2116,9 +2146,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdateExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2135,6 +2165,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdateExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2145,6 +2176,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdateExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2164,7 +2196,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosPartialUpdateExecute(
 
 type ApiSourcesGroupConnectionsKerberosRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -2181,7 +2213,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Kerberos Source Connection.
 	@return ApiSourcesGroupConnectionsKerberosRetrieveRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosRetrieveRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosRetrieveRequest {
 	return ApiSourcesGroupConnectionsKerberosRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2192,7 +2224,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosRetrieve(ctx context.
 // Execute executes the request
 //
 //	@return GroupKerberosSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosRetrieveExecute(r ApiSourcesGroupConnectionsKerberosRetrieveRequest) (*GroupKerberosSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosRetrieveExecute(r ApiSourcesGroupConnectionsKerberosRetrieveRequest) (*GroupKerberosSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2200,13 +2232,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosRetrieveExecute(r Api
 		localVarReturnValue *GroupKerberosSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsKerberosRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsKerberosRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/kerberos/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2239,9 +2271,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosRetrieveExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2258,6 +2290,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2268,6 +2301,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2287,7 +2321,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosRetrieveExecute(r Api
 
 type ApiSourcesGroupConnectionsKerberosUpdateRequest struct {
 	ctx                                  context.Context
-	ApiService                           *SourcesApiService
+	ApiService                           *SourcesAPIService
 	id                                   int32
 	groupKerberosSourceConnectionRequest *GroupKerberosSourceConnectionRequest
 }
@@ -2310,7 +2344,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Kerberos Source Connection.
 	@return ApiSourcesGroupConnectionsKerberosUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosUpdateRequest {
 	return ApiSourcesGroupConnectionsKerberosUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2321,7 +2355,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdate(ctx context.Co
 // Execute executes the request
 //
 //	@return GroupKerberosSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdateExecute(r ApiSourcesGroupConnectionsKerberosUpdateRequest) (*GroupKerberosSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosUpdateExecute(r ApiSourcesGroupConnectionsKerberosUpdateRequest) (*GroupKerberosSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -2329,13 +2363,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdateExecute(r ApiSo
 		localVarReturnValue *GroupKerberosSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsKerberosUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsKerberosUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/kerberos/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2373,9 +2407,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdateExecute(r ApiSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2392,6 +2426,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdateExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2402,6 +2437,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdateExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2421,7 +2457,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUpdateExecute(r ApiSo
 
 type ApiSourcesGroupConnectionsKerberosUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -2438,7 +2474,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Group Kerberos Source Connection.
 	@return ApiSourcesGroupConnectionsKerberosUsedByListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosUsedByListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsKerberosUsedByListRequest {
 	return ApiSourcesGroupConnectionsKerberosUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2449,7 +2485,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUsedByList(ctx contex
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesGroupConnectionsKerberosUsedByListExecute(r ApiSourcesGroupConnectionsKerberosUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsKerberosUsedByListExecute(r ApiSourcesGroupConnectionsKerberosUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2457,13 +2493,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUsedByListExecute(r A
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsKerberosUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsKerberosUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/kerberos/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2496,9 +2532,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUsedByListExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2515,6 +2551,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUsedByListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2525,6 +2562,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUsedByListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2544,7 +2582,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsKerberosUsedByListExecute(r A
 
 type ApiSourcesGroupConnectionsLdapCreateRequest struct {
 	ctx                              context.Context
-	ApiService                       *SourcesApiService
+	ApiService                       *SourcesAPIService
 	groupLDAPSourceConnectionRequest *GroupLDAPSourceConnectionRequest
 }
 
@@ -2565,7 +2603,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsLdapCreateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsLdapCreate(ctx context.Context) ApiSourcesGroupConnectionsLdapCreateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapCreate(ctx context.Context) ApiSourcesGroupConnectionsLdapCreateRequest {
 	return ApiSourcesGroupConnectionsLdapCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2575,7 +2613,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapCreate(ctx context.Contex
 // Execute executes the request
 //
 //	@return GroupLDAPSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsLdapCreateExecute(r ApiSourcesGroupConnectionsLdapCreateRequest) (*GroupLDAPSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapCreateExecute(r ApiSourcesGroupConnectionsLdapCreateRequest) (*GroupLDAPSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2583,7 +2621,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapCreateExecute(r ApiSource
 		localVarReturnValue *GroupLDAPSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsLdapCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsLdapCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2626,9 +2664,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapCreateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2645,6 +2683,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2655,6 +2694,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2674,7 +2714,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapCreateExecute(r ApiSource
 
 type ApiSourcesGroupConnectionsLdapDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -2691,7 +2731,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group LDAP Source Connection.
 	@return ApiSourcesGroupConnectionsLdapDestroyRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsLdapDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapDestroyRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapDestroyRequest {
 	return ApiSourcesGroupConnectionsLdapDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2700,20 +2740,20 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapDestroy(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesGroupConnectionsLdapDestroyExecute(r ApiSourcesGroupConnectionsLdapDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapDestroyExecute(r ApiSourcesGroupConnectionsLdapDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsLdapDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsLdapDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2746,9 +2786,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapDestroyExecute(r ApiSourc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2765,6 +2805,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2775,6 +2816,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2785,7 +2827,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapDestroyExecute(r ApiSourc
 
 type ApiSourcesGroupConnectionsLdapListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	group      *string
 	ordering   *string
 	page       *int32
@@ -2840,7 +2882,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsLdapListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsLdapList(ctx context.Context) ApiSourcesGroupConnectionsLdapListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapList(ctx context.Context) ApiSourcesGroupConnectionsLdapListRequest {
 	return ApiSourcesGroupConnectionsLdapListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2850,7 +2892,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapList(ctx context.Context)
 // Execute executes the request
 //
 //	@return PaginatedGroupLDAPSourceConnectionList
-func (a *SourcesApiService) SourcesGroupConnectionsLdapListExecute(r ApiSourcesGroupConnectionsLdapListRequest) (*PaginatedGroupLDAPSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapListExecute(r ApiSourcesGroupConnectionsLdapListRequest) (*PaginatedGroupLDAPSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2858,7 +2900,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapListExecute(r ApiSourcesG
 		localVarReturnValue *PaginatedGroupLDAPSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsLdapList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsLdapList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2870,22 +2912,22 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapListExecute(r ApiSourcesG
 	localVarFormParams := url.Values{}
 
 	if r.group != nil {
-		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group", r.group, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2914,9 +2956,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapListExecute(r ApiSourcesG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2933,6 +2975,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapListExecute(r ApiSourcesG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2943,6 +2986,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapListExecute(r ApiSourcesG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2962,7 +3006,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapListExecute(r ApiSourcesG
 
 type ApiSourcesGroupConnectionsLdapPartialUpdateRequest struct {
 	ctx                                     context.Context
-	ApiService                              *SourcesApiService
+	ApiService                              *SourcesAPIService
 	id                                      int32
 	patchedGroupLDAPSourceConnectionRequest *PatchedGroupLDAPSourceConnectionRequest
 }
@@ -2985,7 +3029,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group LDAP Source Connection.
 	@return ApiSourcesGroupConnectionsLdapPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsLdapPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapPartialUpdateRequest {
 	return ApiSourcesGroupConnectionsLdapPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2996,7 +3040,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapPartialUpdate(ctx context
 // Execute executes the request
 //
 //	@return GroupLDAPSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsLdapPartialUpdateExecute(r ApiSourcesGroupConnectionsLdapPartialUpdateRequest) (*GroupLDAPSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapPartialUpdateExecute(r ApiSourcesGroupConnectionsLdapPartialUpdateRequest) (*GroupLDAPSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -3004,13 +3048,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapPartialUpdateExecute(r Ap
 		localVarReturnValue *GroupLDAPSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsLdapPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsLdapPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3045,9 +3089,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapPartialUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3064,6 +3108,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3074,6 +3119,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3093,7 +3139,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapPartialUpdateExecute(r Ap
 
 type ApiSourcesGroupConnectionsLdapRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -3110,7 +3156,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group LDAP Source Connection.
 	@return ApiSourcesGroupConnectionsLdapRetrieveRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsLdapRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapRetrieveRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapRetrieveRequest {
 	return ApiSourcesGroupConnectionsLdapRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3121,7 +3167,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapRetrieve(ctx context.Cont
 // Execute executes the request
 //
 //	@return GroupLDAPSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsLdapRetrieveExecute(r ApiSourcesGroupConnectionsLdapRetrieveRequest) (*GroupLDAPSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapRetrieveExecute(r ApiSourcesGroupConnectionsLdapRetrieveRequest) (*GroupLDAPSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3129,13 +3175,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapRetrieveExecute(r ApiSour
 		localVarReturnValue *GroupLDAPSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsLdapRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsLdapRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3168,9 +3214,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapRetrieveExecute(r ApiSour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3187,6 +3233,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3197,6 +3244,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3216,7 +3264,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapRetrieveExecute(r ApiSour
 
 type ApiSourcesGroupConnectionsLdapUpdateRequest struct {
 	ctx                              context.Context
-	ApiService                       *SourcesApiService
+	ApiService                       *SourcesAPIService
 	id                               int32
 	groupLDAPSourceConnectionRequest *GroupLDAPSourceConnectionRequest
 }
@@ -3239,7 +3287,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group LDAP Source Connection.
 	@return ApiSourcesGroupConnectionsLdapUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsLdapUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapUpdateRequest {
 	return ApiSourcesGroupConnectionsLdapUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3250,7 +3298,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUpdate(ctx context.Contex
 // Execute executes the request
 //
 //	@return GroupLDAPSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsLdapUpdateExecute(r ApiSourcesGroupConnectionsLdapUpdateRequest) (*GroupLDAPSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapUpdateExecute(r ApiSourcesGroupConnectionsLdapUpdateRequest) (*GroupLDAPSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -3258,13 +3306,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUpdateExecute(r ApiSource
 		localVarReturnValue *GroupLDAPSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsLdapUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsLdapUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3302,9 +3350,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUpdateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3321,6 +3369,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3331,6 +3380,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3350,7 +3400,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUpdateExecute(r ApiSource
 
 type ApiSourcesGroupConnectionsLdapUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -3367,7 +3417,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Group LDAP Source Connection.
 	@return ApiSourcesGroupConnectionsLdapUsedByListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsLdapUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapUsedByListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsLdapUsedByListRequest {
 	return ApiSourcesGroupConnectionsLdapUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3378,7 +3428,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUsedByList(ctx context.Co
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesGroupConnectionsLdapUsedByListExecute(r ApiSourcesGroupConnectionsLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsLdapUsedByListExecute(r ApiSourcesGroupConnectionsLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3386,13 +3436,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUsedByListExecute(r ApiSo
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsLdapUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsLdapUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/ldap/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3425,9 +3475,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUsedByListExecute(r ApiSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3444,6 +3494,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3454,6 +3505,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3473,7 +3525,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsLdapUsedByListExecute(r ApiSo
 
 type ApiSourcesGroupConnectionsOauthCreateRequest struct {
 	ctx                               context.Context
-	ApiService                        *SourcesApiService
+	ApiService                        *SourcesAPIService
 	groupOAuthSourceConnectionRequest *GroupOAuthSourceConnectionRequest
 }
 
@@ -3494,7 +3546,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsOauthCreateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsOauthCreate(ctx context.Context) ApiSourcesGroupConnectionsOauthCreateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthCreate(ctx context.Context) ApiSourcesGroupConnectionsOauthCreateRequest {
 	return ApiSourcesGroupConnectionsOauthCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3504,7 +3556,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthCreate(ctx context.Conte
 // Execute executes the request
 //
 //	@return GroupOAuthSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsOauthCreateExecute(r ApiSourcesGroupConnectionsOauthCreateRequest) (*GroupOAuthSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthCreateExecute(r ApiSourcesGroupConnectionsOauthCreateRequest) (*GroupOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -3512,7 +3564,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthCreateExecute(r ApiSourc
 		localVarReturnValue *GroupOAuthSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsOauthCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsOauthCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3555,9 +3607,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthCreateExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3574,6 +3626,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthCreateExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3584,6 +3637,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthCreateExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3603,7 +3657,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthCreateExecute(r ApiSourc
 
 type ApiSourcesGroupConnectionsOauthDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -3620,7 +3674,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group OAuth Source Connection.
 	@return ApiSourcesGroupConnectionsOauthDestroyRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsOauthDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthDestroyRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthDestroyRequest {
 	return ApiSourcesGroupConnectionsOauthDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3629,20 +3683,20 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthDestroy(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesGroupConnectionsOauthDestroyExecute(r ApiSourcesGroupConnectionsOauthDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthDestroyExecute(r ApiSourcesGroupConnectionsOauthDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsOauthDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsOauthDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3675,9 +3729,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthDestroyExecute(r ApiSour
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3694,6 +3748,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthDestroyExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3704,6 +3759,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthDestroyExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3714,7 +3770,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthDestroyExecute(r ApiSour
 
 type ApiSourcesGroupConnectionsOauthListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	group      *string
 	ordering   *string
 	page       *int32
@@ -3769,7 +3825,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsOauthListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsOauthList(ctx context.Context) ApiSourcesGroupConnectionsOauthListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthList(ctx context.Context) ApiSourcesGroupConnectionsOauthListRequest {
 	return ApiSourcesGroupConnectionsOauthListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3779,7 +3835,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthList(ctx context.Context
 // Execute executes the request
 //
 //	@return PaginatedGroupOAuthSourceConnectionList
-func (a *SourcesApiService) SourcesGroupConnectionsOauthListExecute(r ApiSourcesGroupConnectionsOauthListRequest) (*PaginatedGroupOAuthSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthListExecute(r ApiSourcesGroupConnectionsOauthListRequest) (*PaginatedGroupOAuthSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3787,7 +3843,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthListExecute(r ApiSources
 		localVarReturnValue *PaginatedGroupOAuthSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsOauthList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsOauthList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3799,22 +3855,22 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthListExecute(r ApiSources
 	localVarFormParams := url.Values{}
 
 	if r.group != nil {
-		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group", r.group, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3843,9 +3899,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthListExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3862,6 +3918,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthListExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3872,6 +3929,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthListExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3891,7 +3949,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthListExecute(r ApiSources
 
 type ApiSourcesGroupConnectionsOauthPartialUpdateRequest struct {
 	ctx                                      context.Context
-	ApiService                               *SourcesApiService
+	ApiService                               *SourcesAPIService
 	id                                       int32
 	patchedGroupOAuthSourceConnectionRequest *PatchedGroupOAuthSourceConnectionRequest
 }
@@ -3914,7 +3972,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group OAuth Source Connection.
 	@return ApiSourcesGroupConnectionsOauthPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthPartialUpdateRequest {
 	return ApiSourcesGroupConnectionsOauthPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3925,7 +3983,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdate(ctx contex
 // Execute executes the request
 //
 //	@return GroupOAuthSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdateExecute(r ApiSourcesGroupConnectionsOauthPartialUpdateRequest) (*GroupOAuthSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthPartialUpdateExecute(r ApiSourcesGroupConnectionsOauthPartialUpdateRequest) (*GroupOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -3933,13 +3991,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdateExecute(r A
 		localVarReturnValue *GroupOAuthSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsOauthPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsOauthPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3974,9 +4032,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdateExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3993,6 +4051,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdateExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4003,6 +4062,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdateExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4022,7 +4082,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthPartialUpdateExecute(r A
 
 type ApiSourcesGroupConnectionsOauthRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -4039,7 +4099,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group OAuth Source Connection.
 	@return ApiSourcesGroupConnectionsOauthRetrieveRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsOauthRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthRetrieveRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthRetrieveRequest {
 	return ApiSourcesGroupConnectionsOauthRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4050,7 +4110,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthRetrieve(ctx context.Con
 // Execute executes the request
 //
 //	@return GroupOAuthSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsOauthRetrieveExecute(r ApiSourcesGroupConnectionsOauthRetrieveRequest) (*GroupOAuthSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthRetrieveExecute(r ApiSourcesGroupConnectionsOauthRetrieveRequest) (*GroupOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4058,13 +4118,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthRetrieveExecute(r ApiSou
 		localVarReturnValue *GroupOAuthSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsOauthRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsOauthRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4097,9 +4157,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthRetrieveExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4116,6 +4176,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthRetrieveExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4126,6 +4187,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthRetrieveExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4145,7 +4207,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthRetrieveExecute(r ApiSou
 
 type ApiSourcesGroupConnectionsOauthUpdateRequest struct {
 	ctx                               context.Context
-	ApiService                        *SourcesApiService
+	ApiService                        *SourcesAPIService
 	id                                int32
 	groupOAuthSourceConnectionRequest *GroupOAuthSourceConnectionRequest
 }
@@ -4168,7 +4230,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group OAuth Source Connection.
 	@return ApiSourcesGroupConnectionsOauthUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthUpdateRequest {
 	return ApiSourcesGroupConnectionsOauthUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4179,7 +4241,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdate(ctx context.Conte
 // Execute executes the request
 //
 //	@return GroupOAuthSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdateExecute(r ApiSourcesGroupConnectionsOauthUpdateRequest) (*GroupOAuthSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthUpdateExecute(r ApiSourcesGroupConnectionsOauthUpdateRequest) (*GroupOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -4187,13 +4249,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdateExecute(r ApiSourc
 		localVarReturnValue *GroupOAuthSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsOauthUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsOauthUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4231,9 +4293,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdateExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4250,6 +4312,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdateExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4260,6 +4323,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdateExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4279,7 +4343,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUpdateExecute(r ApiSourc
 
 type ApiSourcesGroupConnectionsOauthUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -4296,7 +4360,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Group OAuth Source Connection.
 	@return ApiSourcesGroupConnectionsOauthUsedByListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthUsedByListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsOauthUsedByListRequest {
 	return ApiSourcesGroupConnectionsOauthUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4307,7 +4371,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByList(ctx context.C
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByListExecute(r ApiSourcesGroupConnectionsOauthUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsOauthUsedByListExecute(r ApiSourcesGroupConnectionsOauthUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4315,13 +4379,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByListExecute(r ApiS
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsOauthUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsOauthUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/oauth/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4354,9 +4418,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByListExecute(r ApiS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4373,6 +4437,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByListExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4383,6 +4448,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByListExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4402,7 +4468,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsOauthUsedByListExecute(r ApiS
 
 type ApiSourcesGroupConnectionsPlexCreateRequest struct {
 	ctx                              context.Context
-	ApiService                       *SourcesApiService
+	ApiService                       *SourcesAPIService
 	groupPlexSourceConnectionRequest *GroupPlexSourceConnectionRequest
 }
 
@@ -4423,7 +4489,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsPlexCreateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsPlexCreate(ctx context.Context) ApiSourcesGroupConnectionsPlexCreateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexCreate(ctx context.Context) ApiSourcesGroupConnectionsPlexCreateRequest {
 	return ApiSourcesGroupConnectionsPlexCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4433,7 +4499,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexCreate(ctx context.Contex
 // Execute executes the request
 //
 //	@return GroupPlexSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsPlexCreateExecute(r ApiSourcesGroupConnectionsPlexCreateRequest) (*GroupPlexSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexCreateExecute(r ApiSourcesGroupConnectionsPlexCreateRequest) (*GroupPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4441,7 +4507,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexCreateExecute(r ApiSource
 		localVarReturnValue *GroupPlexSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsPlexCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4484,9 +4550,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexCreateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4503,6 +4569,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4513,6 +4580,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4532,7 +4600,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexCreateExecute(r ApiSource
 
 type ApiSourcesGroupConnectionsPlexDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -4549,7 +4617,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Plex Source Connection.
 	@return ApiSourcesGroupConnectionsPlexDestroyRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsPlexDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexDestroyRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexDestroyRequest {
 	return ApiSourcesGroupConnectionsPlexDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4558,20 +4626,20 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexDestroy(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesGroupConnectionsPlexDestroyExecute(r ApiSourcesGroupConnectionsPlexDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexDestroyExecute(r ApiSourcesGroupConnectionsPlexDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsPlexDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4604,9 +4672,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexDestroyExecute(r ApiSourc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4623,6 +4691,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4633,6 +4702,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4643,7 +4713,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexDestroyExecute(r ApiSourc
 
 type ApiSourcesGroupConnectionsPlexListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	group      *string
 	ordering   *string
 	page       *int32
@@ -4698,7 +4768,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsPlexListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsPlexList(ctx context.Context) ApiSourcesGroupConnectionsPlexListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexList(ctx context.Context) ApiSourcesGroupConnectionsPlexListRequest {
 	return ApiSourcesGroupConnectionsPlexListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4708,7 +4778,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexList(ctx context.Context)
 // Execute executes the request
 //
 //	@return PaginatedGroupPlexSourceConnectionList
-func (a *SourcesApiService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesGroupConnectionsPlexListRequest) (*PaginatedGroupPlexSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesGroupConnectionsPlexListRequest) (*PaginatedGroupPlexSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4716,7 +4786,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesG
 		localVarReturnValue *PaginatedGroupPlexSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsPlexList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4728,22 +4798,22 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesG
 	localVarFormParams := url.Values{}
 
 	if r.group != nil {
-		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group", r.group, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4772,9 +4842,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4791,6 +4861,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4801,6 +4872,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4820,7 +4892,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexListExecute(r ApiSourcesG
 
 type ApiSourcesGroupConnectionsPlexPartialUpdateRequest struct {
 	ctx                                     context.Context
-	ApiService                              *SourcesApiService
+	ApiService                              *SourcesAPIService
 	id                                      int32
 	patchedGroupPlexSourceConnectionRequest *PatchedGroupPlexSourceConnectionRequest
 }
@@ -4843,7 +4915,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Plex Source Connection.
 	@return ApiSourcesGroupConnectionsPlexPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexPartialUpdateRequest {
 	return ApiSourcesGroupConnectionsPlexPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4854,7 +4926,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdate(ctx context
 // Execute executes the request
 //
 //	@return GroupPlexSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdateExecute(r ApiSourcesGroupConnectionsPlexPartialUpdateRequest) (*GroupPlexSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexPartialUpdateExecute(r ApiSourcesGroupConnectionsPlexPartialUpdateRequest) (*GroupPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -4862,13 +4934,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdateExecute(r Ap
 		localVarReturnValue *GroupPlexSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsPlexPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4903,9 +4975,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4922,6 +4994,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4932,6 +5005,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4951,7 +5025,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexPartialUpdateExecute(r Ap
 
 type ApiSourcesGroupConnectionsPlexRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -4968,7 +5042,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Plex Source Connection.
 	@return ApiSourcesGroupConnectionsPlexRetrieveRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexRetrieveRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexRetrieveRequest {
 	return ApiSourcesGroupConnectionsPlexRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4979,7 +5053,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieve(ctx context.Cont
 // Execute executes the request
 //
 //	@return GroupPlexSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieveExecute(r ApiSourcesGroupConnectionsPlexRetrieveRequest) (*GroupPlexSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexRetrieveExecute(r ApiSourcesGroupConnectionsPlexRetrieveRequest) (*GroupPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4987,13 +5061,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieveExecute(r ApiSour
 		localVarReturnValue *GroupPlexSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsPlexRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5026,9 +5100,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieveExecute(r ApiSour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5045,6 +5119,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5055,6 +5130,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5074,7 +5150,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexRetrieveExecute(r ApiSour
 
 type ApiSourcesGroupConnectionsPlexUpdateRequest struct {
 	ctx                              context.Context
-	ApiService                       *SourcesApiService
+	ApiService                       *SourcesAPIService
 	id                               int32
 	groupPlexSourceConnectionRequest *GroupPlexSourceConnectionRequest
 }
@@ -5097,7 +5173,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Plex Source Connection.
 	@return ApiSourcesGroupConnectionsPlexUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexUpdateRequest {
 	return ApiSourcesGroupConnectionsPlexUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5108,7 +5184,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdate(ctx context.Contex
 // Execute executes the request
 //
 //	@return GroupPlexSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSourcesGroupConnectionsPlexUpdateRequest) (*GroupPlexSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSourcesGroupConnectionsPlexUpdateRequest) (*GroupPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -5116,13 +5192,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSource
 		localVarReturnValue *GroupPlexSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsPlexUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5160,9 +5236,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5179,6 +5255,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5189,6 +5266,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5208,7 +5286,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUpdateExecute(r ApiSource
 
 type ApiSourcesGroupConnectionsPlexUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -5225,7 +5303,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Group Plex Source Connection.
 	@return ApiSourcesGroupConnectionsPlexUsedByListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexUsedByListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsPlexUsedByListRequest {
 	return ApiSourcesGroupConnectionsPlexUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5236,7 +5314,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByList(ctx context.Co
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByListExecute(r ApiSourcesGroupConnectionsPlexUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsPlexUsedByListExecute(r ApiSourcesGroupConnectionsPlexUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5244,13 +5322,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByListExecute(r ApiSo
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsPlexUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsPlexUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/plex/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5283,9 +5361,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByListExecute(r ApiSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5302,6 +5380,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5312,6 +5391,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5331,7 +5411,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsPlexUsedByListExecute(r ApiSo
 
 type ApiSourcesGroupConnectionsSamlCreateRequest struct {
 	ctx                              context.Context
-	ApiService                       *SourcesApiService
+	ApiService                       *SourcesAPIService
 	groupSAMLSourceConnectionRequest *GroupSAMLSourceConnectionRequest
 }
 
@@ -5352,7 +5432,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsSamlCreateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsSamlCreate(ctx context.Context) ApiSourcesGroupConnectionsSamlCreateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlCreate(ctx context.Context) ApiSourcesGroupConnectionsSamlCreateRequest {
 	return ApiSourcesGroupConnectionsSamlCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5362,7 +5442,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlCreate(ctx context.Contex
 // Execute executes the request
 //
 //	@return GroupSAMLSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsSamlCreateExecute(r ApiSourcesGroupConnectionsSamlCreateRequest) (*GroupSAMLSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlCreateExecute(r ApiSourcesGroupConnectionsSamlCreateRequest) (*GroupSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -5370,7 +5450,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlCreateExecute(r ApiSource
 		localVarReturnValue *GroupSAMLSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsSamlCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsSamlCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5413,9 +5493,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlCreateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5432,6 +5512,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5442,6 +5523,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5461,7 +5543,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlCreateExecute(r ApiSource
 
 type ApiSourcesGroupConnectionsSamlDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -5478,7 +5560,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group SAML Source Connection.
 	@return ApiSourcesGroupConnectionsSamlDestroyRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsSamlDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlDestroyRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlDestroyRequest {
 	return ApiSourcesGroupConnectionsSamlDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5487,20 +5569,20 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlDestroy(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesGroupConnectionsSamlDestroyExecute(r ApiSourcesGroupConnectionsSamlDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlDestroyExecute(r ApiSourcesGroupConnectionsSamlDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsSamlDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsSamlDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5533,9 +5615,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlDestroyExecute(r ApiSourc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -5552,6 +5634,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -5562,6 +5645,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -5572,7 +5656,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlDestroyExecute(r ApiSourc
 
 type ApiSourcesGroupConnectionsSamlListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	group      *string
 	ordering   *string
 	page       *int32
@@ -5627,7 +5711,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsSamlListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsSamlList(ctx context.Context) ApiSourcesGroupConnectionsSamlListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlList(ctx context.Context) ApiSourcesGroupConnectionsSamlListRequest {
 	return ApiSourcesGroupConnectionsSamlListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5637,7 +5721,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlList(ctx context.Context)
 // Execute executes the request
 //
 //	@return PaginatedGroupSAMLSourceConnectionList
-func (a *SourcesApiService) SourcesGroupConnectionsSamlListExecute(r ApiSourcesGroupConnectionsSamlListRequest) (*PaginatedGroupSAMLSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlListExecute(r ApiSourcesGroupConnectionsSamlListRequest) (*PaginatedGroupSAMLSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5645,7 +5729,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlListExecute(r ApiSourcesG
 		localVarReturnValue *PaginatedGroupSAMLSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsSamlList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsSamlList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5657,22 +5741,22 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlListExecute(r ApiSourcesG
 	localVarFormParams := url.Values{}
 
 	if r.group != nil {
-		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group", r.group, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5701,9 +5785,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlListExecute(r ApiSourcesG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5720,6 +5804,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlListExecute(r ApiSourcesG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5730,6 +5815,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlListExecute(r ApiSourcesG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5749,7 +5835,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlListExecute(r ApiSourcesG
 
 type ApiSourcesGroupConnectionsSamlPartialUpdateRequest struct {
 	ctx                                     context.Context
-	ApiService                              *SourcesApiService
+	ApiService                              *SourcesAPIService
 	id                                      int32
 	patchedGroupSAMLSourceConnectionRequest *PatchedGroupSAMLSourceConnectionRequest
 }
@@ -5772,7 +5858,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group SAML Source Connection.
 	@return ApiSourcesGroupConnectionsSamlPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlPartialUpdateRequest {
 	return ApiSourcesGroupConnectionsSamlPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5783,7 +5869,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdate(ctx context
 // Execute executes the request
 //
 //	@return GroupSAMLSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdateExecute(r ApiSourcesGroupConnectionsSamlPartialUpdateRequest) (*GroupSAMLSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlPartialUpdateExecute(r ApiSourcesGroupConnectionsSamlPartialUpdateRequest) (*GroupSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -5791,13 +5877,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdateExecute(r Ap
 		localVarReturnValue *GroupSAMLSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsSamlPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsSamlPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5832,9 +5918,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5851,6 +5937,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5861,6 +5948,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -5880,7 +5968,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlPartialUpdateExecute(r Ap
 
 type ApiSourcesGroupConnectionsSamlRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -5897,7 +5985,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group SAML Source Connection.
 	@return ApiSourcesGroupConnectionsSamlRetrieveRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsSamlRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlRetrieveRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlRetrieveRequest {
 	return ApiSourcesGroupConnectionsSamlRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5908,7 +5996,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlRetrieve(ctx context.Cont
 // Execute executes the request
 //
 //	@return GroupSAMLSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsSamlRetrieveExecute(r ApiSourcesGroupConnectionsSamlRetrieveRequest) (*GroupSAMLSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlRetrieveExecute(r ApiSourcesGroupConnectionsSamlRetrieveRequest) (*GroupSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -5916,13 +6004,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlRetrieveExecute(r ApiSour
 		localVarReturnValue *GroupSAMLSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsSamlRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsSamlRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5955,9 +6043,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlRetrieveExecute(r ApiSour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5974,6 +6062,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -5984,6 +6073,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6003,7 +6093,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlRetrieveExecute(r ApiSour
 
 type ApiSourcesGroupConnectionsSamlUpdateRequest struct {
 	ctx                              context.Context
-	ApiService                       *SourcesApiService
+	ApiService                       *SourcesAPIService
 	id                               int32
 	groupSAMLSourceConnectionRequest *GroupSAMLSourceConnectionRequest
 }
@@ -6026,7 +6116,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group SAML Source Connection.
 	@return ApiSourcesGroupConnectionsSamlUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlUpdateRequest {
 	return ApiSourcesGroupConnectionsSamlUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6037,7 +6127,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdate(ctx context.Contex
 // Execute executes the request
 //
 //	@return GroupSAMLSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdateExecute(r ApiSourcesGroupConnectionsSamlUpdateRequest) (*GroupSAMLSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlUpdateExecute(r ApiSourcesGroupConnectionsSamlUpdateRequest) (*GroupSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -6045,13 +6135,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdateExecute(r ApiSource
 		localVarReturnValue *GroupSAMLSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsSamlUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsSamlUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6089,9 +6179,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6108,6 +6198,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6118,6 +6209,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6137,7 +6229,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUpdateExecute(r ApiSource
 
 type ApiSourcesGroupConnectionsSamlUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -6154,7 +6246,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Group SAML Source Connection.
 	@return ApiSourcesGroupConnectionsSamlUsedByListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsSamlUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlUsedByListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsSamlUsedByListRequest {
 	return ApiSourcesGroupConnectionsSamlUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6165,7 +6257,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUsedByList(ctx context.Co
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesGroupConnectionsSamlUsedByListExecute(r ApiSourcesGroupConnectionsSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsSamlUsedByListExecute(r ApiSourcesGroupConnectionsSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6173,13 +6265,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUsedByListExecute(r ApiSo
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsSamlUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsSamlUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/saml/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6212,9 +6304,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUsedByListExecute(r ApiSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6231,6 +6323,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6241,6 +6334,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6260,7 +6354,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsSamlUsedByListExecute(r ApiSo
 
 type ApiSourcesGroupConnectionsTelegramCreateRequest struct {
 	ctx                                  context.Context
-	ApiService                           *SourcesApiService
+	ApiService                           *SourcesAPIService
 	groupTelegramSourceConnectionRequest *GroupTelegramSourceConnectionRequest
 }
 
@@ -6281,7 +6375,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsTelegramCreateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramCreate(ctx context.Context) ApiSourcesGroupConnectionsTelegramCreateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramCreate(ctx context.Context) ApiSourcesGroupConnectionsTelegramCreateRequest {
 	return ApiSourcesGroupConnectionsTelegramCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6291,7 +6385,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramCreate(ctx context.Co
 // Execute executes the request
 //
 //	@return GroupTelegramSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramCreateExecute(r ApiSourcesGroupConnectionsTelegramCreateRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramCreateExecute(r ApiSourcesGroupConnectionsTelegramCreateRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -6299,7 +6393,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramCreateExecute(r ApiSo
 		localVarReturnValue *GroupTelegramSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsTelegramCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6342,9 +6436,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramCreateExecute(r ApiSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6361,6 +6455,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramCreateExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6371,6 +6466,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramCreateExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6390,7 +6486,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramCreateExecute(r ApiSo
 
 type ApiSourcesGroupConnectionsTelegramDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -6407,7 +6503,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Telegram Source Connection.
 	@return ApiSourcesGroupConnectionsTelegramDestroyRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramDestroyRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramDestroy(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramDestroyRequest {
 	return ApiSourcesGroupConnectionsTelegramDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6416,20 +6512,20 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramDestroy(ctx context.C
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramDestroyExecute(r ApiSourcesGroupConnectionsTelegramDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramDestroyExecute(r ApiSourcesGroupConnectionsTelegramDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsTelegramDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6462,9 +6558,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramDestroyExecute(r ApiS
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -6481,6 +6577,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramDestroyExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -6491,6 +6588,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramDestroyExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -6501,7 +6599,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramDestroyExecute(r ApiS
 
 type ApiSourcesGroupConnectionsTelegramListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	group      *string
 	ordering   *string
 	page       *int32
@@ -6556,7 +6654,7 @@ Group-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesGroupConnectionsTelegramListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramList(ctx context.Context) ApiSourcesGroupConnectionsTelegramListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramList(ctx context.Context) ApiSourcesGroupConnectionsTelegramListRequest {
 	return ApiSourcesGroupConnectionsTelegramListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6566,7 +6664,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramList(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedGroupTelegramSourceConnectionList
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramListExecute(r ApiSourcesGroupConnectionsTelegramListRequest) (*PaginatedGroupTelegramSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramListExecute(r ApiSourcesGroupConnectionsTelegramListRequest) (*PaginatedGroupTelegramSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6574,7 +6672,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramListExecute(r ApiSour
 		localVarReturnValue *PaginatedGroupTelegramSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsTelegramList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6586,22 +6684,22 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramListExecute(r ApiSour
 	localVarFormParams := url.Values{}
 
 	if r.group != nil {
-		localVarQueryParams.Add("group", parameterToString(*r.group, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group", r.group, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6630,9 +6728,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramListExecute(r ApiSour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6649,6 +6747,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramListExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6659,6 +6758,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramListExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6678,7 +6778,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramListExecute(r ApiSour
 
 type ApiSourcesGroupConnectionsTelegramPartialUpdateRequest struct {
 	ctx                                         context.Context
-	ApiService                                  *SourcesApiService
+	ApiService                                  *SourcesAPIService
 	id                                          int32
 	patchedGroupTelegramSourceConnectionRequest *PatchedGroupTelegramSourceConnectionRequest
 }
@@ -6701,7 +6801,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Telegram Source Connection.
 	@return ApiSourcesGroupConnectionsTelegramPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramPartialUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramPartialUpdateRequest {
 	return ApiSourcesGroupConnectionsTelegramPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6712,7 +6812,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramPartialUpdate(ctx con
 // Execute executes the request
 //
 //	@return GroupTelegramSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramPartialUpdateExecute(r ApiSourcesGroupConnectionsTelegramPartialUpdateRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramPartialUpdateExecute(r ApiSourcesGroupConnectionsTelegramPartialUpdateRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -6720,13 +6820,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramPartialUpdateExecute(
 		localVarReturnValue *GroupTelegramSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsTelegramPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6761,9 +6861,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramPartialUpdateExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6780,6 +6880,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramPartialUpdateExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6790,6 +6891,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramPartialUpdateExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6809,7 +6911,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramPartialUpdateExecute(
 
 type ApiSourcesGroupConnectionsTelegramRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -6826,7 +6928,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Telegram Source Connection.
 	@return ApiSourcesGroupConnectionsTelegramRetrieveRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramRetrieveRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramRetrieve(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramRetrieveRequest {
 	return ApiSourcesGroupConnectionsTelegramRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6837,7 +6939,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramRetrieve(ctx context.
 // Execute executes the request
 //
 //	@return GroupTelegramSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramRetrieveExecute(r ApiSourcesGroupConnectionsTelegramRetrieveRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramRetrieveExecute(r ApiSourcesGroupConnectionsTelegramRetrieveRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -6845,13 +6947,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramRetrieveExecute(r Api
 		localVarReturnValue *GroupTelegramSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsTelegramRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6884,9 +6986,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramRetrieveExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6903,6 +7005,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -6913,6 +7016,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramRetrieveExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -6932,7 +7036,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramRetrieveExecute(r Api
 
 type ApiSourcesGroupConnectionsTelegramUpdateRequest struct {
 	ctx                                  context.Context
-	ApiService                           *SourcesApiService
+	ApiService                           *SourcesAPIService
 	id                                   int32
 	groupTelegramSourceConnectionRequest *GroupTelegramSourceConnectionRequest
 }
@@ -6955,7 +7059,7 @@ Group-source connection Viewset
 	@param id A unique integer value identifying this Group Telegram Source Connection.
 	@return ApiSourcesGroupConnectionsTelegramUpdateRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramUpdateRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramUpdate(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramUpdateRequest {
 	return ApiSourcesGroupConnectionsTelegramUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -6966,7 +7070,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUpdate(ctx context.Co
 // Execute executes the request
 //
 //	@return GroupTelegramSourceConnection
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramUpdateExecute(r ApiSourcesGroupConnectionsTelegramUpdateRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramUpdateExecute(r ApiSourcesGroupConnectionsTelegramUpdateRequest) (*GroupTelegramSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -6974,13 +7078,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUpdateExecute(r ApiSo
 		localVarReturnValue *GroupTelegramSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsTelegramUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7018,9 +7122,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUpdateExecute(r ApiSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7037,6 +7141,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUpdateExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7047,6 +7152,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUpdateExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7066,7 +7172,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUpdateExecute(r ApiSo
 
 type ApiSourcesGroupConnectionsTelegramUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -7083,7 +7189,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this Group Telegram Source Connection.
 	@return ApiSourcesGroupConnectionsTelegramUsedByListRequest
 */
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramUsedByListRequest {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramUsedByList(ctx context.Context, id int32) ApiSourcesGroupConnectionsTelegramUsedByListRequest {
 	return ApiSourcesGroupConnectionsTelegramUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7094,7 +7200,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUsedByList(ctx contex
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesGroupConnectionsTelegramUsedByListExecute(r ApiSourcesGroupConnectionsTelegramUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesGroupConnectionsTelegramUsedByListExecute(r ApiSourcesGroupConnectionsTelegramUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7102,13 +7208,13 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUsedByListExecute(r A
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesGroupConnectionsTelegramUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesGroupConnectionsTelegramUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/group_connections/telegram/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7141,9 +7247,9 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUsedByListExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7160,6 +7266,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUsedByListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7170,6 +7277,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUsedByListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7189,7 +7297,7 @@ func (a *SourcesApiService) SourcesGroupConnectionsTelegramUsedByListExecute(r A
 
 type ApiSourcesKerberosCreateRequest struct {
 	ctx                   context.Context
-	ApiService            *SourcesApiService
+	ApiService            *SourcesAPIService
 	kerberosSourceRequest *KerberosSourceRequest
 }
 
@@ -7210,7 +7318,7 @@ Kerberos Source Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesKerberosCreateRequest
 */
-func (a *SourcesApiService) SourcesKerberosCreate(ctx context.Context) ApiSourcesKerberosCreateRequest {
+func (a *SourcesAPIService) SourcesKerberosCreate(ctx context.Context) ApiSourcesKerberosCreateRequest {
 	return ApiSourcesKerberosCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7220,7 +7328,7 @@ func (a *SourcesApiService) SourcesKerberosCreate(ctx context.Context) ApiSource
 // Execute executes the request
 //
 //	@return KerberosSource
-func (a *SourcesApiService) SourcesKerberosCreateExecute(r ApiSourcesKerberosCreateRequest) (*KerberosSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesKerberosCreateExecute(r ApiSourcesKerberosCreateRequest) (*KerberosSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -7228,7 +7336,7 @@ func (a *SourcesApiService) SourcesKerberosCreateExecute(r ApiSourcesKerberosCre
 		localVarReturnValue *KerberosSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesKerberosCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesKerberosCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -7271,9 +7379,9 @@ func (a *SourcesApiService) SourcesKerberosCreateExecute(r ApiSourcesKerberosCre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7290,6 +7398,7 @@ func (a *SourcesApiService) SourcesKerberosCreateExecute(r ApiSourcesKerberosCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7300,6 +7409,7 @@ func (a *SourcesApiService) SourcesKerberosCreateExecute(r ApiSourcesKerberosCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7319,7 +7429,7 @@ func (a *SourcesApiService) SourcesKerberosCreateExecute(r ApiSourcesKerberosCre
 
 type ApiSourcesKerberosDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -7336,7 +7446,7 @@ Kerberos Source Viewset
 	@param slug
 	@return ApiSourcesKerberosDestroyRequest
 */
-func (a *SourcesApiService) SourcesKerberosDestroy(ctx context.Context, slug string) ApiSourcesKerberosDestroyRequest {
+func (a *SourcesAPIService) SourcesKerberosDestroy(ctx context.Context, slug string) ApiSourcesKerberosDestroyRequest {
 	return ApiSourcesKerberosDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7345,20 +7455,20 @@ func (a *SourcesApiService) SourcesKerberosDestroy(ctx context.Context, slug str
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesKerberosDestroyExecute(r ApiSourcesKerberosDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesKerberosDestroyExecute(r ApiSourcesKerberosDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesKerberosDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesKerberosDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/kerberos/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7391,9 +7501,9 @@ func (a *SourcesApiService) SourcesKerberosDestroyExecute(r ApiSourcesKerberosDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -7410,6 +7520,7 @@ func (a *SourcesApiService) SourcesKerberosDestroyExecute(r ApiSourcesKerberosDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -7420,6 +7531,7 @@ func (a *SourcesApiService) SourcesKerberosDestroyExecute(r ApiSourcesKerberosDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -7430,7 +7542,7 @@ func (a *SourcesApiService) SourcesKerberosDestroyExecute(r ApiSourcesKerberosDe
 
 type ApiSourcesKerberosListRequest struct {
 	ctx                                 context.Context
-	ApiService                          *SourcesApiService
+	ApiService                          *SourcesAPIService
 	enabled                             *bool
 	kadminType                          *string
 	name                                *string
@@ -7540,7 +7652,7 @@ Kerberos Source Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesKerberosListRequest
 */
-func (a *SourcesApiService) SourcesKerberosList(ctx context.Context) ApiSourcesKerberosListRequest {
+func (a *SourcesAPIService) SourcesKerberosList(ctx context.Context) ApiSourcesKerberosListRequest {
 	return ApiSourcesKerberosListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7550,7 +7662,7 @@ func (a *SourcesApiService) SourcesKerberosList(ctx context.Context) ApiSourcesK
 // Execute executes the request
 //
 //	@return PaginatedKerberosSourceList
-func (a *SourcesApiService) SourcesKerberosListExecute(r ApiSourcesKerberosListRequest) (*PaginatedKerberosSourceList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesKerberosListExecute(r ApiSourcesKerberosListRequest) (*PaginatedKerberosSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7558,7 +7670,7 @@ func (a *SourcesApiService) SourcesKerberosListExecute(r ApiSourcesKerberosListR
 		localVarReturnValue *PaginatedKerberosSourceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesKerberosList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesKerberosList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -7570,49 +7682,49 @@ func (a *SourcesApiService) SourcesKerberosListExecute(r ApiSourcesKerberosListR
 	localVarFormParams := url.Values{}
 
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
 	}
 	if r.kadminType != nil {
-		localVarQueryParams.Add("kadmin_type", parameterToString(*r.kadminType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "kadmin_type", r.kadminType, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.passwordLoginUpdateInternalPassword != nil {
-		localVarQueryParams.Add("password_login_update_internal_password", parameterToString(*r.passwordLoginUpdateInternalPassword, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "password_login_update_internal_password", r.passwordLoginUpdateInternalPassword, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.realm != nil {
-		localVarQueryParams.Add("realm", parameterToString(*r.realm, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "realm", r.realm, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	if r.spnegoServerName != nil {
-		localVarQueryParams.Add("spnego_server_name", parameterToString(*r.spnegoServerName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "spnego_server_name", r.spnegoServerName, "form", "")
 	}
 	if r.syncPrincipal != nil {
-		localVarQueryParams.Add("sync_principal", parameterToString(*r.syncPrincipal, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_principal", r.syncPrincipal, "form", "")
 	}
 	if r.syncUsers != nil {
-		localVarQueryParams.Add("sync_users", parameterToString(*r.syncUsers, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_users", r.syncUsers, "form", "")
 	}
 	if r.syncUsersPassword != nil {
-		localVarQueryParams.Add("sync_users_password", parameterToString(*r.syncUsersPassword, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_users_password", r.syncUsersPassword, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7641,9 +7753,9 @@ func (a *SourcesApiService) SourcesKerberosListExecute(r ApiSourcesKerberosListR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7660,6 +7772,7 @@ func (a *SourcesApiService) SourcesKerberosListExecute(r ApiSourcesKerberosListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7670,6 +7783,7 @@ func (a *SourcesApiService) SourcesKerberosListExecute(r ApiSourcesKerberosListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7689,7 +7803,7 @@ func (a *SourcesApiService) SourcesKerberosListExecute(r ApiSourcesKerberosListR
 
 type ApiSourcesKerberosPartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *SourcesApiService
+	ApiService                   *SourcesAPIService
 	slug                         string
 	patchedKerberosSourceRequest *PatchedKerberosSourceRequest
 }
@@ -7712,7 +7826,7 @@ Kerberos Source Viewset
 	@param slug
 	@return ApiSourcesKerberosPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesKerberosPartialUpdate(ctx context.Context, slug string) ApiSourcesKerberosPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesKerberosPartialUpdate(ctx context.Context, slug string) ApiSourcesKerberosPartialUpdateRequest {
 	return ApiSourcesKerberosPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7723,7 +7837,7 @@ func (a *SourcesApiService) SourcesKerberosPartialUpdate(ctx context.Context, sl
 // Execute executes the request
 //
 //	@return KerberosSource
-func (a *SourcesApiService) SourcesKerberosPartialUpdateExecute(r ApiSourcesKerberosPartialUpdateRequest) (*KerberosSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesKerberosPartialUpdateExecute(r ApiSourcesKerberosPartialUpdateRequest) (*KerberosSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -7731,13 +7845,13 @@ func (a *SourcesApiService) SourcesKerberosPartialUpdateExecute(r ApiSourcesKerb
 		localVarReturnValue *KerberosSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesKerberosPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesKerberosPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/kerberos/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7772,9 +7886,9 @@ func (a *SourcesApiService) SourcesKerberosPartialUpdateExecute(r ApiSourcesKerb
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7791,6 +7905,7 @@ func (a *SourcesApiService) SourcesKerberosPartialUpdateExecute(r ApiSourcesKerb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7801,6 +7916,7 @@ func (a *SourcesApiService) SourcesKerberosPartialUpdateExecute(r ApiSourcesKerb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7820,7 +7936,7 @@ func (a *SourcesApiService) SourcesKerberosPartialUpdateExecute(r ApiSourcesKerb
 
 type ApiSourcesKerberosRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -7837,7 +7953,7 @@ Kerberos Source Viewset
 	@param slug
 	@return ApiSourcesKerberosRetrieveRequest
 */
-func (a *SourcesApiService) SourcesKerberosRetrieve(ctx context.Context, slug string) ApiSourcesKerberosRetrieveRequest {
+func (a *SourcesAPIService) SourcesKerberosRetrieve(ctx context.Context, slug string) ApiSourcesKerberosRetrieveRequest {
 	return ApiSourcesKerberosRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7848,7 +7964,7 @@ func (a *SourcesApiService) SourcesKerberosRetrieve(ctx context.Context, slug st
 // Execute executes the request
 //
 //	@return KerberosSource
-func (a *SourcesApiService) SourcesKerberosRetrieveExecute(r ApiSourcesKerberosRetrieveRequest) (*KerberosSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesKerberosRetrieveExecute(r ApiSourcesKerberosRetrieveRequest) (*KerberosSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7856,13 +7972,13 @@ func (a *SourcesApiService) SourcesKerberosRetrieveExecute(r ApiSourcesKerberosR
 		localVarReturnValue *KerberosSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesKerberosRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesKerberosRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/kerberos/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -7895,9 +8011,9 @@ func (a *SourcesApiService) SourcesKerberosRetrieveExecute(r ApiSourcesKerberosR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -7914,6 +8030,7 @@ func (a *SourcesApiService) SourcesKerberosRetrieveExecute(r ApiSourcesKerberosR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -7924,6 +8041,7 @@ func (a *SourcesApiService) SourcesKerberosRetrieveExecute(r ApiSourcesKerberosR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -7943,7 +8061,7 @@ func (a *SourcesApiService) SourcesKerberosRetrieveExecute(r ApiSourcesKerberosR
 
 type ApiSourcesKerberosSyncStatusRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -7960,7 +8078,7 @@ Get provider's sync status
 	@param slug
 	@return ApiSourcesKerberosSyncStatusRetrieveRequest
 */
-func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieve(ctx context.Context, slug string) ApiSourcesKerberosSyncStatusRetrieveRequest {
+func (a *SourcesAPIService) SourcesKerberosSyncStatusRetrieve(ctx context.Context, slug string) ApiSourcesKerberosSyncStatusRetrieveRequest {
 	return ApiSourcesKerberosSyncStatusRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -7971,7 +8089,7 @@ func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieve(ctx context.Contex
 // Execute executes the request
 //
 //	@return SyncStatus
-func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSourcesKerberosSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
+func (a *SourcesAPIService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSourcesKerberosSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -7979,13 +8097,13 @@ func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSource
 		localVarReturnValue *SyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesKerberosSyncStatusRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesKerberosSyncStatusRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/kerberos/{slug}/sync/status/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8018,9 +8136,9 @@ func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8037,6 +8155,7 @@ func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8047,6 +8166,7 @@ func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8066,7 +8186,7 @@ func (a *SourcesApiService) SourcesKerberosSyncStatusRetrieveExecute(r ApiSource
 
 type ApiSourcesKerberosUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *SourcesApiService
+	ApiService            *SourcesAPIService
 	slug                  string
 	kerberosSourceRequest *KerberosSourceRequest
 }
@@ -8089,7 +8209,7 @@ Kerberos Source Viewset
 	@param slug
 	@return ApiSourcesKerberosUpdateRequest
 */
-func (a *SourcesApiService) SourcesKerberosUpdate(ctx context.Context, slug string) ApiSourcesKerberosUpdateRequest {
+func (a *SourcesAPIService) SourcesKerberosUpdate(ctx context.Context, slug string) ApiSourcesKerberosUpdateRequest {
 	return ApiSourcesKerberosUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8100,7 +8220,7 @@ func (a *SourcesApiService) SourcesKerberosUpdate(ctx context.Context, slug stri
 // Execute executes the request
 //
 //	@return KerberosSource
-func (a *SourcesApiService) SourcesKerberosUpdateExecute(r ApiSourcesKerberosUpdateRequest) (*KerberosSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesKerberosUpdateExecute(r ApiSourcesKerberosUpdateRequest) (*KerberosSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -8108,13 +8228,13 @@ func (a *SourcesApiService) SourcesKerberosUpdateExecute(r ApiSourcesKerberosUpd
 		localVarReturnValue *KerberosSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesKerberosUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesKerberosUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/kerberos/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8152,9 +8272,9 @@ func (a *SourcesApiService) SourcesKerberosUpdateExecute(r ApiSourcesKerberosUpd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8171,6 +8291,7 @@ func (a *SourcesApiService) SourcesKerberosUpdateExecute(r ApiSourcesKerberosUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8181,6 +8302,7 @@ func (a *SourcesApiService) SourcesKerberosUpdateExecute(r ApiSourcesKerberosUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8200,7 +8322,7 @@ func (a *SourcesApiService) SourcesKerberosUpdateExecute(r ApiSourcesKerberosUpd
 
 type ApiSourcesKerberosUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -8217,7 +8339,7 @@ Get a list of all objects that use this object
 	@param slug
 	@return ApiSourcesKerberosUsedByListRequest
 */
-func (a *SourcesApiService) SourcesKerberosUsedByList(ctx context.Context, slug string) ApiSourcesKerberosUsedByListRequest {
+func (a *SourcesAPIService) SourcesKerberosUsedByList(ctx context.Context, slug string) ApiSourcesKerberosUsedByListRequest {
 	return ApiSourcesKerberosUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8228,7 +8350,7 @@ func (a *SourcesApiService) SourcesKerberosUsedByList(ctx context.Context, slug 
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesKerberosUsedByListExecute(r ApiSourcesKerberosUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesKerberosUsedByListExecute(r ApiSourcesKerberosUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8236,13 +8358,13 @@ func (a *SourcesApiService) SourcesKerberosUsedByListExecute(r ApiSourcesKerbero
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesKerberosUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesKerberosUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/kerberos/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8275,9 +8397,9 @@ func (a *SourcesApiService) SourcesKerberosUsedByListExecute(r ApiSourcesKerbero
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8294,6 +8416,7 @@ func (a *SourcesApiService) SourcesKerberosUsedByListExecute(r ApiSourcesKerbero
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8304,6 +8427,7 @@ func (a *SourcesApiService) SourcesKerberosUsedByListExecute(r ApiSourcesKerbero
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8323,7 +8447,7 @@ func (a *SourcesApiService) SourcesKerberosUsedByListExecute(r ApiSourcesKerbero
 
 type ApiSourcesLdapCreateRequest struct {
 	ctx               context.Context
-	ApiService        *SourcesApiService
+	ApiService        *SourcesAPIService
 	lDAPSourceRequest *LDAPSourceRequest
 }
 
@@ -8344,7 +8468,7 @@ LDAP Source Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesLdapCreateRequest
 */
-func (a *SourcesApiService) SourcesLdapCreate(ctx context.Context) ApiSourcesLdapCreateRequest {
+func (a *SourcesAPIService) SourcesLdapCreate(ctx context.Context) ApiSourcesLdapCreateRequest {
 	return ApiSourcesLdapCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8354,7 +8478,7 @@ func (a *SourcesApiService) SourcesLdapCreate(ctx context.Context) ApiSourcesLda
 // Execute executes the request
 //
 //	@return LDAPSource
-func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateRequest) (*LDAPSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateRequest) (*LDAPSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -8362,7 +8486,7 @@ func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateReque
 		localVarReturnValue *LDAPSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesLdapCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8405,9 +8529,9 @@ func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8424,6 +8548,7 @@ func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8434,6 +8559,7 @@ func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8453,7 +8579,7 @@ func (a *SourcesApiService) SourcesLdapCreateExecute(r ApiSourcesLdapCreateReque
 
 type ApiSourcesLdapDebugRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -8470,7 +8596,7 @@ Get raw LDAP data to debug
 	@param slug
 	@return ApiSourcesLdapDebugRetrieveRequest
 */
-func (a *SourcesApiService) SourcesLdapDebugRetrieve(ctx context.Context, slug string) ApiSourcesLdapDebugRetrieveRequest {
+func (a *SourcesAPIService) SourcesLdapDebugRetrieve(ctx context.Context, slug string) ApiSourcesLdapDebugRetrieveRequest {
 	return ApiSourcesLdapDebugRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8481,7 +8607,7 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieve(ctx context.Context, slug s
 // Execute executes the request
 //
 //	@return LDAPDebug
-func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebugRetrieveRequest) (*LDAPDebug, *http.Response, error) {
+func (a *SourcesAPIService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebugRetrieveRequest) (*LDAPDebug, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8489,13 +8615,13 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebu
 		localVarReturnValue *LDAPDebug
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapDebugRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesLdapDebugRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/debug/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8528,9 +8654,9 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -8547,6 +8673,7 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -8557,6 +8684,7 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -8576,7 +8704,7 @@ func (a *SourcesApiService) SourcesLdapDebugRetrieveExecute(r ApiSourcesLdapDebu
 
 type ApiSourcesLdapDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -8593,7 +8721,7 @@ LDAP Source Viewset
 	@param slug
 	@return ApiSourcesLdapDestroyRequest
 */
-func (a *SourcesApiService) SourcesLdapDestroy(ctx context.Context, slug string) ApiSourcesLdapDestroyRequest {
+func (a *SourcesAPIService) SourcesLdapDestroy(ctx context.Context, slug string) ApiSourcesLdapDestroyRequest {
 	return ApiSourcesLdapDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8602,20 +8730,20 @@ func (a *SourcesApiService) SourcesLdapDestroy(ctx context.Context, slug string)
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesLdapDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -8648,9 +8776,9 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -8667,6 +8795,7 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -8677,6 +8806,7 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -8687,7 +8817,7 @@ func (a *SourcesApiService) SourcesLdapDestroyExecute(r ApiSourcesLdapDestroyReq
 
 type ApiSourcesLdapListRequest struct {
 	ctx                                 context.Context
-	ApiService                          *SourcesApiService
+	ApiService                          *SourcesAPIService
 	additionalGroupDn                   *string
 	additionalUserDn                    *string
 	baseDn                              *string
@@ -8892,7 +9022,7 @@ LDAP Source Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesLdapListRequest
 */
-func (a *SourcesApiService) SourcesLdapList(ctx context.Context) ApiSourcesLdapListRequest {
+func (a *SourcesAPIService) SourcesLdapList(ctx context.Context) ApiSourcesLdapListRequest {
 	return ApiSourcesLdapListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -8902,7 +9032,7 @@ func (a *SourcesApiService) SourcesLdapList(ctx context.Context) ApiSourcesLdapL
 // Execute executes the request
 //
 //	@return PaginatedLDAPSourceList
-func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) (*PaginatedLDAPSourceList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) (*PaginatedLDAPSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -8910,7 +9040,7 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 		localVarReturnValue *PaginatedLDAPSourceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesLdapList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -8922,112 +9052,112 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.additionalGroupDn != nil {
-		localVarQueryParams.Add("additional_group_dn", parameterToString(*r.additionalGroupDn, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "additional_group_dn", r.additionalGroupDn, "form", "")
 	}
 	if r.additionalUserDn != nil {
-		localVarQueryParams.Add("additional_user_dn", parameterToString(*r.additionalUserDn, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "additional_user_dn", r.additionalUserDn, "form", "")
 	}
 	if r.baseDn != nil {
-		localVarQueryParams.Add("base_dn", parameterToString(*r.baseDn, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "base_dn", r.baseDn, "form", "")
 	}
 	if r.bindCn != nil {
-		localVarQueryParams.Add("bind_cn", parameterToString(*r.bindCn, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bind_cn", r.bindCn, "form", "")
 	}
 	if r.clientCertificate != nil {
-		localVarQueryParams.Add("client_certificate", parameterToString(*r.clientCertificate, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "client_certificate", r.clientCertificate, "form", "")
 	}
 	if r.deleteNotFoundObjects != nil {
-		localVarQueryParams.Add("delete_not_found_objects", parameterToString(*r.deleteNotFoundObjects, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "delete_not_found_objects", r.deleteNotFoundObjects, "form", "")
 	}
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
 	}
 	if r.groupMembershipField != nil {
-		localVarQueryParams.Add("group_membership_field", parameterToString(*r.groupMembershipField, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group_membership_field", r.groupMembershipField, "form", "")
 	}
 	if r.groupObjectFilter != nil {
-		localVarQueryParams.Add("group_object_filter", parameterToString(*r.groupObjectFilter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group_object_filter", r.groupObjectFilter, "form", "")
 	}
 	if r.groupPropertyMappings != nil {
 		t := *r.groupPropertyMappings
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("group_property_mappings", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "group_property_mappings", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("group_property_mappings", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "group_property_mappings", t, "form", "multi")
 		}
 	}
 	if r.lookupGroupsFromUser != nil {
-		localVarQueryParams.Add("lookup_groups_from_user", parameterToString(*r.lookupGroupsFromUser, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lookup_groups_from_user", r.lookupGroupsFromUser, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.objectUniquenessField != nil {
-		localVarQueryParams.Add("object_uniqueness_field", parameterToString(*r.objectUniquenessField, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "object_uniqueness_field", r.objectUniquenessField, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.passwordLoginUpdateInternalPassword != nil {
-		localVarQueryParams.Add("password_login_update_internal_password", parameterToString(*r.passwordLoginUpdateInternalPassword, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "password_login_update_internal_password", r.passwordLoginUpdateInternalPassword, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.peerCertificate != nil {
-		localVarQueryParams.Add("peer_certificate", parameterToString(*r.peerCertificate, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "peer_certificate", r.peerCertificate, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.serverUri != nil {
-		localVarQueryParams.Add("server_uri", parameterToString(*r.serverUri, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "server_uri", r.serverUri, "form", "")
 	}
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	if r.sni != nil {
-		localVarQueryParams.Add("sni", parameterToString(*r.sni, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sni", r.sni, "form", "")
 	}
 	if r.startTls != nil {
-		localVarQueryParams.Add("start_tls", parameterToString(*r.startTls, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start_tls", r.startTls, "form", "")
 	}
 	if r.syncGroups != nil {
-		localVarQueryParams.Add("sync_groups", parameterToString(*r.syncGroups, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_groups", r.syncGroups, "form", "")
 	}
 	if r.syncParentGroup != nil {
-		localVarQueryParams.Add("sync_parent_group", parameterToString(*r.syncParentGroup, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_parent_group", r.syncParentGroup, "form", "")
 	}
 	if r.syncUsers != nil {
-		localVarQueryParams.Add("sync_users", parameterToString(*r.syncUsers, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_users", r.syncUsers, "form", "")
 	}
 	if r.syncUsersPassword != nil {
-		localVarQueryParams.Add("sync_users_password", parameterToString(*r.syncUsersPassword, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sync_users_password", r.syncUsersPassword, "form", "")
 	}
 	if r.userMembershipAttribute != nil {
-		localVarQueryParams.Add("user_membership_attribute", parameterToString(*r.userMembershipAttribute, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_membership_attribute", r.userMembershipAttribute, "form", "")
 	}
 	if r.userObjectFilter != nil {
-		localVarQueryParams.Add("user_object_filter", parameterToString(*r.userObjectFilter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_object_filter", r.userObjectFilter, "form", "")
 	}
 	if r.userPropertyMappings != nil {
 		t := *r.userPropertyMappings
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("user_property_mappings", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "user_property_mappings", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("user_property_mappings", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "user_property_mappings", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -9057,9 +9187,9 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9076,6 +9206,7 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9086,6 +9217,7 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9105,7 +9237,7 @@ func (a *SourcesApiService) SourcesLdapListExecute(r ApiSourcesLdapListRequest) 
 
 type ApiSourcesLdapPartialUpdateRequest struct {
 	ctx                      context.Context
-	ApiService               *SourcesApiService
+	ApiService               *SourcesAPIService
 	slug                     string
 	patchedLDAPSourceRequest *PatchedLDAPSourceRequest
 }
@@ -9128,7 +9260,7 @@ LDAP Source Viewset
 	@param slug
 	@return ApiSourcesLdapPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesLdapPartialUpdate(ctx context.Context, slug string) ApiSourcesLdapPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesLdapPartialUpdate(ctx context.Context, slug string) ApiSourcesLdapPartialUpdateRequest {
 	return ApiSourcesLdapPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9139,7 +9271,7 @@ func (a *SourcesApiService) SourcesLdapPartialUpdate(ctx context.Context, slug s
 // Execute executes the request
 //
 //	@return LDAPSource
-func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPartialUpdateRequest) (*LDAPSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPartialUpdateRequest) (*LDAPSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -9147,13 +9279,13 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 		localVarReturnValue *LDAPSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesLdapPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9188,9 +9320,9 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9207,6 +9339,7 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9217,6 +9350,7 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9236,7 +9370,7 @@ func (a *SourcesApiService) SourcesLdapPartialUpdateExecute(r ApiSourcesLdapPart
 
 type ApiSourcesLdapRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -9253,7 +9387,7 @@ LDAP Source Viewset
 	@param slug
 	@return ApiSourcesLdapRetrieveRequest
 */
-func (a *SourcesApiService) SourcesLdapRetrieve(ctx context.Context, slug string) ApiSourcesLdapRetrieveRequest {
+func (a *SourcesAPIService) SourcesLdapRetrieve(ctx context.Context, slug string) ApiSourcesLdapRetrieveRequest {
 	return ApiSourcesLdapRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9264,7 +9398,7 @@ func (a *SourcesApiService) SourcesLdapRetrieve(ctx context.Context, slug string
 // Execute executes the request
 //
 //	@return LDAPSource
-func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveRequest) (*LDAPSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveRequest) (*LDAPSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9272,13 +9406,13 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 		localVarReturnValue *LDAPSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesLdapRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9311,9 +9445,9 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9330,6 +9464,7 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9340,6 +9475,7 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9359,7 +9495,7 @@ func (a *SourcesApiService) SourcesLdapRetrieveExecute(r ApiSourcesLdapRetrieveR
 
 type ApiSourcesLdapSyncStatusRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -9376,7 +9512,7 @@ Get provider's sync status
 	@param slug
 	@return ApiSourcesLdapSyncStatusRetrieveRequest
 */
-func (a *SourcesApiService) SourcesLdapSyncStatusRetrieve(ctx context.Context, slug string) ApiSourcesLdapSyncStatusRetrieveRequest {
+func (a *SourcesAPIService) SourcesLdapSyncStatusRetrieve(ctx context.Context, slug string) ApiSourcesLdapSyncStatusRetrieveRequest {
 	return ApiSourcesLdapSyncStatusRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9387,7 +9523,7 @@ func (a *SourcesApiService) SourcesLdapSyncStatusRetrieve(ctx context.Context, s
 // Execute executes the request
 //
 //	@return SyncStatus
-func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLdapSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
+func (a *SourcesAPIService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLdapSyncStatusRetrieveRequest) (*SyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9395,13 +9531,13 @@ func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLda
 		localVarReturnValue *SyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapSyncStatusRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesLdapSyncStatusRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/sync/status/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9434,9 +9570,9 @@ func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLda
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9453,6 +9589,7 @@ func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9463,6 +9600,7 @@ func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9482,7 +9620,7 @@ func (a *SourcesApiService) SourcesLdapSyncStatusRetrieveExecute(r ApiSourcesLda
 
 type ApiSourcesLdapUpdateRequest struct {
 	ctx               context.Context
-	ApiService        *SourcesApiService
+	ApiService        *SourcesAPIService
 	slug              string
 	lDAPSourceRequest *LDAPSourceRequest
 }
@@ -9505,7 +9643,7 @@ LDAP Source Viewset
 	@param slug
 	@return ApiSourcesLdapUpdateRequest
 */
-func (a *SourcesApiService) SourcesLdapUpdate(ctx context.Context, slug string) ApiSourcesLdapUpdateRequest {
+func (a *SourcesAPIService) SourcesLdapUpdate(ctx context.Context, slug string) ApiSourcesLdapUpdateRequest {
 	return ApiSourcesLdapUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9516,7 +9654,7 @@ func (a *SourcesApiService) SourcesLdapUpdate(ctx context.Context, slug string) 
 // Execute executes the request
 //
 //	@return LDAPSource
-func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateRequest) (*LDAPSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateRequest) (*LDAPSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -9524,13 +9662,13 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 		localVarReturnValue *LDAPSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesLdapUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9568,9 +9706,9 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9587,6 +9725,7 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9597,6 +9736,7 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9616,7 +9756,7 @@ func (a *SourcesApiService) SourcesLdapUpdateExecute(r ApiSourcesLdapUpdateReque
 
 type ApiSourcesLdapUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -9633,7 +9773,7 @@ Get a list of all objects that use this object
 	@param slug
 	@return ApiSourcesLdapUsedByListRequest
 */
-func (a *SourcesApiService) SourcesLdapUsedByList(ctx context.Context, slug string) ApiSourcesLdapUsedByListRequest {
+func (a *SourcesAPIService) SourcesLdapUsedByList(ctx context.Context, slug string) ApiSourcesLdapUsedByListRequest {
 	return ApiSourcesLdapUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9644,7 +9784,7 @@ func (a *SourcesApiService) SourcesLdapUsedByList(ctx context.Context, slug stri
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -9652,13 +9792,13 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesLdapUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesLdapUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/ldap/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9691,9 +9831,9 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9710,6 +9850,7 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9720,6 +9861,7 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9739,7 +9881,7 @@ func (a *SourcesApiService) SourcesLdapUsedByListExecute(r ApiSourcesLdapUsedByL
 
 type ApiSourcesOauthCreateRequest struct {
 	ctx                context.Context
-	ApiService         *SourcesApiService
+	ApiService         *SourcesAPIService
 	oAuthSourceRequest *OAuthSourceRequest
 }
 
@@ -9760,7 +9902,7 @@ Source Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesOauthCreateRequest
 */
-func (a *SourcesApiService) SourcesOauthCreate(ctx context.Context) ApiSourcesOauthCreateRequest {
+func (a *SourcesAPIService) SourcesOauthCreate(ctx context.Context) ApiSourcesOauthCreateRequest {
 	return ApiSourcesOauthCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9770,7 +9912,7 @@ func (a *SourcesApiService) SourcesOauthCreate(ctx context.Context) ApiSourcesOa
 // Execute executes the request
 //
 //	@return OAuthSource
-func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateRequest) (*OAuthSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateRequest) (*OAuthSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -9778,7 +9920,7 @@ func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateReq
 		localVarReturnValue *OAuthSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesOauthCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesOauthCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -9821,9 +9963,9 @@ func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -9840,6 +9982,7 @@ func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -9850,6 +9993,7 @@ func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -9869,7 +10013,7 @@ func (a *SourcesApiService) SourcesOauthCreateExecute(r ApiSourcesOauthCreateReq
 
 type ApiSourcesOauthDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -9886,7 +10030,7 @@ Source Viewset
 	@param slug
 	@return ApiSourcesOauthDestroyRequest
 */
-func (a *SourcesApiService) SourcesOauthDestroy(ctx context.Context, slug string) ApiSourcesOauthDestroyRequest {
+func (a *SourcesAPIService) SourcesOauthDestroy(ctx context.Context, slug string) ApiSourcesOauthDestroyRequest {
 	return ApiSourcesOauthDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -9895,20 +10039,20 @@ func (a *SourcesApiService) SourcesOauthDestroy(ctx context.Context, slug string
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesOauthDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesOauthDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -9941,9 +10085,9 @@ func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyR
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -9960,6 +10104,7 @@ func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -9970,6 +10115,7 @@ func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -9980,7 +10126,7 @@ func (a *SourcesApiService) SourcesOauthDestroyExecute(r ApiSourcesOauthDestroyR
 
 type ApiSourcesOauthListRequest struct {
 	ctx                context.Context
-	ApiService         *SourcesApiService
+	ApiService         *SourcesAPIService
 	accessTokenUrl     *string
 	additionalScopes   *string
 	authenticationFlow *string
@@ -10128,7 +10274,7 @@ Source Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesOauthListRequest
 */
-func (a *SourcesApiService) SourcesOauthList(ctx context.Context) ApiSourcesOauthListRequest {
+func (a *SourcesAPIService) SourcesOauthList(ctx context.Context) ApiSourcesOauthListRequest {
 	return ApiSourcesOauthListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10138,7 +10284,7 @@ func (a *SourcesApiService) SourcesOauthList(ctx context.Context) ApiSourcesOaut
 // Execute executes the request
 //
 //	@return PaginatedOAuthSourceList
-func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest) (*PaginatedOAuthSourceList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesOauthListExecute(r ApiSourcesOauthListRequest) (*PaginatedOAuthSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10146,7 +10292,7 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 		localVarReturnValue *PaginatedOAuthSourceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesOauthList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesOauthList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -10158,67 +10304,67 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 	localVarFormParams := url.Values{}
 
 	if r.accessTokenUrl != nil {
-		localVarQueryParams.Add("access_token_url", parameterToString(*r.accessTokenUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "access_token_url", r.accessTokenUrl, "form", "")
 	}
 	if r.additionalScopes != nil {
-		localVarQueryParams.Add("additional_scopes", parameterToString(*r.additionalScopes, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "additional_scopes", r.additionalScopes, "form", "")
 	}
 	if r.authenticationFlow != nil {
-		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "form", "")
 	}
 	if r.authorizationUrl != nil {
-		localVarQueryParams.Add("authorization_url", parameterToString(*r.authorizationUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "authorization_url", r.authorizationUrl, "form", "")
 	}
 	if r.consumerKey != nil {
-		localVarQueryParams.Add("consumer_key", parameterToString(*r.consumerKey, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "consumer_key", r.consumerKey, "form", "")
 	}
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
 	}
 	if r.enrollmentFlow != nil {
-		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enrollment_flow", r.enrollmentFlow, "form", "")
 	}
 	if r.groupMatchingMode != nil {
-		localVarQueryParams.Add("group_matching_mode", parameterToString(*r.groupMatchingMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group_matching_mode", r.groupMatchingMode, "form", "")
 	}
 	if r.hasJwks != nil {
-		localVarQueryParams.Add("has_jwks", parameterToString(*r.hasJwks, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "has_jwks", r.hasJwks, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.policyEngineMode != nil {
-		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_engine_mode", r.policyEngineMode, "form", "")
 	}
 	if r.profileUrl != nil {
-		localVarQueryParams.Add("profile_url", parameterToString(*r.profileUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "profile_url", r.profileUrl, "form", "")
 	}
 	if r.providerType != nil {
-		localVarQueryParams.Add("provider_type", parameterToString(*r.providerType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider_type", r.providerType, "form", "")
 	}
 	if r.requestTokenUrl != nil {
-		localVarQueryParams.Add("request_token_url", parameterToString(*r.requestTokenUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "request_token_url", r.requestTokenUrl, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	if r.userMatchingMode != nil {
-		localVarQueryParams.Add("user_matching_mode", parameterToString(*r.userMatchingMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_matching_mode", r.userMatchingMode, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10247,9 +10393,9 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10266,6 +10412,7 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10276,6 +10423,7 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10295,7 +10443,7 @@ func (a *SourcesApiService) SourcesOauthListExecute(r ApiSourcesOauthListRequest
 
 type ApiSourcesOauthPartialUpdateRequest struct {
 	ctx                       context.Context
-	ApiService                *SourcesApiService
+	ApiService                *SourcesAPIService
 	slug                      string
 	patchedOAuthSourceRequest *PatchedOAuthSourceRequest
 }
@@ -10318,7 +10466,7 @@ Source Viewset
 	@param slug
 	@return ApiSourcesOauthPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesOauthPartialUpdate(ctx context.Context, slug string) ApiSourcesOauthPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesOauthPartialUpdate(ctx context.Context, slug string) ApiSourcesOauthPartialUpdateRequest {
 	return ApiSourcesOauthPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10329,7 +10477,7 @@ func (a *SourcesApiService) SourcesOauthPartialUpdate(ctx context.Context, slug 
 // Execute executes the request
 //
 //	@return OAuthSource
-func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPartialUpdateRequest) (*OAuthSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPartialUpdateRequest) (*OAuthSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -10337,13 +10485,13 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 		localVarReturnValue *OAuthSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesOauthPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesOauthPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10378,9 +10526,9 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10397,6 +10545,7 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10407,6 +10556,7 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10426,7 +10576,7 @@ func (a *SourcesApiService) SourcesOauthPartialUpdateExecute(r ApiSourcesOauthPa
 
 type ApiSourcesOauthRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -10443,7 +10593,7 @@ Source Viewset
 	@param slug
 	@return ApiSourcesOauthRetrieveRequest
 */
-func (a *SourcesApiService) SourcesOauthRetrieve(ctx context.Context, slug string) ApiSourcesOauthRetrieveRequest {
+func (a *SourcesAPIService) SourcesOauthRetrieve(ctx context.Context, slug string) ApiSourcesOauthRetrieveRequest {
 	return ApiSourcesOauthRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10454,7 +10604,7 @@ func (a *SourcesApiService) SourcesOauthRetrieve(ctx context.Context, slug strin
 // Execute executes the request
 //
 //	@return OAuthSource
-func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetrieveRequest) (*OAuthSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetrieveRequest) (*OAuthSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10462,13 +10612,13 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 		localVarReturnValue *OAuthSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesOauthRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesOauthRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10501,9 +10651,9 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10520,6 +10670,7 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10530,6 +10681,7 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10549,7 +10701,7 @@ func (a *SourcesApiService) SourcesOauthRetrieveExecute(r ApiSourcesOauthRetriev
 
 type ApiSourcesOauthSourceTypesListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	name       *string
 }
 
@@ -10571,7 +10723,7 @@ If <name> isn't found, returns the default type.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesOauthSourceTypesListRequest
 */
-func (a *SourcesApiService) SourcesOauthSourceTypesList(ctx context.Context) ApiSourcesOauthSourceTypesListRequest {
+func (a *SourcesAPIService) SourcesOauthSourceTypesList(ctx context.Context) ApiSourcesOauthSourceTypesListRequest {
 	return ApiSourcesOauthSourceTypesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10581,7 +10733,7 @@ func (a *SourcesApiService) SourcesOauthSourceTypesList(ctx context.Context) Api
 // Execute executes the request
 //
 //	@return []SourceType
-func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauthSourceTypesListRequest) ([]SourceType, *http.Response, error) {
+func (a *SourcesAPIService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauthSourceTypesListRequest) ([]SourceType, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10589,7 +10741,7 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 		localVarReturnValue []SourceType
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesOauthSourceTypesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesOauthSourceTypesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -10601,7 +10753,7 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -10630,9 +10782,9 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10649,6 +10801,7 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10659,6 +10812,7 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10678,7 +10832,7 @@ func (a *SourcesApiService) SourcesOauthSourceTypesListExecute(r ApiSourcesOauth
 
 type ApiSourcesOauthUpdateRequest struct {
 	ctx                context.Context
-	ApiService         *SourcesApiService
+	ApiService         *SourcesAPIService
 	slug               string
 	oAuthSourceRequest *OAuthSourceRequest
 }
@@ -10701,7 +10855,7 @@ Source Viewset
 	@param slug
 	@return ApiSourcesOauthUpdateRequest
 */
-func (a *SourcesApiService) SourcesOauthUpdate(ctx context.Context, slug string) ApiSourcesOauthUpdateRequest {
+func (a *SourcesAPIService) SourcesOauthUpdate(ctx context.Context, slug string) ApiSourcesOauthUpdateRequest {
 	return ApiSourcesOauthUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10712,7 +10866,7 @@ func (a *SourcesApiService) SourcesOauthUpdate(ctx context.Context, slug string)
 // Execute executes the request
 //
 //	@return OAuthSource
-func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateRequest) (*OAuthSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateRequest) (*OAuthSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -10720,13 +10874,13 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 		localVarReturnValue *OAuthSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesOauthUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesOauthUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10764,9 +10918,9 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10783,6 +10937,7 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10793,6 +10948,7 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10812,7 +10968,7 @@ func (a *SourcesApiService) SourcesOauthUpdateExecute(r ApiSourcesOauthUpdateReq
 
 type ApiSourcesOauthUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -10829,7 +10985,7 @@ Get a list of all objects that use this object
 	@param slug
 	@return ApiSourcesOauthUsedByListRequest
 */
-func (a *SourcesApiService) SourcesOauthUsedByList(ctx context.Context, slug string) ApiSourcesOauthUsedByListRequest {
+func (a *SourcesAPIService) SourcesOauthUsedByList(ctx context.Context, slug string) ApiSourcesOauthUsedByListRequest {
 	return ApiSourcesOauthUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10840,7 +10996,7 @@ func (a *SourcesApiService) SourcesOauthUsedByList(ctx context.Context, slug str
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -10848,13 +11004,13 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesOauthUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesOauthUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/oauth/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -10887,9 +11043,9 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -10906,6 +11062,7 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -10916,6 +11073,7 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -10935,7 +11093,7 @@ func (a *SourcesApiService) SourcesOauthUsedByListExecute(r ApiSourcesOauthUsedB
 
 type ApiSourcesPlexCreateRequest struct {
 	ctx               context.Context
-	ApiService        *SourcesApiService
+	ApiService        *SourcesAPIService
 	plexSourceRequest *PlexSourceRequest
 }
 
@@ -10956,7 +11114,7 @@ Plex source Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesPlexCreateRequest
 */
-func (a *SourcesApiService) SourcesPlexCreate(ctx context.Context) ApiSourcesPlexCreateRequest {
+func (a *SourcesAPIService) SourcesPlexCreate(ctx context.Context) ApiSourcesPlexCreateRequest {
 	return ApiSourcesPlexCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -10966,7 +11124,7 @@ func (a *SourcesApiService) SourcesPlexCreate(ctx context.Context) ApiSourcesPle
 // Execute executes the request
 //
 //	@return PlexSource
-func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateRequest) (*PlexSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateRequest) (*PlexSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -10974,7 +11132,7 @@ func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateReque
 		localVarReturnValue *PlexSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesPlexCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesPlexCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -11017,9 +11175,9 @@ func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11036,6 +11194,7 @@ func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11046,6 +11205,7 @@ func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11065,7 +11225,7 @@ func (a *SourcesApiService) SourcesPlexCreateExecute(r ApiSourcesPlexCreateReque
 
 type ApiSourcesPlexDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -11082,7 +11242,7 @@ Plex source Viewset
 	@param slug
 	@return ApiSourcesPlexDestroyRequest
 */
-func (a *SourcesApiService) SourcesPlexDestroy(ctx context.Context, slug string) ApiSourcesPlexDestroyRequest {
+func (a *SourcesAPIService) SourcesPlexDestroy(ctx context.Context, slug string) ApiSourcesPlexDestroyRequest {
 	return ApiSourcesPlexDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11091,20 +11251,20 @@ func (a *SourcesApiService) SourcesPlexDestroy(ctx context.Context, slug string)
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesPlexDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesPlexDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11137,9 +11297,9 @@ func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -11156,6 +11316,7 @@ func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -11166,6 +11327,7 @@ func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -11176,7 +11338,7 @@ func (a *SourcesApiService) SourcesPlexDestroyExecute(r ApiSourcesPlexDestroyReq
 
 type ApiSourcesPlexListRequest struct {
 	ctx                context.Context
-	ApiService         *SourcesApiService
+	ApiService         *SourcesAPIService
 	allowFriends       *bool
 	authenticationFlow *string
 	clientId           *string
@@ -11287,7 +11449,7 @@ Plex source Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesPlexListRequest
 */
-func (a *SourcesApiService) SourcesPlexList(ctx context.Context) ApiSourcesPlexListRequest {
+func (a *SourcesAPIService) SourcesPlexList(ctx context.Context) ApiSourcesPlexListRequest {
 	return ApiSourcesPlexListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11297,7 +11459,7 @@ func (a *SourcesApiService) SourcesPlexList(ctx context.Context) ApiSourcesPlexL
 // Execute executes the request
 //
 //	@return PaginatedPlexSourceList
-func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) (*PaginatedPlexSourceList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) (*PaginatedPlexSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -11305,7 +11467,7 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 		localVarReturnValue *PaginatedPlexSourceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesPlexList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesPlexList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -11317,49 +11479,49 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.allowFriends != nil {
-		localVarQueryParams.Add("allow_friends", parameterToString(*r.allowFriends, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "allow_friends", r.allowFriends, "form", "")
 	}
 	if r.authenticationFlow != nil {
-		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "form", "")
 	}
 	if r.clientId != nil {
-		localVarQueryParams.Add("client_id", parameterToString(*r.clientId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "client_id", r.clientId, "form", "")
 	}
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
 	}
 	if r.enrollmentFlow != nil {
-		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enrollment_flow", r.enrollmentFlow, "form", "")
 	}
 	if r.groupMatchingMode != nil {
-		localVarQueryParams.Add("group_matching_mode", parameterToString(*r.groupMatchingMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group_matching_mode", r.groupMatchingMode, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.policyEngineMode != nil {
-		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_engine_mode", r.policyEngineMode, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	if r.userMatchingMode != nil {
-		localVarQueryParams.Add("user_matching_mode", parameterToString(*r.userMatchingMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_matching_mode", r.userMatchingMode, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -11388,9 +11550,9 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11407,6 +11569,7 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11417,6 +11580,7 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11436,7 +11600,7 @@ func (a *SourcesApiService) SourcesPlexListExecute(r ApiSourcesPlexListRequest) 
 
 type ApiSourcesPlexPartialUpdateRequest struct {
 	ctx                      context.Context
-	ApiService               *SourcesApiService
+	ApiService               *SourcesAPIService
 	slug                     string
 	patchedPlexSourceRequest *PatchedPlexSourceRequest
 }
@@ -11459,7 +11623,7 @@ Plex source Viewset
 	@param slug
 	@return ApiSourcesPlexPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesPlexPartialUpdate(ctx context.Context, slug string) ApiSourcesPlexPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesPlexPartialUpdate(ctx context.Context, slug string) ApiSourcesPlexPartialUpdateRequest {
 	return ApiSourcesPlexPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11470,7 +11634,7 @@ func (a *SourcesApiService) SourcesPlexPartialUpdate(ctx context.Context, slug s
 // Execute executes the request
 //
 //	@return PlexSource
-func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPartialUpdateRequest) (*PlexSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPartialUpdateRequest) (*PlexSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -11478,13 +11642,13 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 		localVarReturnValue *PlexSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesPlexPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesPlexPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11519,9 +11683,9 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11538,6 +11702,7 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11548,6 +11713,7 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11567,7 +11733,7 @@ func (a *SourcesApiService) SourcesPlexPartialUpdateExecute(r ApiSourcesPlexPart
 
 type ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest struct {
 	ctx                    context.Context
-	ApiService             *SourcesApiService
+	ApiService             *SourcesAPIService
 	plexTokenRedeemRequest *PlexTokenRedeemRequest
 	slug                   *string
 }
@@ -11594,7 +11760,7 @@ Redeem a plex token for an authenticated user, creating a connection
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest
 */
-func (a *SourcesApiService) SourcesPlexRedeemTokenAuthenticatedCreate(ctx context.Context) ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest {
+func (a *SourcesAPIService) SourcesPlexRedeemTokenAuthenticatedCreate(ctx context.Context) ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest {
 	return ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11602,14 +11768,14 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenAuthenticatedCreate(ctx contex
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesPlexRedeemTokenAuthenticatedCreateExecute(r ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesPlexRedeemTokenAuthenticatedCreateExecute(r ApiSourcesPlexRedeemTokenAuthenticatedCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesPlexRedeemTokenAuthenticatedCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesPlexRedeemTokenAuthenticatedCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -11624,7 +11790,7 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenAuthenticatedCreateExecute(r A
 	}
 
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -11655,9 +11821,9 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenAuthenticatedCreateExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -11675,7 +11841,7 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenAuthenticatedCreateExecute(r A
 
 type ApiSourcesPlexRedeemTokenCreateRequest struct {
 	ctx                    context.Context
-	ApiService             *SourcesApiService
+	ApiService             *SourcesAPIService
 	plexTokenRedeemRequest *PlexTokenRedeemRequest
 	slug                   *string
 }
@@ -11703,7 +11869,7 @@ for the source, and redirect to an authentication/enrollment flow.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesPlexRedeemTokenCreateRequest
 */
-func (a *SourcesApiService) SourcesPlexRedeemTokenCreate(ctx context.Context) ApiSourcesPlexRedeemTokenCreateRequest {
+func (a *SourcesAPIService) SourcesPlexRedeemTokenCreate(ctx context.Context) ApiSourcesPlexRedeemTokenCreateRequest {
 	return ApiSourcesPlexRedeemTokenCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11713,7 +11879,7 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenCreate(ctx context.Context) Ap
 // Execute executes the request
 //
 //	@return RedirectChallenge
-func (a *SourcesApiService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlexRedeemTokenCreateRequest) (*RedirectChallenge, *http.Response, error) {
+func (a *SourcesAPIService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlexRedeemTokenCreateRequest) (*RedirectChallenge, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -11721,7 +11887,7 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlex
 		localVarReturnValue *RedirectChallenge
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesPlexRedeemTokenCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesPlexRedeemTokenCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -11736,7 +11902,7 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlex
 	}
 
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -11767,9 +11933,9 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlex
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11796,7 +11962,7 @@ func (a *SourcesApiService) SourcesPlexRedeemTokenCreateExecute(r ApiSourcesPlex
 
 type ApiSourcesPlexRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -11813,7 +11979,7 @@ Plex source Viewset
 	@param slug
 	@return ApiSourcesPlexRetrieveRequest
 */
-func (a *SourcesApiService) SourcesPlexRetrieve(ctx context.Context, slug string) ApiSourcesPlexRetrieveRequest {
+func (a *SourcesAPIService) SourcesPlexRetrieve(ctx context.Context, slug string) ApiSourcesPlexRetrieveRequest {
 	return ApiSourcesPlexRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11824,7 +11990,7 @@ func (a *SourcesApiService) SourcesPlexRetrieve(ctx context.Context, slug string
 // Execute executes the request
 //
 //	@return PlexSource
-func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveRequest) (*PlexSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveRequest) (*PlexSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -11832,13 +11998,13 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 		localVarReturnValue *PlexSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesPlexRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesPlexRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -11871,9 +12037,9 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -11890,6 +12056,7 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -11900,6 +12067,7 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -11919,7 +12087,7 @@ func (a *SourcesApiService) SourcesPlexRetrieveExecute(r ApiSourcesPlexRetrieveR
 
 type ApiSourcesPlexUpdateRequest struct {
 	ctx               context.Context
-	ApiService        *SourcesApiService
+	ApiService        *SourcesAPIService
 	slug              string
 	plexSourceRequest *PlexSourceRequest
 }
@@ -11942,7 +12110,7 @@ Plex source Viewset
 	@param slug
 	@return ApiSourcesPlexUpdateRequest
 */
-func (a *SourcesApiService) SourcesPlexUpdate(ctx context.Context, slug string) ApiSourcesPlexUpdateRequest {
+func (a *SourcesAPIService) SourcesPlexUpdate(ctx context.Context, slug string) ApiSourcesPlexUpdateRequest {
 	return ApiSourcesPlexUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -11953,7 +12121,7 @@ func (a *SourcesApiService) SourcesPlexUpdate(ctx context.Context, slug string) 
 // Execute executes the request
 //
 //	@return PlexSource
-func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateRequest) (*PlexSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateRequest) (*PlexSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -11961,13 +12129,13 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 		localVarReturnValue *PlexSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesPlexUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesPlexUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12005,9 +12173,9 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12024,6 +12192,7 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12034,6 +12203,7 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12053,7 +12223,7 @@ func (a *SourcesApiService) SourcesPlexUpdateExecute(r ApiSourcesPlexUpdateReque
 
 type ApiSourcesPlexUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -12070,7 +12240,7 @@ Get a list of all objects that use this object
 	@param slug
 	@return ApiSourcesPlexUsedByListRequest
 */
-func (a *SourcesApiService) SourcesPlexUsedByList(ctx context.Context, slug string) ApiSourcesPlexUsedByListRequest {
+func (a *SourcesAPIService) SourcesPlexUsedByList(ctx context.Context, slug string) ApiSourcesPlexUsedByListRequest {
 	return ApiSourcesPlexUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12081,7 +12251,7 @@ func (a *SourcesApiService) SourcesPlexUsedByList(ctx context.Context, slug stri
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -12089,13 +12259,13 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesPlexUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesPlexUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/plex/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12128,9 +12298,9 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12147,6 +12317,7 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12157,6 +12328,7 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12176,7 +12348,7 @@ func (a *SourcesApiService) SourcesPlexUsedByListExecute(r ApiSourcesPlexUsedByL
 
 type ApiSourcesSamlCreateRequest struct {
 	ctx               context.Context
-	ApiService        *SourcesApiService
+	ApiService        *SourcesAPIService
 	sAMLSourceRequest *SAMLSourceRequest
 }
 
@@ -12197,7 +12369,7 @@ SAMLSource Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesSamlCreateRequest
 */
-func (a *SourcesApiService) SourcesSamlCreate(ctx context.Context) ApiSourcesSamlCreateRequest {
+func (a *SourcesAPIService) SourcesSamlCreate(ctx context.Context) ApiSourcesSamlCreateRequest {
 	return ApiSourcesSamlCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12207,7 +12379,7 @@ func (a *SourcesApiService) SourcesSamlCreate(ctx context.Context) ApiSourcesSam
 // Execute executes the request
 //
 //	@return SAMLSource
-func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateRequest) (*SAMLSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateRequest) (*SAMLSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -12215,7 +12387,7 @@ func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateReque
 		localVarReturnValue *SAMLSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesSamlCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesSamlCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -12258,9 +12430,9 @@ func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12277,6 +12449,7 @@ func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12287,6 +12460,7 @@ func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12306,7 +12480,7 @@ func (a *SourcesApiService) SourcesSamlCreateExecute(r ApiSourcesSamlCreateReque
 
 type ApiSourcesSamlDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -12323,7 +12497,7 @@ SAMLSource Viewset
 	@param slug
 	@return ApiSourcesSamlDestroyRequest
 */
-func (a *SourcesApiService) SourcesSamlDestroy(ctx context.Context, slug string) ApiSourcesSamlDestroyRequest {
+func (a *SourcesAPIService) SourcesSamlDestroy(ctx context.Context, slug string) ApiSourcesSamlDestroyRequest {
 	return ApiSourcesSamlDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12332,20 +12506,20 @@ func (a *SourcesApiService) SourcesSamlDestroy(ctx context.Context, slug string)
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesSamlDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesSamlDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12378,9 +12552,9 @@ func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -12397,6 +12571,7 @@ func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -12407,6 +12582,7 @@ func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -12417,7 +12593,7 @@ func (a *SourcesApiService) SourcesSamlDestroyExecute(r ApiSourcesSamlDestroyReq
 
 type ApiSourcesSamlListRequest struct {
 	ctx                      context.Context
-	ApiService               *SourcesApiService
+	ApiService               *SourcesAPIService
 	allowIdpInitiated        *bool
 	authenticationFlow       *string
 	bindingType              *string
@@ -12600,7 +12776,7 @@ SAMLSource Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesSamlListRequest
 */
-func (a *SourcesApiService) SourcesSamlList(ctx context.Context) ApiSourcesSamlListRequest {
+func (a *SourcesAPIService) SourcesSamlList(ctx context.Context) ApiSourcesSamlListRequest {
 	return ApiSourcesSamlListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12610,7 +12786,7 @@ func (a *SourcesApiService) SourcesSamlList(ctx context.Context) ApiSourcesSamlL
 // Execute executes the request
 //
 //	@return PaginatedSAMLSourceList
-func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) (*PaginatedSAMLSourceList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) (*PaginatedSAMLSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -12618,7 +12794,7 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 		localVarReturnValue *PaginatedSAMLSourceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesSamlList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesSamlList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -12630,85 +12806,85 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.allowIdpInitiated != nil {
-		localVarQueryParams.Add("allow_idp_initiated", parameterToString(*r.allowIdpInitiated, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "allow_idp_initiated", r.allowIdpInitiated, "form", "")
 	}
 	if r.authenticationFlow != nil {
-		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "form", "")
 	}
 	if r.bindingType != nil {
-		localVarQueryParams.Add("binding_type", parameterToString(*r.bindingType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "binding_type", r.bindingType, "form", "")
 	}
 	if r.digestAlgorithm != nil {
-		localVarQueryParams.Add("digest_algorithm", parameterToString(*r.digestAlgorithm, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "digest_algorithm", r.digestAlgorithm, "form", "")
 	}
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
 	}
 	if r.enrollmentFlow != nil {
-		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enrollment_flow", r.enrollmentFlow, "form", "")
 	}
 	if r.issuer != nil {
-		localVarQueryParams.Add("issuer", parameterToString(*r.issuer, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "issuer", r.issuer, "form", "")
 	}
 	if r.managed != nil {
-		localVarQueryParams.Add("managed", parameterToString(*r.managed, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed", r.managed, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.nameIdPolicy != nil {
-		localVarQueryParams.Add("name_id_policy", parameterToString(*r.nameIdPolicy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name_id_policy", r.nameIdPolicy, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.policyEngineMode != nil {
-		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_engine_mode", r.policyEngineMode, "form", "")
 	}
 	if r.preAuthenticationFlow != nil {
-		localVarQueryParams.Add("pre_authentication_flow", parameterToString(*r.preAuthenticationFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pre_authentication_flow", r.preAuthenticationFlow, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.signatureAlgorithm != nil {
-		localVarQueryParams.Add("signature_algorithm", parameterToString(*r.signatureAlgorithm, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "signature_algorithm", r.signatureAlgorithm, "form", "")
 	}
 	if r.signedAssertion != nil {
-		localVarQueryParams.Add("signed_assertion", parameterToString(*r.signedAssertion, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "signed_assertion", r.signedAssertion, "form", "")
 	}
 	if r.signedResponse != nil {
-		localVarQueryParams.Add("signed_response", parameterToString(*r.signedResponse, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "signed_response", r.signedResponse, "form", "")
 	}
 	if r.signingKp != nil {
-		localVarQueryParams.Add("signing_kp", parameterToString(*r.signingKp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "signing_kp", r.signingKp, "form", "")
 	}
 	if r.sloUrl != nil {
-		localVarQueryParams.Add("slo_url", parameterToString(*r.sloUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slo_url", r.sloUrl, "form", "")
 	}
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	if r.ssoUrl != nil {
-		localVarQueryParams.Add("sso_url", parameterToString(*r.ssoUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sso_url", r.ssoUrl, "form", "")
 	}
 	if r.temporaryUserDeleteAfter != nil {
-		localVarQueryParams.Add("temporary_user_delete_after", parameterToString(*r.temporaryUserDeleteAfter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "temporary_user_delete_after", r.temporaryUserDeleteAfter, "form", "")
 	}
 	if r.userMatchingMode != nil {
-		localVarQueryParams.Add("user_matching_mode", parameterToString(*r.userMatchingMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_matching_mode", r.userMatchingMode, "form", "")
 	}
 	if r.verificationKp != nil {
-		localVarQueryParams.Add("verification_kp", parameterToString(*r.verificationKp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "verification_kp", r.verificationKp, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -12737,9 +12913,9 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12756,6 +12932,7 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12766,6 +12943,7 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12785,7 +12963,7 @@ func (a *SourcesApiService) SourcesSamlListExecute(r ApiSourcesSamlListRequest) 
 
 type ApiSourcesSamlMetadataRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -12802,7 +12980,7 @@ Return metadata as XML string
 	@param slug
 	@return ApiSourcesSamlMetadataRetrieveRequest
 */
-func (a *SourcesApiService) SourcesSamlMetadataRetrieve(ctx context.Context, slug string) ApiSourcesSamlMetadataRetrieveRequest {
+func (a *SourcesAPIService) SourcesSamlMetadataRetrieve(ctx context.Context, slug string) ApiSourcesSamlMetadataRetrieveRequest {
 	return ApiSourcesSamlMetadataRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12813,7 +12991,7 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieve(ctx context.Context, slu
 // Execute executes the request
 //
 //	@return SAMLMetadata
-func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlMetadataRetrieveRequest) (*SAMLMetadata, *http.Response, error) {
+func (a *SourcesAPIService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlMetadataRetrieveRequest) (*SAMLMetadata, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -12821,13 +12999,13 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 		localVarReturnValue *SAMLMetadata
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesSamlMetadataRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesSamlMetadataRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/metadata/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12860,9 +13038,9 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -12879,6 +13057,7 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -12889,6 +13068,7 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -12908,7 +13088,7 @@ func (a *SourcesApiService) SourcesSamlMetadataRetrieveExecute(r ApiSourcesSamlM
 
 type ApiSourcesSamlPartialUpdateRequest struct {
 	ctx                      context.Context
-	ApiService               *SourcesApiService
+	ApiService               *SourcesAPIService
 	slug                     string
 	patchedSAMLSourceRequest *PatchedSAMLSourceRequest
 }
@@ -12931,7 +13111,7 @@ SAMLSource Viewset
 	@param slug
 	@return ApiSourcesSamlPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesSamlPartialUpdate(ctx context.Context, slug string) ApiSourcesSamlPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesSamlPartialUpdate(ctx context.Context, slug string) ApiSourcesSamlPartialUpdateRequest {
 	return ApiSourcesSamlPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -12942,7 +13122,7 @@ func (a *SourcesApiService) SourcesSamlPartialUpdate(ctx context.Context, slug s
 // Execute executes the request
 //
 //	@return SAMLSource
-func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPartialUpdateRequest) (*SAMLSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPartialUpdateRequest) (*SAMLSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -12950,13 +13130,13 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 		localVarReturnValue *SAMLSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesSamlPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesSamlPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -12991,9 +13171,9 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13010,6 +13190,7 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13020,6 +13201,7 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13039,7 +13221,7 @@ func (a *SourcesApiService) SourcesSamlPartialUpdateExecute(r ApiSourcesSamlPart
 
 type ApiSourcesSamlRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -13056,7 +13238,7 @@ SAMLSource Viewset
 	@param slug
 	@return ApiSourcesSamlRetrieveRequest
 */
-func (a *SourcesApiService) SourcesSamlRetrieve(ctx context.Context, slug string) ApiSourcesSamlRetrieveRequest {
+func (a *SourcesAPIService) SourcesSamlRetrieve(ctx context.Context, slug string) ApiSourcesSamlRetrieveRequest {
 	return ApiSourcesSamlRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13067,7 +13249,7 @@ func (a *SourcesApiService) SourcesSamlRetrieve(ctx context.Context, slug string
 // Execute executes the request
 //
 //	@return SAMLSource
-func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveRequest) (*SAMLSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveRequest) (*SAMLSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -13075,13 +13257,13 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 		localVarReturnValue *SAMLSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesSamlRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesSamlRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13114,9 +13296,9 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13133,6 +13315,7 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13143,6 +13326,7 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13162,7 +13346,7 @@ func (a *SourcesApiService) SourcesSamlRetrieveExecute(r ApiSourcesSamlRetrieveR
 
 type ApiSourcesSamlUpdateRequest struct {
 	ctx               context.Context
-	ApiService        *SourcesApiService
+	ApiService        *SourcesAPIService
 	slug              string
 	sAMLSourceRequest *SAMLSourceRequest
 }
@@ -13185,7 +13369,7 @@ SAMLSource Viewset
 	@param slug
 	@return ApiSourcesSamlUpdateRequest
 */
-func (a *SourcesApiService) SourcesSamlUpdate(ctx context.Context, slug string) ApiSourcesSamlUpdateRequest {
+func (a *SourcesAPIService) SourcesSamlUpdate(ctx context.Context, slug string) ApiSourcesSamlUpdateRequest {
 	return ApiSourcesSamlUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13196,7 +13380,7 @@ func (a *SourcesApiService) SourcesSamlUpdate(ctx context.Context, slug string) 
 // Execute executes the request
 //
 //	@return SAMLSource
-func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateRequest) (*SAMLSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateRequest) (*SAMLSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -13204,13 +13388,13 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 		localVarReturnValue *SAMLSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesSamlUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesSamlUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13248,9 +13432,9 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13267,6 +13451,7 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13277,6 +13462,7 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13296,7 +13482,7 @@ func (a *SourcesApiService) SourcesSamlUpdateExecute(r ApiSourcesSamlUpdateReque
 
 type ApiSourcesSamlUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -13313,7 +13499,7 @@ Get a list of all objects that use this object
 	@param slug
 	@return ApiSourcesSamlUsedByListRequest
 */
-func (a *SourcesApiService) SourcesSamlUsedByList(ctx context.Context, slug string) ApiSourcesSamlUsedByListRequest {
+func (a *SourcesAPIService) SourcesSamlUsedByList(ctx context.Context, slug string) ApiSourcesSamlUsedByListRequest {
 	return ApiSourcesSamlUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13324,7 +13510,7 @@ func (a *SourcesApiService) SourcesSamlUsedByList(ctx context.Context, slug stri
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -13332,13 +13518,13 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesSamlUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesSamlUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/saml/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13371,9 +13557,9 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13390,6 +13576,7 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13400,6 +13587,7 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13419,7 +13607,7 @@ func (a *SourcesApiService) SourcesSamlUsedByListExecute(r ApiSourcesSamlUsedByL
 
 type ApiSourcesScimCreateRequest struct {
 	ctx               context.Context
-	ApiService        *SourcesApiService
+	ApiService        *SourcesAPIService
 	sCIMSourceRequest *SCIMSourceRequest
 }
 
@@ -13440,7 +13628,7 @@ SCIMSource Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesScimCreateRequest
 */
-func (a *SourcesApiService) SourcesScimCreate(ctx context.Context) ApiSourcesScimCreateRequest {
+func (a *SourcesAPIService) SourcesScimCreate(ctx context.Context) ApiSourcesScimCreateRequest {
 	return ApiSourcesScimCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13450,7 +13638,7 @@ func (a *SourcesApiService) SourcesScimCreate(ctx context.Context) ApiSourcesSci
 // Execute executes the request
 //
 //	@return SCIMSource
-func (a *SourcesApiService) SourcesScimCreateExecute(r ApiSourcesScimCreateRequest) (*SCIMSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimCreateExecute(r ApiSourcesScimCreateRequest) (*SCIMSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -13458,7 +13646,7 @@ func (a *SourcesApiService) SourcesScimCreateExecute(r ApiSourcesScimCreateReque
 		localVarReturnValue *SCIMSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -13501,9 +13689,9 @@ func (a *SourcesApiService) SourcesScimCreateExecute(r ApiSourcesScimCreateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13520,6 +13708,7 @@ func (a *SourcesApiService) SourcesScimCreateExecute(r ApiSourcesScimCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13530,6 +13719,7 @@ func (a *SourcesApiService) SourcesScimCreateExecute(r ApiSourcesScimCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13549,7 +13739,7 @@ func (a *SourcesApiService) SourcesScimCreateExecute(r ApiSourcesScimCreateReque
 
 type ApiSourcesScimDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -13566,7 +13756,7 @@ SCIMSource Viewset
 	@param slug
 	@return ApiSourcesScimDestroyRequest
 */
-func (a *SourcesApiService) SourcesScimDestroy(ctx context.Context, slug string) ApiSourcesScimDestroyRequest {
+func (a *SourcesAPIService) SourcesScimDestroy(ctx context.Context, slug string) ApiSourcesScimDestroyRequest {
 	return ApiSourcesScimDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13575,20 +13765,20 @@ func (a *SourcesApiService) SourcesScimDestroy(ctx context.Context, slug string)
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesScimDestroyExecute(r ApiSourcesScimDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesScimDestroyExecute(r ApiSourcesScimDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13621,9 +13811,9 @@ func (a *SourcesApiService) SourcesScimDestroyExecute(r ApiSourcesScimDestroyReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -13640,6 +13830,7 @@ func (a *SourcesApiService) SourcesScimDestroyExecute(r ApiSourcesScimDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -13650,6 +13841,7 @@ func (a *SourcesApiService) SourcesScimDestroyExecute(r ApiSourcesScimDestroyReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -13660,7 +13852,7 @@ func (a *SourcesApiService) SourcesScimDestroyExecute(r ApiSourcesScimDestroyReq
 
 type ApiSourcesScimGroupsCreateRequest struct {
 	ctx                    context.Context
-	ApiService             *SourcesApiService
+	ApiService             *SourcesAPIService
 	sCIMSourceGroupRequest *SCIMSourceGroupRequest
 }
 
@@ -13681,7 +13873,7 @@ SCIMSourceGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesScimGroupsCreateRequest
 */
-func (a *SourcesApiService) SourcesScimGroupsCreate(ctx context.Context) ApiSourcesScimGroupsCreateRequest {
+func (a *SourcesAPIService) SourcesScimGroupsCreate(ctx context.Context) ApiSourcesScimGroupsCreateRequest {
 	return ApiSourcesScimGroupsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13691,7 +13883,7 @@ func (a *SourcesApiService) SourcesScimGroupsCreate(ctx context.Context) ApiSour
 // Execute executes the request
 //
 //	@return SCIMSourceGroup
-func (a *SourcesApiService) SourcesScimGroupsCreateExecute(r ApiSourcesScimGroupsCreateRequest) (*SCIMSourceGroup, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimGroupsCreateExecute(r ApiSourcesScimGroupsCreateRequest) (*SCIMSourceGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -13699,7 +13891,7 @@ func (a *SourcesApiService) SourcesScimGroupsCreateExecute(r ApiSourcesScimGroup
 		localVarReturnValue *SCIMSourceGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimGroupsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimGroupsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -13742,9 +13934,9 @@ func (a *SourcesApiService) SourcesScimGroupsCreateExecute(r ApiSourcesScimGroup
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -13761,6 +13953,7 @@ func (a *SourcesApiService) SourcesScimGroupsCreateExecute(r ApiSourcesScimGroup
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -13771,6 +13964,7 @@ func (a *SourcesApiService) SourcesScimGroupsCreateExecute(r ApiSourcesScimGroup
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -13790,7 +13984,7 @@ func (a *SourcesApiService) SourcesScimGroupsCreateExecute(r ApiSourcesScimGroup
 
 type ApiSourcesScimGroupsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         string
 }
 
@@ -13807,7 +14001,7 @@ SCIMSourceGroup Viewset
 	@param id A unique value identifying this scim source group.
 	@return ApiSourcesScimGroupsDestroyRequest
 */
-func (a *SourcesApiService) SourcesScimGroupsDestroy(ctx context.Context, id string) ApiSourcesScimGroupsDestroyRequest {
+func (a *SourcesAPIService) SourcesScimGroupsDestroy(ctx context.Context, id string) ApiSourcesScimGroupsDestroyRequest {
 	return ApiSourcesScimGroupsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13816,20 +14010,20 @@ func (a *SourcesApiService) SourcesScimGroupsDestroy(ctx context.Context, id str
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesScimGroupsDestroyExecute(r ApiSourcesScimGroupsDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesScimGroupsDestroyExecute(r ApiSourcesScimGroupsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimGroupsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimGroupsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -13862,9 +14056,9 @@ func (a *SourcesApiService) SourcesScimGroupsDestroyExecute(r ApiSourcesScimGrou
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -13881,6 +14075,7 @@ func (a *SourcesApiService) SourcesScimGroupsDestroyExecute(r ApiSourcesScimGrou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -13891,6 +14086,7 @@ func (a *SourcesApiService) SourcesScimGroupsDestroyExecute(r ApiSourcesScimGrou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -13901,7 +14097,7 @@ func (a *SourcesApiService) SourcesScimGroupsDestroyExecute(r ApiSourcesScimGrou
 
 type ApiSourcesScimGroupsListRequest struct {
 	ctx            context.Context
-	ApiService     *SourcesApiService
+	ApiService     *SourcesAPIService
 	groupGroupUuid *string
 	groupName      *string
 	ordering       *string
@@ -13962,7 +14158,7 @@ SCIMSourceGroup Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesScimGroupsListRequest
 */
-func (a *SourcesApiService) SourcesScimGroupsList(ctx context.Context) ApiSourcesScimGroupsListRequest {
+func (a *SourcesAPIService) SourcesScimGroupsList(ctx context.Context) ApiSourcesScimGroupsListRequest {
 	return ApiSourcesScimGroupsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -13972,7 +14168,7 @@ func (a *SourcesApiService) SourcesScimGroupsList(ctx context.Context) ApiSource
 // Execute executes the request
 //
 //	@return PaginatedSCIMSourceGroupList
-func (a *SourcesApiService) SourcesScimGroupsListExecute(r ApiSourcesScimGroupsListRequest) (*PaginatedSCIMSourceGroupList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimGroupsListExecute(r ApiSourcesScimGroupsListRequest) (*PaginatedSCIMSourceGroupList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -13980,7 +14176,7 @@ func (a *SourcesApiService) SourcesScimGroupsListExecute(r ApiSourcesScimGroupsL
 		localVarReturnValue *PaginatedSCIMSourceGroupList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimGroupsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimGroupsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -13992,25 +14188,25 @@ func (a *SourcesApiService) SourcesScimGroupsListExecute(r ApiSourcesScimGroupsL
 	localVarFormParams := url.Values{}
 
 	if r.groupGroupUuid != nil {
-		localVarQueryParams.Add("group__group_uuid", parameterToString(*r.groupGroupUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group__group_uuid", r.groupGroupUuid, "form", "")
 	}
 	if r.groupName != nil {
-		localVarQueryParams.Add("group__name", parameterToString(*r.groupName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group__name", r.groupName, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -14039,9 +14235,9 @@ func (a *SourcesApiService) SourcesScimGroupsListExecute(r ApiSourcesScimGroupsL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14058,6 +14254,7 @@ func (a *SourcesApiService) SourcesScimGroupsListExecute(r ApiSourcesScimGroupsL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14068,6 +14265,7 @@ func (a *SourcesApiService) SourcesScimGroupsListExecute(r ApiSourcesScimGroupsL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14087,7 +14285,7 @@ func (a *SourcesApiService) SourcesScimGroupsListExecute(r ApiSourcesScimGroupsL
 
 type ApiSourcesScimGroupsPartialUpdateRequest struct {
 	ctx                           context.Context
-	ApiService                    *SourcesApiService
+	ApiService                    *SourcesAPIService
 	id                            string
 	patchedSCIMSourceGroupRequest *PatchedSCIMSourceGroupRequest
 }
@@ -14110,7 +14308,7 @@ SCIMSourceGroup Viewset
 	@param id A unique value identifying this scim source group.
 	@return ApiSourcesScimGroupsPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesScimGroupsPartialUpdate(ctx context.Context, id string) ApiSourcesScimGroupsPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesScimGroupsPartialUpdate(ctx context.Context, id string) ApiSourcesScimGroupsPartialUpdateRequest {
 	return ApiSourcesScimGroupsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14121,7 +14319,7 @@ func (a *SourcesApiService) SourcesScimGroupsPartialUpdate(ctx context.Context, 
 // Execute executes the request
 //
 //	@return SCIMSourceGroup
-func (a *SourcesApiService) SourcesScimGroupsPartialUpdateExecute(r ApiSourcesScimGroupsPartialUpdateRequest) (*SCIMSourceGroup, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimGroupsPartialUpdateExecute(r ApiSourcesScimGroupsPartialUpdateRequest) (*SCIMSourceGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -14129,13 +14327,13 @@ func (a *SourcesApiService) SourcesScimGroupsPartialUpdateExecute(r ApiSourcesSc
 		localVarReturnValue *SCIMSourceGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimGroupsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimGroupsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14170,9 +14368,9 @@ func (a *SourcesApiService) SourcesScimGroupsPartialUpdateExecute(r ApiSourcesSc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14189,6 +14387,7 @@ func (a *SourcesApiService) SourcesScimGroupsPartialUpdateExecute(r ApiSourcesSc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14199,6 +14398,7 @@ func (a *SourcesApiService) SourcesScimGroupsPartialUpdateExecute(r ApiSourcesSc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14218,7 +14418,7 @@ func (a *SourcesApiService) SourcesScimGroupsPartialUpdateExecute(r ApiSourcesSc
 
 type ApiSourcesScimGroupsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         string
 }
 
@@ -14235,7 +14435,7 @@ SCIMSourceGroup Viewset
 	@param id A unique value identifying this scim source group.
 	@return ApiSourcesScimGroupsRetrieveRequest
 */
-func (a *SourcesApiService) SourcesScimGroupsRetrieve(ctx context.Context, id string) ApiSourcesScimGroupsRetrieveRequest {
+func (a *SourcesAPIService) SourcesScimGroupsRetrieve(ctx context.Context, id string) ApiSourcesScimGroupsRetrieveRequest {
 	return ApiSourcesScimGroupsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14246,7 +14446,7 @@ func (a *SourcesApiService) SourcesScimGroupsRetrieve(ctx context.Context, id st
 // Execute executes the request
 //
 //	@return SCIMSourceGroup
-func (a *SourcesApiService) SourcesScimGroupsRetrieveExecute(r ApiSourcesScimGroupsRetrieveRequest) (*SCIMSourceGroup, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimGroupsRetrieveExecute(r ApiSourcesScimGroupsRetrieveRequest) (*SCIMSourceGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -14254,13 +14454,13 @@ func (a *SourcesApiService) SourcesScimGroupsRetrieveExecute(r ApiSourcesScimGro
 		localVarReturnValue *SCIMSourceGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimGroupsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimGroupsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14293,9 +14493,9 @@ func (a *SourcesApiService) SourcesScimGroupsRetrieveExecute(r ApiSourcesScimGro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14312,6 +14512,7 @@ func (a *SourcesApiService) SourcesScimGroupsRetrieveExecute(r ApiSourcesScimGro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14322,6 +14523,7 @@ func (a *SourcesApiService) SourcesScimGroupsRetrieveExecute(r ApiSourcesScimGro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14341,7 +14543,7 @@ func (a *SourcesApiService) SourcesScimGroupsRetrieveExecute(r ApiSourcesScimGro
 
 type ApiSourcesScimGroupsUpdateRequest struct {
 	ctx                    context.Context
-	ApiService             *SourcesApiService
+	ApiService             *SourcesAPIService
 	id                     string
 	sCIMSourceGroupRequest *SCIMSourceGroupRequest
 }
@@ -14364,7 +14566,7 @@ SCIMSourceGroup Viewset
 	@param id A unique value identifying this scim source group.
 	@return ApiSourcesScimGroupsUpdateRequest
 */
-func (a *SourcesApiService) SourcesScimGroupsUpdate(ctx context.Context, id string) ApiSourcesScimGroupsUpdateRequest {
+func (a *SourcesAPIService) SourcesScimGroupsUpdate(ctx context.Context, id string) ApiSourcesScimGroupsUpdateRequest {
 	return ApiSourcesScimGroupsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14375,7 +14577,7 @@ func (a *SourcesApiService) SourcesScimGroupsUpdate(ctx context.Context, id stri
 // Execute executes the request
 //
 //	@return SCIMSourceGroup
-func (a *SourcesApiService) SourcesScimGroupsUpdateExecute(r ApiSourcesScimGroupsUpdateRequest) (*SCIMSourceGroup, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimGroupsUpdateExecute(r ApiSourcesScimGroupsUpdateRequest) (*SCIMSourceGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -14383,13 +14585,13 @@ func (a *SourcesApiService) SourcesScimGroupsUpdateExecute(r ApiSourcesScimGroup
 		localVarReturnValue *SCIMSourceGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimGroupsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimGroupsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_groups/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14427,9 +14629,9 @@ func (a *SourcesApiService) SourcesScimGroupsUpdateExecute(r ApiSourcesScimGroup
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14446,6 +14648,7 @@ func (a *SourcesApiService) SourcesScimGroupsUpdateExecute(r ApiSourcesScimGroup
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14456,6 +14659,7 @@ func (a *SourcesApiService) SourcesScimGroupsUpdateExecute(r ApiSourcesScimGroup
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14475,7 +14679,7 @@ func (a *SourcesApiService) SourcesScimGroupsUpdateExecute(r ApiSourcesScimGroup
 
 type ApiSourcesScimGroupsUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         string
 }
 
@@ -14492,7 +14696,7 @@ Get a list of all objects that use this object
 	@param id A unique value identifying this scim source group.
 	@return ApiSourcesScimGroupsUsedByListRequest
 */
-func (a *SourcesApiService) SourcesScimGroupsUsedByList(ctx context.Context, id string) ApiSourcesScimGroupsUsedByListRequest {
+func (a *SourcesAPIService) SourcesScimGroupsUsedByList(ctx context.Context, id string) ApiSourcesScimGroupsUsedByListRequest {
 	return ApiSourcesScimGroupsUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14503,7 +14707,7 @@ func (a *SourcesApiService) SourcesScimGroupsUsedByList(ctx context.Context, id 
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesScimGroupsUsedByListExecute(r ApiSourcesScimGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimGroupsUsedByListExecute(r ApiSourcesScimGroupsUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -14511,13 +14715,13 @@ func (a *SourcesApiService) SourcesScimGroupsUsedByListExecute(r ApiSourcesScimG
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimGroupsUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimGroupsUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_groups/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14550,9 +14754,9 @@ func (a *SourcesApiService) SourcesScimGroupsUsedByListExecute(r ApiSourcesScimG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14569,6 +14773,7 @@ func (a *SourcesApiService) SourcesScimGroupsUsedByListExecute(r ApiSourcesScimG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14579,6 +14784,7 @@ func (a *SourcesApiService) SourcesScimGroupsUsedByListExecute(r ApiSourcesScimG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14598,7 +14804,7 @@ func (a *SourcesApiService) SourcesScimGroupsUsedByListExecute(r ApiSourcesScimG
 
 type ApiSourcesScimListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -14659,7 +14865,7 @@ SCIMSource Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesScimListRequest
 */
-func (a *SourcesApiService) SourcesScimList(ctx context.Context) ApiSourcesScimListRequest {
+func (a *SourcesAPIService) SourcesScimList(ctx context.Context) ApiSourcesScimListRequest {
 	return ApiSourcesScimListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14669,7 +14875,7 @@ func (a *SourcesApiService) SourcesScimList(ctx context.Context) ApiSourcesScimL
 // Execute executes the request
 //
 //	@return PaginatedSCIMSourceList
-func (a *SourcesApiService) SourcesScimListExecute(r ApiSourcesScimListRequest) (*PaginatedSCIMSourceList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimListExecute(r ApiSourcesScimListRequest) (*PaginatedSCIMSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -14677,7 +14883,7 @@ func (a *SourcesApiService) SourcesScimListExecute(r ApiSourcesScimListRequest) 
 		localVarReturnValue *PaginatedSCIMSourceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -14689,25 +14895,25 @@ func (a *SourcesApiService) SourcesScimListExecute(r ApiSourcesScimListRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -14736,9 +14942,9 @@ func (a *SourcesApiService) SourcesScimListExecute(r ApiSourcesScimListRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14755,6 +14961,7 @@ func (a *SourcesApiService) SourcesScimListExecute(r ApiSourcesScimListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14765,6 +14972,7 @@ func (a *SourcesApiService) SourcesScimListExecute(r ApiSourcesScimListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14784,7 +14992,7 @@ func (a *SourcesApiService) SourcesScimListExecute(r ApiSourcesScimListRequest) 
 
 type ApiSourcesScimPartialUpdateRequest struct {
 	ctx                      context.Context
-	ApiService               *SourcesApiService
+	ApiService               *SourcesAPIService
 	slug                     string
 	patchedSCIMSourceRequest *PatchedSCIMSourceRequest
 }
@@ -14807,7 +15015,7 @@ SCIMSource Viewset
 	@param slug
 	@return ApiSourcesScimPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesScimPartialUpdate(ctx context.Context, slug string) ApiSourcesScimPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesScimPartialUpdate(ctx context.Context, slug string) ApiSourcesScimPartialUpdateRequest {
 	return ApiSourcesScimPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14818,7 +15026,7 @@ func (a *SourcesApiService) SourcesScimPartialUpdate(ctx context.Context, slug s
 // Execute executes the request
 //
 //	@return SCIMSource
-func (a *SourcesApiService) SourcesScimPartialUpdateExecute(r ApiSourcesScimPartialUpdateRequest) (*SCIMSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimPartialUpdateExecute(r ApiSourcesScimPartialUpdateRequest) (*SCIMSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -14826,13 +15034,13 @@ func (a *SourcesApiService) SourcesScimPartialUpdateExecute(r ApiSourcesScimPart
 		localVarReturnValue *SCIMSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14867,9 +15075,9 @@ func (a *SourcesApiService) SourcesScimPartialUpdateExecute(r ApiSourcesScimPart
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -14886,6 +15094,7 @@ func (a *SourcesApiService) SourcesScimPartialUpdateExecute(r ApiSourcesScimPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -14896,6 +15105,7 @@ func (a *SourcesApiService) SourcesScimPartialUpdateExecute(r ApiSourcesScimPart
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -14915,7 +15125,7 @@ func (a *SourcesApiService) SourcesScimPartialUpdateExecute(r ApiSourcesScimPart
 
 type ApiSourcesScimRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -14932,7 +15142,7 @@ SCIMSource Viewset
 	@param slug
 	@return ApiSourcesScimRetrieveRequest
 */
-func (a *SourcesApiService) SourcesScimRetrieve(ctx context.Context, slug string) ApiSourcesScimRetrieveRequest {
+func (a *SourcesAPIService) SourcesScimRetrieve(ctx context.Context, slug string) ApiSourcesScimRetrieveRequest {
 	return ApiSourcesScimRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -14943,7 +15153,7 @@ func (a *SourcesApiService) SourcesScimRetrieve(ctx context.Context, slug string
 // Execute executes the request
 //
 //	@return SCIMSource
-func (a *SourcesApiService) SourcesScimRetrieveExecute(r ApiSourcesScimRetrieveRequest) (*SCIMSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimRetrieveExecute(r ApiSourcesScimRetrieveRequest) (*SCIMSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -14951,13 +15161,13 @@ func (a *SourcesApiService) SourcesScimRetrieveExecute(r ApiSourcesScimRetrieveR
 		localVarReturnValue *SCIMSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -14990,9 +15200,9 @@ func (a *SourcesApiService) SourcesScimRetrieveExecute(r ApiSourcesScimRetrieveR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15009,6 +15219,7 @@ func (a *SourcesApiService) SourcesScimRetrieveExecute(r ApiSourcesScimRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15019,6 +15230,7 @@ func (a *SourcesApiService) SourcesScimRetrieveExecute(r ApiSourcesScimRetrieveR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15038,7 +15250,7 @@ func (a *SourcesApiService) SourcesScimRetrieveExecute(r ApiSourcesScimRetrieveR
 
 type ApiSourcesScimUpdateRequest struct {
 	ctx               context.Context
-	ApiService        *SourcesApiService
+	ApiService        *SourcesAPIService
 	slug              string
 	sCIMSourceRequest *SCIMSourceRequest
 }
@@ -15061,7 +15273,7 @@ SCIMSource Viewset
 	@param slug
 	@return ApiSourcesScimUpdateRequest
 */
-func (a *SourcesApiService) SourcesScimUpdate(ctx context.Context, slug string) ApiSourcesScimUpdateRequest {
+func (a *SourcesAPIService) SourcesScimUpdate(ctx context.Context, slug string) ApiSourcesScimUpdateRequest {
 	return ApiSourcesScimUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15072,7 +15284,7 @@ func (a *SourcesApiService) SourcesScimUpdate(ctx context.Context, slug string) 
 // Execute executes the request
 //
 //	@return SCIMSource
-func (a *SourcesApiService) SourcesScimUpdateExecute(r ApiSourcesScimUpdateRequest) (*SCIMSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimUpdateExecute(r ApiSourcesScimUpdateRequest) (*SCIMSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -15080,13 +15292,13 @@ func (a *SourcesApiService) SourcesScimUpdateExecute(r ApiSourcesScimUpdateReque
 		localVarReturnValue *SCIMSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15124,9 +15336,9 @@ func (a *SourcesApiService) SourcesScimUpdateExecute(r ApiSourcesScimUpdateReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15143,6 +15355,7 @@ func (a *SourcesApiService) SourcesScimUpdateExecute(r ApiSourcesScimUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15153,6 +15366,7 @@ func (a *SourcesApiService) SourcesScimUpdateExecute(r ApiSourcesScimUpdateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15172,7 +15386,7 @@ func (a *SourcesApiService) SourcesScimUpdateExecute(r ApiSourcesScimUpdateReque
 
 type ApiSourcesScimUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -15189,7 +15403,7 @@ Get a list of all objects that use this object
 	@param slug
 	@return ApiSourcesScimUsedByListRequest
 */
-func (a *SourcesApiService) SourcesScimUsedByList(ctx context.Context, slug string) ApiSourcesScimUsedByListRequest {
+func (a *SourcesAPIService) SourcesScimUsedByList(ctx context.Context, slug string) ApiSourcesScimUsedByListRequest {
 	return ApiSourcesScimUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15200,7 +15414,7 @@ func (a *SourcesApiService) SourcesScimUsedByList(ctx context.Context, slug stri
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesScimUsedByListExecute(r ApiSourcesScimUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimUsedByListExecute(r ApiSourcesScimUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -15208,13 +15422,13 @@ func (a *SourcesApiService) SourcesScimUsedByListExecute(r ApiSourcesScimUsedByL
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15247,9 +15461,9 @@ func (a *SourcesApiService) SourcesScimUsedByListExecute(r ApiSourcesScimUsedByL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15266,6 +15480,7 @@ func (a *SourcesApiService) SourcesScimUsedByListExecute(r ApiSourcesScimUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15276,6 +15491,7 @@ func (a *SourcesApiService) SourcesScimUsedByListExecute(r ApiSourcesScimUsedByL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15295,7 +15511,7 @@ func (a *SourcesApiService) SourcesScimUsedByListExecute(r ApiSourcesScimUsedByL
 
 type ApiSourcesScimUsersCreateRequest struct {
 	ctx                   context.Context
-	ApiService            *SourcesApiService
+	ApiService            *SourcesAPIService
 	sCIMSourceUserRequest *SCIMSourceUserRequest
 }
 
@@ -15316,7 +15532,7 @@ SCIMSourceUser Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesScimUsersCreateRequest
 */
-func (a *SourcesApiService) SourcesScimUsersCreate(ctx context.Context) ApiSourcesScimUsersCreateRequest {
+func (a *SourcesAPIService) SourcesScimUsersCreate(ctx context.Context) ApiSourcesScimUsersCreateRequest {
 	return ApiSourcesScimUsersCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15326,7 +15542,7 @@ func (a *SourcesApiService) SourcesScimUsersCreate(ctx context.Context) ApiSourc
 // Execute executes the request
 //
 //	@return SCIMSourceUser
-func (a *SourcesApiService) SourcesScimUsersCreateExecute(r ApiSourcesScimUsersCreateRequest) (*SCIMSourceUser, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimUsersCreateExecute(r ApiSourcesScimUsersCreateRequest) (*SCIMSourceUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -15334,7 +15550,7 @@ func (a *SourcesApiService) SourcesScimUsersCreateExecute(r ApiSourcesScimUsersC
 		localVarReturnValue *SCIMSourceUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimUsersCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimUsersCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -15377,9 +15593,9 @@ func (a *SourcesApiService) SourcesScimUsersCreateExecute(r ApiSourcesScimUsersC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15396,6 +15612,7 @@ func (a *SourcesApiService) SourcesScimUsersCreateExecute(r ApiSourcesScimUsersC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15406,6 +15623,7 @@ func (a *SourcesApiService) SourcesScimUsersCreateExecute(r ApiSourcesScimUsersC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15425,7 +15643,7 @@ func (a *SourcesApiService) SourcesScimUsersCreateExecute(r ApiSourcesScimUsersC
 
 type ApiSourcesScimUsersDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         string
 }
 
@@ -15442,7 +15660,7 @@ SCIMSourceUser Viewset
 	@param id A unique value identifying this scim source user.
 	@return ApiSourcesScimUsersDestroyRequest
 */
-func (a *SourcesApiService) SourcesScimUsersDestroy(ctx context.Context, id string) ApiSourcesScimUsersDestroyRequest {
+func (a *SourcesAPIService) SourcesScimUsersDestroy(ctx context.Context, id string) ApiSourcesScimUsersDestroyRequest {
 	return ApiSourcesScimUsersDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15451,20 +15669,20 @@ func (a *SourcesApiService) SourcesScimUsersDestroy(ctx context.Context, id stri
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesScimUsersDestroyExecute(r ApiSourcesScimUsersDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesScimUsersDestroyExecute(r ApiSourcesScimUsersDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimUsersDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimUsersDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15497,9 +15715,9 @@ func (a *SourcesApiService) SourcesScimUsersDestroyExecute(r ApiSourcesScimUsers
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -15516,6 +15734,7 @@ func (a *SourcesApiService) SourcesScimUsersDestroyExecute(r ApiSourcesScimUsers
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -15526,6 +15745,7 @@ func (a *SourcesApiService) SourcesScimUsersDestroyExecute(r ApiSourcesScimUsers
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -15536,7 +15756,7 @@ func (a *SourcesApiService) SourcesScimUsersDestroyExecute(r ApiSourcesScimUsers
 
 type ApiSourcesScimUsersListRequest struct {
 	ctx          context.Context
-	ApiService   *SourcesApiService
+	ApiService   *SourcesAPIService
 	ordering     *string
 	page         *int32
 	pageSize     *int32
@@ -15597,7 +15817,7 @@ SCIMSourceUser Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesScimUsersListRequest
 */
-func (a *SourcesApiService) SourcesScimUsersList(ctx context.Context) ApiSourcesScimUsersListRequest {
+func (a *SourcesAPIService) SourcesScimUsersList(ctx context.Context) ApiSourcesScimUsersListRequest {
 	return ApiSourcesScimUsersListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15607,7 +15827,7 @@ func (a *SourcesApiService) SourcesScimUsersList(ctx context.Context) ApiSources
 // Execute executes the request
 //
 //	@return PaginatedSCIMSourceUserList
-func (a *SourcesApiService) SourcesScimUsersListExecute(r ApiSourcesScimUsersListRequest) (*PaginatedSCIMSourceUserList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimUsersListExecute(r ApiSourcesScimUsersListRequest) (*PaginatedSCIMSourceUserList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -15615,7 +15835,7 @@ func (a *SourcesApiService) SourcesScimUsersListExecute(r ApiSourcesScimUsersLis
 		localVarReturnValue *PaginatedSCIMSourceUserList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimUsersList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimUsersList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -15627,25 +15847,25 @@ func (a *SourcesApiService) SourcesScimUsersListExecute(r ApiSourcesScimUsersLis
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	if r.userId != nil {
-		localVarQueryParams.Add("user__id", parameterToString(*r.userId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user__id", r.userId, "form", "")
 	}
 	if r.userUsername != nil {
-		localVarQueryParams.Add("user__username", parameterToString(*r.userUsername, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user__username", r.userUsername, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -15674,9 +15894,9 @@ func (a *SourcesApiService) SourcesScimUsersListExecute(r ApiSourcesScimUsersLis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15693,6 +15913,7 @@ func (a *SourcesApiService) SourcesScimUsersListExecute(r ApiSourcesScimUsersLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15703,6 +15924,7 @@ func (a *SourcesApiService) SourcesScimUsersListExecute(r ApiSourcesScimUsersLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15722,7 +15944,7 @@ func (a *SourcesApiService) SourcesScimUsersListExecute(r ApiSourcesScimUsersLis
 
 type ApiSourcesScimUsersPartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *SourcesApiService
+	ApiService                   *SourcesAPIService
 	id                           string
 	patchedSCIMSourceUserRequest *PatchedSCIMSourceUserRequest
 }
@@ -15745,7 +15967,7 @@ SCIMSourceUser Viewset
 	@param id A unique value identifying this scim source user.
 	@return ApiSourcesScimUsersPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesScimUsersPartialUpdate(ctx context.Context, id string) ApiSourcesScimUsersPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesScimUsersPartialUpdate(ctx context.Context, id string) ApiSourcesScimUsersPartialUpdateRequest {
 	return ApiSourcesScimUsersPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15756,7 +15978,7 @@ func (a *SourcesApiService) SourcesScimUsersPartialUpdate(ctx context.Context, i
 // Execute executes the request
 //
 //	@return SCIMSourceUser
-func (a *SourcesApiService) SourcesScimUsersPartialUpdateExecute(r ApiSourcesScimUsersPartialUpdateRequest) (*SCIMSourceUser, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimUsersPartialUpdateExecute(r ApiSourcesScimUsersPartialUpdateRequest) (*SCIMSourceUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -15764,13 +15986,13 @@ func (a *SourcesApiService) SourcesScimUsersPartialUpdateExecute(r ApiSourcesSci
 		localVarReturnValue *SCIMSourceUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimUsersPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimUsersPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15805,9 +16027,9 @@ func (a *SourcesApiService) SourcesScimUsersPartialUpdateExecute(r ApiSourcesSci
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15824,6 +16046,7 @@ func (a *SourcesApiService) SourcesScimUsersPartialUpdateExecute(r ApiSourcesSci
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15834,6 +16057,7 @@ func (a *SourcesApiService) SourcesScimUsersPartialUpdateExecute(r ApiSourcesSci
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15853,7 +16077,7 @@ func (a *SourcesApiService) SourcesScimUsersPartialUpdateExecute(r ApiSourcesSci
 
 type ApiSourcesScimUsersRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         string
 }
 
@@ -15870,7 +16094,7 @@ SCIMSourceUser Viewset
 	@param id A unique value identifying this scim source user.
 	@return ApiSourcesScimUsersRetrieveRequest
 */
-func (a *SourcesApiService) SourcesScimUsersRetrieve(ctx context.Context, id string) ApiSourcesScimUsersRetrieveRequest {
+func (a *SourcesAPIService) SourcesScimUsersRetrieve(ctx context.Context, id string) ApiSourcesScimUsersRetrieveRequest {
 	return ApiSourcesScimUsersRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -15881,7 +16105,7 @@ func (a *SourcesApiService) SourcesScimUsersRetrieve(ctx context.Context, id str
 // Execute executes the request
 //
 //	@return SCIMSourceUser
-func (a *SourcesApiService) SourcesScimUsersRetrieveExecute(r ApiSourcesScimUsersRetrieveRequest) (*SCIMSourceUser, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimUsersRetrieveExecute(r ApiSourcesScimUsersRetrieveRequest) (*SCIMSourceUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -15889,13 +16113,13 @@ func (a *SourcesApiService) SourcesScimUsersRetrieveExecute(r ApiSourcesScimUser
 		localVarReturnValue *SCIMSourceUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimUsersRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimUsersRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -15928,9 +16152,9 @@ func (a *SourcesApiService) SourcesScimUsersRetrieveExecute(r ApiSourcesScimUser
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -15947,6 +16171,7 @@ func (a *SourcesApiService) SourcesScimUsersRetrieveExecute(r ApiSourcesScimUser
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -15957,6 +16182,7 @@ func (a *SourcesApiService) SourcesScimUsersRetrieveExecute(r ApiSourcesScimUser
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -15976,7 +16202,7 @@ func (a *SourcesApiService) SourcesScimUsersRetrieveExecute(r ApiSourcesScimUser
 
 type ApiSourcesScimUsersUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *SourcesApiService
+	ApiService            *SourcesAPIService
 	id                    string
 	sCIMSourceUserRequest *SCIMSourceUserRequest
 }
@@ -15999,7 +16225,7 @@ SCIMSourceUser Viewset
 	@param id A unique value identifying this scim source user.
 	@return ApiSourcesScimUsersUpdateRequest
 */
-func (a *SourcesApiService) SourcesScimUsersUpdate(ctx context.Context, id string) ApiSourcesScimUsersUpdateRequest {
+func (a *SourcesAPIService) SourcesScimUsersUpdate(ctx context.Context, id string) ApiSourcesScimUsersUpdateRequest {
 	return ApiSourcesScimUsersUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16010,7 +16236,7 @@ func (a *SourcesApiService) SourcesScimUsersUpdate(ctx context.Context, id strin
 // Execute executes the request
 //
 //	@return SCIMSourceUser
-func (a *SourcesApiService) SourcesScimUsersUpdateExecute(r ApiSourcesScimUsersUpdateRequest) (*SCIMSourceUser, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimUsersUpdateExecute(r ApiSourcesScimUsersUpdateRequest) (*SCIMSourceUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -16018,13 +16244,13 @@ func (a *SourcesApiService) SourcesScimUsersUpdateExecute(r ApiSourcesScimUsersU
 		localVarReturnValue *SCIMSourceUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimUsersUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimUsersUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_users/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16062,9 +16288,9 @@ func (a *SourcesApiService) SourcesScimUsersUpdateExecute(r ApiSourcesScimUsersU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16081,6 +16307,7 @@ func (a *SourcesApiService) SourcesScimUsersUpdateExecute(r ApiSourcesScimUsersU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16091,6 +16318,7 @@ func (a *SourcesApiService) SourcesScimUsersUpdateExecute(r ApiSourcesScimUsersU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16110,7 +16338,7 @@ func (a *SourcesApiService) SourcesScimUsersUpdateExecute(r ApiSourcesScimUsersU
 
 type ApiSourcesScimUsersUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         string
 }
 
@@ -16127,7 +16355,7 @@ Get a list of all objects that use this object
 	@param id A unique value identifying this scim source user.
 	@return ApiSourcesScimUsersUsedByListRequest
 */
-func (a *SourcesApiService) SourcesScimUsersUsedByList(ctx context.Context, id string) ApiSourcesScimUsersUsedByListRequest {
+func (a *SourcesAPIService) SourcesScimUsersUsedByList(ctx context.Context, id string) ApiSourcesScimUsersUsedByListRequest {
 	return ApiSourcesScimUsersUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16138,7 +16366,7 @@ func (a *SourcesApiService) SourcesScimUsersUsedByList(ctx context.Context, id s
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesScimUsersUsedByListExecute(r ApiSourcesScimUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesScimUsersUsedByListExecute(r ApiSourcesScimUsersUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -16146,13 +16374,13 @@ func (a *SourcesApiService) SourcesScimUsersUsedByListExecute(r ApiSourcesScimUs
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesScimUsersUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesScimUsersUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/scim_users/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16185,9 +16413,9 @@ func (a *SourcesApiService) SourcesScimUsersUsedByListExecute(r ApiSourcesScimUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16204,6 +16432,7 @@ func (a *SourcesApiService) SourcesScimUsersUsedByListExecute(r ApiSourcesScimUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16214,6 +16443,7 @@ func (a *SourcesApiService) SourcesScimUsersUsedByListExecute(r ApiSourcesScimUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16233,7 +16463,7 @@ func (a *SourcesApiService) SourcesScimUsersUsedByListExecute(r ApiSourcesScimUs
 
 type ApiSourcesTelegramConnectUserCreateRequest struct {
 	ctx                 context.Context
-	ApiService          *SourcesApiService
+	ApiService          *SourcesAPIService
 	slug                string
 	telegramAuthRequest *TelegramAuthRequest
 }
@@ -16256,7 +16486,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param slug
 	@return ApiSourcesTelegramConnectUserCreateRequest
 */
-func (a *SourcesApiService) SourcesTelegramConnectUserCreate(ctx context.Context, slug string) ApiSourcesTelegramConnectUserCreateRequest {
+func (a *SourcesAPIService) SourcesTelegramConnectUserCreate(ctx context.Context, slug string) ApiSourcesTelegramConnectUserCreateRequest {
 	return ApiSourcesTelegramConnectUserCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16267,7 +16497,7 @@ func (a *SourcesApiService) SourcesTelegramConnectUserCreate(ctx context.Context
 // Execute executes the request
 //
 //	@return UserTelegramSourceConnection
-func (a *SourcesApiService) SourcesTelegramConnectUserCreateExecute(r ApiSourcesTelegramConnectUserCreateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesTelegramConnectUserCreateExecute(r ApiSourcesTelegramConnectUserCreateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -16275,13 +16505,13 @@ func (a *SourcesApiService) SourcesTelegramConnectUserCreateExecute(r ApiSources
 		localVarReturnValue *UserTelegramSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesTelegramConnectUserCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramConnectUserCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/telegram/{slug}/connect_user/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16319,9 +16549,9 @@ func (a *SourcesApiService) SourcesTelegramConnectUserCreateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16338,6 +16568,7 @@ func (a *SourcesApiService) SourcesTelegramConnectUserCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16357,7 +16588,7 @@ func (a *SourcesApiService) SourcesTelegramConnectUserCreateExecute(r ApiSources
 
 type ApiSourcesTelegramCreateRequest struct {
 	ctx                   context.Context
-	ApiService            *SourcesApiService
+	ApiService            *SourcesAPIService
 	telegramSourceRequest *TelegramSourceRequest
 }
 
@@ -16378,7 +16609,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesTelegramCreateRequest
 */
-func (a *SourcesApiService) SourcesTelegramCreate(ctx context.Context) ApiSourcesTelegramCreateRequest {
+func (a *SourcesAPIService) SourcesTelegramCreate(ctx context.Context) ApiSourcesTelegramCreateRequest {
 	return ApiSourcesTelegramCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16388,7 +16619,7 @@ func (a *SourcesApiService) SourcesTelegramCreate(ctx context.Context) ApiSource
 // Execute executes the request
 //
 //	@return TelegramSource
-func (a *SourcesApiService) SourcesTelegramCreateExecute(r ApiSourcesTelegramCreateRequest) (*TelegramSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesTelegramCreateExecute(r ApiSourcesTelegramCreateRequest) (*TelegramSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -16396,7 +16627,7 @@ func (a *SourcesApiService) SourcesTelegramCreateExecute(r ApiSourcesTelegramCre
 		localVarReturnValue *TelegramSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesTelegramCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -16439,9 +16670,9 @@ func (a *SourcesApiService) SourcesTelegramCreateExecute(r ApiSourcesTelegramCre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16458,6 +16689,7 @@ func (a *SourcesApiService) SourcesTelegramCreateExecute(r ApiSourcesTelegramCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16468,6 +16700,7 @@ func (a *SourcesApiService) SourcesTelegramCreateExecute(r ApiSourcesTelegramCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16487,7 +16720,7 @@ func (a *SourcesApiService) SourcesTelegramCreateExecute(r ApiSourcesTelegramCre
 
 type ApiSourcesTelegramDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -16504,7 +16737,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param slug
 	@return ApiSourcesTelegramDestroyRequest
 */
-func (a *SourcesApiService) SourcesTelegramDestroy(ctx context.Context, slug string) ApiSourcesTelegramDestroyRequest {
+func (a *SourcesAPIService) SourcesTelegramDestroy(ctx context.Context, slug string) ApiSourcesTelegramDestroyRequest {
 	return ApiSourcesTelegramDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16513,20 +16746,20 @@ func (a *SourcesApiService) SourcesTelegramDestroy(ctx context.Context, slug str
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesTelegramDestroyExecute(r ApiSourcesTelegramDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesTelegramDestroyExecute(r ApiSourcesTelegramDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesTelegramDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/telegram/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16559,9 +16792,9 @@ func (a *SourcesApiService) SourcesTelegramDestroyExecute(r ApiSourcesTelegramDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -16578,6 +16811,7 @@ func (a *SourcesApiService) SourcesTelegramDestroyExecute(r ApiSourcesTelegramDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -16588,6 +16822,7 @@ func (a *SourcesApiService) SourcesTelegramDestroyExecute(r ApiSourcesTelegramDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -16598,7 +16833,7 @@ func (a *SourcesApiService) SourcesTelegramDestroyExecute(r ApiSourcesTelegramDe
 
 type ApiSourcesTelegramListRequest struct {
 	ctx                  context.Context
-	ApiService           *SourcesApiService
+	ApiService           *SourcesAPIService
 	authenticationFlow   *string
 	botUsername          *string
 	enabled              *bool
@@ -16709,7 +16944,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesTelegramListRequest
 */
-func (a *SourcesApiService) SourcesTelegramList(ctx context.Context) ApiSourcesTelegramListRequest {
+func (a *SourcesAPIService) SourcesTelegramList(ctx context.Context) ApiSourcesTelegramListRequest {
 	return ApiSourcesTelegramListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16719,7 +16954,7 @@ func (a *SourcesApiService) SourcesTelegramList(ctx context.Context) ApiSourcesT
 // Execute executes the request
 //
 //	@return PaginatedTelegramSourceList
-func (a *SourcesApiService) SourcesTelegramListExecute(r ApiSourcesTelegramListRequest) (*PaginatedTelegramSourceList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesTelegramListExecute(r ApiSourcesTelegramListRequest) (*PaginatedTelegramSourceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -16727,7 +16962,7 @@ func (a *SourcesApiService) SourcesTelegramListExecute(r ApiSourcesTelegramListR
 		localVarReturnValue *PaginatedTelegramSourceList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesTelegramList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -16739,49 +16974,49 @@ func (a *SourcesApiService) SourcesTelegramListExecute(r ApiSourcesTelegramListR
 	localVarFormParams := url.Values{}
 
 	if r.authenticationFlow != nil {
-		localVarQueryParams.Add("authentication_flow", parameterToString(*r.authenticationFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "form", "")
 	}
 	if r.botUsername != nil {
-		localVarQueryParams.Add("bot_username", parameterToString(*r.botUsername, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bot_username", r.botUsername, "form", "")
 	}
 	if r.enabled != nil {
-		localVarQueryParams.Add("enabled", parameterToString(*r.enabled, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enabled", r.enabled, "form", "")
 	}
 	if r.enrollmentFlow != nil {
-		localVarQueryParams.Add("enrollment_flow", parameterToString(*r.enrollmentFlow, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enrollment_flow", r.enrollmentFlow, "form", "")
 	}
 	if r.groupMatchingMode != nil {
-		localVarQueryParams.Add("group_matching_mode", parameterToString(*r.groupMatchingMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group_matching_mode", r.groupMatchingMode, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.pbmUuid != nil {
-		localVarQueryParams.Add("pbm_uuid", parameterToString(*r.pbmUuid, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pbm_uuid", r.pbmUuid, "form", "")
 	}
 	if r.policyEngineMode != nil {
-		localVarQueryParams.Add("policy_engine_mode", parameterToString(*r.policyEngineMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "policy_engine_mode", r.policyEngineMode, "form", "")
 	}
 	if r.requestMessageAccess != nil {
-		localVarQueryParams.Add("request_message_access", parameterToString(*r.requestMessageAccess, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "request_message_access", r.requestMessageAccess, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.slug != nil {
-		localVarQueryParams.Add("slug", parameterToString(*r.slug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "slug", r.slug, "form", "")
 	}
 	if r.userMatchingMode != nil {
-		localVarQueryParams.Add("user_matching_mode", parameterToString(*r.userMatchingMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user_matching_mode", r.userMatchingMode, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -16810,9 +17045,9 @@ func (a *SourcesApiService) SourcesTelegramListExecute(r ApiSourcesTelegramListR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16829,6 +17064,7 @@ func (a *SourcesApiService) SourcesTelegramListExecute(r ApiSourcesTelegramListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16839,6 +17075,7 @@ func (a *SourcesApiService) SourcesTelegramListExecute(r ApiSourcesTelegramListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16858,7 +17095,7 @@ func (a *SourcesApiService) SourcesTelegramListExecute(r ApiSourcesTelegramListR
 
 type ApiSourcesTelegramPartialUpdateRequest struct {
 	ctx                          context.Context
-	ApiService                   *SourcesApiService
+	ApiService                   *SourcesAPIService
 	slug                         string
 	patchedTelegramSourceRequest *PatchedTelegramSourceRequest
 }
@@ -16881,7 +17118,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param slug
 	@return ApiSourcesTelegramPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesTelegramPartialUpdate(ctx context.Context, slug string) ApiSourcesTelegramPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesTelegramPartialUpdate(ctx context.Context, slug string) ApiSourcesTelegramPartialUpdateRequest {
 	return ApiSourcesTelegramPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -16892,7 +17129,7 @@ func (a *SourcesApiService) SourcesTelegramPartialUpdate(ctx context.Context, sl
 // Execute executes the request
 //
 //	@return TelegramSource
-func (a *SourcesApiService) SourcesTelegramPartialUpdateExecute(r ApiSourcesTelegramPartialUpdateRequest) (*TelegramSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesTelegramPartialUpdateExecute(r ApiSourcesTelegramPartialUpdateRequest) (*TelegramSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -16900,13 +17137,13 @@ func (a *SourcesApiService) SourcesTelegramPartialUpdateExecute(r ApiSourcesTele
 		localVarReturnValue *TelegramSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesTelegramPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/telegram/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -16941,9 +17178,9 @@ func (a *SourcesApiService) SourcesTelegramPartialUpdateExecute(r ApiSourcesTele
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -16960,6 +17197,7 @@ func (a *SourcesApiService) SourcesTelegramPartialUpdateExecute(r ApiSourcesTele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -16970,6 +17208,7 @@ func (a *SourcesApiService) SourcesTelegramPartialUpdateExecute(r ApiSourcesTele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -16989,7 +17228,7 @@ func (a *SourcesApiService) SourcesTelegramPartialUpdateExecute(r ApiSourcesTele
 
 type ApiSourcesTelegramRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -17006,7 +17245,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param slug
 	@return ApiSourcesTelegramRetrieveRequest
 */
-func (a *SourcesApiService) SourcesTelegramRetrieve(ctx context.Context, slug string) ApiSourcesTelegramRetrieveRequest {
+func (a *SourcesAPIService) SourcesTelegramRetrieve(ctx context.Context, slug string) ApiSourcesTelegramRetrieveRequest {
 	return ApiSourcesTelegramRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17017,7 +17256,7 @@ func (a *SourcesApiService) SourcesTelegramRetrieve(ctx context.Context, slug st
 // Execute executes the request
 //
 //	@return TelegramSource
-func (a *SourcesApiService) SourcesTelegramRetrieveExecute(r ApiSourcesTelegramRetrieveRequest) (*TelegramSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesTelegramRetrieveExecute(r ApiSourcesTelegramRetrieveRequest) (*TelegramSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -17025,13 +17264,13 @@ func (a *SourcesApiService) SourcesTelegramRetrieveExecute(r ApiSourcesTelegramR
 		localVarReturnValue *TelegramSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesTelegramRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/telegram/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17064,9 +17303,9 @@ func (a *SourcesApiService) SourcesTelegramRetrieveExecute(r ApiSourcesTelegramR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17083,6 +17322,7 @@ func (a *SourcesApiService) SourcesTelegramRetrieveExecute(r ApiSourcesTelegramR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17093,6 +17333,7 @@ func (a *SourcesApiService) SourcesTelegramRetrieveExecute(r ApiSourcesTelegramR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17112,7 +17353,7 @@ func (a *SourcesApiService) SourcesTelegramRetrieveExecute(r ApiSourcesTelegramR
 
 type ApiSourcesTelegramUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *SourcesApiService
+	ApiService            *SourcesAPIService
 	slug                  string
 	telegramSourceRequest *TelegramSourceRequest
 }
@@ -17135,7 +17376,7 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 	@param slug
 	@return ApiSourcesTelegramUpdateRequest
 */
-func (a *SourcesApiService) SourcesTelegramUpdate(ctx context.Context, slug string) ApiSourcesTelegramUpdateRequest {
+func (a *SourcesAPIService) SourcesTelegramUpdate(ctx context.Context, slug string) ApiSourcesTelegramUpdateRequest {
 	return ApiSourcesTelegramUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17146,7 +17387,7 @@ func (a *SourcesApiService) SourcesTelegramUpdate(ctx context.Context, slug stri
 // Execute executes the request
 //
 //	@return TelegramSource
-func (a *SourcesApiService) SourcesTelegramUpdateExecute(r ApiSourcesTelegramUpdateRequest) (*TelegramSource, *http.Response, error) {
+func (a *SourcesAPIService) SourcesTelegramUpdateExecute(r ApiSourcesTelegramUpdateRequest) (*TelegramSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -17154,13 +17395,13 @@ func (a *SourcesApiService) SourcesTelegramUpdateExecute(r ApiSourcesTelegramUpd
 		localVarReturnValue *TelegramSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesTelegramUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/telegram/{slug}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17198,9 +17439,9 @@ func (a *SourcesApiService) SourcesTelegramUpdateExecute(r ApiSourcesTelegramUpd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17217,6 +17458,7 @@ func (a *SourcesApiService) SourcesTelegramUpdateExecute(r ApiSourcesTelegramUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17227,6 +17469,7 @@ func (a *SourcesApiService) SourcesTelegramUpdateExecute(r ApiSourcesTelegramUpd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17246,7 +17489,7 @@ func (a *SourcesApiService) SourcesTelegramUpdateExecute(r ApiSourcesTelegramUpd
 
 type ApiSourcesTelegramUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	slug       string
 }
 
@@ -17263,7 +17506,7 @@ Get a list of all objects that use this object
 	@param slug
 	@return ApiSourcesTelegramUsedByListRequest
 */
-func (a *SourcesApiService) SourcesTelegramUsedByList(ctx context.Context, slug string) ApiSourcesTelegramUsedByListRequest {
+func (a *SourcesAPIService) SourcesTelegramUsedByList(ctx context.Context, slug string) ApiSourcesTelegramUsedByListRequest {
 	return ApiSourcesTelegramUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17274,7 +17517,7 @@ func (a *SourcesApiService) SourcesTelegramUsedByList(ctx context.Context, slug 
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesTelegramUsedByListExecute(r ApiSourcesTelegramUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesTelegramUsedByListExecute(r ApiSourcesTelegramUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -17282,13 +17525,13 @@ func (a *SourcesApiService) SourcesTelegramUsedByListExecute(r ApiSourcesTelegra
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesTelegramUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesTelegramUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/telegram/{slug}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterToString(r.slug, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"slug"+"}", url.PathEscape(parameterValueToString(r.slug, "slug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17321,9 +17564,9 @@ func (a *SourcesApiService) SourcesTelegramUsedByListExecute(r ApiSourcesTelegra
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17340,6 +17583,7 @@ func (a *SourcesApiService) SourcesTelegramUsedByListExecute(r ApiSourcesTelegra
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17350,6 +17594,7 @@ func (a *SourcesApiService) SourcesTelegramUsedByListExecute(r ApiSourcesTelegra
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17369,7 +17614,7 @@ func (a *SourcesApiService) SourcesTelegramUsedByListExecute(r ApiSourcesTelegra
 
 type ApiSourcesUserConnectionsAllDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -17386,7 +17631,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this user source connection.
 	@return ApiSourcesUserConnectionsAllDestroyRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsAllDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsAllDestroyRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsAllDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsAllDestroyRequest {
 	return ApiSourcesUserConnectionsAllDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17395,20 +17640,20 @@ func (a *SourcesApiService) SourcesUserConnectionsAllDestroy(ctx context.Context
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesUserConnectionsAllDestroyExecute(r ApiSourcesUserConnectionsAllDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsAllDestroyExecute(r ApiSourcesUserConnectionsAllDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsAllDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsAllDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17441,9 +17686,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllDestroyExecute(r ApiSources
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -17460,6 +17705,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllDestroyExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -17470,6 +17716,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllDestroyExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -17480,7 +17727,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllDestroyExecute(r ApiSources
 
 type ApiSourcesUserConnectionsAllListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -17535,7 +17782,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsAllListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsAllList(ctx context.Context) ApiSourcesUserConnectionsAllListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsAllList(ctx context.Context) ApiSourcesUserConnectionsAllListRequest {
 	return ApiSourcesUserConnectionsAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17545,7 +17792,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllList(ctx context.Context) A
 // Execute executes the request
 //
 //	@return PaginatedUserSourceConnectionList
-func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUserConnectionsAllListRequest) (*PaginatedUserSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsAllListExecute(r ApiSourcesUserConnectionsAllListRequest) (*PaginatedUserSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -17553,7 +17800,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 		localVarReturnValue *PaginatedUserSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsAllList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsAllList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -17565,22 +17812,22 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -17609,9 +17856,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17628,6 +17875,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17638,6 +17886,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17657,7 +17906,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllListExecute(r ApiSourcesUse
 
 type ApiSourcesUserConnectionsAllPartialUpdateRequest struct {
 	ctx                                context.Context
-	ApiService                         *SourcesApiService
+	ApiService                         *SourcesAPIService
 	id                                 int32
 	patchedUserSourceConnectionRequest *PatchedUserSourceConnectionRequest
 }
@@ -17680,7 +17929,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this user source connection.
 	@return ApiSourcesUserConnectionsAllPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsAllPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsAllPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsAllPartialUpdateRequest {
 	return ApiSourcesUserConnectionsAllPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17691,7 +17940,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdate(ctx context.C
 // Execute executes the request
 //
 //	@return UserSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiSourcesUserConnectionsAllPartialUpdateRequest) (*UserSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiSourcesUserConnectionsAllPartialUpdateRequest) (*UserSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -17699,13 +17948,13 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 		localVarReturnValue *UserSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsAllPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsAllPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17740,9 +17989,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17759,6 +18008,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17769,6 +18019,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17788,7 +18039,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllPartialUpdateExecute(r ApiS
 
 type ApiSourcesUserConnectionsAllRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -17805,7 +18056,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this user source connection.
 	@return ApiSourcesUserConnectionsAllRetrieveRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsAllRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsAllRetrieveRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsAllRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsAllRetrieveRequest {
 	return ApiSourcesUserConnectionsAllRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17816,7 +18067,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieve(ctx context.Contex
 // Execute executes the request
 //
 //	@return UserSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSourcesUserConnectionsAllRetrieveRequest) (*UserSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsAllRetrieveExecute(r ApiSourcesUserConnectionsAllRetrieveRequest) (*UserSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -17824,13 +18075,13 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 		localVarReturnValue *UserSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsAllRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsAllRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17863,9 +18114,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -17882,6 +18133,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -17892,6 +18144,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -17911,7 +18164,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllRetrieveExecute(r ApiSource
 
 type ApiSourcesUserConnectionsAllUpdateRequest struct {
 	ctx                         context.Context
-	ApiService                  *SourcesApiService
+	ApiService                  *SourcesAPIService
 	id                          int32
 	userSourceConnectionRequest *UserSourceConnectionRequest
 }
@@ -17934,7 +18187,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this user source connection.
 	@return ApiSourcesUserConnectionsAllUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsAllUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsAllUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsAllUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsAllUpdateRequest {
 	return ApiSourcesUserConnectionsAllUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -17945,7 +18198,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdate(ctx context.Context,
 // Execute executes the request
 //
 //	@return UserSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesUserConnectionsAllUpdateRequest) (*UserSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesUserConnectionsAllUpdateRequest) (*UserSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -17953,13 +18206,13 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 		localVarReturnValue *UserSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsAllUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsAllUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -17997,9 +18250,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18016,6 +18269,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18026,6 +18280,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18045,7 +18300,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUpdateExecute(r ApiSourcesU
 
 type ApiSourcesUserConnectionsAllUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -18062,7 +18317,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this user source connection.
 	@return ApiSourcesUserConnectionsAllUsedByListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsAllUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsAllUsedByListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsAllUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsAllUsedByListRequest {
 	return ApiSourcesUserConnectionsAllUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18073,7 +18328,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByList(ctx context.Cont
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSourcesUserConnectionsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsAllUsedByListExecute(r ApiSourcesUserConnectionsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -18081,13 +18336,13 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSour
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsAllUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsAllUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/all/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18120,9 +18375,9 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18139,6 +18394,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18149,6 +18405,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18168,7 +18425,7 @@ func (a *SourcesApiService) SourcesUserConnectionsAllUsedByListExecute(r ApiSour
 
 type ApiSourcesUserConnectionsKerberosCreateRequest struct {
 	ctx                                 context.Context
-	ApiService                          *SourcesApiService
+	ApiService                          *SourcesAPIService
 	userKerberosSourceConnectionRequest *UserKerberosSourceConnectionRequest
 }
 
@@ -18189,7 +18446,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsKerberosCreateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsKerberosCreate(ctx context.Context) ApiSourcesUserConnectionsKerberosCreateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosCreate(ctx context.Context) ApiSourcesUserConnectionsKerberosCreateRequest {
 	return ApiSourcesUserConnectionsKerberosCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18199,7 +18456,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosCreate(ctx context.Con
 // Execute executes the request
 //
 //	@return UserKerberosSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsKerberosCreateExecute(r ApiSourcesUserConnectionsKerberosCreateRequest) (*UserKerberosSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosCreateExecute(r ApiSourcesUserConnectionsKerberosCreateRequest) (*UserKerberosSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -18207,7 +18464,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosCreateExecute(r ApiSou
 		localVarReturnValue *UserKerberosSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsKerberosCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsKerberosCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -18250,9 +18507,9 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosCreateExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18269,6 +18526,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosCreateExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18279,6 +18537,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosCreateExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18298,7 +18557,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosCreateExecute(r ApiSou
 
 type ApiSourcesUserConnectionsKerberosDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -18315,7 +18574,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Kerberos Source Connection.
 	@return ApiSourcesUserConnectionsKerberosDestroyRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsKerberosDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosDestroyRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosDestroyRequest {
 	return ApiSourcesUserConnectionsKerberosDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18324,20 +18583,20 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosDestroy(ctx context.Co
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesUserConnectionsKerberosDestroyExecute(r ApiSourcesUserConnectionsKerberosDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosDestroyExecute(r ApiSourcesUserConnectionsKerberosDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsKerberosDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsKerberosDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/kerberos/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18370,9 +18629,9 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosDestroyExecute(r ApiSo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -18389,6 +18648,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosDestroyExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -18399,6 +18659,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosDestroyExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -18409,7 +18670,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosDestroyExecute(r ApiSo
 
 type ApiSourcesUserConnectionsKerberosListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -18464,7 +18725,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsKerberosListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsKerberosList(ctx context.Context) ApiSourcesUserConnectionsKerberosListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosList(ctx context.Context) ApiSourcesUserConnectionsKerberosListRequest {
 	return ApiSourcesUserConnectionsKerberosListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18474,7 +18735,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosList(ctx context.Conte
 // Execute executes the request
 //
 //	@return PaginatedUserKerberosSourceConnectionList
-func (a *SourcesApiService) SourcesUserConnectionsKerberosListExecute(r ApiSourcesUserConnectionsKerberosListRequest) (*PaginatedUserKerberosSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosListExecute(r ApiSourcesUserConnectionsKerberosListRequest) (*PaginatedUserKerberosSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -18482,7 +18743,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosListExecute(r ApiSourc
 		localVarReturnValue *PaginatedUserKerberosSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsKerberosList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsKerberosList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -18494,22 +18755,22 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosListExecute(r ApiSourc
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -18538,9 +18799,9 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosListExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18557,6 +18818,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosListExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18567,6 +18829,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosListExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18586,7 +18849,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosListExecute(r ApiSourc
 
 type ApiSourcesUserConnectionsKerberosPartialUpdateRequest struct {
 	ctx                                        context.Context
-	ApiService                                 *SourcesApiService
+	ApiService                                 *SourcesAPIService
 	id                                         int32
 	patchedUserKerberosSourceConnectionRequest *PatchedUserKerberosSourceConnectionRequest
 }
@@ -18609,7 +18872,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Kerberos Source Connection.
 	@return ApiSourcesUserConnectionsKerberosPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsKerberosPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosPartialUpdateRequest {
 	return ApiSourcesUserConnectionsKerberosPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18620,7 +18883,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosPartialUpdate(ctx cont
 // Execute executes the request
 //
 //	@return UserKerberosSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsKerberosPartialUpdateExecute(r ApiSourcesUserConnectionsKerberosPartialUpdateRequest) (*UserKerberosSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosPartialUpdateExecute(r ApiSourcesUserConnectionsKerberosPartialUpdateRequest) (*UserKerberosSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -18628,13 +18891,13 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosPartialUpdateExecute(r
 		localVarReturnValue *UserKerberosSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsKerberosPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsKerberosPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/kerberos/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18669,9 +18932,9 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosPartialUpdateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18688,6 +18951,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosPartialUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18698,6 +18962,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosPartialUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18717,7 +18982,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosPartialUpdateExecute(r
 
 type ApiSourcesUserConnectionsKerberosRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -18734,7 +18999,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Kerberos Source Connection.
 	@return ApiSourcesUserConnectionsKerberosRetrieveRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsKerberosRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosRetrieveRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosRetrieveRequest {
 	return ApiSourcesUserConnectionsKerberosRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18745,7 +19010,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosRetrieve(ctx context.C
 // Execute executes the request
 //
 //	@return UserKerberosSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsKerberosRetrieveExecute(r ApiSourcesUserConnectionsKerberosRetrieveRequest) (*UserKerberosSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosRetrieveExecute(r ApiSourcesUserConnectionsKerberosRetrieveRequest) (*UserKerberosSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -18753,13 +19018,13 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosRetrieveExecute(r ApiS
 		localVarReturnValue *UserKerberosSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsKerberosRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsKerberosRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/kerberos/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18792,9 +19057,9 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosRetrieveExecute(r ApiS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18811,6 +19076,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosRetrieveExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18821,6 +19087,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosRetrieveExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18840,7 +19107,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosRetrieveExecute(r ApiS
 
 type ApiSourcesUserConnectionsKerberosUpdateRequest struct {
 	ctx                                 context.Context
-	ApiService                          *SourcesApiService
+	ApiService                          *SourcesAPIService
 	id                                  int32
 	userKerberosSourceConnectionRequest *UserKerberosSourceConnectionRequest
 }
@@ -18863,7 +19130,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Kerberos Source Connection.
 	@return ApiSourcesUserConnectionsKerberosUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsKerberosUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosUpdateRequest {
 	return ApiSourcesUserConnectionsKerberosUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -18874,7 +19141,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUpdate(ctx context.Con
 // Execute executes the request
 //
 //	@return UserKerberosSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsKerberosUpdateExecute(r ApiSourcesUserConnectionsKerberosUpdateRequest) (*UserKerberosSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosUpdateExecute(r ApiSourcesUserConnectionsKerberosUpdateRequest) (*UserKerberosSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -18882,13 +19149,13 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUpdateExecute(r ApiSou
 		localVarReturnValue *UserKerberosSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsKerberosUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsKerberosUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/kerberos/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -18926,9 +19193,9 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUpdateExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -18945,6 +19212,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUpdateExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -18955,6 +19223,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUpdateExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -18974,7 +19243,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUpdateExecute(r ApiSou
 
 type ApiSourcesUserConnectionsKerberosUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -18991,7 +19260,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this User Kerberos Source Connection.
 	@return ApiSourcesUserConnectionsKerberosUsedByListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsKerberosUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosUsedByListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsKerberosUsedByListRequest {
 	return ApiSourcesUserConnectionsKerberosUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19002,7 +19271,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUsedByList(ctx context
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesUserConnectionsKerberosUsedByListExecute(r ApiSourcesUserConnectionsKerberosUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsKerberosUsedByListExecute(r ApiSourcesUserConnectionsKerberosUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -19010,13 +19279,13 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUsedByListExecute(r Ap
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsKerberosUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsKerberosUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/kerberos/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19049,9 +19318,9 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUsedByListExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19068,6 +19337,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19078,6 +19348,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19097,7 +19368,7 @@ func (a *SourcesApiService) SourcesUserConnectionsKerberosUsedByListExecute(r Ap
 
 type ApiSourcesUserConnectionsLdapCreateRequest struct {
 	ctx                             context.Context
-	ApiService                      *SourcesApiService
+	ApiService                      *SourcesAPIService
 	userLDAPSourceConnectionRequest *UserLDAPSourceConnectionRequest
 }
 
@@ -19118,7 +19389,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsLdapCreateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsLdapCreate(ctx context.Context) ApiSourcesUserConnectionsLdapCreateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapCreate(ctx context.Context) ApiSourcesUserConnectionsLdapCreateRequest {
 	return ApiSourcesUserConnectionsLdapCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19128,7 +19399,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapCreate(ctx context.Context
 // Execute executes the request
 //
 //	@return UserLDAPSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsLdapCreateExecute(r ApiSourcesUserConnectionsLdapCreateRequest) (*UserLDAPSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapCreateExecute(r ApiSourcesUserConnectionsLdapCreateRequest) (*UserLDAPSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -19136,7 +19407,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapCreateExecute(r ApiSources
 		localVarReturnValue *UserLDAPSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsLdapCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsLdapCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -19179,9 +19450,9 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapCreateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19198,6 +19469,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19208,6 +19480,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19227,7 +19500,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapCreateExecute(r ApiSources
 
 type ApiSourcesUserConnectionsLdapDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -19244,7 +19517,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User LDAP Source Connection.
 	@return ApiSourcesUserConnectionsLdapDestroyRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsLdapDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapDestroyRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapDestroyRequest {
 	return ApiSourcesUserConnectionsLdapDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19253,20 +19526,20 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapDestroy(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesUserConnectionsLdapDestroyExecute(r ApiSourcesUserConnectionsLdapDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapDestroyExecute(r ApiSourcesUserConnectionsLdapDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsLdapDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsLdapDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19299,9 +19572,9 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapDestroyExecute(r ApiSource
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -19318,6 +19591,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -19328,6 +19602,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -19338,7 +19613,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapDestroyExecute(r ApiSource
 
 type ApiSourcesUserConnectionsLdapListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -19393,7 +19668,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsLdapListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsLdapList(ctx context.Context) ApiSourcesUserConnectionsLdapListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapList(ctx context.Context) ApiSourcesUserConnectionsLdapListRequest {
 	return ApiSourcesUserConnectionsLdapListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19403,7 +19678,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapList(ctx context.Context) 
 // Execute executes the request
 //
 //	@return PaginatedUserLDAPSourceConnectionList
-func (a *SourcesApiService) SourcesUserConnectionsLdapListExecute(r ApiSourcesUserConnectionsLdapListRequest) (*PaginatedUserLDAPSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapListExecute(r ApiSourcesUserConnectionsLdapListRequest) (*PaginatedUserLDAPSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -19411,7 +19686,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapListExecute(r ApiSourcesUs
 		localVarReturnValue *PaginatedUserLDAPSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsLdapList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsLdapList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -19423,22 +19698,22 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapListExecute(r ApiSourcesUs
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -19467,9 +19742,9 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapListExecute(r ApiSourcesUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19486,6 +19761,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19496,6 +19772,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19515,7 +19792,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapListExecute(r ApiSourcesUs
 
 type ApiSourcesUserConnectionsLdapPartialUpdateRequest struct {
 	ctx                                    context.Context
-	ApiService                             *SourcesApiService
+	ApiService                             *SourcesAPIService
 	id                                     int32
 	patchedUserLDAPSourceConnectionRequest *PatchedUserLDAPSourceConnectionRequest
 }
@@ -19538,7 +19815,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User LDAP Source Connection.
 	@return ApiSourcesUserConnectionsLdapPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsLdapPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapPartialUpdateRequest {
 	return ApiSourcesUserConnectionsLdapPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19549,7 +19826,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapPartialUpdate(ctx context.
 // Execute executes the request
 //
 //	@return UserLDAPSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsLdapPartialUpdateExecute(r ApiSourcesUserConnectionsLdapPartialUpdateRequest) (*UserLDAPSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapPartialUpdateExecute(r ApiSourcesUserConnectionsLdapPartialUpdateRequest) (*UserLDAPSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -19557,13 +19834,13 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapPartialUpdateExecute(r Api
 		localVarReturnValue *UserLDAPSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsLdapPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsLdapPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19598,9 +19875,9 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19617,6 +19894,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19627,6 +19905,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19646,7 +19925,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapPartialUpdateExecute(r Api
 
 type ApiSourcesUserConnectionsLdapRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -19663,7 +19942,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User LDAP Source Connection.
 	@return ApiSourcesUserConnectionsLdapRetrieveRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsLdapRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapRetrieveRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapRetrieveRequest {
 	return ApiSourcesUserConnectionsLdapRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19674,7 +19953,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return UserLDAPSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsLdapRetrieveExecute(r ApiSourcesUserConnectionsLdapRetrieveRequest) (*UserLDAPSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapRetrieveExecute(r ApiSourcesUserConnectionsLdapRetrieveRequest) (*UserLDAPSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -19682,13 +19961,13 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapRetrieveExecute(r ApiSourc
 		localVarReturnValue *UserLDAPSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsLdapRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsLdapRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19721,9 +20000,9 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapRetrieveExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19740,6 +20019,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19750,6 +20030,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19769,7 +20050,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapRetrieveExecute(r ApiSourc
 
 type ApiSourcesUserConnectionsLdapUpdateRequest struct {
 	ctx                             context.Context
-	ApiService                      *SourcesApiService
+	ApiService                      *SourcesAPIService
 	id                              int32
 	userLDAPSourceConnectionRequest *UserLDAPSourceConnectionRequest
 }
@@ -19792,7 +20073,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User LDAP Source Connection.
 	@return ApiSourcesUserConnectionsLdapUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsLdapUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapUpdateRequest {
 	return ApiSourcesUserConnectionsLdapUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19803,7 +20084,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUpdate(ctx context.Context
 // Execute executes the request
 //
 //	@return UserLDAPSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsLdapUpdateExecute(r ApiSourcesUserConnectionsLdapUpdateRequest) (*UserLDAPSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapUpdateExecute(r ApiSourcesUserConnectionsLdapUpdateRequest) (*UserLDAPSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -19811,13 +20092,13 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUpdateExecute(r ApiSources
 		localVarReturnValue *UserLDAPSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsLdapUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsLdapUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/ldap/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19855,9 +20136,9 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUpdateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19874,6 +20155,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -19884,6 +20166,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -19903,7 +20186,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUpdateExecute(r ApiSources
 
 type ApiSourcesUserConnectionsLdapUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -19920,7 +20203,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this User LDAP Source Connection.
 	@return ApiSourcesUserConnectionsLdapUsedByListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsLdapUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapUsedByListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsLdapUsedByListRequest {
 	return ApiSourcesUserConnectionsLdapUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -19931,7 +20214,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUsedByList(ctx context.Con
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesUserConnectionsLdapUsedByListExecute(r ApiSourcesUserConnectionsLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsLdapUsedByListExecute(r ApiSourcesUserConnectionsLdapUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -19939,13 +20222,13 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUsedByListExecute(r ApiSou
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsLdapUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsLdapUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/ldap/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -19978,9 +20261,9 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUsedByListExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -19997,6 +20280,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20007,6 +20291,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20026,7 +20311,7 @@ func (a *SourcesApiService) SourcesUserConnectionsLdapUsedByListExecute(r ApiSou
 
 type ApiSourcesUserConnectionsOauthCreateRequest struct {
 	ctx                              context.Context
-	ApiService                       *SourcesApiService
+	ApiService                       *SourcesAPIService
 	userOAuthSourceConnectionRequest *UserOAuthSourceConnectionRequest
 }
 
@@ -20047,7 +20332,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsOauthCreateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsOauthCreate(ctx context.Context) ApiSourcesUserConnectionsOauthCreateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthCreate(ctx context.Context) ApiSourcesUserConnectionsOauthCreateRequest {
 	return ApiSourcesUserConnectionsOauthCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20057,7 +20342,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreate(ctx context.Contex
 // Execute executes the request
 //
 //	@return UserOAuthSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSourcesUserConnectionsOauthCreateRequest) (*UserOAuthSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthCreateExecute(r ApiSourcesUserConnectionsOauthCreateRequest) (*UserOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -20065,7 +20350,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSource
 		localVarReturnValue *UserOAuthSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsOauthCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsOauthCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -20108,9 +20393,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20127,6 +20412,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20137,6 +20423,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20156,7 +20443,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthCreateExecute(r ApiSource
 
 type ApiSourcesUserConnectionsOauthDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -20173,7 +20460,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User OAuth Source Connection.
 	@return ApiSourcesUserConnectionsOauthDestroyRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsOauthDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthDestroyRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthDestroyRequest {
 	return ApiSourcesUserConnectionsOauthDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20182,20 +20469,20 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroy(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourcesUserConnectionsOauthDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourcesUserConnectionsOauthDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsOauthDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsOauthDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20228,9 +20515,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -20247,6 +20534,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -20257,6 +20545,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -20267,7 +20556,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthDestroyExecute(r ApiSourc
 
 type ApiSourcesUserConnectionsOauthListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -20322,7 +20611,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsOauthListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsOauthList(ctx context.Context) ApiSourcesUserConnectionsOauthListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthList(ctx context.Context) ApiSourcesUserConnectionsOauthListRequest {
 	return ApiSourcesUserConnectionsOauthListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20332,7 +20621,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthList(ctx context.Context)
 // Execute executes the request
 //
 //	@return PaginatedUserOAuthSourceConnectionList
-func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesUserConnectionsOauthListRequest) (*PaginatedUserOAuthSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthListExecute(r ApiSourcesUserConnectionsOauthListRequest) (*PaginatedUserOAuthSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -20340,7 +20629,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 		localVarReturnValue *PaginatedUserOAuthSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsOauthList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsOauthList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -20352,22 +20641,22 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -20396,9 +20685,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20415,6 +20704,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20425,6 +20715,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20444,7 +20735,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthListExecute(r ApiSourcesU
 
 type ApiSourcesUserConnectionsOauthPartialUpdateRequest struct {
 	ctx                                     context.Context
-	ApiService                              *SourcesApiService
+	ApiService                              *SourcesAPIService
 	id                                      int32
 	patchedUserOAuthSourceConnectionRequest *PatchedUserOAuthSourceConnectionRequest
 }
@@ -20467,7 +20758,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User OAuth Source Connection.
 	@return ApiSourcesUserConnectionsOauthPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthPartialUpdateRequest {
 	return ApiSourcesUserConnectionsOauthPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20478,7 +20769,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdate(ctx context
 // Execute executes the request
 //
 //	@return UserOAuthSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r ApiSourcesUserConnectionsOauthPartialUpdateRequest) (*UserOAuthSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthPartialUpdateExecute(r ApiSourcesUserConnectionsOauthPartialUpdateRequest) (*UserOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -20486,13 +20777,13 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 		localVarReturnValue *UserOAuthSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsOauthPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsOauthPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20527,9 +20818,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20546,6 +20837,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20556,6 +20848,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20575,7 +20868,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthPartialUpdateExecute(r Ap
 
 type ApiSourcesUserConnectionsOauthRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -20592,7 +20885,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User OAuth Source Connection.
 	@return ApiSourcesUserConnectionsOauthRetrieveRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthRetrieveRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthRetrieveRequest {
 	return ApiSourcesUserConnectionsOauthRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20603,7 +20896,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieve(ctx context.Cont
 // Execute executes the request
 //
 //	@return UserOAuthSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSourcesUserConnectionsOauthRetrieveRequest) (*UserOAuthSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSourcesUserConnectionsOauthRetrieveRequest) (*UserOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -20611,13 +20904,13 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 		localVarReturnValue *UserOAuthSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsOauthRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsOauthRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20650,9 +20943,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20669,6 +20962,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20679,6 +20973,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20698,7 +20993,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthRetrieveExecute(r ApiSour
 
 type ApiSourcesUserConnectionsOauthUpdateRequest struct {
 	ctx                              context.Context
-	ApiService                       *SourcesApiService
+	ApiService                       *SourcesAPIService
 	id                               int32
 	userOAuthSourceConnectionRequest *UserOAuthSourceConnectionRequest
 }
@@ -20721,7 +21016,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User OAuth Source Connection.
 	@return ApiSourcesUserConnectionsOauthUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsOauthUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthUpdateRequest {
 	return ApiSourcesUserConnectionsOauthUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20732,7 +21027,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdate(ctx context.Contex
 // Execute executes the request
 //
 //	@return UserOAuthSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSourcesUserConnectionsOauthUpdateRequest) (*UserOAuthSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthUpdateExecute(r ApiSourcesUserConnectionsOauthUpdateRequest) (*UserOAuthSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -20740,13 +21035,13 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 		localVarReturnValue *UserOAuthSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsOauthUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsOauthUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20784,9 +21079,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20803,6 +21098,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20813,6 +21109,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20832,7 +21129,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUpdateExecute(r ApiSource
 
 type ApiSourcesUserConnectionsOauthUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -20849,7 +21146,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this User OAuth Source Connection.
 	@return ApiSourcesUserConnectionsOauthUsedByListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthUsedByListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsOauthUsedByListRequest {
 	return ApiSourcesUserConnectionsOauthUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20860,7 +21157,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByList(ctx context.Co
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSourcesUserConnectionsOauthUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSourcesUserConnectionsOauthUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -20868,13 +21165,13 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsOauthUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsOauthUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/oauth/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20907,9 +21204,9 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -20926,6 +21223,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -20936,6 +21234,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -20955,7 +21254,7 @@ func (a *SourcesApiService) SourcesUserConnectionsOauthUsedByListExecute(r ApiSo
 
 type ApiSourcesUserConnectionsPlexCreateRequest struct {
 	ctx                             context.Context
-	ApiService                      *SourcesApiService
+	ApiService                      *SourcesAPIService
 	userPlexSourceConnectionRequest *UserPlexSourceConnectionRequest
 }
 
@@ -20976,7 +21275,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsPlexCreateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsPlexCreate(ctx context.Context) ApiSourcesUserConnectionsPlexCreateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexCreate(ctx context.Context) ApiSourcesUserConnectionsPlexCreateRequest {
 	return ApiSourcesUserConnectionsPlexCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -20986,7 +21285,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreate(ctx context.Context
 // Execute executes the request
 //
 //	@return UserPlexSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSourcesUserConnectionsPlexCreateRequest) (*UserPlexSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexCreateExecute(r ApiSourcesUserConnectionsPlexCreateRequest) (*UserPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -20994,7 +21293,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 		localVarReturnValue *UserPlexSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsPlexCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -21037,9 +21336,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21056,6 +21355,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21066,6 +21366,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21085,7 +21386,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexCreateExecute(r ApiSources
 
 type ApiSourcesUserConnectionsPlexDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -21102,7 +21403,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Plex Source Connection.
 	@return ApiSourcesUserConnectionsPlexDestroyRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsPlexDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexDestroyRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexDestroyRequest {
 	return ApiSourcesUserConnectionsPlexDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -21111,20 +21412,20 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroy(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSourcesUserConnectionsPlexDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexDestroyExecute(r ApiSourcesUserConnectionsPlexDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsPlexDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21157,9 +21458,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSource
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -21176,6 +21477,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -21186,6 +21488,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -21196,7 +21499,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexDestroyExecute(r ApiSource
 
 type ApiSourcesUserConnectionsPlexListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -21251,7 +21554,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsPlexListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsPlexList(ctx context.Context) ApiSourcesUserConnectionsPlexListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexList(ctx context.Context) ApiSourcesUserConnectionsPlexListRequest {
 	return ApiSourcesUserConnectionsPlexListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -21261,7 +21564,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexList(ctx context.Context) 
 // Execute executes the request
 //
 //	@return PaginatedUserPlexSourceConnectionList
-func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUserConnectionsPlexListRequest) (*PaginatedUserPlexSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUserConnectionsPlexListRequest) (*PaginatedUserPlexSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -21269,7 +21572,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 		localVarReturnValue *PaginatedUserPlexSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsPlexList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -21281,22 +21584,22 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -21325,9 +21628,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21344,6 +21647,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21354,6 +21658,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21373,7 +21678,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexListExecute(r ApiSourcesUs
 
 type ApiSourcesUserConnectionsPlexPartialUpdateRequest struct {
 	ctx                                    context.Context
-	ApiService                             *SourcesApiService
+	ApiService                             *SourcesAPIService
 	id                                     int32
 	patchedUserPlexSourceConnectionRequest *PatchedUserPlexSourceConnectionRequest
 }
@@ -21396,7 +21701,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Plex Source Connection.
 	@return ApiSourcesUserConnectionsPlexPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexPartialUpdateRequest {
 	return ApiSourcesUserConnectionsPlexPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -21407,7 +21712,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdate(ctx context.
 // Execute executes the request
 //
 //	@return UserPlexSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r ApiSourcesUserConnectionsPlexPartialUpdateRequest) (*UserPlexSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexPartialUpdateExecute(r ApiSourcesUserConnectionsPlexPartialUpdateRequest) (*UserPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -21415,13 +21720,13 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 		localVarReturnValue *UserPlexSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsPlexPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21456,9 +21761,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21475,6 +21780,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21485,6 +21791,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21504,7 +21811,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexPartialUpdateExecute(r Api
 
 type ApiSourcesUserConnectionsPlexRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -21521,7 +21828,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Plex Source Connection.
 	@return ApiSourcesUserConnectionsPlexRetrieveRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexRetrieveRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexRetrieveRequest {
 	return ApiSourcesUserConnectionsPlexRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -21532,7 +21839,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return UserPlexSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourcesUserConnectionsPlexRetrieveRequest) (*UserPlexSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourcesUserConnectionsPlexRetrieveRequest) (*UserPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -21540,13 +21847,13 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 		localVarReturnValue *UserPlexSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsPlexRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21579,9 +21886,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21598,6 +21905,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21608,6 +21916,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21627,7 +21936,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexRetrieveExecute(r ApiSourc
 
 type ApiSourcesUserConnectionsPlexUpdateRequest struct {
 	ctx                             context.Context
-	ApiService                      *SourcesApiService
+	ApiService                      *SourcesAPIService
 	id                              int32
 	userPlexSourceConnectionRequest *UserPlexSourceConnectionRequest
 }
@@ -21650,7 +21959,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Plex Source Connection.
 	@return ApiSourcesUserConnectionsPlexUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsPlexUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexUpdateRequest {
 	return ApiSourcesUserConnectionsPlexUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -21661,7 +21970,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdate(ctx context.Context
 // Execute executes the request
 //
 //	@return UserPlexSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSourcesUserConnectionsPlexUpdateRequest) (*UserPlexSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexUpdateExecute(r ApiSourcesUserConnectionsPlexUpdateRequest) (*UserPlexSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -21669,13 +21978,13 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 		localVarReturnValue *UserPlexSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsPlexUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21713,9 +22022,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21732,6 +22041,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21742,6 +22052,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21761,7 +22072,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUpdateExecute(r ApiSources
 
 type ApiSourcesUserConnectionsPlexUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -21778,7 +22089,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this User Plex Source Connection.
 	@return ApiSourcesUserConnectionsPlexUsedByListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexUsedByListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsPlexUsedByListRequest {
 	return ApiSourcesUserConnectionsPlexUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -21789,7 +22100,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByList(ctx context.Con
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSourcesUserConnectionsPlexUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSourcesUserConnectionsPlexUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -21797,13 +22108,13 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSou
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsPlexUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsPlexUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/plex/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21836,9 +22147,9 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21855,6 +22166,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21865,6 +22177,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -21884,7 +22197,7 @@ func (a *SourcesApiService) SourcesUserConnectionsPlexUsedByListExecute(r ApiSou
 
 type ApiSourcesUserConnectionsSamlCreateRequest struct {
 	ctx                             context.Context
-	ApiService                      *SourcesApiService
+	ApiService                      *SourcesAPIService
 	userSAMLSourceConnectionRequest *UserSAMLSourceConnectionRequest
 }
 
@@ -21905,7 +22218,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsSamlCreateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsSamlCreate(ctx context.Context) ApiSourcesUserConnectionsSamlCreateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlCreate(ctx context.Context) ApiSourcesUserConnectionsSamlCreateRequest {
 	return ApiSourcesUserConnectionsSamlCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -21915,7 +22228,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreate(ctx context.Context
 // Execute executes the request
 //
 //	@return UserSAMLSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSourcesUserConnectionsSamlCreateRequest) (*UserSAMLSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlCreateExecute(r ApiSourcesUserConnectionsSamlCreateRequest) (*UserSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -21923,7 +22236,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSources
 		localVarReturnValue *UserSAMLSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsSamlCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsSamlCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -21966,9 +22279,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -21985,6 +22298,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -21995,6 +22309,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22014,7 +22329,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlCreateExecute(r ApiSources
 
 type ApiSourcesUserConnectionsSamlDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -22031,7 +22346,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User SAML Source Connection.
 	@return ApiSourcesUserConnectionsSamlDestroyRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsSamlDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlDestroyRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlDestroyRequest {
 	return ApiSourcesUserConnectionsSamlDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -22040,20 +22355,20 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlDestroy(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesUserConnectionsSamlDestroyExecute(r ApiSourcesUserConnectionsSamlDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlDestroyExecute(r ApiSourcesUserConnectionsSamlDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsSamlDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsSamlDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22086,9 +22401,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlDestroyExecute(r ApiSource
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -22105,6 +22420,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -22115,6 +22431,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlDestroyExecute(r ApiSource
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -22125,7 +22442,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlDestroyExecute(r ApiSource
 
 type ApiSourcesUserConnectionsSamlListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -22180,7 +22497,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsSamlListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsSamlList(ctx context.Context) ApiSourcesUserConnectionsSamlListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlList(ctx context.Context) ApiSourcesUserConnectionsSamlListRequest {
 	return ApiSourcesUserConnectionsSamlListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -22190,7 +22507,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlList(ctx context.Context) 
 // Execute executes the request
 //
 //	@return PaginatedUserSAMLSourceConnectionList
-func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUserConnectionsSamlListRequest) (*PaginatedUserSAMLSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUserConnectionsSamlListRequest) (*PaginatedUserSAMLSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -22198,7 +22515,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 		localVarReturnValue *PaginatedUserSAMLSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsSamlList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsSamlList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -22210,22 +22527,22 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -22254,9 +22571,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22273,6 +22590,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22283,6 +22601,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22302,7 +22621,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlListExecute(r ApiSourcesUs
 
 type ApiSourcesUserConnectionsSamlPartialUpdateRequest struct {
 	ctx                                    context.Context
-	ApiService                             *SourcesApiService
+	ApiService                             *SourcesAPIService
 	id                                     int32
 	patchedUserSAMLSourceConnectionRequest *PatchedUserSAMLSourceConnectionRequest
 }
@@ -22325,7 +22644,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User SAML Source Connection.
 	@return ApiSourcesUserConnectionsSamlPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlPartialUpdateRequest {
 	return ApiSourcesUserConnectionsSamlPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -22336,7 +22655,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdate(ctx context.
 // Execute executes the request
 //
 //	@return UserSAMLSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r ApiSourcesUserConnectionsSamlPartialUpdateRequest) (*UserSAMLSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlPartialUpdateExecute(r ApiSourcesUserConnectionsSamlPartialUpdateRequest) (*UserSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -22344,13 +22663,13 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r Api
 		localVarReturnValue *UserSAMLSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsSamlPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsSamlPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22385,9 +22704,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22404,6 +22723,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22414,6 +22734,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22433,7 +22754,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlPartialUpdateExecute(r Api
 
 type ApiSourcesUserConnectionsSamlRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -22450,7 +22771,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User SAML Source Connection.
 	@return ApiSourcesUserConnectionsSamlRetrieveRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlRetrieveRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlRetrieveRequest {
 	return ApiSourcesUserConnectionsSamlRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -22461,7 +22782,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieve(ctx context.Conte
 // Execute executes the request
 //
 //	@return UserSAMLSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourcesUserConnectionsSamlRetrieveRequest) (*UserSAMLSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourcesUserConnectionsSamlRetrieveRequest) (*UserSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -22469,13 +22790,13 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourc
 		localVarReturnValue *UserSAMLSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsSamlRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsSamlRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22508,9 +22829,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22527,6 +22848,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22537,6 +22859,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22556,7 +22879,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlRetrieveExecute(r ApiSourc
 
 type ApiSourcesUserConnectionsSamlUpdateRequest struct {
 	ctx                             context.Context
-	ApiService                      *SourcesApiService
+	ApiService                      *SourcesAPIService
 	id                              int32
 	userSAMLSourceConnectionRequest *UserSAMLSourceConnectionRequest
 }
@@ -22579,7 +22902,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User SAML Source Connection.
 	@return ApiSourcesUserConnectionsSamlUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsSamlUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlUpdateRequest {
 	return ApiSourcesUserConnectionsSamlUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -22590,7 +22913,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdate(ctx context.Context
 // Execute executes the request
 //
 //	@return UserSAMLSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSourcesUserConnectionsSamlUpdateRequest) (*UserSAMLSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlUpdateExecute(r ApiSourcesUserConnectionsSamlUpdateRequest) (*UserSAMLSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -22598,13 +22921,13 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSources
 		localVarReturnValue *UserSAMLSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsSamlUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsSamlUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22642,9 +22965,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSources
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22661,6 +22984,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22671,6 +22995,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSources
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22690,7 +23015,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUpdateExecute(r ApiSources
 
 type ApiSourcesUserConnectionsSamlUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -22707,7 +23032,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this User SAML Source Connection.
 	@return ApiSourcesUserConnectionsSamlUsedByListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlUsedByListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsSamlUsedByListRequest {
 	return ApiSourcesUserConnectionsSamlUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -22718,7 +23043,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByList(ctx context.Con
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSourcesUserConnectionsSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSourcesUserConnectionsSamlUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -22726,13 +23051,13 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsSamlUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsSamlUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/saml/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22765,9 +23090,9 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22784,6 +23109,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22794,6 +23120,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22813,7 +23140,7 @@ func (a *SourcesApiService) SourcesUserConnectionsSamlUsedByListExecute(r ApiSou
 
 type ApiSourcesUserConnectionsTelegramCreateRequest struct {
 	ctx                                 context.Context
-	ApiService                          *SourcesApiService
+	ApiService                          *SourcesAPIService
 	userTelegramSourceConnectionRequest *UserTelegramSourceConnectionRequest
 }
 
@@ -22834,7 +23161,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsTelegramCreateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsTelegramCreate(ctx context.Context) ApiSourcesUserConnectionsTelegramCreateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramCreate(ctx context.Context) ApiSourcesUserConnectionsTelegramCreateRequest {
 	return ApiSourcesUserConnectionsTelegramCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -22844,7 +23171,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramCreate(ctx context.Con
 // Execute executes the request
 //
 //	@return UserTelegramSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsTelegramCreateExecute(r ApiSourcesUserConnectionsTelegramCreateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramCreateExecute(r ApiSourcesUserConnectionsTelegramCreateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -22852,7 +23179,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramCreateExecute(r ApiSou
 		localVarReturnValue *UserTelegramSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsTelegramCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -22895,9 +23222,9 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramCreateExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -22914,6 +23241,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramCreateExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -22924,6 +23252,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramCreateExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -22943,7 +23272,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramCreateExecute(r ApiSou
 
 type ApiSourcesUserConnectionsTelegramDestroyRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -22960,7 +23289,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Telegram Source Connection.
 	@return ApiSourcesUserConnectionsTelegramDestroyRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsTelegramDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramDestroyRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramDestroy(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramDestroyRequest {
 	return ApiSourcesUserConnectionsTelegramDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -22969,20 +23298,20 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramDestroy(ctx context.Co
 }
 
 // Execute executes the request
-func (a *SourcesApiService) SourcesUserConnectionsTelegramDestroyExecute(r ApiSourcesUserConnectionsTelegramDestroyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramDestroyExecute(r ApiSourcesUserConnectionsTelegramDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsTelegramDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23015,9 +23344,9 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramDestroyExecute(r ApiSo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -23034,6 +23363,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramDestroyExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -23044,6 +23374,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramDestroyExecute(r ApiSo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -23054,7 +23385,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramDestroyExecute(r ApiSo
 
 type ApiSourcesUserConnectionsTelegramListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -23109,7 +23440,7 @@ User-source connection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSourcesUserConnectionsTelegramListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsTelegramList(ctx context.Context) ApiSourcesUserConnectionsTelegramListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramList(ctx context.Context) ApiSourcesUserConnectionsTelegramListRequest {
 	return ApiSourcesUserConnectionsTelegramListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -23119,7 +23450,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramList(ctx context.Conte
 // Execute executes the request
 //
 //	@return PaginatedUserTelegramSourceConnectionList
-func (a *SourcesApiService) SourcesUserConnectionsTelegramListExecute(r ApiSourcesUserConnectionsTelegramListRequest) (*PaginatedUserTelegramSourceConnectionList, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramListExecute(r ApiSourcesUserConnectionsTelegramListRequest) (*PaginatedUserTelegramSourceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -23127,7 +23458,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramListExecute(r ApiSourc
 		localVarReturnValue *PaginatedUserTelegramSourceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsTelegramList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -23139,22 +23470,22 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramListExecute(r ApiSourc
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.sourceSlug != nil {
-		localVarQueryParams.Add("source__slug", parameterToString(*r.sourceSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source__slug", r.sourceSlug, "form", "")
 	}
 	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -23183,9 +23514,9 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramListExecute(r ApiSourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -23202,6 +23533,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramListExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -23212,6 +23544,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramListExecute(r ApiSourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -23231,7 +23564,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramListExecute(r ApiSourc
 
 type ApiSourcesUserConnectionsTelegramPartialUpdateRequest struct {
 	ctx                                        context.Context
-	ApiService                                 *SourcesApiService
+	ApiService                                 *SourcesAPIService
 	id                                         int32
 	patchedUserTelegramSourceConnectionRequest *PatchedUserTelegramSourceConnectionRequest
 }
@@ -23254,7 +23587,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Telegram Source Connection.
 	@return ApiSourcesUserConnectionsTelegramPartialUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsTelegramPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramPartialUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramPartialUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramPartialUpdateRequest {
 	return ApiSourcesUserConnectionsTelegramPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -23265,7 +23598,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramPartialUpdate(ctx cont
 // Execute executes the request
 //
 //	@return UserTelegramSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsTelegramPartialUpdateExecute(r ApiSourcesUserConnectionsTelegramPartialUpdateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramPartialUpdateExecute(r ApiSourcesUserConnectionsTelegramPartialUpdateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -23273,13 +23606,13 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramPartialUpdateExecute(r
 		localVarReturnValue *UserTelegramSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsTelegramPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23314,9 +23647,9 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramPartialUpdateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -23333,6 +23666,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramPartialUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -23343,6 +23677,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramPartialUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -23362,7 +23697,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramPartialUpdateExecute(r
 
 type ApiSourcesUserConnectionsTelegramRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -23379,7 +23714,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Telegram Source Connection.
 	@return ApiSourcesUserConnectionsTelegramRetrieveRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsTelegramRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramRetrieveRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramRetrieve(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramRetrieveRequest {
 	return ApiSourcesUserConnectionsTelegramRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -23390,7 +23725,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramRetrieve(ctx context.C
 // Execute executes the request
 //
 //	@return UserTelegramSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsTelegramRetrieveExecute(r ApiSourcesUserConnectionsTelegramRetrieveRequest) (*UserTelegramSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramRetrieveExecute(r ApiSourcesUserConnectionsTelegramRetrieveRequest) (*UserTelegramSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -23398,13 +23733,13 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramRetrieveExecute(r ApiS
 		localVarReturnValue *UserTelegramSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsTelegramRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23437,9 +23772,9 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramRetrieveExecute(r ApiS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -23456,6 +23791,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramRetrieveExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -23466,6 +23802,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramRetrieveExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -23485,7 +23822,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramRetrieveExecute(r ApiS
 
 type ApiSourcesUserConnectionsTelegramUpdateRequest struct {
 	ctx                                 context.Context
-	ApiService                          *SourcesApiService
+	ApiService                          *SourcesAPIService
 	id                                  int32
 	userTelegramSourceConnectionRequest *UserTelegramSourceConnectionRequest
 }
@@ -23508,7 +23845,7 @@ User-source connection Viewset
 	@param id A unique integer value identifying this User Telegram Source Connection.
 	@return ApiSourcesUserConnectionsTelegramUpdateRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsTelegramUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramUpdateRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramUpdate(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramUpdateRequest {
 	return ApiSourcesUserConnectionsTelegramUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -23519,7 +23856,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUpdate(ctx context.Con
 // Execute executes the request
 //
 //	@return UserTelegramSourceConnection
-func (a *SourcesApiService) SourcesUserConnectionsTelegramUpdateExecute(r ApiSourcesUserConnectionsTelegramUpdateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramUpdateExecute(r ApiSourcesUserConnectionsTelegramUpdateRequest) (*UserTelegramSourceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -23527,13 +23864,13 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUpdateExecute(r ApiSou
 		localVarReturnValue *UserTelegramSourceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsTelegramUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23571,9 +23908,9 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUpdateExecute(r ApiSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -23590,6 +23927,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUpdateExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -23600,6 +23938,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUpdateExecute(r ApiSou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -23619,7 +23958,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUpdateExecute(r ApiSou
 
 type ApiSourcesUserConnectionsTelegramUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id         int32
 }
 
@@ -23636,7 +23975,7 @@ Get a list of all objects that use this object
 	@param id A unique integer value identifying this User Telegram Source Connection.
 	@return ApiSourcesUserConnectionsTelegramUsedByListRequest
 */
-func (a *SourcesApiService) SourcesUserConnectionsTelegramUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramUsedByListRequest {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramUsedByList(ctx context.Context, id int32) ApiSourcesUserConnectionsTelegramUsedByListRequest {
 	return ApiSourcesUserConnectionsTelegramUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -23647,7 +23986,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUsedByList(ctx context
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *SourcesApiService) SourcesUserConnectionsTelegramUsedByListExecute(r ApiSourcesUserConnectionsTelegramUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *SourcesAPIService) SourcesUserConnectionsTelegramUsedByListExecute(r ApiSourcesUserConnectionsTelegramUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -23655,13 +23994,13 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUsedByListExecute(r Ap
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SourcesUserConnectionsTelegramUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SourcesUserConnectionsTelegramUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/sources/user_connections/telegram/{id}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -23694,9 +24033,9 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUsedByListExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -23713,6 +24052,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -23723,6 +24063,7 @@ func (a *SourcesApiService) SourcesUserConnectionsTelegramUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

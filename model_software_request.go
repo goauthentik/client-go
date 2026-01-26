@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SoftwareRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SoftwareRequest{}
 
 // SoftwareRequest struct for SoftwareRequest
 type SoftwareRequest struct {
@@ -22,6 +27,8 @@ type SoftwareRequest struct {
 	Source  string  `json:"source"`
 	Path    *string `json:"path,omitempty"`
 }
+
+type _SoftwareRequest SoftwareRequest
 
 // NewSoftwareRequest instantiates a new SoftwareRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -68,7 +75,7 @@ func (o *SoftwareRequest) SetName(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *SoftwareRequest) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -78,7 +85,7 @@ func (o *SoftwareRequest) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SoftwareRequest) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -86,7 +93,7 @@ func (o *SoftwareRequest) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *SoftwareRequest) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -124,7 +131,7 @@ func (o *SoftwareRequest) SetSource(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *SoftwareRequest) GetPath() string {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -134,7 +141,7 @@ func (o *SoftwareRequest) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SoftwareRequest) GetPathOk() (*string, bool) {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
 	return o.Path, true
@@ -142,7 +149,7 @@ func (o *SoftwareRequest) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *SoftwareRequest) HasPath() bool {
-	if o != nil && o.Path != nil {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -155,20 +162,62 @@ func (o *SoftwareRequest) SetPath(v string) {
 }
 
 func (o SoftwareRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if o.Path != nil {
-		toSerialize["path"] = o.Path
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SoftwareRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	toSerialize["source"] = o.Source
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	return toSerialize, nil
+}
+
+func (o *SoftwareRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"source",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSoftwareRequest := _SoftwareRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSoftwareRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SoftwareRequest(varSoftwareRequest)
+
+	return err
 }
 
 type NullableSoftwareRequest struct {

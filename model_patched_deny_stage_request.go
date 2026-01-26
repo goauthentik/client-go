@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedDenyStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedDenyStageRequest{}
+
 // PatchedDenyStageRequest DenyStage Serializer
 type PatchedDenyStageRequest struct {
 	Name        *string `json:"name,omitempty"`
@@ -40,7 +43,7 @@ func NewPatchedDenyStageRequestWithDefaults() *PatchedDenyStageRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedDenyStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PatchedDenyStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDenyStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *PatchedDenyStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedDenyStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *PatchedDenyStageRequest) SetName(v string) {
 
 // GetDenyMessage returns the DenyMessage field value if set, zero value otherwise.
 func (o *PatchedDenyStageRequest) GetDenyMessage() string {
-	if o == nil || o.DenyMessage == nil {
+	if o == nil || IsNil(o.DenyMessage) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *PatchedDenyStageRequest) GetDenyMessage() string {
 // GetDenyMessageOk returns a tuple with the DenyMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDenyStageRequest) GetDenyMessageOk() (*string, bool) {
-	if o == nil || o.DenyMessage == nil {
+	if o == nil || IsNil(o.DenyMessage) {
 		return nil, false
 	}
 	return o.DenyMessage, true
@@ -90,7 +93,7 @@ func (o *PatchedDenyStageRequest) GetDenyMessageOk() (*string, bool) {
 
 // HasDenyMessage returns a boolean if a field has been set.
 func (o *PatchedDenyStageRequest) HasDenyMessage() bool {
-	if o != nil && o.DenyMessage != nil {
+	if o != nil && !IsNil(o.DenyMessage) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *PatchedDenyStageRequest) SetDenyMessage(v string) {
 }
 
 func (o PatchedDenyStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.DenyMessage != nil {
-		toSerialize["deny_message"] = o.DenyMessage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedDenyStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.DenyMessage) {
+		toSerialize["deny_message"] = o.DenyMessage
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedDenyStageRequest struct {

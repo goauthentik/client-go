@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the TelegramAuthRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TelegramAuthRequest{}
 
 // TelegramAuthRequest struct for TelegramAuthRequest
 type TelegramAuthRequest struct {
@@ -25,6 +30,8 @@ type TelegramAuthRequest struct {
 	AuthDate  int32   `json:"auth_date"`
 	Hash      string  `json:"hash"`
 }
+
+type _TelegramAuthRequest TelegramAuthRequest
 
 // NewTelegramAuthRequest instantiates a new TelegramAuthRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -72,7 +79,7 @@ func (o *TelegramAuthRequest) SetId(v int32) {
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise.
 func (o *TelegramAuthRequest) GetFirstName() string {
-	if o == nil || o.FirstName == nil {
+	if o == nil || IsNil(o.FirstName) {
 		var ret string
 		return ret
 	}
@@ -82,7 +89,7 @@ func (o *TelegramAuthRequest) GetFirstName() string {
 // GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramAuthRequest) GetFirstNameOk() (*string, bool) {
-	if o == nil || o.FirstName == nil {
+	if o == nil || IsNil(o.FirstName) {
 		return nil, false
 	}
 	return o.FirstName, true
@@ -90,7 +97,7 @@ func (o *TelegramAuthRequest) GetFirstNameOk() (*string, bool) {
 
 // HasFirstName returns a boolean if a field has been set.
 func (o *TelegramAuthRequest) HasFirstName() bool {
-	if o != nil && o.FirstName != nil {
+	if o != nil && !IsNil(o.FirstName) {
 		return true
 	}
 
@@ -104,7 +111,7 @@ func (o *TelegramAuthRequest) SetFirstName(v string) {
 
 // GetLastName returns the LastName field value if set, zero value otherwise.
 func (o *TelegramAuthRequest) GetLastName() string {
-	if o == nil || o.LastName == nil {
+	if o == nil || IsNil(o.LastName) {
 		var ret string
 		return ret
 	}
@@ -114,7 +121,7 @@ func (o *TelegramAuthRequest) GetLastName() string {
 // GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramAuthRequest) GetLastNameOk() (*string, bool) {
-	if o == nil || o.LastName == nil {
+	if o == nil || IsNil(o.LastName) {
 		return nil, false
 	}
 	return o.LastName, true
@@ -122,7 +129,7 @@ func (o *TelegramAuthRequest) GetLastNameOk() (*string, bool) {
 
 // HasLastName returns a boolean if a field has been set.
 func (o *TelegramAuthRequest) HasLastName() bool {
-	if o != nil && o.LastName != nil {
+	if o != nil && !IsNil(o.LastName) {
 		return true
 	}
 
@@ -136,7 +143,7 @@ func (o *TelegramAuthRequest) SetLastName(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *TelegramAuthRequest) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -146,7 +153,7 @@ func (o *TelegramAuthRequest) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramAuthRequest) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -154,7 +161,7 @@ func (o *TelegramAuthRequest) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *TelegramAuthRequest) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -168,7 +175,7 @@ func (o *TelegramAuthRequest) SetUsername(v string) {
 
 // GetPhotoUrl returns the PhotoUrl field value if set, zero value otherwise.
 func (o *TelegramAuthRequest) GetPhotoUrl() string {
-	if o == nil || o.PhotoUrl == nil {
+	if o == nil || IsNil(o.PhotoUrl) {
 		var ret string
 		return ret
 	}
@@ -178,7 +185,7 @@ func (o *TelegramAuthRequest) GetPhotoUrl() string {
 // GetPhotoUrlOk returns a tuple with the PhotoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramAuthRequest) GetPhotoUrlOk() (*string, bool) {
-	if o == nil || o.PhotoUrl == nil {
+	if o == nil || IsNil(o.PhotoUrl) {
 		return nil, false
 	}
 	return o.PhotoUrl, true
@@ -186,7 +193,7 @@ func (o *TelegramAuthRequest) GetPhotoUrlOk() (*string, bool) {
 
 // HasPhotoUrl returns a boolean if a field has been set.
 func (o *TelegramAuthRequest) HasPhotoUrl() bool {
-	if o != nil && o.PhotoUrl != nil {
+	if o != nil && !IsNil(o.PhotoUrl) {
 		return true
 	}
 
@@ -247,29 +254,70 @@ func (o *TelegramAuthRequest) SetHash(v string) {
 }
 
 func (o TelegramAuthRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if o.FirstName != nil {
-		toSerialize["first_name"] = o.FirstName
-	}
-	if o.LastName != nil {
-		toSerialize["last_name"] = o.LastName
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.PhotoUrl != nil {
-		toSerialize["photo_url"] = o.PhotoUrl
-	}
-	if true {
-		toSerialize["auth_date"] = o.AuthDate
-	}
-	if true {
-		toSerialize["hash"] = o.Hash
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TelegramAuthRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.FirstName) {
+		toSerialize["first_name"] = o.FirstName
+	}
+	if !IsNil(o.LastName) {
+		toSerialize["last_name"] = o.LastName
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.PhotoUrl) {
+		toSerialize["photo_url"] = o.PhotoUrl
+	}
+	toSerialize["auth_date"] = o.AuthDate
+	toSerialize["hash"] = o.Hash
+	return toSerialize, nil
+}
+
+func (o *TelegramAuthRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"auth_date",
+		"hash",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTelegramAuthRequest := _TelegramAuthRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTelegramAuthRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TelegramAuthRequest(varTelegramAuthRequest)
+
+	return err
 }
 
 type NullableTelegramAuthRequest struct {

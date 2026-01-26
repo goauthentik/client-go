@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the NetworkInterface type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NetworkInterface{}
 
 // NetworkInterface struct for NetworkInterface
 type NetworkInterface struct {
@@ -22,6 +27,8 @@ type NetworkInterface struct {
 	IpAddresses     []string `json:"ip_addresses,omitempty"`
 	DnsServers      []string `json:"dns_servers,omitempty"`
 }
+
+type _NetworkInterface NetworkInterface
 
 // NewNetworkInterface instantiates a new NetworkInterface object
 // This constructor will assign default values to properties that have it defined,
@@ -92,7 +99,7 @@ func (o *NetworkInterface) SetHardwareAddress(v string) {
 
 // GetIpAddresses returns the IpAddresses field value if set, zero value otherwise.
 func (o *NetworkInterface) GetIpAddresses() []string {
-	if o == nil || o.IpAddresses == nil {
+	if o == nil || IsNil(o.IpAddresses) {
 		var ret []string
 		return ret
 	}
@@ -102,7 +109,7 @@ func (o *NetworkInterface) GetIpAddresses() []string {
 // GetIpAddressesOk returns a tuple with the IpAddresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkInterface) GetIpAddressesOk() ([]string, bool) {
-	if o == nil || o.IpAddresses == nil {
+	if o == nil || IsNil(o.IpAddresses) {
 		return nil, false
 	}
 	return o.IpAddresses, true
@@ -110,7 +117,7 @@ func (o *NetworkInterface) GetIpAddressesOk() ([]string, bool) {
 
 // HasIpAddresses returns a boolean if a field has been set.
 func (o *NetworkInterface) HasIpAddresses() bool {
-	if o != nil && o.IpAddresses != nil {
+	if o != nil && !IsNil(o.IpAddresses) {
 		return true
 	}
 
@@ -124,7 +131,7 @@ func (o *NetworkInterface) SetIpAddresses(v []string) {
 
 // GetDnsServers returns the DnsServers field value if set, zero value otherwise.
 func (o *NetworkInterface) GetDnsServers() []string {
-	if o == nil || o.DnsServers == nil {
+	if o == nil || IsNil(o.DnsServers) {
 		var ret []string
 		return ret
 	}
@@ -134,7 +141,7 @@ func (o *NetworkInterface) GetDnsServers() []string {
 // GetDnsServersOk returns a tuple with the DnsServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkInterface) GetDnsServersOk() ([]string, bool) {
-	if o == nil || o.DnsServers == nil {
+	if o == nil || IsNil(o.DnsServers) {
 		return nil, false
 	}
 	return o.DnsServers, true
@@ -142,7 +149,7 @@ func (o *NetworkInterface) GetDnsServersOk() ([]string, bool) {
 
 // HasDnsServers returns a boolean if a field has been set.
 func (o *NetworkInterface) HasDnsServers() bool {
-	if o != nil && o.DnsServers != nil {
+	if o != nil && !IsNil(o.DnsServers) {
 		return true
 	}
 
@@ -155,20 +162,62 @@ func (o *NetworkInterface) SetDnsServers(v []string) {
 }
 
 func (o NetworkInterface) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["hardware_address"] = o.HardwareAddress
-	}
-	if o.IpAddresses != nil {
-		toSerialize["ip_addresses"] = o.IpAddresses
-	}
-	if o.DnsServers != nil {
-		toSerialize["dns_servers"] = o.DnsServers
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NetworkInterface) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["hardware_address"] = o.HardwareAddress
+	if !IsNil(o.IpAddresses) {
+		toSerialize["ip_addresses"] = o.IpAddresses
+	}
+	if !IsNil(o.DnsServers) {
+		toSerialize["dns_servers"] = o.DnsServers
+	}
+	return toSerialize, nil
+}
+
+func (o *NetworkInterface) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"hardware_address",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNetworkInterface := _NetworkInterface{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varNetworkInterface)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NetworkInterface(varNetworkInterface)
+
+	return err
 }
 
 type NullableNetworkInterface struct {

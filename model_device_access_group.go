@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the DeviceAccessGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAccessGroup{}
 
 // DeviceAccessGroup struct for DeviceAccessGroup
 type DeviceAccessGroup struct {
@@ -21,6 +26,8 @@ type DeviceAccessGroup struct {
 	Name       string                 `json:"name"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
+
+type _DeviceAccessGroup DeviceAccessGroup
 
 // NewDeviceAccessGroup instantiates a new DeviceAccessGroup object
 // This constructor will assign default values to properties that have it defined,
@@ -91,7 +98,7 @@ func (o *DeviceAccessGroup) SetName(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *DeviceAccessGroup) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -101,15 +108,15 @@ func (o *DeviceAccessGroup) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAccessGroup) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *DeviceAccessGroup) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -122,17 +129,59 @@ func (o *DeviceAccessGroup) SetAttributes(v map[string]interface{}) {
 }
 
 func (o DeviceAccessGroup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pbm_uuid"] = o.PbmUuid
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAccessGroup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pbm_uuid"] = o.PbmUuid
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
+}
+
+func (o *DeviceAccessGroup) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pbm_uuid",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceAccessGroup := _DeviceAccessGroup{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceAccessGroup)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceAccessGroup(varDeviceAccessGroup)
+
+	return err
 }
 
 type NullableDeviceAccessGroup struct {

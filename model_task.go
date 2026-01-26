@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the Task type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Task{}
 
 // Task struct for Task
 type Task struct {
@@ -40,6 +45,8 @@ type Task struct {
 	AggregatedStatus TaskAggregatedStatusEnum `json:"aggregated_status"`
 	Description      NullableString           `json:"description"`
 }
+
+type _Task Task
 
 // NewTask instantiates a new Task object
 // This constructor will assign default values to properties that have it defined,
@@ -68,7 +75,7 @@ func NewTaskWithDefaults() *Task {
 
 // GetMessageId returns the MessageId field value if set, zero value otherwise.
 func (o *Task) GetMessageId() string {
-	if o == nil || o.MessageId == nil {
+	if o == nil || IsNil(o.MessageId) {
 		var ret string
 		return ret
 	}
@@ -78,7 +85,7 @@ func (o *Task) GetMessageId() string {
 // GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Task) GetMessageIdOk() (*string, bool) {
-	if o == nil || o.MessageId == nil {
+	if o == nil || IsNil(o.MessageId) {
 		return nil, false
 	}
 	return o.MessageId, true
@@ -86,7 +93,7 @@ func (o *Task) GetMessageIdOk() (*string, bool) {
 
 // HasMessageId returns a boolean if a field has been set.
 func (o *Task) HasMessageId() bool {
-	if o != nil && o.MessageId != nil {
+	if o != nil && !IsNil(o.MessageId) {
 		return true
 	}
 
@@ -100,7 +107,7 @@ func (o *Task) SetMessageId(v string) {
 
 // GetQueueName returns the QueueName field value if set, zero value otherwise.
 func (o *Task) GetQueueName() string {
-	if o == nil || o.QueueName == nil {
+	if o == nil || IsNil(o.QueueName) {
 		var ret string
 		return ret
 	}
@@ -110,7 +117,7 @@ func (o *Task) GetQueueName() string {
 // GetQueueNameOk returns a tuple with the QueueName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Task) GetQueueNameOk() (*string, bool) {
-	if o == nil || o.QueueName == nil {
+	if o == nil || IsNil(o.QueueName) {
 		return nil, false
 	}
 	return o.QueueName, true
@@ -118,7 +125,7 @@ func (o *Task) GetQueueNameOk() (*string, bool) {
 
 // HasQueueName returns a boolean if a field has been set.
 func (o *Task) HasQueueName() bool {
-	if o != nil && o.QueueName != nil {
+	if o != nil && !IsNil(o.QueueName) {
 		return true
 	}
 
@@ -156,7 +163,7 @@ func (o *Task) SetActorName(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *Task) GetState() StateEnum {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		var ret StateEnum
 		return ret
 	}
@@ -166,7 +173,7 @@ func (o *Task) GetState() StateEnum {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Task) GetStateOk() (*StateEnum, bool) {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -174,7 +181,7 @@ func (o *Task) GetStateOk() (*StateEnum, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *Task) HasState() bool {
-	if o != nil && o.State != nil {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -188,7 +195,7 @@ func (o *Task) SetState(v StateEnum) {
 
 // GetMtime returns the Mtime field value if set, zero value otherwise.
 func (o *Task) GetMtime() time.Time {
-	if o == nil || o.Mtime == nil {
+	if o == nil || IsNil(o.Mtime) {
 		var ret time.Time
 		return ret
 	}
@@ -198,7 +205,7 @@ func (o *Task) GetMtime() time.Time {
 // GetMtimeOk returns a tuple with the Mtime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Task) GetMtimeOk() (*time.Time, bool) {
-	if o == nil || o.Mtime == nil {
+	if o == nil || IsNil(o.Mtime) {
 		return nil, false
 	}
 	return o.Mtime, true
@@ -206,7 +213,7 @@ func (o *Task) GetMtimeOk() (*time.Time, bool) {
 
 // HasMtime returns a boolean if a field has been set.
 func (o *Task) HasMtime() bool {
-	if o != nil && o.Mtime != nil {
+	if o != nil && !IsNil(o.Mtime) {
 		return true
 	}
 
@@ -220,7 +227,7 @@ func (o *Task) SetMtime(v time.Time) {
 
 // GetRetries returns the Retries field value if set, zero value otherwise.
 func (o *Task) GetRetries() int64 {
-	if o == nil || o.Retries == nil {
+	if o == nil || IsNil(o.Retries) {
 		var ret int64
 		return ret
 	}
@@ -230,7 +237,7 @@ func (o *Task) GetRetries() int64 {
 // GetRetriesOk returns a tuple with the Retries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Task) GetRetriesOk() (*int64, bool) {
-	if o == nil || o.Retries == nil {
+	if o == nil || IsNil(o.Retries) {
 		return nil, false
 	}
 	return o.Retries, true
@@ -238,7 +245,7 @@ func (o *Task) GetRetriesOk() (*int64, bool) {
 
 // HasRetries returns a boolean if a field has been set.
 func (o *Task) HasRetries() bool {
-	if o != nil && o.Retries != nil {
+	if o != nil && !IsNil(o.Retries) {
 		return true
 	}
 
@@ -252,7 +259,7 @@ func (o *Task) SetRetries(v int64) {
 
 // GetEta returns the Eta field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Task) GetEta() time.Time {
-	if o == nil || o.Eta.Get() == nil {
+	if o == nil || IsNil(o.Eta.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -343,7 +350,7 @@ func (o *Task) SetRelObjModel(v string) {
 
 // GetRelObjId returns the RelObjId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Task) GetRelObjId() string {
-	if o == nil || o.RelObjId.Get() == nil {
+	if o == nil || IsNil(o.RelObjId.Get()) {
 		var ret string
 		return ret
 	}
@@ -507,53 +514,89 @@ func (o *Task) SetDescription(v string) {
 }
 
 func (o Task) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Task) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MessageId != nil {
+	if !IsNil(o.MessageId) {
 		toSerialize["message_id"] = o.MessageId
 	}
-	if o.QueueName != nil {
+	if !IsNil(o.QueueName) {
 		toSerialize["queue_name"] = o.QueueName
 	}
-	if true {
-		toSerialize["actor_name"] = o.ActorName
-	}
-	if o.State != nil {
+	toSerialize["actor_name"] = o.ActorName
+	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	if o.Mtime != nil {
+	if !IsNil(o.Mtime) {
 		toSerialize["mtime"] = o.Mtime
 	}
-	if o.Retries != nil {
+	if !IsNil(o.Retries) {
 		toSerialize["retries"] = o.Retries
 	}
 	if o.Eta.IsSet() {
 		toSerialize["eta"] = o.Eta.Get()
 	}
-	if true {
-		toSerialize["rel_obj_app_label"] = o.RelObjAppLabel
-	}
-	if true {
-		toSerialize["rel_obj_model"] = o.RelObjModel
-	}
+	toSerialize["rel_obj_app_label"] = o.RelObjAppLabel
+	toSerialize["rel_obj_model"] = o.RelObjModel
 	if o.RelObjId.IsSet() {
 		toSerialize["rel_obj_id"] = o.RelObjId.Get()
 	}
-	if true {
-		toSerialize["uid"] = o.Uid
+	toSerialize["uid"] = o.Uid
+	toSerialize["logs"] = o.Logs
+	toSerialize["previous_logs"] = o.PreviousLogs
+	toSerialize["aggregated_status"] = o.AggregatedStatus
+	toSerialize["description"] = o.Description.Get()
+	return toSerialize, nil
+}
+
+func (o *Task) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"actor_name",
+		"rel_obj_app_label",
+		"rel_obj_model",
+		"uid",
+		"logs",
+		"previous_logs",
+		"aggregated_status",
+		"description",
 	}
-	if true {
-		toSerialize["logs"] = o.Logs
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["previous_logs"] = o.PreviousLogs
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
 	}
-	if true {
-		toSerialize["aggregated_status"] = o.AggregatedStatus
+
+	varTask := _Task{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTask)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["description"] = o.Description.Get()
-	}
-	return json.Marshal(toSerialize)
+
+	*o = Task(varTask)
+
+	return err
 }
 
 type NullableTask struct {

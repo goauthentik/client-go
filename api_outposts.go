@@ -14,19 +14,19 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
 	"strings"
 )
 
-// OutpostsApiService OutpostsApi service
-type OutpostsApiService service
+// OutpostsAPIService OutpostsAPI service
+type OutpostsAPIService service
 
 type ApiOutpostsInstancesCreateRequest struct {
 	ctx            context.Context
-	ApiService     *OutpostsApiService
+	ApiService     *OutpostsAPIService
 	outpostRequest *OutpostRequest
 }
 
@@ -47,7 +47,7 @@ Outpost Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsInstancesCreateRequest
 */
-func (a *OutpostsApiService) OutpostsInstancesCreate(ctx context.Context) ApiOutpostsInstancesCreateRequest {
+func (a *OutpostsAPIService) OutpostsInstancesCreate(ctx context.Context) ApiOutpostsInstancesCreateRequest {
 	return ApiOutpostsInstancesCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -57,7 +57,7 @@ func (a *OutpostsApiService) OutpostsInstancesCreate(ctx context.Context) ApiOut
 // Execute executes the request
 //
 //	@return Outpost
-func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstancesCreateRequest) (*Outpost, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsInstancesCreateExecute(r ApiOutpostsInstancesCreateRequest) (*Outpost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -65,7 +65,7 @@ func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstanc
 		localVarReturnValue *Outpost
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsInstancesCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsInstancesCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstanc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -127,6 +127,7 @@ func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -137,6 +138,7 @@ func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -156,7 +158,7 @@ func (a *OutpostsApiService) OutpostsInstancesCreateExecute(r ApiOutpostsInstanc
 
 type ApiOutpostsInstancesDefaultSettingsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 }
 
 func (r ApiOutpostsInstancesDefaultSettingsRetrieveRequest) Execute() (*OutpostDefaultConfig, *http.Response, error) {
@@ -171,7 +173,7 @@ Global default outpost config
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsInstancesDefaultSettingsRetrieveRequest
 */
-func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieve(ctx context.Context) ApiOutpostsInstancesDefaultSettingsRetrieveRequest {
+func (a *OutpostsAPIService) OutpostsInstancesDefaultSettingsRetrieve(ctx context.Context) ApiOutpostsInstancesDefaultSettingsRetrieveRequest {
 	return ApiOutpostsInstancesDefaultSettingsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -181,7 +183,7 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieve(ctx contex
 // Execute executes the request
 //
 //	@return OutpostDefaultConfig
-func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r ApiOutpostsInstancesDefaultSettingsRetrieveRequest) (*OutpostDefaultConfig, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsInstancesDefaultSettingsRetrieveExecute(r ApiOutpostsInstancesDefaultSettingsRetrieveRequest) (*OutpostDefaultConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -189,7 +191,7 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r A
 		localVarReturnValue *OutpostDefaultConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsInstancesDefaultSettingsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsInstancesDefaultSettingsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -227,9 +229,9 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -246,6 +248,7 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -256,6 +259,7 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -275,7 +279,7 @@ func (a *OutpostsApiService) OutpostsInstancesDefaultSettingsRetrieveExecute(r A
 
 type ApiOutpostsInstancesDestroyRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -292,7 +296,7 @@ Outpost Viewset
 	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesDestroyRequest
 */
-func (a *OutpostsApiService) OutpostsInstancesDestroy(ctx context.Context, uuid string) ApiOutpostsInstancesDestroyRequest {
+func (a *OutpostsAPIService) OutpostsInstancesDestroy(ctx context.Context, uuid string) ApiOutpostsInstancesDestroyRequest {
 	return ApiOutpostsInstancesDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -301,20 +305,20 @@ func (a *OutpostsApiService) OutpostsInstancesDestroy(ctx context.Context, uuid 
 }
 
 // Execute executes the request
-func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstancesDestroyRequest) (*http.Response, error) {
+func (a *OutpostsAPIService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstancesDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsInstancesDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsInstancesDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -347,9 +351,9 @@ func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstan
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -366,6 +370,7 @@ func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstan
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -376,6 +381,7 @@ func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstan
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -386,7 +392,7 @@ func (a *OutpostsApiService) OutpostsInstancesDestroyExecute(r ApiOutpostsInstan
 
 type ApiOutpostsInstancesHealthListRequest struct {
 	ctx                            context.Context
-	ApiService                     *OutpostsApiService
+	ApiService                     *OutpostsAPIService
 	uuid                           string
 	managedIcontains               *string
 	managedIexact                  *string
@@ -465,7 +471,7 @@ Get outposts current health
 	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesHealthListRequest
 */
-func (a *OutpostsApiService) OutpostsInstancesHealthList(ctx context.Context, uuid string) ApiOutpostsInstancesHealthListRequest {
+func (a *OutpostsAPIService) OutpostsInstancesHealthList(ctx context.Context, uuid string) ApiOutpostsInstancesHealthListRequest {
 	return ApiOutpostsInstancesHealthListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -476,7 +482,7 @@ func (a *OutpostsApiService) OutpostsInstancesHealthList(ctx context.Context, uu
 // Execute executes the request
 //
 //	@return []OutpostHealth
-func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsInstancesHealthListRequest) ([]OutpostHealth, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsInstancesHealthListExecute(r ApiOutpostsInstancesHealthListRequest) ([]OutpostHealth, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -484,55 +490,55 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 		localVarReturnValue []OutpostHealth
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsInstancesHealthList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsInstancesHealthList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/health/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.managedIcontains != nil {
-		localVarQueryParams.Add("managed__icontains", parameterToString(*r.managedIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed__icontains", r.managedIcontains, "form", "")
 	}
 	if r.managedIexact != nil {
-		localVarQueryParams.Add("managed__iexact", parameterToString(*r.managedIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed__iexact", r.managedIexact, "form", "")
 	}
 	if r.nameIcontains != nil {
-		localVarQueryParams.Add("name__icontains", parameterToString(*r.nameIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name__icontains", r.nameIcontains, "form", "")
 	}
 	if r.nameIexact != nil {
-		localVarQueryParams.Add("name__iexact", parameterToString(*r.nameIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name__iexact", r.nameIexact, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.providersIsnull != nil {
-		localVarQueryParams.Add("providers__isnull", parameterToString(*r.providersIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "providers__isnull", r.providersIsnull, "form", "")
 	}
 	if r.providersByPk != nil {
 		t := *r.providersByPk
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("providers_by_pk", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "providers_by_pk", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("providers_by_pk", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "providers_by_pk", t, "form", "multi")
 		}
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.serviceConnectionNameIcontains != nil {
-		localVarQueryParams.Add("service_connection__name__icontains", parameterToString(*r.serviceConnectionNameIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "service_connection__name__icontains", r.serviceConnectionNameIcontains, "form", "")
 	}
 	if r.serviceConnectionNameIexact != nil {
-		localVarQueryParams.Add("service_connection__name__iexact", parameterToString(*r.serviceConnectionNameIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "service_connection__name__iexact", r.serviceConnectionNameIexact, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -561,9 +567,9 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -580,6 +586,7 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -590,6 +597,7 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -609,7 +617,7 @@ func (a *OutpostsApiService) OutpostsInstancesHealthListExecute(r ApiOutpostsIns
 
 type ApiOutpostsInstancesListRequest struct {
 	ctx                            context.Context
-	ApiService                     *OutpostsApiService
+	ApiService                     *OutpostsAPIService
 	managedIcontains               *string
 	managedIexact                  *string
 	nameIcontains                  *string
@@ -700,7 +708,7 @@ Outpost Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsInstancesListRequest
 */
-func (a *OutpostsApiService) OutpostsInstancesList(ctx context.Context) ApiOutpostsInstancesListRequest {
+func (a *OutpostsAPIService) OutpostsInstancesList(ctx context.Context) ApiOutpostsInstancesListRequest {
 	return ApiOutpostsInstancesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -710,7 +718,7 @@ func (a *OutpostsApiService) OutpostsInstancesList(ctx context.Context) ApiOutpo
 // Execute executes the request
 //
 //	@return PaginatedOutpostList
-func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstancesListRequest) (*PaginatedOutpostList, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsInstancesListExecute(r ApiOutpostsInstancesListRequest) (*PaginatedOutpostList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -718,7 +726,7 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 		localVarReturnValue *PaginatedOutpostList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsInstancesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsInstancesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -730,48 +738,48 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 	localVarFormParams := url.Values{}
 
 	if r.managedIcontains != nil {
-		localVarQueryParams.Add("managed__icontains", parameterToString(*r.managedIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed__icontains", r.managedIcontains, "form", "")
 	}
 	if r.managedIexact != nil {
-		localVarQueryParams.Add("managed__iexact", parameterToString(*r.managedIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managed__iexact", r.managedIexact, "form", "")
 	}
 	if r.nameIcontains != nil {
-		localVarQueryParams.Add("name__icontains", parameterToString(*r.nameIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name__icontains", r.nameIcontains, "form", "")
 	}
 	if r.nameIexact != nil {
-		localVarQueryParams.Add("name__iexact", parameterToString(*r.nameIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name__iexact", r.nameIexact, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.providersIsnull != nil {
-		localVarQueryParams.Add("providers__isnull", parameterToString(*r.providersIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "providers__isnull", r.providersIsnull, "form", "")
 	}
 	if r.providersByPk != nil {
 		t := *r.providersByPk
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("providers_by_pk", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "providers_by_pk", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("providers_by_pk", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "providers_by_pk", t, "form", "multi")
 		}
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.serviceConnectionNameIcontains != nil {
-		localVarQueryParams.Add("service_connection__name__icontains", parameterToString(*r.serviceConnectionNameIcontains, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "service_connection__name__icontains", r.serviceConnectionNameIcontains, "form", "")
 	}
 	if r.serviceConnectionNameIexact != nil {
-		localVarQueryParams.Add("service_connection__name__iexact", parameterToString(*r.serviceConnectionNameIexact, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "service_connection__name__iexact", r.serviceConnectionNameIexact, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -800,9 +808,9 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -819,6 +827,7 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -829,6 +838,7 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -848,7 +858,7 @@ func (a *OutpostsApiService) OutpostsInstancesListExecute(r ApiOutpostsInstances
 
 type ApiOutpostsInstancesPartialUpdateRequest struct {
 	ctx                   context.Context
-	ApiService            *OutpostsApiService
+	ApiService            *OutpostsAPIService
 	uuid                  string
 	patchedOutpostRequest *PatchedOutpostRequest
 }
@@ -871,7 +881,7 @@ Outpost Viewset
 	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesPartialUpdateRequest
 */
-func (a *OutpostsApiService) OutpostsInstancesPartialUpdate(ctx context.Context, uuid string) ApiOutpostsInstancesPartialUpdateRequest {
+func (a *OutpostsAPIService) OutpostsInstancesPartialUpdate(ctx context.Context, uuid string) ApiOutpostsInstancesPartialUpdateRequest {
 	return ApiOutpostsInstancesPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -882,7 +892,7 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdate(ctx context.Context,
 // Execute executes the request
 //
 //	@return Outpost
-func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutpostsInstancesPartialUpdateRequest) (*Outpost, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsInstancesPartialUpdateExecute(r ApiOutpostsInstancesPartialUpdateRequest) (*Outpost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -890,13 +900,13 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 		localVarReturnValue *Outpost
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsInstancesPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsInstancesPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -931,9 +941,9 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -950,6 +960,7 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -960,6 +971,7 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -979,7 +991,7 @@ func (a *OutpostsApiService) OutpostsInstancesPartialUpdateExecute(r ApiOutposts
 
 type ApiOutpostsInstancesRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -996,7 +1008,7 @@ Outpost Viewset
 	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesRetrieveRequest
 */
-func (a *OutpostsApiService) OutpostsInstancesRetrieve(ctx context.Context, uuid string) ApiOutpostsInstancesRetrieveRequest {
+func (a *OutpostsAPIService) OutpostsInstancesRetrieve(ctx context.Context, uuid string) ApiOutpostsInstancesRetrieveRequest {
 	return ApiOutpostsInstancesRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1007,7 +1019,7 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieve(ctx context.Context, uuid
 // Execute executes the request
 //
 //	@return Outpost
-func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInstancesRetrieveRequest) (*Outpost, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInstancesRetrieveRequest) (*Outpost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1015,13 +1027,13 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 		localVarReturnValue *Outpost
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsInstancesRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsInstancesRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1054,9 +1066,9 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1073,6 +1085,7 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1083,6 +1096,7 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1102,7 +1116,7 @@ func (a *OutpostsApiService) OutpostsInstancesRetrieveExecute(r ApiOutpostsInsta
 
 type ApiOutpostsInstancesUpdateRequest struct {
 	ctx            context.Context
-	ApiService     *OutpostsApiService
+	ApiService     *OutpostsAPIService
 	uuid           string
 	outpostRequest *OutpostRequest
 }
@@ -1125,7 +1139,7 @@ Outpost Viewset
 	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesUpdateRequest
 */
-func (a *OutpostsApiService) OutpostsInstancesUpdate(ctx context.Context, uuid string) ApiOutpostsInstancesUpdateRequest {
+func (a *OutpostsAPIService) OutpostsInstancesUpdate(ctx context.Context, uuid string) ApiOutpostsInstancesUpdateRequest {
 	return ApiOutpostsInstancesUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1136,7 +1150,7 @@ func (a *OutpostsApiService) OutpostsInstancesUpdate(ctx context.Context, uuid s
 // Execute executes the request
 //
 //	@return Outpost
-func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstancesUpdateRequest) (*Outpost, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstancesUpdateRequest) (*Outpost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1144,13 +1158,13 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 		localVarReturnValue *Outpost
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsInstancesUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsInstancesUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1188,9 +1202,9 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1207,6 +1221,7 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1217,6 +1232,7 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1236,7 +1252,7 @@ func (a *OutpostsApiService) OutpostsInstancesUpdateExecute(r ApiOutpostsInstanc
 
 type ApiOutpostsInstancesUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -1253,7 +1269,7 @@ Get a list of all objects that use this object
 	@param uuid A UUID string identifying this Outpost.
 	@return ApiOutpostsInstancesUsedByListRequest
 */
-func (a *OutpostsApiService) OutpostsInstancesUsedByList(ctx context.Context, uuid string) ApiOutpostsInstancesUsedByListRequest {
+func (a *OutpostsAPIService) OutpostsInstancesUsedByList(ctx context.Context, uuid string) ApiOutpostsInstancesUsedByListRequest {
 	return ApiOutpostsInstancesUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1264,7 +1280,7 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByList(ctx context.Context, uu
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsInstancesUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsInstancesUsedByListExecute(r ApiOutpostsInstancesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1272,13 +1288,13 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsInstancesUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsInstancesUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/instances/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1311,9 +1327,9 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1330,6 +1346,7 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1340,6 +1357,7 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1359,7 +1377,7 @@ func (a *OutpostsApiService) OutpostsInstancesUsedByListExecute(r ApiOutpostsIns
 
 type ApiOutpostsLdapAccessCheckRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	id         int32
 	appSlug    *string
 }
@@ -1382,7 +1400,7 @@ Check access to a single application by slug
 	@param id A unique integer value identifying this LDAP Provider.
 	@return ApiOutpostsLdapAccessCheckRequest
 */
-func (a *OutpostsApiService) OutpostsLdapAccessCheck(ctx context.Context, id int32) ApiOutpostsLdapAccessCheckRequest {
+func (a *OutpostsAPIService) OutpostsLdapAccessCheck(ctx context.Context, id int32) ApiOutpostsLdapAccessCheckRequest {
 	return ApiOutpostsLdapAccessCheckRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1393,7 +1411,7 @@ func (a *OutpostsApiService) OutpostsLdapAccessCheck(ctx context.Context, id int
 // Execute executes the request
 //
 //	@return LDAPCheckAccess
-func (a *OutpostsApiService) OutpostsLdapAccessCheckExecute(r ApiOutpostsLdapAccessCheckRequest) (*LDAPCheckAccess, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsLdapAccessCheckExecute(r ApiOutpostsLdapAccessCheckRequest) (*LDAPCheckAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1401,20 +1419,20 @@ func (a *OutpostsApiService) OutpostsLdapAccessCheckExecute(r ApiOutpostsLdapAcc
 		localVarReturnValue *LDAPCheckAccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsLdapAccessCheck")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsLdapAccessCheck")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/ldap/{id}/check_access/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.appSlug != nil {
-		localVarQueryParams.Add("app_slug", parameterToString(*r.appSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_slug", r.appSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1443,9 +1461,9 @@ func (a *OutpostsApiService) OutpostsLdapAccessCheckExecute(r ApiOutpostsLdapAcc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1462,6 +1480,7 @@ func (a *OutpostsApiService) OutpostsLdapAccessCheckExecute(r ApiOutpostsLdapAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1472,6 +1491,7 @@ func (a *OutpostsApiService) OutpostsLdapAccessCheckExecute(r ApiOutpostsLdapAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1491,7 +1511,7 @@ func (a *OutpostsApiService) OutpostsLdapAccessCheckExecute(r ApiOutpostsLdapAcc
 
 type ApiOutpostsLdapListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -1540,7 +1560,7 @@ LDAPProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsLdapListRequest
 */
-func (a *OutpostsApiService) OutpostsLdapList(ctx context.Context) ApiOutpostsLdapListRequest {
+func (a *OutpostsAPIService) OutpostsLdapList(ctx context.Context) ApiOutpostsLdapListRequest {
 	return ApiOutpostsLdapListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1550,7 +1570,7 @@ func (a *OutpostsApiService) OutpostsLdapList(ctx context.Context) ApiOutpostsLd
 // Execute executes the request
 //
 //	@return PaginatedLDAPOutpostConfigList
-func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListRequest) (*PaginatedLDAPOutpostConfigList, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsLdapListExecute(r ApiOutpostsLdapListRequest) (*PaginatedLDAPOutpostConfigList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1558,7 +1578,7 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 		localVarReturnValue *PaginatedLDAPOutpostConfigList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsLdapList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsLdapList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1570,19 +1590,19 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1611,9 +1631,9 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1630,6 +1650,7 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1640,6 +1661,7 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1659,7 +1681,7 @@ func (a *OutpostsApiService) OutpostsLdapListExecute(r ApiOutpostsLdapListReques
 
 type ApiOutpostsProxyListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -1708,7 +1730,7 @@ ProxyProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsProxyListRequest
 */
-func (a *OutpostsApiService) OutpostsProxyList(ctx context.Context) ApiOutpostsProxyListRequest {
+func (a *OutpostsAPIService) OutpostsProxyList(ctx context.Context) ApiOutpostsProxyListRequest {
 	return ApiOutpostsProxyListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1718,7 +1740,7 @@ func (a *OutpostsApiService) OutpostsProxyList(ctx context.Context) ApiOutpostsP
 // Execute executes the request
 //
 //	@return PaginatedProxyOutpostConfigList
-func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequest) (*PaginatedProxyOutpostConfigList, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequest) (*PaginatedProxyOutpostConfigList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1726,7 +1748,7 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 		localVarReturnValue *PaginatedProxyOutpostConfigList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsProxyList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsProxyList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1738,19 +1760,19 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1779,9 +1801,9 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1798,6 +1820,7 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1808,6 +1831,7 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1827,7 +1851,7 @@ func (a *OutpostsApiService) OutpostsProxyListExecute(r ApiOutpostsProxyListRequ
 
 type ApiOutpostsRadiusAccessCheckRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	id         int32
 	appSlug    *string
 }
@@ -1850,7 +1874,7 @@ Check access to a single application by slug
 	@param id A unique integer value identifying this Radius Provider.
 	@return ApiOutpostsRadiusAccessCheckRequest
 */
-func (a *OutpostsApiService) OutpostsRadiusAccessCheck(ctx context.Context, id int32) ApiOutpostsRadiusAccessCheckRequest {
+func (a *OutpostsAPIService) OutpostsRadiusAccessCheck(ctx context.Context, id int32) ApiOutpostsRadiusAccessCheckRequest {
 	return ApiOutpostsRadiusAccessCheckRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1861,7 +1885,7 @@ func (a *OutpostsApiService) OutpostsRadiusAccessCheck(ctx context.Context, id i
 // Execute executes the request
 //
 //	@return RadiusCheckAccess
-func (a *OutpostsApiService) OutpostsRadiusAccessCheckExecute(r ApiOutpostsRadiusAccessCheckRequest) (*RadiusCheckAccess, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsRadiusAccessCheckExecute(r ApiOutpostsRadiusAccessCheckRequest) (*RadiusCheckAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1869,20 +1893,20 @@ func (a *OutpostsApiService) OutpostsRadiusAccessCheckExecute(r ApiOutpostsRadiu
 		localVarReturnValue *RadiusCheckAccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsRadiusAccessCheck")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsRadiusAccessCheck")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/radius/{id}/check_access/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.appSlug != nil {
-		localVarQueryParams.Add("app_slug", parameterToString(*r.appSlug, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_slug", r.appSlug, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1911,9 +1935,9 @@ func (a *OutpostsApiService) OutpostsRadiusAccessCheckExecute(r ApiOutpostsRadiu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1930,6 +1954,7 @@ func (a *OutpostsApiService) OutpostsRadiusAccessCheckExecute(r ApiOutpostsRadiu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1940,6 +1965,7 @@ func (a *OutpostsApiService) OutpostsRadiusAccessCheckExecute(r ApiOutpostsRadiu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1959,7 +1985,7 @@ func (a *OutpostsApiService) OutpostsRadiusAccessCheckExecute(r ApiOutpostsRadiu
 
 type ApiOutpostsRadiusListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -2008,7 +2034,7 @@ RadiusProvider Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsRadiusListRequest
 */
-func (a *OutpostsApiService) OutpostsRadiusList(ctx context.Context) ApiOutpostsRadiusListRequest {
+func (a *OutpostsAPIService) OutpostsRadiusList(ctx context.Context) ApiOutpostsRadiusListRequest {
 	return ApiOutpostsRadiusListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2018,7 +2044,7 @@ func (a *OutpostsApiService) OutpostsRadiusList(ctx context.Context) ApiOutposts
 // Execute executes the request
 //
 //	@return PaginatedRadiusOutpostConfigList
-func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRequest) (*PaginatedRadiusOutpostConfigList, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRequest) (*PaginatedRadiusOutpostConfigList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2026,7 +2052,7 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 		localVarReturnValue *PaginatedRadiusOutpostConfigList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsRadiusList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsRadiusList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2038,19 +2064,19 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2079,9 +2105,9 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2098,6 +2124,7 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2108,6 +2135,7 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2127,7 +2155,7 @@ func (a *OutpostsApiService) OutpostsRadiusListExecute(r ApiOutpostsRadiusListRe
 
 type ApiOutpostsServiceConnectionsAllDestroyRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -2144,7 +2172,7 @@ ServiceConnection Viewset
 	@param uuid A UUID string identifying this Outpost Service-Connection.
 	@return ApiOutpostsServiceConnectionsAllDestroyRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroy(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllDestroyRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllDestroy(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllDestroyRequest {
 	return ApiOutpostsServiceConnectionsAllDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2153,20 +2181,20 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroy(ctx context.Co
 }
 
 // Execute executes the request
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOutpostsServiceConnectionsAllDestroyRequest) (*http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOutpostsServiceConnectionsAllDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsAllDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsAllDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/all/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2199,9 +2227,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2218,6 +2246,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -2228,6 +2257,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -2238,7 +2268,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllDestroyExecute(r ApiOu
 
 type ApiOutpostsServiceConnectionsAllListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	name       *string
 	ordering   *string
 	page       *int32
@@ -2287,7 +2317,7 @@ ServiceConnection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsServiceConnectionsAllListRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllList(ctx context.Context) ApiOutpostsServiceConnectionsAllListRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllList(ctx context.Context) ApiOutpostsServiceConnectionsAllListRequest {
 	return ApiOutpostsServiceConnectionsAllListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2297,7 +2327,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllList(ctx context.Conte
 // Execute executes the request
 //
 //	@return PaginatedServiceConnectionList
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpostsServiceConnectionsAllListRequest) (*PaginatedServiceConnectionList, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllListExecute(r ApiOutpostsServiceConnectionsAllListRequest) (*PaginatedServiceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2305,7 +2335,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 		localVarReturnValue *PaginatedServiceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsAllList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsAllList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2317,19 +2347,19 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2358,9 +2388,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2377,6 +2407,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2387,6 +2418,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2406,7 +2438,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllListExecute(r ApiOutpo
 
 type ApiOutpostsServiceConnectionsAllRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -2423,7 +2455,7 @@ ServiceConnection Viewset
 	@param uuid A UUID string identifying this Outpost Service-Connection.
 	@return ApiOutpostsServiceConnectionsAllRetrieveRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllRetrieveRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllRetrieveRequest {
 	return ApiOutpostsServiceConnectionsAllRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2434,7 +2466,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieve(ctx context.C
 // Execute executes the request
 //
 //	@return ServiceConnection
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiOutpostsServiceConnectionsAllRetrieveRequest) (*ServiceConnection, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiOutpostsServiceConnectionsAllRetrieveRequest) (*ServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2442,13 +2474,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 		localVarReturnValue *ServiceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsAllRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsAllRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/all/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2481,9 +2513,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2500,6 +2532,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2510,6 +2543,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2529,7 +2563,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllRetrieveExecute(r ApiO
 
 type ApiOutpostsServiceConnectionsAllStateRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -2546,7 +2580,7 @@ Get the service connection's state
 	@param uuid A UUID string identifying this Outpost Service-Connection.
 	@return ApiOutpostsServiceConnectionsAllStateRetrieveRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllStateRetrieveRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllStateRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllStateRetrieveRequest {
 	return ApiOutpostsServiceConnectionsAllStateRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2557,7 +2591,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieve(ctx cont
 // Execute executes the request
 //
 //	@return ServiceConnectionState
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r ApiOutpostsServiceConnectionsAllStateRetrieveRequest) (*ServiceConnectionState, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllStateRetrieveExecute(r ApiOutpostsServiceConnectionsAllStateRetrieveRequest) (*ServiceConnectionState, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2565,13 +2599,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 		localVarReturnValue *ServiceConnectionState
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsAllStateRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsAllStateRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/all/{uuid}/state/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2604,9 +2638,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2623,6 +2657,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2633,6 +2668,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2652,7 +2688,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllStateRetrieveExecute(r
 
 type ApiOutpostsServiceConnectionsAllTypesListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 }
 
 func (r ApiOutpostsServiceConnectionsAllTypesListRequest) Execute() ([]TypeCreate, *http.Response, error) {
@@ -2667,7 +2703,7 @@ Get all creatable types
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsServiceConnectionsAllTypesListRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesList(ctx context.Context) ApiOutpostsServiceConnectionsAllTypesListRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllTypesList(ctx context.Context) ApiOutpostsServiceConnectionsAllTypesListRequest {
 	return ApiOutpostsServiceConnectionsAllTypesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2677,7 +2713,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesList(ctx context.
 // Execute executes the request
 //
 //	@return []TypeCreate
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r ApiOutpostsServiceConnectionsAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllTypesListExecute(r ApiOutpostsServiceConnectionsAllTypesListRequest) ([]TypeCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2685,7 +2721,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r Api
 		localVarReturnValue []TypeCreate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsAllTypesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsAllTypesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2723,9 +2759,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2742,6 +2778,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2752,6 +2789,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2771,7 +2809,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllTypesListExecute(r Api
 
 type ApiOutpostsServiceConnectionsAllUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -2788,7 +2826,7 @@ Get a list of all objects that use this object
 	@param uuid A UUID string identifying this Outpost Service-Connection.
 	@return ApiOutpostsServiceConnectionsAllUsedByListRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByList(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllUsedByListRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllUsedByList(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsAllUsedByListRequest {
 	return ApiOutpostsServiceConnectionsAllUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2799,7 +2837,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByList(ctx context
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r ApiOutpostsServiceConnectionsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsAllUsedByListExecute(r ApiOutpostsServiceConnectionsAllUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2807,13 +2845,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsAllUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsAllUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/all/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2846,9 +2884,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2865,6 +2903,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -2875,6 +2914,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2894,7 +2934,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsAllUsedByListExecute(r Ap
 
 type ApiOutpostsServiceConnectionsDockerCreateRequest struct {
 	ctx                            context.Context
-	ApiService                     *OutpostsApiService
+	ApiService                     *OutpostsAPIService
 	dockerServiceConnectionRequest *DockerServiceConnectionRequest
 }
 
@@ -2915,7 +2955,7 @@ DockerServiceConnection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsServiceConnectionsDockerCreateRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreate(ctx context.Context) ApiOutpostsServiceConnectionsDockerCreateRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerCreate(ctx context.Context) ApiOutpostsServiceConnectionsDockerCreateRequest {
 	return ApiOutpostsServiceConnectionsDockerCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2925,7 +2965,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreate(ctx context.
 // Execute executes the request
 //
 //	@return DockerServiceConnection
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r ApiOutpostsServiceConnectionsDockerCreateRequest) (*DockerServiceConnection, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerCreateExecute(r ApiOutpostsServiceConnectionsDockerCreateRequest) (*DockerServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2933,7 +2973,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r Api
 		localVarReturnValue *DockerServiceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsDockerCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsDockerCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2976,9 +3016,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2995,6 +3035,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3005,6 +3046,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3024,7 +3066,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerCreateExecute(r Api
 
 type ApiOutpostsServiceConnectionsDockerDestroyRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -3041,7 +3083,7 @@ DockerServiceConnection Viewset
 	@param uuid A UUID string identifying this Docker Service-Connection.
 	@return ApiOutpostsServiceConnectionsDockerDestroyRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroy(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerDestroyRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerDestroy(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerDestroyRequest {
 	return ApiOutpostsServiceConnectionsDockerDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3050,20 +3092,20 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroy(ctx context
 }
 
 // Execute executes the request
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r ApiOutpostsServiceConnectionsDockerDestroyRequest) (*http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerDestroyExecute(r ApiOutpostsServiceConnectionsDockerDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsDockerDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsDockerDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3096,9 +3138,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r Ap
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3115,6 +3157,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -3125,6 +3168,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -3135,7 +3179,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerDestroyExecute(r Ap
 
 type ApiOutpostsServiceConnectionsDockerListRequest struct {
 	ctx               context.Context
-	ApiService        *OutpostsApiService
+	ApiService        *OutpostsAPIService
 	local             *bool
 	name              *string
 	ordering          *string
@@ -3208,7 +3252,7 @@ DockerServiceConnection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsServiceConnectionsDockerListRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerList(ctx context.Context) ApiOutpostsServiceConnectionsDockerListRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerList(ctx context.Context) ApiOutpostsServiceConnectionsDockerListRequest {
 	return ApiOutpostsServiceConnectionsDockerListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3218,7 +3262,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerList(ctx context.Co
 // Execute executes the request
 //
 //	@return PaginatedDockerServiceConnectionList
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOutpostsServiceConnectionsDockerListRequest) (*PaginatedDockerServiceConnectionList, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerListExecute(r ApiOutpostsServiceConnectionsDockerListRequest) (*PaginatedDockerServiceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3226,7 +3270,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 		localVarReturnValue *PaginatedDockerServiceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsDockerList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsDockerList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3238,31 +3282,31 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 	localVarFormParams := url.Values{}
 
 	if r.local != nil {
-		localVarQueryParams.Add("local", parameterToString(*r.local, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "local", r.local, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.tlsAuthentication != nil {
-		localVarQueryParams.Add("tls_authentication", parameterToString(*r.tlsAuthentication, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tls_authentication", r.tlsAuthentication, "form", "")
 	}
 	if r.tlsVerification != nil {
-		localVarQueryParams.Add("tls_verification", parameterToString(*r.tlsVerification, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tls_verification", r.tlsVerification, "form", "")
 	}
 	if r.url != nil {
-		localVarQueryParams.Add("url", parameterToString(*r.url, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "url", r.url, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3291,9 +3335,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3310,6 +3354,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3320,6 +3365,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3339,7 +3385,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerListExecute(r ApiOu
 
 type ApiOutpostsServiceConnectionsDockerPartialUpdateRequest struct {
 	ctx                                   context.Context
-	ApiService                            *OutpostsApiService
+	ApiService                            *OutpostsAPIService
 	uuid                                  string
 	patchedDockerServiceConnectionRequest *PatchedDockerServiceConnectionRequest
 }
@@ -3362,7 +3408,7 @@ DockerServiceConnection Viewset
 	@param uuid A UUID string identifying this Docker Service-Connection.
 	@return ApiOutpostsServiceConnectionsDockerPartialUpdateRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerPartialUpdateRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerPartialUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerPartialUpdateRequest {
 	return ApiOutpostsServiceConnectionsDockerPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3373,7 +3419,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdate(ctx c
 // Execute executes the request
 //
 //	@return DockerServiceConnection
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecute(r ApiOutpostsServiceConnectionsDockerPartialUpdateRequest) (*DockerServiceConnection, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerPartialUpdateExecute(r ApiOutpostsServiceConnectionsDockerPartialUpdateRequest) (*DockerServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -3381,13 +3427,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 		localVarReturnValue *DockerServiceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsDockerPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsDockerPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3422,9 +3468,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3441,6 +3487,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3451,6 +3498,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3470,7 +3518,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerPartialUpdateExecut
 
 type ApiOutpostsServiceConnectionsDockerRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -3487,7 +3535,7 @@ DockerServiceConnection Viewset
 	@param uuid A UUID string identifying this Docker Service-Connection.
 	@return ApiOutpostsServiceConnectionsDockerRetrieveRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerRetrieveRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerRetrieveRequest {
 	return ApiOutpostsServiceConnectionsDockerRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3498,7 +3546,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieve(ctx contex
 // Execute executes the request
 //
 //	@return DockerServiceConnection
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r ApiOutpostsServiceConnectionsDockerRetrieveRequest) (*DockerServiceConnection, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerRetrieveExecute(r ApiOutpostsServiceConnectionsDockerRetrieveRequest) (*DockerServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3506,13 +3554,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 		localVarReturnValue *DockerServiceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsDockerRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsDockerRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3545,9 +3593,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3564,6 +3612,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3574,6 +3623,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3593,7 +3643,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerRetrieveExecute(r A
 
 type ApiOutpostsServiceConnectionsDockerUpdateRequest struct {
 	ctx                            context.Context
-	ApiService                     *OutpostsApiService
+	ApiService                     *OutpostsAPIService
 	uuid                           string
 	dockerServiceConnectionRequest *DockerServiceConnectionRequest
 }
@@ -3616,7 +3666,7 @@ DockerServiceConnection Viewset
 	@param uuid A UUID string identifying this Docker Service-Connection.
 	@return ApiOutpostsServiceConnectionsDockerUpdateRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerUpdateRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerUpdateRequest {
 	return ApiOutpostsServiceConnectionsDockerUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3627,7 +3677,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdate(ctx context.
 // Execute executes the request
 //
 //	@return DockerServiceConnection
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r ApiOutpostsServiceConnectionsDockerUpdateRequest) (*DockerServiceConnection, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerUpdateExecute(r ApiOutpostsServiceConnectionsDockerUpdateRequest) (*DockerServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -3635,13 +3685,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 		localVarReturnValue *DockerServiceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsDockerUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsDockerUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3679,9 +3729,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3698,6 +3748,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3708,6 +3759,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3727,7 +3779,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUpdateExecute(r Api
 
 type ApiOutpostsServiceConnectionsDockerUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -3744,7 +3796,7 @@ Get a list of all objects that use this object
 	@param uuid A UUID string identifying this Docker Service-Connection.
 	@return ApiOutpostsServiceConnectionsDockerUsedByListRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByList(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerUsedByListRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerUsedByList(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsDockerUsedByListRequest {
 	return ApiOutpostsServiceConnectionsDockerUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3755,7 +3807,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByList(ctx cont
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r ApiOutpostsServiceConnectionsDockerUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsDockerUsedByListExecute(r ApiOutpostsServiceConnectionsDockerUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3763,13 +3815,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsDockerUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsDockerUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/docker/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3802,9 +3854,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3821,6 +3873,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3831,6 +3884,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3850,7 +3904,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsDockerUsedByListExecute(r
 
 type ApiOutpostsServiceConnectionsKubernetesCreateRequest struct {
 	ctx                                context.Context
-	ApiService                         *OutpostsApiService
+	ApiService                         *OutpostsAPIService
 	kubernetesServiceConnectionRequest *KubernetesServiceConnectionRequest
 }
 
@@ -3871,7 +3925,7 @@ KubernetesServiceConnection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsServiceConnectionsKubernetesCreateRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreate(ctx context.Context) ApiOutpostsServiceConnectionsKubernetesCreateRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesCreate(ctx context.Context) ApiOutpostsServiceConnectionsKubernetesCreateRequest {
 	return ApiOutpostsServiceConnectionsKubernetesCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3881,7 +3935,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreate(ctx cont
 // Execute executes the request
 //
 //	@return KubernetesServiceConnection
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r ApiOutpostsServiceConnectionsKubernetesCreateRequest) (*KubernetesServiceConnection, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesCreateExecute(r ApiOutpostsServiceConnectionsKubernetesCreateRequest) (*KubernetesServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -3889,7 +3943,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r
 		localVarReturnValue *KubernetesServiceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsKubernetesCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsKubernetesCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3932,9 +3986,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3951,6 +4005,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -3961,6 +4016,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -3980,7 +4036,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesCreateExecute(r
 
 type ApiOutpostsServiceConnectionsKubernetesDestroyRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -3997,7 +4053,7 @@ KubernetesServiceConnection Viewset
 	@param uuid A UUID string identifying this Kubernetes Service-Connection.
 	@return ApiOutpostsServiceConnectionsKubernetesDestroyRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroy(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesDestroyRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesDestroy(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesDestroyRequest {
 	return ApiOutpostsServiceConnectionsKubernetesDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4006,20 +4062,20 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroy(ctx con
 }
 
 // Execute executes the request
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(r ApiOutpostsServiceConnectionsKubernetesDestroyRequest) (*http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesDestroyExecute(r ApiOutpostsServiceConnectionsKubernetesDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsKubernetesDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsKubernetesDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4052,9 +4108,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4071,6 +4127,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -4081,6 +4138,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -4091,7 +4149,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesDestroyExecute(
 
 type ApiOutpostsServiceConnectionsKubernetesListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	local      *bool
 	name       *string
 	ordering   *string
@@ -4146,7 +4204,7 @@ KubernetesServiceConnection Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiOutpostsServiceConnectionsKubernetesListRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesList(ctx context.Context) ApiOutpostsServiceConnectionsKubernetesListRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesList(ctx context.Context) ApiOutpostsServiceConnectionsKubernetesListRequest {
 	return ApiOutpostsServiceConnectionsKubernetesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4156,7 +4214,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesList(ctx contex
 // Execute executes the request
 //
 //	@return PaginatedKubernetesServiceConnectionList
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r ApiOutpostsServiceConnectionsKubernetesListRequest) (*PaginatedKubernetesServiceConnectionList, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesListExecute(r ApiOutpostsServiceConnectionsKubernetesListRequest) (*PaginatedKubernetesServiceConnectionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4164,7 +4222,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 		localVarReturnValue *PaginatedKubernetesServiceConnectionList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsKubernetesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsKubernetesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4176,22 +4234,22 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 	localVarFormParams := url.Values{}
 
 	if r.local != nil {
-		localVarQueryParams.Add("local", parameterToString(*r.local, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "local", r.local, "form", "")
 	}
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4220,9 +4278,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4239,6 +4297,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4249,6 +4308,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4268,7 +4328,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesListExecute(r A
 
 type ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest struct {
 	ctx                                       context.Context
-	ApiService                                *OutpostsApiService
+	ApiService                                *OutpostsAPIService
 	uuid                                      string
 	patchedKubernetesServiceConnectionRequest *PatchedKubernetesServiceConnectionRequest
 }
@@ -4291,7 +4351,7 @@ KubernetesServiceConnection Viewset
 	@param uuid A UUID string identifying this Kubernetes Service-Connection.
 	@return ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesPartialUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest {
 	return ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4302,7 +4362,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdate(c
 // Execute executes the request
 //
 //	@return KubernetesServiceConnection
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateExecute(r ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest) (*KubernetesServiceConnection, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesPartialUpdateExecute(r ApiOutpostsServiceConnectionsKubernetesPartialUpdateRequest) (*KubernetesServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -4310,13 +4370,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 		localVarReturnValue *KubernetesServiceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsKubernetesPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsKubernetesPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4351,9 +4411,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4370,6 +4430,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4380,6 +4441,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4399,7 +4461,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesPartialUpdateEx
 
 type ApiOutpostsServiceConnectionsKubernetesRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -4416,7 +4478,7 @@ KubernetesServiceConnection Viewset
 	@param uuid A UUID string identifying this Kubernetes Service-Connection.
 	@return ApiOutpostsServiceConnectionsKubernetesRetrieveRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesRetrieveRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesRetrieve(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesRetrieveRequest {
 	return ApiOutpostsServiceConnectionsKubernetesRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4427,7 +4489,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieve(ctx co
 // Execute executes the request
 //
 //	@return KubernetesServiceConnection
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute(r ApiOutpostsServiceConnectionsKubernetesRetrieveRequest) (*KubernetesServiceConnection, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesRetrieveExecute(r ApiOutpostsServiceConnectionsKubernetesRetrieveRequest) (*KubernetesServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4435,13 +4497,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 		localVarReturnValue *KubernetesServiceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsKubernetesRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsKubernetesRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4474,9 +4536,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4493,6 +4555,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4503,6 +4566,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4522,7 +4586,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesRetrieveExecute
 
 type ApiOutpostsServiceConnectionsKubernetesUpdateRequest struct {
 	ctx                                context.Context
-	ApiService                         *OutpostsApiService
+	ApiService                         *OutpostsAPIService
 	uuid                               string
 	kubernetesServiceConnectionRequest *KubernetesServiceConnectionRequest
 }
@@ -4545,7 +4609,7 @@ KubernetesServiceConnection Viewset
 	@param uuid A UUID string identifying this Kubernetes Service-Connection.
 	@return ApiOutpostsServiceConnectionsKubernetesUpdateRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesUpdateRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesUpdate(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesUpdateRequest {
 	return ApiOutpostsServiceConnectionsKubernetesUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4556,7 +4620,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdate(ctx cont
 // Execute executes the request
 //
 //	@return KubernetesServiceConnection
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r ApiOutpostsServiceConnectionsKubernetesUpdateRequest) (*KubernetesServiceConnection, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesUpdateExecute(r ApiOutpostsServiceConnectionsKubernetesUpdateRequest) (*KubernetesServiceConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -4564,13 +4628,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 		localVarReturnValue *KubernetesServiceConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsKubernetesUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsKubernetesUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4608,9 +4672,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4627,6 +4691,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4637,6 +4702,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -4656,7 +4722,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUpdateExecute(r
 
 type ApiOutpostsServiceConnectionsKubernetesUsedByListRequest struct {
 	ctx        context.Context
-	ApiService *OutpostsApiService
+	ApiService *OutpostsAPIService
 	uuid       string
 }
 
@@ -4673,7 +4739,7 @@ Get a list of all objects that use this object
 	@param uuid A UUID string identifying this Kubernetes Service-Connection.
 	@return ApiOutpostsServiceConnectionsKubernetesUsedByListRequest
 */
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByList(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesUsedByListRequest {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesUsedByList(ctx context.Context, uuid string) ApiOutpostsServiceConnectionsKubernetesUsedByListRequest {
 	return ApiOutpostsServiceConnectionsKubernetesUsedByListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4684,7 +4750,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByList(ctx 
 // Execute executes the request
 //
 //	@return []UsedBy
-func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecute(r ApiOutpostsServiceConnectionsKubernetesUsedByListRequest) ([]UsedBy, *http.Response, error) {
+func (a *OutpostsAPIService) OutpostsServiceConnectionsKubernetesUsedByListExecute(r ApiOutpostsServiceConnectionsKubernetesUsedByListRequest) ([]UsedBy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4692,13 +4758,13 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecu
 		localVarReturnValue []UsedBy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsApiService.OutpostsServiceConnectionsKubernetesUsedByList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OutpostsAPIService.OutpostsServiceConnectionsKubernetesUsedByList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/outposts/service_connections/kubernetes/{uuid}/used_by/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4731,9 +4797,9 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4750,6 +4816,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -4760,6 +4827,7 @@ func (a *OutpostsApiService) OutpostsServiceConnectionsKubernetesUsedByListExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

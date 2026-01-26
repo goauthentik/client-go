@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the DeviceSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceSummary{}
 
 // DeviceSummary Summary of registered devices
 type DeviceSummary struct {
@@ -21,6 +26,8 @@ type DeviceSummary struct {
 	UnreachableCount   int32 `json:"unreachable_count"`
 	OutdatedAgentCount int32 `json:"outdated_agent_count"`
 }
+
+type _DeviceSummary DeviceSummary
 
 // NewDeviceSummary instantiates a new DeviceSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -115,17 +122,58 @@ func (o *DeviceSummary) SetOutdatedAgentCount(v int32) {
 }
 
 func (o DeviceSummary) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["total_count"] = o.TotalCount
-	}
-	if true {
-		toSerialize["unreachable_count"] = o.UnreachableCount
-	}
-	if true {
-		toSerialize["outdated_agent_count"] = o.OutdatedAgentCount
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceSummary) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["total_count"] = o.TotalCount
+	toSerialize["unreachable_count"] = o.UnreachableCount
+	toSerialize["outdated_agent_count"] = o.OutdatedAgentCount
+	return toSerialize, nil
+}
+
+func (o *DeviceSummary) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"total_count",
+		"unreachable_count",
+		"outdated_agent_count",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceSummary := _DeviceSummary{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceSummary(varDeviceSummary)
+
+	return err
 }
 
 type NullableDeviceSummary struct {

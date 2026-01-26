@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SCIMSourceUserRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SCIMSourceUserRequest{}
 
 // SCIMSourceUserRequest SCIMSourceUser Serializer
 type SCIMSourceUserRequest struct {
@@ -23,6 +28,8 @@ type SCIMSourceUserRequest struct {
 	Source     string                 `json:"source"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
+
+type _SCIMSourceUserRequest SCIMSourceUserRequest
 
 // NewSCIMSourceUserRequest instantiates a new SCIMSourceUserRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -46,7 +53,7 @@ func NewSCIMSourceUserRequestWithDefaults() *SCIMSourceUserRequest {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SCIMSourceUserRequest) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -56,7 +63,7 @@ func (o *SCIMSourceUserRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SCIMSourceUserRequest) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -64,7 +71,7 @@ func (o *SCIMSourceUserRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *SCIMSourceUserRequest) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -150,7 +157,7 @@ func (o *SCIMSourceUserRequest) SetSource(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *SCIMSourceUserRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -160,15 +167,15 @@ func (o *SCIMSourceUserRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SCIMSourceUserRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *SCIMSourceUserRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -181,23 +188,64 @@ func (o *SCIMSourceUserRequest) SetAttributes(v map[string]interface{}) {
 }
 
 func (o SCIMSourceUserRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["external_id"] = o.ExternalId
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SCIMSourceUserRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["external_id"] = o.ExternalId
+	toSerialize["user"] = o.User
+	toSerialize["source"] = o.Source
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
+}
+
+func (o *SCIMSourceUserRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"external_id",
+		"user",
+		"source",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSCIMSourceUserRequest := _SCIMSourceUserRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSCIMSourceUserRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SCIMSourceUserRequest(varSCIMSourceUserRequest)
+
+	return err
 }
 
 type NullableSCIMSourceUserRequest struct {

@@ -21,10 +21,10 @@ type DigestAlgorithmEnum string
 
 // List of DigestAlgorithmEnum
 const (
-	DIGESTALGORITHMENUM__2000_09_XMLDSIGSHA1        DigestAlgorithmEnum = "http://www.w3.org/2000/09/xmldsig#sha1"
-	DIGESTALGORITHMENUM__2001_04_XMLENCSHA256       DigestAlgorithmEnum = "http://www.w3.org/2001/04/xmlenc#sha256"
-	DIGESTALGORITHMENUM__2001_04_XMLDSIG_MORESHA384 DigestAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#sha384"
-	DIGESTALGORITHMENUM__2001_04_XMLENCSHA512       DigestAlgorithmEnum = "http://www.w3.org/2001/04/xmlenc#sha512"
+	DIGESTALGORITHMENUM_HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1        DigestAlgorithmEnum = "http://www.w3.org/2000/09/xmldsig#sha1"
+	DIGESTALGORITHMENUM_HTTP___WWW_W3_ORG_2001_04_XMLENCSHA256       DigestAlgorithmEnum = "http://www.w3.org/2001/04/xmlenc#sha256"
+	DIGESTALGORITHMENUM_HTTP___WWW_W3_ORG_2001_04_XMLDSIG_MORESHA384 DigestAlgorithmEnum = "http://www.w3.org/2001/04/xmldsig-more#sha384"
+	DIGESTALGORITHMENUM_HTTP___WWW_W3_ORG_2001_04_XMLENCSHA512       DigestAlgorithmEnum = "http://www.w3.org/2001/04/xmlenc#sha512"
 )
 
 // All allowed values of DigestAlgorithmEnum enum

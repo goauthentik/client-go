@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the Reputation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Reputation{}
 
 // Reputation Reputation Serializer
 type Reputation struct {
@@ -26,6 +31,8 @@ type Reputation struct {
 	Score      *int64                 `json:"score,omitempty"`
 	Updated    time.Time              `json:"updated"`
 }
+
+type _Reputation Reputation
 
 // NewReputation instantiates a new Reputation object
 // This constructor will assign default values to properties that have it defined,
@@ -49,7 +56,7 @@ func NewReputationWithDefaults() *Reputation {
 
 // GetPk returns the Pk field value if set, zero value otherwise.
 func (o *Reputation) GetPk() string {
-	if o == nil || o.Pk == nil {
+	if o == nil || IsNil(o.Pk) {
 		var ret string
 		return ret
 	}
@@ -59,7 +66,7 @@ func (o *Reputation) GetPk() string {
 // GetPkOk returns a tuple with the Pk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reputation) GetPkOk() (*string, bool) {
-	if o == nil || o.Pk == nil {
+	if o == nil || IsNil(o.Pk) {
 		return nil, false
 	}
 	return o.Pk, true
@@ -67,7 +74,7 @@ func (o *Reputation) GetPkOk() (*string, bool) {
 
 // HasPk returns a boolean if a field has been set.
 func (o *Reputation) HasPk() bool {
-	if o != nil && o.Pk != nil {
+	if o != nil && !IsNil(o.Pk) {
 		return true
 	}
 
@@ -129,7 +136,7 @@ func (o *Reputation) SetIp(v string) {
 
 // GetIpGeoData returns the IpGeoData field value if set, zero value otherwise.
 func (o *Reputation) GetIpGeoData() map[string]interface{} {
-	if o == nil || o.IpGeoData == nil {
+	if o == nil || IsNil(o.IpGeoData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -139,15 +146,15 @@ func (o *Reputation) GetIpGeoData() map[string]interface{} {
 // GetIpGeoDataOk returns a tuple with the IpGeoData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reputation) GetIpGeoDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.IpGeoData == nil {
-		return nil, false
+	if o == nil || IsNil(o.IpGeoData) {
+		return map[string]interface{}{}, false
 	}
 	return o.IpGeoData, true
 }
 
 // HasIpGeoData returns a boolean if a field has been set.
 func (o *Reputation) HasIpGeoData() bool {
-	if o != nil && o.IpGeoData != nil {
+	if o != nil && !IsNil(o.IpGeoData) {
 		return true
 	}
 
@@ -161,7 +168,7 @@ func (o *Reputation) SetIpGeoData(v map[string]interface{}) {
 
 // GetIpAsnData returns the IpAsnData field value if set, zero value otherwise.
 func (o *Reputation) GetIpAsnData() map[string]interface{} {
-	if o == nil || o.IpAsnData == nil {
+	if o == nil || IsNil(o.IpAsnData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -171,15 +178,15 @@ func (o *Reputation) GetIpAsnData() map[string]interface{} {
 // GetIpAsnDataOk returns a tuple with the IpAsnData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reputation) GetIpAsnDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.IpAsnData == nil {
-		return nil, false
+	if o == nil || IsNil(o.IpAsnData) {
+		return map[string]interface{}{}, false
 	}
 	return o.IpAsnData, true
 }
 
 // HasIpAsnData returns a boolean if a field has been set.
 func (o *Reputation) HasIpAsnData() bool {
-	if o != nil && o.IpAsnData != nil {
+	if o != nil && !IsNil(o.IpAsnData) {
 		return true
 	}
 
@@ -193,7 +200,7 @@ func (o *Reputation) SetIpAsnData(v map[string]interface{}) {
 
 // GetScore returns the Score field value if set, zero value otherwise.
 func (o *Reputation) GetScore() int64 {
-	if o == nil || o.Score == nil {
+	if o == nil || IsNil(o.Score) {
 		var ret int64
 		return ret
 	}
@@ -203,7 +210,7 @@ func (o *Reputation) GetScore() int64 {
 // GetScoreOk returns a tuple with the Score field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reputation) GetScoreOk() (*int64, bool) {
-	if o == nil || o.Score == nil {
+	if o == nil || IsNil(o.Score) {
 		return nil, false
 	}
 	return o.Score, true
@@ -211,7 +218,7 @@ func (o *Reputation) GetScoreOk() (*int64, bool) {
 
 // HasScore returns a boolean if a field has been set.
 func (o *Reputation) HasScore() bool {
-	if o != nil && o.Score != nil {
+	if o != nil && !IsNil(o.Score) {
 		return true
 	}
 
@@ -248,29 +255,70 @@ func (o *Reputation) SetUpdated(v time.Time) {
 }
 
 func (o Reputation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Pk != nil {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
-	}
-	if true {
-		toSerialize["ip"] = o.Ip
-	}
-	if o.IpGeoData != nil {
-		toSerialize["ip_geo_data"] = o.IpGeoData
-	}
-	if o.IpAsnData != nil {
-		toSerialize["ip_asn_data"] = o.IpAsnData
-	}
-	if o.Score != nil {
-		toSerialize["score"] = o.Score
-	}
-	if true {
-		toSerialize["updated"] = o.Updated
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Reputation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Pk) {
+		toSerialize["pk"] = o.Pk
+	}
+	toSerialize["identifier"] = o.Identifier
+	toSerialize["ip"] = o.Ip
+	if !IsNil(o.IpGeoData) {
+		toSerialize["ip_geo_data"] = o.IpGeoData
+	}
+	if !IsNil(o.IpAsnData) {
+		toSerialize["ip_asn_data"] = o.IpAsnData
+	}
+	if !IsNil(o.Score) {
+		toSerialize["score"] = o.Score
+	}
+	toSerialize["updated"] = o.Updated
+	return toSerialize, nil
+}
+
+func (o *Reputation) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"identifier",
+		"ip",
+		"updated",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varReputation := _Reputation{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varReputation)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Reputation(varReputation)
+
+	return err
 }
 
 type NullableReputation struct {

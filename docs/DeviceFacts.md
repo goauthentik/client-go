@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Os** | Pointer to [**NullableDeviceFactsOs**](DeviceFactsOs.md) |  | [optional] 
+**Os** | Pointer to [**NullableOperatingSystem**](OperatingSystem.md) |  | [optional] 
 **Disks** | Pointer to [**[]Disk**](Disk.md) |  | [optional] 
-**Network** | Pointer to [**NullableDeviceFactsNetwork**](DeviceFactsNetwork.md) |  | [optional] 
-**Hardware** | Pointer to [**NullableDeviceFactsHardware**](DeviceFactsHardware.md) |  | [optional] 
+**Network** | Pointer to [**NullableNetwork**](Network.md) |  | [optional] 
+**Hardware** | Pointer to [**NullableHardware**](Hardware.md) |  | [optional] 
 **Software** | Pointer to [**[]Software**](Software.md) |  | [optional] 
 **Processes** | Pointer to [**[]Process**](Process.md) |  | [optional] 
 **Users** | Pointer to [**[]DeviceUser**](DeviceUser.md) |  | [optional] 
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOs
 
-`func (o *DeviceFacts) GetOs() DeviceFactsOs`
+`func (o *DeviceFacts) GetOs() OperatingSystem`
 
 GetOs returns the Os field if non-nil, zero value otherwise.
 
 ### GetOsOk
 
-`func (o *DeviceFacts) GetOsOk() (*DeviceFactsOs, bool)`
+`func (o *DeviceFacts) GetOsOk() (*OperatingSystem, bool)`
 
 GetOsOk returns a tuple with the Os field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOs
 
-`func (o *DeviceFacts) SetOs(v DeviceFactsOs)`
+`func (o *DeviceFacts) SetOs(v OperatingSystem)`
 
 SetOs sets Os field to given value.
 
@@ -105,20 +105,20 @@ HasDisks returns a boolean if a field has been set.
 UnsetDisks ensures that no value is present for Disks, not even an explicit nil
 ### GetNetwork
 
-`func (o *DeviceFacts) GetNetwork() DeviceFactsNetwork`
+`func (o *DeviceFacts) GetNetwork() Network`
 
 GetNetwork returns the Network field if non-nil, zero value otherwise.
 
 ### GetNetworkOk
 
-`func (o *DeviceFacts) GetNetworkOk() (*DeviceFactsNetwork, bool)`
+`func (o *DeviceFacts) GetNetworkOk() (*Network, bool)`
 
 GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetwork
 
-`func (o *DeviceFacts) SetNetwork(v DeviceFactsNetwork)`
+`func (o *DeviceFacts) SetNetwork(v Network)`
 
 SetNetwork sets Network field to given value.
 
@@ -140,20 +140,20 @@ HasNetwork returns a boolean if a field has been set.
 UnsetNetwork ensures that no value is present for Network, not even an explicit nil
 ### GetHardware
 
-`func (o *DeviceFacts) GetHardware() DeviceFactsHardware`
+`func (o *DeviceFacts) GetHardware() Hardware`
 
 GetHardware returns the Hardware field if non-nil, zero value otherwise.
 
 ### GetHardwareOk
 
-`func (o *DeviceFacts) GetHardwareOk() (*DeviceFactsHardware, bool)`
+`func (o *DeviceFacts) GetHardwareOk() (*Hardware, bool)`
 
 GetHardwareOk returns a tuple with the Hardware field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHardware
 
-`func (o *DeviceFacts) SetHardware(v DeviceFactsHardware)`
+`func (o *DeviceFacts) SetHardware(v Hardware)`
 
 SetHardware sets Hardware field to given value.
 

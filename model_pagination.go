@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the Pagination type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Pagination{}
 
 // Pagination struct for Pagination
 type Pagination struct {
@@ -25,6 +30,8 @@ type Pagination struct {
 	StartIndex float32 `json:"start_index"`
 	EndIndex   float32 `json:"end_index"`
 }
+
+type _Pagination Pagination
 
 // NewPagination instantiates a new Pagination object
 // This constructor will assign default values to properties that have it defined,
@@ -219,29 +226,66 @@ func (o *Pagination) SetEndIndex(v float32) {
 }
 
 func (o Pagination) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["next"] = o.Next
-	}
-	if true {
-		toSerialize["previous"] = o.Previous
-	}
-	if true {
-		toSerialize["count"] = o.Count
-	}
-	if true {
-		toSerialize["current"] = o.Current
-	}
-	if true {
-		toSerialize["total_pages"] = o.TotalPages
-	}
-	if true {
-		toSerialize["start_index"] = o.StartIndex
-	}
-	if true {
-		toSerialize["end_index"] = o.EndIndex
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Pagination) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["next"] = o.Next
+	toSerialize["previous"] = o.Previous
+	toSerialize["count"] = o.Count
+	toSerialize["current"] = o.Current
+	toSerialize["total_pages"] = o.TotalPages
+	toSerialize["start_index"] = o.StartIndex
+	toSerialize["end_index"] = o.EndIndex
+	return toSerialize, nil
+}
+
+func (o *Pagination) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"next",
+		"previous",
+		"count",
+		"current",
+		"total_pages",
+		"start_index",
+		"end_index",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPagination := _Pagination{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPagination)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Pagination(varPagination)
+
+	return err
 }
 
 type NullablePagination struct {

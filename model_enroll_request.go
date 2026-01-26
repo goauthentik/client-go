@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the EnrollRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollRequest{}
 
 // EnrollRequest Base serializer class which doesn't implement create/update methods
 type EnrollRequest struct {
 	DeviceSerial string `json:"device_serial"`
 	DeviceName   string `json:"device_name"`
 }
+
+type _EnrollRequest EnrollRequest
 
 // NewEnrollRequest instantiates a new EnrollRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -89,14 +96,56 @@ func (o *EnrollRequest) SetDeviceName(v string) {
 }
 
 func (o EnrollRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["device_serial"] = o.DeviceSerial
-	}
-	if true {
-		toSerialize["device_name"] = o.DeviceName
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["device_serial"] = o.DeviceSerial
+	toSerialize["device_name"] = o.DeviceName
+	return toSerialize, nil
+}
+
+func (o *EnrollRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"device_serial",
+		"device_name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnrollRequest := _EnrollRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnrollRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnrollRequest(varEnrollRequest)
+
+	return err
 }
 
 type NullableEnrollRequest struct {

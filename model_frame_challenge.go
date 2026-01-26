@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the FrameChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FrameChallenge{}
 
 // FrameChallenge Challenge type to render a frame
 type FrameChallenge struct {
@@ -24,6 +29,8 @@ type FrameChallenge struct {
 	LoadingOverlay *bool                     `json:"loading_overlay,omitempty"`
 	LoadingText    string                    `json:"loading_text"`
 }
+
+type _FrameChallenge FrameChallenge
 
 // NewFrameChallenge instantiates a new FrameChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -54,7 +61,7 @@ func NewFrameChallengeWithDefaults() *FrameChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *FrameChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -64,7 +71,7 @@ func (o *FrameChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FrameChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -72,7 +79,7 @@ func (o *FrameChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *FrameChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -86,7 +93,7 @@ func (o *FrameChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *FrameChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -96,7 +103,7 @@ func (o *FrameChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FrameChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -104,7 +111,7 @@ func (o *FrameChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *FrameChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -118,7 +125,7 @@ func (o *FrameChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *FrameChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -128,7 +135,7 @@ func (o *FrameChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FrameChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -136,7 +143,7 @@ func (o *FrameChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool)
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *FrameChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -174,7 +181,7 @@ func (o *FrameChallenge) SetUrl(v string) {
 
 // GetLoadingOverlay returns the LoadingOverlay field value if set, zero value otherwise.
 func (o *FrameChallenge) GetLoadingOverlay() bool {
-	if o == nil || o.LoadingOverlay == nil {
+	if o == nil || IsNil(o.LoadingOverlay) {
 		var ret bool
 		return ret
 	}
@@ -184,7 +191,7 @@ func (o *FrameChallenge) GetLoadingOverlay() bool {
 // GetLoadingOverlayOk returns a tuple with the LoadingOverlay field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FrameChallenge) GetLoadingOverlayOk() (*bool, bool) {
-	if o == nil || o.LoadingOverlay == nil {
+	if o == nil || IsNil(o.LoadingOverlay) {
 		return nil, false
 	}
 	return o.LoadingOverlay, true
@@ -192,7 +199,7 @@ func (o *FrameChallenge) GetLoadingOverlayOk() (*bool, bool) {
 
 // HasLoadingOverlay returns a boolean if a field has been set.
 func (o *FrameChallenge) HasLoadingOverlay() bool {
-	if o != nil && o.LoadingOverlay != nil {
+	if o != nil && !IsNil(o.LoadingOverlay) {
 		return true
 	}
 
@@ -229,26 +236,68 @@ func (o *FrameChallenge) SetLoadingText(v string) {
 }
 
 func (o FrameChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if o.LoadingOverlay != nil {
-		toSerialize["loading_overlay"] = o.LoadingOverlay
-	}
-	if true {
-		toSerialize["loading_text"] = o.LoadingText
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FrameChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["url"] = o.Url
+	if !IsNil(o.LoadingOverlay) {
+		toSerialize["loading_overlay"] = o.LoadingOverlay
+	}
+	toSerialize["loading_text"] = o.LoadingText
+	return toSerialize, nil
+}
+
+func (o *FrameChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"url",
+		"loading_text",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFrameChallenge := _FrameChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varFrameChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FrameChallenge(varFrameChallenge)
+
+	return err
 }
 
 type NullableFrameChallenge struct {

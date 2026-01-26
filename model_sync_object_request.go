@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SyncObjectRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SyncObjectRequest{}
 
 // SyncObjectRequest Sync object serializer
 type SyncObjectRequest struct {
@@ -21,6 +26,8 @@ type SyncObjectRequest struct {
 	SyncObjectId    string              `json:"sync_object_id"`
 	OverrideDryRun  *bool               `json:"override_dry_run,omitempty"`
 }
+
+type _SyncObjectRequest SyncObjectRequest
 
 // NewSyncObjectRequest instantiates a new SyncObjectRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +102,7 @@ func (o *SyncObjectRequest) SetSyncObjectId(v string) {
 
 // GetOverrideDryRun returns the OverrideDryRun field value if set, zero value otherwise.
 func (o *SyncObjectRequest) GetOverrideDryRun() bool {
-	if o == nil || o.OverrideDryRun == nil {
+	if o == nil || IsNil(o.OverrideDryRun) {
 		var ret bool
 		return ret
 	}
@@ -105,7 +112,7 @@ func (o *SyncObjectRequest) GetOverrideDryRun() bool {
 // GetOverrideDryRunOk returns a tuple with the OverrideDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SyncObjectRequest) GetOverrideDryRunOk() (*bool, bool) {
-	if o == nil || o.OverrideDryRun == nil {
+	if o == nil || IsNil(o.OverrideDryRun) {
 		return nil, false
 	}
 	return o.OverrideDryRun, true
@@ -113,7 +120,7 @@ func (o *SyncObjectRequest) GetOverrideDryRunOk() (*bool, bool) {
 
 // HasOverrideDryRun returns a boolean if a field has been set.
 func (o *SyncObjectRequest) HasOverrideDryRun() bool {
-	if o != nil && o.OverrideDryRun != nil {
+	if o != nil && !IsNil(o.OverrideDryRun) {
 		return true
 	}
 
@@ -126,17 +133,59 @@ func (o *SyncObjectRequest) SetOverrideDryRun(v bool) {
 }
 
 func (o SyncObjectRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["sync_object_model"] = o.SyncObjectModel
-	}
-	if true {
-		toSerialize["sync_object_id"] = o.SyncObjectId
-	}
-	if o.OverrideDryRun != nil {
-		toSerialize["override_dry_run"] = o.OverrideDryRun
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SyncObjectRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["sync_object_model"] = o.SyncObjectModel
+	toSerialize["sync_object_id"] = o.SyncObjectId
+	if !IsNil(o.OverrideDryRun) {
+		toSerialize["override_dry_run"] = o.OverrideDryRun
+	}
+	return toSerialize, nil
+}
+
+func (o *SyncObjectRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"sync_object_model",
+		"sync_object_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSyncObjectRequest := _SyncObjectRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSyncObjectRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SyncObjectRequest(varSyncObjectRequest)
+
+	return err
 }
 
 type NullableSyncObjectRequest struct {

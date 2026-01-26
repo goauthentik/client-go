@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedGroupTelegramSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedGroupTelegramSourceConnectionRequest{}
+
 // PatchedGroupTelegramSourceConnectionRequest Group Source Connection
 type PatchedGroupTelegramSourceConnectionRequest struct {
 	Group      *string `json:"group,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedGroupTelegramSourceConnectionRequestWithDefaults() *PatchedGroupT
 
 // GetGroup returns the Group field value if set, zero value otherwise.
 func (o *PatchedGroupTelegramSourceConnectionRequest) GetGroup() string {
-	if o == nil || o.Group == nil {
+	if o == nil || IsNil(o.Group) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedGroupTelegramSourceConnectionRequest) GetGroup() string {
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupTelegramSourceConnectionRequest) GetGroupOk() (*string, bool) {
-	if o == nil || o.Group == nil {
+	if o == nil || IsNil(o.Group) {
 		return nil, false
 	}
 	return o.Group, true
@@ -59,7 +62,7 @@ func (o *PatchedGroupTelegramSourceConnectionRequest) GetGroupOk() (*string, boo
 
 // HasGroup returns a boolean if a field has been set.
 func (o *PatchedGroupTelegramSourceConnectionRequest) HasGroup() bool {
-	if o != nil && o.Group != nil {
+	if o != nil && !IsNil(o.Group) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedGroupTelegramSourceConnectionRequest) SetGroup(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PatchedGroupTelegramSourceConnectionRequest) GetSource() string {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedGroupTelegramSourceConnectionRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupTelegramSourceConnectionRequest) GetSourceOk() (*string, bool) {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -91,7 +94,7 @@ func (o *PatchedGroupTelegramSourceConnectionRequest) GetSourceOk() (*string, bo
 
 // HasSource returns a boolean if a field has been set.
 func (o *PatchedGroupTelegramSourceConnectionRequest) HasSource() bool {
-	if o != nil && o.Source != nil {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedGroupTelegramSourceConnectionRequest) SetSource(v string) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *PatchedGroupTelegramSourceConnectionRequest) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PatchedGroupTelegramSourceConnectionRequest) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupTelegramSourceConnectionRequest) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -123,7 +126,7 @@ func (o *PatchedGroupTelegramSourceConnectionRequest) GetIdentifierOk() (*string
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *PatchedGroupTelegramSourceConnectionRequest) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedGroupTelegramSourceConnectionRequest) SetIdentifier(v string) {
 }
 
 func (o PatchedGroupTelegramSourceConnectionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Group != nil {
-		toSerialize["group"] = o.Group
-	}
-	if o.Source != nil {
-		toSerialize["source"] = o.Source
-	}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedGroupTelegramSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Group) {
+		toSerialize["group"] = o.Group
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedGroupTelegramSourceConnectionRequest struct {

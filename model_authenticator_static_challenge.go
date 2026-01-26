@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatorStaticChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorStaticChallenge{}
 
 // AuthenticatorStaticChallenge Static authenticator challenge
 type AuthenticatorStaticChallenge struct {
@@ -24,6 +29,8 @@ type AuthenticatorStaticChallenge struct {
 	PendingUserAvatar string                    `json:"pending_user_avatar"`
 	Codes             []string                  `json:"codes"`
 }
+
+type _AuthenticatorStaticChallenge AuthenticatorStaticChallenge
 
 // NewAuthenticatorStaticChallenge instantiates a new AuthenticatorStaticChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -51,7 +58,7 @@ func NewAuthenticatorStaticChallengeWithDefaults() *AuthenticatorStaticChallenge
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *AuthenticatorStaticChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -61,7 +68,7 @@ func (o *AuthenticatorStaticChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -69,7 +76,7 @@ func (o *AuthenticatorStaticChallenge) GetFlowInfoOk() (*ContextualFlowInfo, boo
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *AuthenticatorStaticChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -83,7 +90,7 @@ func (o *AuthenticatorStaticChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorStaticChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -93,7 +100,7 @@ func (o *AuthenticatorStaticChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -101,7 +108,7 @@ func (o *AuthenticatorStaticChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AuthenticatorStaticChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -115,7 +122,7 @@ func (o *AuthenticatorStaticChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *AuthenticatorStaticChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -125,7 +132,7 @@ func (o *AuthenticatorStaticChallenge) GetResponseErrors() map[string][]ErrorDet
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -133,7 +140,7 @@ func (o *AuthenticatorStaticChallenge) GetResponseErrorsOk() (*map[string][]Erro
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *AuthenticatorStaticChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -218,26 +225,67 @@ func (o *AuthenticatorStaticChallenge) SetCodes(v []string) {
 }
 
 func (o AuthenticatorStaticChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["pending_user"] = o.PendingUser
-	}
-	if true {
-		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
-	}
-	if true {
-		toSerialize["codes"] = o.Codes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorStaticChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["pending_user"] = o.PendingUser
+	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
+	toSerialize["codes"] = o.Codes
+	return toSerialize, nil
+}
+
+func (o *AuthenticatorStaticChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pending_user",
+		"pending_user_avatar",
+		"codes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatorStaticChallenge := _AuthenticatorStaticChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatorStaticChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorStaticChallenge(varAuthenticatorStaticChallenge)
+
+	return err
 }
 
 type NullableAuthenticatorStaticChallenge struct {

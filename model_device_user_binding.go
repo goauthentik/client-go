@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the DeviceUserBinding type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceUserBinding{}
 
 // DeviceUserBinding PolicyBinding Serializer
 type DeviceUserBinding struct {
@@ -37,6 +42,8 @@ type DeviceUserBinding struct {
 	Connector     NullableString `json:"connector"`
 	ConnectorObj  Connector      `json:"connector_obj"`
 }
+
+type _DeviceUserBinding DeviceUserBinding
 
 // NewDeviceUserBinding instantiates a new DeviceUserBinding object
 // This constructor will assign default values to properties that have it defined,
@@ -89,7 +96,7 @@ func (o *DeviceUserBinding) SetPk(v string) {
 
 // GetPolicy returns the Policy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeviceUserBinding) GetPolicy() string {
-	if o == nil || o.Policy.Get() == nil {
+	if o == nil || IsNil(o.Policy.Get()) {
 		var ret string
 		return ret
 	}
@@ -132,7 +139,7 @@ func (o *DeviceUserBinding) UnsetPolicy() {
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeviceUserBinding) GetGroup() string {
-	if o == nil || o.Group.Get() == nil {
+	if o == nil || IsNil(o.Group.Get()) {
 		var ret string
 		return ret
 	}
@@ -175,7 +182,7 @@ func (o *DeviceUserBinding) UnsetGroup() {
 
 // GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeviceUserBinding) GetUser() int32 {
-	if o == nil || o.User.Get() == nil {
+	if o == nil || IsNil(o.User.Get()) {
 		var ret int32
 		return ret
 	}
@@ -314,7 +321,7 @@ func (o *DeviceUserBinding) SetTarget(v string) {
 
 // GetNegate returns the Negate field value if set, zero value otherwise.
 func (o *DeviceUserBinding) GetNegate() bool {
-	if o == nil || o.Negate == nil {
+	if o == nil || IsNil(o.Negate) {
 		var ret bool
 		return ret
 	}
@@ -324,7 +331,7 @@ func (o *DeviceUserBinding) GetNegate() bool {
 // GetNegateOk returns a tuple with the Negate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceUserBinding) GetNegateOk() (*bool, bool) {
-	if o == nil || o.Negate == nil {
+	if o == nil || IsNil(o.Negate) {
 		return nil, false
 	}
 	return o.Negate, true
@@ -332,7 +339,7 @@ func (o *DeviceUserBinding) GetNegateOk() (*bool, bool) {
 
 // HasNegate returns a boolean if a field has been set.
 func (o *DeviceUserBinding) HasNegate() bool {
-	if o != nil && o.Negate != nil {
+	if o != nil && !IsNil(o.Negate) {
 		return true
 	}
 
@@ -346,7 +353,7 @@ func (o *DeviceUserBinding) SetNegate(v bool) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *DeviceUserBinding) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -356,7 +363,7 @@ func (o *DeviceUserBinding) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceUserBinding) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -364,7 +371,7 @@ func (o *DeviceUserBinding) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *DeviceUserBinding) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -402,7 +409,7 @@ func (o *DeviceUserBinding) SetOrder(v int32) {
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
 func (o *DeviceUserBinding) GetTimeout() int32 {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		var ret int32
 		return ret
 	}
@@ -412,7 +419,7 @@ func (o *DeviceUserBinding) GetTimeout() int32 {
 // GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceUserBinding) GetTimeoutOk() (*int32, bool) {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		return nil, false
 	}
 	return o.Timeout, true
@@ -420,7 +427,7 @@ func (o *DeviceUserBinding) GetTimeoutOk() (*int32, bool) {
 
 // HasTimeout returns a boolean if a field has been set.
 func (o *DeviceUserBinding) HasTimeout() bool {
-	if o != nil && o.Timeout != nil {
+	if o != nil && !IsNil(o.Timeout) {
 		return true
 	}
 
@@ -434,7 +441,7 @@ func (o *DeviceUserBinding) SetTimeout(v int32) {
 
 // GetFailureResult returns the FailureResult field value if set, zero value otherwise.
 func (o *DeviceUserBinding) GetFailureResult() bool {
-	if o == nil || o.FailureResult == nil {
+	if o == nil || IsNil(o.FailureResult) {
 		var ret bool
 		return ret
 	}
@@ -444,7 +451,7 @@ func (o *DeviceUserBinding) GetFailureResult() bool {
 // GetFailureResultOk returns a tuple with the FailureResult field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceUserBinding) GetFailureResultOk() (*bool, bool) {
-	if o == nil || o.FailureResult == nil {
+	if o == nil || IsNil(o.FailureResult) {
 		return nil, false
 	}
 	return o.FailureResult, true
@@ -452,7 +459,7 @@ func (o *DeviceUserBinding) GetFailureResultOk() (*bool, bool) {
 
 // HasFailureResult returns a boolean if a field has been set.
 func (o *DeviceUserBinding) HasFailureResult() bool {
-	if o != nil && o.FailureResult != nil {
+	if o != nil && !IsNil(o.FailureResult) {
 		return true
 	}
 
@@ -466,7 +473,7 @@ func (o *DeviceUserBinding) SetFailureResult(v bool) {
 
 // GetIsPrimary returns the IsPrimary field value if set, zero value otherwise.
 func (o *DeviceUserBinding) GetIsPrimary() bool {
-	if o == nil || o.IsPrimary == nil {
+	if o == nil || IsNil(o.IsPrimary) {
 		var ret bool
 		return ret
 	}
@@ -476,7 +483,7 @@ func (o *DeviceUserBinding) GetIsPrimary() bool {
 // GetIsPrimaryOk returns a tuple with the IsPrimary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceUserBinding) GetIsPrimaryOk() (*bool, bool) {
-	if o == nil || o.IsPrimary == nil {
+	if o == nil || IsNil(o.IsPrimary) {
 		return nil, false
 	}
 	return o.IsPrimary, true
@@ -484,7 +491,7 @@ func (o *DeviceUserBinding) GetIsPrimaryOk() (*bool, bool) {
 
 // HasIsPrimary returns a boolean if a field has been set.
 func (o *DeviceUserBinding) HasIsPrimary() bool {
-	if o != nil && o.IsPrimary != nil {
+	if o != nil && !IsNil(o.IsPrimary) {
 		return true
 	}
 
@@ -547,10 +554,16 @@ func (o *DeviceUserBinding) SetConnectorObj(v Connector) {
 }
 
 func (o DeviceUserBinding) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DeviceUserBinding) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
 	if o.Policy.IsSet() {
 		toSerialize["policy"] = o.Policy.Get()
 	}
@@ -560,43 +573,73 @@ func (o DeviceUserBinding) MarshalJSON() ([]byte, error) {
 	if o.User.IsSet() {
 		toSerialize["user"] = o.User.Get()
 	}
-	if true {
-		toSerialize["policy_obj"] = o.PolicyObj
-	}
-	if true {
-		toSerialize["group_obj"] = o.GroupObj
-	}
-	if true {
-		toSerialize["user_obj"] = o.UserObj
-	}
-	if true {
-		toSerialize["target"] = o.Target
-	}
-	if o.Negate != nil {
+	toSerialize["policy_obj"] = o.PolicyObj
+	toSerialize["group_obj"] = o.GroupObj
+	toSerialize["user_obj"] = o.UserObj
+	toSerialize["target"] = o.Target
+	if !IsNil(o.Negate) {
 		toSerialize["negate"] = o.Negate
 	}
-	if o.Enabled != nil {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if true {
-		toSerialize["order"] = o.Order
-	}
-	if o.Timeout != nil {
+	toSerialize["order"] = o.Order
+	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
 	}
-	if o.FailureResult != nil {
+	if !IsNil(o.FailureResult) {
 		toSerialize["failure_result"] = o.FailureResult
 	}
-	if o.IsPrimary != nil {
+	if !IsNil(o.IsPrimary) {
 		toSerialize["is_primary"] = o.IsPrimary
 	}
-	if true {
-		toSerialize["connector"] = o.Connector.Get()
+	toSerialize["connector"] = o.Connector.Get()
+	toSerialize["connector_obj"] = o.ConnectorObj
+	return toSerialize, nil
+}
+
+func (o *DeviceUserBinding) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"policy_obj",
+		"group_obj",
+		"user_obj",
+		"target",
+		"order",
+		"connector",
+		"connector_obj",
 	}
-	if true {
-		toSerialize["connector_obj"] = o.ConnectorObj
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
 	}
-	return json.Marshal(toSerialize)
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceUserBinding := _DeviceUserBinding{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceUserBinding)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceUserBinding(varDeviceUserBinding)
+
+	return err
 }
 
 type NullableDeviceUserBinding struct {

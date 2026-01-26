@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EndpointAgentChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EndpointAgentChallengeResponseRequest{}
+
 // EndpointAgentChallengeResponseRequest Response to signed challenge
 type EndpointAgentChallengeResponseRequest struct {
 	Component *string        `json:"component,omitempty"`
@@ -44,7 +47,7 @@ func NewEndpointAgentChallengeResponseRequestWithDefaults() *EndpointAgentChalle
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *EndpointAgentChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *EndpointAgentChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointAgentChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -62,7 +65,7 @@ func (o *EndpointAgentChallengeResponseRequest) GetComponentOk() (*string, bool)
 
 // HasComponent returns a boolean if a field has been set.
 func (o *EndpointAgentChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *EndpointAgentChallengeResponseRequest) SetComponent(v string) {
 
 // GetResponse returns the Response field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EndpointAgentChallengeResponseRequest) GetResponse() string {
-	if o == nil || o.Response.Get() == nil {
+	if o == nil || IsNil(o.Response.Get()) {
 		var ret string
 		return ret
 	}
@@ -118,14 +121,22 @@ func (o *EndpointAgentChallengeResponseRequest) UnsetResponse() {
 }
 
 func (o EndpointAgentChallengeResponseRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EndpointAgentChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
+	if !IsNil(o.Component) {
 		toSerialize["component"] = o.Component
 	}
 	if o.Response.IsSet() {
 		toSerialize["response"] = o.Response.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEndpointAgentChallengeResponseRequest struct {

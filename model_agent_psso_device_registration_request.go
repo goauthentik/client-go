@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AgentPSSODeviceRegistrationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgentPSSODeviceRegistrationRequest{}
 
 // AgentPSSODeviceRegistrationRequest Register Apple device via Platform SSO
 type AgentPSSODeviceRegistrationRequest struct {
@@ -22,6 +27,8 @@ type AgentPSSODeviceRegistrationRequest struct {
 	SignKeyId           string `json:"sign_key_id"`
 	EncKeyId            string `json:"enc_key_id"`
 }
+
+type _AgentPSSODeviceRegistrationRequest AgentPSSODeviceRegistrationRequest
 
 // NewAgentPSSODeviceRegistrationRequest instantiates a new AgentPSSODeviceRegistrationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -141,20 +148,60 @@ func (o *AgentPSSODeviceRegistrationRequest) SetEncKeyId(v string) {
 }
 
 func (o AgentPSSODeviceRegistrationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["device_signing_key"] = o.DeviceSigningKey
-	}
-	if true {
-		toSerialize["device_encryption_key"] = o.DeviceEncryptionKey
-	}
-	if true {
-		toSerialize["sign_key_id"] = o.SignKeyId
-	}
-	if true {
-		toSerialize["enc_key_id"] = o.EncKeyId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AgentPSSODeviceRegistrationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["device_signing_key"] = o.DeviceSigningKey
+	toSerialize["device_encryption_key"] = o.DeviceEncryptionKey
+	toSerialize["sign_key_id"] = o.SignKeyId
+	toSerialize["enc_key_id"] = o.EncKeyId
+	return toSerialize, nil
+}
+
+func (o *AgentPSSODeviceRegistrationRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"device_signing_key",
+		"device_encryption_key",
+		"sign_key_id",
+		"enc_key_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAgentPSSODeviceRegistrationRequest := _AgentPSSODeviceRegistrationRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAgentPSSODeviceRegistrationRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AgentPSSODeviceRegistrationRequest(varAgentPSSODeviceRegistrationRequest)
+
+	return err
 }
 
 type NullableAgentPSSODeviceRegistrationRequest struct {

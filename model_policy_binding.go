@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PolicyBinding type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PolicyBinding{}
 
 // PolicyBinding PolicyBinding Serializer
 type PolicyBinding struct {
@@ -34,6 +39,8 @@ type PolicyBinding struct {
 	// Result if the Policy execution fails.
 	FailureResult *bool `json:"failure_result,omitempty"`
 }
+
+type _PolicyBinding PolicyBinding
 
 // NewPolicyBinding instantiates a new PolicyBinding object
 // This constructor will assign default values to properties that have it defined,
@@ -84,7 +91,7 @@ func (o *PolicyBinding) SetPk(v string) {
 
 // GetPolicy returns the Policy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PolicyBinding) GetPolicy() string {
-	if o == nil || o.Policy.Get() == nil {
+	if o == nil || IsNil(o.Policy.Get()) {
 		var ret string
 		return ret
 	}
@@ -127,7 +134,7 @@ func (o *PolicyBinding) UnsetPolicy() {
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PolicyBinding) GetGroup() string {
-	if o == nil || o.Group.Get() == nil {
+	if o == nil || IsNil(o.Group.Get()) {
 		var ret string
 		return ret
 	}
@@ -170,7 +177,7 @@ func (o *PolicyBinding) UnsetGroup() {
 
 // GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PolicyBinding) GetUser() int32 {
-	if o == nil || o.User.Get() == nil {
+	if o == nil || IsNil(o.User.Get()) {
 		var ret int32
 		return ret
 	}
@@ -309,7 +316,7 @@ func (o *PolicyBinding) SetTarget(v string) {
 
 // GetNegate returns the Negate field value if set, zero value otherwise.
 func (o *PolicyBinding) GetNegate() bool {
-	if o == nil || o.Negate == nil {
+	if o == nil || IsNil(o.Negate) {
 		var ret bool
 		return ret
 	}
@@ -319,7 +326,7 @@ func (o *PolicyBinding) GetNegate() bool {
 // GetNegateOk returns a tuple with the Negate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetNegateOk() (*bool, bool) {
-	if o == nil || o.Negate == nil {
+	if o == nil || IsNil(o.Negate) {
 		return nil, false
 	}
 	return o.Negate, true
@@ -327,7 +334,7 @@ func (o *PolicyBinding) GetNegateOk() (*bool, bool) {
 
 // HasNegate returns a boolean if a field has been set.
 func (o *PolicyBinding) HasNegate() bool {
-	if o != nil && o.Negate != nil {
+	if o != nil && !IsNil(o.Negate) {
 		return true
 	}
 
@@ -341,7 +348,7 @@ func (o *PolicyBinding) SetNegate(v bool) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *PolicyBinding) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -351,7 +358,7 @@ func (o *PolicyBinding) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -359,7 +366,7 @@ func (o *PolicyBinding) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *PolicyBinding) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -397,7 +404,7 @@ func (o *PolicyBinding) SetOrder(v int32) {
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
 func (o *PolicyBinding) GetTimeout() int32 {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		var ret int32
 		return ret
 	}
@@ -407,7 +414,7 @@ func (o *PolicyBinding) GetTimeout() int32 {
 // GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetTimeoutOk() (*int32, bool) {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		return nil, false
 	}
 	return o.Timeout, true
@@ -415,7 +422,7 @@ func (o *PolicyBinding) GetTimeoutOk() (*int32, bool) {
 
 // HasTimeout returns a boolean if a field has been set.
 func (o *PolicyBinding) HasTimeout() bool {
-	if o != nil && o.Timeout != nil {
+	if o != nil && !IsNil(o.Timeout) {
 		return true
 	}
 
@@ -429,7 +436,7 @@ func (o *PolicyBinding) SetTimeout(v int32) {
 
 // GetFailureResult returns the FailureResult field value if set, zero value otherwise.
 func (o *PolicyBinding) GetFailureResult() bool {
-	if o == nil || o.FailureResult == nil {
+	if o == nil || IsNil(o.FailureResult) {
 		var ret bool
 		return ret
 	}
@@ -439,7 +446,7 @@ func (o *PolicyBinding) GetFailureResult() bool {
 // GetFailureResultOk returns a tuple with the FailureResult field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyBinding) GetFailureResultOk() (*bool, bool) {
-	if o == nil || o.FailureResult == nil {
+	if o == nil || IsNil(o.FailureResult) {
 		return nil, false
 	}
 	return o.FailureResult, true
@@ -447,7 +454,7 @@ func (o *PolicyBinding) GetFailureResultOk() (*bool, bool) {
 
 // HasFailureResult returns a boolean if a field has been set.
 func (o *PolicyBinding) HasFailureResult() bool {
-	if o != nil && o.FailureResult != nil {
+	if o != nil && !IsNil(o.FailureResult) {
 		return true
 	}
 
@@ -460,10 +467,16 @@ func (o *PolicyBinding) SetFailureResult(v bool) {
 }
 
 func (o PolicyBinding) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PolicyBinding) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
 	if o.Policy.IsSet() {
 		toSerialize["policy"] = o.Policy.Get()
 	}
@@ -473,34 +486,66 @@ func (o PolicyBinding) MarshalJSON() ([]byte, error) {
 	if o.User.IsSet() {
 		toSerialize["user"] = o.User.Get()
 	}
-	if true {
-		toSerialize["policy_obj"] = o.PolicyObj
-	}
-	if true {
-		toSerialize["group_obj"] = o.GroupObj
-	}
-	if true {
-		toSerialize["user_obj"] = o.UserObj
-	}
-	if true {
-		toSerialize["target"] = o.Target
-	}
-	if o.Negate != nil {
+	toSerialize["policy_obj"] = o.PolicyObj
+	toSerialize["group_obj"] = o.GroupObj
+	toSerialize["user_obj"] = o.UserObj
+	toSerialize["target"] = o.Target
+	if !IsNil(o.Negate) {
 		toSerialize["negate"] = o.Negate
 	}
-	if o.Enabled != nil {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if true {
-		toSerialize["order"] = o.Order
-	}
-	if o.Timeout != nil {
+	toSerialize["order"] = o.Order
+	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
 	}
-	if o.FailureResult != nil {
+	if !IsNil(o.FailureResult) {
 		toSerialize["failure_result"] = o.FailureResult
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *PolicyBinding) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"policy_obj",
+		"group_obj",
+		"user_obj",
+		"target",
+		"order",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPolicyBinding := _PolicyBinding{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPolicyBinding)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PolicyBinding(varPolicyBinding)
+
+	return err
 }
 
 type NullablePolicyBinding struct {

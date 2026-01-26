@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthenticatorEmailChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorEmailChallengeResponseRequest{}
+
 // AuthenticatorEmailChallengeResponseRequest Authenticator Email Challenge response, device is set by get_response_instance
 type AuthenticatorEmailChallengeResponseRequest struct {
 	Component *string `json:"component,omitempty"`
@@ -45,7 +48,7 @@ func NewAuthenticatorEmailChallengeResponseRequestWithDefaults() *AuthenticatorE
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *AuthenticatorEmailChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *AuthenticatorEmailChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorEmailChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -63,7 +66,7 @@ func (o *AuthenticatorEmailChallengeResponseRequest) GetComponentOk() (*string, 
 
 // HasComponent returns a boolean if a field has been set.
 func (o *AuthenticatorEmailChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *AuthenticatorEmailChallengeResponseRequest) SetComponent(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *AuthenticatorEmailChallengeResponseRequest) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *AuthenticatorEmailChallengeResponseRequest) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorEmailChallengeResponseRequest) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -95,7 +98,7 @@ func (o *AuthenticatorEmailChallengeResponseRequest) GetCodeOk() (*string, bool)
 
 // HasCode returns a boolean if a field has been set.
 func (o *AuthenticatorEmailChallengeResponseRequest) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *AuthenticatorEmailChallengeResponseRequest) SetCode(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *AuthenticatorEmailChallengeResponseRequest) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *AuthenticatorEmailChallengeResponseRequest) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorEmailChallengeResponseRequest) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -127,7 +130,7 @@ func (o *AuthenticatorEmailChallengeResponseRequest) GetEmailOk() (*string, bool
 
 // HasEmail returns a boolean if a field has been set.
 func (o *AuthenticatorEmailChallengeResponseRequest) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -140,17 +143,25 @@ func (o *AuthenticatorEmailChallengeResponseRequest) SetEmail(v string) {
 }
 
 func (o AuthenticatorEmailChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
-	if o.Email != nil {
-		toSerialize["email"] = o.Email
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorEmailChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthenticatorEmailChallengeResponseRequest struct {

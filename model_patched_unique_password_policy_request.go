@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedUniquePasswordPolicyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedUniquePasswordPolicyRequest{}
+
 // PatchedUniquePasswordPolicyRequest Password Uniqueness Policy Serializer
 type PatchedUniquePasswordPolicyRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -45,7 +48,7 @@ func NewPatchedUniquePasswordPolicyRequestWithDefaults() *PatchedUniquePasswordP
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedUniquePasswordPolicyRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *PatchedUniquePasswordPolicyRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUniquePasswordPolicyRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -63,7 +66,7 @@ func (o *PatchedUniquePasswordPolicyRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedUniquePasswordPolicyRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *PatchedUniquePasswordPolicyRequest) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *PatchedUniquePasswordPolicyRequest) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *PatchedUniquePasswordPolicyRequest) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUniquePasswordPolicyRequest) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -95,7 +98,7 @@ func (o *PatchedUniquePasswordPolicyRequest) GetExecutionLoggingOk() (*bool, boo
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *PatchedUniquePasswordPolicyRequest) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *PatchedUniquePasswordPolicyRequest) SetExecutionLogging(v bool) {
 
 // GetPasswordField returns the PasswordField field value if set, zero value otherwise.
 func (o *PatchedUniquePasswordPolicyRequest) GetPasswordField() string {
-	if o == nil || o.PasswordField == nil {
+	if o == nil || IsNil(o.PasswordField) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *PatchedUniquePasswordPolicyRequest) GetPasswordField() string {
 // GetPasswordFieldOk returns a tuple with the PasswordField field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUniquePasswordPolicyRequest) GetPasswordFieldOk() (*string, bool) {
-	if o == nil || o.PasswordField == nil {
+	if o == nil || IsNil(o.PasswordField) {
 		return nil, false
 	}
 	return o.PasswordField, true
@@ -127,7 +130,7 @@ func (o *PatchedUniquePasswordPolicyRequest) GetPasswordFieldOk() (*string, bool
 
 // HasPasswordField returns a boolean if a field has been set.
 func (o *PatchedUniquePasswordPolicyRequest) HasPasswordField() bool {
-	if o != nil && o.PasswordField != nil {
+	if o != nil && !IsNil(o.PasswordField) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *PatchedUniquePasswordPolicyRequest) SetPasswordField(v string) {
 
 // GetNumHistoricalPasswords returns the NumHistoricalPasswords field value if set, zero value otherwise.
 func (o *PatchedUniquePasswordPolicyRequest) GetNumHistoricalPasswords() int32 {
-	if o == nil || o.NumHistoricalPasswords == nil {
+	if o == nil || IsNil(o.NumHistoricalPasswords) {
 		var ret int32
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *PatchedUniquePasswordPolicyRequest) GetNumHistoricalPasswords() int32 {
 // GetNumHistoricalPasswordsOk returns a tuple with the NumHistoricalPasswords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedUniquePasswordPolicyRequest) GetNumHistoricalPasswordsOk() (*int32, bool) {
-	if o == nil || o.NumHistoricalPasswords == nil {
+	if o == nil || IsNil(o.NumHistoricalPasswords) {
 		return nil, false
 	}
 	return o.NumHistoricalPasswords, true
@@ -159,7 +162,7 @@ func (o *PatchedUniquePasswordPolicyRequest) GetNumHistoricalPasswordsOk() (*int
 
 // HasNumHistoricalPasswords returns a boolean if a field has been set.
 func (o *PatchedUniquePasswordPolicyRequest) HasNumHistoricalPasswords() bool {
-	if o != nil && o.NumHistoricalPasswords != nil {
+	if o != nil && !IsNil(o.NumHistoricalPasswords) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *PatchedUniquePasswordPolicyRequest) SetNumHistoricalPasswords(v int32) 
 }
 
 func (o PatchedUniquePasswordPolicyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.ExecutionLogging != nil {
-		toSerialize["execution_logging"] = o.ExecutionLogging
-	}
-	if o.PasswordField != nil {
-		toSerialize["password_field"] = o.PasswordField
-	}
-	if o.NumHistoricalPasswords != nil {
-		toSerialize["num_historical_passwords"] = o.NumHistoricalPasswords
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedUniquePasswordPolicyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ExecutionLogging) {
+		toSerialize["execution_logging"] = o.ExecutionLogging
+	}
+	if !IsNil(o.PasswordField) {
+		toSerialize["password_field"] = o.PasswordField
+	}
+	if !IsNil(o.NumHistoricalPasswords) {
+		toSerialize["num_historical_passwords"] = o.NumHistoricalPasswords
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedUniquePasswordPolicyRequest struct {

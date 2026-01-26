@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the RedirectStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RedirectStageRequest{}
 
 // RedirectStageRequest RedirectStage Serializer
 type RedirectStageRequest struct {
@@ -23,6 +28,8 @@ type RedirectStageRequest struct {
 	TargetStatic *string               `json:"target_static,omitempty"`
 	TargetFlow   NullableString        `json:"target_flow,omitempty"`
 }
+
+type _RedirectStageRequest RedirectStageRequest
 
 // NewRedirectStageRequest instantiates a new RedirectStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -69,7 +76,7 @@ func (o *RedirectStageRequest) SetName(v string) {
 
 // GetKeepContext returns the KeepContext field value if set, zero value otherwise.
 func (o *RedirectStageRequest) GetKeepContext() bool {
-	if o == nil || o.KeepContext == nil {
+	if o == nil || IsNil(o.KeepContext) {
 		var ret bool
 		return ret
 	}
@@ -79,7 +86,7 @@ func (o *RedirectStageRequest) GetKeepContext() bool {
 // GetKeepContextOk returns a tuple with the KeepContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RedirectStageRequest) GetKeepContextOk() (*bool, bool) {
-	if o == nil || o.KeepContext == nil {
+	if o == nil || IsNil(o.KeepContext) {
 		return nil, false
 	}
 	return o.KeepContext, true
@@ -87,7 +94,7 @@ func (o *RedirectStageRequest) GetKeepContextOk() (*bool, bool) {
 
 // HasKeepContext returns a boolean if a field has been set.
 func (o *RedirectStageRequest) HasKeepContext() bool {
-	if o != nil && o.KeepContext != nil {
+	if o != nil && !IsNil(o.KeepContext) {
 		return true
 	}
 
@@ -125,7 +132,7 @@ func (o *RedirectStageRequest) SetMode(v RedirectStageModeEnum) {
 
 // GetTargetStatic returns the TargetStatic field value if set, zero value otherwise.
 func (o *RedirectStageRequest) GetTargetStatic() string {
-	if o == nil || o.TargetStatic == nil {
+	if o == nil || IsNil(o.TargetStatic) {
 		var ret string
 		return ret
 	}
@@ -135,7 +142,7 @@ func (o *RedirectStageRequest) GetTargetStatic() string {
 // GetTargetStaticOk returns a tuple with the TargetStatic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RedirectStageRequest) GetTargetStaticOk() (*string, bool) {
-	if o == nil || o.TargetStatic == nil {
+	if o == nil || IsNil(o.TargetStatic) {
 		return nil, false
 	}
 	return o.TargetStatic, true
@@ -143,7 +150,7 @@ func (o *RedirectStageRequest) GetTargetStaticOk() (*string, bool) {
 
 // HasTargetStatic returns a boolean if a field has been set.
 func (o *RedirectStageRequest) HasTargetStatic() bool {
-	if o != nil && o.TargetStatic != nil {
+	if o != nil && !IsNil(o.TargetStatic) {
 		return true
 	}
 
@@ -157,7 +164,7 @@ func (o *RedirectStageRequest) SetTargetStatic(v string) {
 
 // GetTargetFlow returns the TargetFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RedirectStageRequest) GetTargetFlow() string {
-	if o == nil || o.TargetFlow.Get() == nil {
+	if o == nil || IsNil(o.TargetFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -199,23 +206,65 @@ func (o *RedirectStageRequest) UnsetTargetFlow() {
 }
 
 func (o RedirectStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.KeepContext != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o RedirectStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.KeepContext) {
 		toSerialize["keep_context"] = o.KeepContext
 	}
-	if true {
-		toSerialize["mode"] = o.Mode
-	}
-	if o.TargetStatic != nil {
+	toSerialize["mode"] = o.Mode
+	if !IsNil(o.TargetStatic) {
 		toSerialize["target_static"] = o.TargetStatic
 	}
 	if o.TargetFlow.IsSet() {
 		toSerialize["target_flow"] = o.TargetFlow.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *RedirectStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"mode",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRedirectStageRequest := _RedirectStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRedirectStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RedirectStageRequest(varRedirectStageRequest)
+
+	return err
 }
 
 type NullableRedirectStageRequest struct {

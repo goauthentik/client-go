@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the ProcessRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProcessRequest{}
 
 // ProcessRequest struct for ProcessRequest
 type ProcessRequest struct {
@@ -21,6 +26,8 @@ type ProcessRequest struct {
 	Name string  `json:"name"`
 	User *string `json:"user,omitempty"`
 }
+
+type _ProcessRequest ProcessRequest
 
 // NewProcessRequest instantiates a new ProcessRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -91,7 +98,7 @@ func (o *ProcessRequest) SetName(v string) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *ProcessRequest) GetUser() string {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret string
 		return ret
 	}
@@ -101,7 +108,7 @@ func (o *ProcessRequest) GetUser() string {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProcessRequest) GetUserOk() (*string, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -109,7 +116,7 @@ func (o *ProcessRequest) GetUserOk() (*string, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *ProcessRequest) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -122,17 +129,59 @@ func (o *ProcessRequest) SetUser(v string) {
 }
 
 func (o ProcessRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.User != nil {
-		toSerialize["user"] = o.User
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProcessRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	if !IsNil(o.User) {
+		toSerialize["user"] = o.User
+	}
+	return toSerialize, nil
+}
+
+func (o *ProcessRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProcessRequest := _ProcessRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProcessRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProcessRequest(varProcessRequest)
+
+	return err
 }
 
 type NullableProcessRequest struct {

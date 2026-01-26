@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedPromptRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedPromptRequest{}
+
 // PatchedPromptRequest Prompt Serializer
 type PatchedPromptRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -52,7 +55,7 @@ func NewPatchedPromptRequestWithDefaults() *PatchedPromptRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -62,7 +65,7 @@ func (o *PatchedPromptRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -70,7 +73,7 @@ func (o *PatchedPromptRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *PatchedPromptRequest) SetName(v string) {
 
 // GetFieldKey returns the FieldKey field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetFieldKey() string {
-	if o == nil || o.FieldKey == nil {
+	if o == nil || IsNil(o.FieldKey) {
 		var ret string
 		return ret
 	}
@@ -94,7 +97,7 @@ func (o *PatchedPromptRequest) GetFieldKey() string {
 // GetFieldKeyOk returns a tuple with the FieldKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetFieldKeyOk() (*string, bool) {
-	if o == nil || o.FieldKey == nil {
+	if o == nil || IsNil(o.FieldKey) {
 		return nil, false
 	}
 	return o.FieldKey, true
@@ -102,7 +105,7 @@ func (o *PatchedPromptRequest) GetFieldKeyOk() (*string, bool) {
 
 // HasFieldKey returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasFieldKey() bool {
-	if o != nil && o.FieldKey != nil {
+	if o != nil && !IsNil(o.FieldKey) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *PatchedPromptRequest) SetFieldKey(v string) {
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetLabel() string {
-	if o == nil || o.Label == nil {
+	if o == nil || IsNil(o.Label) {
 		var ret string
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *PatchedPromptRequest) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetLabelOk() (*string, bool) {
-	if o == nil || o.Label == nil {
+	if o == nil || IsNil(o.Label) {
 		return nil, false
 	}
 	return o.Label, true
@@ -134,7 +137,7 @@ func (o *PatchedPromptRequest) GetLabelOk() (*string, bool) {
 
 // HasLabel returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasLabel() bool {
-	if o != nil && o.Label != nil {
+	if o != nil && !IsNil(o.Label) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *PatchedPromptRequest) SetLabel(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetType() PromptTypeEnum {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret PromptTypeEnum
 		return ret
 	}
@@ -158,7 +161,7 @@ func (o *PatchedPromptRequest) GetType() PromptTypeEnum {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetTypeOk() (*PromptTypeEnum, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -166,7 +169,7 @@ func (o *PatchedPromptRequest) GetTypeOk() (*PromptTypeEnum, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *PatchedPromptRequest) SetType(v PromptTypeEnum) {
 
 // GetRequired returns the Required field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetRequired() bool {
-	if o == nil || o.Required == nil {
+	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
 	}
@@ -190,7 +193,7 @@ func (o *PatchedPromptRequest) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetRequiredOk() (*bool, bool) {
-	if o == nil || o.Required == nil {
+	if o == nil || IsNil(o.Required) {
 		return nil, false
 	}
 	return o.Required, true
@@ -198,7 +201,7 @@ func (o *PatchedPromptRequest) GetRequiredOk() (*bool, bool) {
 
 // HasRequired returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasRequired() bool {
-	if o != nil && o.Required != nil {
+	if o != nil && !IsNil(o.Required) {
 		return true
 	}
 
@@ -212,7 +215,7 @@ func (o *PatchedPromptRequest) SetRequired(v bool) {
 
 // GetPlaceholder returns the Placeholder field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetPlaceholder() string {
-	if o == nil || o.Placeholder == nil {
+	if o == nil || IsNil(o.Placeholder) {
 		var ret string
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *PatchedPromptRequest) GetPlaceholder() string {
 // GetPlaceholderOk returns a tuple with the Placeholder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetPlaceholderOk() (*string, bool) {
-	if o == nil || o.Placeholder == nil {
+	if o == nil || IsNil(o.Placeholder) {
 		return nil, false
 	}
 	return o.Placeholder, true
@@ -230,7 +233,7 @@ func (o *PatchedPromptRequest) GetPlaceholderOk() (*string, bool) {
 
 // HasPlaceholder returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasPlaceholder() bool {
-	if o != nil && o.Placeholder != nil {
+	if o != nil && !IsNil(o.Placeholder) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *PatchedPromptRequest) SetPlaceholder(v string) {
 
 // GetInitialValue returns the InitialValue field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetInitialValue() string {
-	if o == nil || o.InitialValue == nil {
+	if o == nil || IsNil(o.InitialValue) {
 		var ret string
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *PatchedPromptRequest) GetInitialValue() string {
 // GetInitialValueOk returns a tuple with the InitialValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetInitialValueOk() (*string, bool) {
-	if o == nil || o.InitialValue == nil {
+	if o == nil || IsNil(o.InitialValue) {
 		return nil, false
 	}
 	return o.InitialValue, true
@@ -262,7 +265,7 @@ func (o *PatchedPromptRequest) GetInitialValueOk() (*string, bool) {
 
 // HasInitialValue returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasInitialValue() bool {
-	if o != nil && o.InitialValue != nil {
+	if o != nil && !IsNil(o.InitialValue) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *PatchedPromptRequest) SetInitialValue(v string) {
 
 // GetOrder returns the Order field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetOrder() int32 {
-	if o == nil || o.Order == nil {
+	if o == nil || IsNil(o.Order) {
 		var ret int32
 		return ret
 	}
@@ -286,7 +289,7 @@ func (o *PatchedPromptRequest) GetOrder() int32 {
 // GetOrderOk returns a tuple with the Order field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetOrderOk() (*int32, bool) {
-	if o == nil || o.Order == nil {
+	if o == nil || IsNil(o.Order) {
 		return nil, false
 	}
 	return o.Order, true
@@ -294,7 +297,7 @@ func (o *PatchedPromptRequest) GetOrderOk() (*int32, bool) {
 
 // HasOrder returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasOrder() bool {
-	if o != nil && o.Order != nil {
+	if o != nil && !IsNil(o.Order) {
 		return true
 	}
 
@@ -308,7 +311,7 @@ func (o *PatchedPromptRequest) SetOrder(v int32) {
 
 // GetSubText returns the SubText field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetSubText() string {
-	if o == nil || o.SubText == nil {
+	if o == nil || IsNil(o.SubText) {
 		var ret string
 		return ret
 	}
@@ -318,7 +321,7 @@ func (o *PatchedPromptRequest) GetSubText() string {
 // GetSubTextOk returns a tuple with the SubText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetSubTextOk() (*string, bool) {
-	if o == nil || o.SubText == nil {
+	if o == nil || IsNil(o.SubText) {
 		return nil, false
 	}
 	return o.SubText, true
@@ -326,7 +329,7 @@ func (o *PatchedPromptRequest) GetSubTextOk() (*string, bool) {
 
 // HasSubText returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasSubText() bool {
-	if o != nil && o.SubText != nil {
+	if o != nil && !IsNil(o.SubText) {
 		return true
 	}
 
@@ -340,7 +343,7 @@ func (o *PatchedPromptRequest) SetSubText(v string) {
 
 // GetPlaceholderExpression returns the PlaceholderExpression field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetPlaceholderExpression() bool {
-	if o == nil || o.PlaceholderExpression == nil {
+	if o == nil || IsNil(o.PlaceholderExpression) {
 		var ret bool
 		return ret
 	}
@@ -350,7 +353,7 @@ func (o *PatchedPromptRequest) GetPlaceholderExpression() bool {
 // GetPlaceholderExpressionOk returns a tuple with the PlaceholderExpression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetPlaceholderExpressionOk() (*bool, bool) {
-	if o == nil || o.PlaceholderExpression == nil {
+	if o == nil || IsNil(o.PlaceholderExpression) {
 		return nil, false
 	}
 	return o.PlaceholderExpression, true
@@ -358,7 +361,7 @@ func (o *PatchedPromptRequest) GetPlaceholderExpressionOk() (*bool, bool) {
 
 // HasPlaceholderExpression returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasPlaceholderExpression() bool {
-	if o != nil && o.PlaceholderExpression != nil {
+	if o != nil && !IsNil(o.PlaceholderExpression) {
 		return true
 	}
 
@@ -372,7 +375,7 @@ func (o *PatchedPromptRequest) SetPlaceholderExpression(v bool) {
 
 // GetInitialValueExpression returns the InitialValueExpression field value if set, zero value otherwise.
 func (o *PatchedPromptRequest) GetInitialValueExpression() bool {
-	if o == nil || o.InitialValueExpression == nil {
+	if o == nil || IsNil(o.InitialValueExpression) {
 		var ret bool
 		return ret
 	}
@@ -382,7 +385,7 @@ func (o *PatchedPromptRequest) GetInitialValueExpression() bool {
 // GetInitialValueExpressionOk returns a tuple with the InitialValueExpression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptRequest) GetInitialValueExpressionOk() (*bool, bool) {
-	if o == nil || o.InitialValueExpression == nil {
+	if o == nil || IsNil(o.InitialValueExpression) {
 		return nil, false
 	}
 	return o.InitialValueExpression, true
@@ -390,7 +393,7 @@ func (o *PatchedPromptRequest) GetInitialValueExpressionOk() (*bool, bool) {
 
 // HasInitialValueExpression returns a boolean if a field has been set.
 func (o *PatchedPromptRequest) HasInitialValueExpression() bool {
-	if o != nil && o.InitialValueExpression != nil {
+	if o != nil && !IsNil(o.InitialValueExpression) {
 		return true
 	}
 
@@ -403,41 +406,49 @@ func (o *PatchedPromptRequest) SetInitialValueExpression(v bool) {
 }
 
 func (o PatchedPromptRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.FieldKey != nil {
-		toSerialize["field_key"] = o.FieldKey
-	}
-	if o.Label != nil {
-		toSerialize["label"] = o.Label
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Required != nil {
-		toSerialize["required"] = o.Required
-	}
-	if o.Placeholder != nil {
-		toSerialize["placeholder"] = o.Placeholder
-	}
-	if o.InitialValue != nil {
-		toSerialize["initial_value"] = o.InitialValue
-	}
-	if o.Order != nil {
-		toSerialize["order"] = o.Order
-	}
-	if o.SubText != nil {
-		toSerialize["sub_text"] = o.SubText
-	}
-	if o.PlaceholderExpression != nil {
-		toSerialize["placeholder_expression"] = o.PlaceholderExpression
-	}
-	if o.InitialValueExpression != nil {
-		toSerialize["initial_value_expression"] = o.InitialValueExpression
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedPromptRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FieldKey) {
+		toSerialize["field_key"] = o.FieldKey
+	}
+	if !IsNil(o.Label) {
+		toSerialize["label"] = o.Label
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Required) {
+		toSerialize["required"] = o.Required
+	}
+	if !IsNil(o.Placeholder) {
+		toSerialize["placeholder"] = o.Placeholder
+	}
+	if !IsNil(o.InitialValue) {
+		toSerialize["initial_value"] = o.InitialValue
+	}
+	if !IsNil(o.Order) {
+		toSerialize["order"] = o.Order
+	}
+	if !IsNil(o.SubText) {
+		toSerialize["sub_text"] = o.SubText
+	}
+	if !IsNil(o.PlaceholderExpression) {
+		toSerialize["placeholder_expression"] = o.PlaceholderExpression
+	}
+	if !IsNil(o.InitialValueExpression) {
+		toSerialize["initial_value_expression"] = o.InitialValueExpression
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedPromptRequest struct {

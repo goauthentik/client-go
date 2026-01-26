@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedGroupRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedGroupRequest{}
+
 // PatchedGroupRequest Group Serializer
 type PatchedGroupRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -45,7 +48,7 @@ func NewPatchedGroupRequestWithDefaults() *PatchedGroupRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedGroupRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *PatchedGroupRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -63,7 +66,7 @@ func (o *PatchedGroupRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedGroupRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *PatchedGroupRequest) SetName(v string) {
 
 // GetIsSuperuser returns the IsSuperuser field value if set, zero value otherwise.
 func (o *PatchedGroupRequest) GetIsSuperuser() bool {
-	if o == nil || o.IsSuperuser == nil {
+	if o == nil || IsNil(o.IsSuperuser) {
 		var ret bool
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *PatchedGroupRequest) GetIsSuperuser() bool {
 // GetIsSuperuserOk returns a tuple with the IsSuperuser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupRequest) GetIsSuperuserOk() (*bool, bool) {
-	if o == nil || o.IsSuperuser == nil {
+	if o == nil || IsNil(o.IsSuperuser) {
 		return nil, false
 	}
 	return o.IsSuperuser, true
@@ -95,7 +98,7 @@ func (o *PatchedGroupRequest) GetIsSuperuserOk() (*bool, bool) {
 
 // HasIsSuperuser returns a boolean if a field has been set.
 func (o *PatchedGroupRequest) HasIsSuperuser() bool {
-	if o != nil && o.IsSuperuser != nil {
+	if o != nil && !IsNil(o.IsSuperuser) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *PatchedGroupRequest) SetIsSuperuser(v bool) {
 
 // GetParents returns the Parents field value if set, zero value otherwise.
 func (o *PatchedGroupRequest) GetParents() []string {
-	if o == nil || o.Parents == nil {
+	if o == nil || IsNil(o.Parents) {
 		var ret []string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *PatchedGroupRequest) GetParents() []string {
 // GetParentsOk returns a tuple with the Parents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupRequest) GetParentsOk() ([]string, bool) {
-	if o == nil || o.Parents == nil {
+	if o == nil || IsNil(o.Parents) {
 		return nil, false
 	}
 	return o.Parents, true
@@ -127,7 +130,7 @@ func (o *PatchedGroupRequest) GetParentsOk() ([]string, bool) {
 
 // HasParents returns a boolean if a field has been set.
 func (o *PatchedGroupRequest) HasParents() bool {
-	if o != nil && o.Parents != nil {
+	if o != nil && !IsNil(o.Parents) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *PatchedGroupRequest) SetParents(v []string) {
 
 // GetUsers returns the Users field value if set, zero value otherwise.
 func (o *PatchedGroupRequest) GetUsers() []int32 {
-	if o == nil || o.Users == nil {
+	if o == nil || IsNil(o.Users) {
 		var ret []int32
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *PatchedGroupRequest) GetUsers() []int32 {
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupRequest) GetUsersOk() ([]int32, bool) {
-	if o == nil || o.Users == nil {
+	if o == nil || IsNil(o.Users) {
 		return nil, false
 	}
 	return o.Users, true
@@ -159,7 +162,7 @@ func (o *PatchedGroupRequest) GetUsersOk() ([]int32, bool) {
 
 // HasUsers returns a boolean if a field has been set.
 func (o *PatchedGroupRequest) HasUsers() bool {
-	if o != nil && o.Users != nil {
+	if o != nil && !IsNil(o.Users) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *PatchedGroupRequest) SetUsers(v []int32) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PatchedGroupRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -183,15 +186,15 @@ func (o *PatchedGroupRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PatchedGroupRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -205,7 +208,7 @@ func (o *PatchedGroupRequest) SetAttributes(v map[string]interface{}) {
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
 func (o *PatchedGroupRequest) GetRoles() []string {
-	if o == nil || o.Roles == nil {
+	if o == nil || IsNil(o.Roles) {
 		var ret []string
 		return ret
 	}
@@ -215,7 +218,7 @@ func (o *PatchedGroupRequest) GetRoles() []string {
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGroupRequest) GetRolesOk() ([]string, bool) {
-	if o == nil || o.Roles == nil {
+	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
 	return o.Roles, true
@@ -223,7 +226,7 @@ func (o *PatchedGroupRequest) GetRolesOk() ([]string, bool) {
 
 // HasRoles returns a boolean if a field has been set.
 func (o *PatchedGroupRequest) HasRoles() bool {
-	if o != nil && o.Roles != nil {
+	if o != nil && !IsNil(o.Roles) {
 		return true
 	}
 
@@ -236,26 +239,34 @@ func (o *PatchedGroupRequest) SetRoles(v []string) {
 }
 
 func (o PatchedGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.IsSuperuser != nil {
-		toSerialize["is_superuser"] = o.IsSuperuser
-	}
-	if o.Parents != nil {
-		toSerialize["parents"] = o.Parents
-	}
-	if o.Users != nil {
-		toSerialize["users"] = o.Users
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
-	}
-	if o.Roles != nil {
-		toSerialize["roles"] = o.Roles
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedGroupRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.IsSuperuser) {
+		toSerialize["is_superuser"] = o.IsSuperuser
+	}
+	if !IsNil(o.Parents) {
+		toSerialize["parents"] = o.Parents
+	}
+	if !IsNil(o.Users) {
+		toSerialize["users"] = o.Users
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	if !IsNil(o.Roles) {
+		toSerialize["roles"] = o.Roles
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedGroupRequest struct {

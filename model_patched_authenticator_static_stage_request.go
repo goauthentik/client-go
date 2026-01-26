@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedAuthenticatorStaticStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedAuthenticatorStaticStageRequest{}
+
 // PatchedAuthenticatorStaticStageRequest AuthenticatorStaticStage Serializer
 type PatchedAuthenticatorStaticStageRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -44,7 +47,7 @@ func NewPatchedAuthenticatorStaticStageRequestWithDefaults() *PatchedAuthenticat
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorStaticStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorStaticStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -62,7 +65,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorStaticStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) SetName(v string) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedAuthenticatorStaticStageRequest) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorStaticStageRequest) GetFriendlyName() string {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		var ret string
 		return ret
 	}
@@ -129,7 +132,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) GetFriendlyName() string {
 // GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorStaticStageRequest) GetFriendlyNameOk() (*string, bool) {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		return nil, false
 	}
 	return o.FriendlyName, true
@@ -137,7 +140,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) GetFriendlyNameOk() (*string, b
 
 // HasFriendlyName returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorStaticStageRequest) HasFriendlyName() bool {
-	if o != nil && o.FriendlyName != nil {
+	if o != nil && !IsNil(o.FriendlyName) {
 		return true
 	}
 
@@ -151,7 +154,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) SetFriendlyName(v string) {
 
 // GetTokenCount returns the TokenCount field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorStaticStageRequest) GetTokenCount() int32 {
-	if o == nil || o.TokenCount == nil {
+	if o == nil || IsNil(o.TokenCount) {
 		var ret int32
 		return ret
 	}
@@ -161,7 +164,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) GetTokenCount() int32 {
 // GetTokenCountOk returns a tuple with the TokenCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorStaticStageRequest) GetTokenCountOk() (*int32, bool) {
-	if o == nil || o.TokenCount == nil {
+	if o == nil || IsNil(o.TokenCount) {
 		return nil, false
 	}
 	return o.TokenCount, true
@@ -169,7 +172,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) GetTokenCountOk() (*int32, bool
 
 // HasTokenCount returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorStaticStageRequest) HasTokenCount() bool {
-	if o != nil && o.TokenCount != nil {
+	if o != nil && !IsNil(o.TokenCount) {
 		return true
 	}
 
@@ -183,7 +186,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) SetTokenCount(v int32) {
 
 // GetTokenLength returns the TokenLength field value if set, zero value otherwise.
 func (o *PatchedAuthenticatorStaticStageRequest) GetTokenLength() int32 {
-	if o == nil || o.TokenLength == nil {
+	if o == nil || IsNil(o.TokenLength) {
 		var ret int32
 		return ret
 	}
@@ -193,7 +196,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) GetTokenLength() int32 {
 // GetTokenLengthOk returns a tuple with the TokenLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedAuthenticatorStaticStageRequest) GetTokenLengthOk() (*int32, bool) {
-	if o == nil || o.TokenLength == nil {
+	if o == nil || IsNil(o.TokenLength) {
 		return nil, false
 	}
 	return o.TokenLength, true
@@ -201,7 +204,7 @@ func (o *PatchedAuthenticatorStaticStageRequest) GetTokenLengthOk() (*int32, boo
 
 // HasTokenLength returns a boolean if a field has been set.
 func (o *PatchedAuthenticatorStaticStageRequest) HasTokenLength() bool {
-	if o != nil && o.TokenLength != nil {
+	if o != nil && !IsNil(o.TokenLength) {
 		return true
 	}
 
@@ -214,23 +217,31 @@ func (o *PatchedAuthenticatorStaticStageRequest) SetTokenLength(v int32) {
 }
 
 func (o PatchedAuthenticatorStaticStageRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedAuthenticatorStaticStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if o.FriendlyName != nil {
+	if !IsNil(o.FriendlyName) {
 		toSerialize["friendly_name"] = o.FriendlyName
 	}
-	if o.TokenCount != nil {
+	if !IsNil(o.TokenCount) {
 		toSerialize["token_count"] = o.TokenCount
 	}
-	if o.TokenLength != nil {
+	if !IsNil(o.TokenLength) {
 		toSerialize["token_length"] = o.TokenLength
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedAuthenticatorStaticStageRequest struct {

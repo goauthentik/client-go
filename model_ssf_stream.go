@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SSFStream type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SSFStream{}
 
 // SSFStream SSFStream Serializer
 type SSFStream struct {
@@ -27,6 +32,8 @@ type SSFStream struct {
 	Aud             []string              `json:"aud,omitempty"`
 	Iss             string                `json:"iss"`
 }
+
+type _SSFStream SSFStream
 
 // NewSSFStream instantiates a new SSFStream object
 // This constructor will assign default values to properties that have it defined,
@@ -149,7 +156,7 @@ func (o *SSFStream) SetDeliveryMethod(v DeliveryMethodEnum) {
 
 // GetEndpointUrl returns the EndpointUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SSFStream) GetEndpointUrl() string {
-	if o == nil || o.EndpointUrl.Get() == nil {
+	if o == nil || IsNil(o.EndpointUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -192,7 +199,7 @@ func (o *SSFStream) UnsetEndpointUrl() {
 
 // GetEventsRequested returns the EventsRequested field value if set, zero value otherwise.
 func (o *SSFStream) GetEventsRequested() []EventsRequestedEnum {
-	if o == nil || o.EventsRequested == nil {
+	if o == nil || IsNil(o.EventsRequested) {
 		var ret []EventsRequestedEnum
 		return ret
 	}
@@ -202,7 +209,7 @@ func (o *SSFStream) GetEventsRequested() []EventsRequestedEnum {
 // GetEventsRequestedOk returns a tuple with the EventsRequested field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SSFStream) GetEventsRequestedOk() ([]EventsRequestedEnum, bool) {
-	if o == nil || o.EventsRequested == nil {
+	if o == nil || IsNil(o.EventsRequested) {
 		return nil, false
 	}
 	return o.EventsRequested, true
@@ -210,7 +217,7 @@ func (o *SSFStream) GetEventsRequestedOk() ([]EventsRequestedEnum, bool) {
 
 // HasEventsRequested returns a boolean if a field has been set.
 func (o *SSFStream) HasEventsRequested() bool {
-	if o != nil && o.EventsRequested != nil {
+	if o != nil && !IsNil(o.EventsRequested) {
 		return true
 	}
 
@@ -248,7 +255,7 @@ func (o *SSFStream) SetFormat(v string) {
 
 // GetAud returns the Aud field value if set, zero value otherwise.
 func (o *SSFStream) GetAud() []string {
-	if o == nil || o.Aud == nil {
+	if o == nil || IsNil(o.Aud) {
 		var ret []string
 		return ret
 	}
@@ -258,7 +265,7 @@ func (o *SSFStream) GetAud() []string {
 // GetAudOk returns a tuple with the Aud field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SSFStream) GetAudOk() ([]string, bool) {
-	if o == nil || o.Aud == nil {
+	if o == nil || IsNil(o.Aud) {
 		return nil, false
 	}
 	return o.Aud, true
@@ -266,7 +273,7 @@ func (o *SSFStream) GetAudOk() ([]string, bool) {
 
 // HasAud returns a boolean if a field has been set.
 func (o *SSFStream) HasAud() bool {
-	if o != nil && o.Aud != nil {
+	if o != nil && !IsNil(o.Aud) {
 		return true
 	}
 
@@ -303,35 +310,73 @@ func (o *SSFStream) SetIss(v string) {
 }
 
 func (o SSFStream) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SSFStream) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
-	if true {
-		toSerialize["provider_obj"] = o.ProviderObj
-	}
-	if true {
-		toSerialize["delivery_method"] = o.DeliveryMethod
-	}
+	toSerialize["pk"] = o.Pk
+	toSerialize["provider"] = o.Provider
+	toSerialize["provider_obj"] = o.ProviderObj
+	toSerialize["delivery_method"] = o.DeliveryMethod
 	if o.EndpointUrl.IsSet() {
 		toSerialize["endpoint_url"] = o.EndpointUrl.Get()
 	}
-	if o.EventsRequested != nil {
+	if !IsNil(o.EventsRequested) {
 		toSerialize["events_requested"] = o.EventsRequested
 	}
-	if true {
-		toSerialize["format"] = o.Format
-	}
-	if o.Aud != nil {
+	toSerialize["format"] = o.Format
+	if !IsNil(o.Aud) {
 		toSerialize["aud"] = o.Aud
 	}
-	if true {
-		toSerialize["iss"] = o.Iss
+	toSerialize["iss"] = o.Iss
+	return toSerialize, nil
+}
+
+func (o *SSFStream) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"provider",
+		"provider_obj",
+		"delivery_method",
+		"format",
+		"iss",
 	}
-	return json.Marshal(toSerialize)
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSSFStream := _SSFStream{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSSFStream)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SSFStream(varSSFStream)
+
+	return err
 }
 
 type NullableSSFStream struct {

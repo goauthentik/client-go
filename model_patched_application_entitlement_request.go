@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedApplicationEntitlementRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedApplicationEntitlementRequest{}
+
 // PatchedApplicationEntitlementRequest ApplicationEntitlement Serializer
 type PatchedApplicationEntitlementRequest struct {
 	Name       *string                `json:"name,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedApplicationEntitlementRequestWithDefaults() *PatchedApplicationEn
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedApplicationEntitlementRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedApplicationEntitlementRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationEntitlementRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *PatchedApplicationEntitlementRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedApplicationEntitlementRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedApplicationEntitlementRequest) SetName(v string) {
 
 // GetApp returns the App field value if set, zero value otherwise.
 func (o *PatchedApplicationEntitlementRequest) GetApp() string {
-	if o == nil || o.App == nil {
+	if o == nil || IsNil(o.App) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedApplicationEntitlementRequest) GetApp() string {
 // GetAppOk returns a tuple with the App field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationEntitlementRequest) GetAppOk() (*string, bool) {
-	if o == nil || o.App == nil {
+	if o == nil || IsNil(o.App) {
 		return nil, false
 	}
 	return o.App, true
@@ -91,7 +94,7 @@ func (o *PatchedApplicationEntitlementRequest) GetAppOk() (*string, bool) {
 
 // HasApp returns a boolean if a field has been set.
 func (o *PatchedApplicationEntitlementRequest) HasApp() bool {
-	if o != nil && o.App != nil {
+	if o != nil && !IsNil(o.App) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedApplicationEntitlementRequest) SetApp(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PatchedApplicationEntitlementRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *PatchedApplicationEntitlementRequest) GetAttributes() map[string]interf
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedApplicationEntitlementRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PatchedApplicationEntitlementRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedApplicationEntitlementRequest) SetAttributes(v map[string]interf
 }
 
 func (o PatchedApplicationEntitlementRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.App != nil {
-		toSerialize["app"] = o.App
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedApplicationEntitlementRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.App) {
+		toSerialize["app"] = o.App
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedApplicationEntitlementRequest struct {

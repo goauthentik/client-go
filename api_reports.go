@@ -14,18 +14,18 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ReportsApiService ReportsApi service
-type ReportsApiService service
+// ReportsAPIService ReportsAPI service
+type ReportsAPIService service
 
 type ApiReportsExportsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *ReportsApiService
+	ApiService *ReportsAPIService
 	id         string
 }
 
@@ -40,7 +40,7 @@ ReportsExportsDestroy Method for ReportsExportsDestroy
 	@param id A UUID string identifying this Data Export.
 	@return ApiReportsExportsDestroyRequest
 */
-func (a *ReportsApiService) ReportsExportsDestroy(ctx context.Context, id string) ApiReportsExportsDestroyRequest {
+func (a *ReportsAPIService) ReportsExportsDestroy(ctx context.Context, id string) ApiReportsExportsDestroyRequest {
 	return ApiReportsExportsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -49,20 +49,20 @@ func (a *ReportsApiService) ReportsExportsDestroy(ctx context.Context, id string
 }
 
 // Execute executes the request
-func (a *ReportsApiService) ReportsExportsDestroyExecute(r ApiReportsExportsDestroyRequest) (*http.Response, error) {
+func (a *ReportsAPIService) ReportsExportsDestroyExecute(r ApiReportsExportsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsApiService.ReportsExportsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsAPIService.ReportsExportsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/reports/exports/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -95,9 +95,9 @@ func (a *ReportsApiService) ReportsExportsDestroyExecute(r ApiReportsExportsDest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -114,6 +114,7 @@ func (a *ReportsApiService) ReportsExportsDestroyExecute(r ApiReportsExportsDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -124,6 +125,7 @@ func (a *ReportsApiService) ReportsExportsDestroyExecute(r ApiReportsExportsDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -134,7 +136,7 @@ func (a *ReportsApiService) ReportsExportsDestroyExecute(r ApiReportsExportsDest
 
 type ApiReportsExportsListRequest struct {
 	ctx        context.Context
-	ApiService *ReportsApiService
+	ApiService *ReportsAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -175,7 +177,7 @@ ReportsExportsList Method for ReportsExportsList
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiReportsExportsListRequest
 */
-func (a *ReportsApiService) ReportsExportsList(ctx context.Context) ApiReportsExportsListRequest {
+func (a *ReportsAPIService) ReportsExportsList(ctx context.Context) ApiReportsExportsListRequest {
 	return ApiReportsExportsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -185,7 +187,7 @@ func (a *ReportsApiService) ReportsExportsList(ctx context.Context) ApiReportsEx
 // Execute executes the request
 //
 //	@return PaginatedDataExportList
-func (a *ReportsApiService) ReportsExportsListExecute(r ApiReportsExportsListRequest) (*PaginatedDataExportList, *http.Response, error) {
+func (a *ReportsAPIService) ReportsExportsListExecute(r ApiReportsExportsListRequest) (*PaginatedDataExportList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -193,7 +195,7 @@ func (a *ReportsApiService) ReportsExportsListExecute(r ApiReportsExportsListReq
 		localVarReturnValue *PaginatedDataExportList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsApiService.ReportsExportsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsAPIService.ReportsExportsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -205,16 +207,16 @@ func (a *ReportsApiService) ReportsExportsListExecute(r ApiReportsExportsListReq
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -243,9 +245,9 @@ func (a *ReportsApiService) ReportsExportsListExecute(r ApiReportsExportsListReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -262,6 +264,7 @@ func (a *ReportsApiService) ReportsExportsListExecute(r ApiReportsExportsListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -272,6 +275,7 @@ func (a *ReportsApiService) ReportsExportsListExecute(r ApiReportsExportsListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -291,7 +295,7 @@ func (a *ReportsApiService) ReportsExportsListExecute(r ApiReportsExportsListReq
 
 type ApiReportsExportsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *ReportsApiService
+	ApiService *ReportsAPIService
 	id         string
 }
 
@@ -306,7 +310,7 @@ ReportsExportsRetrieve Method for ReportsExportsRetrieve
 	@param id A UUID string identifying this Data Export.
 	@return ApiReportsExportsRetrieveRequest
 */
-func (a *ReportsApiService) ReportsExportsRetrieve(ctx context.Context, id string) ApiReportsExportsRetrieveRequest {
+func (a *ReportsAPIService) ReportsExportsRetrieve(ctx context.Context, id string) ApiReportsExportsRetrieveRequest {
 	return ApiReportsExportsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -317,7 +321,7 @@ func (a *ReportsApiService) ReportsExportsRetrieve(ctx context.Context, id strin
 // Execute executes the request
 //
 //	@return DataExport
-func (a *ReportsApiService) ReportsExportsRetrieveExecute(r ApiReportsExportsRetrieveRequest) (*DataExport, *http.Response, error) {
+func (a *ReportsAPIService) ReportsExportsRetrieveExecute(r ApiReportsExportsRetrieveRequest) (*DataExport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -325,13 +329,13 @@ func (a *ReportsApiService) ReportsExportsRetrieveExecute(r ApiReportsExportsRet
 		localVarReturnValue *DataExport
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsApiService.ReportsExportsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsAPIService.ReportsExportsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/reports/exports/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -364,9 +368,9 @@ func (a *ReportsApiService) ReportsExportsRetrieveExecute(r ApiReportsExportsRet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -383,6 +387,7 @@ func (a *ReportsApiService) ReportsExportsRetrieveExecute(r ApiReportsExportsRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -393,6 +398,7 @@ func (a *ReportsApiService) ReportsExportsRetrieveExecute(r ApiReportsExportsRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

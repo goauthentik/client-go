@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **ConfigUrl** | **string** |  | 
 **DeviceChallenges** | [**[]DeviceChallenge**](DeviceChallenge.md) |  | 
 **ConfigurationStages** | [**[]SelectableStage**](SelectableStage.md) |  | 
-**Registration** | **map[string]interface{}** |  | 
+**Registration** | **map[string]map[string]interface{}** |  | 
 **Url** | **string** |  | 
 **Attrs** | **map[string]string** |  | 
 **Title** | Pointer to **string** |  | [optional] 
@@ -48,7 +48,7 @@ Name | Type | Description | Notes
 **AllowShowPassword** | Pointer to **bool** |  | [optional] [default to false]
 **ApplicationPre** | Pointer to **string** |  | [optional] 
 **FlowDesignation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) |  | 
-**CaptchaStage** | Pointer to [**NullableIdentificationChallengeCaptchaStage**](IdentificationChallengeCaptchaStage.md) |  | [optional] 
+**CaptchaStage** | Pointer to [**NullableCaptchaChallenge**](CaptchaChallenge.md) |  | [optional] 
 **EnrollUrl** | Pointer to **string** |  | [optional] 
 **RecoveryUrl** | Pointer to **string** |  | [optional] 
 **PasswordlessUrl** | Pointer to **string** |  | [optional] 
@@ -56,8 +56,8 @@ Name | Type | Description | Notes
 **Sources** | Pointer to [**[]LoginSource**](LoginSource.md) |  | [optional] 
 **ShowSourceLabels** | **bool** |  | 
 **EnableRememberMe** | Pointer to **bool** |  | [optional] [default to true]
-**PasskeyChallenge** | Pointer to **map[string]interface{}** |  | [optional] 
-**LogoutUrls** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**PasskeyChallenge** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**LogoutUrls** | Pointer to **[]map[string]map[string]interface{}** |  | [optional] 
 **PostUrl** | Pointer to **string** |  | [optional] 
 **SamlRequest** | Pointer to **string** |  | [optional] 
 **RelayState** | Pointer to **string** |  | [optional] 
@@ -80,7 +80,7 @@ Name | Type | Description | Notes
 
 ### NewChallengeTypes
 
-`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, challenge string, challengeIdleTimeout int32, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, botUsername string, requestMessageAccess bool, ) *ChallengeTypes`
+`func NewChallengeTypes(pendingUser string, pendingUserAvatar string, clientId string, scope string, redirectUri string, state string, activationBarcode string, activationCode string, stageUuid string, codes []string, configUrl string, deviceChallenges []DeviceChallenge, configurationStages []SelectableStage, registration map[string]map[string]interface{}, url string, attrs map[string]string, siteKey string, jsUrl string, interactive bool, permissions []ConsentPermission, additionalPermissions []ConsentPermission, token string, name string, challenge string, challengeIdleTimeout int32, requestId string, loadingText string, userFields []string, passwordFields bool, flowDesignation FlowDesignationEnum, primaryAction string, showSourceLabels bool, slug string, fields []StagePrompt, to string, brandName string, body string, botUsername string, requestMessageAccess bool, ) *ChallengeTypes`
 
 NewChallengeTypes instantiates a new ChallengeTypes object
 This constructor will assign default values to properties that have it defined,
@@ -542,20 +542,20 @@ SetConfigurationStages sets ConfigurationStages field to given value.
 
 ### GetRegistration
 
-`func (o *ChallengeTypes) GetRegistration() map[string]interface{}`
+`func (o *ChallengeTypes) GetRegistration() map[string]map[string]interface{}`
 
 GetRegistration returns the Registration field if non-nil, zero value otherwise.
 
 ### GetRegistrationOk
 
-`func (o *ChallengeTypes) GetRegistrationOk() (*map[string]interface{}, bool)`
+`func (o *ChallengeTypes) GetRegistrationOk() (*map[string]map[string]interface{}, bool)`
 
 GetRegistrationOk returns a tuple with the Registration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegistration
 
-`func (o *ChallengeTypes) SetRegistration(v map[string]interface{})`
+`func (o *ChallengeTypes) SetRegistration(v map[string]map[string]interface{})`
 
 SetRegistration sets Registration field to given value.
 
@@ -1067,20 +1067,20 @@ SetFlowDesignation sets FlowDesignation field to given value.
 
 ### GetCaptchaStage
 
-`func (o *ChallengeTypes) GetCaptchaStage() IdentificationChallengeCaptchaStage`
+`func (o *ChallengeTypes) GetCaptchaStage() CaptchaChallenge`
 
 GetCaptchaStage returns the CaptchaStage field if non-nil, zero value otherwise.
 
 ### GetCaptchaStageOk
 
-`func (o *ChallengeTypes) GetCaptchaStageOk() (*IdentificationChallengeCaptchaStage, bool)`
+`func (o *ChallengeTypes) GetCaptchaStageOk() (*CaptchaChallenge, bool)`
 
 GetCaptchaStageOk returns a tuple with the CaptchaStage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCaptchaStage
 
-`func (o *ChallengeTypes) SetCaptchaStage(v IdentificationChallengeCaptchaStage)`
+`func (o *ChallengeTypes) SetCaptchaStage(v CaptchaChallenge)`
 
 SetCaptchaStage sets CaptchaStage field to given value.
 
@@ -1267,20 +1267,20 @@ HasEnableRememberMe returns a boolean if a field has been set.
 
 ### GetPasskeyChallenge
 
-`func (o *ChallengeTypes) GetPasskeyChallenge() map[string]interface{}`
+`func (o *ChallengeTypes) GetPasskeyChallenge() map[string]map[string]interface{}`
 
 GetPasskeyChallenge returns the PasskeyChallenge field if non-nil, zero value otherwise.
 
 ### GetPasskeyChallengeOk
 
-`func (o *ChallengeTypes) GetPasskeyChallengeOk() (*map[string]interface{}, bool)`
+`func (o *ChallengeTypes) GetPasskeyChallengeOk() (*map[string]map[string]interface{}, bool)`
 
 GetPasskeyChallengeOk returns a tuple with the PasskeyChallenge field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasskeyChallenge
 
-`func (o *ChallengeTypes) SetPasskeyChallenge(v map[string]interface{})`
+`func (o *ChallengeTypes) SetPasskeyChallenge(v map[string]map[string]interface{})`
 
 SetPasskeyChallenge sets PasskeyChallenge field to given value.
 
@@ -1302,20 +1302,20 @@ HasPasskeyChallenge returns a boolean if a field has been set.
 UnsetPasskeyChallenge ensures that no value is present for PasskeyChallenge, not even an explicit nil
 ### GetLogoutUrls
 
-`func (o *ChallengeTypes) GetLogoutUrls() []map[string]interface{}`
+`func (o *ChallengeTypes) GetLogoutUrls() []map[string]map[string]interface{}`
 
 GetLogoutUrls returns the LogoutUrls field if non-nil, zero value otherwise.
 
 ### GetLogoutUrlsOk
 
-`func (o *ChallengeTypes) GetLogoutUrlsOk() (*[]map[string]interface{}, bool)`
+`func (o *ChallengeTypes) GetLogoutUrlsOk() (*[]map[string]map[string]interface{}, bool)`
 
 GetLogoutUrlsOk returns a tuple with the LogoutUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogoutUrls
 
-`func (o *ChallengeTypes) SetLogoutUrls(v []map[string]interface{})`
+`func (o *ChallengeTypes) SetLogoutUrls(v []map[string]map[string]interface{})`
 
 SetLogoutUrls sets LogoutUrls field to given value.
 

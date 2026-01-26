@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IframeLogoutChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IframeLogoutChallenge{}
+
 // IframeLogoutChallenge Challenge for iframe logout
 type IframeLogoutChallenge struct {
 	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
@@ -46,7 +49,7 @@ func NewIframeLogoutChallengeWithDefaults() *IframeLogoutChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *IframeLogoutChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *IframeLogoutChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IframeLogoutChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -64,7 +67,7 @@ func (o *IframeLogoutChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *IframeLogoutChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *IframeLogoutChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *IframeLogoutChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *IframeLogoutChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IframeLogoutChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -96,7 +99,7 @@ func (o *IframeLogoutChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *IframeLogoutChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *IframeLogoutChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *IframeLogoutChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *IframeLogoutChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IframeLogoutChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -128,7 +131,7 @@ func (o *IframeLogoutChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *IframeLogoutChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *IframeLogoutChallenge) SetResponseErrors(v map[string][]ErrorDetail) {
 
 // GetLogoutUrls returns the LogoutUrls field value if set, zero value otherwise.
 func (o *IframeLogoutChallenge) GetLogoutUrls() []map[string]interface{} {
-	if o == nil || o.LogoutUrls == nil {
+	if o == nil || IsNil(o.LogoutUrls) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *IframeLogoutChallenge) GetLogoutUrls() []map[string]interface{} {
 // GetLogoutUrlsOk returns a tuple with the LogoutUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IframeLogoutChallenge) GetLogoutUrlsOk() ([]map[string]interface{}, bool) {
-	if o == nil || o.LogoutUrls == nil {
+	if o == nil || IsNil(o.LogoutUrls) {
 		return nil, false
 	}
 	return o.LogoutUrls, true
@@ -160,7 +163,7 @@ func (o *IframeLogoutChallenge) GetLogoutUrlsOk() ([]map[string]interface{}, boo
 
 // HasLogoutUrls returns a boolean if a field has been set.
 func (o *IframeLogoutChallenge) HasLogoutUrls() bool {
-	if o != nil && o.LogoutUrls != nil {
+	if o != nil && !IsNil(o.LogoutUrls) {
 		return true
 	}
 
@@ -173,20 +176,28 @@ func (o *IframeLogoutChallenge) SetLogoutUrls(v []map[string]interface{}) {
 }
 
 func (o IframeLogoutChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if o.LogoutUrls != nil {
-		toSerialize["logout_urls"] = o.LogoutUrls
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IframeLogoutChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	if !IsNil(o.LogoutUrls) {
+		toSerialize["logout_urls"] = o.LogoutUrls
+	}
+	return toSerialize, nil
 }
 
 type NullableIframeLogoutChallenge struct {

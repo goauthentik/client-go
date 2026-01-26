@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the TelegramSource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TelegramSource{}
 
 // TelegramSource Source Serializer
 type TelegramSource struct {
@@ -21,7 +26,7 @@ type TelegramSource struct {
 	// Source's display Name.
 	Name string `json:"name"`
 	// Internal source name, used in URLs.
-	Slug    string `json:"slug"`
+	Slug    string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	Enabled *bool  `json:"enabled,omitempty"`
 	// When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
 	Promoted *bool `json:"promoted,omitempty"`
@@ -54,6 +59,8 @@ type TelegramSource struct {
 	// Flow used before authentication.
 	PreAuthenticationFlow string `json:"pre_authentication_flow"`
 }
+
+type _TelegramSource TelegramSource
 
 // NewTelegramSource instantiates a new TelegramSource object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +164,7 @@ func (o *TelegramSource) SetSlug(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *TelegramSource) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -167,7 +174,7 @@ func (o *TelegramSource) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramSource) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -175,7 +182,7 @@ func (o *TelegramSource) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *TelegramSource) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -189,7 +196,7 @@ func (o *TelegramSource) SetEnabled(v bool) {
 
 // GetPromoted returns the Promoted field value if set, zero value otherwise.
 func (o *TelegramSource) GetPromoted() bool {
-	if o == nil || o.Promoted == nil {
+	if o == nil || IsNil(o.Promoted) {
 		var ret bool
 		return ret
 	}
@@ -199,7 +206,7 @@ func (o *TelegramSource) GetPromoted() bool {
 // GetPromotedOk returns a tuple with the Promoted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramSource) GetPromotedOk() (*bool, bool) {
-	if o == nil || o.Promoted == nil {
+	if o == nil || IsNil(o.Promoted) {
 		return nil, false
 	}
 	return o.Promoted, true
@@ -207,7 +214,7 @@ func (o *TelegramSource) GetPromotedOk() (*bool, bool) {
 
 // HasPromoted returns a boolean if a field has been set.
 func (o *TelegramSource) HasPromoted() bool {
-	if o != nil && o.Promoted != nil {
+	if o != nil && !IsNil(o.Promoted) {
 		return true
 	}
 
@@ -221,7 +228,7 @@ func (o *TelegramSource) SetPromoted(v bool) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TelegramSource) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -264,7 +271,7 @@ func (o *TelegramSource) UnsetAuthenticationFlow() {
 
 // GetEnrollmentFlow returns the EnrollmentFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TelegramSource) GetEnrollmentFlow() string {
-	if o == nil || o.EnrollmentFlow.Get() == nil {
+	if o == nil || IsNil(o.EnrollmentFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -307,7 +314,7 @@ func (o *TelegramSource) UnsetEnrollmentFlow() {
 
 // GetUserPropertyMappings returns the UserPropertyMappings field value if set, zero value otherwise.
 func (o *TelegramSource) GetUserPropertyMappings() []string {
-	if o == nil || o.UserPropertyMappings == nil {
+	if o == nil || IsNil(o.UserPropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -317,7 +324,7 @@ func (o *TelegramSource) GetUserPropertyMappings() []string {
 // GetUserPropertyMappingsOk returns a tuple with the UserPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramSource) GetUserPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.UserPropertyMappings == nil {
+	if o == nil || IsNil(o.UserPropertyMappings) {
 		return nil, false
 	}
 	return o.UserPropertyMappings, true
@@ -325,7 +332,7 @@ func (o *TelegramSource) GetUserPropertyMappingsOk() ([]string, bool) {
 
 // HasUserPropertyMappings returns a boolean if a field has been set.
 func (o *TelegramSource) HasUserPropertyMappings() bool {
-	if o != nil && o.UserPropertyMappings != nil {
+	if o != nil && !IsNil(o.UserPropertyMappings) {
 		return true
 	}
 
@@ -339,7 +346,7 @@ func (o *TelegramSource) SetUserPropertyMappings(v []string) {
 
 // GetGroupPropertyMappings returns the GroupPropertyMappings field value if set, zero value otherwise.
 func (o *TelegramSource) GetGroupPropertyMappings() []string {
-	if o == nil || o.GroupPropertyMappings == nil {
+	if o == nil || IsNil(o.GroupPropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -349,7 +356,7 @@ func (o *TelegramSource) GetGroupPropertyMappings() []string {
 // GetGroupPropertyMappingsOk returns a tuple with the GroupPropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramSource) GetGroupPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.GroupPropertyMappings == nil {
+	if o == nil || IsNil(o.GroupPropertyMappings) {
 		return nil, false
 	}
 	return o.GroupPropertyMappings, true
@@ -357,7 +364,7 @@ func (o *TelegramSource) GetGroupPropertyMappingsOk() ([]string, bool) {
 
 // HasGroupPropertyMappings returns a boolean if a field has been set.
 func (o *TelegramSource) HasGroupPropertyMappings() bool {
-	if o != nil && o.GroupPropertyMappings != nil {
+	if o != nil && !IsNil(o.GroupPropertyMappings) {
 		return true
 	}
 
@@ -467,7 +474,7 @@ func (o *TelegramSource) SetMetaModelName(v string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *TelegramSource) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -477,7 +484,7 @@ func (o *TelegramSource) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramSource) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -485,7 +492,7 @@ func (o *TelegramSource) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *TelegramSource) HasPolicyEngineMode() bool {
-	if o != nil && o.PolicyEngineMode != nil {
+	if o != nil && !IsNil(o.PolicyEngineMode) {
 		return true
 	}
 
@@ -499,7 +506,7 @@ func (o *TelegramSource) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetUserMatchingMode returns the UserMatchingMode field value if set, zero value otherwise.
 func (o *TelegramSource) GetUserMatchingMode() UserMatchingModeEnum {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		var ret UserMatchingModeEnum
 		return ret
 	}
@@ -509,7 +516,7 @@ func (o *TelegramSource) GetUserMatchingMode() UserMatchingModeEnum {
 // GetUserMatchingModeOk returns a tuple with the UserMatchingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
-	if o == nil || o.UserMatchingMode == nil {
+	if o == nil || IsNil(o.UserMatchingMode) {
 		return nil, false
 	}
 	return o.UserMatchingMode, true
@@ -517,7 +524,7 @@ func (o *TelegramSource) GetUserMatchingModeOk() (*UserMatchingModeEnum, bool) {
 
 // HasUserMatchingMode returns a boolean if a field has been set.
 func (o *TelegramSource) HasUserMatchingMode() bool {
-	if o != nil && o.UserMatchingMode != nil {
+	if o != nil && !IsNil(o.UserMatchingMode) {
 		return true
 	}
 
@@ -557,7 +564,7 @@ func (o *TelegramSource) SetManaged(v string) {
 
 // GetUserPathTemplate returns the UserPathTemplate field value if set, zero value otherwise.
 func (o *TelegramSource) GetUserPathTemplate() string {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		var ret string
 		return ret
 	}
@@ -567,7 +574,7 @@ func (o *TelegramSource) GetUserPathTemplate() string {
 // GetUserPathTemplateOk returns a tuple with the UserPathTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramSource) GetUserPathTemplateOk() (*string, bool) {
-	if o == nil || o.UserPathTemplate == nil {
+	if o == nil || IsNil(o.UserPathTemplate) {
 		return nil, false
 	}
 	return o.UserPathTemplate, true
@@ -575,7 +582,7 @@ func (o *TelegramSource) GetUserPathTemplateOk() (*string, bool) {
 
 // HasUserPathTemplate returns a boolean if a field has been set.
 func (o *TelegramSource) HasUserPathTemplate() bool {
-	if o != nil && o.UserPathTemplate != nil {
+	if o != nil && !IsNil(o.UserPathTemplate) {
 		return true
 	}
 
@@ -589,7 +596,7 @@ func (o *TelegramSource) SetUserPathTemplate(v string) {
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *TelegramSource) GetIcon() string {
-	if o == nil || o.Icon == nil {
+	if o == nil || IsNil(o.Icon) {
 		var ret string
 		return ret
 	}
@@ -599,7 +606,7 @@ func (o *TelegramSource) GetIcon() string {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramSource) GetIconOk() (*string, bool) {
-	if o == nil || o.Icon == nil {
+	if o == nil || IsNil(o.Icon) {
 		return nil, false
 	}
 	return o.Icon, true
@@ -607,7 +614,7 @@ func (o *TelegramSource) GetIconOk() (*string, bool) {
 
 // HasIcon returns a boolean if a field has been set.
 func (o *TelegramSource) HasIcon() bool {
-	if o != nil && o.Icon != nil {
+	if o != nil && !IsNil(o.Icon) {
 		return true
 	}
 
@@ -671,7 +678,7 @@ func (o *TelegramSource) SetBotUsername(v string) {
 
 // GetRequestMessageAccess returns the RequestMessageAccess field value if set, zero value otherwise.
 func (o *TelegramSource) GetRequestMessageAccess() bool {
-	if o == nil || o.RequestMessageAccess == nil {
+	if o == nil || IsNil(o.RequestMessageAccess) {
 		var ret bool
 		return ret
 	}
@@ -681,7 +688,7 @@ func (o *TelegramSource) GetRequestMessageAccess() bool {
 // GetRequestMessageAccessOk returns a tuple with the RequestMessageAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramSource) GetRequestMessageAccessOk() (*bool, bool) {
-	if o == nil || o.RequestMessageAccess == nil {
+	if o == nil || IsNil(o.RequestMessageAccess) {
 		return nil, false
 	}
 	return o.RequestMessageAccess, true
@@ -689,7 +696,7 @@ func (o *TelegramSource) GetRequestMessageAccessOk() (*bool, bool) {
 
 // HasRequestMessageAccess returns a boolean if a field has been set.
 func (o *TelegramSource) HasRequestMessageAccess() bool {
-	if o != nil && o.RequestMessageAccess != nil {
+	if o != nil && !IsNil(o.RequestMessageAccess) {
 		return true
 	}
 
@@ -726,20 +733,22 @@ func (o *TelegramSource) SetPreAuthenticationFlow(v string) {
 }
 
 func (o TelegramSource) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TelegramSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["slug"] = o.Slug
-	}
-	if o.Enabled != nil {
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["slug"] = o.Slug
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Promoted != nil {
+	if !IsNil(o.Promoted) {
 		toSerialize["promoted"] = o.Promoted
 	}
 	if o.AuthenticationFlow.IsSet() {
@@ -748,52 +757,83 @@ func (o TelegramSource) MarshalJSON() ([]byte, error) {
 	if o.EnrollmentFlow.IsSet() {
 		toSerialize["enrollment_flow"] = o.EnrollmentFlow.Get()
 	}
-	if o.UserPropertyMappings != nil {
+	if !IsNil(o.UserPropertyMappings) {
 		toSerialize["user_property_mappings"] = o.UserPropertyMappings
 	}
-	if o.GroupPropertyMappings != nil {
+	if !IsNil(o.GroupPropertyMappings) {
 		toSerialize["group_property_mappings"] = o.GroupPropertyMappings
 	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.PolicyEngineMode != nil {
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	if !IsNil(o.PolicyEngineMode) {
 		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
 	}
-	if o.UserMatchingMode != nil {
+	if !IsNil(o.UserMatchingMode) {
 		toSerialize["user_matching_mode"] = o.UserMatchingMode
 	}
-	if true {
-		toSerialize["managed"] = o.Managed.Get()
-	}
-	if o.UserPathTemplate != nil {
+	toSerialize["managed"] = o.Managed.Get()
+	if !IsNil(o.UserPathTemplate) {
 		toSerialize["user_path_template"] = o.UserPathTemplate
 	}
-	if o.Icon != nil {
+	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	if true {
-		toSerialize["icon_url"] = o.IconUrl.Get()
-	}
-	if true {
-		toSerialize["bot_username"] = o.BotUsername
-	}
-	if o.RequestMessageAccess != nil {
+	toSerialize["icon_url"] = o.IconUrl.Get()
+	toSerialize["bot_username"] = o.BotUsername
+	if !IsNil(o.RequestMessageAccess) {
 		toSerialize["request_message_access"] = o.RequestMessageAccess
 	}
-	if true {
-		toSerialize["pre_authentication_flow"] = o.PreAuthenticationFlow
+	toSerialize["pre_authentication_flow"] = o.PreAuthenticationFlow
+	return toSerialize, nil
+}
+
+func (o *TelegramSource) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"slug",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"managed",
+		"icon_url",
+		"bot_username",
+		"pre_authentication_flow",
 	}
-	return json.Marshal(toSerialize)
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTelegramSource := _TelegramSource{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTelegramSource)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TelegramSource(varTelegramSource)
+
+	return err
 }
 
 type NullableTelegramSource struct {

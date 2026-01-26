@@ -15,17 +15,20 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceFacts type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceFacts{}
+
 // DeviceFacts struct for DeviceFacts
 type DeviceFacts struct {
-	Os        NullableDeviceFactsOs       `json:"os,omitempty"`
-	Disks     []Disk                      `json:"disks,omitempty"`
-	Network   NullableDeviceFactsNetwork  `json:"network,omitempty"`
-	Hardware  NullableDeviceFactsHardware `json:"hardware,omitempty"`
-	Software  []Software                  `json:"software,omitempty"`
-	Processes []Process                   `json:"processes,omitempty"`
-	Users     []DeviceUser                `json:"users,omitempty"`
-	Groups    []DeviceGroup               `json:"groups,omitempty"`
-	Vendor    map[string]interface{}      `json:"vendor,omitempty"`
+	Os        NullableOperatingSystem `json:"os,omitempty"`
+	Disks     []Disk                  `json:"disks,omitempty"`
+	Network   NullableNetwork         `json:"network,omitempty"`
+	Hardware  NullableHardware        `json:"hardware,omitempty"`
+	Software  []Software              `json:"software,omitempty"`
+	Processes []Process               `json:"processes,omitempty"`
+	Users     []DeviceUser            `json:"users,omitempty"`
+	Groups    []DeviceGroup           `json:"groups,omitempty"`
+	Vendor    map[string]interface{}  `json:"vendor,omitempty"`
 }
 
 // NewDeviceFacts instantiates a new DeviceFacts object
@@ -46,9 +49,9 @@ func NewDeviceFactsWithDefaults() *DeviceFacts {
 }
 
 // GetOs returns the Os field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeviceFacts) GetOs() DeviceFactsOs {
-	if o == nil || o.Os.Get() == nil {
-		var ret DeviceFactsOs
+func (o *DeviceFacts) GetOs() OperatingSystem {
+	if o == nil || IsNil(o.Os.Get()) {
+		var ret OperatingSystem
 		return ret
 	}
 	return *o.Os.Get()
@@ -57,7 +60,7 @@ func (o *DeviceFacts) GetOs() DeviceFactsOs {
 // GetOsOk returns a tuple with the Os field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeviceFacts) GetOsOk() (*DeviceFactsOs, bool) {
+func (o *DeviceFacts) GetOsOk() (*OperatingSystem, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -73,8 +76,8 @@ func (o *DeviceFacts) HasOs() bool {
 	return false
 }
 
-// SetOs gets a reference to the given NullableDeviceFactsOs and assigns it to the Os field.
-func (o *DeviceFacts) SetOs(v DeviceFactsOs) {
+// SetOs gets a reference to the given NullableOperatingSystem and assigns it to the Os field.
+func (o *DeviceFacts) SetOs(v OperatingSystem) {
 	o.Os.Set(&v)
 }
 
@@ -101,7 +104,7 @@ func (o *DeviceFacts) GetDisks() []Disk {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeviceFacts) GetDisksOk() ([]Disk, bool) {
-	if o == nil || o.Disks == nil {
+	if o == nil || IsNil(o.Disks) {
 		return nil, false
 	}
 	return o.Disks, true
@@ -109,7 +112,7 @@ func (o *DeviceFacts) GetDisksOk() ([]Disk, bool) {
 
 // HasDisks returns a boolean if a field has been set.
 func (o *DeviceFacts) HasDisks() bool {
-	if o != nil && o.Disks != nil {
+	if o != nil && !IsNil(o.Disks) {
 		return true
 	}
 
@@ -122,9 +125,9 @@ func (o *DeviceFacts) SetDisks(v []Disk) {
 }
 
 // GetNetwork returns the Network field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeviceFacts) GetNetwork() DeviceFactsNetwork {
-	if o == nil || o.Network.Get() == nil {
-		var ret DeviceFactsNetwork
+func (o *DeviceFacts) GetNetwork() Network {
+	if o == nil || IsNil(o.Network.Get()) {
+		var ret Network
 		return ret
 	}
 	return *o.Network.Get()
@@ -133,7 +136,7 @@ func (o *DeviceFacts) GetNetwork() DeviceFactsNetwork {
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeviceFacts) GetNetworkOk() (*DeviceFactsNetwork, bool) {
+func (o *DeviceFacts) GetNetworkOk() (*Network, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -149,8 +152,8 @@ func (o *DeviceFacts) HasNetwork() bool {
 	return false
 }
 
-// SetNetwork gets a reference to the given NullableDeviceFactsNetwork and assigns it to the Network field.
-func (o *DeviceFacts) SetNetwork(v DeviceFactsNetwork) {
+// SetNetwork gets a reference to the given NullableNetwork and assigns it to the Network field.
+func (o *DeviceFacts) SetNetwork(v Network) {
 	o.Network.Set(&v)
 }
 
@@ -165,9 +168,9 @@ func (o *DeviceFacts) UnsetNetwork() {
 }
 
 // GetHardware returns the Hardware field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeviceFacts) GetHardware() DeviceFactsHardware {
-	if o == nil || o.Hardware.Get() == nil {
-		var ret DeviceFactsHardware
+func (o *DeviceFacts) GetHardware() Hardware {
+	if o == nil || IsNil(o.Hardware.Get()) {
+		var ret Hardware
 		return ret
 	}
 	return *o.Hardware.Get()
@@ -176,7 +179,7 @@ func (o *DeviceFacts) GetHardware() DeviceFactsHardware {
 // GetHardwareOk returns a tuple with the Hardware field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeviceFacts) GetHardwareOk() (*DeviceFactsHardware, bool) {
+func (o *DeviceFacts) GetHardwareOk() (*Hardware, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -192,8 +195,8 @@ func (o *DeviceFacts) HasHardware() bool {
 	return false
 }
 
-// SetHardware gets a reference to the given NullableDeviceFactsHardware and assigns it to the Hardware field.
-func (o *DeviceFacts) SetHardware(v DeviceFactsHardware) {
+// SetHardware gets a reference to the given NullableHardware and assigns it to the Hardware field.
+func (o *DeviceFacts) SetHardware(v Hardware) {
 	o.Hardware.Set(&v)
 }
 
@@ -220,7 +223,7 @@ func (o *DeviceFacts) GetSoftware() []Software {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeviceFacts) GetSoftwareOk() ([]Software, bool) {
-	if o == nil || o.Software == nil {
+	if o == nil || IsNil(o.Software) {
 		return nil, false
 	}
 	return o.Software, true
@@ -228,7 +231,7 @@ func (o *DeviceFacts) GetSoftwareOk() ([]Software, bool) {
 
 // HasSoftware returns a boolean if a field has been set.
 func (o *DeviceFacts) HasSoftware() bool {
-	if o != nil && o.Software != nil {
+	if o != nil && !IsNil(o.Software) {
 		return true
 	}
 
@@ -253,7 +256,7 @@ func (o *DeviceFacts) GetProcesses() []Process {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeviceFacts) GetProcessesOk() ([]Process, bool) {
-	if o == nil || o.Processes == nil {
+	if o == nil || IsNil(o.Processes) {
 		return nil, false
 	}
 	return o.Processes, true
@@ -261,7 +264,7 @@ func (o *DeviceFacts) GetProcessesOk() ([]Process, bool) {
 
 // HasProcesses returns a boolean if a field has been set.
 func (o *DeviceFacts) HasProcesses() bool {
-	if o != nil && o.Processes != nil {
+	if o != nil && !IsNil(o.Processes) {
 		return true
 	}
 
@@ -286,7 +289,7 @@ func (o *DeviceFacts) GetUsers() []DeviceUser {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeviceFacts) GetUsersOk() ([]DeviceUser, bool) {
-	if o == nil || o.Users == nil {
+	if o == nil || IsNil(o.Users) {
 		return nil, false
 	}
 	return o.Users, true
@@ -294,7 +297,7 @@ func (o *DeviceFacts) GetUsersOk() ([]DeviceUser, bool) {
 
 // HasUsers returns a boolean if a field has been set.
 func (o *DeviceFacts) HasUsers() bool {
-	if o != nil && o.Users != nil {
+	if o != nil && !IsNil(o.Users) {
 		return true
 	}
 
@@ -319,7 +322,7 @@ func (o *DeviceFacts) GetGroups() []DeviceGroup {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeviceFacts) GetGroupsOk() ([]DeviceGroup, bool) {
-	if o == nil || o.Groups == nil {
+	if o == nil || IsNil(o.Groups) {
 		return nil, false
 	}
 	return o.Groups, true
@@ -327,7 +330,7 @@ func (o *DeviceFacts) GetGroupsOk() ([]DeviceGroup, bool) {
 
 // HasGroups returns a boolean if a field has been set.
 func (o *DeviceFacts) HasGroups() bool {
-	if o != nil && o.Groups != nil {
+	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
 
@@ -341,7 +344,7 @@ func (o *DeviceFacts) SetGroups(v []DeviceGroup) {
 
 // GetVendor returns the Vendor field value if set, zero value otherwise.
 func (o *DeviceFacts) GetVendor() map[string]interface{} {
-	if o == nil || o.Vendor == nil {
+	if o == nil || IsNil(o.Vendor) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -351,15 +354,15 @@ func (o *DeviceFacts) GetVendor() map[string]interface{} {
 // GetVendorOk returns a tuple with the Vendor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceFacts) GetVendorOk() (map[string]interface{}, bool) {
-	if o == nil || o.Vendor == nil {
-		return nil, false
+	if o == nil || IsNil(o.Vendor) {
+		return map[string]interface{}{}, false
 	}
 	return o.Vendor, true
 }
 
 // HasVendor returns a boolean if a field has been set.
 func (o *DeviceFacts) HasVendor() bool {
-	if o != nil && o.Vendor != nil {
+	if o != nil && !IsNil(o.Vendor) {
 		return true
 	}
 
@@ -372,6 +375,14 @@ func (o *DeviceFacts) SetVendor(v map[string]interface{}) {
 }
 
 func (o DeviceFacts) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DeviceFacts) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Os.IsSet() {
 		toSerialize["os"] = o.Os.Get()
@@ -397,10 +408,10 @@ func (o DeviceFacts) MarshalJSON() ([]byte, error) {
 	if o.Groups != nil {
 		toSerialize["groups"] = o.Groups
 	}
-	if o.Vendor != nil {
+	if !IsNil(o.Vendor) {
 		toSerialize["vendor"] = o.Vendor
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableDeviceFacts struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedSMSDeviceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedSMSDeviceRequest{}
+
 // PatchedSMSDeviceRequest Serializer for sms authenticator devices
 type PatchedSMSDeviceRequest struct {
 	// The human-readable name of this device.
@@ -40,7 +43,7 @@ func NewPatchedSMSDeviceRequestWithDefaults() *PatchedSMSDeviceRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedSMSDeviceRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PatchedSMSDeviceRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSMSDeviceRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *PatchedSMSDeviceRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedSMSDeviceRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -71,11 +74,19 @@ func (o *PatchedSMSDeviceRequest) SetName(v string) {
 }
 
 func (o PatchedSMSDeviceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedSMSDeviceRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedSMSDeviceRequest struct {

@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the Metadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Metadata{}
 
 // Metadata Serializer for blueprint metadata
 type Metadata struct {
 	Name   string                 `json:"name"`
 	Labels map[string]interface{} `json:"labels"`
 }
+
+type _Metadata Metadata
 
 // NewMetadata instantiates a new Metadata object
 // This constructor will assign default values to properties that have it defined,
@@ -78,7 +85,7 @@ func (o *Metadata) GetLabels() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *Metadata) GetLabelsOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Labels, true
 }
@@ -89,14 +96,56 @@ func (o *Metadata) SetLabels(v map[string]interface{}) {
 }
 
 func (o Metadata) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["labels"] = o.Labels
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Metadata) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["labels"] = o.Labels
+	return toSerialize, nil
+}
+
+func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"labels",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMetadata := _Metadata{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMetadata)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Metadata(varMetadata)
+
+	return err
 }
 
 type NullableMetadata struct {

@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the Network type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Network{}
 
 // Network struct for Network
 type Network struct {
@@ -22,6 +27,8 @@ type Network struct {
 	Interfaces      []NetworkInterface `json:"interfaces"`
 	Gateway         *string            `json:"gateway,omitempty"`
 }
+
+type _Network Network
 
 // NewNetwork instantiates a new Network object
 // This constructor will assign default values to properties that have it defined,
@@ -68,7 +75,7 @@ func (o *Network) SetHostname(v string) {
 
 // GetFirewallEnabled returns the FirewallEnabled field value if set, zero value otherwise.
 func (o *Network) GetFirewallEnabled() bool {
-	if o == nil || o.FirewallEnabled == nil {
+	if o == nil || IsNil(o.FirewallEnabled) {
 		var ret bool
 		return ret
 	}
@@ -78,7 +85,7 @@ func (o *Network) GetFirewallEnabled() bool {
 // GetFirewallEnabledOk returns a tuple with the FirewallEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Network) GetFirewallEnabledOk() (*bool, bool) {
-	if o == nil || o.FirewallEnabled == nil {
+	if o == nil || IsNil(o.FirewallEnabled) {
 		return nil, false
 	}
 	return o.FirewallEnabled, true
@@ -86,7 +93,7 @@ func (o *Network) GetFirewallEnabledOk() (*bool, bool) {
 
 // HasFirewallEnabled returns a boolean if a field has been set.
 func (o *Network) HasFirewallEnabled() bool {
-	if o != nil && o.FirewallEnabled != nil {
+	if o != nil && !IsNil(o.FirewallEnabled) {
 		return true
 	}
 
@@ -124,7 +131,7 @@ func (o *Network) SetInterfaces(v []NetworkInterface) {
 
 // GetGateway returns the Gateway field value if set, zero value otherwise.
 func (o *Network) GetGateway() string {
-	if o == nil || o.Gateway == nil {
+	if o == nil || IsNil(o.Gateway) {
 		var ret string
 		return ret
 	}
@@ -134,7 +141,7 @@ func (o *Network) GetGateway() string {
 // GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Network) GetGatewayOk() (*string, bool) {
-	if o == nil || o.Gateway == nil {
+	if o == nil || IsNil(o.Gateway) {
 		return nil, false
 	}
 	return o.Gateway, true
@@ -142,7 +149,7 @@ func (o *Network) GetGatewayOk() (*string, bool) {
 
 // HasGateway returns a boolean if a field has been set.
 func (o *Network) HasGateway() bool {
-	if o != nil && o.Gateway != nil {
+	if o != nil && !IsNil(o.Gateway) {
 		return true
 	}
 
@@ -155,20 +162,62 @@ func (o *Network) SetGateway(v string) {
 }
 
 func (o Network) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["hostname"] = o.Hostname
-	}
-	if o.FirewallEnabled != nil {
-		toSerialize["firewall_enabled"] = o.FirewallEnabled
-	}
-	if true {
-		toSerialize["interfaces"] = o.Interfaces
-	}
-	if o.Gateway != nil {
-		toSerialize["gateway"] = o.Gateway
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Network) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["hostname"] = o.Hostname
+	if !IsNil(o.FirewallEnabled) {
+		toSerialize["firewall_enabled"] = o.FirewallEnabled
+	}
+	toSerialize["interfaces"] = o.Interfaces
+	if !IsNil(o.Gateway) {
+		toSerialize["gateway"] = o.Gateway
+	}
+	return toSerialize, nil
+}
+
+func (o *Network) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"hostname",
+		"interfaces",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNetwork := _Network{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varNetwork)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Network(varNetwork)
+
+	return err
 }
 
 type NullableNetwork struct {

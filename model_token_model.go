@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the TokenModel type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TokenModel{}
 
 // TokenModel Serializer for BaseGrantModel and RefreshToken
 type TokenModel struct {
@@ -29,6 +34,8 @@ type TokenModel struct {
 	IdToken string `json:"id_token"`
 	Revoked *bool  `json:"revoked,omitempty"`
 }
+
+type _TokenModel TokenModel
 
 // NewTokenModel instantiates a new TokenModel object
 // This constructor will assign default values to properties that have it defined,
@@ -151,7 +158,7 @@ func (o *TokenModel) SetIsExpired(v bool) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TokenModel) GetExpires() time.Time {
-	if o == nil || o.Expires.Get() == nil {
+	if o == nil || IsNil(o.Expires.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -242,7 +249,7 @@ func (o *TokenModel) SetIdToken(v string) {
 
 // GetRevoked returns the Revoked field value if set, zero value otherwise.
 func (o *TokenModel) GetRevoked() bool {
-	if o == nil || o.Revoked == nil {
+	if o == nil || IsNil(o.Revoked) {
 		var ret bool
 		return ret
 	}
@@ -252,7 +259,7 @@ func (o *TokenModel) GetRevoked() bool {
 // GetRevokedOk returns a tuple with the Revoked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TokenModel) GetRevokedOk() (*bool, bool) {
-	if o == nil || o.Revoked == nil {
+	if o == nil || IsNil(o.Revoked) {
 		return nil, false
 	}
 	return o.Revoked, true
@@ -260,7 +267,7 @@ func (o *TokenModel) GetRevokedOk() (*bool, bool) {
 
 // HasRevoked returns a boolean if a field has been set.
 func (o *TokenModel) HasRevoked() bool {
-	if o != nil && o.Revoked != nil {
+	if o != nil && !IsNil(o.Revoked) {
 		return true
 	}
 
@@ -273,32 +280,70 @@ func (o *TokenModel) SetRevoked(v bool) {
 }
 
 func (o TokenModel) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TokenModel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["is_expired"] = o.IsExpired
-	}
+	toSerialize["pk"] = o.Pk
+	toSerialize["provider"] = o.Provider
+	toSerialize["user"] = o.User
+	toSerialize["is_expired"] = o.IsExpired
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if true {
-		toSerialize["id_token"] = o.IdToken
-	}
-	if o.Revoked != nil {
+	toSerialize["scope"] = o.Scope
+	toSerialize["id_token"] = o.IdToken
+	if !IsNil(o.Revoked) {
 		toSerialize["revoked"] = o.Revoked
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *TokenModel) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"provider",
+		"user",
+		"is_expired",
+		"scope",
+		"id_token",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTokenModel := _TokenModel{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTokenModel)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TokenModel(varTokenModel)
+
+	return err
 }
 
 type NullableTokenModel struct {

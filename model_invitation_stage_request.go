@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the InvitationStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InvitationStageRequest{}
 
 // InvitationStageRequest InvitationStage Serializer
 type InvitationStageRequest struct {
@@ -21,6 +26,8 @@ type InvitationStageRequest struct {
 	// If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given.
 	ContinueFlowWithoutInvitation *bool `json:"continue_flow_without_invitation,omitempty"`
 }
+
+type _InvitationStageRequest InvitationStageRequest
 
 // NewInvitationStageRequest instantiates a new InvitationStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -66,7 +73,7 @@ func (o *InvitationStageRequest) SetName(v string) {
 
 // GetContinueFlowWithoutInvitation returns the ContinueFlowWithoutInvitation field value if set, zero value otherwise.
 func (o *InvitationStageRequest) GetContinueFlowWithoutInvitation() bool {
-	if o == nil || o.ContinueFlowWithoutInvitation == nil {
+	if o == nil || IsNil(o.ContinueFlowWithoutInvitation) {
 		var ret bool
 		return ret
 	}
@@ -76,7 +83,7 @@ func (o *InvitationStageRequest) GetContinueFlowWithoutInvitation() bool {
 // GetContinueFlowWithoutInvitationOk returns a tuple with the ContinueFlowWithoutInvitation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvitationStageRequest) GetContinueFlowWithoutInvitationOk() (*bool, bool) {
-	if o == nil || o.ContinueFlowWithoutInvitation == nil {
+	if o == nil || IsNil(o.ContinueFlowWithoutInvitation) {
 		return nil, false
 	}
 	return o.ContinueFlowWithoutInvitation, true
@@ -84,7 +91,7 @@ func (o *InvitationStageRequest) GetContinueFlowWithoutInvitationOk() (*bool, bo
 
 // HasContinueFlowWithoutInvitation returns a boolean if a field has been set.
 func (o *InvitationStageRequest) HasContinueFlowWithoutInvitation() bool {
-	if o != nil && o.ContinueFlowWithoutInvitation != nil {
+	if o != nil && !IsNil(o.ContinueFlowWithoutInvitation) {
 		return true
 	}
 
@@ -97,14 +104,57 @@ func (o *InvitationStageRequest) SetContinueFlowWithoutInvitation(v bool) {
 }
 
 func (o InvitationStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.ContinueFlowWithoutInvitation != nil {
-		toSerialize["continue_flow_without_invitation"] = o.ContinueFlowWithoutInvitation
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InvitationStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ContinueFlowWithoutInvitation) {
+		toSerialize["continue_flow_without_invitation"] = o.ContinueFlowWithoutInvitation
+	}
+	return toSerialize, nil
+}
+
+func (o *InvitationStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInvitationStageRequest := _InvitationStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInvitationStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InvitationStageRequest(varInvitationStageRequest)
+
+	return err
 }
 
 type NullableInvitationStageRequest struct {

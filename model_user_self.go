@@ -12,14 +12,19 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the UserSelf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserSelf{}
 
 // UserSelf User Serializer for information a user can retrieve about themselves
 type UserSelf struct {
 	Pk int32 `json:"pk"`
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-	Username string `json:"username"`
+	Username string `json:"username" validate:"regexp=^[\\\\w.@+-]+$"`
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
@@ -37,6 +42,8 @@ type UserSelf struct {
 	// Get all system permissions assigned to the user
 	SystemPermissions []string `json:"system_permissions"`
 }
+
+type _UserSelf UserSelf
 
 // NewUserSelf instantiates a new UserSelf object
 // This constructor will assign default values to properties that have it defined,
@@ -236,7 +243,7 @@ func (o *UserSelf) SetRoles(v []UserSelfRoles) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UserSelf) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -246,7 +253,7 @@ func (o *UserSelf) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -254,7 +261,7 @@ func (o *UserSelf) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *UserSelf) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -328,7 +335,7 @@ func (o *UserSelf) GetSettings() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetSettingsOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Settings, true
 }
@@ -340,7 +347,7 @@ func (o *UserSelf) SetSettings(v map[string]interface{}) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *UserSelf) GetType() UserTypeEnum {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret UserTypeEnum
 		return ret
 	}
@@ -350,7 +357,7 @@ func (o *UserSelf) GetType() UserTypeEnum {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserSelf) GetTypeOk() (*UserTypeEnum, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -358,7 +365,7 @@ func (o *UserSelf) GetTypeOk() (*UserTypeEnum, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *UserSelf) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -395,47 +402,80 @@ func (o *UserSelf) SetSystemPermissions(v []string) {
 }
 
 func (o UserSelf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["username"] = o.Username
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["is_active"] = o.IsActive
-	}
-	if true {
-		toSerialize["is_superuser"] = o.IsSuperuser
-	}
-	if true {
-		toSerialize["groups"] = o.Groups
-	}
-	if true {
-		toSerialize["roles"] = o.Roles
-	}
-	if o.Email != nil {
-		toSerialize["email"] = o.Email
-	}
-	if true {
-		toSerialize["avatar"] = o.Avatar
-	}
-	if true {
-		toSerialize["uid"] = o.Uid
-	}
-	if true {
-		toSerialize["settings"] = o.Settings
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["system_permissions"] = o.SystemPermissions
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserSelf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["username"] = o.Username
+	toSerialize["name"] = o.Name
+	toSerialize["is_active"] = o.IsActive
+	toSerialize["is_superuser"] = o.IsSuperuser
+	toSerialize["groups"] = o.Groups
+	toSerialize["roles"] = o.Roles
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	toSerialize["avatar"] = o.Avatar
+	toSerialize["uid"] = o.Uid
+	toSerialize["settings"] = o.Settings
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	toSerialize["system_permissions"] = o.SystemPermissions
+	return toSerialize, nil
+}
+
+func (o *UserSelf) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"username",
+		"name",
+		"is_active",
+		"is_superuser",
+		"groups",
+		"roles",
+		"avatar",
+		"uid",
+		"settings",
+		"system_permissions",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserSelf := _UserSelf{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserSelf)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserSelf(varUserSelf)
+
+	return err
 }
 
 type NullableUserSelf struct {

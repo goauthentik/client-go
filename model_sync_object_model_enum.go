@@ -21,8 +21,8 @@ type SyncObjectModelEnum string
 
 // List of SyncObjectModelEnum
 const (
-	SYNCOBJECTMODELENUM_USER  SyncObjectModelEnum = "authentik.core.models.User"
-	SYNCOBJECTMODELENUM_GROUP SyncObjectModelEnum = "authentik.core.models.Group"
+	SYNCOBJECTMODELENUM_AUTHENTIK_CORE_MODELS_USER  SyncObjectModelEnum = "authentik.core.models.User"
+	SYNCOBJECTMODELENUM_AUTHENTIK_CORE_MODELS_GROUP SyncObjectModelEnum = "authentik.core.models.Group"
 )
 
 // All allowed values of SyncObjectModelEnum enum

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedDeviceAccessGroupRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedDeviceAccessGroupRequest{}
+
 // PatchedDeviceAccessGroupRequest struct for PatchedDeviceAccessGroupRequest
 type PatchedDeviceAccessGroupRequest struct {
 	Name       *string                `json:"name,omitempty"`
@@ -40,7 +43,7 @@ func NewPatchedDeviceAccessGroupRequestWithDefaults() *PatchedDeviceAccessGroupR
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedDeviceAccessGroupRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PatchedDeviceAccessGroupRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDeviceAccessGroupRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *PatchedDeviceAccessGroupRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedDeviceAccessGroupRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *PatchedDeviceAccessGroupRequest) SetName(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PatchedDeviceAccessGroupRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *PatchedDeviceAccessGroupRequest) GetAttributes() map[string]interface{}
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedDeviceAccessGroupRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PatchedDeviceAccessGroupRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *PatchedDeviceAccessGroupRequest) SetAttributes(v map[string]interface{}
 }
 
 func (o PatchedDeviceAccessGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedDeviceAccessGroupRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedDeviceAccessGroupRequest struct {

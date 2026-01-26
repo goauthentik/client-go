@@ -59,55 +59,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 	var jsonDict map[string]interface{}
 	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return fmt.Errorf("Failed to unmarshal JSON into map for the discriminator lookup.")
-	}
-
-	// check if the discriminator value is 'AppleLoginChallenge'
-	if jsonDict["component"] == "AppleLoginChallenge" {
-		// try to unmarshal JSON data into AppleLoginChallenge
-		err = json.Unmarshal(data, &dst.AppleLoginChallenge)
-		if err == nil {
-			return nil // data stored in dst.AppleLoginChallenge, return on the first match
-		} else {
-			dst.AppleLoginChallenge = nil
-			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as AppleLoginChallenge: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'PlexAuthenticationChallenge'
-	if jsonDict["component"] == "PlexAuthenticationChallenge" {
-		// try to unmarshal JSON data into PlexAuthenticationChallenge
-		err = json.Unmarshal(data, &dst.PlexAuthenticationChallenge)
-		if err == nil {
-			return nil // data stored in dst.PlexAuthenticationChallenge, return on the first match
-		} else {
-			dst.PlexAuthenticationChallenge = nil
-			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'RedirectChallenge'
-	if jsonDict["component"] == "RedirectChallenge" {
-		// try to unmarshal JSON data into RedirectChallenge
-		err = json.Unmarshal(data, &dst.RedirectChallenge)
-		if err == nil {
-			return nil // data stored in dst.RedirectChallenge, return on the first match
-		} else {
-			dst.RedirectChallenge = nil
-			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as RedirectChallenge: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'TelegramLoginChallenge'
-	if jsonDict["component"] == "TelegramLoginChallenge" {
-		// try to unmarshal JSON data into TelegramLoginChallenge
-		err = json.Unmarshal(data, &dst.TelegramLoginChallenge)
-		if err == nil {
-			return nil // data stored in dst.TelegramLoginChallenge, return on the first match
-		} else {
-			dst.TelegramLoginChallenge = nil
-			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as TelegramLoginChallenge: %s", err.Error())
-		}
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
 	}
 
 	// check if the discriminator value is 'ak-source-oauth-apple'
@@ -118,7 +70,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.AppleLoginChallenge, return on the first match
 		} else {
 			dst.AppleLoginChallenge = nil
-			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as AppleLoginChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as AppleLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -130,7 +82,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.PlexAuthenticationChallenge, return on the first match
 		} else {
 			dst.PlexAuthenticationChallenge = nil
-			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as PlexAuthenticationChallenge: %s", err.Error())
 		}
 	}
 
@@ -142,7 +94,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.TelegramLoginChallenge, return on the first match
 		} else {
 			dst.TelegramLoginChallenge = nil
-			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as TelegramLoginChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as TelegramLoginChallenge: %s", err.Error())
 		}
 	}
 
@@ -154,7 +106,7 @@ func (dst *LoginChallengeTypes) UnmarshalJSON(data []byte) error {
 			return nil // data stored in dst.RedirectChallenge, return on the first match
 		} else {
 			dst.RedirectChallenge = nil
-			return fmt.Errorf("Failed to unmarshal LoginChallengeTypes as RedirectChallenge: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal LoginChallengeTypes as RedirectChallenge: %s", err.Error())
 		}
 	}
 
@@ -201,6 +153,28 @@ func (obj *LoginChallengeTypes) GetActualInstance() interface{} {
 
 	if obj.TelegramLoginChallenge != nil {
 		return obj.TelegramLoginChallenge
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj LoginChallengeTypes) GetActualInstanceValue() interface{} {
+	if obj.AppleLoginChallenge != nil {
+		return *obj.AppleLoginChallenge
+	}
+
+	if obj.PlexAuthenticationChallenge != nil {
+		return *obj.PlexAuthenticationChallenge
+	}
+
+	if obj.RedirectChallenge != nil {
+		return *obj.RedirectChallenge
+	}
+
+	if obj.TelegramLoginChallenge != nil {
+		return *obj.TelegramLoginChallenge
 	}
 
 	// all schemas are nil

@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **PhoneNumber** | Pointer to **string** |  | [optional] 
 **SelectedChallenge** | Pointer to [**DeviceChallengeRequest**](DeviceChallengeRequest.md) |  | [optional] 
 **SelectedStage** | Pointer to **string** |  | [optional] 
-**Webauthn** | Pointer to **map[string]interface{}** |  | [optional] 
+**Webauthn** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **Duo** | Pointer to **int32** |  | [optional] 
 **Response** | **NullableString** |  | 
 **Token** | **string** |  | 
 **UidField** | Pointer to **NullableString** |  | [optional] 
 **Password** | **string** |  | 
 **CaptchaToken** | Pointer to **NullableString** |  | [optional] 
-**Passkey** | Pointer to **map[string]interface{}** |  | [optional] 
+**Passkey** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **To** | **string** |  | 
 **Id** | **int32** |  | 
 **FirstName** | Pointer to **string** |  | [optional] 
@@ -194,20 +194,20 @@ HasSelectedStage returns a boolean if a field has been set.
 
 ### GetWebauthn
 
-`func (o *FlowChallengeResponseRequest) GetWebauthn() map[string]interface{}`
+`func (o *FlowChallengeResponseRequest) GetWebauthn() map[string]map[string]interface{}`
 
 GetWebauthn returns the Webauthn field if non-nil, zero value otherwise.
 
 ### GetWebauthnOk
 
-`func (o *FlowChallengeResponseRequest) GetWebauthnOk() (*map[string]interface{}, bool)`
+`func (o *FlowChallengeResponseRequest) GetWebauthnOk() (*map[string]map[string]interface{}, bool)`
 
 GetWebauthnOk returns a tuple with the Webauthn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWebauthn
 
-`func (o *FlowChallengeResponseRequest) SetWebauthn(v map[string]interface{})`
+`func (o *FlowChallengeResponseRequest) SetWebauthn(v map[string]map[string]interface{})`
 
 SetWebauthn sets Webauthn field to given value.
 
@@ -384,20 +384,20 @@ HasCaptchaToken returns a boolean if a field has been set.
 UnsetCaptchaToken ensures that no value is present for CaptchaToken, not even an explicit nil
 ### GetPasskey
 
-`func (o *FlowChallengeResponseRequest) GetPasskey() map[string]interface{}`
+`func (o *FlowChallengeResponseRequest) GetPasskey() map[string]map[string]interface{}`
 
 GetPasskey returns the Passkey field if non-nil, zero value otherwise.
 
 ### GetPasskeyOk
 
-`func (o *FlowChallengeResponseRequest) GetPasskeyOk() (*map[string]interface{}, bool)`
+`func (o *FlowChallengeResponseRequest) GetPasskeyOk() (*map[string]map[string]interface{}, bool)`
 
 GetPasskeyOk returns a tuple with the Passkey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasskey
 
-`func (o *FlowChallengeResponseRequest) SetPasskey(v map[string]interface{})`
+`func (o *FlowChallengeResponseRequest) SetPasskey(v map[string]map[string]interface{})`
 
 SetPasskey sets Passkey field to given value.
 

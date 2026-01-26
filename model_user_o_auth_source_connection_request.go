@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the UserOAuthSourceConnectionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserOAuthSourceConnectionRequest{}
 
 // UserOAuthSourceConnectionRequest User source connection
 type UserOAuthSourceConnectionRequest struct {
@@ -24,6 +29,8 @@ type UserOAuthSourceConnectionRequest struct {
 	AccessToken NullableString `json:"access_token,omitempty"`
 	Expires     *time.Time     `json:"expires,omitempty"`
 }
+
+type _UserOAuthSourceConnectionRequest UserOAuthSourceConnectionRequest
 
 // NewUserOAuthSourceConnectionRequest instantiates a new UserOAuthSourceConnectionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -119,7 +126,7 @@ func (o *UserOAuthSourceConnectionRequest) SetIdentifier(v string) {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserOAuthSourceConnectionRequest) GetAccessToken() string {
-	if o == nil || o.AccessToken.Get() == nil {
+	if o == nil || IsNil(o.AccessToken.Get()) {
 		var ret string
 		return ret
 	}
@@ -162,7 +169,7 @@ func (o *UserOAuthSourceConnectionRequest) UnsetAccessToken() {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *UserOAuthSourceConnectionRequest) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
 		return ret
 	}
@@ -172,7 +179,7 @@ func (o *UserOAuthSourceConnectionRequest) GetExpires() time.Time {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserOAuthSourceConnectionRequest) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -180,7 +187,7 @@ func (o *UserOAuthSourceConnectionRequest) GetExpiresOk() (*time.Time, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *UserOAuthSourceConnectionRequest) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -193,23 +200,64 @@ func (o *UserOAuthSourceConnectionRequest) SetExpires(v time.Time) {
 }
 
 func (o UserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UserOAuthSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["identifier"] = o.Identifier
-	}
+	toSerialize["user"] = o.User
+	toSerialize["source"] = o.Source
+	toSerialize["identifier"] = o.Identifier
 	if o.AccessToken.IsSet() {
 		toSerialize["access_token"] = o.AccessToken.Get()
 	}
-	if o.Expires != nil {
+	if !IsNil(o.Expires) {
 		toSerialize["expires"] = o.Expires
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *UserOAuthSourceConnectionRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"user",
+		"source",
+		"identifier",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserOAuthSourceConnectionRequest := _UserOAuthSourceConnectionRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserOAuthSourceConnectionRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserOAuthSourceConnectionRequest(varUserOAuthSourceConnectionRequest)
+
+	return err
 }
 
 type NullableUserOAuthSourceConnectionRequest struct {

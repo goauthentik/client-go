@@ -21,16 +21,16 @@ type ProviderModelEnum string
 
 // List of ProviderModelEnum
 const (
-	PROVIDERMODELENUM_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER ProviderModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
-	PROVIDERMODELENUM_LDAP_LDAPPROVIDER                        ProviderModelEnum = "authentik_providers_ldap.ldapprovider"
-	PROVIDERMODELENUM_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER   ProviderModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovider"
-	PROVIDERMODELENUM_OAUTH2_OAUTH2PROVIDER                    ProviderModelEnum = "authentik_providers_oauth2.oauth2provider"
-	PROVIDERMODELENUM_PROXY_PROXYPROVIDER                      ProviderModelEnum = "authentik_providers_proxy.proxyprovider"
-	PROVIDERMODELENUM_RAC_RACPROVIDER                          ProviderModelEnum = "authentik_providers_rac.racprovider"
-	PROVIDERMODELENUM_RADIUS_RADIUSPROVIDER                    ProviderModelEnum = "authentik_providers_radius.radiusprovider"
-	PROVIDERMODELENUM_SAML_SAMLPROVIDER                        ProviderModelEnum = "authentik_providers_saml.samlprovider"
-	PROVIDERMODELENUM_SCIM_SCIMPROVIDER                        ProviderModelEnum = "authentik_providers_scim.scimprovider"
-	PROVIDERMODELENUM_SSF_SSFPROVIDER                          ProviderModelEnum = "authentik_providers_ssf.ssfprovider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER ProviderModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_LDAP_LDAPPROVIDER                        ProviderModelEnum = "authentik_providers_ldap.ldapprovider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER   ProviderModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_OAUTH2_OAUTH2PROVIDER                    ProviderModelEnum = "authentik_providers_oauth2.oauth2provider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_PROXY_PROXYPROVIDER                      ProviderModelEnum = "authentik_providers_proxy.proxyprovider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_RAC_RACPROVIDER                          ProviderModelEnum = "authentik_providers_rac.racprovider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_RADIUS_RADIUSPROVIDER                    ProviderModelEnum = "authentik_providers_radius.radiusprovider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_SAML_SAMLPROVIDER                        ProviderModelEnum = "authentik_providers_saml.samlprovider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_SCIM_SCIMPROVIDER                        ProviderModelEnum = "authentik_providers_scim.scimprovider"
+	PROVIDERMODELENUM_AUTHENTIK_PROVIDERS_SSF_SSFPROVIDER                          ProviderModelEnum = "authentik_providers_ssf.ssfprovider"
 )
 
 // All allowed values of ProviderModelEnum enum

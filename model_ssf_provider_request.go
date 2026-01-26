@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SSFProviderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SSFProviderRequest{}
 
 // SSFProviderRequest SSFProvider Serializer
 type SSFProviderRequest struct {
@@ -23,6 +28,8 @@ type SSFProviderRequest struct {
 	OidcAuthProviders []int32 `json:"oidc_auth_providers,omitempty"`
 	EventRetention    *string `json:"event_retention,omitempty"`
 }
+
+type _SSFProviderRequest SSFProviderRequest
 
 // NewSSFProviderRequest instantiates a new SSFProviderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -93,7 +100,7 @@ func (o *SSFProviderRequest) SetSigningKey(v string) {
 
 // GetOidcAuthProviders returns the OidcAuthProviders field value if set, zero value otherwise.
 func (o *SSFProviderRequest) GetOidcAuthProviders() []int32 {
-	if o == nil || o.OidcAuthProviders == nil {
+	if o == nil || IsNil(o.OidcAuthProviders) {
 		var ret []int32
 		return ret
 	}
@@ -103,7 +110,7 @@ func (o *SSFProviderRequest) GetOidcAuthProviders() []int32 {
 // GetOidcAuthProvidersOk returns a tuple with the OidcAuthProviders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SSFProviderRequest) GetOidcAuthProvidersOk() ([]int32, bool) {
-	if o == nil || o.OidcAuthProviders == nil {
+	if o == nil || IsNil(o.OidcAuthProviders) {
 		return nil, false
 	}
 	return o.OidcAuthProviders, true
@@ -111,7 +118,7 @@ func (o *SSFProviderRequest) GetOidcAuthProvidersOk() ([]int32, bool) {
 
 // HasOidcAuthProviders returns a boolean if a field has been set.
 func (o *SSFProviderRequest) HasOidcAuthProviders() bool {
-	if o != nil && o.OidcAuthProviders != nil {
+	if o != nil && !IsNil(o.OidcAuthProviders) {
 		return true
 	}
 
@@ -125,7 +132,7 @@ func (o *SSFProviderRequest) SetOidcAuthProviders(v []int32) {
 
 // GetEventRetention returns the EventRetention field value if set, zero value otherwise.
 func (o *SSFProviderRequest) GetEventRetention() string {
-	if o == nil || o.EventRetention == nil {
+	if o == nil || IsNil(o.EventRetention) {
 		var ret string
 		return ret
 	}
@@ -135,7 +142,7 @@ func (o *SSFProviderRequest) GetEventRetention() string {
 // GetEventRetentionOk returns a tuple with the EventRetention field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SSFProviderRequest) GetEventRetentionOk() (*string, bool) {
-	if o == nil || o.EventRetention == nil {
+	if o == nil || IsNil(o.EventRetention) {
 		return nil, false
 	}
 	return o.EventRetention, true
@@ -143,7 +150,7 @@ func (o *SSFProviderRequest) GetEventRetentionOk() (*string, bool) {
 
 // HasEventRetention returns a boolean if a field has been set.
 func (o *SSFProviderRequest) HasEventRetention() bool {
-	if o != nil && o.EventRetention != nil {
+	if o != nil && !IsNil(o.EventRetention) {
 		return true
 	}
 
@@ -156,20 +163,62 @@ func (o *SSFProviderRequest) SetEventRetention(v string) {
 }
 
 func (o SSFProviderRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["signing_key"] = o.SigningKey
-	}
-	if o.OidcAuthProviders != nil {
-		toSerialize["oidc_auth_providers"] = o.OidcAuthProviders
-	}
-	if o.EventRetention != nil {
-		toSerialize["event_retention"] = o.EventRetention
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SSFProviderRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["signing_key"] = o.SigningKey
+	if !IsNil(o.OidcAuthProviders) {
+		toSerialize["oidc_auth_providers"] = o.OidcAuthProviders
+	}
+	if !IsNil(o.EventRetention) {
+		toSerialize["event_retention"] = o.EventRetention
+	}
+	return toSerialize, nil
+}
+
+func (o *SSFProviderRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"signing_key",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSSFProviderRequest := _SSFProviderRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSSFProviderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SSFProviderRequest(varSSFProviderRequest)
+
+	return err
 }
 
 type NullableSSFProviderRequest struct {

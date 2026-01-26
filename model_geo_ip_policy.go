@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the GeoIPPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GeoIPPolicy{}
 
 // GeoIPPolicy GeoIP Policy Serializer
 type GeoIPPolicy struct {
@@ -41,6 +46,8 @@ type GeoIPPolicy struct {
 	CheckImpossibleTravel *bool                  `json:"check_impossible_travel,omitempty"`
 	ImpossibleToleranceKm *int32                 `json:"impossible_tolerance_km,omitempty"`
 }
+
+type _GeoIPPolicy GeoIPPolicy
 
 // NewGeoIPPolicy instantiates a new GeoIPPolicy object
 // This constructor will assign default values to properties that have it defined,
@@ -118,7 +125,7 @@ func (o *GeoIPPolicy) SetName(v string) {
 
 // GetExecutionLogging returns the ExecutionLogging field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetExecutionLogging() bool {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		var ret bool
 		return ret
 	}
@@ -128,7 +135,7 @@ func (o *GeoIPPolicy) GetExecutionLogging() bool {
 // GetExecutionLoggingOk returns a tuple with the ExecutionLogging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetExecutionLoggingOk() (*bool, bool) {
-	if o == nil || o.ExecutionLogging == nil {
+	if o == nil || IsNil(o.ExecutionLogging) {
 		return nil, false
 	}
 	return o.ExecutionLogging, true
@@ -136,7 +143,7 @@ func (o *GeoIPPolicy) GetExecutionLoggingOk() (*bool, bool) {
 
 // HasExecutionLogging returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasExecutionLogging() bool {
-	if o != nil && o.ExecutionLogging != nil {
+	if o != nil && !IsNil(o.ExecutionLogging) {
 		return true
 	}
 
@@ -270,7 +277,7 @@ func (o *GeoIPPolicy) SetBoundTo(v int32) {
 
 // GetAsns returns the Asns field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetAsns() []int32 {
-	if o == nil || o.Asns == nil {
+	if o == nil || IsNil(o.Asns) {
 		var ret []int32
 		return ret
 	}
@@ -280,7 +287,7 @@ func (o *GeoIPPolicy) GetAsns() []int32 {
 // GetAsnsOk returns a tuple with the Asns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetAsnsOk() ([]int32, bool) {
-	if o == nil || o.Asns == nil {
+	if o == nil || IsNil(o.Asns) {
 		return nil, false
 	}
 	return o.Asns, true
@@ -288,7 +295,7 @@ func (o *GeoIPPolicy) GetAsnsOk() ([]int32, bool) {
 
 // HasAsns returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasAsns() bool {
-	if o != nil && o.Asns != nil {
+	if o != nil && !IsNil(o.Asns) {
 		return true
 	}
 
@@ -350,7 +357,7 @@ func (o *GeoIPPolicy) SetCountriesObj(v []DetailedCountryField) {
 
 // GetCheckHistoryDistance returns the CheckHistoryDistance field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetCheckHistoryDistance() bool {
-	if o == nil || o.CheckHistoryDistance == nil {
+	if o == nil || IsNil(o.CheckHistoryDistance) {
 		var ret bool
 		return ret
 	}
@@ -360,7 +367,7 @@ func (o *GeoIPPolicy) GetCheckHistoryDistance() bool {
 // GetCheckHistoryDistanceOk returns a tuple with the CheckHistoryDistance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetCheckHistoryDistanceOk() (*bool, bool) {
-	if o == nil || o.CheckHistoryDistance == nil {
+	if o == nil || IsNil(o.CheckHistoryDistance) {
 		return nil, false
 	}
 	return o.CheckHistoryDistance, true
@@ -368,7 +375,7 @@ func (o *GeoIPPolicy) GetCheckHistoryDistanceOk() (*bool, bool) {
 
 // HasCheckHistoryDistance returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasCheckHistoryDistance() bool {
-	if o != nil && o.CheckHistoryDistance != nil {
+	if o != nil && !IsNil(o.CheckHistoryDistance) {
 		return true
 	}
 
@@ -382,7 +389,7 @@ func (o *GeoIPPolicy) SetCheckHistoryDistance(v bool) {
 
 // GetHistoryMaxDistanceKm returns the HistoryMaxDistanceKm field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetHistoryMaxDistanceKm() int64 {
-	if o == nil || o.HistoryMaxDistanceKm == nil {
+	if o == nil || IsNil(o.HistoryMaxDistanceKm) {
 		var ret int64
 		return ret
 	}
@@ -392,7 +399,7 @@ func (o *GeoIPPolicy) GetHistoryMaxDistanceKm() int64 {
 // GetHistoryMaxDistanceKmOk returns a tuple with the HistoryMaxDistanceKm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetHistoryMaxDistanceKmOk() (*int64, bool) {
-	if o == nil || o.HistoryMaxDistanceKm == nil {
+	if o == nil || IsNil(o.HistoryMaxDistanceKm) {
 		return nil, false
 	}
 	return o.HistoryMaxDistanceKm, true
@@ -400,7 +407,7 @@ func (o *GeoIPPolicy) GetHistoryMaxDistanceKmOk() (*int64, bool) {
 
 // HasHistoryMaxDistanceKm returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasHistoryMaxDistanceKm() bool {
-	if o != nil && o.HistoryMaxDistanceKm != nil {
+	if o != nil && !IsNil(o.HistoryMaxDistanceKm) {
 		return true
 	}
 
@@ -414,7 +421,7 @@ func (o *GeoIPPolicy) SetHistoryMaxDistanceKm(v int64) {
 
 // GetDistanceToleranceKm returns the DistanceToleranceKm field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetDistanceToleranceKm() int32 {
-	if o == nil || o.DistanceToleranceKm == nil {
+	if o == nil || IsNil(o.DistanceToleranceKm) {
 		var ret int32
 		return ret
 	}
@@ -424,7 +431,7 @@ func (o *GeoIPPolicy) GetDistanceToleranceKm() int32 {
 // GetDistanceToleranceKmOk returns a tuple with the DistanceToleranceKm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetDistanceToleranceKmOk() (*int32, bool) {
-	if o == nil || o.DistanceToleranceKm == nil {
+	if o == nil || IsNil(o.DistanceToleranceKm) {
 		return nil, false
 	}
 	return o.DistanceToleranceKm, true
@@ -432,7 +439,7 @@ func (o *GeoIPPolicy) GetDistanceToleranceKmOk() (*int32, bool) {
 
 // HasDistanceToleranceKm returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasDistanceToleranceKm() bool {
-	if o != nil && o.DistanceToleranceKm != nil {
+	if o != nil && !IsNil(o.DistanceToleranceKm) {
 		return true
 	}
 
@@ -446,7 +453,7 @@ func (o *GeoIPPolicy) SetDistanceToleranceKm(v int32) {
 
 // GetHistoryLoginCount returns the HistoryLoginCount field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetHistoryLoginCount() int32 {
-	if o == nil || o.HistoryLoginCount == nil {
+	if o == nil || IsNil(o.HistoryLoginCount) {
 		var ret int32
 		return ret
 	}
@@ -456,7 +463,7 @@ func (o *GeoIPPolicy) GetHistoryLoginCount() int32 {
 // GetHistoryLoginCountOk returns a tuple with the HistoryLoginCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetHistoryLoginCountOk() (*int32, bool) {
-	if o == nil || o.HistoryLoginCount == nil {
+	if o == nil || IsNil(o.HistoryLoginCount) {
 		return nil, false
 	}
 	return o.HistoryLoginCount, true
@@ -464,7 +471,7 @@ func (o *GeoIPPolicy) GetHistoryLoginCountOk() (*int32, bool) {
 
 // HasHistoryLoginCount returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasHistoryLoginCount() bool {
-	if o != nil && o.HistoryLoginCount != nil {
+	if o != nil && !IsNil(o.HistoryLoginCount) {
 		return true
 	}
 
@@ -478,7 +485,7 @@ func (o *GeoIPPolicy) SetHistoryLoginCount(v int32) {
 
 // GetCheckImpossibleTravel returns the CheckImpossibleTravel field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetCheckImpossibleTravel() bool {
-	if o == nil || o.CheckImpossibleTravel == nil {
+	if o == nil || IsNil(o.CheckImpossibleTravel) {
 		var ret bool
 		return ret
 	}
@@ -488,7 +495,7 @@ func (o *GeoIPPolicy) GetCheckImpossibleTravel() bool {
 // GetCheckImpossibleTravelOk returns a tuple with the CheckImpossibleTravel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetCheckImpossibleTravelOk() (*bool, bool) {
-	if o == nil || o.CheckImpossibleTravel == nil {
+	if o == nil || IsNil(o.CheckImpossibleTravel) {
 		return nil, false
 	}
 	return o.CheckImpossibleTravel, true
@@ -496,7 +503,7 @@ func (o *GeoIPPolicy) GetCheckImpossibleTravelOk() (*bool, bool) {
 
 // HasCheckImpossibleTravel returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasCheckImpossibleTravel() bool {
-	if o != nil && o.CheckImpossibleTravel != nil {
+	if o != nil && !IsNil(o.CheckImpossibleTravel) {
 		return true
 	}
 
@@ -510,7 +517,7 @@ func (o *GeoIPPolicy) SetCheckImpossibleTravel(v bool) {
 
 // GetImpossibleToleranceKm returns the ImpossibleToleranceKm field value if set, zero value otherwise.
 func (o *GeoIPPolicy) GetImpossibleToleranceKm() int32 {
-	if o == nil || o.ImpossibleToleranceKm == nil {
+	if o == nil || IsNil(o.ImpossibleToleranceKm) {
 		var ret int32
 		return ret
 	}
@@ -520,7 +527,7 @@ func (o *GeoIPPolicy) GetImpossibleToleranceKm() int32 {
 // GetImpossibleToleranceKmOk returns a tuple with the ImpossibleToleranceKm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeoIPPolicy) GetImpossibleToleranceKmOk() (*int32, bool) {
-	if o == nil || o.ImpossibleToleranceKm == nil {
+	if o == nil || IsNil(o.ImpossibleToleranceKm) {
 		return nil, false
 	}
 	return o.ImpossibleToleranceKm, true
@@ -528,7 +535,7 @@ func (o *GeoIPPolicy) GetImpossibleToleranceKmOk() (*int32, bool) {
 
 // HasImpossibleToleranceKm returns a boolean if a field has been set.
 func (o *GeoIPPolicy) HasImpossibleToleranceKm() bool {
-	if o != nil && o.ImpossibleToleranceKm != nil {
+	if o != nil && !IsNil(o.ImpossibleToleranceKm) {
 		return true
 	}
 
@@ -541,59 +548,94 @@ func (o *GeoIPPolicy) SetImpossibleToleranceKm(v int32) {
 }
 
 func (o GeoIPPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.ExecutionLogging != nil {
-		toSerialize["execution_logging"] = o.ExecutionLogging
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["bound_to"] = o.BoundTo
-	}
-	if o.Asns != nil {
-		toSerialize["asns"] = o.Asns
-	}
-	if true {
-		toSerialize["countries"] = o.Countries
-	}
-	if true {
-		toSerialize["countries_obj"] = o.CountriesObj
-	}
-	if o.CheckHistoryDistance != nil {
-		toSerialize["check_history_distance"] = o.CheckHistoryDistance
-	}
-	if o.HistoryMaxDistanceKm != nil {
-		toSerialize["history_max_distance_km"] = o.HistoryMaxDistanceKm
-	}
-	if o.DistanceToleranceKm != nil {
-		toSerialize["distance_tolerance_km"] = o.DistanceToleranceKm
-	}
-	if o.HistoryLoginCount != nil {
-		toSerialize["history_login_count"] = o.HistoryLoginCount
-	}
-	if o.CheckImpossibleTravel != nil {
-		toSerialize["check_impossible_travel"] = o.CheckImpossibleTravel
-	}
-	if o.ImpossibleToleranceKm != nil {
-		toSerialize["impossible_tolerance_km"] = o.ImpossibleToleranceKm
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GeoIPPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ExecutionLogging) {
+		toSerialize["execution_logging"] = o.ExecutionLogging
+	}
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize["bound_to"] = o.BoundTo
+	if !IsNil(o.Asns) {
+		toSerialize["asns"] = o.Asns
+	}
+	toSerialize["countries"] = o.Countries
+	toSerialize["countries_obj"] = o.CountriesObj
+	if !IsNil(o.CheckHistoryDistance) {
+		toSerialize["check_history_distance"] = o.CheckHistoryDistance
+	}
+	if !IsNil(o.HistoryMaxDistanceKm) {
+		toSerialize["history_max_distance_km"] = o.HistoryMaxDistanceKm
+	}
+	if !IsNil(o.DistanceToleranceKm) {
+		toSerialize["distance_tolerance_km"] = o.DistanceToleranceKm
+	}
+	if !IsNil(o.HistoryLoginCount) {
+		toSerialize["history_login_count"] = o.HistoryLoginCount
+	}
+	if !IsNil(o.CheckImpossibleTravel) {
+		toSerialize["check_impossible_travel"] = o.CheckImpossibleTravel
+	}
+	if !IsNil(o.ImpossibleToleranceKm) {
+		toSerialize["impossible_tolerance_km"] = o.ImpossibleToleranceKm
+	}
+	return toSerialize, nil
+}
+
+func (o *GeoIPPolicy) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"bound_to",
+		"countries",
+		"countries_obj",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGeoIPPolicy := _GeoIPPolicy{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGeoIPPolicy)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GeoIPPolicy(varGeoIPPolicy)
+
+	return err
 }
 
 type NullableGeoIPPolicy struct {

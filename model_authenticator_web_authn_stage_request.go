@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatorWebAuthnStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorWebAuthnStageRequest{}
 
 // AuthenticatorWebAuthnStageRequest AuthenticatorWebAuthnStage Serializer
 type AuthenticatorWebAuthnStageRequest struct {
@@ -27,6 +32,8 @@ type AuthenticatorWebAuthnStageRequest struct {
 	DeviceTypeRestrictions  []string                            `json:"device_type_restrictions,omitempty"`
 	MaxAttempts             *int32                              `json:"max_attempts,omitempty"`
 }
+
+type _AuthenticatorWebAuthnStageRequest AuthenticatorWebAuthnStageRequest
 
 // NewAuthenticatorWebAuthnStageRequest instantiates a new AuthenticatorWebAuthnStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -72,7 +79,7 @@ func (o *AuthenticatorWebAuthnStageRequest) SetName(v string) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorWebAuthnStageRequest) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -115,7 +122,7 @@ func (o *AuthenticatorWebAuthnStageRequest) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise.
 func (o *AuthenticatorWebAuthnStageRequest) GetFriendlyName() string {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		var ret string
 		return ret
 	}
@@ -125,7 +132,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetFriendlyName() string {
 // GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorWebAuthnStageRequest) GetFriendlyNameOk() (*string, bool) {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		return nil, false
 	}
 	return o.FriendlyName, true
@@ -133,7 +140,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetFriendlyNameOk() (*string, bool) 
 
 // HasFriendlyName returns a boolean if a field has been set.
 func (o *AuthenticatorWebAuthnStageRequest) HasFriendlyName() bool {
-	if o != nil && o.FriendlyName != nil {
+	if o != nil && !IsNil(o.FriendlyName) {
 		return true
 	}
 
@@ -147,7 +154,7 @@ func (o *AuthenticatorWebAuthnStageRequest) SetFriendlyName(v string) {
 
 // GetUserVerification returns the UserVerification field value if set, zero value otherwise.
 func (o *AuthenticatorWebAuthnStageRequest) GetUserVerification() UserVerificationEnum {
-	if o == nil || o.UserVerification == nil {
+	if o == nil || IsNil(o.UserVerification) {
 		var ret UserVerificationEnum
 		return ret
 	}
@@ -157,7 +164,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetUserVerification() UserVerificati
 // GetUserVerificationOk returns a tuple with the UserVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorWebAuthnStageRequest) GetUserVerificationOk() (*UserVerificationEnum, bool) {
-	if o == nil || o.UserVerification == nil {
+	if o == nil || IsNil(o.UserVerification) {
 		return nil, false
 	}
 	return o.UserVerification, true
@@ -165,7 +172,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetUserVerificationOk() (*UserVerifi
 
 // HasUserVerification returns a boolean if a field has been set.
 func (o *AuthenticatorWebAuthnStageRequest) HasUserVerification() bool {
-	if o != nil && o.UserVerification != nil {
+	if o != nil && !IsNil(o.UserVerification) {
 		return true
 	}
 
@@ -179,7 +186,7 @@ func (o *AuthenticatorWebAuthnStageRequest) SetUserVerification(v UserVerificati
 
 // GetAuthenticatorAttachment returns the AuthenticatorAttachment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorWebAuthnStageRequest) GetAuthenticatorAttachment() AuthenticatorAttachmentEnum {
-	if o == nil || o.AuthenticatorAttachment.Get() == nil {
+	if o == nil || IsNil(o.AuthenticatorAttachment.Get()) {
 		var ret AuthenticatorAttachmentEnum
 		return ret
 	}
@@ -222,7 +229,7 @@ func (o *AuthenticatorWebAuthnStageRequest) UnsetAuthenticatorAttachment() {
 
 // GetResidentKeyRequirement returns the ResidentKeyRequirement field value if set, zero value otherwise.
 func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirement() ResidentKeyRequirementEnum {
-	if o == nil || o.ResidentKeyRequirement == nil {
+	if o == nil || IsNil(o.ResidentKeyRequirement) {
 		var ret ResidentKeyRequirementEnum
 		return ret
 	}
@@ -232,7 +239,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirement() Resident
 // GetResidentKeyRequirementOk returns a tuple with the ResidentKeyRequirement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirementOk() (*ResidentKeyRequirementEnum, bool) {
-	if o == nil || o.ResidentKeyRequirement == nil {
+	if o == nil || IsNil(o.ResidentKeyRequirement) {
 		return nil, false
 	}
 	return o.ResidentKeyRequirement, true
@@ -240,7 +247,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirementOk() (*Resi
 
 // HasResidentKeyRequirement returns a boolean if a field has been set.
 func (o *AuthenticatorWebAuthnStageRequest) HasResidentKeyRequirement() bool {
-	if o != nil && o.ResidentKeyRequirement != nil {
+	if o != nil && !IsNil(o.ResidentKeyRequirement) {
 		return true
 	}
 
@@ -254,7 +261,7 @@ func (o *AuthenticatorWebAuthnStageRequest) SetResidentKeyRequirement(v Resident
 
 // GetDeviceTypeRestrictions returns the DeviceTypeRestrictions field value if set, zero value otherwise.
 func (o *AuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictions() []string {
-	if o == nil || o.DeviceTypeRestrictions == nil {
+	if o == nil || IsNil(o.DeviceTypeRestrictions) {
 		var ret []string
 		return ret
 	}
@@ -264,7 +271,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictions() []string
 // GetDeviceTypeRestrictionsOk returns a tuple with the DeviceTypeRestrictions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictionsOk() ([]string, bool) {
-	if o == nil || o.DeviceTypeRestrictions == nil {
+	if o == nil || IsNil(o.DeviceTypeRestrictions) {
 		return nil, false
 	}
 	return o.DeviceTypeRestrictions, true
@@ -272,7 +279,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictionsOk() ([]str
 
 // HasDeviceTypeRestrictions returns a boolean if a field has been set.
 func (o *AuthenticatorWebAuthnStageRequest) HasDeviceTypeRestrictions() bool {
-	if o != nil && o.DeviceTypeRestrictions != nil {
+	if o != nil && !IsNil(o.DeviceTypeRestrictions) {
 		return true
 	}
 
@@ -286,7 +293,7 @@ func (o *AuthenticatorWebAuthnStageRequest) SetDeviceTypeRestrictions(v []string
 
 // GetMaxAttempts returns the MaxAttempts field value if set, zero value otherwise.
 func (o *AuthenticatorWebAuthnStageRequest) GetMaxAttempts() int32 {
-	if o == nil || o.MaxAttempts == nil {
+	if o == nil || IsNil(o.MaxAttempts) {
 		var ret int32
 		return ret
 	}
@@ -296,7 +303,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetMaxAttempts() int32 {
 // GetMaxAttemptsOk returns a tuple with the MaxAttempts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorWebAuthnStageRequest) GetMaxAttemptsOk() (*int32, bool) {
-	if o == nil || o.MaxAttempts == nil {
+	if o == nil || IsNil(o.MaxAttempts) {
 		return nil, false
 	}
 	return o.MaxAttempts, true
@@ -304,7 +311,7 @@ func (o *AuthenticatorWebAuthnStageRequest) GetMaxAttemptsOk() (*int32, bool) {
 
 // HasMaxAttempts returns a boolean if a field has been set.
 func (o *AuthenticatorWebAuthnStageRequest) HasMaxAttempts() bool {
-	if o != nil && o.MaxAttempts != nil {
+	if o != nil && !IsNil(o.MaxAttempts) {
 		return true
 	}
 
@@ -317,32 +324,75 @@ func (o *AuthenticatorWebAuthnStageRequest) SetMaxAttempts(v int32) {
 }
 
 func (o AuthenticatorWebAuthnStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorWebAuthnStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if o.FriendlyName != nil {
+	if !IsNil(o.FriendlyName) {
 		toSerialize["friendly_name"] = o.FriendlyName
 	}
-	if o.UserVerification != nil {
+	if !IsNil(o.UserVerification) {
 		toSerialize["user_verification"] = o.UserVerification
 	}
 	if o.AuthenticatorAttachment.IsSet() {
 		toSerialize["authenticator_attachment"] = o.AuthenticatorAttachment.Get()
 	}
-	if o.ResidentKeyRequirement != nil {
+	if !IsNil(o.ResidentKeyRequirement) {
 		toSerialize["resident_key_requirement"] = o.ResidentKeyRequirement
 	}
-	if o.DeviceTypeRestrictions != nil {
+	if !IsNil(o.DeviceTypeRestrictions) {
 		toSerialize["device_type_restrictions"] = o.DeviceTypeRestrictions
 	}
-	if o.MaxAttempts != nil {
+	if !IsNil(o.MaxAttempts) {
 		toSerialize["max_attempts"] = o.MaxAttempts
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *AuthenticatorWebAuthnStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatorWebAuthnStageRequest := _AuthenticatorWebAuthnStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatorWebAuthnStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorWebAuthnStageRequest(varAuthenticatorWebAuthnStageRequest)
+
+	return err
 }
 
 type NullableAuthenticatorWebAuthnStageRequest struct {

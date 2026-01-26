@@ -12,9 +12,14 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the Schedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Schedule{}
 
 // Schedule struct for Schedule
 type Schedule struct {
@@ -35,6 +40,8 @@ type Schedule struct {
 	Description    NullableString             `json:"description"`
 	LastTaskStatus NullableLastTaskStatusEnum `json:"last_task_status"`
 }
+
+type _Schedule Schedule
 
 // NewSchedule instantiates a new Schedule object
 // This constructor will assign default values to properties that have it defined,
@@ -211,7 +218,7 @@ func (o *Schedule) SetRelObjModel(v string) {
 
 // GetRelObjId returns the RelObjId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Schedule) GetRelObjId() string {
-	if o == nil || o.RelObjId.Get() == nil {
+	if o == nil || IsNil(o.RelObjId.Get()) {
 		var ret string
 		return ret
 	}
@@ -278,7 +285,7 @@ func (o *Schedule) SetCrontab(v string) {
 
 // GetPaused returns the Paused field value if set, zero value otherwise.
 func (o *Schedule) GetPaused() bool {
-	if o == nil || o.Paused == nil {
+	if o == nil || IsNil(o.Paused) {
 		var ret bool
 		return ret
 	}
@@ -288,7 +295,7 @@ func (o *Schedule) GetPaused() bool {
 // GetPausedOk returns a tuple with the Paused field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schedule) GetPausedOk() (*bool, bool) {
-	if o == nil || o.Paused == nil {
+	if o == nil || IsNil(o.Paused) {
 		return nil, false
 	}
 	return o.Paused, true
@@ -296,7 +303,7 @@ func (o *Schedule) GetPausedOk() (*bool, bool) {
 
 // HasPaused returns a boolean if a field has been set.
 func (o *Schedule) HasPaused() bool {
-	if o != nil && o.Paused != nil {
+	if o != nil && !IsNil(o.Paused) {
 		return true
 	}
 
@@ -385,44 +392,78 @@ func (o *Schedule) SetLastTaskStatus(v LastTaskStatusEnum) {
 }
 
 func (o Schedule) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Schedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["identifier"] = o.Identifier.Get()
-	}
-	if true {
-		toSerialize["uid"] = o.Uid
-	}
-	if true {
-		toSerialize["actor_name"] = o.ActorName
-	}
-	if true {
-		toSerialize["rel_obj_app_label"] = o.RelObjAppLabel
-	}
-	if true {
-		toSerialize["rel_obj_model"] = o.RelObjModel
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["identifier"] = o.Identifier.Get()
+	toSerialize["uid"] = o.Uid
+	toSerialize["actor_name"] = o.ActorName
+	toSerialize["rel_obj_app_label"] = o.RelObjAppLabel
+	toSerialize["rel_obj_model"] = o.RelObjModel
 	if o.RelObjId.IsSet() {
 		toSerialize["rel_obj_id"] = o.RelObjId.Get()
 	}
-	if true {
-		toSerialize["crontab"] = o.Crontab
-	}
-	if o.Paused != nil {
+	toSerialize["crontab"] = o.Crontab
+	if !IsNil(o.Paused) {
 		toSerialize["paused"] = o.Paused
 	}
-	if true {
-		toSerialize["next_run"] = o.NextRun
+	toSerialize["next_run"] = o.NextRun
+	toSerialize["description"] = o.Description.Get()
+	toSerialize["last_task_status"] = o.LastTaskStatus.Get()
+	return toSerialize, nil
+}
+
+func (o *Schedule) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"identifier",
+		"uid",
+		"actor_name",
+		"rel_obj_app_label",
+		"rel_obj_model",
+		"crontab",
+		"next_run",
+		"description",
+		"last_task_status",
 	}
-	if true {
-		toSerialize["description"] = o.Description.Get()
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["last_task_status"] = o.LastTaskStatus.Get()
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
 	}
-	return json.Marshal(toSerialize)
+
+	varSchedule := _Schedule{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSchedule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Schedule(varSchedule)
+
+	return err
 }
 
 type NullableSchedule struct {

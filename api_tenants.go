@@ -14,18 +14,18 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// TenantsApiService TenantsApi service
-type TenantsApiService service
+// TenantsAPIService TenantsAPI service
+type TenantsAPIService service
 
 type ApiTenantsDomainsCreateRequest struct {
 	ctx           context.Context
-	ApiService    *TenantsApiService
+	ApiService    *TenantsAPIService
 	domainRequest *DomainRequest
 }
 
@@ -46,7 +46,7 @@ Domain ViewSet
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiTenantsDomainsCreateRequest
 */
-func (a *TenantsApiService) TenantsDomainsCreate(ctx context.Context) ApiTenantsDomainsCreateRequest {
+func (a *TenantsAPIService) TenantsDomainsCreate(ctx context.Context) ApiTenantsDomainsCreateRequest {
 	return ApiTenantsDomainsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -56,7 +56,7 @@ func (a *TenantsApiService) TenantsDomainsCreate(ctx context.Context) ApiTenants
 // Execute executes the request
 //
 //	@return Domain
-func (a *TenantsApiService) TenantsDomainsCreateExecute(r ApiTenantsDomainsCreateRequest) (*Domain, *http.Response, error) {
+func (a *TenantsAPIService) TenantsDomainsCreateExecute(r ApiTenantsDomainsCreateRequest) (*Domain, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -64,7 +64,7 @@ func (a *TenantsApiService) TenantsDomainsCreateExecute(r ApiTenantsDomainsCreat
 		localVarReturnValue *Domain
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsDomainsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsDomainsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *TenantsApiService) TenantsDomainsCreateExecute(r ApiTenantsDomainsCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -126,6 +126,7 @@ func (a *TenantsApiService) TenantsDomainsCreateExecute(r ApiTenantsDomainsCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -136,6 +137,7 @@ func (a *TenantsApiService) TenantsDomainsCreateExecute(r ApiTenantsDomainsCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -155,7 +157,7 @@ func (a *TenantsApiService) TenantsDomainsCreateExecute(r ApiTenantsDomainsCreat
 
 type ApiTenantsDomainsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *TenantsApiService
+	ApiService *TenantsAPIService
 	id         int32
 }
 
@@ -172,7 +174,7 @@ Domain ViewSet
 	@param id A unique integer value identifying this Domain.
 	@return ApiTenantsDomainsDestroyRequest
 */
-func (a *TenantsApiService) TenantsDomainsDestroy(ctx context.Context, id int32) ApiTenantsDomainsDestroyRequest {
+func (a *TenantsAPIService) TenantsDomainsDestroy(ctx context.Context, id int32) ApiTenantsDomainsDestroyRequest {
 	return ApiTenantsDomainsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -181,20 +183,20 @@ func (a *TenantsApiService) TenantsDomainsDestroy(ctx context.Context, id int32)
 }
 
 // Execute executes the request
-func (a *TenantsApiService) TenantsDomainsDestroyExecute(r ApiTenantsDomainsDestroyRequest) (*http.Response, error) {
+func (a *TenantsAPIService) TenantsDomainsDestroyExecute(r ApiTenantsDomainsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsDomainsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsDomainsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/domains/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -227,9 +229,9 @@ func (a *TenantsApiService) TenantsDomainsDestroyExecute(r ApiTenantsDomainsDest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -246,6 +248,7 @@ func (a *TenantsApiService) TenantsDomainsDestroyExecute(r ApiTenantsDomainsDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -256,6 +259,7 @@ func (a *TenantsApiService) TenantsDomainsDestroyExecute(r ApiTenantsDomainsDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -266,7 +270,7 @@ func (a *TenantsApiService) TenantsDomainsDestroyExecute(r ApiTenantsDomainsDest
 
 type ApiTenantsDomainsListRequest struct {
 	ctx        context.Context
-	ApiService *TenantsApiService
+	ApiService *TenantsAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -309,7 +313,7 @@ Domain ViewSet
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiTenantsDomainsListRequest
 */
-func (a *TenantsApiService) TenantsDomainsList(ctx context.Context) ApiTenantsDomainsListRequest {
+func (a *TenantsAPIService) TenantsDomainsList(ctx context.Context) ApiTenantsDomainsListRequest {
 	return ApiTenantsDomainsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -319,7 +323,7 @@ func (a *TenantsApiService) TenantsDomainsList(ctx context.Context) ApiTenantsDo
 // Execute executes the request
 //
 //	@return PaginatedDomainList
-func (a *TenantsApiService) TenantsDomainsListExecute(r ApiTenantsDomainsListRequest) (*PaginatedDomainList, *http.Response, error) {
+func (a *TenantsAPIService) TenantsDomainsListExecute(r ApiTenantsDomainsListRequest) (*PaginatedDomainList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -327,7 +331,7 @@ func (a *TenantsApiService) TenantsDomainsListExecute(r ApiTenantsDomainsListReq
 		localVarReturnValue *PaginatedDomainList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsDomainsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsDomainsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -339,16 +343,16 @@ func (a *TenantsApiService) TenantsDomainsListExecute(r ApiTenantsDomainsListReq
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -377,9 +381,9 @@ func (a *TenantsApiService) TenantsDomainsListExecute(r ApiTenantsDomainsListReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -396,6 +400,7 @@ func (a *TenantsApiService) TenantsDomainsListExecute(r ApiTenantsDomainsListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -406,6 +411,7 @@ func (a *TenantsApiService) TenantsDomainsListExecute(r ApiTenantsDomainsListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -425,7 +431,7 @@ func (a *TenantsApiService) TenantsDomainsListExecute(r ApiTenantsDomainsListReq
 
 type ApiTenantsDomainsPartialUpdateRequest struct {
 	ctx                  context.Context
-	ApiService           *TenantsApiService
+	ApiService           *TenantsAPIService
 	id                   int32
 	patchedDomainRequest *PatchedDomainRequest
 }
@@ -448,7 +454,7 @@ Domain ViewSet
 	@param id A unique integer value identifying this Domain.
 	@return ApiTenantsDomainsPartialUpdateRequest
 */
-func (a *TenantsApiService) TenantsDomainsPartialUpdate(ctx context.Context, id int32) ApiTenantsDomainsPartialUpdateRequest {
+func (a *TenantsAPIService) TenantsDomainsPartialUpdate(ctx context.Context, id int32) ApiTenantsDomainsPartialUpdateRequest {
 	return ApiTenantsDomainsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -459,7 +465,7 @@ func (a *TenantsApiService) TenantsDomainsPartialUpdate(ctx context.Context, id 
 // Execute executes the request
 //
 //	@return Domain
-func (a *TenantsApiService) TenantsDomainsPartialUpdateExecute(r ApiTenantsDomainsPartialUpdateRequest) (*Domain, *http.Response, error) {
+func (a *TenantsAPIService) TenantsDomainsPartialUpdateExecute(r ApiTenantsDomainsPartialUpdateRequest) (*Domain, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -467,13 +473,13 @@ func (a *TenantsApiService) TenantsDomainsPartialUpdateExecute(r ApiTenantsDomai
 		localVarReturnValue *Domain
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsDomainsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsDomainsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/domains/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -508,9 +514,9 @@ func (a *TenantsApiService) TenantsDomainsPartialUpdateExecute(r ApiTenantsDomai
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -527,6 +533,7 @@ func (a *TenantsApiService) TenantsDomainsPartialUpdateExecute(r ApiTenantsDomai
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -537,6 +544,7 @@ func (a *TenantsApiService) TenantsDomainsPartialUpdateExecute(r ApiTenantsDomai
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -556,7 +564,7 @@ func (a *TenantsApiService) TenantsDomainsPartialUpdateExecute(r ApiTenantsDomai
 
 type ApiTenantsDomainsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *TenantsApiService
+	ApiService *TenantsAPIService
 	id         int32
 }
 
@@ -573,7 +581,7 @@ Domain ViewSet
 	@param id A unique integer value identifying this Domain.
 	@return ApiTenantsDomainsRetrieveRequest
 */
-func (a *TenantsApiService) TenantsDomainsRetrieve(ctx context.Context, id int32) ApiTenantsDomainsRetrieveRequest {
+func (a *TenantsAPIService) TenantsDomainsRetrieve(ctx context.Context, id int32) ApiTenantsDomainsRetrieveRequest {
 	return ApiTenantsDomainsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -584,7 +592,7 @@ func (a *TenantsApiService) TenantsDomainsRetrieve(ctx context.Context, id int32
 // Execute executes the request
 //
 //	@return Domain
-func (a *TenantsApiService) TenantsDomainsRetrieveExecute(r ApiTenantsDomainsRetrieveRequest) (*Domain, *http.Response, error) {
+func (a *TenantsAPIService) TenantsDomainsRetrieveExecute(r ApiTenantsDomainsRetrieveRequest) (*Domain, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -592,13 +600,13 @@ func (a *TenantsApiService) TenantsDomainsRetrieveExecute(r ApiTenantsDomainsRet
 		localVarReturnValue *Domain
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsDomainsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsDomainsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/domains/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -631,9 +639,9 @@ func (a *TenantsApiService) TenantsDomainsRetrieveExecute(r ApiTenantsDomainsRet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -650,6 +658,7 @@ func (a *TenantsApiService) TenantsDomainsRetrieveExecute(r ApiTenantsDomainsRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -660,6 +669,7 @@ func (a *TenantsApiService) TenantsDomainsRetrieveExecute(r ApiTenantsDomainsRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -679,7 +689,7 @@ func (a *TenantsApiService) TenantsDomainsRetrieveExecute(r ApiTenantsDomainsRet
 
 type ApiTenantsDomainsUpdateRequest struct {
 	ctx           context.Context
-	ApiService    *TenantsApiService
+	ApiService    *TenantsAPIService
 	id            int32
 	domainRequest *DomainRequest
 }
@@ -702,7 +712,7 @@ Domain ViewSet
 	@param id A unique integer value identifying this Domain.
 	@return ApiTenantsDomainsUpdateRequest
 */
-func (a *TenantsApiService) TenantsDomainsUpdate(ctx context.Context, id int32) ApiTenantsDomainsUpdateRequest {
+func (a *TenantsAPIService) TenantsDomainsUpdate(ctx context.Context, id int32) ApiTenantsDomainsUpdateRequest {
 	return ApiTenantsDomainsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -713,7 +723,7 @@ func (a *TenantsApiService) TenantsDomainsUpdate(ctx context.Context, id int32) 
 // Execute executes the request
 //
 //	@return Domain
-func (a *TenantsApiService) TenantsDomainsUpdateExecute(r ApiTenantsDomainsUpdateRequest) (*Domain, *http.Response, error) {
+func (a *TenantsAPIService) TenantsDomainsUpdateExecute(r ApiTenantsDomainsUpdateRequest) (*Domain, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -721,13 +731,13 @@ func (a *TenantsApiService) TenantsDomainsUpdateExecute(r ApiTenantsDomainsUpdat
 		localVarReturnValue *Domain
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsDomainsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsDomainsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/domains/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -765,9 +775,9 @@ func (a *TenantsApiService) TenantsDomainsUpdateExecute(r ApiTenantsDomainsUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -784,6 +794,7 @@ func (a *TenantsApiService) TenantsDomainsUpdateExecute(r ApiTenantsDomainsUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -794,6 +805,7 @@ func (a *TenantsApiService) TenantsDomainsUpdateExecute(r ApiTenantsDomainsUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -813,7 +825,7 @@ func (a *TenantsApiService) TenantsDomainsUpdateExecute(r ApiTenantsDomainsUpdat
 
 type ApiTenantsTenantsCreateRequest struct {
 	ctx           context.Context
-	ApiService    *TenantsApiService
+	ApiService    *TenantsAPIService
 	tenantRequest *TenantRequest
 }
 
@@ -834,7 +846,7 @@ Tenant Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiTenantsTenantsCreateRequest
 */
-func (a *TenantsApiService) TenantsTenantsCreate(ctx context.Context) ApiTenantsTenantsCreateRequest {
+func (a *TenantsAPIService) TenantsTenantsCreate(ctx context.Context) ApiTenantsTenantsCreateRequest {
 	return ApiTenantsTenantsCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -844,7 +856,7 @@ func (a *TenantsApiService) TenantsTenantsCreate(ctx context.Context) ApiTenants
 // Execute executes the request
 //
 //	@return Tenant
-func (a *TenantsApiService) TenantsTenantsCreateExecute(r ApiTenantsTenantsCreateRequest) (*Tenant, *http.Response, error) {
+func (a *TenantsAPIService) TenantsTenantsCreateExecute(r ApiTenantsTenantsCreateRequest) (*Tenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -852,7 +864,7 @@ func (a *TenantsApiService) TenantsTenantsCreateExecute(r ApiTenantsTenantsCreat
 		localVarReturnValue *Tenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsTenantsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsTenantsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -895,9 +907,9 @@ func (a *TenantsApiService) TenantsTenantsCreateExecute(r ApiTenantsTenantsCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -914,6 +926,7 @@ func (a *TenantsApiService) TenantsTenantsCreateExecute(r ApiTenantsTenantsCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -924,6 +937,7 @@ func (a *TenantsApiService) TenantsTenantsCreateExecute(r ApiTenantsTenantsCreat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -943,7 +957,7 @@ func (a *TenantsApiService) TenantsTenantsCreateExecute(r ApiTenantsTenantsCreat
 
 type ApiTenantsTenantsCreateAdminGroupCreateRequest struct {
 	ctx                            context.Context
-	ApiService                     *TenantsApiService
+	ApiService                     *TenantsAPIService
 	tenantUuid                     string
 	tenantAdminGroupRequestRequest *TenantAdminGroupRequestRequest
 }
@@ -966,7 +980,7 @@ Create admin group and add user to it.
 	@param tenantUuid A UUID string identifying this Tenant.
 	@return ApiTenantsTenantsCreateAdminGroupCreateRequest
 */
-func (a *TenantsApiService) TenantsTenantsCreateAdminGroupCreate(ctx context.Context, tenantUuid string) ApiTenantsTenantsCreateAdminGroupCreateRequest {
+func (a *TenantsAPIService) TenantsTenantsCreateAdminGroupCreate(ctx context.Context, tenantUuid string) ApiTenantsTenantsCreateAdminGroupCreateRequest {
 	return ApiTenantsTenantsCreateAdminGroupCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -975,20 +989,20 @@ func (a *TenantsApiService) TenantsTenantsCreateAdminGroupCreate(ctx context.Con
 }
 
 // Execute executes the request
-func (a *TenantsApiService) TenantsTenantsCreateAdminGroupCreateExecute(r ApiTenantsTenantsCreateAdminGroupCreateRequest) (*http.Response, error) {
+func (a *TenantsAPIService) TenantsTenantsCreateAdminGroupCreateExecute(r ApiTenantsTenantsCreateAdminGroupCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsTenantsCreateAdminGroupCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsTenantsCreateAdminGroupCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/tenants/{tenant_uuid}/create_admin_group/"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterToString(r.tenantUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterValueToString(r.tenantUuid, "tenantUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1026,9 +1040,9 @@ func (a *TenantsApiService) TenantsTenantsCreateAdminGroupCreateExecute(r ApiTen
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1045,6 +1059,7 @@ func (a *TenantsApiService) TenantsTenantsCreateAdminGroupCreateExecute(r ApiTen
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1055,7 +1070,7 @@ func (a *TenantsApiService) TenantsTenantsCreateAdminGroupCreateExecute(r ApiTen
 
 type ApiTenantsTenantsCreateRecoveryKeyCreateRequest struct {
 	ctx                             context.Context
-	ApiService                      *TenantsApiService
+	ApiService                      *TenantsAPIService
 	tenantUuid                      string
 	tenantRecoveryKeyRequestRequest *TenantRecoveryKeyRequestRequest
 }
@@ -1078,7 +1093,7 @@ Create recovery key for user.
 	@param tenantUuid A UUID string identifying this Tenant.
 	@return ApiTenantsTenantsCreateRecoveryKeyCreateRequest
 */
-func (a *TenantsApiService) TenantsTenantsCreateRecoveryKeyCreate(ctx context.Context, tenantUuid string) ApiTenantsTenantsCreateRecoveryKeyCreateRequest {
+func (a *TenantsAPIService) TenantsTenantsCreateRecoveryKeyCreate(ctx context.Context, tenantUuid string) ApiTenantsTenantsCreateRecoveryKeyCreateRequest {
 	return ApiTenantsTenantsCreateRecoveryKeyCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1089,7 +1104,7 @@ func (a *TenantsApiService) TenantsTenantsCreateRecoveryKeyCreate(ctx context.Co
 // Execute executes the request
 //
 //	@return TenantRecoveryKeyResponse
-func (a *TenantsApiService) TenantsTenantsCreateRecoveryKeyCreateExecute(r ApiTenantsTenantsCreateRecoveryKeyCreateRequest) (*TenantRecoveryKeyResponse, *http.Response, error) {
+func (a *TenantsAPIService) TenantsTenantsCreateRecoveryKeyCreateExecute(r ApiTenantsTenantsCreateRecoveryKeyCreateRequest) (*TenantRecoveryKeyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1097,13 +1112,13 @@ func (a *TenantsApiService) TenantsTenantsCreateRecoveryKeyCreateExecute(r ApiTe
 		localVarReturnValue *TenantRecoveryKeyResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsTenantsCreateRecoveryKeyCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsTenantsCreateRecoveryKeyCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/tenants/{tenant_uuid}/create_recovery_key/"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterToString(r.tenantUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterValueToString(r.tenantUuid, "tenantUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1141,9 +1156,9 @@ func (a *TenantsApiService) TenantsTenantsCreateRecoveryKeyCreateExecute(r ApiTe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1160,6 +1175,7 @@ func (a *TenantsApiService) TenantsTenantsCreateRecoveryKeyCreateExecute(r ApiTe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1179,7 +1195,7 @@ func (a *TenantsApiService) TenantsTenantsCreateRecoveryKeyCreateExecute(r ApiTe
 
 type ApiTenantsTenantsDestroyRequest struct {
 	ctx        context.Context
-	ApiService *TenantsApiService
+	ApiService *TenantsAPIService
 	tenantUuid string
 }
 
@@ -1196,7 +1212,7 @@ Tenant Viewset
 	@param tenantUuid A UUID string identifying this Tenant.
 	@return ApiTenantsTenantsDestroyRequest
 */
-func (a *TenantsApiService) TenantsTenantsDestroy(ctx context.Context, tenantUuid string) ApiTenantsTenantsDestroyRequest {
+func (a *TenantsAPIService) TenantsTenantsDestroy(ctx context.Context, tenantUuid string) ApiTenantsTenantsDestroyRequest {
 	return ApiTenantsTenantsDestroyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1205,20 +1221,20 @@ func (a *TenantsApiService) TenantsTenantsDestroy(ctx context.Context, tenantUui
 }
 
 // Execute executes the request
-func (a *TenantsApiService) TenantsTenantsDestroyExecute(r ApiTenantsTenantsDestroyRequest) (*http.Response, error) {
+func (a *TenantsAPIService) TenantsTenantsDestroyExecute(r ApiTenantsTenantsDestroyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsTenantsDestroy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsTenantsDestroy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/tenants/{tenant_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterToString(r.tenantUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterValueToString(r.tenantUuid, "tenantUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1251,9 +1267,9 @@ func (a *TenantsApiService) TenantsTenantsDestroyExecute(r ApiTenantsTenantsDest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1270,6 +1286,7 @@ func (a *TenantsApiService) TenantsTenantsDestroyExecute(r ApiTenantsTenantsDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -1280,6 +1297,7 @@ func (a *TenantsApiService) TenantsTenantsDestroyExecute(r ApiTenantsTenantsDest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1290,7 +1308,7 @@ func (a *TenantsApiService) TenantsTenantsDestroyExecute(r ApiTenantsTenantsDest
 
 type ApiTenantsTenantsListRequest struct {
 	ctx        context.Context
-	ApiService *TenantsApiService
+	ApiService *TenantsAPIService
 	ordering   *string
 	page       *int32
 	pageSize   *int32
@@ -1333,7 +1351,7 @@ Tenant Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiTenantsTenantsListRequest
 */
-func (a *TenantsApiService) TenantsTenantsList(ctx context.Context) ApiTenantsTenantsListRequest {
+func (a *TenantsAPIService) TenantsTenantsList(ctx context.Context) ApiTenantsTenantsListRequest {
 	return ApiTenantsTenantsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1343,7 +1361,7 @@ func (a *TenantsApiService) TenantsTenantsList(ctx context.Context) ApiTenantsTe
 // Execute executes the request
 //
 //	@return PaginatedTenantList
-func (a *TenantsApiService) TenantsTenantsListExecute(r ApiTenantsTenantsListRequest) (*PaginatedTenantList, *http.Response, error) {
+func (a *TenantsAPIService) TenantsTenantsListExecute(r ApiTenantsTenantsListRequest) (*PaginatedTenantList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1351,7 +1369,7 @@ func (a *TenantsApiService) TenantsTenantsListExecute(r ApiTenantsTenantsListReq
 		localVarReturnValue *PaginatedTenantList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsTenantsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsTenantsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1363,16 +1381,16 @@ func (a *TenantsApiService) TenantsTenantsListExecute(r ApiTenantsTenantsListReq
 	localVarFormParams := url.Values{}
 
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1401,9 +1419,9 @@ func (a *TenantsApiService) TenantsTenantsListExecute(r ApiTenantsTenantsListReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1420,6 +1438,7 @@ func (a *TenantsApiService) TenantsTenantsListExecute(r ApiTenantsTenantsListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1430,6 +1449,7 @@ func (a *TenantsApiService) TenantsTenantsListExecute(r ApiTenantsTenantsListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1449,7 +1469,7 @@ func (a *TenantsApiService) TenantsTenantsListExecute(r ApiTenantsTenantsListReq
 
 type ApiTenantsTenantsPartialUpdateRequest struct {
 	ctx                  context.Context
-	ApiService           *TenantsApiService
+	ApiService           *TenantsAPIService
 	tenantUuid           string
 	patchedTenantRequest *PatchedTenantRequest
 }
@@ -1472,7 +1492,7 @@ Tenant Viewset
 	@param tenantUuid A UUID string identifying this Tenant.
 	@return ApiTenantsTenantsPartialUpdateRequest
 */
-func (a *TenantsApiService) TenantsTenantsPartialUpdate(ctx context.Context, tenantUuid string) ApiTenantsTenantsPartialUpdateRequest {
+func (a *TenantsAPIService) TenantsTenantsPartialUpdate(ctx context.Context, tenantUuid string) ApiTenantsTenantsPartialUpdateRequest {
 	return ApiTenantsTenantsPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1483,7 +1503,7 @@ func (a *TenantsApiService) TenantsTenantsPartialUpdate(ctx context.Context, ten
 // Execute executes the request
 //
 //	@return Tenant
-func (a *TenantsApiService) TenantsTenantsPartialUpdateExecute(r ApiTenantsTenantsPartialUpdateRequest) (*Tenant, *http.Response, error) {
+func (a *TenantsAPIService) TenantsTenantsPartialUpdateExecute(r ApiTenantsTenantsPartialUpdateRequest) (*Tenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1491,13 +1511,13 @@ func (a *TenantsApiService) TenantsTenantsPartialUpdateExecute(r ApiTenantsTenan
 		localVarReturnValue *Tenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsTenantsPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsTenantsPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/tenants/{tenant_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterToString(r.tenantUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterValueToString(r.tenantUuid, "tenantUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1532,9 +1552,9 @@ func (a *TenantsApiService) TenantsTenantsPartialUpdateExecute(r ApiTenantsTenan
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1551,6 +1571,7 @@ func (a *TenantsApiService) TenantsTenantsPartialUpdateExecute(r ApiTenantsTenan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1561,6 +1582,7 @@ func (a *TenantsApiService) TenantsTenantsPartialUpdateExecute(r ApiTenantsTenan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1580,7 +1602,7 @@ func (a *TenantsApiService) TenantsTenantsPartialUpdateExecute(r ApiTenantsTenan
 
 type ApiTenantsTenantsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *TenantsApiService
+	ApiService *TenantsAPIService
 	tenantUuid string
 }
 
@@ -1597,7 +1619,7 @@ Tenant Viewset
 	@param tenantUuid A UUID string identifying this Tenant.
 	@return ApiTenantsTenantsRetrieveRequest
 */
-func (a *TenantsApiService) TenantsTenantsRetrieve(ctx context.Context, tenantUuid string) ApiTenantsTenantsRetrieveRequest {
+func (a *TenantsAPIService) TenantsTenantsRetrieve(ctx context.Context, tenantUuid string) ApiTenantsTenantsRetrieveRequest {
 	return ApiTenantsTenantsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1608,7 +1630,7 @@ func (a *TenantsApiService) TenantsTenantsRetrieve(ctx context.Context, tenantUu
 // Execute executes the request
 //
 //	@return Tenant
-func (a *TenantsApiService) TenantsTenantsRetrieveExecute(r ApiTenantsTenantsRetrieveRequest) (*Tenant, *http.Response, error) {
+func (a *TenantsAPIService) TenantsTenantsRetrieveExecute(r ApiTenantsTenantsRetrieveRequest) (*Tenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1616,13 +1638,13 @@ func (a *TenantsApiService) TenantsTenantsRetrieveExecute(r ApiTenantsTenantsRet
 		localVarReturnValue *Tenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsTenantsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsTenantsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/tenants/{tenant_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterToString(r.tenantUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterValueToString(r.tenantUuid, "tenantUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1655,9 +1677,9 @@ func (a *TenantsApiService) TenantsTenantsRetrieveExecute(r ApiTenantsTenantsRet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1674,6 +1696,7 @@ func (a *TenantsApiService) TenantsTenantsRetrieveExecute(r ApiTenantsTenantsRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1684,6 +1707,7 @@ func (a *TenantsApiService) TenantsTenantsRetrieveExecute(r ApiTenantsTenantsRet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1703,7 +1727,7 @@ func (a *TenantsApiService) TenantsTenantsRetrieveExecute(r ApiTenantsTenantsRet
 
 type ApiTenantsTenantsUpdateRequest struct {
 	ctx           context.Context
-	ApiService    *TenantsApiService
+	ApiService    *TenantsAPIService
 	tenantUuid    string
 	tenantRequest *TenantRequest
 }
@@ -1726,7 +1750,7 @@ Tenant Viewset
 	@param tenantUuid A UUID string identifying this Tenant.
 	@return ApiTenantsTenantsUpdateRequest
 */
-func (a *TenantsApiService) TenantsTenantsUpdate(ctx context.Context, tenantUuid string) ApiTenantsTenantsUpdateRequest {
+func (a *TenantsAPIService) TenantsTenantsUpdate(ctx context.Context, tenantUuid string) ApiTenantsTenantsUpdateRequest {
 	return ApiTenantsTenantsUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1737,7 +1761,7 @@ func (a *TenantsApiService) TenantsTenantsUpdate(ctx context.Context, tenantUuid
 // Execute executes the request
 //
 //	@return Tenant
-func (a *TenantsApiService) TenantsTenantsUpdateExecute(r ApiTenantsTenantsUpdateRequest) (*Tenant, *http.Response, error) {
+func (a *TenantsAPIService) TenantsTenantsUpdateExecute(r ApiTenantsTenantsUpdateRequest) (*Tenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1745,13 +1769,13 @@ func (a *TenantsApiService) TenantsTenantsUpdateExecute(r ApiTenantsTenantsUpdat
 		localVarReturnValue *Tenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.TenantsTenantsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsAPIService.TenantsTenantsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tenants/tenants/{tenant_uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterToString(r.tenantUuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant_uuid"+"}", url.PathEscape(parameterValueToString(r.tenantUuid, "tenantUuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1789,9 +1813,9 @@ func (a *TenantsApiService) TenantsTenantsUpdateExecute(r ApiTenantsTenantsUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1808,6 +1832,7 @@ func (a *TenantsApiService) TenantsTenantsUpdateExecute(r ApiTenantsTenantsUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1818,6 +1843,7 @@ func (a *TenantsApiService) TenantsTenantsUpdateExecute(r ApiTenantsTenantsUpdat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

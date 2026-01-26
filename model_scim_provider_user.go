@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SCIMProviderUser type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SCIMProviderUser{}
 
 // SCIMProviderUser SCIMProviderUser Serializer
 type SCIMProviderUser struct {
@@ -24,6 +29,8 @@ type SCIMProviderUser struct {
 	Provider   int32                  `json:"provider"`
 	Attributes map[string]interface{} `json:"attributes"`
 }
+
+type _SCIMProviderUser SCIMProviderUser
 
 // NewSCIMProviderUser instantiates a new SCIMProviderUser object
 // This constructor will assign default values to properties that have it defined,
@@ -182,7 +189,7 @@ func (o *SCIMProviderUser) GetAttributes() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *SCIMProviderUser) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
@@ -193,26 +200,64 @@ func (o *SCIMProviderUser) SetAttributes(v map[string]interface{}) {
 }
 
 func (o SCIMProviderUser) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["scim_id"] = o.ScimId
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if true {
-		toSerialize["user_obj"] = o.UserObj
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SCIMProviderUser) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["scim_id"] = o.ScimId
+	toSerialize["user"] = o.User
+	toSerialize["user_obj"] = o.UserObj
+	toSerialize["provider"] = o.Provider
+	toSerialize["attributes"] = o.Attributes
+	return toSerialize, nil
+}
+
+func (o *SCIMProviderUser) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"scim_id",
+		"user",
+		"user_obj",
+		"provider",
+		"attributes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSCIMProviderUser := _SCIMProviderUser{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSCIMProviderUser)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SCIMProviderUser(varSCIMProviderUser)
+
+	return err
 }
 
 type NullableSCIMProviderUser struct {

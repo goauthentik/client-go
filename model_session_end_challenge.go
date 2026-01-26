@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SessionEndChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SessionEndChallenge{}
 
 // SessionEndChallenge Challenge for ending a session
 type SessionEndChallenge struct {
@@ -27,6 +32,8 @@ type SessionEndChallenge struct {
 	InvalidationFlowUrl  *string                   `json:"invalidation_flow_url,omitempty"`
 	BrandName            string                    `json:"brand_name"`
 }
+
+type _SessionEndChallenge SessionEndChallenge
 
 // NewSessionEndChallenge instantiates a new SessionEndChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -54,7 +61,7 @@ func NewSessionEndChallengeWithDefaults() *SessionEndChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *SessionEndChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -64,7 +71,7 @@ func (o *SessionEndChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionEndChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -72,7 +79,7 @@ func (o *SessionEndChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *SessionEndChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -86,7 +93,7 @@ func (o *SessionEndChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *SessionEndChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -96,7 +103,7 @@ func (o *SessionEndChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionEndChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -104,7 +111,7 @@ func (o *SessionEndChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *SessionEndChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -118,7 +125,7 @@ func (o *SessionEndChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *SessionEndChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -128,7 +135,7 @@ func (o *SessionEndChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionEndChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -136,7 +143,7 @@ func (o *SessionEndChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, 
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *SessionEndChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -198,7 +205,7 @@ func (o *SessionEndChallenge) SetPendingUserAvatar(v string) {
 
 // GetApplicationName returns the ApplicationName field value if set, zero value otherwise.
 func (o *SessionEndChallenge) GetApplicationName() string {
-	if o == nil || o.ApplicationName == nil {
+	if o == nil || IsNil(o.ApplicationName) {
 		var ret string
 		return ret
 	}
@@ -208,7 +215,7 @@ func (o *SessionEndChallenge) GetApplicationName() string {
 // GetApplicationNameOk returns a tuple with the ApplicationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionEndChallenge) GetApplicationNameOk() (*string, bool) {
-	if o == nil || o.ApplicationName == nil {
+	if o == nil || IsNil(o.ApplicationName) {
 		return nil, false
 	}
 	return o.ApplicationName, true
@@ -216,7 +223,7 @@ func (o *SessionEndChallenge) GetApplicationNameOk() (*string, bool) {
 
 // HasApplicationName returns a boolean if a field has been set.
 func (o *SessionEndChallenge) HasApplicationName() bool {
-	if o != nil && o.ApplicationName != nil {
+	if o != nil && !IsNil(o.ApplicationName) {
 		return true
 	}
 
@@ -230,7 +237,7 @@ func (o *SessionEndChallenge) SetApplicationName(v string) {
 
 // GetApplicationLaunchUrl returns the ApplicationLaunchUrl field value if set, zero value otherwise.
 func (o *SessionEndChallenge) GetApplicationLaunchUrl() string {
-	if o == nil || o.ApplicationLaunchUrl == nil {
+	if o == nil || IsNil(o.ApplicationLaunchUrl) {
 		var ret string
 		return ret
 	}
@@ -240,7 +247,7 @@ func (o *SessionEndChallenge) GetApplicationLaunchUrl() string {
 // GetApplicationLaunchUrlOk returns a tuple with the ApplicationLaunchUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionEndChallenge) GetApplicationLaunchUrlOk() (*string, bool) {
-	if o == nil || o.ApplicationLaunchUrl == nil {
+	if o == nil || IsNil(o.ApplicationLaunchUrl) {
 		return nil, false
 	}
 	return o.ApplicationLaunchUrl, true
@@ -248,7 +255,7 @@ func (o *SessionEndChallenge) GetApplicationLaunchUrlOk() (*string, bool) {
 
 // HasApplicationLaunchUrl returns a boolean if a field has been set.
 func (o *SessionEndChallenge) HasApplicationLaunchUrl() bool {
-	if o != nil && o.ApplicationLaunchUrl != nil {
+	if o != nil && !IsNil(o.ApplicationLaunchUrl) {
 		return true
 	}
 
@@ -262,7 +269,7 @@ func (o *SessionEndChallenge) SetApplicationLaunchUrl(v string) {
 
 // GetInvalidationFlowUrl returns the InvalidationFlowUrl field value if set, zero value otherwise.
 func (o *SessionEndChallenge) GetInvalidationFlowUrl() string {
-	if o == nil || o.InvalidationFlowUrl == nil {
+	if o == nil || IsNil(o.InvalidationFlowUrl) {
 		var ret string
 		return ret
 	}
@@ -272,7 +279,7 @@ func (o *SessionEndChallenge) GetInvalidationFlowUrl() string {
 // GetInvalidationFlowUrlOk returns a tuple with the InvalidationFlowUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionEndChallenge) GetInvalidationFlowUrlOk() (*string, bool) {
-	if o == nil || o.InvalidationFlowUrl == nil {
+	if o == nil || IsNil(o.InvalidationFlowUrl) {
 		return nil, false
 	}
 	return o.InvalidationFlowUrl, true
@@ -280,7 +287,7 @@ func (o *SessionEndChallenge) GetInvalidationFlowUrlOk() (*string, bool) {
 
 // HasInvalidationFlowUrl returns a boolean if a field has been set.
 func (o *SessionEndChallenge) HasInvalidationFlowUrl() bool {
-	if o != nil && o.InvalidationFlowUrl != nil {
+	if o != nil && !IsNil(o.InvalidationFlowUrl) {
 		return true
 	}
 
@@ -317,35 +324,76 @@ func (o *SessionEndChallenge) SetBrandName(v string) {
 }
 
 func (o SessionEndChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["pending_user"] = o.PendingUser
-	}
-	if true {
-		toSerialize["pending_user_avatar"] = o.PendingUserAvatar
-	}
-	if o.ApplicationName != nil {
-		toSerialize["application_name"] = o.ApplicationName
-	}
-	if o.ApplicationLaunchUrl != nil {
-		toSerialize["application_launch_url"] = o.ApplicationLaunchUrl
-	}
-	if o.InvalidationFlowUrl != nil {
-		toSerialize["invalidation_flow_url"] = o.InvalidationFlowUrl
-	}
-	if true {
-		toSerialize["brand_name"] = o.BrandName
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SessionEndChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["pending_user"] = o.PendingUser
+	toSerialize["pending_user_avatar"] = o.PendingUserAvatar
+	if !IsNil(o.ApplicationName) {
+		toSerialize["application_name"] = o.ApplicationName
+	}
+	if !IsNil(o.ApplicationLaunchUrl) {
+		toSerialize["application_launch_url"] = o.ApplicationLaunchUrl
+	}
+	if !IsNil(o.InvalidationFlowUrl) {
+		toSerialize["invalidation_flow_url"] = o.InvalidationFlowUrl
+	}
+	toSerialize["brand_name"] = o.BrandName
+	return toSerialize, nil
+}
+
+func (o *SessionEndChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pending_user",
+		"pending_user_avatar",
+		"brand_name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSessionEndChallenge := _SessionEndChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSessionEndChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SessionEndChallenge(varSessionEndChallenge)
+
+	return err
 }
 
 type NullableSessionEndChallenge struct {

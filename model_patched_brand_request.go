@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedBrandRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedBrandRequest{}
+
 // PatchedBrandRequest Brand Serializer
 type PatchedBrandRequest struct {
 	// Domain that activates this brand. Can be a superset, i.e. `a.b` for `aa.b` and `ba.b`
@@ -59,7 +62,7 @@ func NewPatchedBrandRequestWithDefaults() *PatchedBrandRequest {
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *PatchedBrandRequest) GetDomain() string {
-	if o == nil || o.Domain == nil {
+	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
 	}
@@ -69,7 +72,7 @@ func (o *PatchedBrandRequest) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBrandRequest) GetDomainOk() (*string, bool) {
-	if o == nil || o.Domain == nil {
+	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
 	return o.Domain, true
@@ -77,7 +80,7 @@ func (o *PatchedBrandRequest) GetDomainOk() (*string, bool) {
 
 // HasDomain returns a boolean if a field has been set.
 func (o *PatchedBrandRequest) HasDomain() bool {
-	if o != nil && o.Domain != nil {
+	if o != nil && !IsNil(o.Domain) {
 		return true
 	}
 
@@ -91,7 +94,7 @@ func (o *PatchedBrandRequest) SetDomain(v string) {
 
 // GetDefault returns the Default field value if set, zero value otherwise.
 func (o *PatchedBrandRequest) GetDefault() bool {
-	if o == nil || o.Default == nil {
+	if o == nil || IsNil(o.Default) {
 		var ret bool
 		return ret
 	}
@@ -101,7 +104,7 @@ func (o *PatchedBrandRequest) GetDefault() bool {
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBrandRequest) GetDefaultOk() (*bool, bool) {
-	if o == nil || o.Default == nil {
+	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
 	return o.Default, true
@@ -109,7 +112,7 @@ func (o *PatchedBrandRequest) GetDefaultOk() (*bool, bool) {
 
 // HasDefault returns a boolean if a field has been set.
 func (o *PatchedBrandRequest) HasDefault() bool {
-	if o != nil && o.Default != nil {
+	if o != nil && !IsNil(o.Default) {
 		return true
 	}
 
@@ -123,7 +126,7 @@ func (o *PatchedBrandRequest) SetDefault(v bool) {
 
 // GetBrandingTitle returns the BrandingTitle field value if set, zero value otherwise.
 func (o *PatchedBrandRequest) GetBrandingTitle() string {
-	if o == nil || o.BrandingTitle == nil {
+	if o == nil || IsNil(o.BrandingTitle) {
 		var ret string
 		return ret
 	}
@@ -133,7 +136,7 @@ func (o *PatchedBrandRequest) GetBrandingTitle() string {
 // GetBrandingTitleOk returns a tuple with the BrandingTitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBrandRequest) GetBrandingTitleOk() (*string, bool) {
-	if o == nil || o.BrandingTitle == nil {
+	if o == nil || IsNil(o.BrandingTitle) {
 		return nil, false
 	}
 	return o.BrandingTitle, true
@@ -141,7 +144,7 @@ func (o *PatchedBrandRequest) GetBrandingTitleOk() (*string, bool) {
 
 // HasBrandingTitle returns a boolean if a field has been set.
 func (o *PatchedBrandRequest) HasBrandingTitle() bool {
-	if o != nil && o.BrandingTitle != nil {
+	if o != nil && !IsNil(o.BrandingTitle) {
 		return true
 	}
 
@@ -155,7 +158,7 @@ func (o *PatchedBrandRequest) SetBrandingTitle(v string) {
 
 // GetBrandingLogo returns the BrandingLogo field value if set, zero value otherwise.
 func (o *PatchedBrandRequest) GetBrandingLogo() string {
-	if o == nil || o.BrandingLogo == nil {
+	if o == nil || IsNil(o.BrandingLogo) {
 		var ret string
 		return ret
 	}
@@ -165,7 +168,7 @@ func (o *PatchedBrandRequest) GetBrandingLogo() string {
 // GetBrandingLogoOk returns a tuple with the BrandingLogo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBrandRequest) GetBrandingLogoOk() (*string, bool) {
-	if o == nil || o.BrandingLogo == nil {
+	if o == nil || IsNil(o.BrandingLogo) {
 		return nil, false
 	}
 	return o.BrandingLogo, true
@@ -173,7 +176,7 @@ func (o *PatchedBrandRequest) GetBrandingLogoOk() (*string, bool) {
 
 // HasBrandingLogo returns a boolean if a field has been set.
 func (o *PatchedBrandRequest) HasBrandingLogo() bool {
-	if o != nil && o.BrandingLogo != nil {
+	if o != nil && !IsNil(o.BrandingLogo) {
 		return true
 	}
 
@@ -187,7 +190,7 @@ func (o *PatchedBrandRequest) SetBrandingLogo(v string) {
 
 // GetBrandingFavicon returns the BrandingFavicon field value if set, zero value otherwise.
 func (o *PatchedBrandRequest) GetBrandingFavicon() string {
-	if o == nil || o.BrandingFavicon == nil {
+	if o == nil || IsNil(o.BrandingFavicon) {
 		var ret string
 		return ret
 	}
@@ -197,7 +200,7 @@ func (o *PatchedBrandRequest) GetBrandingFavicon() string {
 // GetBrandingFaviconOk returns a tuple with the BrandingFavicon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBrandRequest) GetBrandingFaviconOk() (*string, bool) {
-	if o == nil || o.BrandingFavicon == nil {
+	if o == nil || IsNil(o.BrandingFavicon) {
 		return nil, false
 	}
 	return o.BrandingFavicon, true
@@ -205,7 +208,7 @@ func (o *PatchedBrandRequest) GetBrandingFaviconOk() (*string, bool) {
 
 // HasBrandingFavicon returns a boolean if a field has been set.
 func (o *PatchedBrandRequest) HasBrandingFavicon() bool {
-	if o != nil && o.BrandingFavicon != nil {
+	if o != nil && !IsNil(o.BrandingFavicon) {
 		return true
 	}
 
@@ -219,7 +222,7 @@ func (o *PatchedBrandRequest) SetBrandingFavicon(v string) {
 
 // GetBrandingCustomCss returns the BrandingCustomCss field value if set, zero value otherwise.
 func (o *PatchedBrandRequest) GetBrandingCustomCss() string {
-	if o == nil || o.BrandingCustomCss == nil {
+	if o == nil || IsNil(o.BrandingCustomCss) {
 		var ret string
 		return ret
 	}
@@ -229,7 +232,7 @@ func (o *PatchedBrandRequest) GetBrandingCustomCss() string {
 // GetBrandingCustomCssOk returns a tuple with the BrandingCustomCss field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBrandRequest) GetBrandingCustomCssOk() (*string, bool) {
-	if o == nil || o.BrandingCustomCss == nil {
+	if o == nil || IsNil(o.BrandingCustomCss) {
 		return nil, false
 	}
 	return o.BrandingCustomCss, true
@@ -237,7 +240,7 @@ func (o *PatchedBrandRequest) GetBrandingCustomCssOk() (*string, bool) {
 
 // HasBrandingCustomCss returns a boolean if a field has been set.
 func (o *PatchedBrandRequest) HasBrandingCustomCss() bool {
-	if o != nil && o.BrandingCustomCss != nil {
+	if o != nil && !IsNil(o.BrandingCustomCss) {
 		return true
 	}
 
@@ -251,7 +254,7 @@ func (o *PatchedBrandRequest) SetBrandingCustomCss(v string) {
 
 // GetBrandingDefaultFlowBackground returns the BrandingDefaultFlowBackground field value if set, zero value otherwise.
 func (o *PatchedBrandRequest) GetBrandingDefaultFlowBackground() string {
-	if o == nil || o.BrandingDefaultFlowBackground == nil {
+	if o == nil || IsNil(o.BrandingDefaultFlowBackground) {
 		var ret string
 		return ret
 	}
@@ -261,7 +264,7 @@ func (o *PatchedBrandRequest) GetBrandingDefaultFlowBackground() string {
 // GetBrandingDefaultFlowBackgroundOk returns a tuple with the BrandingDefaultFlowBackground field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBrandRequest) GetBrandingDefaultFlowBackgroundOk() (*string, bool) {
-	if o == nil || o.BrandingDefaultFlowBackground == nil {
+	if o == nil || IsNil(o.BrandingDefaultFlowBackground) {
 		return nil, false
 	}
 	return o.BrandingDefaultFlowBackground, true
@@ -269,7 +272,7 @@ func (o *PatchedBrandRequest) GetBrandingDefaultFlowBackgroundOk() (*string, boo
 
 // HasBrandingDefaultFlowBackground returns a boolean if a field has been set.
 func (o *PatchedBrandRequest) HasBrandingDefaultFlowBackground() bool {
-	if o != nil && o.BrandingDefaultFlowBackground != nil {
+	if o != nil && !IsNil(o.BrandingDefaultFlowBackground) {
 		return true
 	}
 
@@ -283,7 +286,7 @@ func (o *PatchedBrandRequest) SetBrandingDefaultFlowBackground(v string) {
 
 // GetFlowAuthentication returns the FlowAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedBrandRequest) GetFlowAuthentication() string {
-	if o == nil || o.FlowAuthentication.Get() == nil {
+	if o == nil || IsNil(o.FlowAuthentication.Get()) {
 		var ret string
 		return ret
 	}
@@ -326,7 +329,7 @@ func (o *PatchedBrandRequest) UnsetFlowAuthentication() {
 
 // GetFlowInvalidation returns the FlowInvalidation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedBrandRequest) GetFlowInvalidation() string {
-	if o == nil || o.FlowInvalidation.Get() == nil {
+	if o == nil || IsNil(o.FlowInvalidation.Get()) {
 		var ret string
 		return ret
 	}
@@ -369,7 +372,7 @@ func (o *PatchedBrandRequest) UnsetFlowInvalidation() {
 
 // GetFlowRecovery returns the FlowRecovery field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedBrandRequest) GetFlowRecovery() string {
-	if o == nil || o.FlowRecovery.Get() == nil {
+	if o == nil || IsNil(o.FlowRecovery.Get()) {
 		var ret string
 		return ret
 	}
@@ -412,7 +415,7 @@ func (o *PatchedBrandRequest) UnsetFlowRecovery() {
 
 // GetFlowUnenrollment returns the FlowUnenrollment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedBrandRequest) GetFlowUnenrollment() string {
-	if o == nil || o.FlowUnenrollment.Get() == nil {
+	if o == nil || IsNil(o.FlowUnenrollment.Get()) {
 		var ret string
 		return ret
 	}
@@ -455,7 +458,7 @@ func (o *PatchedBrandRequest) UnsetFlowUnenrollment() {
 
 // GetFlowUserSettings returns the FlowUserSettings field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedBrandRequest) GetFlowUserSettings() string {
-	if o == nil || o.FlowUserSettings.Get() == nil {
+	if o == nil || IsNil(o.FlowUserSettings.Get()) {
 		var ret string
 		return ret
 	}
@@ -498,7 +501,7 @@ func (o *PatchedBrandRequest) UnsetFlowUserSettings() {
 
 // GetFlowDeviceCode returns the FlowDeviceCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedBrandRequest) GetFlowDeviceCode() string {
-	if o == nil || o.FlowDeviceCode.Get() == nil {
+	if o == nil || IsNil(o.FlowDeviceCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -541,7 +544,7 @@ func (o *PatchedBrandRequest) UnsetFlowDeviceCode() {
 
 // GetDefaultApplication returns the DefaultApplication field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedBrandRequest) GetDefaultApplication() string {
-	if o == nil || o.DefaultApplication.Get() == nil {
+	if o == nil || IsNil(o.DefaultApplication.Get()) {
 		var ret string
 		return ret
 	}
@@ -584,7 +587,7 @@ func (o *PatchedBrandRequest) UnsetDefaultApplication() {
 
 // GetWebCertificate returns the WebCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedBrandRequest) GetWebCertificate() string {
-	if o == nil || o.WebCertificate.Get() == nil {
+	if o == nil || IsNil(o.WebCertificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -627,7 +630,7 @@ func (o *PatchedBrandRequest) UnsetWebCertificate() {
 
 // GetClientCertificates returns the ClientCertificates field value if set, zero value otherwise.
 func (o *PatchedBrandRequest) GetClientCertificates() []string {
-	if o == nil || o.ClientCertificates == nil {
+	if o == nil || IsNil(o.ClientCertificates) {
 		var ret []string
 		return ret
 	}
@@ -637,7 +640,7 @@ func (o *PatchedBrandRequest) GetClientCertificates() []string {
 // GetClientCertificatesOk returns a tuple with the ClientCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBrandRequest) GetClientCertificatesOk() ([]string, bool) {
-	if o == nil || o.ClientCertificates == nil {
+	if o == nil || IsNil(o.ClientCertificates) {
 		return nil, false
 	}
 	return o.ClientCertificates, true
@@ -645,7 +648,7 @@ func (o *PatchedBrandRequest) GetClientCertificatesOk() ([]string, bool) {
 
 // HasClientCertificates returns a boolean if a field has been set.
 func (o *PatchedBrandRequest) HasClientCertificates() bool {
-	if o != nil && o.ClientCertificates != nil {
+	if o != nil && !IsNil(o.ClientCertificates) {
 		return true
 	}
 
@@ -659,7 +662,7 @@ func (o *PatchedBrandRequest) SetClientCertificates(v []string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PatchedBrandRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -669,15 +672,15 @@ func (o *PatchedBrandRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedBrandRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PatchedBrandRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -690,26 +693,34 @@ func (o *PatchedBrandRequest) SetAttributes(v map[string]interface{}) {
 }
 
 func (o PatchedBrandRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedBrandRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Domain != nil {
+	if !IsNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
 	}
-	if o.Default != nil {
+	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}
-	if o.BrandingTitle != nil {
+	if !IsNil(o.BrandingTitle) {
 		toSerialize["branding_title"] = o.BrandingTitle
 	}
-	if o.BrandingLogo != nil {
+	if !IsNil(o.BrandingLogo) {
 		toSerialize["branding_logo"] = o.BrandingLogo
 	}
-	if o.BrandingFavicon != nil {
+	if !IsNil(o.BrandingFavicon) {
 		toSerialize["branding_favicon"] = o.BrandingFavicon
 	}
-	if o.BrandingCustomCss != nil {
+	if !IsNil(o.BrandingCustomCss) {
 		toSerialize["branding_custom_css"] = o.BrandingCustomCss
 	}
-	if o.BrandingDefaultFlowBackground != nil {
+	if !IsNil(o.BrandingDefaultFlowBackground) {
 		toSerialize["branding_default_flow_background"] = o.BrandingDefaultFlowBackground
 	}
 	if o.FlowAuthentication.IsSet() {
@@ -736,13 +747,13 @@ func (o PatchedBrandRequest) MarshalJSON() ([]byte, error) {
 	if o.WebCertificate.IsSet() {
 		toSerialize["web_certificate"] = o.WebCertificate.Get()
 	}
-	if o.ClientCertificates != nil {
+	if !IsNil(o.ClientCertificates) {
 		toSerialize["client_certificates"] = o.ClientCertificates
 	}
-	if o.Attributes != nil {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedBrandRequest struct {

@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PaginatedGroupKerberosSourceConnectionList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedGroupKerberosSourceConnectionList{}
 
 // PaginatedGroupKerberosSourceConnectionList struct for PaginatedGroupKerberosSourceConnectionList
 type PaginatedGroupKerberosSourceConnectionList struct {
@@ -21,6 +26,8 @@ type PaginatedGroupKerberosSourceConnectionList struct {
 	Results      []GroupKerberosSourceConnection `json:"results"`
 	Autocomplete map[string]interface{}          `json:"autocomplete"`
 }
+
+type _PaginatedGroupKerberosSourceConnectionList PaginatedGroupKerberosSourceConnectionList
 
 // NewPaginatedGroupKerberosSourceConnectionList instantiates a new PaginatedGroupKerberosSourceConnectionList object
 // This constructor will assign default values to properties that have it defined,
@@ -104,7 +111,7 @@ func (o *PaginatedGroupKerberosSourceConnectionList) GetAutocomplete() map[strin
 // and a boolean to check if the value has been set.
 func (o *PaginatedGroupKerberosSourceConnectionList) GetAutocompleteOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Autocomplete, true
 }
@@ -115,17 +122,58 @@ func (o *PaginatedGroupKerberosSourceConnectionList) SetAutocomplete(v map[strin
 }
 
 func (o PaginatedGroupKerberosSourceConnectionList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
-	}
-	if true {
-		toSerialize["autocomplete"] = o.Autocomplete
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedGroupKerberosSourceConnectionList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	toSerialize["autocomplete"] = o.Autocomplete
+	return toSerialize, nil
+}
+
+func (o *PaginatedGroupKerberosSourceConnectionList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pagination",
+		"results",
+		"autocomplete",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaginatedGroupKerberosSourceConnectionList := _PaginatedGroupKerberosSourceConnectionList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaginatedGroupKerberosSourceConnectionList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaginatedGroupKerberosSourceConnectionList(varPaginatedGroupKerberosSourceConnectionList)
+
+	return err
 }
 
 type NullablePaginatedGroupKerberosSourceConnectionList struct {

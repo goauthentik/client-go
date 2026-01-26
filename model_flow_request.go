@@ -12,14 +12,19 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the FlowRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FlowRequest{}
 
 // FlowRequest Flow Serializer
 type FlowRequest struct {
 	Name string `json:"name"`
 	// Visible in the URL.
-	Slug string `json:"slug"`
+	Slug string `json:"slug" validate:"regexp=^[-a-zA-Z0-9_]+$"`
 	// Shown as the Title in Flow pages.
 	Title string `json:"title"`
 	// Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
@@ -35,6 +40,8 @@ type FlowRequest struct {
 	// Required level of authentication and authorization to access a flow.
 	Authentication *AuthenticationEnum `json:"authentication,omitempty"`
 }
+
+type _FlowRequest FlowRequest
 
 // NewFlowRequest instantiates a new FlowRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -155,7 +162,7 @@ func (o *FlowRequest) SetDesignation(v FlowDesignationEnum) {
 
 // GetBackground returns the Background field value if set, zero value otherwise.
 func (o *FlowRequest) GetBackground() string {
-	if o == nil || o.Background == nil {
+	if o == nil || IsNil(o.Background) {
 		var ret string
 		return ret
 	}
@@ -165,7 +172,7 @@ func (o *FlowRequest) GetBackground() string {
 // GetBackgroundOk returns a tuple with the Background field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetBackgroundOk() (*string, bool) {
-	if o == nil || o.Background == nil {
+	if o == nil || IsNil(o.Background) {
 		return nil, false
 	}
 	return o.Background, true
@@ -173,7 +180,7 @@ func (o *FlowRequest) GetBackgroundOk() (*string, bool) {
 
 // HasBackground returns a boolean if a field has been set.
 func (o *FlowRequest) HasBackground() bool {
-	if o != nil && o.Background != nil {
+	if o != nil && !IsNil(o.Background) {
 		return true
 	}
 
@@ -187,7 +194,7 @@ func (o *FlowRequest) SetBackground(v string) {
 
 // GetPolicyEngineMode returns the PolicyEngineMode field value if set, zero value otherwise.
 func (o *FlowRequest) GetPolicyEngineMode() PolicyEngineMode {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		var ret PolicyEngineMode
 		return ret
 	}
@@ -197,7 +204,7 @@ func (o *FlowRequest) GetPolicyEngineMode() PolicyEngineMode {
 // GetPolicyEngineModeOk returns a tuple with the PolicyEngineMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
-	if o == nil || o.PolicyEngineMode == nil {
+	if o == nil || IsNil(o.PolicyEngineMode) {
 		return nil, false
 	}
 	return o.PolicyEngineMode, true
@@ -205,7 +212,7 @@ func (o *FlowRequest) GetPolicyEngineModeOk() (*PolicyEngineMode, bool) {
 
 // HasPolicyEngineMode returns a boolean if a field has been set.
 func (o *FlowRequest) HasPolicyEngineMode() bool {
-	if o != nil && o.PolicyEngineMode != nil {
+	if o != nil && !IsNil(o.PolicyEngineMode) {
 		return true
 	}
 
@@ -219,7 +226,7 @@ func (o *FlowRequest) SetPolicyEngineMode(v PolicyEngineMode) {
 
 // GetCompatibilityMode returns the CompatibilityMode field value if set, zero value otherwise.
 func (o *FlowRequest) GetCompatibilityMode() bool {
-	if o == nil || o.CompatibilityMode == nil {
+	if o == nil || IsNil(o.CompatibilityMode) {
 		var ret bool
 		return ret
 	}
@@ -229,7 +236,7 @@ func (o *FlowRequest) GetCompatibilityMode() bool {
 // GetCompatibilityModeOk returns a tuple with the CompatibilityMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetCompatibilityModeOk() (*bool, bool) {
-	if o == nil || o.CompatibilityMode == nil {
+	if o == nil || IsNil(o.CompatibilityMode) {
 		return nil, false
 	}
 	return o.CompatibilityMode, true
@@ -237,7 +244,7 @@ func (o *FlowRequest) GetCompatibilityModeOk() (*bool, bool) {
 
 // HasCompatibilityMode returns a boolean if a field has been set.
 func (o *FlowRequest) HasCompatibilityMode() bool {
-	if o != nil && o.CompatibilityMode != nil {
+	if o != nil && !IsNil(o.CompatibilityMode) {
 		return true
 	}
 
@@ -251,7 +258,7 @@ func (o *FlowRequest) SetCompatibilityMode(v bool) {
 
 // GetLayout returns the Layout field value if set, zero value otherwise.
 func (o *FlowRequest) GetLayout() FlowLayoutEnum {
-	if o == nil || o.Layout == nil {
+	if o == nil || IsNil(o.Layout) {
 		var ret FlowLayoutEnum
 		return ret
 	}
@@ -261,7 +268,7 @@ func (o *FlowRequest) GetLayout() FlowLayoutEnum {
 // GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetLayoutOk() (*FlowLayoutEnum, bool) {
-	if o == nil || o.Layout == nil {
+	if o == nil || IsNil(o.Layout) {
 		return nil, false
 	}
 	return o.Layout, true
@@ -269,7 +276,7 @@ func (o *FlowRequest) GetLayoutOk() (*FlowLayoutEnum, bool) {
 
 // HasLayout returns a boolean if a field has been set.
 func (o *FlowRequest) HasLayout() bool {
-	if o != nil && o.Layout != nil {
+	if o != nil && !IsNil(o.Layout) {
 		return true
 	}
 
@@ -283,7 +290,7 @@ func (o *FlowRequest) SetLayout(v FlowLayoutEnum) {
 
 // GetDeniedAction returns the DeniedAction field value if set, zero value otherwise.
 func (o *FlowRequest) GetDeniedAction() DeniedActionEnum {
-	if o == nil || o.DeniedAction == nil {
+	if o == nil || IsNil(o.DeniedAction) {
 		var ret DeniedActionEnum
 		return ret
 	}
@@ -293,7 +300,7 @@ func (o *FlowRequest) GetDeniedAction() DeniedActionEnum {
 // GetDeniedActionOk returns a tuple with the DeniedAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetDeniedActionOk() (*DeniedActionEnum, bool) {
-	if o == nil || o.DeniedAction == nil {
+	if o == nil || IsNil(o.DeniedAction) {
 		return nil, false
 	}
 	return o.DeniedAction, true
@@ -301,7 +308,7 @@ func (o *FlowRequest) GetDeniedActionOk() (*DeniedActionEnum, bool) {
 
 // HasDeniedAction returns a boolean if a field has been set.
 func (o *FlowRequest) HasDeniedAction() bool {
-	if o != nil && o.DeniedAction != nil {
+	if o != nil && !IsNil(o.DeniedAction) {
 		return true
 	}
 
@@ -315,7 +322,7 @@ func (o *FlowRequest) SetDeniedAction(v DeniedActionEnum) {
 
 // GetAuthentication returns the Authentication field value if set, zero value otherwise.
 func (o *FlowRequest) GetAuthentication() AuthenticationEnum {
-	if o == nil || o.Authentication == nil {
+	if o == nil || IsNil(o.Authentication) {
 		var ret AuthenticationEnum
 		return ret
 	}
@@ -325,7 +332,7 @@ func (o *FlowRequest) GetAuthentication() AuthenticationEnum {
 // GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowRequest) GetAuthenticationOk() (*AuthenticationEnum, bool) {
-	if o == nil || o.Authentication == nil {
+	if o == nil || IsNil(o.Authentication) {
 		return nil, false
 	}
 	return o.Authentication, true
@@ -333,7 +340,7 @@ func (o *FlowRequest) GetAuthenticationOk() (*AuthenticationEnum, bool) {
 
 // HasAuthentication returns a boolean if a field has been set.
 func (o *FlowRequest) HasAuthentication() bool {
-	if o != nil && o.Authentication != nil {
+	if o != nil && !IsNil(o.Authentication) {
 		return true
 	}
 
@@ -346,38 +353,78 @@ func (o *FlowRequest) SetAuthentication(v AuthenticationEnum) {
 }
 
 func (o FlowRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["slug"] = o.Slug
-	}
-	if true {
-		toSerialize["title"] = o.Title
-	}
-	if true {
-		toSerialize["designation"] = o.Designation
-	}
-	if o.Background != nil {
-		toSerialize["background"] = o.Background
-	}
-	if o.PolicyEngineMode != nil {
-		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
-	}
-	if o.CompatibilityMode != nil {
-		toSerialize["compatibility_mode"] = o.CompatibilityMode
-	}
-	if o.Layout != nil {
-		toSerialize["layout"] = o.Layout
-	}
-	if o.DeniedAction != nil {
-		toSerialize["denied_action"] = o.DeniedAction
-	}
-	if o.Authentication != nil {
-		toSerialize["authentication"] = o.Authentication
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FlowRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["slug"] = o.Slug
+	toSerialize["title"] = o.Title
+	toSerialize["designation"] = o.Designation
+	if !IsNil(o.Background) {
+		toSerialize["background"] = o.Background
+	}
+	if !IsNil(o.PolicyEngineMode) {
+		toSerialize["policy_engine_mode"] = o.PolicyEngineMode
+	}
+	if !IsNil(o.CompatibilityMode) {
+		toSerialize["compatibility_mode"] = o.CompatibilityMode
+	}
+	if !IsNil(o.Layout) {
+		toSerialize["layout"] = o.Layout
+	}
+	if !IsNil(o.DeniedAction) {
+		toSerialize["denied_action"] = o.DeniedAction
+	}
+	if !IsNil(o.Authentication) {
+		toSerialize["authentication"] = o.Authentication
+	}
+	return toSerialize, nil
+}
+
+func (o *FlowRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"slug",
+		"title",
+		"designation",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFlowRequest := _FlowRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varFlowRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FlowRequest(varFlowRequest)
+
+	return err
 }
 
 type NullableFlowRequest struct {

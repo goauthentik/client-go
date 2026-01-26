@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the RelatedGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RelatedGroup{}
 
 // RelatedGroup Stripped down group serializer to show relevant children/parents for groups
 type RelatedGroup struct {
@@ -24,6 +29,8 @@ type RelatedGroup struct {
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 	GroupUuid   string                 `json:"group_uuid"`
 }
+
+type _RelatedGroup RelatedGroup
 
 // NewRelatedGroup instantiates a new RelatedGroup object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +102,7 @@ func (o *RelatedGroup) SetName(v string) {
 
 // GetIsSuperuser returns the IsSuperuser field value if set, zero value otherwise.
 func (o *RelatedGroup) GetIsSuperuser() bool {
-	if o == nil || o.IsSuperuser == nil {
+	if o == nil || IsNil(o.IsSuperuser) {
 		var ret bool
 		return ret
 	}
@@ -105,7 +112,7 @@ func (o *RelatedGroup) GetIsSuperuser() bool {
 // GetIsSuperuserOk returns a tuple with the IsSuperuser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RelatedGroup) GetIsSuperuserOk() (*bool, bool) {
-	if o == nil || o.IsSuperuser == nil {
+	if o == nil || IsNil(o.IsSuperuser) {
 		return nil, false
 	}
 	return o.IsSuperuser, true
@@ -113,7 +120,7 @@ func (o *RelatedGroup) GetIsSuperuserOk() (*bool, bool) {
 
 // HasIsSuperuser returns a boolean if a field has been set.
 func (o *RelatedGroup) HasIsSuperuser() bool {
-	if o != nil && o.IsSuperuser != nil {
+	if o != nil && !IsNil(o.IsSuperuser) {
 		return true
 	}
 
@@ -127,7 +134,7 @@ func (o *RelatedGroup) SetIsSuperuser(v bool) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *RelatedGroup) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -137,15 +144,15 @@ func (o *RelatedGroup) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RelatedGroup) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *RelatedGroup) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -182,23 +189,64 @@ func (o *RelatedGroup) SetGroupUuid(v string) {
 }
 
 func (o RelatedGroup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.IsSuperuser != nil {
-		toSerialize["is_superuser"] = o.IsSuperuser
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
-	}
-	if true {
-		toSerialize["group_uuid"] = o.GroupUuid
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RelatedGroup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	if !IsNil(o.IsSuperuser) {
+		toSerialize["is_superuser"] = o.IsSuperuser
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	toSerialize["group_uuid"] = o.GroupUuid
+	return toSerialize, nil
+}
+
+func (o *RelatedGroup) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"group_uuid",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRelatedGroup := _RelatedGroup{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRelatedGroup)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RelatedGroup(varRelatedGroup)
+
+	return err
 }
 
 type NullableRelatedGroup struct {

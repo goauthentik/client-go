@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PartialGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PartialGroup{}
 
 // PartialGroup Partial Group Serializer, does not include child relations.
 type PartialGroup struct {
@@ -25,6 +30,8 @@ type PartialGroup struct {
 	IsSuperuser *bool                  `json:"is_superuser,omitempty"`
 	Attributes  map[string]interface{} `json:"attributes,omitempty"`
 }
+
+type _PartialGroup PartialGroup
 
 // NewPartialGroup instantiates a new PartialGroup object
 // This constructor will assign default values to properties that have it defined,
@@ -120,7 +127,7 @@ func (o *PartialGroup) SetName(v string) {
 
 // GetIsSuperuser returns the IsSuperuser field value if set, zero value otherwise.
 func (o *PartialGroup) GetIsSuperuser() bool {
-	if o == nil || o.IsSuperuser == nil {
+	if o == nil || IsNil(o.IsSuperuser) {
 		var ret bool
 		return ret
 	}
@@ -130,7 +137,7 @@ func (o *PartialGroup) GetIsSuperuser() bool {
 // GetIsSuperuserOk returns a tuple with the IsSuperuser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartialGroup) GetIsSuperuserOk() (*bool, bool) {
-	if o == nil || o.IsSuperuser == nil {
+	if o == nil || IsNil(o.IsSuperuser) {
 		return nil, false
 	}
 	return o.IsSuperuser, true
@@ -138,7 +145,7 @@ func (o *PartialGroup) GetIsSuperuserOk() (*bool, bool) {
 
 // HasIsSuperuser returns a boolean if a field has been set.
 func (o *PartialGroup) HasIsSuperuser() bool {
-	if o != nil && o.IsSuperuser != nil {
+	if o != nil && !IsNil(o.IsSuperuser) {
 		return true
 	}
 
@@ -152,7 +159,7 @@ func (o *PartialGroup) SetIsSuperuser(v bool) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PartialGroup) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -162,15 +169,15 @@ func (o *PartialGroup) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartialGroup) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PartialGroup) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -183,23 +190,64 @@ func (o *PartialGroup) SetAttributes(v map[string]interface{}) {
 }
 
 func (o PartialGroup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["num_pk"] = o.NumPk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.IsSuperuser != nil {
-		toSerialize["is_superuser"] = o.IsSuperuser
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PartialGroup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["num_pk"] = o.NumPk
+	toSerialize["name"] = o.Name
+	if !IsNil(o.IsSuperuser) {
+		toSerialize["is_superuser"] = o.IsSuperuser
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
+}
+
+func (o *PartialGroup) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"num_pk",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPartialGroup := _PartialGroup{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPartialGroup)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PartialGroup(varPartialGroup)
+
+	return err
 }
 
 type NullablePartialGroup struct {

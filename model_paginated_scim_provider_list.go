@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the PaginatedSCIMProviderList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedSCIMProviderList{}
 
 // PaginatedSCIMProviderList struct for PaginatedSCIMProviderList
 type PaginatedSCIMProviderList struct {
@@ -21,6 +26,8 @@ type PaginatedSCIMProviderList struct {
 	Results      []SCIMProvider         `json:"results"`
 	Autocomplete map[string]interface{} `json:"autocomplete"`
 }
+
+type _PaginatedSCIMProviderList PaginatedSCIMProviderList
 
 // NewPaginatedSCIMProviderList instantiates a new PaginatedSCIMProviderList object
 // This constructor will assign default values to properties that have it defined,
@@ -104,7 +111,7 @@ func (o *PaginatedSCIMProviderList) GetAutocomplete() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *PaginatedSCIMProviderList) GetAutocompleteOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Autocomplete, true
 }
@@ -115,17 +122,58 @@ func (o *PaginatedSCIMProviderList) SetAutocomplete(v map[string]interface{}) {
 }
 
 func (o PaginatedSCIMProviderList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pagination"] = o.Pagination
-	}
-	if true {
-		toSerialize["results"] = o.Results
-	}
-	if true {
-		toSerialize["autocomplete"] = o.Autocomplete
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginatedSCIMProviderList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pagination"] = o.Pagination
+	toSerialize["results"] = o.Results
+	toSerialize["autocomplete"] = o.Autocomplete
+	return toSerialize, nil
+}
+
+func (o *PaginatedSCIMProviderList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pagination",
+		"results",
+		"autocomplete",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaginatedSCIMProviderList := _PaginatedSCIMProviderList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaginatedSCIMProviderList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaginatedSCIMProviderList(varPaginatedSCIMProviderList)
+
+	return err
 }
 
 type NullablePaginatedSCIMProviderList struct {

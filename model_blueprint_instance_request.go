@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the BlueprintInstanceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BlueprintInstanceRequest{}
 
 // BlueprintInstanceRequest Info about a single blueprint instance file
 type BlueprintInstanceRequest struct {
@@ -23,6 +28,8 @@ type BlueprintInstanceRequest struct {
 	Enabled *bool                  `json:"enabled,omitempty"`
 	Content *string                `json:"content,omitempty"`
 }
+
+type _BlueprintInstanceRequest BlueprintInstanceRequest
 
 // NewBlueprintInstanceRequest instantiates a new BlueprintInstanceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -72,7 +79,7 @@ func (o *BlueprintInstanceRequest) SetName(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *BlueprintInstanceRequest) GetPath() string {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -82,7 +89,7 @@ func (o *BlueprintInstanceRequest) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstanceRequest) GetPathOk() (*string, bool) {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
 	return o.Path, true
@@ -90,7 +97,7 @@ func (o *BlueprintInstanceRequest) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *BlueprintInstanceRequest) HasPath() bool {
-	if o != nil && o.Path != nil {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -104,7 +111,7 @@ func (o *BlueprintInstanceRequest) SetPath(v string) {
 
 // GetContext returns the Context field value if set, zero value otherwise.
 func (o *BlueprintInstanceRequest) GetContext() map[string]interface{} {
-	if o == nil || o.Context == nil {
+	if o == nil || IsNil(o.Context) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -114,15 +121,15 @@ func (o *BlueprintInstanceRequest) GetContext() map[string]interface{} {
 // GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstanceRequest) GetContextOk() (map[string]interface{}, bool) {
-	if o == nil || o.Context == nil {
-		return nil, false
+	if o == nil || IsNil(o.Context) {
+		return map[string]interface{}{}, false
 	}
 	return o.Context, true
 }
 
 // HasContext returns a boolean if a field has been set.
 func (o *BlueprintInstanceRequest) HasContext() bool {
-	if o != nil && o.Context != nil {
+	if o != nil && !IsNil(o.Context) {
 		return true
 	}
 
@@ -136,7 +143,7 @@ func (o *BlueprintInstanceRequest) SetContext(v map[string]interface{}) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *BlueprintInstanceRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -146,7 +153,7 @@ func (o *BlueprintInstanceRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstanceRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -154,7 +161,7 @@ func (o *BlueprintInstanceRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *BlueprintInstanceRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -168,7 +175,7 @@ func (o *BlueprintInstanceRequest) SetEnabled(v bool) {
 
 // GetContent returns the Content field value if set, zero value otherwise.
 func (o *BlueprintInstanceRequest) GetContent() string {
-	if o == nil || o.Content == nil {
+	if o == nil || IsNil(o.Content) {
 		var ret string
 		return ret
 	}
@@ -178,7 +185,7 @@ func (o *BlueprintInstanceRequest) GetContent() string {
 // GetContentOk returns a tuple with the Content field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BlueprintInstanceRequest) GetContentOk() (*string, bool) {
-	if o == nil || o.Content == nil {
+	if o == nil || IsNil(o.Content) {
 		return nil, false
 	}
 	return o.Content, true
@@ -186,7 +193,7 @@ func (o *BlueprintInstanceRequest) GetContentOk() (*string, bool) {
 
 // HasContent returns a boolean if a field has been set.
 func (o *BlueprintInstanceRequest) HasContent() bool {
-	if o != nil && o.Content != nil {
+	if o != nil && !IsNil(o.Content) {
 		return true
 	}
 
@@ -199,23 +206,66 @@ func (o *BlueprintInstanceRequest) SetContent(v string) {
 }
 
 func (o BlueprintInstanceRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Path != nil {
-		toSerialize["path"] = o.Path
-	}
-	if o.Context != nil {
-		toSerialize["context"] = o.Context
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.Content != nil {
-		toSerialize["content"] = o.Content
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BlueprintInstanceRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	if !IsNil(o.Context) {
+		toSerialize["context"] = o.Context
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Content) {
+		toSerialize["content"] = o.Content
+	}
+	return toSerialize, nil
+}
+
+func (o *BlueprintInstanceRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBlueprintInstanceRequest := _BlueprintInstanceRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBlueprintInstanceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BlueprintInstanceRequest(varBlueprintInstanceRequest)
+
+	return err
 }
 
 type NullableBlueprintInstanceRequest struct {

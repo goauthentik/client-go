@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatorStaticStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatorStaticStage{}
 
 // AuthenticatorStaticStage AuthenticatorStaticStage Serializer
 type AuthenticatorStaticStage struct {
@@ -34,6 +39,8 @@ type AuthenticatorStaticStage struct {
 	TokenCount    *int32         `json:"token_count,omitempty"`
 	TokenLength   *int32         `json:"token_length,omitempty"`
 }
+
+type _AuthenticatorStaticStage AuthenticatorStaticStage
 
 // NewAuthenticatorStaticStage instantiates a new AuthenticatorStaticStage object
 // This constructor will assign default values to properties that have it defined,
@@ -229,7 +236,7 @@ func (o *AuthenticatorStaticStage) SetFlowSet(v []FlowSet) {
 
 // GetConfigureFlow returns the ConfigureFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthenticatorStaticStage) GetConfigureFlow() string {
-	if o == nil || o.ConfigureFlow.Get() == nil {
+	if o == nil || IsNil(o.ConfigureFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -272,7 +279,7 @@ func (o *AuthenticatorStaticStage) UnsetConfigureFlow() {
 
 // GetFriendlyName returns the FriendlyName field value if set, zero value otherwise.
 func (o *AuthenticatorStaticStage) GetFriendlyName() string {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		var ret string
 		return ret
 	}
@@ -282,7 +289,7 @@ func (o *AuthenticatorStaticStage) GetFriendlyName() string {
 // GetFriendlyNameOk returns a tuple with the FriendlyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticStage) GetFriendlyNameOk() (*string, bool) {
-	if o == nil || o.FriendlyName == nil {
+	if o == nil || IsNil(o.FriendlyName) {
 		return nil, false
 	}
 	return o.FriendlyName, true
@@ -290,7 +297,7 @@ func (o *AuthenticatorStaticStage) GetFriendlyNameOk() (*string, bool) {
 
 // HasFriendlyName returns a boolean if a field has been set.
 func (o *AuthenticatorStaticStage) HasFriendlyName() bool {
-	if o != nil && o.FriendlyName != nil {
+	if o != nil && !IsNil(o.FriendlyName) {
 		return true
 	}
 
@@ -304,7 +311,7 @@ func (o *AuthenticatorStaticStage) SetFriendlyName(v string) {
 
 // GetTokenCount returns the TokenCount field value if set, zero value otherwise.
 func (o *AuthenticatorStaticStage) GetTokenCount() int32 {
-	if o == nil || o.TokenCount == nil {
+	if o == nil || IsNil(o.TokenCount) {
 		var ret int32
 		return ret
 	}
@@ -314,7 +321,7 @@ func (o *AuthenticatorStaticStage) GetTokenCount() int32 {
 // GetTokenCountOk returns a tuple with the TokenCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticStage) GetTokenCountOk() (*int32, bool) {
-	if o == nil || o.TokenCount == nil {
+	if o == nil || IsNil(o.TokenCount) {
 		return nil, false
 	}
 	return o.TokenCount, true
@@ -322,7 +329,7 @@ func (o *AuthenticatorStaticStage) GetTokenCountOk() (*int32, bool) {
 
 // HasTokenCount returns a boolean if a field has been set.
 func (o *AuthenticatorStaticStage) HasTokenCount() bool {
-	if o != nil && o.TokenCount != nil {
+	if o != nil && !IsNil(o.TokenCount) {
 		return true
 	}
 
@@ -336,7 +343,7 @@ func (o *AuthenticatorStaticStage) SetTokenCount(v int32) {
 
 // GetTokenLength returns the TokenLength field value if set, zero value otherwise.
 func (o *AuthenticatorStaticStage) GetTokenLength() int32 {
-	if o == nil || o.TokenLength == nil {
+	if o == nil || IsNil(o.TokenLength) {
 		var ret int32
 		return ret
 	}
@@ -346,7 +353,7 @@ func (o *AuthenticatorStaticStage) GetTokenLength() int32 {
 // GetTokenLengthOk returns a tuple with the TokenLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticatorStaticStage) GetTokenLengthOk() (*int32, bool) {
-	if o == nil || o.TokenLength == nil {
+	if o == nil || IsNil(o.TokenLength) {
 		return nil, false
 	}
 	return o.TokenLength, true
@@ -354,7 +361,7 @@ func (o *AuthenticatorStaticStage) GetTokenLengthOk() (*int32, bool) {
 
 // HasTokenLength returns a boolean if a field has been set.
 func (o *AuthenticatorStaticStage) HasTokenLength() bool {
-	if o != nil && o.TokenLength != nil {
+	if o != nil && !IsNil(o.TokenLength) {
 		return true
 	}
 
@@ -367,41 +374,78 @@ func (o *AuthenticatorStaticStage) SetTokenLength(v int32) {
 }
 
 func (o AuthenticatorStaticStage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatorStaticStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["flow_set"] = o.FlowSet
-	}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize["flow_set"] = o.FlowSet
 	if o.ConfigureFlow.IsSet() {
 		toSerialize["configure_flow"] = o.ConfigureFlow.Get()
 	}
-	if o.FriendlyName != nil {
+	if !IsNil(o.FriendlyName) {
 		toSerialize["friendly_name"] = o.FriendlyName
 	}
-	if o.TokenCount != nil {
+	if !IsNil(o.TokenCount) {
 		toSerialize["token_count"] = o.TokenCount
 	}
-	if o.TokenLength != nil {
+	if !IsNil(o.TokenLength) {
 		toSerialize["token_length"] = o.TokenLength
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *AuthenticatorStaticStage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"flow_set",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatorStaticStage := _AuthenticatorStaticStage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatorStaticStage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatorStaticStage(varAuthenticatorStaticStage)
+
+	return err
 }
 
 type NullableAuthenticatorStaticStage struct {

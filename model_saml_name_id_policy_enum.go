@@ -21,12 +21,12 @@ type SAMLNameIDPolicyEnum string
 
 // List of SAMLNameIDPolicyEnum
 const (
-	SAMLNAMEIDPOLICYENUM__1_1NAMEID_FORMATEMAIL_ADDRESS                 SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
-	SAMLNAMEIDPOLICYENUM__2_0NAMEID_FORMATPERSISTENT                    SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"
-	SAMLNAMEIDPOLICYENUM__1_1NAMEID_FORMATX509_SUBJECT_NAME             SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName"
-	SAMLNAMEIDPOLICYENUM__2_0NAMEID_FORMATWINDOWS_DOMAIN_QUALIFIED_NAME SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName"
-	SAMLNAMEIDPOLICYENUM__2_0NAMEID_FORMATTRANSIENT                     SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
-	SAMLNAMEIDPOLICYENUM__1_1NAMEID_FORMATUNSPECIFIED                   SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+	SAMLNAMEIDPOLICYENUM_URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS                 SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
+	SAMLNAMEIDPOLICYENUM_URN_OASIS_NAMES_TC_SAML_2_0_NAMEID_FORMAT_PERSISTENT                    SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"
+	SAMLNAMEIDPOLICYENUM_URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_X509_SUBJECT_NAME             SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName"
+	SAMLNAMEIDPOLICYENUM_URN_OASIS_NAMES_TC_SAML_2_0_NAMEID_FORMAT_WINDOWS_DOMAIN_QUALIFIED_NAME SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName"
+	SAMLNAMEIDPOLICYENUM_URN_OASIS_NAMES_TC_SAML_2_0_NAMEID_FORMAT_TRANSIENT                     SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+	SAMLNAMEIDPOLICYENUM_URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_UNSPECIFIED                   SAMLNameIDPolicyEnum = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
 )
 
 // All allowed values of SAMLNameIDPolicyEnum enum

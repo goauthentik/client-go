@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the EndpointStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EndpointStageRequest{}
 
 // EndpointStageRequest EndpointStage Serializer
 type EndpointStageRequest struct {
@@ -21,6 +26,8 @@ type EndpointStageRequest struct {
 	Connector string         `json:"connector"`
 	Mode      *StageModeEnum `json:"mode,omitempty"`
 }
+
+type _EndpointStageRequest EndpointStageRequest
 
 // NewEndpointStageRequest instantiates a new EndpointStageRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -91,7 +98,7 @@ func (o *EndpointStageRequest) SetConnector(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *EndpointStageRequest) GetMode() StageModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret StageModeEnum
 		return ret
 	}
@@ -101,7 +108,7 @@ func (o *EndpointStageRequest) GetMode() StageModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointStageRequest) GetModeOk() (*StageModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -109,7 +116,7 @@ func (o *EndpointStageRequest) GetModeOk() (*StageModeEnum, bool) {
 
 // HasMode returns a boolean if a field has been set.
 func (o *EndpointStageRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -122,17 +129,59 @@ func (o *EndpointStageRequest) SetMode(v StageModeEnum) {
 }
 
 func (o EndpointStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["connector"] = o.Connector
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EndpointStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["connector"] = o.Connector
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	return toSerialize, nil
+}
+
+func (o *EndpointStageRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"connector",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEndpointStageRequest := _EndpointStageRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEndpointStageRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EndpointStageRequest(varEndpointStageRequest)
+
+	return err
 }
 
 type NullableEndpointStageRequest struct {

@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the SAMLProvider type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SAMLProvider{}
 
 // SAMLProvider SAMLProvider Serializer
 type SAMLProvider struct {
@@ -92,6 +97,8 @@ type SAMLProvider struct {
 	// Get SLO redirect URL
 	UrlSloRedirect string `json:"url_slo_redirect"`
 }
+
+type _SAMLProvider SAMLProvider
 
 // NewSAMLProvider instantiates a new SAMLProvider object
 // This constructor will assign default values to properties that have it defined,
@@ -179,7 +186,7 @@ func (o *SAMLProvider) SetName(v string) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLProvider) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -270,7 +277,7 @@ func (o *SAMLProvider) SetInvalidationFlow(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *SAMLProvider) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -280,7 +287,7 @@ func (o *SAMLProvider) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -288,7 +295,7 @@ func (o *SAMLProvider) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *SAMLProvider) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -518,7 +525,7 @@ func (o *SAMLProvider) SetAcsUrl(v string) {
 
 // GetSlsUrl returns the SlsUrl field value if set, zero value otherwise.
 func (o *SAMLProvider) GetSlsUrl() string {
-	if o == nil || o.SlsUrl == nil {
+	if o == nil || IsNil(o.SlsUrl) {
 		var ret string
 		return ret
 	}
@@ -528,7 +535,7 @@ func (o *SAMLProvider) GetSlsUrl() string {
 // GetSlsUrlOk returns a tuple with the SlsUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetSlsUrlOk() (*string, bool) {
-	if o == nil || o.SlsUrl == nil {
+	if o == nil || IsNil(o.SlsUrl) {
 		return nil, false
 	}
 	return o.SlsUrl, true
@@ -536,7 +543,7 @@ func (o *SAMLProvider) GetSlsUrlOk() (*string, bool) {
 
 // HasSlsUrl returns a boolean if a field has been set.
 func (o *SAMLProvider) HasSlsUrl() bool {
-	if o != nil && o.SlsUrl != nil {
+	if o != nil && !IsNil(o.SlsUrl) {
 		return true
 	}
 
@@ -550,7 +557,7 @@ func (o *SAMLProvider) SetSlsUrl(v string) {
 
 // GetAudience returns the Audience field value if set, zero value otherwise.
 func (o *SAMLProvider) GetAudience() string {
-	if o == nil || o.Audience == nil {
+	if o == nil || IsNil(o.Audience) {
 		var ret string
 		return ret
 	}
@@ -560,7 +567,7 @@ func (o *SAMLProvider) GetAudience() string {
 // GetAudienceOk returns a tuple with the Audience field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetAudienceOk() (*string, bool) {
-	if o == nil || o.Audience == nil {
+	if o == nil || IsNil(o.Audience) {
 		return nil, false
 	}
 	return o.Audience, true
@@ -568,7 +575,7 @@ func (o *SAMLProvider) GetAudienceOk() (*string, bool) {
 
 // HasAudience returns a boolean if a field has been set.
 func (o *SAMLProvider) HasAudience() bool {
-	if o != nil && o.Audience != nil {
+	if o != nil && !IsNil(o.Audience) {
 		return true
 	}
 
@@ -582,7 +589,7 @@ func (o *SAMLProvider) SetAudience(v string) {
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
 func (o *SAMLProvider) GetIssuer() string {
-	if o == nil || o.Issuer == nil {
+	if o == nil || IsNil(o.Issuer) {
 		var ret string
 		return ret
 	}
@@ -592,7 +599,7 @@ func (o *SAMLProvider) GetIssuer() string {
 // GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetIssuerOk() (*string, bool) {
-	if o == nil || o.Issuer == nil {
+	if o == nil || IsNil(o.Issuer) {
 		return nil, false
 	}
 	return o.Issuer, true
@@ -600,7 +607,7 @@ func (o *SAMLProvider) GetIssuerOk() (*string, bool) {
 
 // HasIssuer returns a boolean if a field has been set.
 func (o *SAMLProvider) HasIssuer() bool {
-	if o != nil && o.Issuer != nil {
+	if o != nil && !IsNil(o.Issuer) {
 		return true
 	}
 
@@ -614,7 +621,7 @@ func (o *SAMLProvider) SetIssuer(v string) {
 
 // GetAssertionValidNotBefore returns the AssertionValidNotBefore field value if set, zero value otherwise.
 func (o *SAMLProvider) GetAssertionValidNotBefore() string {
-	if o == nil || o.AssertionValidNotBefore == nil {
+	if o == nil || IsNil(o.AssertionValidNotBefore) {
 		var ret string
 		return ret
 	}
@@ -624,7 +631,7 @@ func (o *SAMLProvider) GetAssertionValidNotBefore() string {
 // GetAssertionValidNotBeforeOk returns a tuple with the AssertionValidNotBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetAssertionValidNotBeforeOk() (*string, bool) {
-	if o == nil || o.AssertionValidNotBefore == nil {
+	if o == nil || IsNil(o.AssertionValidNotBefore) {
 		return nil, false
 	}
 	return o.AssertionValidNotBefore, true
@@ -632,7 +639,7 @@ func (o *SAMLProvider) GetAssertionValidNotBeforeOk() (*string, bool) {
 
 // HasAssertionValidNotBefore returns a boolean if a field has been set.
 func (o *SAMLProvider) HasAssertionValidNotBefore() bool {
-	if o != nil && o.AssertionValidNotBefore != nil {
+	if o != nil && !IsNil(o.AssertionValidNotBefore) {
 		return true
 	}
 
@@ -646,7 +653,7 @@ func (o *SAMLProvider) SetAssertionValidNotBefore(v string) {
 
 // GetAssertionValidNotOnOrAfter returns the AssertionValidNotOnOrAfter field value if set, zero value otherwise.
 func (o *SAMLProvider) GetAssertionValidNotOnOrAfter() string {
-	if o == nil || o.AssertionValidNotOnOrAfter == nil {
+	if o == nil || IsNil(o.AssertionValidNotOnOrAfter) {
 		var ret string
 		return ret
 	}
@@ -656,7 +663,7 @@ func (o *SAMLProvider) GetAssertionValidNotOnOrAfter() string {
 // GetAssertionValidNotOnOrAfterOk returns a tuple with the AssertionValidNotOnOrAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetAssertionValidNotOnOrAfterOk() (*string, bool) {
-	if o == nil || o.AssertionValidNotOnOrAfter == nil {
+	if o == nil || IsNil(o.AssertionValidNotOnOrAfter) {
 		return nil, false
 	}
 	return o.AssertionValidNotOnOrAfter, true
@@ -664,7 +671,7 @@ func (o *SAMLProvider) GetAssertionValidNotOnOrAfterOk() (*string, bool) {
 
 // HasAssertionValidNotOnOrAfter returns a boolean if a field has been set.
 func (o *SAMLProvider) HasAssertionValidNotOnOrAfter() bool {
-	if o != nil && o.AssertionValidNotOnOrAfter != nil {
+	if o != nil && !IsNil(o.AssertionValidNotOnOrAfter) {
 		return true
 	}
 
@@ -678,7 +685,7 @@ func (o *SAMLProvider) SetAssertionValidNotOnOrAfter(v string) {
 
 // GetSessionValidNotOnOrAfter returns the SessionValidNotOnOrAfter field value if set, zero value otherwise.
 func (o *SAMLProvider) GetSessionValidNotOnOrAfter() string {
-	if o == nil || o.SessionValidNotOnOrAfter == nil {
+	if o == nil || IsNil(o.SessionValidNotOnOrAfter) {
 		var ret string
 		return ret
 	}
@@ -688,7 +695,7 @@ func (o *SAMLProvider) GetSessionValidNotOnOrAfter() string {
 // GetSessionValidNotOnOrAfterOk returns a tuple with the SessionValidNotOnOrAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetSessionValidNotOnOrAfterOk() (*string, bool) {
-	if o == nil || o.SessionValidNotOnOrAfter == nil {
+	if o == nil || IsNil(o.SessionValidNotOnOrAfter) {
 		return nil, false
 	}
 	return o.SessionValidNotOnOrAfter, true
@@ -696,7 +703,7 @@ func (o *SAMLProvider) GetSessionValidNotOnOrAfterOk() (*string, bool) {
 
 // HasSessionValidNotOnOrAfter returns a boolean if a field has been set.
 func (o *SAMLProvider) HasSessionValidNotOnOrAfter() bool {
-	if o != nil && o.SessionValidNotOnOrAfter != nil {
+	if o != nil && !IsNil(o.SessionValidNotOnOrAfter) {
 		return true
 	}
 
@@ -710,7 +717,7 @@ func (o *SAMLProvider) SetSessionValidNotOnOrAfter(v string) {
 
 // GetNameIdMapping returns the NameIdMapping field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLProvider) GetNameIdMapping() string {
-	if o == nil || o.NameIdMapping.Get() == nil {
+	if o == nil || IsNil(o.NameIdMapping.Get()) {
 		var ret string
 		return ret
 	}
@@ -753,7 +760,7 @@ func (o *SAMLProvider) UnsetNameIdMapping() {
 
 // GetAuthnContextClassRefMapping returns the AuthnContextClassRefMapping field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLProvider) GetAuthnContextClassRefMapping() string {
-	if o == nil || o.AuthnContextClassRefMapping.Get() == nil {
+	if o == nil || IsNil(o.AuthnContextClassRefMapping.Get()) {
 		var ret string
 		return ret
 	}
@@ -796,7 +803,7 @@ func (o *SAMLProvider) UnsetAuthnContextClassRefMapping() {
 
 // GetDigestAlgorithm returns the DigestAlgorithm field value if set, zero value otherwise.
 func (o *SAMLProvider) GetDigestAlgorithm() DigestAlgorithmEnum {
-	if o == nil || o.DigestAlgorithm == nil {
+	if o == nil || IsNil(o.DigestAlgorithm) {
 		var ret DigestAlgorithmEnum
 		return ret
 	}
@@ -806,7 +813,7 @@ func (o *SAMLProvider) GetDigestAlgorithm() DigestAlgorithmEnum {
 // GetDigestAlgorithmOk returns a tuple with the DigestAlgorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetDigestAlgorithmOk() (*DigestAlgorithmEnum, bool) {
-	if o == nil || o.DigestAlgorithm == nil {
+	if o == nil || IsNil(o.DigestAlgorithm) {
 		return nil, false
 	}
 	return o.DigestAlgorithm, true
@@ -814,7 +821,7 @@ func (o *SAMLProvider) GetDigestAlgorithmOk() (*DigestAlgorithmEnum, bool) {
 
 // HasDigestAlgorithm returns a boolean if a field has been set.
 func (o *SAMLProvider) HasDigestAlgorithm() bool {
-	if o != nil && o.DigestAlgorithm != nil {
+	if o != nil && !IsNil(o.DigestAlgorithm) {
 		return true
 	}
 
@@ -828,7 +835,7 @@ func (o *SAMLProvider) SetDigestAlgorithm(v DigestAlgorithmEnum) {
 
 // GetSignatureAlgorithm returns the SignatureAlgorithm field value if set, zero value otherwise.
 func (o *SAMLProvider) GetSignatureAlgorithm() SignatureAlgorithmEnum {
-	if o == nil || o.SignatureAlgorithm == nil {
+	if o == nil || IsNil(o.SignatureAlgorithm) {
 		var ret SignatureAlgorithmEnum
 		return ret
 	}
@@ -838,7 +845,7 @@ func (o *SAMLProvider) GetSignatureAlgorithm() SignatureAlgorithmEnum {
 // GetSignatureAlgorithmOk returns a tuple with the SignatureAlgorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetSignatureAlgorithmOk() (*SignatureAlgorithmEnum, bool) {
-	if o == nil || o.SignatureAlgorithm == nil {
+	if o == nil || IsNil(o.SignatureAlgorithm) {
 		return nil, false
 	}
 	return o.SignatureAlgorithm, true
@@ -846,7 +853,7 @@ func (o *SAMLProvider) GetSignatureAlgorithmOk() (*SignatureAlgorithmEnum, bool)
 
 // HasSignatureAlgorithm returns a boolean if a field has been set.
 func (o *SAMLProvider) HasSignatureAlgorithm() bool {
-	if o != nil && o.SignatureAlgorithm != nil {
+	if o != nil && !IsNil(o.SignatureAlgorithm) {
 		return true
 	}
 
@@ -860,7 +867,7 @@ func (o *SAMLProvider) SetSignatureAlgorithm(v SignatureAlgorithmEnum) {
 
 // GetSigningKp returns the SigningKp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLProvider) GetSigningKp() string {
-	if o == nil || o.SigningKp.Get() == nil {
+	if o == nil || IsNil(o.SigningKp.Get()) {
 		var ret string
 		return ret
 	}
@@ -903,7 +910,7 @@ func (o *SAMLProvider) UnsetSigningKp() {
 
 // GetVerificationKp returns the VerificationKp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLProvider) GetVerificationKp() string {
-	if o == nil || o.VerificationKp.Get() == nil {
+	if o == nil || IsNil(o.VerificationKp.Get()) {
 		var ret string
 		return ret
 	}
@@ -946,7 +953,7 @@ func (o *SAMLProvider) UnsetVerificationKp() {
 
 // GetEncryptionKp returns the EncryptionKp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SAMLProvider) GetEncryptionKp() string {
-	if o == nil || o.EncryptionKp.Get() == nil {
+	if o == nil || IsNil(o.EncryptionKp.Get()) {
 		var ret string
 		return ret
 	}
@@ -989,7 +996,7 @@ func (o *SAMLProvider) UnsetEncryptionKp() {
 
 // GetSignAssertion returns the SignAssertion field value if set, zero value otherwise.
 func (o *SAMLProvider) GetSignAssertion() bool {
-	if o == nil || o.SignAssertion == nil {
+	if o == nil || IsNil(o.SignAssertion) {
 		var ret bool
 		return ret
 	}
@@ -999,7 +1006,7 @@ func (o *SAMLProvider) GetSignAssertion() bool {
 // GetSignAssertionOk returns a tuple with the SignAssertion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetSignAssertionOk() (*bool, bool) {
-	if o == nil || o.SignAssertion == nil {
+	if o == nil || IsNil(o.SignAssertion) {
 		return nil, false
 	}
 	return o.SignAssertion, true
@@ -1007,7 +1014,7 @@ func (o *SAMLProvider) GetSignAssertionOk() (*bool, bool) {
 
 // HasSignAssertion returns a boolean if a field has been set.
 func (o *SAMLProvider) HasSignAssertion() bool {
-	if o != nil && o.SignAssertion != nil {
+	if o != nil && !IsNil(o.SignAssertion) {
 		return true
 	}
 
@@ -1021,7 +1028,7 @@ func (o *SAMLProvider) SetSignAssertion(v bool) {
 
 // GetSignResponse returns the SignResponse field value if set, zero value otherwise.
 func (o *SAMLProvider) GetSignResponse() bool {
-	if o == nil || o.SignResponse == nil {
+	if o == nil || IsNil(o.SignResponse) {
 		var ret bool
 		return ret
 	}
@@ -1031,7 +1038,7 @@ func (o *SAMLProvider) GetSignResponse() bool {
 // GetSignResponseOk returns a tuple with the SignResponse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetSignResponseOk() (*bool, bool) {
-	if o == nil || o.SignResponse == nil {
+	if o == nil || IsNil(o.SignResponse) {
 		return nil, false
 	}
 	return o.SignResponse, true
@@ -1039,7 +1046,7 @@ func (o *SAMLProvider) GetSignResponseOk() (*bool, bool) {
 
 // HasSignResponse returns a boolean if a field has been set.
 func (o *SAMLProvider) HasSignResponse() bool {
-	if o != nil && o.SignResponse != nil {
+	if o != nil && !IsNil(o.SignResponse) {
 		return true
 	}
 
@@ -1053,7 +1060,7 @@ func (o *SAMLProvider) SetSignResponse(v bool) {
 
 // GetSignLogoutRequest returns the SignLogoutRequest field value if set, zero value otherwise.
 func (o *SAMLProvider) GetSignLogoutRequest() bool {
-	if o == nil || o.SignLogoutRequest == nil {
+	if o == nil || IsNil(o.SignLogoutRequest) {
 		var ret bool
 		return ret
 	}
@@ -1063,7 +1070,7 @@ func (o *SAMLProvider) GetSignLogoutRequest() bool {
 // GetSignLogoutRequestOk returns a tuple with the SignLogoutRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetSignLogoutRequestOk() (*bool, bool) {
-	if o == nil || o.SignLogoutRequest == nil {
+	if o == nil || IsNil(o.SignLogoutRequest) {
 		return nil, false
 	}
 	return o.SignLogoutRequest, true
@@ -1071,7 +1078,7 @@ func (o *SAMLProvider) GetSignLogoutRequestOk() (*bool, bool) {
 
 // HasSignLogoutRequest returns a boolean if a field has been set.
 func (o *SAMLProvider) HasSignLogoutRequest() bool {
-	if o != nil && o.SignLogoutRequest != nil {
+	if o != nil && !IsNil(o.SignLogoutRequest) {
 		return true
 	}
 
@@ -1085,7 +1092,7 @@ func (o *SAMLProvider) SetSignLogoutRequest(v bool) {
 
 // GetSpBinding returns the SpBinding field value if set, zero value otherwise.
 func (o *SAMLProvider) GetSpBinding() SAMLBindingsEnum {
-	if o == nil || o.SpBinding == nil {
+	if o == nil || IsNil(o.SpBinding) {
 		var ret SAMLBindingsEnum
 		return ret
 	}
@@ -1095,7 +1102,7 @@ func (o *SAMLProvider) GetSpBinding() SAMLBindingsEnum {
 // GetSpBindingOk returns a tuple with the SpBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetSpBindingOk() (*SAMLBindingsEnum, bool) {
-	if o == nil || o.SpBinding == nil {
+	if o == nil || IsNil(o.SpBinding) {
 		return nil, false
 	}
 	return o.SpBinding, true
@@ -1103,7 +1110,7 @@ func (o *SAMLProvider) GetSpBindingOk() (*SAMLBindingsEnum, bool) {
 
 // HasSpBinding returns a boolean if a field has been set.
 func (o *SAMLProvider) HasSpBinding() bool {
-	if o != nil && o.SpBinding != nil {
+	if o != nil && !IsNil(o.SpBinding) {
 		return true
 	}
 
@@ -1117,7 +1124,7 @@ func (o *SAMLProvider) SetSpBinding(v SAMLBindingsEnum) {
 
 // GetSlsBinding returns the SlsBinding field value if set, zero value otherwise.
 func (o *SAMLProvider) GetSlsBinding() SAMLBindingsEnum {
-	if o == nil || o.SlsBinding == nil {
+	if o == nil || IsNil(o.SlsBinding) {
 		var ret SAMLBindingsEnum
 		return ret
 	}
@@ -1127,7 +1134,7 @@ func (o *SAMLProvider) GetSlsBinding() SAMLBindingsEnum {
 // GetSlsBindingOk returns a tuple with the SlsBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetSlsBindingOk() (*SAMLBindingsEnum, bool) {
-	if o == nil || o.SlsBinding == nil {
+	if o == nil || IsNil(o.SlsBinding) {
 		return nil, false
 	}
 	return o.SlsBinding, true
@@ -1135,7 +1142,7 @@ func (o *SAMLProvider) GetSlsBindingOk() (*SAMLBindingsEnum, bool) {
 
 // HasSlsBinding returns a boolean if a field has been set.
 func (o *SAMLProvider) HasSlsBinding() bool {
-	if o != nil && o.SlsBinding != nil {
+	if o != nil && !IsNil(o.SlsBinding) {
 		return true
 	}
 
@@ -1149,7 +1156,7 @@ func (o *SAMLProvider) SetSlsBinding(v SAMLBindingsEnum) {
 
 // GetLogoutMethod returns the LogoutMethod field value if set, zero value otherwise.
 func (o *SAMLProvider) GetLogoutMethod() SAMLProviderLogoutMethodEnum {
-	if o == nil || o.LogoutMethod == nil {
+	if o == nil || IsNil(o.LogoutMethod) {
 		var ret SAMLProviderLogoutMethodEnum
 		return ret
 	}
@@ -1159,7 +1166,7 @@ func (o *SAMLProvider) GetLogoutMethod() SAMLProviderLogoutMethodEnum {
 // GetLogoutMethodOk returns a tuple with the LogoutMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetLogoutMethodOk() (*SAMLProviderLogoutMethodEnum, bool) {
-	if o == nil || o.LogoutMethod == nil {
+	if o == nil || IsNil(o.LogoutMethod) {
 		return nil, false
 	}
 	return o.LogoutMethod, true
@@ -1167,7 +1174,7 @@ func (o *SAMLProvider) GetLogoutMethodOk() (*SAMLProviderLogoutMethodEnum, bool)
 
 // HasLogoutMethod returns a boolean if a field has been set.
 func (o *SAMLProvider) HasLogoutMethod() bool {
-	if o != nil && o.LogoutMethod != nil {
+	if o != nil && !IsNil(o.LogoutMethod) {
 		return true
 	}
 
@@ -1181,7 +1188,7 @@ func (o *SAMLProvider) SetLogoutMethod(v SAMLProviderLogoutMethodEnum) {
 
 // GetDefaultRelayState returns the DefaultRelayState field value if set, zero value otherwise.
 func (o *SAMLProvider) GetDefaultRelayState() string {
-	if o == nil || o.DefaultRelayState == nil {
+	if o == nil || IsNil(o.DefaultRelayState) {
 		var ret string
 		return ret
 	}
@@ -1191,7 +1198,7 @@ func (o *SAMLProvider) GetDefaultRelayState() string {
 // GetDefaultRelayStateOk returns a tuple with the DefaultRelayState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetDefaultRelayStateOk() (*string, bool) {
-	if o == nil || o.DefaultRelayState == nil {
+	if o == nil || IsNil(o.DefaultRelayState) {
 		return nil, false
 	}
 	return o.DefaultRelayState, true
@@ -1199,7 +1206,7 @@ func (o *SAMLProvider) GetDefaultRelayStateOk() (*string, bool) {
 
 // HasDefaultRelayState returns a boolean if a field has been set.
 func (o *SAMLProvider) HasDefaultRelayState() bool {
-	if o != nil && o.DefaultRelayState != nil {
+	if o != nil && !IsNil(o.DefaultRelayState) {
 		return true
 	}
 
@@ -1213,7 +1220,7 @@ func (o *SAMLProvider) SetDefaultRelayState(v string) {
 
 // GetDefaultNameIdPolicy returns the DefaultNameIdPolicy field value if set, zero value otherwise.
 func (o *SAMLProvider) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum {
-	if o == nil || o.DefaultNameIdPolicy == nil {
+	if o == nil || IsNil(o.DefaultNameIdPolicy) {
 		var ret SAMLNameIDPolicyEnum
 		return ret
 	}
@@ -1223,7 +1230,7 @@ func (o *SAMLProvider) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum {
 // GetDefaultNameIdPolicyOk returns a tuple with the DefaultNameIdPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SAMLProvider) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool) {
-	if o == nil || o.DefaultNameIdPolicy == nil {
+	if o == nil || IsNil(o.DefaultNameIdPolicy) {
 		return nil, false
 	}
 	return o.DefaultNameIdPolicy, true
@@ -1231,7 +1238,7 @@ func (o *SAMLProvider) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool) 
 
 // HasDefaultNameIdPolicy returns a boolean if a field has been set.
 func (o *SAMLProvider) HasDefaultNameIdPolicy() bool {
-	if o != nil && o.DefaultNameIdPolicy != nil {
+	if o != nil && !IsNil(o.DefaultNameIdPolicy) {
 		return true
 	}
 
@@ -1388,68 +1395,50 @@ func (o *SAMLProvider) SetUrlSloRedirect(v string) {
 }
 
 func (o SAMLProvider) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SAMLProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
-	if true {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow
-	}
-	if true {
-		toSerialize["invalidation_flow"] = o.InvalidationFlow
-	}
-	if o.PropertyMappings != nil {
+	toSerialize["authorization_flow"] = o.AuthorizationFlow
+	toSerialize["invalidation_flow"] = o.InvalidationFlow
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
-	}
-	if true {
-		toSerialize["assigned_application_name"] = o.AssignedApplicationName
-	}
-	if true {
-		toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
-	}
-	if true {
-		toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["acs_url"] = o.AcsUrl
-	}
-	if o.SlsUrl != nil {
+	toSerialize["component"] = o.Component
+	toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
+	toSerialize["assigned_application_name"] = o.AssignedApplicationName
+	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
+	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize["acs_url"] = o.AcsUrl
+	if !IsNil(o.SlsUrl) {
 		toSerialize["sls_url"] = o.SlsUrl
 	}
-	if o.Audience != nil {
+	if !IsNil(o.Audience) {
 		toSerialize["audience"] = o.Audience
 	}
-	if o.Issuer != nil {
+	if !IsNil(o.Issuer) {
 		toSerialize["issuer"] = o.Issuer
 	}
-	if o.AssertionValidNotBefore != nil {
+	if !IsNil(o.AssertionValidNotBefore) {
 		toSerialize["assertion_valid_not_before"] = o.AssertionValidNotBefore
 	}
-	if o.AssertionValidNotOnOrAfter != nil {
+	if !IsNil(o.AssertionValidNotOnOrAfter) {
 		toSerialize["assertion_valid_not_on_or_after"] = o.AssertionValidNotOnOrAfter
 	}
-	if o.SessionValidNotOnOrAfter != nil {
+	if !IsNil(o.SessionValidNotOnOrAfter) {
 		toSerialize["session_valid_not_on_or_after"] = o.SessionValidNotOnOrAfter
 	}
 	if o.NameIdMapping.IsSet() {
@@ -1458,10 +1447,10 @@ func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 	if o.AuthnContextClassRefMapping.IsSet() {
 		toSerialize["authn_context_class_ref_mapping"] = o.AuthnContextClassRefMapping.Get()
 	}
-	if o.DigestAlgorithm != nil {
+	if !IsNil(o.DigestAlgorithm) {
 		toSerialize["digest_algorithm"] = o.DigestAlgorithm
 	}
-	if o.SignatureAlgorithm != nil {
+	if !IsNil(o.SignatureAlgorithm) {
 		toSerialize["signature_algorithm"] = o.SignatureAlgorithm
 	}
 	if o.SigningKp.IsSet() {
@@ -1473,49 +1462,92 @@ func (o SAMLProvider) MarshalJSON() ([]byte, error) {
 	if o.EncryptionKp.IsSet() {
 		toSerialize["encryption_kp"] = o.EncryptionKp.Get()
 	}
-	if o.SignAssertion != nil {
+	if !IsNil(o.SignAssertion) {
 		toSerialize["sign_assertion"] = o.SignAssertion
 	}
-	if o.SignResponse != nil {
+	if !IsNil(o.SignResponse) {
 		toSerialize["sign_response"] = o.SignResponse
 	}
-	if o.SignLogoutRequest != nil {
+	if !IsNil(o.SignLogoutRequest) {
 		toSerialize["sign_logout_request"] = o.SignLogoutRequest
 	}
-	if o.SpBinding != nil {
+	if !IsNil(o.SpBinding) {
 		toSerialize["sp_binding"] = o.SpBinding
 	}
-	if o.SlsBinding != nil {
+	if !IsNil(o.SlsBinding) {
 		toSerialize["sls_binding"] = o.SlsBinding
 	}
-	if o.LogoutMethod != nil {
+	if !IsNil(o.LogoutMethod) {
 		toSerialize["logout_method"] = o.LogoutMethod
 	}
-	if o.DefaultRelayState != nil {
+	if !IsNil(o.DefaultRelayState) {
 		toSerialize["default_relay_state"] = o.DefaultRelayState
 	}
-	if o.DefaultNameIdPolicy != nil {
+	if !IsNil(o.DefaultNameIdPolicy) {
 		toSerialize["default_name_id_policy"] = o.DefaultNameIdPolicy
 	}
-	if true {
-		toSerialize["url_download_metadata"] = o.UrlDownloadMetadata
+	toSerialize["url_download_metadata"] = o.UrlDownloadMetadata
+	toSerialize["url_sso_post"] = o.UrlSsoPost
+	toSerialize["url_sso_redirect"] = o.UrlSsoRedirect
+	toSerialize["url_sso_init"] = o.UrlSsoInit
+	toSerialize["url_slo_post"] = o.UrlSloPost
+	toSerialize["url_slo_redirect"] = o.UrlSloRedirect
+	return toSerialize, nil
+}
+
+func (o *SAMLProvider) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"authorization_flow",
+		"invalidation_flow",
+		"component",
+		"assigned_application_slug",
+		"assigned_application_name",
+		"assigned_backchannel_application_slug",
+		"assigned_backchannel_application_name",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"acs_url",
+		"url_download_metadata",
+		"url_sso_post",
+		"url_sso_redirect",
+		"url_sso_init",
+		"url_slo_post",
+		"url_slo_redirect",
 	}
-	if true {
-		toSerialize["url_sso_post"] = o.UrlSsoPost
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["url_sso_redirect"] = o.UrlSsoRedirect
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
 	}
-	if true {
-		toSerialize["url_sso_init"] = o.UrlSsoInit
+
+	varSAMLProvider := _SAMLProvider{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSAMLProvider)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["url_slo_post"] = o.UrlSloPost
-	}
-	if true {
-		toSerialize["url_slo_redirect"] = o.UrlSloRedirect
-	}
-	return json.Marshal(toSerialize)
+
+	*o = SAMLProvider(varSAMLProvider)
+
+	return err
 }
 
 type NullableSAMLProvider struct {

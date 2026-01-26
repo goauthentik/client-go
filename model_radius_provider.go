@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the RadiusProvider type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RadiusProvider{}
 
 // RadiusProvider RadiusProvider Serializer
 type RadiusProvider struct {
@@ -51,6 +56,8 @@ type RadiusProvider struct {
 	MfaSupport  *bool          `json:"mfa_support,omitempty"`
 	Certificate NullableString `json:"certificate,omitempty"`
 }
+
+type _RadiusProvider RadiusProvider
 
 // NewRadiusProvider instantiates a new RadiusProvider object
 // This constructor will assign default values to properties that have it defined,
@@ -132,7 +139,7 @@ func (o *RadiusProvider) SetName(v string) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RadiusProvider) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -223,7 +230,7 @@ func (o *RadiusProvider) SetInvalidationFlow(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *RadiusProvider) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -233,7 +240,7 @@ func (o *RadiusProvider) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusProvider) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -241,7 +248,7 @@ func (o *RadiusProvider) GetPropertyMappingsOk() ([]string, bool) {
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *RadiusProvider) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -447,7 +454,7 @@ func (o *RadiusProvider) SetMetaModelName(v string) {
 
 // GetClientNetworks returns the ClientNetworks field value if set, zero value otherwise.
 func (o *RadiusProvider) GetClientNetworks() string {
-	if o == nil || o.ClientNetworks == nil {
+	if o == nil || IsNil(o.ClientNetworks) {
 		var ret string
 		return ret
 	}
@@ -457,7 +464,7 @@ func (o *RadiusProvider) GetClientNetworks() string {
 // GetClientNetworksOk returns a tuple with the ClientNetworks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusProvider) GetClientNetworksOk() (*string, bool) {
-	if o == nil || o.ClientNetworks == nil {
+	if o == nil || IsNil(o.ClientNetworks) {
 		return nil, false
 	}
 	return o.ClientNetworks, true
@@ -465,7 +472,7 @@ func (o *RadiusProvider) GetClientNetworksOk() (*string, bool) {
 
 // HasClientNetworks returns a boolean if a field has been set.
 func (o *RadiusProvider) HasClientNetworks() bool {
-	if o != nil && o.ClientNetworks != nil {
+	if o != nil && !IsNil(o.ClientNetworks) {
 		return true
 	}
 
@@ -479,7 +486,7 @@ func (o *RadiusProvider) SetClientNetworks(v string) {
 
 // GetSharedSecret returns the SharedSecret field value if set, zero value otherwise.
 func (o *RadiusProvider) GetSharedSecret() string {
-	if o == nil || o.SharedSecret == nil {
+	if o == nil || IsNil(o.SharedSecret) {
 		var ret string
 		return ret
 	}
@@ -489,7 +496,7 @@ func (o *RadiusProvider) GetSharedSecret() string {
 // GetSharedSecretOk returns a tuple with the SharedSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusProvider) GetSharedSecretOk() (*string, bool) {
-	if o == nil || o.SharedSecret == nil {
+	if o == nil || IsNil(o.SharedSecret) {
 		return nil, false
 	}
 	return o.SharedSecret, true
@@ -497,7 +504,7 @@ func (o *RadiusProvider) GetSharedSecretOk() (*string, bool) {
 
 // HasSharedSecret returns a boolean if a field has been set.
 func (o *RadiusProvider) HasSharedSecret() bool {
-	if o != nil && o.SharedSecret != nil {
+	if o != nil && !IsNil(o.SharedSecret) {
 		return true
 	}
 
@@ -535,7 +542,7 @@ func (o *RadiusProvider) SetOutpostSet(v []string) {
 
 // GetMfaSupport returns the MfaSupport field value if set, zero value otherwise.
 func (o *RadiusProvider) GetMfaSupport() bool {
-	if o == nil || o.MfaSupport == nil {
+	if o == nil || IsNil(o.MfaSupport) {
 		var ret bool
 		return ret
 	}
@@ -545,7 +552,7 @@ func (o *RadiusProvider) GetMfaSupport() bool {
 // GetMfaSupportOk returns a tuple with the MfaSupport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RadiusProvider) GetMfaSupportOk() (*bool, bool) {
-	if o == nil || o.MfaSupport == nil {
+	if o == nil || IsNil(o.MfaSupport) {
 		return nil, false
 	}
 	return o.MfaSupport, true
@@ -553,7 +560,7 @@ func (o *RadiusProvider) GetMfaSupportOk() (*bool, bool) {
 
 // HasMfaSupport returns a boolean if a field has been set.
 func (o *RadiusProvider) HasMfaSupport() bool {
-	if o != nil && o.MfaSupport != nil {
+	if o != nil && !IsNil(o.MfaSupport) {
 		return true
 	}
 
@@ -567,7 +574,7 @@ func (o *RadiusProvider) SetMfaSupport(v bool) {
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RadiusProvider) GetCertificate() string {
-	if o == nil || o.Certificate.Get() == nil {
+	if o == nil || IsNil(o.Certificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -609,65 +616,96 @@ func (o *RadiusProvider) UnsetCertificate() {
 }
 
 func (o RadiusProvider) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RadiusProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
-	if true {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow
-	}
-	if true {
-		toSerialize["invalidation_flow"] = o.InvalidationFlow
-	}
-	if o.PropertyMappings != nil {
+	toSerialize["authorization_flow"] = o.AuthorizationFlow
+	toSerialize["invalidation_flow"] = o.InvalidationFlow
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
-	}
-	if true {
-		toSerialize["assigned_application_name"] = o.AssignedApplicationName
-	}
-	if true {
-		toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
-	}
-	if true {
-		toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if o.ClientNetworks != nil {
+	toSerialize["component"] = o.Component
+	toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
+	toSerialize["assigned_application_name"] = o.AssignedApplicationName
+	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
+	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	if !IsNil(o.ClientNetworks) {
 		toSerialize["client_networks"] = o.ClientNetworks
 	}
-	if o.SharedSecret != nil {
+	if !IsNil(o.SharedSecret) {
 		toSerialize["shared_secret"] = o.SharedSecret
 	}
-	if true {
-		toSerialize["outpost_set"] = o.OutpostSet
-	}
-	if o.MfaSupport != nil {
+	toSerialize["outpost_set"] = o.OutpostSet
+	if !IsNil(o.MfaSupport) {
 		toSerialize["mfa_support"] = o.MfaSupport
 	}
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *RadiusProvider) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"authorization_flow",
+		"invalidation_flow",
+		"component",
+		"assigned_application_slug",
+		"assigned_application_name",
+		"assigned_backchannel_application_slug",
+		"assigned_backchannel_application_name",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"outpost_set",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRadiusProvider := _RadiusProvider{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRadiusProvider)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RadiusProvider(varRadiusProvider)
+
+	return err
 }
 
 type NullableRadiusProvider struct {

@@ -21,10 +21,10 @@ type BackendsEnum string
 
 // List of BackendsEnum
 const (
-	BACKENDSENUM_CORE_AUTH_INBUILT_BACKEND              BackendsEnum = "authentik.core.auth.InbuiltBackend"
-	BACKENDSENUM_CORE_AUTH_TOKEN_BACKEND                BackendsEnum = "authentik.core.auth.TokenBackend"
-	BACKENDSENUM_SOURCES_LDAP_AUTH_LDAP_BACKEND         BackendsEnum = "authentik.sources.ldap.auth.LDAPBackend"
-	BACKENDSENUM_SOURCES_KERBEROS_AUTH_KERBEROS_BACKEND BackendsEnum = "authentik.sources.kerberos.auth.KerberosBackend"
+	BACKENDSENUM_AUTHENTIK_CORE_AUTH_INBUILT_BACKEND              BackendsEnum = "authentik.core.auth.InbuiltBackend"
+	BACKENDSENUM_AUTHENTIK_CORE_AUTH_TOKEN_BACKEND                BackendsEnum = "authentik.core.auth.TokenBackend"
+	BACKENDSENUM_AUTHENTIK_SOURCES_LDAP_AUTH_LDAP_BACKEND         BackendsEnum = "authentik.sources.ldap.auth.LDAPBackend"
+	BACKENDSENUM_AUTHENTIK_SOURCES_KERBEROS_AUTH_KERBEROS_BACKEND BackendsEnum = "authentik.sources.kerberos.auth.KerberosBackend"
 )
 
 // All allowed values of BackendsEnum enum

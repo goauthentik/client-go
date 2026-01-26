@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the DiskRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DiskRequest{}
 
 // DiskRequest struct for DiskRequest
 type DiskRequest struct {
@@ -24,6 +29,8 @@ type DiskRequest struct {
 	CapacityUsedBytes  *int64  `json:"capacity_used_bytes,omitempty"`
 	EncryptionEnabled  *bool   `json:"encryption_enabled,omitempty"`
 }
+
+type _DiskRequest DiskRequest
 
 // NewDiskRequest instantiates a new DiskRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -98,7 +105,7 @@ func (o *DiskRequest) SetMountpoint(v string) {
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *DiskRequest) GetLabel() string {
-	if o == nil || o.Label == nil {
+	if o == nil || IsNil(o.Label) {
 		var ret string
 		return ret
 	}
@@ -108,7 +115,7 @@ func (o *DiskRequest) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiskRequest) GetLabelOk() (*string, bool) {
-	if o == nil || o.Label == nil {
+	if o == nil || IsNil(o.Label) {
 		return nil, false
 	}
 	return o.Label, true
@@ -116,7 +123,7 @@ func (o *DiskRequest) GetLabelOk() (*string, bool) {
 
 // HasLabel returns a boolean if a field has been set.
 func (o *DiskRequest) HasLabel() bool {
-	if o != nil && o.Label != nil {
+	if o != nil && !IsNil(o.Label) {
 		return true
 	}
 
@@ -130,7 +137,7 @@ func (o *DiskRequest) SetLabel(v string) {
 
 // GetCapacityTotalBytes returns the CapacityTotalBytes field value if set, zero value otherwise.
 func (o *DiskRequest) GetCapacityTotalBytes() int64 {
-	if o == nil || o.CapacityTotalBytes == nil {
+	if o == nil || IsNil(o.CapacityTotalBytes) {
 		var ret int64
 		return ret
 	}
@@ -140,7 +147,7 @@ func (o *DiskRequest) GetCapacityTotalBytes() int64 {
 // GetCapacityTotalBytesOk returns a tuple with the CapacityTotalBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiskRequest) GetCapacityTotalBytesOk() (*int64, bool) {
-	if o == nil || o.CapacityTotalBytes == nil {
+	if o == nil || IsNil(o.CapacityTotalBytes) {
 		return nil, false
 	}
 	return o.CapacityTotalBytes, true
@@ -148,7 +155,7 @@ func (o *DiskRequest) GetCapacityTotalBytesOk() (*int64, bool) {
 
 // HasCapacityTotalBytes returns a boolean if a field has been set.
 func (o *DiskRequest) HasCapacityTotalBytes() bool {
-	if o != nil && o.CapacityTotalBytes != nil {
+	if o != nil && !IsNil(o.CapacityTotalBytes) {
 		return true
 	}
 
@@ -162,7 +169,7 @@ func (o *DiskRequest) SetCapacityTotalBytes(v int64) {
 
 // GetCapacityUsedBytes returns the CapacityUsedBytes field value if set, zero value otherwise.
 func (o *DiskRequest) GetCapacityUsedBytes() int64 {
-	if o == nil || o.CapacityUsedBytes == nil {
+	if o == nil || IsNil(o.CapacityUsedBytes) {
 		var ret int64
 		return ret
 	}
@@ -172,7 +179,7 @@ func (o *DiskRequest) GetCapacityUsedBytes() int64 {
 // GetCapacityUsedBytesOk returns a tuple with the CapacityUsedBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiskRequest) GetCapacityUsedBytesOk() (*int64, bool) {
-	if o == nil || o.CapacityUsedBytes == nil {
+	if o == nil || IsNil(o.CapacityUsedBytes) {
 		return nil, false
 	}
 	return o.CapacityUsedBytes, true
@@ -180,7 +187,7 @@ func (o *DiskRequest) GetCapacityUsedBytesOk() (*int64, bool) {
 
 // HasCapacityUsedBytes returns a boolean if a field has been set.
 func (o *DiskRequest) HasCapacityUsedBytes() bool {
-	if o != nil && o.CapacityUsedBytes != nil {
+	if o != nil && !IsNil(o.CapacityUsedBytes) {
 		return true
 	}
 
@@ -194,7 +201,7 @@ func (o *DiskRequest) SetCapacityUsedBytes(v int64) {
 
 // GetEncryptionEnabled returns the EncryptionEnabled field value if set, zero value otherwise.
 func (o *DiskRequest) GetEncryptionEnabled() bool {
-	if o == nil || o.EncryptionEnabled == nil {
+	if o == nil || IsNil(o.EncryptionEnabled) {
 		var ret bool
 		return ret
 	}
@@ -204,7 +211,7 @@ func (o *DiskRequest) GetEncryptionEnabled() bool {
 // GetEncryptionEnabledOk returns a tuple with the EncryptionEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiskRequest) GetEncryptionEnabledOk() (*bool, bool) {
-	if o == nil || o.EncryptionEnabled == nil {
+	if o == nil || IsNil(o.EncryptionEnabled) {
 		return nil, false
 	}
 	return o.EncryptionEnabled, true
@@ -212,7 +219,7 @@ func (o *DiskRequest) GetEncryptionEnabledOk() (*bool, bool) {
 
 // HasEncryptionEnabled returns a boolean if a field has been set.
 func (o *DiskRequest) HasEncryptionEnabled() bool {
-	if o != nil && o.EncryptionEnabled != nil {
+	if o != nil && !IsNil(o.EncryptionEnabled) {
 		return true
 	}
 
@@ -225,26 +232,68 @@ func (o *DiskRequest) SetEncryptionEnabled(v bool) {
 }
 
 func (o DiskRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["mountpoint"] = o.Mountpoint
-	}
-	if o.Label != nil {
-		toSerialize["label"] = o.Label
-	}
-	if o.CapacityTotalBytes != nil {
-		toSerialize["capacity_total_bytes"] = o.CapacityTotalBytes
-	}
-	if o.CapacityUsedBytes != nil {
-		toSerialize["capacity_used_bytes"] = o.CapacityUsedBytes
-	}
-	if o.EncryptionEnabled != nil {
-		toSerialize["encryption_enabled"] = o.EncryptionEnabled
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DiskRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["mountpoint"] = o.Mountpoint
+	if !IsNil(o.Label) {
+		toSerialize["label"] = o.Label
+	}
+	if !IsNil(o.CapacityTotalBytes) {
+		toSerialize["capacity_total_bytes"] = o.CapacityTotalBytes
+	}
+	if !IsNil(o.CapacityUsedBytes) {
+		toSerialize["capacity_used_bytes"] = o.CapacityUsedBytes
+	}
+	if !IsNil(o.EncryptionEnabled) {
+		toSerialize["encryption_enabled"] = o.EncryptionEnabled
+	}
+	return toSerialize, nil
+}
+
+func (o *DiskRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"mountpoint",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDiskRequest := _DiskRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDiskRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DiskRequest(varDiskRequest)
+
+	return err
 }
 
 type NullableDiskRequest struct {

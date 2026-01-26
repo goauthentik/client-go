@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedPromptStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedPromptStageRequest{}
+
 // PatchedPromptStageRequest PromptStage Serializer
 type PatchedPromptStageRequest struct {
 	Name               *string  `json:"name,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedPromptStageRequestWithDefaults() *PatchedPromptStageRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedPromptStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedPromptStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *PatchedPromptStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedPromptStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedPromptStageRequest) SetName(v string) {
 
 // GetFields returns the Fields field value if set, zero value otherwise.
 func (o *PatchedPromptStageRequest) GetFields() []string {
-	if o == nil || o.Fields == nil {
+	if o == nil || IsNil(o.Fields) {
 		var ret []string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedPromptStageRequest) GetFields() []string {
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptStageRequest) GetFieldsOk() ([]string, bool) {
-	if o == nil || o.Fields == nil {
+	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
 	return o.Fields, true
@@ -91,7 +94,7 @@ func (o *PatchedPromptStageRequest) GetFieldsOk() ([]string, bool) {
 
 // HasFields returns a boolean if a field has been set.
 func (o *PatchedPromptStageRequest) HasFields() bool {
-	if o != nil && o.Fields != nil {
+	if o != nil && !IsNil(o.Fields) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedPromptStageRequest) SetFields(v []string) {
 
 // GetValidationPolicies returns the ValidationPolicies field value if set, zero value otherwise.
 func (o *PatchedPromptStageRequest) GetValidationPolicies() []string {
-	if o == nil || o.ValidationPolicies == nil {
+	if o == nil || IsNil(o.ValidationPolicies) {
 		var ret []string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PatchedPromptStageRequest) GetValidationPolicies() []string {
 // GetValidationPoliciesOk returns a tuple with the ValidationPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedPromptStageRequest) GetValidationPoliciesOk() ([]string, bool) {
-	if o == nil || o.ValidationPolicies == nil {
+	if o == nil || IsNil(o.ValidationPolicies) {
 		return nil, false
 	}
 	return o.ValidationPolicies, true
@@ -123,7 +126,7 @@ func (o *PatchedPromptStageRequest) GetValidationPoliciesOk() ([]string, bool) {
 
 // HasValidationPolicies returns a boolean if a field has been set.
 func (o *PatchedPromptStageRequest) HasValidationPolicies() bool {
-	if o != nil && o.ValidationPolicies != nil {
+	if o != nil && !IsNil(o.ValidationPolicies) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedPromptStageRequest) SetValidationPolicies(v []string) {
 }
 
 func (o PatchedPromptStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Fields != nil {
-		toSerialize["fields"] = o.Fields
-	}
-	if o.ValidationPolicies != nil {
-		toSerialize["validation_policies"] = o.ValidationPolicies
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedPromptStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Fields) {
+		toSerialize["fields"] = o.Fields
+	}
+	if !IsNil(o.ValidationPolicies) {
+		toSerialize["validation_policies"] = o.ValidationPolicies
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedPromptStageRequest struct {

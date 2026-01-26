@@ -15,10 +15,16 @@ import (
 	"encoding/json"
 )
 
+// checks if the PromptChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PromptChallengeResponseRequest{}
+
 // PromptChallengeResponseRequest Validate response, fields are dynamically created based on the stage
 type PromptChallengeResponseRequest struct {
-	Component *string `json:"component,omitempty"`
+	Component            *string `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PromptChallengeResponseRequest PromptChallengeResponseRequest
 
 // NewPromptChallengeResponseRequest instantiates a new PromptChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -43,7 +49,7 @@ func NewPromptChallengeResponseRequestWithDefaults() *PromptChallengeResponseReq
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *PromptChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -53,7 +59,7 @@ func (o *PromptChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PromptChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -61,7 +67,7 @@ func (o *PromptChallengeResponseRequest) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *PromptChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -74,11 +80,45 @@ func (o *PromptChallengeResponseRequest) SetComponent(v string) {
 }
 
 func (o PromptChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PromptChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
+	return toSerialize, nil
+}
+
+func (o *PromptChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	varPromptChallengeResponseRequest := _PromptChallengeResponseRequest{}
+
+	err = json.Unmarshal(data, &varPromptChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PromptChallengeResponseRequest(varPromptChallengeResponseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePromptChallengeResponseRequest struct {

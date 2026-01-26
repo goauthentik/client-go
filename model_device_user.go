@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the DeviceUser type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceUser{}
 
 // DeviceUser struct for DeviceUser
 type DeviceUser struct {
@@ -22,6 +27,8 @@ type DeviceUser struct {
 	Name     *string `json:"name,omitempty"`
 	Home     *string `json:"home,omitempty"`
 }
+
+type _DeviceUser DeviceUser
 
 // NewDeviceUser instantiates a new DeviceUser object
 // This constructor will assign default values to properties that have it defined,
@@ -67,7 +74,7 @@ func (o *DeviceUser) SetId(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *DeviceUser) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -77,7 +84,7 @@ func (o *DeviceUser) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceUser) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -85,7 +92,7 @@ func (o *DeviceUser) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *DeviceUser) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -99,7 +106,7 @@ func (o *DeviceUser) SetUsername(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DeviceUser) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -109,7 +116,7 @@ func (o *DeviceUser) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceUser) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -117,7 +124,7 @@ func (o *DeviceUser) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DeviceUser) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -131,7 +138,7 @@ func (o *DeviceUser) SetName(v string) {
 
 // GetHome returns the Home field value if set, zero value otherwise.
 func (o *DeviceUser) GetHome() string {
-	if o == nil || o.Home == nil {
+	if o == nil || IsNil(o.Home) {
 		var ret string
 		return ret
 	}
@@ -141,7 +148,7 @@ func (o *DeviceUser) GetHome() string {
 // GetHomeOk returns a tuple with the Home field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceUser) GetHomeOk() (*string, bool) {
-	if o == nil || o.Home == nil {
+	if o == nil || IsNil(o.Home) {
 		return nil, false
 	}
 	return o.Home, true
@@ -149,7 +156,7 @@ func (o *DeviceUser) GetHomeOk() (*string, bool) {
 
 // HasHome returns a boolean if a field has been set.
 func (o *DeviceUser) HasHome() bool {
-	if o != nil && o.Home != nil {
+	if o != nil && !IsNil(o.Home) {
 		return true
 	}
 
@@ -162,20 +169,63 @@ func (o *DeviceUser) SetHome(v string) {
 }
 
 func (o DeviceUser) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Home != nil {
-		toSerialize["home"] = o.Home
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceUser) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Home) {
+		toSerialize["home"] = o.Home
+	}
+	return toSerialize, nil
+}
+
+func (o *DeviceUser) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceUser := _DeviceUser{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceUser)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceUser(varDeviceUser)
+
+	return err
 }
 
 type NullableDeviceUser struct {

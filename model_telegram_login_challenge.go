@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the TelegramLoginChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TelegramLoginChallenge{}
 
 // TelegramLoginChallenge Base login challenge for Identification stage
 type TelegramLoginChallenge struct {
@@ -24,6 +29,8 @@ type TelegramLoginChallenge struct {
 	BotUsername          string `json:"bot_username"`
 	RequestMessageAccess bool   `json:"request_message_access"`
 }
+
+type _TelegramLoginChallenge TelegramLoginChallenge
 
 // NewTelegramLoginChallenge instantiates a new TelegramLoginChallenge object
 // This constructor will assign default values to properties that have it defined,
@@ -50,7 +57,7 @@ func NewTelegramLoginChallengeWithDefaults() *TelegramLoginChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *TelegramLoginChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -60,7 +67,7 @@ func (o *TelegramLoginChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramLoginChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -68,7 +75,7 @@ func (o *TelegramLoginChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *TelegramLoginChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -82,7 +89,7 @@ func (o *TelegramLoginChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *TelegramLoginChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -92,7 +99,7 @@ func (o *TelegramLoginChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramLoginChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -100,7 +107,7 @@ func (o *TelegramLoginChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *TelegramLoginChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -114,7 +121,7 @@ func (o *TelegramLoginChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *TelegramLoginChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -124,7 +131,7 @@ func (o *TelegramLoginChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramLoginChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -132,7 +139,7 @@ func (o *TelegramLoginChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetai
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *TelegramLoginChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -193,23 +200,65 @@ func (o *TelegramLoginChallenge) SetRequestMessageAccess(v bool) {
 }
 
 func (o TelegramLoginChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if true {
-		toSerialize["bot_username"] = o.BotUsername
-	}
-	if true {
-		toSerialize["request_message_access"] = o.RequestMessageAccess
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TelegramLoginChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	toSerialize["bot_username"] = o.BotUsername
+	toSerialize["request_message_access"] = o.RequestMessageAccess
+	return toSerialize, nil
+}
+
+func (o *TelegramLoginChallenge) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"bot_username",
+		"request_message_access",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTelegramLoginChallenge := _TelegramLoginChallenge{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTelegramLoginChallenge)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TelegramLoginChallenge(varTelegramLoginChallenge)
+
+	return err
 }
 
 type NullableTelegramLoginChallenge struct {

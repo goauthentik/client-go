@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedSCIMSourceUserRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedSCIMSourceUserRequest{}
+
 // PatchedSCIMSourceUserRequest SCIMSourceUser Serializer
 type PatchedSCIMSourceUserRequest struct {
 	Id         *string                `json:"id,omitempty"`
@@ -43,7 +46,7 @@ func NewPatchedSCIMSourceUserRequestWithDefaults() *PatchedSCIMSourceUserRequest
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceUserRequest) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *PatchedSCIMSourceUserRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceUserRequest) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -61,7 +64,7 @@ func (o *PatchedSCIMSourceUserRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceUserRequest) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *PatchedSCIMSourceUserRequest) SetId(v string) {
 
 // GetExternalId returns the ExternalId field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceUserRequest) GetExternalId() string {
-	if o == nil || o.ExternalId == nil {
+	if o == nil || IsNil(o.ExternalId) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PatchedSCIMSourceUserRequest) GetExternalId() string {
 // GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceUserRequest) GetExternalIdOk() (*string, bool) {
-	if o == nil || o.ExternalId == nil {
+	if o == nil || IsNil(o.ExternalId) {
 		return nil, false
 	}
 	return o.ExternalId, true
@@ -93,7 +96,7 @@ func (o *PatchedSCIMSourceUserRequest) GetExternalIdOk() (*string, bool) {
 
 // HasExternalId returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceUserRequest) HasExternalId() bool {
-	if o != nil && o.ExternalId != nil {
+	if o != nil && !IsNil(o.ExternalId) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *PatchedSCIMSourceUserRequest) SetExternalId(v string) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceUserRequest) GetUser() int32 {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret int32
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *PatchedSCIMSourceUserRequest) GetUser() int32 {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceUserRequest) GetUserOk() (*int32, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -125,7 +128,7 @@ func (o *PatchedSCIMSourceUserRequest) GetUserOk() (*int32, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceUserRequest) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *PatchedSCIMSourceUserRequest) SetUser(v int32) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceUserRequest) GetSource() string {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *PatchedSCIMSourceUserRequest) GetSource() string {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceUserRequest) GetSourceOk() (*string, bool) {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -157,7 +160,7 @@ func (o *PatchedSCIMSourceUserRequest) GetSourceOk() (*string, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceUserRequest) HasSource() bool {
-	if o != nil && o.Source != nil {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *PatchedSCIMSourceUserRequest) SetSource(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PatchedSCIMSourceUserRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *PatchedSCIMSourceUserRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedSCIMSourceUserRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PatchedSCIMSourceUserRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *PatchedSCIMSourceUserRequest) SetAttributes(v map[string]interface{}) {
 }
 
 func (o PatchedSCIMSourceUserRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ExternalId != nil {
-		toSerialize["external_id"] = o.ExternalId
-	}
-	if o.User != nil {
-		toSerialize["user"] = o.User
-	}
-	if o.Source != nil {
-		toSerialize["source"] = o.Source
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedSCIMSourceUserRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ExternalId) {
+		toSerialize["external_id"] = o.ExternalId
+	}
+	if !IsNil(o.User) {
+		toSerialize["user"] = o.User
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedSCIMSourceUserRequest struct {

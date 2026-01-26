@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedInitialPermissionsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedInitialPermissionsRequest{}
+
 // PatchedInitialPermissionsRequest InitialPermissions serializer
 type PatchedInitialPermissionsRequest struct {
 	Name        *string `json:"name,omitempty"`
@@ -41,7 +44,7 @@ func NewPatchedInitialPermissionsRequestWithDefaults() *PatchedInitialPermission
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedInitialPermissionsRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PatchedInitialPermissionsRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedInitialPermissionsRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *PatchedInitialPermissionsRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedInitialPermissionsRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PatchedInitialPermissionsRequest) SetName(v string) {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *PatchedInitialPermissionsRequest) GetRole() string {
-	if o == nil || o.Role == nil {
+	if o == nil || IsNil(o.Role) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PatchedInitialPermissionsRequest) GetRole() string {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedInitialPermissionsRequest) GetRoleOk() (*string, bool) {
-	if o == nil || o.Role == nil {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
 	return o.Role, true
@@ -91,7 +94,7 @@ func (o *PatchedInitialPermissionsRequest) GetRoleOk() (*string, bool) {
 
 // HasRole returns a boolean if a field has been set.
 func (o *PatchedInitialPermissionsRequest) HasRole() bool {
-	if o != nil && o.Role != nil {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PatchedInitialPermissionsRequest) SetRole(v string) {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *PatchedInitialPermissionsRequest) GetPermissions() []int32 {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		var ret []int32
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PatchedInitialPermissionsRequest) GetPermissions() []int32 {
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedInitialPermissionsRequest) GetPermissionsOk() ([]int32, bool) {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -123,7 +126,7 @@ func (o *PatchedInitialPermissionsRequest) GetPermissionsOk() ([]int32, bool) {
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *PatchedInitialPermissionsRequest) HasPermissions() bool {
-	if o != nil && o.Permissions != nil {
+	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PatchedInitialPermissionsRequest) SetPermissions(v []int32) {
 }
 
 func (o PatchedInitialPermissionsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Role != nil {
-		toSerialize["role"] = o.Role
-	}
-	if o.Permissions != nil {
-		toSerialize["permissions"] = o.Permissions
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PatchedInitialPermissionsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
+	}
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
+	return toSerialize, nil
 }
 
 type NullablePatchedInitialPermissionsRequest struct {

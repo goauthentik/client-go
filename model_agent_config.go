@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AgentConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgentConfig{}
 
 // AgentConfig Base serializer class which doesn't implement create/update methods
 type AgentConfig struct {
@@ -28,6 +33,8 @@ type AgentConfig struct {
 	SystemConfig                 Config                    `json:"system_config"`
 	LicenseStatus                NullableLicenseStatusEnum `json:"license_status"`
 }
+
+type _AgentConfig AgentConfig
 
 // NewAgentConfig instantiates a new AgentConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -144,7 +151,7 @@ func (o *AgentConfig) GetJwksAuth() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *AgentConfig) GetJwksAuthOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.JwksAuth, true
 }
@@ -169,8 +176,8 @@ func (o *AgentConfig) GetJwksChallenge() map[string]interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AgentConfig) GetJwksChallengeOk() (map[string]interface{}, bool) {
-	if o == nil || o.JwksChallenge == nil {
-		return nil, false
+	if o == nil || IsNil(o.JwksChallenge) {
+		return map[string]interface{}{}, false
 	}
 	return o.JwksChallenge, true
 }
@@ -303,38 +310,74 @@ func (o *AgentConfig) SetLicenseStatus(v LicenseStatusEnum) {
 }
 
 func (o AgentConfig) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AgentConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["device_id"] = o.DeviceId
-	}
-	if true {
-		toSerialize["refresh_interval"] = o.RefreshInterval
-	}
-	if true {
-		toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
-	}
-	if true {
-		toSerialize["jwks_auth"] = o.JwksAuth
-	}
+	toSerialize["device_id"] = o.DeviceId
+	toSerialize["refresh_interval"] = o.RefreshInterval
+	toSerialize["authorization_flow"] = o.AuthorizationFlow.Get()
+	toSerialize["jwks_auth"] = o.JwksAuth
 	if o.JwksChallenge != nil {
 		toSerialize["jwks_challenge"] = o.JwksChallenge
 	}
-	if true {
-		toSerialize["nss_uid_offset"] = o.NssUidOffset
+	toSerialize["nss_uid_offset"] = o.NssUidOffset
+	toSerialize["nss_gid_offset"] = o.NssGidOffset
+	toSerialize["auth_terminate_session_on_expiry"] = o.AuthTerminateSessionOnExpiry
+	toSerialize["system_config"] = o.SystemConfig
+	toSerialize["license_status"] = o.LicenseStatus.Get()
+	return toSerialize, nil
+}
+
+func (o *AgentConfig) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"device_id",
+		"refresh_interval",
+		"authorization_flow",
+		"jwks_auth",
+		"jwks_challenge",
+		"nss_uid_offset",
+		"nss_gid_offset",
+		"auth_terminate_session_on_expiry",
+		"system_config",
+		"license_status",
 	}
-	if true {
-		toSerialize["nss_gid_offset"] = o.NssGidOffset
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["auth_terminate_session_on_expiry"] = o.AuthTerminateSessionOnExpiry
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
 	}
-	if true {
-		toSerialize["system_config"] = o.SystemConfig
+
+	varAgentConfig := _AgentConfig{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAgentConfig)
+
+	if err != nil {
+		return err
 	}
-	if true {
-		toSerialize["license_status"] = o.LicenseStatus.Get()
-	}
-	return json.Marshal(toSerialize)
+
+	*o = AgentConfig(varAgentConfig)
+
+	return err
 }
 
 type NullableAgentConfig struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedRedirectStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedRedirectStageRequest{}
+
 // PatchedRedirectStageRequest RedirectStage Serializer
 type PatchedRedirectStageRequest struct {
 	Name         *string                `json:"name,omitempty"`
@@ -43,7 +46,7 @@ func NewPatchedRedirectStageRequestWithDefaults() *PatchedRedirectStageRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedRedirectStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *PatchedRedirectStageRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRedirectStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -61,7 +64,7 @@ func (o *PatchedRedirectStageRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedRedirectStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *PatchedRedirectStageRequest) SetName(v string) {
 
 // GetKeepContext returns the KeepContext field value if set, zero value otherwise.
 func (o *PatchedRedirectStageRequest) GetKeepContext() bool {
-	if o == nil || o.KeepContext == nil {
+	if o == nil || IsNil(o.KeepContext) {
 		var ret bool
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PatchedRedirectStageRequest) GetKeepContext() bool {
 // GetKeepContextOk returns a tuple with the KeepContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRedirectStageRequest) GetKeepContextOk() (*bool, bool) {
-	if o == nil || o.KeepContext == nil {
+	if o == nil || IsNil(o.KeepContext) {
 		return nil, false
 	}
 	return o.KeepContext, true
@@ -93,7 +96,7 @@ func (o *PatchedRedirectStageRequest) GetKeepContextOk() (*bool, bool) {
 
 // HasKeepContext returns a boolean if a field has been set.
 func (o *PatchedRedirectStageRequest) HasKeepContext() bool {
-	if o != nil && o.KeepContext != nil {
+	if o != nil && !IsNil(o.KeepContext) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *PatchedRedirectStageRequest) SetKeepContext(v bool) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *PatchedRedirectStageRequest) GetMode() RedirectStageModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret RedirectStageModeEnum
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *PatchedRedirectStageRequest) GetMode() RedirectStageModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRedirectStageRequest) GetModeOk() (*RedirectStageModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -125,7 +128,7 @@ func (o *PatchedRedirectStageRequest) GetModeOk() (*RedirectStageModeEnum, bool)
 
 // HasMode returns a boolean if a field has been set.
 func (o *PatchedRedirectStageRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *PatchedRedirectStageRequest) SetMode(v RedirectStageModeEnum) {
 
 // GetTargetStatic returns the TargetStatic field value if set, zero value otherwise.
 func (o *PatchedRedirectStageRequest) GetTargetStatic() string {
-	if o == nil || o.TargetStatic == nil {
+	if o == nil || IsNil(o.TargetStatic) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *PatchedRedirectStageRequest) GetTargetStatic() string {
 // GetTargetStaticOk returns a tuple with the TargetStatic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRedirectStageRequest) GetTargetStaticOk() (*string, bool) {
-	if o == nil || o.TargetStatic == nil {
+	if o == nil || IsNil(o.TargetStatic) {
 		return nil, false
 	}
 	return o.TargetStatic, true
@@ -157,7 +160,7 @@ func (o *PatchedRedirectStageRequest) GetTargetStaticOk() (*string, bool) {
 
 // HasTargetStatic returns a boolean if a field has been set.
 func (o *PatchedRedirectStageRequest) HasTargetStatic() bool {
-	if o != nil && o.TargetStatic != nil {
+	if o != nil && !IsNil(o.TargetStatic) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *PatchedRedirectStageRequest) SetTargetStatic(v string) {
 
 // GetTargetFlow returns the TargetFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedRedirectStageRequest) GetTargetFlow() string {
-	if o == nil || o.TargetFlow.Get() == nil {
+	if o == nil || IsNil(o.TargetFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -213,23 +216,31 @@ func (o *PatchedRedirectStageRequest) UnsetTargetFlow() {
 }
 
 func (o PatchedRedirectStageRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedRedirectStageRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.KeepContext != nil {
+	if !IsNil(o.KeepContext) {
 		toSerialize["keep_context"] = o.KeepContext
 	}
-	if o.Mode != nil {
+	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
-	if o.TargetStatic != nil {
+	if !IsNil(o.TargetStatic) {
 		toSerialize["target_static"] = o.TargetStatic
 	}
 	if o.TargetFlow.IsSet() {
 		toSerialize["target_flow"] = o.TargetFlow.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedRedirectStageRequest struct {

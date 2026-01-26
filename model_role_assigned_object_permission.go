@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the RoleAssignedObjectPermission type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleAssignedObjectPermission{}
 
 // RoleAssignedObjectPermission Roles assigned object permission serializer
 type RoleAssignedObjectPermission struct {
@@ -22,6 +27,8 @@ type RoleAssignedObjectPermission struct {
 	ObjectPermissions []RoleObjectPermission `json:"object_permissions"`
 	ModelPermissions  []RoleModelPermission  `json:"model_permissions"`
 }
+
+type _RoleAssignedObjectPermission RoleAssignedObjectPermission
 
 // NewRoleAssignedObjectPermission instantiates a new RoleAssignedObjectPermission object
 // This constructor will assign default values to properties that have it defined,
@@ -141,20 +148,60 @@ func (o *RoleAssignedObjectPermission) SetModelPermissions(v []RoleModelPermissi
 }
 
 func (o RoleAssignedObjectPermission) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["role_pk"] = o.RolePk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["object_permissions"] = o.ObjectPermissions
-	}
-	if true {
-		toSerialize["model_permissions"] = o.ModelPermissions
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RoleAssignedObjectPermission) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["role_pk"] = o.RolePk
+	toSerialize["name"] = o.Name
+	toSerialize["object_permissions"] = o.ObjectPermissions
+	toSerialize["model_permissions"] = o.ModelPermissions
+	return toSerialize, nil
+}
+
+func (o *RoleAssignedObjectPermission) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"role_pk",
+		"name",
+		"object_permissions",
+		"model_permissions",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRoleAssignedObjectPermission := _RoleAssignedObjectPermission{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRoleAssignedObjectPermission)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RoleAssignedObjectPermission(varRoleAssignedObjectPermission)
+
+	return err
 }
 
 type NullableRoleAssignedObjectPermission struct {

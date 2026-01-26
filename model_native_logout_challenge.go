@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NativeLogoutChallenge type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NativeLogoutChallenge{}
+
 // NativeLogoutChallenge Challenge for native browser logout
 type NativeLogoutChallenge struct {
 	FlowInfo       *ContextualFlowInfo       `json:"flow_info,omitempty"`
@@ -56,7 +59,7 @@ func NewNativeLogoutChallengeWithDefaults() *NativeLogoutChallenge {
 
 // GetFlowInfo returns the FlowInfo field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetFlowInfo() ContextualFlowInfo {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		var ret ContextualFlowInfo
 		return ret
 	}
@@ -66,7 +69,7 @@ func (o *NativeLogoutChallenge) GetFlowInfo() ContextualFlowInfo {
 // GetFlowInfoOk returns a tuple with the FlowInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
-	if o == nil || o.FlowInfo == nil {
+	if o == nil || IsNil(o.FlowInfo) {
 		return nil, false
 	}
 	return o.FlowInfo, true
@@ -74,7 +77,7 @@ func (o *NativeLogoutChallenge) GetFlowInfoOk() (*ContextualFlowInfo, bool) {
 
 // HasFlowInfo returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasFlowInfo() bool {
-	if o != nil && o.FlowInfo != nil {
+	if o != nil && !IsNil(o.FlowInfo) {
 		return true
 	}
 
@@ -88,7 +91,7 @@ func (o *NativeLogoutChallenge) SetFlowInfo(v ContextualFlowInfo) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -98,7 +101,7 @@ func (o *NativeLogoutChallenge) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -106,7 +109,7 @@ func (o *NativeLogoutChallenge) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -120,7 +123,7 @@ func (o *NativeLogoutChallenge) SetComponent(v string) {
 
 // GetResponseErrors returns the ResponseErrors field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetResponseErrors() map[string][]ErrorDetail {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		var ret map[string][]ErrorDetail
 		return ret
 	}
@@ -130,7 +133,7 @@ func (o *NativeLogoutChallenge) GetResponseErrors() map[string][]ErrorDetail {
 // GetResponseErrorsOk returns a tuple with the ResponseErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail, bool) {
-	if o == nil || o.ResponseErrors == nil {
+	if o == nil || IsNil(o.ResponseErrors) {
 		return nil, false
 	}
 	return o.ResponseErrors, true
@@ -138,7 +141,7 @@ func (o *NativeLogoutChallenge) GetResponseErrorsOk() (*map[string][]ErrorDetail
 
 // HasResponseErrors returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasResponseErrors() bool {
-	if o != nil && o.ResponseErrors != nil {
+	if o != nil && !IsNil(o.ResponseErrors) {
 		return true
 	}
 
@@ -152,7 +155,7 @@ func (o *NativeLogoutChallenge) SetResponseErrors(v map[string][]ErrorDetail) {
 
 // GetPostUrl returns the PostUrl field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetPostUrl() string {
-	if o == nil || o.PostUrl == nil {
+	if o == nil || IsNil(o.PostUrl) {
 		var ret string
 		return ret
 	}
@@ -162,7 +165,7 @@ func (o *NativeLogoutChallenge) GetPostUrl() string {
 // GetPostUrlOk returns a tuple with the PostUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetPostUrlOk() (*string, bool) {
-	if o == nil || o.PostUrl == nil {
+	if o == nil || IsNil(o.PostUrl) {
 		return nil, false
 	}
 	return o.PostUrl, true
@@ -170,7 +173,7 @@ func (o *NativeLogoutChallenge) GetPostUrlOk() (*string, bool) {
 
 // HasPostUrl returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasPostUrl() bool {
-	if o != nil && o.PostUrl != nil {
+	if o != nil && !IsNil(o.PostUrl) {
 		return true
 	}
 
@@ -184,7 +187,7 @@ func (o *NativeLogoutChallenge) SetPostUrl(v string) {
 
 // GetSamlRequest returns the SamlRequest field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetSamlRequest() string {
-	if o == nil || o.SamlRequest == nil {
+	if o == nil || IsNil(o.SamlRequest) {
 		var ret string
 		return ret
 	}
@@ -194,7 +197,7 @@ func (o *NativeLogoutChallenge) GetSamlRequest() string {
 // GetSamlRequestOk returns a tuple with the SamlRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetSamlRequestOk() (*string, bool) {
-	if o == nil || o.SamlRequest == nil {
+	if o == nil || IsNil(o.SamlRequest) {
 		return nil, false
 	}
 	return o.SamlRequest, true
@@ -202,7 +205,7 @@ func (o *NativeLogoutChallenge) GetSamlRequestOk() (*string, bool) {
 
 // HasSamlRequest returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasSamlRequest() bool {
-	if o != nil && o.SamlRequest != nil {
+	if o != nil && !IsNil(o.SamlRequest) {
 		return true
 	}
 
@@ -216,7 +219,7 @@ func (o *NativeLogoutChallenge) SetSamlRequest(v string) {
 
 // GetRelayState returns the RelayState field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetRelayState() string {
-	if o == nil || o.RelayState == nil {
+	if o == nil || IsNil(o.RelayState) {
 		var ret string
 		return ret
 	}
@@ -226,7 +229,7 @@ func (o *NativeLogoutChallenge) GetRelayState() string {
 // GetRelayStateOk returns a tuple with the RelayState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetRelayStateOk() (*string, bool) {
-	if o == nil || o.RelayState == nil {
+	if o == nil || IsNil(o.RelayState) {
 		return nil, false
 	}
 	return o.RelayState, true
@@ -234,7 +237,7 @@ func (o *NativeLogoutChallenge) GetRelayStateOk() (*string, bool) {
 
 // HasRelayState returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasRelayState() bool {
-	if o != nil && o.RelayState != nil {
+	if o != nil && !IsNil(o.RelayState) {
 		return true
 	}
 
@@ -248,7 +251,7 @@ func (o *NativeLogoutChallenge) SetRelayState(v string) {
 
 // GetProviderName returns the ProviderName field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetProviderName() string {
-	if o == nil || o.ProviderName == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		var ret string
 		return ret
 	}
@@ -258,7 +261,7 @@ func (o *NativeLogoutChallenge) GetProviderName() string {
 // GetProviderNameOk returns a tuple with the ProviderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetProviderNameOk() (*string, bool) {
-	if o == nil || o.ProviderName == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
 	return o.ProviderName, true
@@ -266,7 +269,7 @@ func (o *NativeLogoutChallenge) GetProviderNameOk() (*string, bool) {
 
 // HasProviderName returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasProviderName() bool {
-	if o != nil && o.ProviderName != nil {
+	if o != nil && !IsNil(o.ProviderName) {
 		return true
 	}
 
@@ -280,7 +283,7 @@ func (o *NativeLogoutChallenge) SetProviderName(v string) {
 
 // GetBinding returns the Binding field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetBinding() string {
-	if o == nil || o.Binding == nil {
+	if o == nil || IsNil(o.Binding) {
 		var ret string
 		return ret
 	}
@@ -290,7 +293,7 @@ func (o *NativeLogoutChallenge) GetBinding() string {
 // GetBindingOk returns a tuple with the Binding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetBindingOk() (*string, bool) {
-	if o == nil || o.Binding == nil {
+	if o == nil || IsNil(o.Binding) {
 		return nil, false
 	}
 	return o.Binding, true
@@ -298,7 +301,7 @@ func (o *NativeLogoutChallenge) GetBindingOk() (*string, bool) {
 
 // HasBinding returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasBinding() bool {
-	if o != nil && o.Binding != nil {
+	if o != nil && !IsNil(o.Binding) {
 		return true
 	}
 
@@ -312,7 +315,7 @@ func (o *NativeLogoutChallenge) SetBinding(v string) {
 
 // GetRedirectUrl returns the RedirectUrl field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetRedirectUrl() string {
-	if o == nil || o.RedirectUrl == nil {
+	if o == nil || IsNil(o.RedirectUrl) {
 		var ret string
 		return ret
 	}
@@ -322,7 +325,7 @@ func (o *NativeLogoutChallenge) GetRedirectUrl() string {
 // GetRedirectUrlOk returns a tuple with the RedirectUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetRedirectUrlOk() (*string, bool) {
-	if o == nil || o.RedirectUrl == nil {
+	if o == nil || IsNil(o.RedirectUrl) {
 		return nil, false
 	}
 	return o.RedirectUrl, true
@@ -330,7 +333,7 @@ func (o *NativeLogoutChallenge) GetRedirectUrlOk() (*string, bool) {
 
 // HasRedirectUrl returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasRedirectUrl() bool {
-	if o != nil && o.RedirectUrl != nil {
+	if o != nil && !IsNil(o.RedirectUrl) {
 		return true
 	}
 
@@ -344,7 +347,7 @@ func (o *NativeLogoutChallenge) SetRedirectUrl(v string) {
 
 // GetIsComplete returns the IsComplete field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetIsComplete() bool {
-	if o == nil || o.IsComplete == nil {
+	if o == nil || IsNil(o.IsComplete) {
 		var ret bool
 		return ret
 	}
@@ -354,7 +357,7 @@ func (o *NativeLogoutChallenge) GetIsComplete() bool {
 // GetIsCompleteOk returns a tuple with the IsComplete field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NativeLogoutChallenge) GetIsCompleteOk() (*bool, bool) {
-	if o == nil || o.IsComplete == nil {
+	if o == nil || IsNil(o.IsComplete) {
 		return nil, false
 	}
 	return o.IsComplete, true
@@ -362,7 +365,7 @@ func (o *NativeLogoutChallenge) GetIsCompleteOk() (*bool, bool) {
 
 // HasIsComplete returns a boolean if a field has been set.
 func (o *NativeLogoutChallenge) HasIsComplete() bool {
-	if o != nil && o.IsComplete != nil {
+	if o != nil && !IsNil(o.IsComplete) {
 		return true
 	}
 
@@ -375,38 +378,46 @@ func (o *NativeLogoutChallenge) SetIsComplete(v bool) {
 }
 
 func (o NativeLogoutChallenge) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.FlowInfo != nil {
-		toSerialize["flow_info"] = o.FlowInfo
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
-	}
-	if o.ResponseErrors != nil {
-		toSerialize["response_errors"] = o.ResponseErrors
-	}
-	if o.PostUrl != nil {
-		toSerialize["post_url"] = o.PostUrl
-	}
-	if o.SamlRequest != nil {
-		toSerialize["saml_request"] = o.SamlRequest
-	}
-	if o.RelayState != nil {
-		toSerialize["relay_state"] = o.RelayState
-	}
-	if o.ProviderName != nil {
-		toSerialize["provider_name"] = o.ProviderName
-	}
-	if o.Binding != nil {
-		toSerialize["binding"] = o.Binding
-	}
-	if o.RedirectUrl != nil {
-		toSerialize["redirect_url"] = o.RedirectUrl
-	}
-	if o.IsComplete != nil {
-		toSerialize["is_complete"] = o.IsComplete
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NativeLogoutChallenge) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FlowInfo) {
+		toSerialize["flow_info"] = o.FlowInfo
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	if !IsNil(o.ResponseErrors) {
+		toSerialize["response_errors"] = o.ResponseErrors
+	}
+	if !IsNil(o.PostUrl) {
+		toSerialize["post_url"] = o.PostUrl
+	}
+	if !IsNil(o.SamlRequest) {
+		toSerialize["saml_request"] = o.SamlRequest
+	}
+	if !IsNil(o.RelayState) {
+		toSerialize["relay_state"] = o.RelayState
+	}
+	if !IsNil(o.ProviderName) {
+		toSerialize["provider_name"] = o.ProviderName
+	}
+	if !IsNil(o.Binding) {
+		toSerialize["binding"] = o.Binding
+	}
+	if !IsNil(o.RedirectUrl) {
+		toSerialize["redirect_url"] = o.RedirectUrl
+	}
+	if !IsNil(o.IsComplete) {
+		toSerialize["is_complete"] = o.IsComplete
+	}
+	return toSerialize, nil
 }
 
 type NullableNativeLogoutChallenge struct {

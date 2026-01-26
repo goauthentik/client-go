@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the TelegramChallengeResponseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TelegramChallengeResponseRequest{}
 
 // TelegramChallengeResponseRequest Base class for all challenge responses
 type TelegramChallengeResponseRequest struct {
@@ -26,6 +31,8 @@ type TelegramChallengeResponseRequest struct {
 	Hash      string  `json:"hash"`
 	Component *string `json:"component,omitempty"`
 }
+
+type _TelegramChallengeResponseRequest TelegramChallengeResponseRequest
 
 // NewTelegramChallengeResponseRequest instantiates a new TelegramChallengeResponseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -77,7 +84,7 @@ func (o *TelegramChallengeResponseRequest) SetId(v int32) {
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise.
 func (o *TelegramChallengeResponseRequest) GetFirstName() string {
-	if o == nil || o.FirstName == nil {
+	if o == nil || IsNil(o.FirstName) {
 		var ret string
 		return ret
 	}
@@ -87,7 +94,7 @@ func (o *TelegramChallengeResponseRequest) GetFirstName() string {
 // GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramChallengeResponseRequest) GetFirstNameOk() (*string, bool) {
-	if o == nil || o.FirstName == nil {
+	if o == nil || IsNil(o.FirstName) {
 		return nil, false
 	}
 	return o.FirstName, true
@@ -95,7 +102,7 @@ func (o *TelegramChallengeResponseRequest) GetFirstNameOk() (*string, bool) {
 
 // HasFirstName returns a boolean if a field has been set.
 func (o *TelegramChallengeResponseRequest) HasFirstName() bool {
-	if o != nil && o.FirstName != nil {
+	if o != nil && !IsNil(o.FirstName) {
 		return true
 	}
 
@@ -109,7 +116,7 @@ func (o *TelegramChallengeResponseRequest) SetFirstName(v string) {
 
 // GetLastName returns the LastName field value if set, zero value otherwise.
 func (o *TelegramChallengeResponseRequest) GetLastName() string {
-	if o == nil || o.LastName == nil {
+	if o == nil || IsNil(o.LastName) {
 		var ret string
 		return ret
 	}
@@ -119,7 +126,7 @@ func (o *TelegramChallengeResponseRequest) GetLastName() string {
 // GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramChallengeResponseRequest) GetLastNameOk() (*string, bool) {
-	if o == nil || o.LastName == nil {
+	if o == nil || IsNil(o.LastName) {
 		return nil, false
 	}
 	return o.LastName, true
@@ -127,7 +134,7 @@ func (o *TelegramChallengeResponseRequest) GetLastNameOk() (*string, bool) {
 
 // HasLastName returns a boolean if a field has been set.
 func (o *TelegramChallengeResponseRequest) HasLastName() bool {
-	if o != nil && o.LastName != nil {
+	if o != nil && !IsNil(o.LastName) {
 		return true
 	}
 
@@ -141,7 +148,7 @@ func (o *TelegramChallengeResponseRequest) SetLastName(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *TelegramChallengeResponseRequest) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -151,7 +158,7 @@ func (o *TelegramChallengeResponseRequest) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramChallengeResponseRequest) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -159,7 +166,7 @@ func (o *TelegramChallengeResponseRequest) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *TelegramChallengeResponseRequest) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -173,7 +180,7 @@ func (o *TelegramChallengeResponseRequest) SetUsername(v string) {
 
 // GetPhotoUrl returns the PhotoUrl field value if set, zero value otherwise.
 func (o *TelegramChallengeResponseRequest) GetPhotoUrl() string {
-	if o == nil || o.PhotoUrl == nil {
+	if o == nil || IsNil(o.PhotoUrl) {
 		var ret string
 		return ret
 	}
@@ -183,7 +190,7 @@ func (o *TelegramChallengeResponseRequest) GetPhotoUrl() string {
 // GetPhotoUrlOk returns a tuple with the PhotoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramChallengeResponseRequest) GetPhotoUrlOk() (*string, bool) {
-	if o == nil || o.PhotoUrl == nil {
+	if o == nil || IsNil(o.PhotoUrl) {
 		return nil, false
 	}
 	return o.PhotoUrl, true
@@ -191,7 +198,7 @@ func (o *TelegramChallengeResponseRequest) GetPhotoUrlOk() (*string, bool) {
 
 // HasPhotoUrl returns a boolean if a field has been set.
 func (o *TelegramChallengeResponseRequest) HasPhotoUrl() bool {
-	if o != nil && o.PhotoUrl != nil {
+	if o != nil && !IsNil(o.PhotoUrl) {
 		return true
 	}
 
@@ -253,7 +260,7 @@ func (o *TelegramChallengeResponseRequest) SetHash(v string) {
 
 // GetComponent returns the Component field value if set, zero value otherwise.
 func (o *TelegramChallengeResponseRequest) GetComponent() string {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
@@ -263,7 +270,7 @@ func (o *TelegramChallengeResponseRequest) GetComponent() string {
 // GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TelegramChallengeResponseRequest) GetComponentOk() (*string, bool) {
-	if o == nil || o.Component == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
 	return o.Component, true
@@ -271,7 +278,7 @@ func (o *TelegramChallengeResponseRequest) GetComponentOk() (*string, bool) {
 
 // HasComponent returns a boolean if a field has been set.
 func (o *TelegramChallengeResponseRequest) HasComponent() bool {
-	if o != nil && o.Component != nil {
+	if o != nil && !IsNil(o.Component) {
 		return true
 	}
 
@@ -284,32 +291,73 @@ func (o *TelegramChallengeResponseRequest) SetComponent(v string) {
 }
 
 func (o TelegramChallengeResponseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if o.FirstName != nil {
-		toSerialize["first_name"] = o.FirstName
-	}
-	if o.LastName != nil {
-		toSerialize["last_name"] = o.LastName
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.PhotoUrl != nil {
-		toSerialize["photo_url"] = o.PhotoUrl
-	}
-	if true {
-		toSerialize["auth_date"] = o.AuthDate
-	}
-	if true {
-		toSerialize["hash"] = o.Hash
-	}
-	if o.Component != nil {
-		toSerialize["component"] = o.Component
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TelegramChallengeResponseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.FirstName) {
+		toSerialize["first_name"] = o.FirstName
+	}
+	if !IsNil(o.LastName) {
+		toSerialize["last_name"] = o.LastName
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.PhotoUrl) {
+		toSerialize["photo_url"] = o.PhotoUrl
+	}
+	toSerialize["auth_date"] = o.AuthDate
+	toSerialize["hash"] = o.Hash
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
+	return toSerialize, nil
+}
+
+func (o *TelegramChallengeResponseRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"auth_date",
+		"hash",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTelegramChallengeResponseRequest := _TelegramChallengeResponseRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTelegramChallengeResponseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TelegramChallengeResponseRequest(varTelegramChallengeResponseRequest)
+
+	return err
 }
 
 type NullableTelegramChallengeResponseRequest struct {

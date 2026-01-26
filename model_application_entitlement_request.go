@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the ApplicationEntitlementRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationEntitlementRequest{}
 
 // ApplicationEntitlementRequest ApplicationEntitlement Serializer
 type ApplicationEntitlementRequest struct {
@@ -21,6 +26,8 @@ type ApplicationEntitlementRequest struct {
 	App        string                 `json:"app"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 }
+
+type _ApplicationEntitlementRequest ApplicationEntitlementRequest
 
 // NewApplicationEntitlementRequest instantiates a new ApplicationEntitlementRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -91,7 +98,7 @@ func (o *ApplicationEntitlementRequest) SetApp(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *ApplicationEntitlementRequest) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -101,15 +108,15 @@ func (o *ApplicationEntitlementRequest) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationEntitlementRequest) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *ApplicationEntitlementRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -122,17 +129,59 @@ func (o *ApplicationEntitlementRequest) SetAttributes(v map[string]interface{}) 
 }
 
 func (o ApplicationEntitlementRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["app"] = o.App
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationEntitlementRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["app"] = o.App
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
+}
+
+func (o *ApplicationEntitlementRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"app",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationEntitlementRequest := _ApplicationEntitlementRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varApplicationEntitlementRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationEntitlementRequest(varApplicationEntitlementRequest)
+
+	return err
 }
 
 type NullableApplicationEntitlementRequest struct {

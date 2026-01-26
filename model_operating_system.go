@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the OperatingSystem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OperatingSystem{}
 
 // OperatingSystem For example: {\"family\":\"linux\",\"name\":\"Ubuntu\",\"version\":\"24.04.3 LTS (Noble Numbat)\",\"arch\":\"amd64\"} {\"family\": \"windows\",\"name\":\"Server 2022 Datacenter\",\"version\":\"10.0.20348.4405\",\"arch\":\"amd64\"} {\"family\": \"windows\",\"name\":\"Server 2022 Datacenter\",\"version\":\"10.0.20348.4405\",\"arch\":\"amd64\"} {\"family\": \"mac_os\", \"name\": \"\", \"version\": \"26.2\", \"arch\": \"arm64\"}
 type OperatingSystem struct {
@@ -24,6 +29,8 @@ type OperatingSystem struct {
 	Version *string `json:"version,omitempty"`
 	Arch    string  `json:"arch"`
 }
+
+type _OperatingSystem OperatingSystem
 
 // NewOperatingSystem instantiates a new OperatingSystem object
 // This constructor will assign default values to properties that have it defined,
@@ -70,7 +77,7 @@ func (o *OperatingSystem) SetFamily(v DeviceFactsOSFamily) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *OperatingSystem) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -80,7 +87,7 @@ func (o *OperatingSystem) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OperatingSystem) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -88,7 +95,7 @@ func (o *OperatingSystem) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *OperatingSystem) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -102,7 +109,7 @@ func (o *OperatingSystem) SetName(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *OperatingSystem) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -112,7 +119,7 @@ func (o *OperatingSystem) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OperatingSystem) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -120,7 +127,7 @@ func (o *OperatingSystem) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *OperatingSystem) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -157,20 +164,62 @@ func (o *OperatingSystem) SetArch(v string) {
 }
 
 func (o OperatingSystem) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["family"] = o.Family
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if true {
-		toSerialize["arch"] = o.Arch
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OperatingSystem) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["family"] = o.Family
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	toSerialize["arch"] = o.Arch
+	return toSerialize, nil
+}
+
+func (o *OperatingSystem) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"family",
+		"arch",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOperatingSystem := _OperatingSystem{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOperatingSystem)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OperatingSystem(varOperatingSystem)
+
+	return err
 }
 
 type NullableOperatingSystem struct {

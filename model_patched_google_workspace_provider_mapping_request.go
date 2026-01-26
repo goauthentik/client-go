@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedGoogleWorkspaceProviderMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedGoogleWorkspaceProviderMappingRequest{}
+
 // PatchedGoogleWorkspaceProviderMappingRequest GoogleWorkspaceProviderMapping Serializer
 type PatchedGoogleWorkspaceProviderMappingRequest struct {
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
@@ -42,7 +45,7 @@ func NewPatchedGoogleWorkspaceProviderMappingRequestWithDefaults() *PatchedGoogl
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedGoogleWorkspaceProviderMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *PatchedGoogleWorkspaceProviderMappingRequest) UnsetManaged() {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedGoogleWorkspaceProviderMappingRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *PatchedGoogleWorkspaceProviderMappingRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGoogleWorkspaceProviderMappingRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -103,7 +106,7 @@ func (o *PatchedGoogleWorkspaceProviderMappingRequest) GetNameOk() (*string, boo
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedGoogleWorkspaceProviderMappingRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -117,7 +120,7 @@ func (o *PatchedGoogleWorkspaceProviderMappingRequest) SetName(v string) {
 
 // GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *PatchedGoogleWorkspaceProviderMappingRequest) GetExpression() string {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		var ret string
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *PatchedGoogleWorkspaceProviderMappingRequest) GetExpression() string {
 // GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedGoogleWorkspaceProviderMappingRequest) GetExpressionOk() (*string, bool) {
-	if o == nil || o.Expression == nil {
+	if o == nil || IsNil(o.Expression) {
 		return nil, false
 	}
 	return o.Expression, true
@@ -135,7 +138,7 @@ func (o *PatchedGoogleWorkspaceProviderMappingRequest) GetExpressionOk() (*strin
 
 // HasExpression returns a boolean if a field has been set.
 func (o *PatchedGoogleWorkspaceProviderMappingRequest) HasExpression() bool {
-	if o != nil && o.Expression != nil {
+	if o != nil && !IsNil(o.Expression) {
 		return true
 	}
 
@@ -148,17 +151,25 @@ func (o *PatchedGoogleWorkspaceProviderMappingRequest) SetExpression(v string) {
 }
 
 func (o PatchedGoogleWorkspaceProviderMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedGoogleWorkspaceProviderMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Expression != nil {
+	if !IsNil(o.Expression) {
 		toSerialize["expression"] = o.Expression
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedGoogleWorkspaceProviderMappingRequest struct {

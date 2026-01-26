@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the LDAPSourcePropertyMappingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LDAPSourcePropertyMappingRequest{}
 
 // LDAPSourcePropertyMappingRequest LDAP PropertyMapping Serializer
 type LDAPSourcePropertyMappingRequest struct {
@@ -22,6 +27,8 @@ type LDAPSourcePropertyMappingRequest struct {
 	Name       string         `json:"name"`
 	Expression string         `json:"expression"`
 }
+
+type _LDAPSourcePropertyMappingRequest LDAPSourcePropertyMappingRequest
 
 // NewLDAPSourcePropertyMappingRequest instantiates a new LDAPSourcePropertyMappingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -44,7 +51,7 @@ func NewLDAPSourcePropertyMappingRequestWithDefaults() *LDAPSourcePropertyMappin
 
 // GetManaged returns the Managed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LDAPSourcePropertyMappingRequest) GetManaged() string {
-	if o == nil || o.Managed.Get() == nil {
+	if o == nil || IsNil(o.Managed.Get()) {
 		var ret string
 		return ret
 	}
@@ -134,17 +141,59 @@ func (o *LDAPSourcePropertyMappingRequest) SetExpression(v string) {
 }
 
 func (o LDAPSourcePropertyMappingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LDAPSourcePropertyMappingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Managed.IsSet() {
 		toSerialize["managed"] = o.Managed.Get()
 	}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize["name"] = o.Name
+	toSerialize["expression"] = o.Expression
+	return toSerialize, nil
+}
+
+func (o *LDAPSourcePropertyMappingRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"expression",
 	}
-	if true {
-		toSerialize["expression"] = o.Expression
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
 	}
-	return json.Marshal(toSerialize)
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLDAPSourcePropertyMappingRequest := _LDAPSourcePropertyMappingRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLDAPSourcePropertyMappingRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LDAPSourcePropertyMappingRequest(varLDAPSourcePropertyMappingRequest)
+
+	return err
 }
 
 type NullableLDAPSourcePropertyMappingRequest struct {

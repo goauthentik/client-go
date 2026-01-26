@@ -21,8 +21,8 @@ type DeliveryMethodEnum string
 
 // List of DeliveryMethodEnum
 const (
-	DELIVERYMETHODENUM_PUSH DeliveryMethodEnum = "https://schemas.openid.net/secevent/risc/delivery-method/push"
-	DELIVERYMETHODENUM_POLL DeliveryMethodEnum = "https://schemas.openid.net/secevent/risc/delivery-method/poll"
+	DELIVERYMETHODENUM_HTTPS___SCHEMAS_OPENID_NET_SECEVENT_RISC_DELIVERY_METHOD_PUSH DeliveryMethodEnum = "https://schemas.openid.net/secevent/risc/delivery-method/push"
+	DELIVERYMETHODENUM_HTTPS___SCHEMAS_OPENID_NET_SECEVENT_RISC_DELIVERY_METHOD_POLL DeliveryMethodEnum = "https://schemas.openid.net/secevent/risc/delivery-method/poll"
 )
 
 // All allowed values of DeliveryMethodEnum enum

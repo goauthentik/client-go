@@ -12,14 +12,21 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the LDAPCheckAccess type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LDAPCheckAccess{}
 
 // LDAPCheckAccess Base serializer class which doesn't implement create/update methods
 type LDAPCheckAccess struct {
 	HasSearchPermission *bool            `json:"has_search_permission,omitempty"`
 	Access              PolicyTestResult `json:"access"`
 }
+
+type _LDAPCheckAccess LDAPCheckAccess
 
 // NewLDAPCheckAccess instantiates a new LDAPCheckAccess object
 // This constructor will assign default values to properties that have it defined,
@@ -41,7 +48,7 @@ func NewLDAPCheckAccessWithDefaults() *LDAPCheckAccess {
 
 // GetHasSearchPermission returns the HasSearchPermission field value if set, zero value otherwise.
 func (o *LDAPCheckAccess) GetHasSearchPermission() bool {
-	if o == nil || o.HasSearchPermission == nil {
+	if o == nil || IsNil(o.HasSearchPermission) {
 		var ret bool
 		return ret
 	}
@@ -51,7 +58,7 @@ func (o *LDAPCheckAccess) GetHasSearchPermission() bool {
 // GetHasSearchPermissionOk returns a tuple with the HasSearchPermission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LDAPCheckAccess) GetHasSearchPermissionOk() (*bool, bool) {
-	if o == nil || o.HasSearchPermission == nil {
+	if o == nil || IsNil(o.HasSearchPermission) {
 		return nil, false
 	}
 	return o.HasSearchPermission, true
@@ -59,7 +66,7 @@ func (o *LDAPCheckAccess) GetHasSearchPermissionOk() (*bool, bool) {
 
 // HasHasSearchPermission returns a boolean if a field has been set.
 func (o *LDAPCheckAccess) HasHasSearchPermission() bool {
-	if o != nil && o.HasSearchPermission != nil {
+	if o != nil && !IsNil(o.HasSearchPermission) {
 		return true
 	}
 
@@ -96,14 +103,57 @@ func (o *LDAPCheckAccess) SetAccess(v PolicyTestResult) {
 }
 
 func (o LDAPCheckAccess) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.HasSearchPermission != nil {
-		toSerialize["has_search_permission"] = o.HasSearchPermission
-	}
-	if true {
-		toSerialize["access"] = o.Access
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LDAPCheckAccess) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.HasSearchPermission) {
+		toSerialize["has_search_permission"] = o.HasSearchPermission
+	}
+	toSerialize["access"] = o.Access
+	return toSerialize, nil
+}
+
+func (o *LDAPCheckAccess) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"access",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLDAPCheckAccess := _LDAPCheckAccess{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLDAPCheckAccess)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LDAPCheckAccess(varLDAPCheckAccess)
+
+	return err
 }
 
 type NullableLDAPCheckAccess struct {

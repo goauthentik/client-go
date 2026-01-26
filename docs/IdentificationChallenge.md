@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **AllowShowPassword** | Pointer to **bool** |  | [optional] [default to false]
 **ApplicationPre** | Pointer to **string** |  | [optional] 
 **FlowDesignation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) |  | 
-**CaptchaStage** | Pointer to [**NullableIdentificationChallengeCaptchaStage**](IdentificationChallengeCaptchaStage.md) |  | [optional] 
+**CaptchaStage** | Pointer to [**NullableCaptchaChallenge**](CaptchaChallenge.md) |  | [optional] 
 **EnrollUrl** | Pointer to **string** |  | [optional] 
 **RecoveryUrl** | Pointer to **string** |  | [optional] 
 **PasswordlessUrl** | Pointer to **string** |  | [optional] 
@@ -238,20 +238,20 @@ SetFlowDesignation sets FlowDesignation field to given value.
 
 ### GetCaptchaStage
 
-`func (o *IdentificationChallenge) GetCaptchaStage() IdentificationChallengeCaptchaStage`
+`func (o *IdentificationChallenge) GetCaptchaStage() CaptchaChallenge`
 
 GetCaptchaStage returns the CaptchaStage field if non-nil, zero value otherwise.
 
 ### GetCaptchaStageOk
 
-`func (o *IdentificationChallenge) GetCaptchaStageOk() (*IdentificationChallengeCaptchaStage, bool)`
+`func (o *IdentificationChallenge) GetCaptchaStageOk() (*CaptchaChallenge, bool)`
 
 GetCaptchaStageOk returns a tuple with the CaptchaStage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCaptchaStage
 
-`func (o *IdentificationChallenge) SetCaptchaStage(v IdentificationChallengeCaptchaStage)`
+`func (o *IdentificationChallenge) SetCaptchaStage(v CaptchaChallenge)`
 
 SetCaptchaStage sets CaptchaStage field to given value.
 

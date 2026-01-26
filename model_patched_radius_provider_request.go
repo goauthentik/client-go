@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedRadiusProviderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedRadiusProviderRequest{}
+
 // PatchedRadiusProviderRequest RadiusProvider Serializer
 type PatchedRadiusProviderRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -53,7 +56,7 @@ func NewPatchedRadiusProviderRequestWithDefaults() *PatchedRadiusProviderRequest
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedRadiusProviderRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -63,7 +66,7 @@ func (o *PatchedRadiusProviderRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRadiusProviderRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -71,7 +74,7 @@ func (o *PatchedRadiusProviderRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedRadiusProviderRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *PatchedRadiusProviderRequest) SetName(v string) {
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedRadiusProviderRequest) GetAuthenticationFlow() string {
-	if o == nil || o.AuthenticationFlow.Get() == nil {
+	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *PatchedRadiusProviderRequest) UnsetAuthenticationFlow() {
 
 // GetAuthorizationFlow returns the AuthorizationFlow field value if set, zero value otherwise.
 func (o *PatchedRadiusProviderRequest) GetAuthorizationFlow() string {
-	if o == nil || o.AuthorizationFlow == nil {
+	if o == nil || IsNil(o.AuthorizationFlow) {
 		var ret string
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *PatchedRadiusProviderRequest) GetAuthorizationFlow() string {
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRadiusProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
-	if o == nil || o.AuthorizationFlow == nil {
+	if o == nil || IsNil(o.AuthorizationFlow) {
 		return nil, false
 	}
 	return o.AuthorizationFlow, true
@@ -146,7 +149,7 @@ func (o *PatchedRadiusProviderRequest) GetAuthorizationFlowOk() (*string, bool) 
 
 // HasAuthorizationFlow returns a boolean if a field has been set.
 func (o *PatchedRadiusProviderRequest) HasAuthorizationFlow() bool {
-	if o != nil && o.AuthorizationFlow != nil {
+	if o != nil && !IsNil(o.AuthorizationFlow) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *PatchedRadiusProviderRequest) SetAuthorizationFlow(v string) {
 
 // GetInvalidationFlow returns the InvalidationFlow field value if set, zero value otherwise.
 func (o *PatchedRadiusProviderRequest) GetInvalidationFlow() string {
-	if o == nil || o.InvalidationFlow == nil {
+	if o == nil || IsNil(o.InvalidationFlow) {
 		var ret string
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *PatchedRadiusProviderRequest) GetInvalidationFlow() string {
 // GetInvalidationFlowOk returns a tuple with the InvalidationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRadiusProviderRequest) GetInvalidationFlowOk() (*string, bool) {
-	if o == nil || o.InvalidationFlow == nil {
+	if o == nil || IsNil(o.InvalidationFlow) {
 		return nil, false
 	}
 	return o.InvalidationFlow, true
@@ -178,7 +181,7 @@ func (o *PatchedRadiusProviderRequest) GetInvalidationFlowOk() (*string, bool) {
 
 // HasInvalidationFlow returns a boolean if a field has been set.
 func (o *PatchedRadiusProviderRequest) HasInvalidationFlow() bool {
-	if o != nil && o.InvalidationFlow != nil {
+	if o != nil && !IsNil(o.InvalidationFlow) {
 		return true
 	}
 
@@ -192,7 +195,7 @@ func (o *PatchedRadiusProviderRequest) SetInvalidationFlow(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *PatchedRadiusProviderRequest) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -202,7 +205,7 @@ func (o *PatchedRadiusProviderRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRadiusProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -210,7 +213,7 @@ func (o *PatchedRadiusProviderRequest) GetPropertyMappingsOk() ([]string, bool) 
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedRadiusProviderRequest) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -224,7 +227,7 @@ func (o *PatchedRadiusProviderRequest) SetPropertyMappings(v []string) {
 
 // GetClientNetworks returns the ClientNetworks field value if set, zero value otherwise.
 func (o *PatchedRadiusProviderRequest) GetClientNetworks() string {
-	if o == nil || o.ClientNetworks == nil {
+	if o == nil || IsNil(o.ClientNetworks) {
 		var ret string
 		return ret
 	}
@@ -234,7 +237,7 @@ func (o *PatchedRadiusProviderRequest) GetClientNetworks() string {
 // GetClientNetworksOk returns a tuple with the ClientNetworks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRadiusProviderRequest) GetClientNetworksOk() (*string, bool) {
-	if o == nil || o.ClientNetworks == nil {
+	if o == nil || IsNil(o.ClientNetworks) {
 		return nil, false
 	}
 	return o.ClientNetworks, true
@@ -242,7 +245,7 @@ func (o *PatchedRadiusProviderRequest) GetClientNetworksOk() (*string, bool) {
 
 // HasClientNetworks returns a boolean if a field has been set.
 func (o *PatchedRadiusProviderRequest) HasClientNetworks() bool {
-	if o != nil && o.ClientNetworks != nil {
+	if o != nil && !IsNil(o.ClientNetworks) {
 		return true
 	}
 
@@ -256,7 +259,7 @@ func (o *PatchedRadiusProviderRequest) SetClientNetworks(v string) {
 
 // GetSharedSecret returns the SharedSecret field value if set, zero value otherwise.
 func (o *PatchedRadiusProviderRequest) GetSharedSecret() string {
-	if o == nil || o.SharedSecret == nil {
+	if o == nil || IsNil(o.SharedSecret) {
 		var ret string
 		return ret
 	}
@@ -266,7 +269,7 @@ func (o *PatchedRadiusProviderRequest) GetSharedSecret() string {
 // GetSharedSecretOk returns a tuple with the SharedSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRadiusProviderRequest) GetSharedSecretOk() (*string, bool) {
-	if o == nil || o.SharedSecret == nil {
+	if o == nil || IsNil(o.SharedSecret) {
 		return nil, false
 	}
 	return o.SharedSecret, true
@@ -274,7 +277,7 @@ func (o *PatchedRadiusProviderRequest) GetSharedSecretOk() (*string, bool) {
 
 // HasSharedSecret returns a boolean if a field has been set.
 func (o *PatchedRadiusProviderRequest) HasSharedSecret() bool {
-	if o != nil && o.SharedSecret != nil {
+	if o != nil && !IsNil(o.SharedSecret) {
 		return true
 	}
 
@@ -288,7 +291,7 @@ func (o *PatchedRadiusProviderRequest) SetSharedSecret(v string) {
 
 // GetMfaSupport returns the MfaSupport field value if set, zero value otherwise.
 func (o *PatchedRadiusProviderRequest) GetMfaSupport() bool {
-	if o == nil || o.MfaSupport == nil {
+	if o == nil || IsNil(o.MfaSupport) {
 		var ret bool
 		return ret
 	}
@@ -298,7 +301,7 @@ func (o *PatchedRadiusProviderRequest) GetMfaSupport() bool {
 // GetMfaSupportOk returns a tuple with the MfaSupport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedRadiusProviderRequest) GetMfaSupportOk() (*bool, bool) {
-	if o == nil || o.MfaSupport == nil {
+	if o == nil || IsNil(o.MfaSupport) {
 		return nil, false
 	}
 	return o.MfaSupport, true
@@ -306,7 +309,7 @@ func (o *PatchedRadiusProviderRequest) GetMfaSupportOk() (*bool, bool) {
 
 // HasMfaSupport returns a boolean if a field has been set.
 func (o *PatchedRadiusProviderRequest) HasMfaSupport() bool {
-	if o != nil && o.MfaSupport != nil {
+	if o != nil && !IsNil(o.MfaSupport) {
 		return true
 	}
 
@@ -320,7 +323,7 @@ func (o *PatchedRadiusProviderRequest) SetMfaSupport(v bool) {
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedRadiusProviderRequest) GetCertificate() string {
-	if o == nil || o.Certificate.Get() == nil {
+	if o == nil || IsNil(o.Certificate.Get()) {
 		var ret string
 		return ret
 	}
@@ -362,35 +365,43 @@ func (o *PatchedRadiusProviderRequest) UnsetCertificate() {
 }
 
 func (o PatchedRadiusProviderRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedRadiusProviderRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.AuthenticationFlow.IsSet() {
 		toSerialize["authentication_flow"] = o.AuthenticationFlow.Get()
 	}
-	if o.AuthorizationFlow != nil {
+	if !IsNil(o.AuthorizationFlow) {
 		toSerialize["authorization_flow"] = o.AuthorizationFlow
 	}
-	if o.InvalidationFlow != nil {
+	if !IsNil(o.InvalidationFlow) {
 		toSerialize["invalidation_flow"] = o.InvalidationFlow
 	}
-	if o.PropertyMappings != nil {
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if o.ClientNetworks != nil {
+	if !IsNil(o.ClientNetworks) {
 		toSerialize["client_networks"] = o.ClientNetworks
 	}
-	if o.SharedSecret != nil {
+	if !IsNil(o.SharedSecret) {
 		toSerialize["shared_secret"] = o.SharedSecret
 	}
-	if o.MfaSupport != nil {
+	if !IsNil(o.MfaSupport) {
 		toSerialize["mfa_support"] = o.MfaSupport
 	}
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedRadiusProviderRequest struct {

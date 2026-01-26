@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the ScheduleRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ScheduleRequest{}
 
 // ScheduleRequest struct for ScheduleRequest
 type ScheduleRequest struct {
@@ -23,6 +28,8 @@ type ScheduleRequest struct {
 	// Pause this schedule
 	Paused *bool `json:"paused,omitempty"`
 }
+
+type _ScheduleRequest ScheduleRequest
 
 // NewScheduleRequest instantiates a new ScheduleRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -44,7 +51,7 @@ func NewScheduleRequestWithDefaults() *ScheduleRequest {
 
 // GetRelObjId returns the RelObjId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduleRequest) GetRelObjId() string {
-	if o == nil || o.RelObjId.Get() == nil {
+	if o == nil || IsNil(o.RelObjId.Get()) {
 		var ret string
 		return ret
 	}
@@ -111,7 +118,7 @@ func (o *ScheduleRequest) SetCrontab(v string) {
 
 // GetPaused returns the Paused field value if set, zero value otherwise.
 func (o *ScheduleRequest) GetPaused() bool {
-	if o == nil || o.Paused == nil {
+	if o == nil || IsNil(o.Paused) {
 		var ret bool
 		return ret
 	}
@@ -121,7 +128,7 @@ func (o *ScheduleRequest) GetPaused() bool {
 // GetPausedOk returns a tuple with the Paused field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ScheduleRequest) GetPausedOk() (*bool, bool) {
-	if o == nil || o.Paused == nil {
+	if o == nil || IsNil(o.Paused) {
 		return nil, false
 	}
 	return o.Paused, true
@@ -129,7 +136,7 @@ func (o *ScheduleRequest) GetPausedOk() (*bool, bool) {
 
 // HasPaused returns a boolean if a field has been set.
 func (o *ScheduleRequest) HasPaused() bool {
-	if o != nil && o.Paused != nil {
+	if o != nil && !IsNil(o.Paused) {
 		return true
 	}
 
@@ -142,17 +149,60 @@ func (o *ScheduleRequest) SetPaused(v bool) {
 }
 
 func (o ScheduleRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ScheduleRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.RelObjId.IsSet() {
 		toSerialize["rel_obj_id"] = o.RelObjId.Get()
 	}
-	if true {
-		toSerialize["crontab"] = o.Crontab
-	}
-	if o.Paused != nil {
+	toSerialize["crontab"] = o.Crontab
+	if !IsNil(o.Paused) {
 		toSerialize["paused"] = o.Paused
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *ScheduleRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"crontab",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varScheduleRequest := _ScheduleRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varScheduleRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ScheduleRequest(varScheduleRequest)
+
+	return err
 }
 
 type NullableScheduleRequest struct {

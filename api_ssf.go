@@ -14,18 +14,18 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// SsfApiService SsfApi service
-type SsfApiService service
+// SsfAPIService SsfAPI service
+type SsfAPIService service
 
 type ApiSsfStreamsListRequest struct {
 	ctx            context.Context
-	ApiService     *SsfApiService
+	ApiService     *SsfAPIService
 	deliveryMethod *string
 	endpointUrl    *string
 	ordering       *string
@@ -86,7 +86,7 @@ SSFStream Viewset
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiSsfStreamsListRequest
 */
-func (a *SsfApiService) SsfStreamsList(ctx context.Context) ApiSsfStreamsListRequest {
+func (a *SsfAPIService) SsfStreamsList(ctx context.Context) ApiSsfStreamsListRequest {
 	return ApiSsfStreamsListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -96,7 +96,7 @@ func (a *SsfApiService) SsfStreamsList(ctx context.Context) ApiSsfStreamsListReq
 // Execute executes the request
 //
 //	@return PaginatedSSFStreamList
-func (a *SsfApiService) SsfStreamsListExecute(r ApiSsfStreamsListRequest) (*PaginatedSSFStreamList, *http.Response, error) {
+func (a *SsfAPIService) SsfStreamsListExecute(r ApiSsfStreamsListRequest) (*PaginatedSSFStreamList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -104,7 +104,7 @@ func (a *SsfApiService) SsfStreamsListExecute(r ApiSsfStreamsListRequest) (*Pagi
 		localVarReturnValue *PaginatedSSFStreamList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsfApiService.SsfStreamsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsfAPIService.SsfStreamsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -116,25 +116,25 @@ func (a *SsfApiService) SsfStreamsListExecute(r ApiSsfStreamsListRequest) (*Pagi
 	localVarFormParams := url.Values{}
 
 	if r.deliveryMethod != nil {
-		localVarQueryParams.Add("delivery_method", parameterToString(*r.deliveryMethod, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "delivery_method", r.deliveryMethod, "form", "")
 	}
 	if r.endpointUrl != nil {
-		localVarQueryParams.Add("endpoint_url", parameterToString(*r.endpointUrl, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "endpoint_url", r.endpointUrl, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.provider != nil {
-		localVarQueryParams.Add("provider", parameterToString(*r.provider, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "provider", r.provider, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -163,9 +163,9 @@ func (a *SsfApiService) SsfStreamsListExecute(r ApiSsfStreamsListRequest) (*Pagi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -182,6 +182,7 @@ func (a *SsfApiService) SsfStreamsListExecute(r ApiSsfStreamsListRequest) (*Pagi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -192,6 +193,7 @@ func (a *SsfApiService) SsfStreamsListExecute(r ApiSsfStreamsListRequest) (*Pagi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -211,7 +213,7 @@ func (a *SsfApiService) SsfStreamsListExecute(r ApiSsfStreamsListRequest) (*Pagi
 
 type ApiSsfStreamsRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *SsfApiService
+	ApiService *SsfAPIService
 	uuid       string
 }
 
@@ -228,7 +230,7 @@ SSFStream Viewset
 	@param uuid A UUID string identifying this SSF Stream.
 	@return ApiSsfStreamsRetrieveRequest
 */
-func (a *SsfApiService) SsfStreamsRetrieve(ctx context.Context, uuid string) ApiSsfStreamsRetrieveRequest {
+func (a *SsfAPIService) SsfStreamsRetrieve(ctx context.Context, uuid string) ApiSsfStreamsRetrieveRequest {
 	return ApiSsfStreamsRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -239,7 +241,7 @@ func (a *SsfApiService) SsfStreamsRetrieve(ctx context.Context, uuid string) Api
 // Execute executes the request
 //
 //	@return SSFStream
-func (a *SsfApiService) SsfStreamsRetrieveExecute(r ApiSsfStreamsRetrieveRequest) (*SSFStream, *http.Response, error) {
+func (a *SsfAPIService) SsfStreamsRetrieveExecute(r ApiSsfStreamsRetrieveRequest) (*SSFStream, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -247,13 +249,13 @@ func (a *SsfApiService) SsfStreamsRetrieveExecute(r ApiSsfStreamsRetrieveRequest
 		localVarReturnValue *SSFStream
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsfApiService.SsfStreamsRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsfAPIService.SsfStreamsRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ssf/streams/{uuid}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -286,9 +288,9 @@ func (a *SsfApiService) SsfStreamsRetrieveExecute(r ApiSsfStreamsRetrieveRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -305,6 +307,7 @@ func (a *SsfApiService) SsfStreamsRetrieveExecute(r ApiSsfStreamsRetrieveRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -315,6 +318,7 @@ func (a *SsfApiService) SsfStreamsRetrieveExecute(r ApiSsfStreamsRetrieveRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

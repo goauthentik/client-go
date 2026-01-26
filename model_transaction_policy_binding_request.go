@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the TransactionPolicyBindingRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransactionPolicyBindingRequest{}
 
 // TransactionPolicyBindingRequest PolicyBindingSerializer which does not require target as target is set implicitly
 type TransactionPolicyBindingRequest struct {
@@ -29,6 +34,8 @@ type TransactionPolicyBindingRequest struct {
 	// Result if the Policy execution fails.
 	FailureResult *bool `json:"failure_result,omitempty"`
 }
+
+type _TransactionPolicyBindingRequest TransactionPolicyBindingRequest
 
 // NewTransactionPolicyBindingRequest instantiates a new TransactionPolicyBindingRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -50,7 +57,7 @@ func NewTransactionPolicyBindingRequestWithDefaults() *TransactionPolicyBindingR
 
 // GetPolicy returns the Policy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionPolicyBindingRequest) GetPolicy() string {
-	if o == nil || o.Policy.Get() == nil {
+	if o == nil || IsNil(o.Policy.Get()) {
 		var ret string
 		return ret
 	}
@@ -93,7 +100,7 @@ func (o *TransactionPolicyBindingRequest) UnsetPolicy() {
 
 // GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionPolicyBindingRequest) GetGroup() string {
-	if o == nil || o.Group.Get() == nil {
+	if o == nil || IsNil(o.Group.Get()) {
 		var ret string
 		return ret
 	}
@@ -136,7 +143,7 @@ func (o *TransactionPolicyBindingRequest) UnsetGroup() {
 
 // GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TransactionPolicyBindingRequest) GetUser() int32 {
-	if o == nil || o.User.Get() == nil {
+	if o == nil || IsNil(o.User.Get()) {
 		var ret int32
 		return ret
 	}
@@ -179,7 +186,7 @@ func (o *TransactionPolicyBindingRequest) UnsetUser() {
 
 // GetNegate returns the Negate field value if set, zero value otherwise.
 func (o *TransactionPolicyBindingRequest) GetNegate() bool {
-	if o == nil || o.Negate == nil {
+	if o == nil || IsNil(o.Negate) {
 		var ret bool
 		return ret
 	}
@@ -189,7 +196,7 @@ func (o *TransactionPolicyBindingRequest) GetNegate() bool {
 // GetNegateOk returns a tuple with the Negate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionPolicyBindingRequest) GetNegateOk() (*bool, bool) {
-	if o == nil || o.Negate == nil {
+	if o == nil || IsNil(o.Negate) {
 		return nil, false
 	}
 	return o.Negate, true
@@ -197,7 +204,7 @@ func (o *TransactionPolicyBindingRequest) GetNegateOk() (*bool, bool) {
 
 // HasNegate returns a boolean if a field has been set.
 func (o *TransactionPolicyBindingRequest) HasNegate() bool {
-	if o != nil && o.Negate != nil {
+	if o != nil && !IsNil(o.Negate) {
 		return true
 	}
 
@@ -211,7 +218,7 @@ func (o *TransactionPolicyBindingRequest) SetNegate(v bool) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *TransactionPolicyBindingRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -221,7 +228,7 @@ func (o *TransactionPolicyBindingRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionPolicyBindingRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -229,7 +236,7 @@ func (o *TransactionPolicyBindingRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *TransactionPolicyBindingRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -267,7 +274,7 @@ func (o *TransactionPolicyBindingRequest) SetOrder(v int32) {
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
 func (o *TransactionPolicyBindingRequest) GetTimeout() int32 {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		var ret int32
 		return ret
 	}
@@ -277,7 +284,7 @@ func (o *TransactionPolicyBindingRequest) GetTimeout() int32 {
 // GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionPolicyBindingRequest) GetTimeoutOk() (*int32, bool) {
-	if o == nil || o.Timeout == nil {
+	if o == nil || IsNil(o.Timeout) {
 		return nil, false
 	}
 	return o.Timeout, true
@@ -285,7 +292,7 @@ func (o *TransactionPolicyBindingRequest) GetTimeoutOk() (*int32, bool) {
 
 // HasTimeout returns a boolean if a field has been set.
 func (o *TransactionPolicyBindingRequest) HasTimeout() bool {
-	if o != nil && o.Timeout != nil {
+	if o != nil && !IsNil(o.Timeout) {
 		return true
 	}
 
@@ -299,7 +306,7 @@ func (o *TransactionPolicyBindingRequest) SetTimeout(v int32) {
 
 // GetFailureResult returns the FailureResult field value if set, zero value otherwise.
 func (o *TransactionPolicyBindingRequest) GetFailureResult() bool {
-	if o == nil || o.FailureResult == nil {
+	if o == nil || IsNil(o.FailureResult) {
 		var ret bool
 		return ret
 	}
@@ -309,7 +316,7 @@ func (o *TransactionPolicyBindingRequest) GetFailureResult() bool {
 // GetFailureResultOk returns a tuple with the FailureResult field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionPolicyBindingRequest) GetFailureResultOk() (*bool, bool) {
-	if o == nil || o.FailureResult == nil {
+	if o == nil || IsNil(o.FailureResult) {
 		return nil, false
 	}
 	return o.FailureResult, true
@@ -317,7 +324,7 @@ func (o *TransactionPolicyBindingRequest) GetFailureResultOk() (*bool, bool) {
 
 // HasFailureResult returns a boolean if a field has been set.
 func (o *TransactionPolicyBindingRequest) HasFailureResult() bool {
-	if o != nil && o.FailureResult != nil {
+	if o != nil && !IsNil(o.FailureResult) {
 		return true
 	}
 
@@ -330,6 +337,14 @@ func (o *TransactionPolicyBindingRequest) SetFailureResult(v bool) {
 }
 
 func (o TransactionPolicyBindingRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TransactionPolicyBindingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Policy.IsSet() {
 		toSerialize["policy"] = o.Policy.Get()
@@ -340,22 +355,57 @@ func (o TransactionPolicyBindingRequest) MarshalJSON() ([]byte, error) {
 	if o.User.IsSet() {
 		toSerialize["user"] = o.User.Get()
 	}
-	if o.Negate != nil {
+	if !IsNil(o.Negate) {
 		toSerialize["negate"] = o.Negate
 	}
-	if o.Enabled != nil {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if true {
-		toSerialize["order"] = o.Order
-	}
-	if o.Timeout != nil {
+	toSerialize["order"] = o.Order
+	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
 	}
-	if o.FailureResult != nil {
+	if !IsNil(o.FailureResult) {
 		toSerialize["failure_result"] = o.FailureResult
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
+}
+
+func (o *TransactionPolicyBindingRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"order",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTransactionPolicyBindingRequest := _TransactionPolicyBindingRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransactionPolicyBindingRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TransactionPolicyBindingRequest(varTransactionPolicyBindingRequest)
+
+	return err
 }
 
 type NullableTransactionPolicyBindingRequest struct {

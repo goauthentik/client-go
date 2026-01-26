@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PatchedMicrosoftEntraProviderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PatchedMicrosoftEntraProviderRequest{}
+
 // PatchedMicrosoftEntraProviderRequest MicrosoftEntraProvider Serializer
 type PatchedMicrosoftEntraProviderRequest struct {
 	Name             *string  `json:"name,omitempty"`
@@ -55,7 +58,7 @@ func NewPatchedMicrosoftEntraProviderRequestWithDefaults() *PatchedMicrosoftEntr
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -65,7 +68,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -73,7 +76,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -87,7 +90,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetName(v string) {
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetPropertyMappings() []string {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
 	}
@@ -97,7 +100,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetPropertyMappings() []string {
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
-	if o == nil || o.PropertyMappings == nil {
+	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
 	return o.PropertyMappings, true
@@ -105,7 +108,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetPropertyMappingsOk() ([]string
 
 // HasPropertyMappings returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasPropertyMappings() bool {
-	if o != nil && o.PropertyMappings != nil {
+	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
 
@@ -119,7 +122,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetPropertyMappings(v []string) {
 
 // GetPropertyMappingsGroup returns the PropertyMappingsGroup field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetPropertyMappingsGroup() []string {
-	if o == nil || o.PropertyMappingsGroup == nil {
+	if o == nil || IsNil(o.PropertyMappingsGroup) {
 		var ret []string
 		return ret
 	}
@@ -129,7 +132,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetPropertyMappingsGroup() []stri
 // GetPropertyMappingsGroupOk returns a tuple with the PropertyMappingsGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetPropertyMappingsGroupOk() ([]string, bool) {
-	if o == nil || o.PropertyMappingsGroup == nil {
+	if o == nil || IsNil(o.PropertyMappingsGroup) {
 		return nil, false
 	}
 	return o.PropertyMappingsGroup, true
@@ -137,7 +140,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetPropertyMappingsGroupOk() ([]s
 
 // HasPropertyMappingsGroup returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasPropertyMappingsGroup() bool {
-	if o != nil && o.PropertyMappingsGroup != nil {
+	if o != nil && !IsNil(o.PropertyMappingsGroup) {
 		return true
 	}
 
@@ -151,7 +154,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetPropertyMappingsGroup(v []stri
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -161,7 +164,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -169,7 +172,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -183,7 +186,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetClientId(v string) {
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetClientSecret() string {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || IsNil(o.ClientSecret) {
 		var ret string
 		return ret
 	}
@@ -193,7 +196,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetClientSecret() string {
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetClientSecretOk() (*string, bool) {
-	if o == nil || o.ClientSecret == nil {
+	if o == nil || IsNil(o.ClientSecret) {
 		return nil, false
 	}
 	return o.ClientSecret, true
@@ -201,7 +204,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetClientSecretOk() (*string, boo
 
 // HasClientSecret returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasClientSecret() bool {
-	if o != nil && o.ClientSecret != nil {
+	if o != nil && !IsNil(o.ClientSecret) {
 		return true
 	}
 
@@ -215,7 +218,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetClientSecret(v string) {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetTenantId() string {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -225,7 +228,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || o.TenantId == nil {
+	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
 	return o.TenantId, true
@@ -233,7 +236,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetTenantIdOk() (*string, bool) {
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasTenantId() bool {
-	if o != nil && o.TenantId != nil {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -247,7 +250,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetTenantId(v string) {
 
 // GetExcludeUsersServiceAccount returns the ExcludeUsersServiceAccount field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetExcludeUsersServiceAccount() bool {
-	if o == nil || o.ExcludeUsersServiceAccount == nil {
+	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
 		var ret bool
 		return ret
 	}
@@ -257,7 +260,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetExcludeUsersServiceAccount() b
 // GetExcludeUsersServiceAccountOk returns a tuple with the ExcludeUsersServiceAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetExcludeUsersServiceAccountOk() (*bool, bool) {
-	if o == nil || o.ExcludeUsersServiceAccount == nil {
+	if o == nil || IsNil(o.ExcludeUsersServiceAccount) {
 		return nil, false
 	}
 	return o.ExcludeUsersServiceAccount, true
@@ -265,7 +268,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetExcludeUsersServiceAccountOk()
 
 // HasExcludeUsersServiceAccount returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasExcludeUsersServiceAccount() bool {
-	if o != nil && o.ExcludeUsersServiceAccount != nil {
+	if o != nil && !IsNil(o.ExcludeUsersServiceAccount) {
 		return true
 	}
 
@@ -279,7 +282,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetExcludeUsersServiceAccount(v b
 
 // GetFilterGroup returns the FilterGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchedMicrosoftEntraProviderRequest) GetFilterGroup() string {
-	if o == nil || o.FilterGroup.Get() == nil {
+	if o == nil || IsNil(o.FilterGroup.Get()) {
 		var ret string
 		return ret
 	}
@@ -322,7 +325,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) UnsetFilterGroup() {
 
 // GetUserDeleteAction returns the UserDeleteAction field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetUserDeleteAction() OutgoingSyncDeleteAction {
-	if o == nil || o.UserDeleteAction == nil {
+	if o == nil || IsNil(o.UserDeleteAction) {
 		var ret OutgoingSyncDeleteAction
 		return ret
 	}
@@ -332,7 +335,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetUserDeleteAction() OutgoingSyn
 // GetUserDeleteActionOk returns a tuple with the UserDeleteAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetUserDeleteActionOk() (*OutgoingSyncDeleteAction, bool) {
-	if o == nil || o.UserDeleteAction == nil {
+	if o == nil || IsNil(o.UserDeleteAction) {
 		return nil, false
 	}
 	return o.UserDeleteAction, true
@@ -340,7 +343,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetUserDeleteActionOk() (*Outgoin
 
 // HasUserDeleteAction returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasUserDeleteAction() bool {
-	if o != nil && o.UserDeleteAction != nil {
+	if o != nil && !IsNil(o.UserDeleteAction) {
 		return true
 	}
 
@@ -354,7 +357,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetUserDeleteAction(v OutgoingSyn
 
 // GetGroupDeleteAction returns the GroupDeleteAction field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetGroupDeleteAction() OutgoingSyncDeleteAction {
-	if o == nil || o.GroupDeleteAction == nil {
+	if o == nil || IsNil(o.GroupDeleteAction) {
 		var ret OutgoingSyncDeleteAction
 		return ret
 	}
@@ -364,7 +367,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetGroupDeleteAction() OutgoingSy
 // GetGroupDeleteActionOk returns a tuple with the GroupDeleteAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetGroupDeleteActionOk() (*OutgoingSyncDeleteAction, bool) {
-	if o == nil || o.GroupDeleteAction == nil {
+	if o == nil || IsNil(o.GroupDeleteAction) {
 		return nil, false
 	}
 	return o.GroupDeleteAction, true
@@ -372,7 +375,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetGroupDeleteActionOk() (*Outgoi
 
 // HasGroupDeleteAction returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasGroupDeleteAction() bool {
-	if o != nil && o.GroupDeleteAction != nil {
+	if o != nil && !IsNil(o.GroupDeleteAction) {
 		return true
 	}
 
@@ -386,7 +389,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetGroupDeleteAction(v OutgoingSy
 
 // GetSyncPageSize returns the SyncPageSize field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetSyncPageSize() int32 {
-	if o == nil || o.SyncPageSize == nil {
+	if o == nil || IsNil(o.SyncPageSize) {
 		var ret int32
 		return ret
 	}
@@ -396,7 +399,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetSyncPageSize() int32 {
 // GetSyncPageSizeOk returns a tuple with the SyncPageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetSyncPageSizeOk() (*int32, bool) {
-	if o == nil || o.SyncPageSize == nil {
+	if o == nil || IsNil(o.SyncPageSize) {
 		return nil, false
 	}
 	return o.SyncPageSize, true
@@ -404,7 +407,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetSyncPageSizeOk() (*int32, bool
 
 // HasSyncPageSize returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasSyncPageSize() bool {
-	if o != nil && o.SyncPageSize != nil {
+	if o != nil && !IsNil(o.SyncPageSize) {
 		return true
 	}
 
@@ -418,7 +421,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetSyncPageSize(v int32) {
 
 // GetSyncPageTimeout returns the SyncPageTimeout field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetSyncPageTimeout() string {
-	if o == nil || o.SyncPageTimeout == nil {
+	if o == nil || IsNil(o.SyncPageTimeout) {
 		var ret string
 		return ret
 	}
@@ -428,7 +431,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetSyncPageTimeout() string {
 // GetSyncPageTimeoutOk returns a tuple with the SyncPageTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetSyncPageTimeoutOk() (*string, bool) {
-	if o == nil || o.SyncPageTimeout == nil {
+	if o == nil || IsNil(o.SyncPageTimeout) {
 		return nil, false
 	}
 	return o.SyncPageTimeout, true
@@ -436,7 +439,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetSyncPageTimeoutOk() (*string, 
 
 // HasSyncPageTimeout returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasSyncPageTimeout() bool {
-	if o != nil && o.SyncPageTimeout != nil {
+	if o != nil && !IsNil(o.SyncPageTimeout) {
 		return true
 	}
 
@@ -450,7 +453,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetSyncPageTimeout(v string) {
 
 // GetDryRun returns the DryRun field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetDryRun() bool {
-	if o == nil || o.DryRun == nil {
+	if o == nil || IsNil(o.DryRun) {
 		var ret bool
 		return ret
 	}
@@ -460,7 +463,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetDryRun() bool {
 // GetDryRunOk returns a tuple with the DryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) GetDryRunOk() (*bool, bool) {
-	if o == nil || o.DryRun == nil {
+	if o == nil || IsNil(o.DryRun) {
 		return nil, false
 	}
 	return o.DryRun, true
@@ -468,7 +471,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) GetDryRunOk() (*bool, bool) {
 
 // HasDryRun returns a boolean if a field has been set.
 func (o *PatchedMicrosoftEntraProviderRequest) HasDryRun() bool {
-	if o != nil && o.DryRun != nil {
+	if o != nil && !IsNil(o.DryRun) {
 		return true
 	}
 
@@ -481,47 +484,55 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetDryRun(v bool) {
 }
 
 func (o PatchedMicrosoftEntraProviderRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PatchedMicrosoftEntraProviderRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.PropertyMappings != nil {
+	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	if o.PropertyMappingsGroup != nil {
+	if !IsNil(o.PropertyMappingsGroup) {
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
-	if o.ClientId != nil {
+	if !IsNil(o.ClientId) {
 		toSerialize["client_id"] = o.ClientId
 	}
-	if o.ClientSecret != nil {
+	if !IsNil(o.ClientSecret) {
 		toSerialize["client_secret"] = o.ClientSecret
 	}
-	if o.TenantId != nil {
+	if !IsNil(o.TenantId) {
 		toSerialize["tenant_id"] = o.TenantId
 	}
-	if o.ExcludeUsersServiceAccount != nil {
+	if !IsNil(o.ExcludeUsersServiceAccount) {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
 	}
 	if o.FilterGroup.IsSet() {
 		toSerialize["filter_group"] = o.FilterGroup.Get()
 	}
-	if o.UserDeleteAction != nil {
+	if !IsNil(o.UserDeleteAction) {
 		toSerialize["user_delete_action"] = o.UserDeleteAction
 	}
-	if o.GroupDeleteAction != nil {
+	if !IsNil(o.GroupDeleteAction) {
 		toSerialize["group_delete_action"] = o.GroupDeleteAction
 	}
-	if o.SyncPageSize != nil {
+	if !IsNil(o.SyncPageSize) {
 		toSerialize["sync_page_size"] = o.SyncPageSize
 	}
-	if o.SyncPageTimeout != nil {
+	if !IsNil(o.SyncPageTimeout) {
 		toSerialize["sync_page_timeout"] = o.SyncPageTimeout
 	}
-	if o.DryRun != nil {
+	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePatchedMicrosoftEntraProviderRequest struct {

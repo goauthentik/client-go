@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the AuthenticatedSessionAsn type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthenticatedSessionAsn{}
 
 // AuthenticatedSessionAsn Get ASN Data
 type AuthenticatedSessionAsn struct {
@@ -21,6 +26,8 @@ type AuthenticatedSessionAsn struct {
 	AsOrg   NullableString `json:"as_org"`
 	Network NullableString `json:"network"`
 }
+
+type _AuthenticatedSessionAsn AuthenticatedSessionAsn
 
 // NewAuthenticatedSessionAsn instantiates a new AuthenticatedSessionAsn object
 // This constructor will assign default values to properties that have it defined,
@@ -121,17 +128,58 @@ func (o *AuthenticatedSessionAsn) SetNetwork(v string) {
 }
 
 func (o AuthenticatedSessionAsn) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["asn"] = o.Asn.Get()
-	}
-	if true {
-		toSerialize["as_org"] = o.AsOrg.Get()
-	}
-	if true {
-		toSerialize["network"] = o.Network.Get()
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthenticatedSessionAsn) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["asn"] = o.Asn.Get()
+	toSerialize["as_org"] = o.AsOrg.Get()
+	toSerialize["network"] = o.Network.Get()
+	return toSerialize, nil
+}
+
+func (o *AuthenticatedSessionAsn) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"asn",
+		"as_org",
+		"network",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAuthenticatedSessionAsn := _AuthenticatedSessionAsn{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAuthenticatedSessionAsn)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AuthenticatedSessionAsn(varAuthenticatedSessionAsn)
+
+	return err
 }
 
 type NullableAuthenticatedSessionAsn struct {

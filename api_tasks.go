@@ -14,19 +14,19 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
 	"strings"
 )
 
-// TasksApiService TasksApi service
-type TasksApiService service
+// TasksAPIService TasksAPI service
+type TasksAPIService service
 
 type ApiTasksSchedulesListRequest struct {
 	ctx                       context.Context
-	ApiService                *TasksApiService
+	ApiService                *TasksAPIService
 	actorName                 *string
 	ordering                  *string
 	page                      *int32
@@ -103,7 +103,7 @@ TasksSchedulesList Method for TasksSchedulesList
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiTasksSchedulesListRequest
 */
-func (a *TasksApiService) TasksSchedulesList(ctx context.Context) ApiTasksSchedulesListRequest {
+func (a *TasksAPIService) TasksSchedulesList(ctx context.Context) ApiTasksSchedulesListRequest {
 	return ApiTasksSchedulesListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -113,7 +113,7 @@ func (a *TasksApiService) TasksSchedulesList(ctx context.Context) ApiTasksSchedu
 // Execute executes the request
 //
 //	@return PaginatedScheduleList
-func (a *TasksApiService) TasksSchedulesListExecute(r ApiTasksSchedulesListRequest) (*PaginatedScheduleList, *http.Response, error) {
+func (a *TasksAPIService) TasksSchedulesListExecute(r ApiTasksSchedulesListRequest) (*PaginatedScheduleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -121,7 +121,7 @@ func (a *TasksApiService) TasksSchedulesListExecute(r ApiTasksSchedulesListReque
 		localVarReturnValue *PaginatedScheduleList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksSchedulesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -133,34 +133,34 @@ func (a *TasksApiService) TasksSchedulesListExecute(r ApiTasksSchedulesListReque
 	localVarFormParams := url.Values{}
 
 	if r.actorName != nil {
-		localVarQueryParams.Add("actor_name", parameterToString(*r.actorName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "actor_name", r.actorName, "form", "")
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.paused != nil {
-		localVarQueryParams.Add("paused", parameterToString(*r.paused, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "paused", r.paused, "form", "")
 	}
 	if r.relObjContentTypeAppLabel != nil {
-		localVarQueryParams.Add("rel_obj_content_type__app_label", parameterToString(*r.relObjContentTypeAppLabel, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rel_obj_content_type__app_label", r.relObjContentTypeAppLabel, "form", "")
 	}
 	if r.relObjContentTypeModel != nil {
-		localVarQueryParams.Add("rel_obj_content_type__model", parameterToString(*r.relObjContentTypeModel, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rel_obj_content_type__model", r.relObjContentTypeModel, "form", "")
 	}
 	if r.relObjId != nil {
-		localVarQueryParams.Add("rel_obj_id", parameterToString(*r.relObjId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rel_obj_id", r.relObjId, "form", "")
 	}
 	if r.relObjIdIsnull != nil {
-		localVarQueryParams.Add("rel_obj_id__isnull", parameterToString(*r.relObjIdIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rel_obj_id__isnull", r.relObjIdIsnull, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -189,9 +189,9 @@ func (a *TasksApiService) TasksSchedulesListExecute(r ApiTasksSchedulesListReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -208,6 +208,7 @@ func (a *TasksApiService) TasksSchedulesListExecute(r ApiTasksSchedulesListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -218,6 +219,7 @@ func (a *TasksApiService) TasksSchedulesListExecute(r ApiTasksSchedulesListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -237,7 +239,7 @@ func (a *TasksApiService) TasksSchedulesListExecute(r ApiTasksSchedulesListReque
 
 type ApiTasksSchedulesPartialUpdateRequest struct {
 	ctx                    context.Context
-	ApiService             *TasksApiService
+	ApiService             *TasksAPIService
 	id                     string
 	patchedScheduleRequest *PatchedScheduleRequest
 }
@@ -258,7 +260,7 @@ TasksSchedulesPartialUpdate Method for TasksSchedulesPartialUpdate
 	@param id A UUID string identifying this Schedule.
 	@return ApiTasksSchedulesPartialUpdateRequest
 */
-func (a *TasksApiService) TasksSchedulesPartialUpdate(ctx context.Context, id string) ApiTasksSchedulesPartialUpdateRequest {
+func (a *TasksAPIService) TasksSchedulesPartialUpdate(ctx context.Context, id string) ApiTasksSchedulesPartialUpdateRequest {
 	return ApiTasksSchedulesPartialUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -269,7 +271,7 @@ func (a *TasksApiService) TasksSchedulesPartialUpdate(ctx context.Context, id st
 // Execute executes the request
 //
 //	@return Schedule
-func (a *TasksApiService) TasksSchedulesPartialUpdateExecute(r ApiTasksSchedulesPartialUpdateRequest) (*Schedule, *http.Response, error) {
+func (a *TasksAPIService) TasksSchedulesPartialUpdateExecute(r ApiTasksSchedulesPartialUpdateRequest) (*Schedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -277,13 +279,13 @@ func (a *TasksApiService) TasksSchedulesPartialUpdateExecute(r ApiTasksSchedules
 		localVarReturnValue *Schedule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesPartialUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksSchedulesPartialUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tasks/schedules/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -318,9 +320,9 @@ func (a *TasksApiService) TasksSchedulesPartialUpdateExecute(r ApiTasksSchedules
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -337,6 +339,7 @@ func (a *TasksApiService) TasksSchedulesPartialUpdateExecute(r ApiTasksSchedules
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -347,6 +350,7 @@ func (a *TasksApiService) TasksSchedulesPartialUpdateExecute(r ApiTasksSchedules
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -366,7 +370,7 @@ func (a *TasksApiService) TasksSchedulesPartialUpdateExecute(r ApiTasksSchedules
 
 type ApiTasksSchedulesRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *TasksApiService
+	ApiService *TasksAPIService
 	id         string
 }
 
@@ -381,7 +385,7 @@ TasksSchedulesRetrieve Method for TasksSchedulesRetrieve
 	@param id A UUID string identifying this Schedule.
 	@return ApiTasksSchedulesRetrieveRequest
 */
-func (a *TasksApiService) TasksSchedulesRetrieve(ctx context.Context, id string) ApiTasksSchedulesRetrieveRequest {
+func (a *TasksAPIService) TasksSchedulesRetrieve(ctx context.Context, id string) ApiTasksSchedulesRetrieveRequest {
 	return ApiTasksSchedulesRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -392,7 +396,7 @@ func (a *TasksApiService) TasksSchedulesRetrieve(ctx context.Context, id string)
 // Execute executes the request
 //
 //	@return Schedule
-func (a *TasksApiService) TasksSchedulesRetrieveExecute(r ApiTasksSchedulesRetrieveRequest) (*Schedule, *http.Response, error) {
+func (a *TasksAPIService) TasksSchedulesRetrieveExecute(r ApiTasksSchedulesRetrieveRequest) (*Schedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -400,13 +404,13 @@ func (a *TasksApiService) TasksSchedulesRetrieveExecute(r ApiTasksSchedulesRetri
 		localVarReturnValue *Schedule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksSchedulesRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tasks/schedules/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -439,9 +443,9 @@ func (a *TasksApiService) TasksSchedulesRetrieveExecute(r ApiTasksSchedulesRetri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -458,6 +462,7 @@ func (a *TasksApiService) TasksSchedulesRetrieveExecute(r ApiTasksSchedulesRetri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -468,6 +473,7 @@ func (a *TasksApiService) TasksSchedulesRetrieveExecute(r ApiTasksSchedulesRetri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -487,7 +493,7 @@ func (a *TasksApiService) TasksSchedulesRetrieveExecute(r ApiTasksSchedulesRetri
 
 type ApiTasksSchedulesSendCreateRequest struct {
 	ctx        context.Context
-	ApiService *TasksApiService
+	ApiService *TasksAPIService
 	id         string
 }
 
@@ -504,7 +510,7 @@ Trigger this schedule now
 	@param id A UUID string identifying this Schedule.
 	@return ApiTasksSchedulesSendCreateRequest
 */
-func (a *TasksApiService) TasksSchedulesSendCreate(ctx context.Context, id string) ApiTasksSchedulesSendCreateRequest {
+func (a *TasksAPIService) TasksSchedulesSendCreate(ctx context.Context, id string) ApiTasksSchedulesSendCreateRequest {
 	return ApiTasksSchedulesSendCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -513,20 +519,20 @@ func (a *TasksApiService) TasksSchedulesSendCreate(ctx context.Context, id strin
 }
 
 // Execute executes the request
-func (a *TasksApiService) TasksSchedulesSendCreateExecute(r ApiTasksSchedulesSendCreateRequest) (*http.Response, error) {
+func (a *TasksAPIService) TasksSchedulesSendCreateExecute(r ApiTasksSchedulesSendCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesSendCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksSchedulesSendCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tasks/schedules/{id}/send/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -559,9 +565,9 @@ func (a *TasksApiService) TasksSchedulesSendCreateExecute(r ApiTasksSchedulesSen
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -578,6 +584,7 @@ func (a *TasksApiService) TasksSchedulesSendCreateExecute(r ApiTasksSchedulesSen
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
@@ -588,6 +595,7 @@ func (a *TasksApiService) TasksSchedulesSendCreateExecute(r ApiTasksSchedulesSen
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -598,7 +606,7 @@ func (a *TasksApiService) TasksSchedulesSendCreateExecute(r ApiTasksSchedulesSen
 
 type ApiTasksSchedulesUpdateRequest struct {
 	ctx             context.Context
-	ApiService      *TasksApiService
+	ApiService      *TasksAPIService
 	id              string
 	scheduleRequest *ScheduleRequest
 }
@@ -619,7 +627,7 @@ TasksSchedulesUpdate Method for TasksSchedulesUpdate
 	@param id A UUID string identifying this Schedule.
 	@return ApiTasksSchedulesUpdateRequest
 */
-func (a *TasksApiService) TasksSchedulesUpdate(ctx context.Context, id string) ApiTasksSchedulesUpdateRequest {
+func (a *TasksAPIService) TasksSchedulesUpdate(ctx context.Context, id string) ApiTasksSchedulesUpdateRequest {
 	return ApiTasksSchedulesUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -630,7 +638,7 @@ func (a *TasksApiService) TasksSchedulesUpdate(ctx context.Context, id string) A
 // Execute executes the request
 //
 //	@return Schedule
-func (a *TasksApiService) TasksSchedulesUpdateExecute(r ApiTasksSchedulesUpdateRequest) (*Schedule, *http.Response, error) {
+func (a *TasksAPIService) TasksSchedulesUpdateExecute(r ApiTasksSchedulesUpdateRequest) (*Schedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -638,13 +646,13 @@ func (a *TasksApiService) TasksSchedulesUpdateExecute(r ApiTasksSchedulesUpdateR
 		localVarReturnValue *Schedule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksSchedulesUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksSchedulesUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tasks/schedules/{id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -682,9 +690,9 @@ func (a *TasksApiService) TasksSchedulesUpdateExecute(r ApiTasksSchedulesUpdateR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -701,6 +709,7 @@ func (a *TasksApiService) TasksSchedulesUpdateExecute(r ApiTasksSchedulesUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -711,6 +720,7 @@ func (a *TasksApiService) TasksSchedulesUpdateExecute(r ApiTasksSchedulesUpdateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -730,7 +740,7 @@ func (a *TasksApiService) TasksSchedulesUpdateExecute(r ApiTasksSchedulesUpdateR
 
 type ApiTasksTasksListRequest struct {
 	ctx                       context.Context
-	ApiService                *TasksApiService
+	ApiService                *TasksAPIService
 	actorName                 *string
 	aggregatedStatus          *[]string
 	ordering                  *string
@@ -820,7 +830,7 @@ TasksTasksList Method for TasksTasksList
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiTasksTasksListRequest
 */
-func (a *TasksApiService) TasksTasksList(ctx context.Context) ApiTasksTasksListRequest {
+func (a *TasksAPIService) TasksTasksList(ctx context.Context) ApiTasksTasksListRequest {
 	return ApiTasksTasksListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -830,7 +840,7 @@ func (a *TasksApiService) TasksTasksList(ctx context.Context) ApiTasksTasksListR
 // Execute executes the request
 //
 //	@return PaginatedTaskList
-func (a *TasksApiService) TasksTasksListExecute(r ApiTasksTasksListRequest) (*PaginatedTaskList, *http.Response, error) {
+func (a *TasksAPIService) TasksTasksListExecute(r ApiTasksTasksListRequest) (*PaginatedTaskList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -838,7 +848,7 @@ func (a *TasksApiService) TasksTasksListExecute(r ApiTasksTasksListRequest) (*Pa
 		localVarReturnValue *PaginatedTaskList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksTasksList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksTasksList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -850,48 +860,48 @@ func (a *TasksApiService) TasksTasksListExecute(r ApiTasksTasksListRequest) (*Pa
 	localVarFormParams := url.Values{}
 
 	if r.actorName != nil {
-		localVarQueryParams.Add("actor_name", parameterToString(*r.actorName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "actor_name", r.actorName, "form", "")
 	}
 	if r.aggregatedStatus != nil {
 		t := *r.aggregatedStatus
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("aggregated_status", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "aggregated_status", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("aggregated_status", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "aggregated_status", t, "form", "multi")
 		}
 	}
 	if r.ordering != nil {
-		localVarQueryParams.Add("ordering", parameterToString(*r.ordering, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page_size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	}
 	if r.queueName != nil {
-		localVarQueryParams.Add("queue_name", parameterToString(*r.queueName, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "queue_name", r.queueName, "form", "")
 	}
 	if r.relObjContentTypeAppLabel != nil {
-		localVarQueryParams.Add("rel_obj_content_type__app_label", parameterToString(*r.relObjContentTypeAppLabel, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rel_obj_content_type__app_label", r.relObjContentTypeAppLabel, "form", "")
 	}
 	if r.relObjContentTypeModel != nil {
-		localVarQueryParams.Add("rel_obj_content_type__model", parameterToString(*r.relObjContentTypeModel, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rel_obj_content_type__model", r.relObjContentTypeModel, "form", "")
 	}
 	if r.relObjId != nil {
-		localVarQueryParams.Add("rel_obj_id", parameterToString(*r.relObjId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rel_obj_id", r.relObjId, "form", "")
 	}
 	if r.relObjIdIsnull != nil {
-		localVarQueryParams.Add("rel_obj_id__isnull", parameterToString(*r.relObjIdIsnull, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rel_obj_id__isnull", r.relObjIdIsnull, "form", "")
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
 	}
 	if r.state != nil {
-		localVarQueryParams.Add("state", parameterToString(*r.state, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "state", r.state, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -920,9 +930,9 @@ func (a *TasksApiService) TasksTasksListExecute(r ApiTasksTasksListRequest) (*Pa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -939,6 +949,7 @@ func (a *TasksApiService) TasksTasksListExecute(r ApiTasksTasksListRequest) (*Pa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -949,6 +960,7 @@ func (a *TasksApiService) TasksTasksListExecute(r ApiTasksTasksListRequest) (*Pa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -968,7 +980,7 @@ func (a *TasksApiService) TasksTasksListExecute(r ApiTasksTasksListRequest) (*Pa
 
 type ApiTasksTasksRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *TasksApiService
+	ApiService *TasksAPIService
 	messageId  string
 }
 
@@ -983,7 +995,7 @@ TasksTasksRetrieve Method for TasksTasksRetrieve
 	@param messageId A UUID string identifying this Task.
 	@return ApiTasksTasksRetrieveRequest
 */
-func (a *TasksApiService) TasksTasksRetrieve(ctx context.Context, messageId string) ApiTasksTasksRetrieveRequest {
+func (a *TasksAPIService) TasksTasksRetrieve(ctx context.Context, messageId string) ApiTasksTasksRetrieveRequest {
 	return ApiTasksTasksRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -994,7 +1006,7 @@ func (a *TasksApiService) TasksTasksRetrieve(ctx context.Context, messageId stri
 // Execute executes the request
 //
 //	@return Task
-func (a *TasksApiService) TasksTasksRetrieveExecute(r ApiTasksTasksRetrieveRequest) (*Task, *http.Response, error) {
+func (a *TasksAPIService) TasksTasksRetrieveExecute(r ApiTasksTasksRetrieveRequest) (*Task, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1002,13 +1014,13 @@ func (a *TasksApiService) TasksTasksRetrieveExecute(r ApiTasksTasksRetrieveReque
 		localVarReturnValue *Task
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksTasksRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksTasksRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tasks/tasks/{message_id}/"
-	localVarPath = strings.Replace(localVarPath, "{"+"message_id"+"}", url.PathEscape(parameterToString(r.messageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"message_id"+"}", url.PathEscape(parameterValueToString(r.messageId, "messageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1041,9 +1053,9 @@ func (a *TasksApiService) TasksTasksRetrieveExecute(r ApiTasksTasksRetrieveReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1060,6 +1072,7 @@ func (a *TasksApiService) TasksTasksRetrieveExecute(r ApiTasksTasksRetrieveReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1070,6 +1083,7 @@ func (a *TasksApiService) TasksTasksRetrieveExecute(r ApiTasksTasksRetrieveReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1089,7 +1103,7 @@ func (a *TasksApiService) TasksTasksRetrieveExecute(r ApiTasksTasksRetrieveReque
 
 type ApiTasksTasksRetryCreateRequest struct {
 	ctx        context.Context
-	ApiService *TasksApiService
+	ApiService *TasksAPIService
 	messageId  string
 }
 
@@ -1106,7 +1120,7 @@ Retry task
 	@param messageId A UUID string identifying this Task.
 	@return ApiTasksTasksRetryCreateRequest
 */
-func (a *TasksApiService) TasksTasksRetryCreate(ctx context.Context, messageId string) ApiTasksTasksRetryCreateRequest {
+func (a *TasksAPIService) TasksTasksRetryCreate(ctx context.Context, messageId string) ApiTasksTasksRetryCreateRequest {
 	return ApiTasksTasksRetryCreateRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1115,20 +1129,20 @@ func (a *TasksApiService) TasksTasksRetryCreate(ctx context.Context, messageId s
 }
 
 // Execute executes the request
-func (a *TasksApiService) TasksTasksRetryCreateExecute(r ApiTasksTasksRetryCreateRequest) (*http.Response, error) {
+func (a *TasksAPIService) TasksTasksRetryCreateExecute(r ApiTasksTasksRetryCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksTasksRetryCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksTasksRetryCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/tasks/tasks/{message_id}/retry/"
-	localVarPath = strings.Replace(localVarPath, "{"+"message_id"+"}", url.PathEscape(parameterToString(r.messageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"message_id"+"}", url.PathEscape(parameterValueToString(r.messageId, "messageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1161,9 +1175,9 @@ func (a *TasksApiService) TasksTasksRetryCreateExecute(r ApiTasksTasksRetryCreat
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1180,6 +1194,7 @@ func (a *TasksApiService) TasksTasksRetryCreateExecute(r ApiTasksTasksRetryCreat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
@@ -1190,7 +1205,7 @@ func (a *TasksApiService) TasksTasksRetryCreateExecute(r ApiTasksTasksRetryCreat
 
 type ApiTasksTasksStatusRetrieveRequest struct {
 	ctx        context.Context
-	ApiService *TasksApiService
+	ApiService *TasksAPIService
 }
 
 func (r ApiTasksTasksStatusRetrieveRequest) Execute() (*GlobalTaskStatus, *http.Response, error) {
@@ -1205,7 +1220,7 @@ Global status summary for all tasks
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiTasksTasksStatusRetrieveRequest
 */
-func (a *TasksApiService) TasksTasksStatusRetrieve(ctx context.Context) ApiTasksTasksStatusRetrieveRequest {
+func (a *TasksAPIService) TasksTasksStatusRetrieve(ctx context.Context) ApiTasksTasksStatusRetrieveRequest {
 	return ApiTasksTasksStatusRetrieveRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1215,7 +1230,7 @@ func (a *TasksApiService) TasksTasksStatusRetrieve(ctx context.Context) ApiTasks
 // Execute executes the request
 //
 //	@return GlobalTaskStatus
-func (a *TasksApiService) TasksTasksStatusRetrieveExecute(r ApiTasksTasksStatusRetrieveRequest) (*GlobalTaskStatus, *http.Response, error) {
+func (a *TasksAPIService) TasksTasksStatusRetrieveExecute(r ApiTasksTasksStatusRetrieveRequest) (*GlobalTaskStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1223,7 +1238,7 @@ func (a *TasksApiService) TasksTasksStatusRetrieveExecute(r ApiTasksTasksStatusR
 		localVarReturnValue *GlobalTaskStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksTasksStatusRetrieve")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksTasksStatusRetrieve")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1261,9 +1276,9 @@ func (a *TasksApiService) TasksTasksStatusRetrieveExecute(r ApiTasksTasksStatusR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1280,6 +1295,7 @@ func (a *TasksApiService) TasksTasksStatusRetrieveExecute(r ApiTasksTasksStatusR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1290,6 +1306,7 @@ func (a *TasksApiService) TasksTasksStatusRetrieveExecute(r ApiTasksTasksStatusR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1309,7 +1326,7 @@ func (a *TasksApiService) TasksTasksStatusRetrieveExecute(r ApiTasksTasksStatusR
 
 type ApiTasksWorkersListRequest struct {
 	ctx        context.Context
-	ApiService *TasksApiService
+	ApiService *TasksAPIService
 }
 
 func (r ApiTasksWorkersListRequest) Execute() ([]Worker, *http.Response, error) {
@@ -1324,7 +1341,7 @@ Get currently connected worker count.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiTasksWorkersListRequest
 */
-func (a *TasksApiService) TasksWorkersList(ctx context.Context) ApiTasksWorkersListRequest {
+func (a *TasksAPIService) TasksWorkersList(ctx context.Context) ApiTasksWorkersListRequest {
 	return ApiTasksWorkersListRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1334,7 +1351,7 @@ func (a *TasksApiService) TasksWorkersList(ctx context.Context) ApiTasksWorkersL
 // Execute executes the request
 //
 //	@return []Worker
-func (a *TasksApiService) TasksWorkersListExecute(r ApiTasksWorkersListRequest) ([]Worker, *http.Response, error) {
+func (a *TasksAPIService) TasksWorkersListExecute(r ApiTasksWorkersListRequest) ([]Worker, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1342,7 +1359,7 @@ func (a *TasksApiService) TasksWorkersListExecute(r ApiTasksWorkersListRequest) 
 		localVarReturnValue []Worker
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksApiService.TasksWorkersList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksWorkersList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1380,9 +1397,9 @@ func (a *TasksApiService) TasksWorkersListExecute(r ApiTasksWorkersListRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1399,6 +1416,7 @@ func (a *TasksApiService) TasksWorkersListExecute(r ApiTasksWorkersListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
@@ -1409,6 +1427,7 @@ func (a *TasksApiService) TasksWorkersListExecute(r ApiTasksWorkersListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

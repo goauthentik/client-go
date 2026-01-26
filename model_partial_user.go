@@ -12,15 +12,20 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
+
+// checks if the PartialUser type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PartialUser{}
 
 // PartialUser Partial User Serializer, does not include child relations.
 type PartialUser struct {
 	Pk int32 `json:"pk"`
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-	Username string `json:"username"`
+	Username string `json:"username" validate:"regexp=^[\\\\w.@+-]+$"`
 	// User's display name.
 	Name string `json:"name"`
 	// Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
@@ -30,6 +35,8 @@ type PartialUser struct {
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	Uid        string                 `json:"uid"`
 }
+
+type _PartialUser PartialUser
 
 // NewPartialUser instantiates a new PartialUser object
 // This constructor will assign default values to properties that have it defined,
@@ -126,7 +133,7 @@ func (o *PartialUser) SetName(v string) {
 
 // GetIsActive returns the IsActive field value if set, zero value otherwise.
 func (o *PartialUser) GetIsActive() bool {
-	if o == nil || o.IsActive == nil {
+	if o == nil || IsNil(o.IsActive) {
 		var ret bool
 		return ret
 	}
@@ -136,7 +143,7 @@ func (o *PartialUser) GetIsActive() bool {
 // GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartialUser) GetIsActiveOk() (*bool, bool) {
-	if o == nil || o.IsActive == nil {
+	if o == nil || IsNil(o.IsActive) {
 		return nil, false
 	}
 	return o.IsActive, true
@@ -144,7 +151,7 @@ func (o *PartialUser) GetIsActiveOk() (*bool, bool) {
 
 // HasIsActive returns a boolean if a field has been set.
 func (o *PartialUser) HasIsActive() bool {
-	if o != nil && o.IsActive != nil {
+	if o != nil && !IsNil(o.IsActive) {
 		return true
 	}
 
@@ -158,7 +165,7 @@ func (o *PartialUser) SetIsActive(v bool) {
 
 // GetLastLogin returns the LastLogin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartialUser) GetLastLogin() time.Time {
-	if o == nil || o.LastLogin.Get() == nil {
+	if o == nil || IsNil(o.LastLogin.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -201,7 +208,7 @@ func (o *PartialUser) UnsetLastLogin() {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *PartialUser) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -211,7 +218,7 @@ func (o *PartialUser) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartialUser) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -219,7 +226,7 @@ func (o *PartialUser) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *PartialUser) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -233,7 +240,7 @@ func (o *PartialUser) SetEmail(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *PartialUser) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || IsNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -243,15 +250,15 @@ func (o *PartialUser) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartialUser) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *PartialUser) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -288,32 +295,72 @@ func (o *PartialUser) SetUid(v string) {
 }
 
 func (o PartialUser) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PartialUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["username"] = o.Username
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.IsActive != nil {
+	toSerialize["pk"] = o.Pk
+	toSerialize["username"] = o.Username
+	toSerialize["name"] = o.Name
+	if !IsNil(o.IsActive) {
 		toSerialize["is_active"] = o.IsActive
 	}
 	if o.LastLogin.IsSet() {
 		toSerialize["last_login"] = o.LastLogin.Get()
 	}
-	if o.Email != nil {
+	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if o.Attributes != nil {
+	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if true {
-		toSerialize["uid"] = o.Uid
+	toSerialize["uid"] = o.Uid
+	return toSerialize, nil
+}
+
+func (o *PartialUser) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"username",
+		"name",
+		"uid",
 	}
-	return json.Marshal(toSerialize)
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPartialUser := _PartialUser{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPartialUser)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PartialUser(varPartialUser)
+
+	return err
 }
 
 type NullablePartialUser struct {

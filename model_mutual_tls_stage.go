@@ -12,8 +12,13 @@ Contact: hello@goauthentik.io
 package api
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
+
+// checks if the MutualTLSStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MutualTLSStage{}
 
 // MutualTLSStage MutualTLSStage Serializer
 type MutualTLSStage struct {
@@ -34,6 +39,8 @@ type MutualTLSStage struct {
 	CertAttribute          CertAttributeEnum `json:"cert_attribute"`
 	UserAttribute          UserAttributeEnum `json:"user_attribute"`
 }
+
+type _MutualTLSStage MutualTLSStage
 
 // NewMutualTLSStage instantiates a new MutualTLSStage object
 // This constructor will assign default values to properties that have it defined,
@@ -256,7 +263,7 @@ func (o *MutualTLSStage) SetMode(v StageModeEnum) {
 
 // GetCertificateAuthorities returns the CertificateAuthorities field value if set, zero value otherwise.
 func (o *MutualTLSStage) GetCertificateAuthorities() []string {
-	if o == nil || o.CertificateAuthorities == nil {
+	if o == nil || IsNil(o.CertificateAuthorities) {
 		var ret []string
 		return ret
 	}
@@ -266,7 +273,7 @@ func (o *MutualTLSStage) GetCertificateAuthorities() []string {
 // GetCertificateAuthoritiesOk returns a tuple with the CertificateAuthorities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutualTLSStage) GetCertificateAuthoritiesOk() ([]string, bool) {
-	if o == nil || o.CertificateAuthorities == nil {
+	if o == nil || IsNil(o.CertificateAuthorities) {
 		return nil, false
 	}
 	return o.CertificateAuthorities, true
@@ -274,7 +281,7 @@ func (o *MutualTLSStage) GetCertificateAuthoritiesOk() ([]string, bool) {
 
 // HasCertificateAuthorities returns a boolean if a field has been set.
 func (o *MutualTLSStage) HasCertificateAuthorities() bool {
-	if o != nil && o.CertificateAuthorities != nil {
+	if o != nil && !IsNil(o.CertificateAuthorities) {
 		return true
 	}
 
@@ -335,41 +342,75 @@ func (o *MutualTLSStage) SetUserAttribute(v UserAttributeEnum) {
 }
 
 func (o MutualTLSStage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pk"] = o.Pk
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["component"] = o.Component
-	}
-	if true {
-		toSerialize["verbose_name"] = o.VerboseName
-	}
-	if true {
-		toSerialize["verbose_name_plural"] = o.VerboseNamePlural
-	}
-	if true {
-		toSerialize["meta_model_name"] = o.MetaModelName
-	}
-	if true {
-		toSerialize["flow_set"] = o.FlowSet
-	}
-	if true {
-		toSerialize["mode"] = o.Mode
-	}
-	if o.CertificateAuthorities != nil {
-		toSerialize["certificate_authorities"] = o.CertificateAuthorities
-	}
-	if true {
-		toSerialize["cert_attribute"] = o.CertAttribute
-	}
-	if true {
-		toSerialize["user_attribute"] = o.UserAttribute
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MutualTLSStage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pk"] = o.Pk
+	toSerialize["name"] = o.Name
+	toSerialize["component"] = o.Component
+	toSerialize["verbose_name"] = o.VerboseName
+	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
+	toSerialize["meta_model_name"] = o.MetaModelName
+	toSerialize["flow_set"] = o.FlowSet
+	toSerialize["mode"] = o.Mode
+	if !IsNil(o.CertificateAuthorities) {
+		toSerialize["certificate_authorities"] = o.CertificateAuthorities
+	}
+	toSerialize["cert_attribute"] = o.CertAttribute
+	toSerialize["user_attribute"] = o.UserAttribute
+	return toSerialize, nil
+}
+
+func (o *MutualTLSStage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pk",
+		"name",
+		"component",
+		"verbose_name",
+		"verbose_name_plural",
+		"meta_model_name",
+		"flow_set",
+		"mode",
+		"cert_attribute",
+		"user_attribute",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMutualTLSStage := _MutualTLSStage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMutualTLSStage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MutualTLSStage(varMutualTLSStage)
+
+	return err
 }
 
 type NullableMutualTLSStage struct {
