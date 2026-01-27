@@ -73,7 +73,8 @@ jobs:
         working-directory: authentik
         run: |
           go get 'goauthentik.io/api/v3@v${{ steps.publish.outputs.version }}'
-      - name: Create pull request in main repo
+      - id: create-pull-request
+        name: Create pull request in main repo
         if: "${{ steps.changes.outputs.schema_has_changes == 'true' }}"
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
@@ -86,3 +87,9 @@ jobs:
           signoff: true
           author: "${{ steps.app-token.outputs.app-slug }}[bot] <${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com>"
           labels: dependencies
+      - name: Enable pull request auto-merge
+        uses: peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d # v3
+        with:
+          token: "${{ steps.app-token.outputs.token }}"
+          pull-request-number: "${{ steps.create-pull-request.outputs.pull-request-number }}"
+          merge-method: squash
