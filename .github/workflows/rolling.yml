@@ -85,3 +85,4 @@ jobs:
           delete-branch: true
           signoff: true
           author: "${{ steps.app-token.outputs.app-slug }}[bot] <${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com>"
+          labels: dependencies
