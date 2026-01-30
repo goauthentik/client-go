@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.12.1
+API version: 2025.12.2
 Contact: hello@goauthentik.io
 */
 
@@ -34,13 +34,13 @@ type Provider struct {
 	// Get object component so that we know how to edit the object
 	Component string `json:"component"`
 	// Internal application name, used in URLs.
-	AssignedApplicationSlug string `json:"assigned_application_slug"`
+	AssignedApplicationSlug NullableString `json:"assigned_application_slug"`
 	// Application's display Name.
-	AssignedApplicationName string `json:"assigned_application_name"`
+	AssignedApplicationName NullableString `json:"assigned_application_name"`
 	// Internal application name, used in URLs.
-	AssignedBackchannelApplicationSlug string `json:"assigned_backchannel_application_slug"`
+	AssignedBackchannelApplicationSlug NullableString `json:"assigned_backchannel_application_slug"`
 	// Application's display Name.
-	AssignedBackchannelApplicationName string `json:"assigned_backchannel_application_name"`
+	AssignedBackchannelApplicationName NullableString `json:"assigned_backchannel_application_name"`
 	// Return object's verbose_name
 	VerboseName string `json:"verbose_name"`
 	// Return object's plural verbose_name
@@ -55,7 +55,7 @@ type _Provider Provider
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string) *Provider {
+func NewProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string) *Provider {
 	this := Provider{}
 	this.Pk = pk
 	this.Name = name
@@ -276,99 +276,107 @@ func (o *Provider) SetComponent(v string) {
 }
 
 // GetAssignedApplicationSlug returns the AssignedApplicationSlug field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Provider) GetAssignedApplicationSlug() string {
-	if o == nil {
+	if o == nil || o.AssignedApplicationSlug.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedApplicationSlug
+	return *o.AssignedApplicationSlug.Get()
 }
 
 // GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Provider) GetAssignedApplicationSlugOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedApplicationSlug, true
+	return o.AssignedApplicationSlug.Get(), o.AssignedApplicationSlug.IsSet()
 }
 
 // SetAssignedApplicationSlug sets field value
 func (o *Provider) SetAssignedApplicationSlug(v string) {
-	o.AssignedApplicationSlug = v
+	o.AssignedApplicationSlug.Set(&v)
 }
 
 // GetAssignedApplicationName returns the AssignedApplicationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Provider) GetAssignedApplicationName() string {
-	if o == nil {
+	if o == nil || o.AssignedApplicationName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedApplicationName
+	return *o.AssignedApplicationName.Get()
 }
 
 // GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Provider) GetAssignedApplicationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedApplicationName, true
+	return o.AssignedApplicationName.Get(), o.AssignedApplicationName.IsSet()
 }
 
 // SetAssignedApplicationName sets field value
 func (o *Provider) SetAssignedApplicationName(v string) {
-	o.AssignedApplicationName = v
+	o.AssignedApplicationName.Set(&v)
 }
 
 // GetAssignedBackchannelApplicationSlug returns the AssignedBackchannelApplicationSlug field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Provider) GetAssignedBackchannelApplicationSlug() string {
-	if o == nil {
+	if o == nil || o.AssignedBackchannelApplicationSlug.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedBackchannelApplicationSlug
+	return *o.AssignedBackchannelApplicationSlug.Get()
 }
 
 // GetAssignedBackchannelApplicationSlugOk returns a tuple with the AssignedBackchannelApplicationSlug field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Provider) GetAssignedBackchannelApplicationSlugOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedBackchannelApplicationSlug, true
+	return o.AssignedBackchannelApplicationSlug.Get(), o.AssignedBackchannelApplicationSlug.IsSet()
 }
 
 // SetAssignedBackchannelApplicationSlug sets field value
 func (o *Provider) SetAssignedBackchannelApplicationSlug(v string) {
-	o.AssignedBackchannelApplicationSlug = v
+	o.AssignedBackchannelApplicationSlug.Set(&v)
 }
 
 // GetAssignedBackchannelApplicationName returns the AssignedBackchannelApplicationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Provider) GetAssignedBackchannelApplicationName() string {
-	if o == nil {
+	if o == nil || o.AssignedBackchannelApplicationName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedBackchannelApplicationName
+	return *o.AssignedBackchannelApplicationName.Get()
 }
 
 // GetAssignedBackchannelApplicationNameOk returns a tuple with the AssignedBackchannelApplicationName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Provider) GetAssignedBackchannelApplicationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedBackchannelApplicationName, true
+	return o.AssignedBackchannelApplicationName.Get(), o.AssignedBackchannelApplicationName.IsSet()
 }
 
 // SetAssignedBackchannelApplicationName sets field value
 func (o *Provider) SetAssignedBackchannelApplicationName(v string) {
-	o.AssignedBackchannelApplicationName = v
+	o.AssignedBackchannelApplicationName.Set(&v)
 }
 
 // GetVerboseName returns the VerboseName field value
@@ -464,10 +472,10 @@ func (o Provider) ToMap() (map[string]interface{}, error) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
 	toSerialize["component"] = o.Component
-	toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
-	toSerialize["assigned_application_name"] = o.AssignedApplicationName
-	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
-	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
+	toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug.Get()
+	toSerialize["assigned_application_name"] = o.AssignedApplicationName.Get()
+	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug.Get()
+	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName.Get()
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName

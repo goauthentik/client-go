@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.12.1
+API version: 2025.12.2
 Contact: hello@goauthentik.io
 */
 
@@ -34,9 +34,10 @@ type Flow struct {
 	// Background shown during execution
 	Background *string `json:"background,omitempty"`
 	// Get the URL to the background image
-	BackgroundUrl string   `json:"background_url"`
-	Stages        []string `json:"stages"`
-	Policies      []string `json:"policies"`
+	BackgroundUrl        string             `json:"background_url"`
+	BackgroundThemedUrls NullableThemedUrls `json:"background_themed_urls"`
+	Stages               []string           `json:"stages"`
+	Policies             []string           `json:"policies"`
 	// Get count of cached flows
 	CacheCount       int32             `json:"cache_count"`
 	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
@@ -57,7 +58,7 @@ type _Flow Flow
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, backgroundUrl string, stages []string, policies []string, cacheCount int32, exportUrl string) *Flow {
+func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string, title string, designation FlowDesignationEnum, backgroundUrl string, backgroundThemedUrls NullableThemedUrls, stages []string, policies []string, cacheCount int32, exportUrl string) *Flow {
 	this := Flow{}
 	this.Pk = pk
 	this.PolicybindingmodelPtrId = policybindingmodelPtrId
@@ -66,6 +67,7 @@ func NewFlow(pk string, policybindingmodelPtrId string, name string, slug string
 	this.Title = title
 	this.Designation = designation
 	this.BackgroundUrl = backgroundUrl
+	this.BackgroundThemedUrls = backgroundThemedUrls
 	this.Stages = stages
 	this.Policies = policies
 	this.CacheCount = cacheCount
@@ -279,6 +281,32 @@ func (o *Flow) GetBackgroundUrlOk() (*string, bool) {
 // SetBackgroundUrl sets field value
 func (o *Flow) SetBackgroundUrl(v string) {
 	o.BackgroundUrl = v
+}
+
+// GetBackgroundThemedUrls returns the BackgroundThemedUrls field value
+// If the value is explicit nil, the zero value for ThemedUrls will be returned
+func (o *Flow) GetBackgroundThemedUrls() ThemedUrls {
+	if o == nil || o.BackgroundThemedUrls.Get() == nil {
+		var ret ThemedUrls
+		return ret
+	}
+
+	return *o.BackgroundThemedUrls.Get()
+}
+
+// GetBackgroundThemedUrlsOk returns a tuple with the BackgroundThemedUrls field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Flow) GetBackgroundThemedUrlsOk() (*ThemedUrls, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BackgroundThemedUrls.Get(), o.BackgroundThemedUrls.IsSet()
+}
+
+// SetBackgroundThemedUrls sets field value
+func (o *Flow) SetBackgroundThemedUrls(v ThemedUrls) {
+	o.BackgroundThemedUrls.Set(&v)
 }
 
 // GetStages returns the Stages field value
@@ -557,6 +585,7 @@ func (o Flow) ToMap() (map[string]interface{}, error) {
 		toSerialize["background"] = o.Background
 	}
 	toSerialize["background_url"] = o.BackgroundUrl
+	toSerialize["background_themed_urls"] = o.BackgroundThemedUrls.Get()
 	toSerialize["stages"] = o.Stages
 	toSerialize["policies"] = o.Policies
 	toSerialize["cache_count"] = o.CacheCount
@@ -591,6 +620,7 @@ func (o *Flow) UnmarshalJSON(data []byte) (err error) {
 		"title",
 		"designation",
 		"background_url",
+		"background_themed_urls",
 		"stages",
 		"policies",
 		"cache_count",

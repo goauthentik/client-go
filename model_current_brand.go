@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.12.1
+API version: 2025.12.2
 Contact: hello@goauthentik.io
 */
 
@@ -22,21 +22,23 @@ var _ MappedNullable = &CurrentBrand{}
 
 // CurrentBrand Partial brand information for styling
 type CurrentBrand struct {
-	MatchedDomain      string            `json:"matched_domain"`
-	BrandingTitle      string            `json:"branding_title"`
-	BrandingLogo       string            `json:"branding_logo"`
-	BrandingFavicon    string            `json:"branding_favicon"`
-	BrandingCustomCss  string            `json:"branding_custom_css"`
-	UiFooterLinks      []FooterLink      `json:"ui_footer_links"`
-	UiTheme            UiThemeEnum       `json:"ui_theme"`
-	FlowAuthentication *string           `json:"flow_authentication,omitempty"`
-	FlowInvalidation   *string           `json:"flow_invalidation,omitempty"`
-	FlowRecovery       *string           `json:"flow_recovery,omitempty"`
-	FlowUnenrollment   *string           `json:"flow_unenrollment,omitempty"`
-	FlowUserSettings   *string           `json:"flow_user_settings,omitempty"`
-	FlowDeviceCode     *string           `json:"flow_device_code,omitempty"`
-	DefaultLocale      string            `json:"default_locale"`
-	Flags              CurrentBrandFlags `json:"flags"`
+	MatchedDomain             string             `json:"matched_domain"`
+	BrandingTitle             string             `json:"branding_title"`
+	BrandingLogo              string             `json:"branding_logo"`
+	BrandingLogoThemedUrls    NullableThemedUrls `json:"branding_logo_themed_urls"`
+	BrandingFavicon           string             `json:"branding_favicon"`
+	BrandingFaviconThemedUrls NullableThemedUrls `json:"branding_favicon_themed_urls"`
+	BrandingCustomCss         string             `json:"branding_custom_css"`
+	UiFooterLinks             []FooterLink       `json:"ui_footer_links"`
+	UiTheme                   UiThemeEnum        `json:"ui_theme"`
+	FlowAuthentication        *string            `json:"flow_authentication,omitempty"`
+	FlowInvalidation          *string            `json:"flow_invalidation,omitempty"`
+	FlowRecovery              *string            `json:"flow_recovery,omitempty"`
+	FlowUnenrollment          *string            `json:"flow_unenrollment,omitempty"`
+	FlowUserSettings          *string            `json:"flow_user_settings,omitempty"`
+	FlowDeviceCode            *string            `json:"flow_device_code,omitempty"`
+	DefaultLocale             string             `json:"default_locale"`
+	Flags                     CurrentBrandFlags  `json:"flags"`
 }
 
 type _CurrentBrand CurrentBrand
@@ -45,12 +47,14 @@ type _CurrentBrand CurrentBrand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags) *CurrentBrand {
+func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingLogoThemedUrls NullableThemedUrls, brandingFavicon string, brandingFaviconThemedUrls NullableThemedUrls, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags) *CurrentBrand {
 	this := CurrentBrand{}
 	this.MatchedDomain = matchedDomain
 	this.BrandingTitle = brandingTitle
 	this.BrandingLogo = brandingLogo
+	this.BrandingLogoThemedUrls = brandingLogoThemedUrls
 	this.BrandingFavicon = brandingFavicon
+	this.BrandingFaviconThemedUrls = brandingFaviconThemedUrls
 	this.BrandingCustomCss = brandingCustomCss
 	this.UiFooterLinks = uiFooterLinks
 	this.UiTheme = uiTheme
@@ -139,6 +143,32 @@ func (o *CurrentBrand) SetBrandingLogo(v string) {
 	o.BrandingLogo = v
 }
 
+// GetBrandingLogoThemedUrls returns the BrandingLogoThemedUrls field value
+// If the value is explicit nil, the zero value for ThemedUrls will be returned
+func (o *CurrentBrand) GetBrandingLogoThemedUrls() ThemedUrls {
+	if o == nil || o.BrandingLogoThemedUrls.Get() == nil {
+		var ret ThemedUrls
+		return ret
+	}
+
+	return *o.BrandingLogoThemedUrls.Get()
+}
+
+// GetBrandingLogoThemedUrlsOk returns a tuple with the BrandingLogoThemedUrls field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CurrentBrand) GetBrandingLogoThemedUrlsOk() (*ThemedUrls, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BrandingLogoThemedUrls.Get(), o.BrandingLogoThemedUrls.IsSet()
+}
+
+// SetBrandingLogoThemedUrls sets field value
+func (o *CurrentBrand) SetBrandingLogoThemedUrls(v ThemedUrls) {
+	o.BrandingLogoThemedUrls.Set(&v)
+}
+
 // GetBrandingFavicon returns the BrandingFavicon field value
 func (o *CurrentBrand) GetBrandingFavicon() string {
 	if o == nil {
@@ -161,6 +191,32 @@ func (o *CurrentBrand) GetBrandingFaviconOk() (*string, bool) {
 // SetBrandingFavicon sets field value
 func (o *CurrentBrand) SetBrandingFavicon(v string) {
 	o.BrandingFavicon = v
+}
+
+// GetBrandingFaviconThemedUrls returns the BrandingFaviconThemedUrls field value
+// If the value is explicit nil, the zero value for ThemedUrls will be returned
+func (o *CurrentBrand) GetBrandingFaviconThemedUrls() ThemedUrls {
+	if o == nil || o.BrandingFaviconThemedUrls.Get() == nil {
+		var ret ThemedUrls
+		return ret
+	}
+
+	return *o.BrandingFaviconThemedUrls.Get()
+}
+
+// GetBrandingFaviconThemedUrlsOk returns a tuple with the BrandingFaviconThemedUrls field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CurrentBrand) GetBrandingFaviconThemedUrlsOk() (*ThemedUrls, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BrandingFaviconThemedUrls.Get(), o.BrandingFaviconThemedUrls.IsSet()
+}
+
+// SetBrandingFaviconThemedUrls sets field value
+func (o *CurrentBrand) SetBrandingFaviconThemedUrls(v ThemedUrls) {
+	o.BrandingFaviconThemedUrls.Set(&v)
 }
 
 // GetBrandingCustomCss returns the BrandingCustomCss field value
@@ -488,7 +544,9 @@ func (o CurrentBrand) ToMap() (map[string]interface{}, error) {
 	toSerialize["matched_domain"] = o.MatchedDomain
 	toSerialize["branding_title"] = o.BrandingTitle
 	toSerialize["branding_logo"] = o.BrandingLogo
+	toSerialize["branding_logo_themed_urls"] = o.BrandingLogoThemedUrls.Get()
 	toSerialize["branding_favicon"] = o.BrandingFavicon
+	toSerialize["branding_favicon_themed_urls"] = o.BrandingFaviconThemedUrls.Get()
 	toSerialize["branding_custom_css"] = o.BrandingCustomCss
 	toSerialize["ui_footer_links"] = o.UiFooterLinks
 	toSerialize["ui_theme"] = o.UiTheme
@@ -523,7 +581,9 @@ func (o *CurrentBrand) UnmarshalJSON(data []byte) (err error) {
 		"matched_domain",
 		"branding_title",
 		"branding_logo",
+		"branding_logo_themed_urls",
 		"branding_favicon",
+		"branding_favicon_themed_urls",
 		"branding_custom_css",
 		"ui_footer_links",
 		"ui_theme",

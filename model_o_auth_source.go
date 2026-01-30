@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.12.1
+API version: 2025.12.2
 Contact: hello@goauthentik.io
 */
 
@@ -48,10 +48,11 @@ type OAuthSource struct {
 	// How the source determines if an existing user should be authenticated or a new user enrolled.
 	UserMatchingMode *UserMatchingModeEnum `json:"user_matching_mode,omitempty"`
 	// Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
-	Managed          NullableString `json:"managed"`
-	UserPathTemplate *string        `json:"user_path_template,omitempty"`
-	Icon             *string        `json:"icon,omitempty"`
-	IconUrl          NullableString `json:"icon_url"`
+	Managed          NullableString     `json:"managed"`
+	UserPathTemplate *string            `json:"user_path_template,omitempty"`
+	Icon             *string            `json:"icon,omitempty"`
+	IconUrl          NullableString     `json:"icon_url"`
+	IconThemedUrls   NullableThemedUrls `json:"icon_themed_urls"`
 	// How the source determines if an existing group should be used or a new group created.
 	GroupMatchingMode *GroupMatchingModeEnum `json:"group_matching_mode,omitempty"`
 	ProviderType      ProviderTypeEnum       `json:"provider_type"`
@@ -82,7 +83,7 @@ type _OAuthSource OAuthSource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType) *OAuthSource {
+func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, iconThemedUrls NullableThemedUrls, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType) *OAuthSource {
 	this := OAuthSource{}
 	this.Pk = pk
 	this.Name = name
@@ -93,6 +94,7 @@ func NewOAuthSource(pk string, name string, slug string, component string, verbo
 	this.MetaModelName = metaModelName
 	this.Managed = managed
 	this.IconUrl = iconUrl
+	this.IconThemedUrls = iconThemedUrls
 	this.ProviderType = providerType
 	this.ConsumerKey = consumerKey
 	this.CallbackUrl = callbackUrl
@@ -670,6 +672,32 @@ func (o *OAuthSource) SetIconUrl(v string) {
 	o.IconUrl.Set(&v)
 }
 
+// GetIconThemedUrls returns the IconThemedUrls field value
+// If the value is explicit nil, the zero value for ThemedUrls will be returned
+func (o *OAuthSource) GetIconThemedUrls() ThemedUrls {
+	if o == nil || o.IconThemedUrls.Get() == nil {
+		var ret ThemedUrls
+		return ret
+	}
+
+	return *o.IconThemedUrls.Get()
+}
+
+// GetIconThemedUrlsOk returns a tuple with the IconThemedUrls field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OAuthSource) GetIconThemedUrlsOk() (*ThemedUrls, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IconThemedUrls.Get(), o.IconThemedUrls.IsSet()
+}
+
+// SetIconThemedUrls sets field value
+func (o *OAuthSource) SetIconThemedUrls(v ThemedUrls) {
+	o.IconThemedUrls.Set(&v)
+}
+
 // GetGroupMatchingMode returns the GroupMatchingMode field value if set, zero value otherwise.
 func (o *OAuthSource) GetGroupMatchingMode() GroupMatchingModeEnum {
 	if o == nil || IsNil(o.GroupMatchingMode) {
@@ -1211,6 +1239,7 @@ func (o OAuthSource) ToMap() (map[string]interface{}, error) {
 		toSerialize["icon"] = o.Icon
 	}
 	toSerialize["icon_url"] = o.IconUrl.Get()
+	toSerialize["icon_themed_urls"] = o.IconThemedUrls.Get()
 	if !IsNil(o.GroupMatchingMode) {
 		toSerialize["group_matching_mode"] = o.GroupMatchingMode
 	}
@@ -1265,6 +1294,7 @@ func (o *OAuthSource) UnmarshalJSON(data []byte) (err error) {
 		"meta_model_name",
 		"managed",
 		"icon_url",
+		"icon_themed_urls",
 		"provider_type",
 		"consumer_key",
 		"callback_url",

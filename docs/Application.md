@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **MetaLaunchUrl** | Pointer to **string** |  | [optional] 
 **MetaIcon** | Pointer to **string** |  | [optional] 
 **MetaIconUrl** | **NullableString** | Get the URL to the App Icon image | [readonly] 
+**MetaIconThemedUrls** | [**NullableThemedUrls**](ThemedUrls.md) |  | [readonly] 
 **MetaDescription** | Pointer to **string** |  | [optional] 
 **MetaPublisher** | Pointer to **string** |  | [optional] 
 **PolicyEngineMode** | Pointer to [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] 
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIconUrl NullableString, ) *Application`
+`func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIconUrl NullableString, metaIconThemedUrls NullableThemedUrls, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -335,6 +336,36 @@ SetMetaIconUrl sets MetaIconUrl field to given value.
 `func (o *Application) UnsetMetaIconUrl()`
 
 UnsetMetaIconUrl ensures that no value is present for MetaIconUrl, not even an explicit nil
+### GetMetaIconThemedUrls
+
+`func (o *Application) GetMetaIconThemedUrls() ThemedUrls`
+
+GetMetaIconThemedUrls returns the MetaIconThemedUrls field if non-nil, zero value otherwise.
+
+### GetMetaIconThemedUrlsOk
+
+`func (o *Application) GetMetaIconThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetMetaIconThemedUrlsOk returns a tuple with the MetaIconThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaIconThemedUrls
+
+`func (o *Application) SetMetaIconThemedUrls(v ThemedUrls)`
+
+SetMetaIconThemedUrls sets MetaIconThemedUrls field to given value.
+
+
+### SetMetaIconThemedUrlsNil
+
+`func (o *Application) SetMetaIconThemedUrlsNil(b bool)`
+
+ SetMetaIconThemedUrlsNil sets the value for MetaIconThemedUrls to be an explicit nil
+
+### UnsetMetaIconThemedUrls
+`func (o *Application) UnsetMetaIconThemedUrls()`
+
+UnsetMetaIconThemedUrls ensures that no value is present for MetaIconThemedUrls, not even an explicit nil
 ### GetMetaDescription
 
 `func (o *Application) GetMetaDescription() string`

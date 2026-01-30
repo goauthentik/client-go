@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | Pointer to **string** |  | [optional] 
 **IconUrl** | **string** |  | [readonly] 
+**IconThemedUrls** | [**NullableThemedUrls**](ThemedUrls.md) |  | [readonly] 
 **ServerUri** | **string** |  | 
 **PeerCertificate** | Pointer to **NullableString** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] 
 **ClientCertificate** | Pointer to **NullableString** | Client certificate to authenticate against the LDAP Server&#39;s Certificate. | [optional] 
@@ -51,7 +52,7 @@ Name | Type | Description | Notes
 
 ### NewLDAPSource
 
-`func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, serverUri string, baseDn string, connectivity map[string]map[string]string, ) *LDAPSource`
+`func NewLDAPSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, iconThemedUrls NullableThemedUrls, serverUri string, baseDn string, connectivity map[string]map[string]string, ) *LDAPSource`
 
 NewLDAPSource instantiates a new LDAPSource object
 This constructor will assign default values to properties that have it defined,
@@ -526,6 +527,36 @@ and a boolean to check if the value has been set.
 SetIconUrl sets IconUrl field to given value.
 
 
+### GetIconThemedUrls
+
+`func (o *LDAPSource) GetIconThemedUrls() ThemedUrls`
+
+GetIconThemedUrls returns the IconThemedUrls field if non-nil, zero value otherwise.
+
+### GetIconThemedUrlsOk
+
+`func (o *LDAPSource) GetIconThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetIconThemedUrlsOk returns a tuple with the IconThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconThemedUrls
+
+`func (o *LDAPSource) SetIconThemedUrls(v ThemedUrls)`
+
+SetIconThemedUrls sets IconThemedUrls field to given value.
+
+
+### SetIconThemedUrlsNil
+
+`func (o *LDAPSource) SetIconThemedUrlsNil(b bool)`
+
+ SetIconThemedUrlsNil sets the value for IconThemedUrls to be an explicit nil
+
+### UnsetIconThemedUrls
+`func (o *LDAPSource) UnsetIconThemedUrls()`
+
+UnsetIconThemedUrls ensures that no value is present for IconThemedUrls, not even an explicit nil
 ### GetServerUri
 
 `func (o *LDAPSource) GetServerUri() string`

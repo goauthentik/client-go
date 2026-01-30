@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.12.1
+API version: 2025.12.2
 Contact: hello@goauthentik.io
 */
 
@@ -38,11 +38,12 @@ type Application struct {
 	MetaLaunchUrl *string `json:"meta_launch_url,omitempty"`
 	MetaIcon      *string `json:"meta_icon,omitempty"`
 	// Get the URL to the App Icon image
-	MetaIconUrl      NullableString    `json:"meta_icon_url"`
-	MetaDescription  *string           `json:"meta_description,omitempty"`
-	MetaPublisher    *string           `json:"meta_publisher,omitempty"`
-	PolicyEngineMode *PolicyEngineMode `json:"policy_engine_mode,omitempty"`
-	Group            *string           `json:"group,omitempty"`
+	MetaIconUrl        NullableString     `json:"meta_icon_url"`
+	MetaIconThemedUrls NullableThemedUrls `json:"meta_icon_themed_urls"`
+	MetaDescription    *string            `json:"meta_description,omitempty"`
+	MetaPublisher      *string            `json:"meta_publisher,omitempty"`
+	PolicyEngineMode   *PolicyEngineMode  `json:"policy_engine_mode,omitempty"`
+	Group              *string            `json:"group,omitempty"`
 }
 
 type _Application Application
@@ -51,7 +52,7 @@ type _Application Application
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIconUrl NullableString) *Application {
+func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIconUrl NullableString, metaIconThemedUrls NullableThemedUrls) *Application {
 	this := Application{}
 	this.Pk = pk
 	this.Name = name
@@ -60,6 +61,7 @@ func NewApplication(pk string, name string, slug string, providerObj Provider, b
 	this.BackchannelProvidersObj = backchannelProvidersObj
 	this.LaunchUrl = launchUrl
 	this.MetaIconUrl = metaIconUrl
+	this.MetaIconThemedUrls = metaIconThemedUrls
 	return &this
 }
 
@@ -414,6 +416,32 @@ func (o *Application) SetMetaIconUrl(v string) {
 	o.MetaIconUrl.Set(&v)
 }
 
+// GetMetaIconThemedUrls returns the MetaIconThemedUrls field value
+// If the value is explicit nil, the zero value for ThemedUrls will be returned
+func (o *Application) GetMetaIconThemedUrls() ThemedUrls {
+	if o == nil || o.MetaIconThemedUrls.Get() == nil {
+		var ret ThemedUrls
+		return ret
+	}
+
+	return *o.MetaIconThemedUrls.Get()
+}
+
+// GetMetaIconThemedUrlsOk returns a tuple with the MetaIconThemedUrls field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Application) GetMetaIconThemedUrlsOk() (*ThemedUrls, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MetaIconThemedUrls.Get(), o.MetaIconThemedUrls.IsSet()
+}
+
+// SetMetaIconThemedUrls sets field value
+func (o *Application) SetMetaIconThemedUrls(v ThemedUrls) {
+	o.MetaIconThemedUrls.Set(&v)
+}
+
 // GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
 func (o *Application) GetMetaDescription() string {
 	if o == nil || IsNil(o.MetaDescription) {
@@ -574,6 +602,7 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 		toSerialize["meta_icon"] = o.MetaIcon
 	}
 	toSerialize["meta_icon_url"] = o.MetaIconUrl.Get()
+	toSerialize["meta_icon_themed_urls"] = o.MetaIconThemedUrls.Get()
 	if !IsNil(o.MetaDescription) {
 		toSerialize["meta_description"] = o.MetaDescription
 	}
@@ -601,6 +630,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		"backchannel_providers_obj",
 		"launch_url",
 		"meta_icon_url",
+		"meta_icon_themed_urls",
 	}
 
 	allProperties := make(map[string]interface{})

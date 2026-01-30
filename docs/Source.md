@@ -23,12 +23,13 @@ Name | Type | Description | Notes
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | Pointer to **string** |  | [optional] 
 **IconUrl** | **NullableString** | Get the URL to the source icon | [readonly] 
+**IconThemedUrls** | [**NullableThemedUrls**](ThemedUrls.md) |  | [readonly] 
 
 ## Methods
 
 ### NewSource
 
-`func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, ) *Source`
+`func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, iconThemedUrls NullableThemedUrls, ) *Source`
 
 NewSource instantiates a new Source object
 This constructor will assign default values to properties that have it defined,
@@ -513,6 +514,36 @@ SetIconUrl sets IconUrl field to given value.
 `func (o *Source) UnsetIconUrl()`
 
 UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
+### GetIconThemedUrls
+
+`func (o *Source) GetIconThemedUrls() ThemedUrls`
+
+GetIconThemedUrls returns the IconThemedUrls field if non-nil, zero value otherwise.
+
+### GetIconThemedUrlsOk
+
+`func (o *Source) GetIconThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetIconThemedUrlsOk returns a tuple with the IconThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconThemedUrls
+
+`func (o *Source) SetIconThemedUrls(v ThemedUrls)`
+
+SetIconThemedUrls sets IconThemedUrls field to given value.
+
+
+### SetIconThemedUrlsNil
+
+`func (o *Source) SetIconThemedUrlsNil(b bool)`
+
+ SetIconThemedUrlsNil sets the value for IconThemedUrls to be an explicit nil
+
+### UnsetIconThemedUrls
+`func (o *Source) UnsetIconThemedUrls()`
+
+UnsetIconThemedUrls ensures that no value is present for IconThemedUrls, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

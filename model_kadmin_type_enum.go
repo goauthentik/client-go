@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.12.1
+API version: 2025.12.2
 Contact: hello@goauthentik.io
 */
 
@@ -23,14 +23,12 @@ type KadminTypeEnum string
 const (
 	KADMINTYPEENUM_MIT     KadminTypeEnum = "MIT"
 	KADMINTYPEENUM_HEIMDAL KadminTypeEnum = "Heimdal"
-	KADMINTYPEENUM_OTHER   KadminTypeEnum = "other"
 )
 
 // All allowed values of KadminTypeEnum enum
 var AllowedKadminTypeEnumEnumValues = []KadminTypeEnum{
 	"MIT",
 	"Heimdal",
-	"other",
 }
 
 func (v *KadminTypeEnum) UnmarshalJSON(src []byte) error {

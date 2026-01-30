@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.12.1
+API version: 2025.12.2
 Contact: hello@goauthentik.io
 */
 
@@ -22,9 +22,10 @@ var _ MappedNullable = &FileList{}
 
 // FileList Base serializer class which doesn't implement create/update methods
 type FileList struct {
-	Name     string `json:"name"`
-	MimeType string `json:"mime_type"`
-	Url      string `json:"url"`
+	Name       string             `json:"name"`
+	MimeType   string             `json:"mime_type"`
+	Url        string             `json:"url"`
+	ThemedUrls NullableThemedUrls `json:"themed_urls,omitempty"`
 }
 
 type _FileList FileList
@@ -121,6 +122,49 @@ func (o *FileList) SetUrl(v string) {
 	o.Url = v
 }
 
+// GetThemedUrls returns the ThemedUrls field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *FileList) GetThemedUrls() ThemedUrls {
+	if o == nil || IsNil(o.ThemedUrls.Get()) {
+		var ret ThemedUrls
+		return ret
+	}
+	return *o.ThemedUrls.Get()
+}
+
+// GetThemedUrlsOk returns a tuple with the ThemedUrls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *FileList) GetThemedUrlsOk() (*ThemedUrls, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ThemedUrls.Get(), o.ThemedUrls.IsSet()
+}
+
+// HasThemedUrls returns a boolean if a field has been set.
+func (o *FileList) HasThemedUrls() bool {
+	if o != nil && o.ThemedUrls.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetThemedUrls gets a reference to the given NullableThemedUrls and assigns it to the ThemedUrls field.
+func (o *FileList) SetThemedUrls(v ThemedUrls) {
+	o.ThemedUrls.Set(&v)
+}
+
+// SetThemedUrlsNil sets the value for ThemedUrls to be an explicit nil
+func (o *FileList) SetThemedUrlsNil() {
+	o.ThemedUrls.Set(nil)
+}
+
+// UnsetThemedUrls ensures that no value is present for ThemedUrls, not even an explicit nil
+func (o *FileList) UnsetThemedUrls() {
+	o.ThemedUrls.Unset()
+}
+
 func (o FileList) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -134,6 +178,9 @@ func (o FileList) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["mime_type"] = o.MimeType
 	toSerialize["url"] = o.Url
+	if o.ThemedUrls.IsSet() {
+		toSerialize["themed_urls"] = o.ThemedUrls.Get()
+	}
 	return toSerialize, nil
 }
 
