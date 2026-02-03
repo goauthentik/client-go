@@ -6887,6 +6887,11 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRecoveryLinkRequest"
       responses:
         "200":
           content:
@@ -6916,13 +6921,6 @@ paths:
         their account
       operationId: core_users_recovery_email_create
       parameters:
-      - explode: true
-        in: query
-        name: email_stage
-        required: true
-        schema:
-          type: string
-        style: form
       - description: A unique integer value identifying this User.
         explode: false
         in: path
@@ -6931,6 +6929,12 @@ paths:
         schema:
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRecoveryEmailRequest"
+        required: true
       responses:
         "204":
           description: Successfully sent recover email
@@ -88356,6 +88360,30 @@ components:
       - plex_token
       - source
       - user
+      type: object
+    UserRecoveryEmailRequest:
+      description: Payload to create and email a recovery link
+      example:
+        email_stage: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        token_duration: token_duration
+      properties:
+        token_duration:
+          minLength: 1
+          type: string
+        email_stage:
+          format: uuid
+          type: string
+      required:
+      - email_stage
+      type: object
+    UserRecoveryLinkRequest:
+      description: Payload to create a recovery link
+      example:
+        token_duration: token_duration
+      properties:
+        token_duration:
+          minLength: 1
+          type: string
       type: object
     UserRequest:
       description: User Serializer

@@ -4440,7 +4440,7 @@ Name | Type | Description  | Notes
 
 ## CoreUsersRecoveryCreate
 
-> Link CoreUsersRecoveryCreate(ctx, id).Execute()
+> Link CoreUsersRecoveryCreate(ctx, id).UserRecoveryLinkRequest(userRecoveryLinkRequest).Execute()
 
 
 
@@ -4460,10 +4460,11 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this User.
+	userRecoveryLinkRequest := *openapiclient.NewUserRecoveryLinkRequest() // UserRecoveryLinkRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CoreAPI.CoreUsersRecoveryCreate(context.Background(), id).Execute()
+	resp, r, err := apiClient.CoreAPI.CoreUsersRecoveryCreate(context.Background(), id).UserRecoveryLinkRequest(userRecoveryLinkRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreUsersRecoveryCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4489,6 +4490,7 @@ Other parameters are passed through a pointer to a apiCoreUsersRecoveryCreateReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **userRecoveryLinkRequest** | [**UserRecoveryLinkRequest**](UserRecoveryLinkRequest.md) |  | 
 
 ### Return type
 
@@ -4500,7 +4502,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -4510,7 +4512,7 @@ Name | Type | Description  | Notes
 
 ## CoreUsersRecoveryEmailCreate
 
-> CoreUsersRecoveryEmailCreate(ctx, id).EmailStage(emailStage).Execute()
+> CoreUsersRecoveryEmailCreate(ctx, id).UserRecoveryEmailRequest(userRecoveryEmailRequest).Execute()
 
 
 
@@ -4529,12 +4531,12 @@ import (
 )
 
 func main() {
-	emailStage := "emailStage_example" // string | 
 	id := int32(56) // int32 | A unique integer value identifying this User.
+	userRecoveryEmailRequest := *openapiclient.NewUserRecoveryEmailRequest("EmailStage_example") // UserRecoveryEmailRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.CoreAPI.CoreUsersRecoveryEmailCreate(context.Background(), id).EmailStage(emailStage).Execute()
+	r, err := apiClient.CoreAPI.CoreUsersRecoveryEmailCreate(context.Background(), id).UserRecoveryEmailRequest(userRecoveryEmailRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CoreAPI.CoreUsersRecoveryEmailCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4557,8 +4559,8 @@ Other parameters are passed through a pointer to a apiCoreUsersRecoveryEmailCrea
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailStage** | **string** |  | 
 
+ **userRecoveryEmailRequest** | [**UserRecoveryEmailRequest**](UserRecoveryEmailRequest.md) |  | 
 
 ### Return type
 
@@ -4570,7 +4572,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

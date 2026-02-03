@@ -1959,6 +1959,8 @@ Class | Method | HTTP request | Description
  - [UserPath](docs/UserPath.md)
  - [UserPlexSourceConnection](docs/UserPlexSourceConnection.md)
  - [UserPlexSourceConnectionRequest](docs/UserPlexSourceConnectionRequest.md)
+ - [UserRecoveryEmailRequest](docs/UserRecoveryEmailRequest.md)
+ - [UserRecoveryLinkRequest](docs/UserRecoveryLinkRequest.md)
  - [UserRequest](docs/UserRequest.md)
  - [UserSAMLSourceConnection](docs/UserSAMLSourceConnection.md)
  - [UserSAMLSourceConnectionRequest](docs/UserSAMLSourceConnectionRequest.md)

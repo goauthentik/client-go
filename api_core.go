@@ -8950,9 +8950,15 @@ func (a *CoreAPIService) CoreUsersPathsRetrieveExecute(r ApiCoreUsersPathsRetrie
 }
 
 type ApiCoreUsersRecoveryCreateRequest struct {
-	ctx        context.Context
-	ApiService *CoreAPIService
-	id         int32
+	ctx                     context.Context
+	ApiService              *CoreAPIService
+	id                      int32
+	userRecoveryLinkRequest *UserRecoveryLinkRequest
+}
+
+func (r ApiCoreUsersRecoveryCreateRequest) UserRecoveryLinkRequest(userRecoveryLinkRequest UserRecoveryLinkRequest) ApiCoreUsersRecoveryCreateRequest {
+	r.userRecoveryLinkRequest = &userRecoveryLinkRequest
+	return r
 }
 
 func (r ApiCoreUsersRecoveryCreateRequest) Execute() (*Link, *http.Response, error) {
@@ -9000,7 +9006,7 @@ func (a *CoreAPIService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCr
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -9016,6 +9022,8 @@ func (a *CoreAPIService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.userRecoveryLinkRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -9075,14 +9083,14 @@ func (a *CoreAPIService) CoreUsersRecoveryCreateExecute(r ApiCoreUsersRecoveryCr
 }
 
 type ApiCoreUsersRecoveryEmailCreateRequest struct {
-	ctx        context.Context
-	ApiService *CoreAPIService
-	emailStage *string
-	id         int32
+	ctx                      context.Context
+	ApiService               *CoreAPIService
+	id                       int32
+	userRecoveryEmailRequest *UserRecoveryEmailRequest
 }
 
-func (r ApiCoreUsersRecoveryEmailCreateRequest) EmailStage(emailStage string) ApiCoreUsersRecoveryEmailCreateRequest {
-	r.emailStage = &emailStage
+func (r ApiCoreUsersRecoveryEmailCreateRequest) UserRecoveryEmailRequest(userRecoveryEmailRequest UserRecoveryEmailRequest) ApiCoreUsersRecoveryEmailCreateRequest {
+	r.userRecoveryEmailRequest = &userRecoveryEmailRequest
 	return r
 }
 
@@ -9126,13 +9134,12 @@ func (a *CoreAPIService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecov
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.emailStage == nil {
-		return nil, reportError("emailStage is required and must be specified")
+	if r.userRecoveryEmailRequest == nil {
+		return nil, reportError("userRecoveryEmailRequest is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "email_stage", r.emailStage, "form", "")
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -9148,6 +9155,8 @@ func (a *CoreAPIService) CoreUsersRecoveryEmailCreateExecute(r ApiCoreUsersRecov
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.userRecoveryEmailRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
