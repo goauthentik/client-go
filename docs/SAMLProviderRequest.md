@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **SignLogoutRequest** | Pointer to **bool** |  | [optional] 
 **SpBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
 **SlsBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the logout response back to the Service Provider. | [optional] 
-**LogoutMethod** | Pointer to [**SAMLProviderLogoutMethodEnum**](SAMLProviderLogoutMethodEnum.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] 
+**LogoutMethod** | Pointer to [**SAMLLogoutMethods**](SAMLLogoutMethods.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] 
 **DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
 **DefaultNameIdPolicy** | Pointer to [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] 
 
@@ -693,20 +693,20 @@ HasSlsBinding returns a boolean if a field has been set.
 
 ### GetLogoutMethod
 
-`func (o *SAMLProviderRequest) GetLogoutMethod() SAMLProviderLogoutMethodEnum`
+`func (o *SAMLProviderRequest) GetLogoutMethod() SAMLLogoutMethods`
 
 GetLogoutMethod returns the LogoutMethod field if non-nil, zero value otherwise.
 
 ### GetLogoutMethodOk
 
-`func (o *SAMLProviderRequest) GetLogoutMethodOk() (*SAMLProviderLogoutMethodEnum, bool)`
+`func (o *SAMLProviderRequest) GetLogoutMethodOk() (*SAMLLogoutMethods, bool)`
 
 GetLogoutMethodOk returns a tuple with the LogoutMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogoutMethod
 
-`func (o *SAMLProviderRequest) SetLogoutMethod(v SAMLProviderLogoutMethodEnum)`
+`func (o *SAMLProviderRequest) SetLogoutMethod(v SAMLLogoutMethods)`
 
 SetLogoutMethod sets LogoutMethod field to given value.
 

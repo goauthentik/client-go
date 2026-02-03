@@ -33,13 +33,13 @@ type ProxyProvider struct {
 	// Get object component so that we know how to edit the object
 	Component string `json:"component"`
 	// Internal application name, used in URLs.
-	AssignedApplicationSlug string `json:"assigned_application_slug"`
+	AssignedApplicationSlug NullableString `json:"assigned_application_slug"`
 	// Application's display Name.
-	AssignedApplicationName string `json:"assigned_application_name"`
+	AssignedApplicationName NullableString `json:"assigned_application_name"`
 	// Internal application name, used in URLs.
-	AssignedBackchannelApplicationSlug string `json:"assigned_backchannel_application_slug"`
+	AssignedBackchannelApplicationSlug NullableString `json:"assigned_backchannel_application_slug"`
 	// Application's display Name.
-	AssignedBackchannelApplicationName string `json:"assigned_backchannel_application_name"`
+	AssignedBackchannelApplicationName NullableString `json:"assigned_backchannel_application_name"`
 	// Return object's verbose_name
 	VerboseName string `json:"verbose_name"`
 	// Return object's plural verbose_name
@@ -82,7 +82,7 @@ type _ProxyProvider ProxyProvider
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxyProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris []RedirectURI, outpostSet []string) *ProxyProvider {
+func NewProxyProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, clientId string, externalHost string, redirectUris []RedirectURI, outpostSet []string) *ProxyProvider {
 	this := ProxyProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -307,99 +307,107 @@ func (o *ProxyProvider) SetComponent(v string) {
 }
 
 // GetAssignedApplicationSlug returns the AssignedApplicationSlug field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProxyProvider) GetAssignedApplicationSlug() string {
-	if o == nil {
+	if o == nil || o.AssignedApplicationSlug.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedApplicationSlug
+	return *o.AssignedApplicationSlug.Get()
 }
 
 // GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyProvider) GetAssignedApplicationSlugOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedApplicationSlug, true
+	return o.AssignedApplicationSlug.Get(), o.AssignedApplicationSlug.IsSet()
 }
 
 // SetAssignedApplicationSlug sets field value
 func (o *ProxyProvider) SetAssignedApplicationSlug(v string) {
-	o.AssignedApplicationSlug = v
+	o.AssignedApplicationSlug.Set(&v)
 }
 
 // GetAssignedApplicationName returns the AssignedApplicationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProxyProvider) GetAssignedApplicationName() string {
-	if o == nil {
+	if o == nil || o.AssignedApplicationName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedApplicationName
+	return *o.AssignedApplicationName.Get()
 }
 
 // GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyProvider) GetAssignedApplicationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedApplicationName, true
+	return o.AssignedApplicationName.Get(), o.AssignedApplicationName.IsSet()
 }
 
 // SetAssignedApplicationName sets field value
 func (o *ProxyProvider) SetAssignedApplicationName(v string) {
-	o.AssignedApplicationName = v
+	o.AssignedApplicationName.Set(&v)
 }
 
 // GetAssignedBackchannelApplicationSlug returns the AssignedBackchannelApplicationSlug field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProxyProvider) GetAssignedBackchannelApplicationSlug() string {
-	if o == nil {
+	if o == nil || o.AssignedBackchannelApplicationSlug.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedBackchannelApplicationSlug
+	return *o.AssignedBackchannelApplicationSlug.Get()
 }
 
 // GetAssignedBackchannelApplicationSlugOk returns a tuple with the AssignedBackchannelApplicationSlug field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyProvider) GetAssignedBackchannelApplicationSlugOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedBackchannelApplicationSlug, true
+	return o.AssignedBackchannelApplicationSlug.Get(), o.AssignedBackchannelApplicationSlug.IsSet()
 }
 
 // SetAssignedBackchannelApplicationSlug sets field value
 func (o *ProxyProvider) SetAssignedBackchannelApplicationSlug(v string) {
-	o.AssignedBackchannelApplicationSlug = v
+	o.AssignedBackchannelApplicationSlug.Set(&v)
 }
 
 // GetAssignedBackchannelApplicationName returns the AssignedBackchannelApplicationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProxyProvider) GetAssignedBackchannelApplicationName() string {
-	if o == nil {
+	if o == nil || o.AssignedBackchannelApplicationName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedBackchannelApplicationName
+	return *o.AssignedBackchannelApplicationName.Get()
 }
 
 // GetAssignedBackchannelApplicationNameOk returns a tuple with the AssignedBackchannelApplicationName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxyProvider) GetAssignedBackchannelApplicationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedBackchannelApplicationName, true
+	return o.AssignedBackchannelApplicationName.Get(), o.AssignedBackchannelApplicationName.IsSet()
 }
 
 // SetAssignedBackchannelApplicationName sets field value
 func (o *ProxyProvider) SetAssignedBackchannelApplicationName(v string) {
-	o.AssignedBackchannelApplicationName = v
+	o.AssignedBackchannelApplicationName.Set(&v)
 }
 
 // GetVerboseName returns the VerboseName field value
@@ -1050,10 +1058,10 @@ func (o ProxyProvider) ToMap() (map[string]interface{}, error) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
 	toSerialize["component"] = o.Component
-	toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug
-	toSerialize["assigned_application_name"] = o.AssignedApplicationName
-	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
-	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
+	toSerialize["assigned_application_slug"] = o.AssignedApplicationSlug.Get()
+	toSerialize["assigned_application_name"] = o.AssignedApplicationName.Get()
+	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug.Get()
+	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName.Get()
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName

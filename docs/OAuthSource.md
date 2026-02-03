@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | Pointer to **string** |  | [optional] 
 **IconUrl** | **NullableString** |  | [readonly] 
+**IconThemedUrls** | [**NullableThemedUrls**](ThemedUrls.md) |  | [readonly] 
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ProviderType** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  | 
 **RequestTokenUrl** | Pointer to **NullableString** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] 
@@ -43,7 +44,7 @@ Name | Type | Description | Notes
 
 ### NewOAuthSource
 
-`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType, ) *OAuthSource`
+`func NewOAuthSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, iconThemedUrls NullableThemedUrls, providerType ProviderTypeEnum, consumerKey string, callbackUrl string, type_ SourceType, ) *OAuthSource`
 
 NewOAuthSource instantiates a new OAuthSource object
 This constructor will assign default values to properties that have it defined,
@@ -528,6 +529,36 @@ SetIconUrl sets IconUrl field to given value.
 `func (o *OAuthSource) UnsetIconUrl()`
 
 UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
+### GetIconThemedUrls
+
+`func (o *OAuthSource) GetIconThemedUrls() ThemedUrls`
+
+GetIconThemedUrls returns the IconThemedUrls field if non-nil, zero value otherwise.
+
+### GetIconThemedUrlsOk
+
+`func (o *OAuthSource) GetIconThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetIconThemedUrlsOk returns a tuple with the IconThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconThemedUrls
+
+`func (o *OAuthSource) SetIconThemedUrls(v ThemedUrls)`
+
+SetIconThemedUrls sets IconThemedUrls field to given value.
+
+
+### SetIconThemedUrlsNil
+
+`func (o *OAuthSource) SetIconThemedUrlsNil(b bool)`
+
+ SetIconThemedUrlsNil sets the value for IconThemedUrls to be an explicit nil
+
+### UnsetIconThemedUrls
+`func (o *OAuthSource) UnsetIconThemedUrls()`
+
+UnsetIconThemedUrls ensures that no value is present for IconThemedUrls, not even an explicit nil
 ### GetGroupMatchingMode
 
 `func (o *OAuthSource) GetGroupMatchingMode() GroupMatchingModeEnum`

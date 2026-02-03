@@ -1,4 +1,4 @@
-# SAMLProvider
+# WSFederationProvider
 
 ## Properties
 
@@ -18,10 +18,7 @@ Name | Type | Description | Notes
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
-**AcsUrl** | **string** |  | 
-**SlsUrl** | Pointer to **string** | Single Logout Service URL where the logout response should be sent. | [optional] 
-**Audience** | Pointer to **string** | Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added. | [optional] 
-**Issuer** | Pointer to **string** | Also known as EntityID | [optional] 
+**ReplyUrl** | **string** |  | 
 **AssertionValidNotBefore** | Pointer to **string** | Assertion valid not before current time + this value (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3). | [optional] 
 **AssertionValidNotOnOrAfter** | Pointer to **string** | Assertion not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **SessionValidNotOnOrAfter** | Pointer to **string** | Session not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -30,1095 +27,791 @@ Name | Type | Description | Notes
 **DigestAlgorithm** | Pointer to [**DigestAlgorithmEnum**](DigestAlgorithmEnum.md) |  | [optional] 
 **SignatureAlgorithm** | Pointer to [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] 
 **SigningKp** | Pointer to **NullableString** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] 
-**VerificationKp** | Pointer to **NullableString** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] 
 **EncryptionKp** | Pointer to **NullableString** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] 
 **SignAssertion** | Pointer to **bool** |  | [optional] 
-**SignResponse** | Pointer to **bool** |  | [optional] 
 **SignLogoutRequest** | Pointer to **bool** |  | [optional] 
-**SpBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
-**SlsBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the logout response back to the Service Provider. | [optional] 
-**LogoutMethod** | Pointer to [**SAMLLogoutMethods**](SAMLLogoutMethods.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] 
-**DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
 **DefaultNameIdPolicy** | Pointer to [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] 
 **UrlDownloadMetadata** | **string** | Get metadata download URL | [readonly] 
-**UrlSsoPost** | **string** | Get SSO Post URL | [readonly] 
-**UrlSsoRedirect** | **string** | Get SSO Redirect URL | [readonly] 
-**UrlSsoInit** | **string** | Get SSO IDP-Initiated URL | [readonly] 
-**UrlSloPost** | **string** | Get SLO POST URL | [readonly] 
-**UrlSloRedirect** | **string** | Get SLO redirect URL | [readonly] 
+**UrlWsfed** | **string** | Get WS-Fed url | [readonly] 
+**Wtrealm** | **string** |  | [readonly] 
 
 ## Methods
 
-### NewSAMLProvider
+### NewWSFederationProvider
 
-`func NewSAMLProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, acsUrl string, urlDownloadMetadata string, urlSsoPost string, urlSsoRedirect string, urlSsoInit string, urlSloPost string, urlSloRedirect string, ) *SAMLProvider`
+`func NewWSFederationProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, replyUrl string, urlDownloadMetadata string, urlWsfed string, wtrealm string, ) *WSFederationProvider`
 
-NewSAMLProvider instantiates a new SAMLProvider object
+NewWSFederationProvider instantiates a new WSFederationProvider object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSAMLProviderWithDefaults
+### NewWSFederationProviderWithDefaults
 
-`func NewSAMLProviderWithDefaults() *SAMLProvider`
+`func NewWSFederationProviderWithDefaults() *WSFederationProvider`
 
-NewSAMLProviderWithDefaults instantiates a new SAMLProvider object
+NewWSFederationProviderWithDefaults instantiates a new WSFederationProvider object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPk
 
-`func (o *SAMLProvider) GetPk() int32`
+`func (o *WSFederationProvider) GetPk() int32`
 
 GetPk returns the Pk field if non-nil, zero value otherwise.
 
 ### GetPkOk
 
-`func (o *SAMLProvider) GetPkOk() (*int32, bool)`
+`func (o *WSFederationProvider) GetPkOk() (*int32, bool)`
 
 GetPkOk returns a tuple with the Pk field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPk
 
-`func (o *SAMLProvider) SetPk(v int32)`
+`func (o *WSFederationProvider) SetPk(v int32)`
 
 SetPk sets Pk field to given value.
 
 
 ### GetName
 
-`func (o *SAMLProvider) GetName() string`
+`func (o *WSFederationProvider) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *SAMLProvider) GetNameOk() (*string, bool)`
+`func (o *WSFederationProvider) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *SAMLProvider) SetName(v string)`
+`func (o *WSFederationProvider) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetAuthenticationFlow
 
-`func (o *SAMLProvider) GetAuthenticationFlow() string`
+`func (o *WSFederationProvider) GetAuthenticationFlow() string`
 
 GetAuthenticationFlow returns the AuthenticationFlow field if non-nil, zero value otherwise.
 
 ### GetAuthenticationFlowOk
 
-`func (o *SAMLProvider) GetAuthenticationFlowOk() (*string, bool)`
+`func (o *WSFederationProvider) GetAuthenticationFlowOk() (*string, bool)`
 
 GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthenticationFlow
 
-`func (o *SAMLProvider) SetAuthenticationFlow(v string)`
+`func (o *WSFederationProvider) SetAuthenticationFlow(v string)`
 
 SetAuthenticationFlow sets AuthenticationFlow field to given value.
 
 ### HasAuthenticationFlow
 
-`func (o *SAMLProvider) HasAuthenticationFlow() bool`
+`func (o *WSFederationProvider) HasAuthenticationFlow() bool`
 
 HasAuthenticationFlow returns a boolean if a field has been set.
 
 ### SetAuthenticationFlowNil
 
-`func (o *SAMLProvider) SetAuthenticationFlowNil(b bool)`
+`func (o *WSFederationProvider) SetAuthenticationFlowNil(b bool)`
 
  SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
 
 ### UnsetAuthenticationFlow
-`func (o *SAMLProvider) UnsetAuthenticationFlow()`
+`func (o *WSFederationProvider) UnsetAuthenticationFlow()`
 
 UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
 ### GetAuthorizationFlow
 
-`func (o *SAMLProvider) GetAuthorizationFlow() string`
+`func (o *WSFederationProvider) GetAuthorizationFlow() string`
 
 GetAuthorizationFlow returns the AuthorizationFlow field if non-nil, zero value otherwise.
 
 ### GetAuthorizationFlowOk
 
-`func (o *SAMLProvider) GetAuthorizationFlowOk() (*string, bool)`
+`func (o *WSFederationProvider) GetAuthorizationFlowOk() (*string, bool)`
 
 GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationFlow
 
-`func (o *SAMLProvider) SetAuthorizationFlow(v string)`
+`func (o *WSFederationProvider) SetAuthorizationFlow(v string)`
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
 
 ### GetInvalidationFlow
 
-`func (o *SAMLProvider) GetInvalidationFlow() string`
+`func (o *WSFederationProvider) GetInvalidationFlow() string`
 
 GetInvalidationFlow returns the InvalidationFlow field if non-nil, zero value otherwise.
 
 ### GetInvalidationFlowOk
 
-`func (o *SAMLProvider) GetInvalidationFlowOk() (*string, bool)`
+`func (o *WSFederationProvider) GetInvalidationFlowOk() (*string, bool)`
 
 GetInvalidationFlowOk returns a tuple with the InvalidationFlow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInvalidationFlow
 
-`func (o *SAMLProvider) SetInvalidationFlow(v string)`
+`func (o *WSFederationProvider) SetInvalidationFlow(v string)`
 
 SetInvalidationFlow sets InvalidationFlow field to given value.
 
 
 ### GetPropertyMappings
 
-`func (o *SAMLProvider) GetPropertyMappings() []string`
+`func (o *WSFederationProvider) GetPropertyMappings() []string`
 
 GetPropertyMappings returns the PropertyMappings field if non-nil, zero value otherwise.
 
 ### GetPropertyMappingsOk
 
-`func (o *SAMLProvider) GetPropertyMappingsOk() (*[]string, bool)`
+`func (o *WSFederationProvider) GetPropertyMappingsOk() (*[]string, bool)`
 
 GetPropertyMappingsOk returns a tuple with the PropertyMappings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPropertyMappings
 
-`func (o *SAMLProvider) SetPropertyMappings(v []string)`
+`func (o *WSFederationProvider) SetPropertyMappings(v []string)`
 
 SetPropertyMappings sets PropertyMappings field to given value.
 
 ### HasPropertyMappings
 
-`func (o *SAMLProvider) HasPropertyMappings() bool`
+`func (o *WSFederationProvider) HasPropertyMappings() bool`
 
 HasPropertyMappings returns a boolean if a field has been set.
 
 ### GetComponent
 
-`func (o *SAMLProvider) GetComponent() string`
+`func (o *WSFederationProvider) GetComponent() string`
 
 GetComponent returns the Component field if non-nil, zero value otherwise.
 
 ### GetComponentOk
 
-`func (o *SAMLProvider) GetComponentOk() (*string, bool)`
+`func (o *WSFederationProvider) GetComponentOk() (*string, bool)`
 
 GetComponentOk returns a tuple with the Component field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComponent
 
-`func (o *SAMLProvider) SetComponent(v string)`
+`func (o *WSFederationProvider) SetComponent(v string)`
 
 SetComponent sets Component field to given value.
 
 
 ### GetAssignedApplicationSlug
 
-`func (o *SAMLProvider) GetAssignedApplicationSlug() string`
+`func (o *WSFederationProvider) GetAssignedApplicationSlug() string`
 
 GetAssignedApplicationSlug returns the AssignedApplicationSlug field if non-nil, zero value otherwise.
 
 ### GetAssignedApplicationSlugOk
 
-`func (o *SAMLProvider) GetAssignedApplicationSlugOk() (*string, bool)`
+`func (o *WSFederationProvider) GetAssignedApplicationSlugOk() (*string, bool)`
 
 GetAssignedApplicationSlugOk returns a tuple with the AssignedApplicationSlug field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedApplicationSlug
 
-`func (o *SAMLProvider) SetAssignedApplicationSlug(v string)`
+`func (o *WSFederationProvider) SetAssignedApplicationSlug(v string)`
 
 SetAssignedApplicationSlug sets AssignedApplicationSlug field to given value.
 
 
 ### SetAssignedApplicationSlugNil
 
-`func (o *SAMLProvider) SetAssignedApplicationSlugNil(b bool)`
+`func (o *WSFederationProvider) SetAssignedApplicationSlugNil(b bool)`
 
  SetAssignedApplicationSlugNil sets the value for AssignedApplicationSlug to be an explicit nil
 
 ### UnsetAssignedApplicationSlug
-`func (o *SAMLProvider) UnsetAssignedApplicationSlug()`
+`func (o *WSFederationProvider) UnsetAssignedApplicationSlug()`
 
 UnsetAssignedApplicationSlug ensures that no value is present for AssignedApplicationSlug, not even an explicit nil
 ### GetAssignedApplicationName
 
-`func (o *SAMLProvider) GetAssignedApplicationName() string`
+`func (o *WSFederationProvider) GetAssignedApplicationName() string`
 
 GetAssignedApplicationName returns the AssignedApplicationName field if non-nil, zero value otherwise.
 
 ### GetAssignedApplicationNameOk
 
-`func (o *SAMLProvider) GetAssignedApplicationNameOk() (*string, bool)`
+`func (o *WSFederationProvider) GetAssignedApplicationNameOk() (*string, bool)`
 
 GetAssignedApplicationNameOk returns a tuple with the AssignedApplicationName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedApplicationName
 
-`func (o *SAMLProvider) SetAssignedApplicationName(v string)`
+`func (o *WSFederationProvider) SetAssignedApplicationName(v string)`
 
 SetAssignedApplicationName sets AssignedApplicationName field to given value.
 
 
 ### SetAssignedApplicationNameNil
 
-`func (o *SAMLProvider) SetAssignedApplicationNameNil(b bool)`
+`func (o *WSFederationProvider) SetAssignedApplicationNameNil(b bool)`
 
  SetAssignedApplicationNameNil sets the value for AssignedApplicationName to be an explicit nil
 
 ### UnsetAssignedApplicationName
-`func (o *SAMLProvider) UnsetAssignedApplicationName()`
+`func (o *WSFederationProvider) UnsetAssignedApplicationName()`
 
 UnsetAssignedApplicationName ensures that no value is present for AssignedApplicationName, not even an explicit nil
 ### GetAssignedBackchannelApplicationSlug
 
-`func (o *SAMLProvider) GetAssignedBackchannelApplicationSlug() string`
+`func (o *WSFederationProvider) GetAssignedBackchannelApplicationSlug() string`
 
 GetAssignedBackchannelApplicationSlug returns the AssignedBackchannelApplicationSlug field if non-nil, zero value otherwise.
 
 ### GetAssignedBackchannelApplicationSlugOk
 
-`func (o *SAMLProvider) GetAssignedBackchannelApplicationSlugOk() (*string, bool)`
+`func (o *WSFederationProvider) GetAssignedBackchannelApplicationSlugOk() (*string, bool)`
 
 GetAssignedBackchannelApplicationSlugOk returns a tuple with the AssignedBackchannelApplicationSlug field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedBackchannelApplicationSlug
 
-`func (o *SAMLProvider) SetAssignedBackchannelApplicationSlug(v string)`
+`func (o *WSFederationProvider) SetAssignedBackchannelApplicationSlug(v string)`
 
 SetAssignedBackchannelApplicationSlug sets AssignedBackchannelApplicationSlug field to given value.
 
 
 ### SetAssignedBackchannelApplicationSlugNil
 
-`func (o *SAMLProvider) SetAssignedBackchannelApplicationSlugNil(b bool)`
+`func (o *WSFederationProvider) SetAssignedBackchannelApplicationSlugNil(b bool)`
 
  SetAssignedBackchannelApplicationSlugNil sets the value for AssignedBackchannelApplicationSlug to be an explicit nil
 
 ### UnsetAssignedBackchannelApplicationSlug
-`func (o *SAMLProvider) UnsetAssignedBackchannelApplicationSlug()`
+`func (o *WSFederationProvider) UnsetAssignedBackchannelApplicationSlug()`
 
 UnsetAssignedBackchannelApplicationSlug ensures that no value is present for AssignedBackchannelApplicationSlug, not even an explicit nil
 ### GetAssignedBackchannelApplicationName
 
-`func (o *SAMLProvider) GetAssignedBackchannelApplicationName() string`
+`func (o *WSFederationProvider) GetAssignedBackchannelApplicationName() string`
 
 GetAssignedBackchannelApplicationName returns the AssignedBackchannelApplicationName field if non-nil, zero value otherwise.
 
 ### GetAssignedBackchannelApplicationNameOk
 
-`func (o *SAMLProvider) GetAssignedBackchannelApplicationNameOk() (*string, bool)`
+`func (o *WSFederationProvider) GetAssignedBackchannelApplicationNameOk() (*string, bool)`
 
 GetAssignedBackchannelApplicationNameOk returns a tuple with the AssignedBackchannelApplicationName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedBackchannelApplicationName
 
-`func (o *SAMLProvider) SetAssignedBackchannelApplicationName(v string)`
+`func (o *WSFederationProvider) SetAssignedBackchannelApplicationName(v string)`
 
 SetAssignedBackchannelApplicationName sets AssignedBackchannelApplicationName field to given value.
 
 
 ### SetAssignedBackchannelApplicationNameNil
 
-`func (o *SAMLProvider) SetAssignedBackchannelApplicationNameNil(b bool)`
+`func (o *WSFederationProvider) SetAssignedBackchannelApplicationNameNil(b bool)`
 
  SetAssignedBackchannelApplicationNameNil sets the value for AssignedBackchannelApplicationName to be an explicit nil
 
 ### UnsetAssignedBackchannelApplicationName
-`func (o *SAMLProvider) UnsetAssignedBackchannelApplicationName()`
+`func (o *WSFederationProvider) UnsetAssignedBackchannelApplicationName()`
 
 UnsetAssignedBackchannelApplicationName ensures that no value is present for AssignedBackchannelApplicationName, not even an explicit nil
 ### GetVerboseName
 
-`func (o *SAMLProvider) GetVerboseName() string`
+`func (o *WSFederationProvider) GetVerboseName() string`
 
 GetVerboseName returns the VerboseName field if non-nil, zero value otherwise.
 
 ### GetVerboseNameOk
 
-`func (o *SAMLProvider) GetVerboseNameOk() (*string, bool)`
+`func (o *WSFederationProvider) GetVerboseNameOk() (*string, bool)`
 
 GetVerboseNameOk returns a tuple with the VerboseName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVerboseName
 
-`func (o *SAMLProvider) SetVerboseName(v string)`
+`func (o *WSFederationProvider) SetVerboseName(v string)`
 
 SetVerboseName sets VerboseName field to given value.
 
 
 ### GetVerboseNamePlural
 
-`func (o *SAMLProvider) GetVerboseNamePlural() string`
+`func (o *WSFederationProvider) GetVerboseNamePlural() string`
 
 GetVerboseNamePlural returns the VerboseNamePlural field if non-nil, zero value otherwise.
 
 ### GetVerboseNamePluralOk
 
-`func (o *SAMLProvider) GetVerboseNamePluralOk() (*string, bool)`
+`func (o *WSFederationProvider) GetVerboseNamePluralOk() (*string, bool)`
 
 GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVerboseNamePlural
 
-`func (o *SAMLProvider) SetVerboseNamePlural(v string)`
+`func (o *WSFederationProvider) SetVerboseNamePlural(v string)`
 
 SetVerboseNamePlural sets VerboseNamePlural field to given value.
 
 
 ### GetMetaModelName
 
-`func (o *SAMLProvider) GetMetaModelName() string`
+`func (o *WSFederationProvider) GetMetaModelName() string`
 
 GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
 
 ### GetMetaModelNameOk
 
-`func (o *SAMLProvider) GetMetaModelNameOk() (*string, bool)`
+`func (o *WSFederationProvider) GetMetaModelNameOk() (*string, bool)`
 
 GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetaModelName
 
-`func (o *SAMLProvider) SetMetaModelName(v string)`
+`func (o *WSFederationProvider) SetMetaModelName(v string)`
 
 SetMetaModelName sets MetaModelName field to given value.
 
 
-### GetAcsUrl
+### GetReplyUrl
 
-`func (o *SAMLProvider) GetAcsUrl() string`
+`func (o *WSFederationProvider) GetReplyUrl() string`
 
-GetAcsUrl returns the AcsUrl field if non-nil, zero value otherwise.
+GetReplyUrl returns the ReplyUrl field if non-nil, zero value otherwise.
 
-### GetAcsUrlOk
+### GetReplyUrlOk
 
-`func (o *SAMLProvider) GetAcsUrlOk() (*string, bool)`
+`func (o *WSFederationProvider) GetReplyUrlOk() (*string, bool)`
 
-GetAcsUrlOk returns a tuple with the AcsUrl field if it's non-nil, zero value otherwise
+GetReplyUrlOk returns a tuple with the ReplyUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAcsUrl
+### SetReplyUrl
 
-`func (o *SAMLProvider) SetAcsUrl(v string)`
+`func (o *WSFederationProvider) SetReplyUrl(v string)`
 
-SetAcsUrl sets AcsUrl field to given value.
+SetReplyUrl sets ReplyUrl field to given value.
 
-
-### GetSlsUrl
-
-`func (o *SAMLProvider) GetSlsUrl() string`
-
-GetSlsUrl returns the SlsUrl field if non-nil, zero value otherwise.
-
-### GetSlsUrlOk
-
-`func (o *SAMLProvider) GetSlsUrlOk() (*string, bool)`
-
-GetSlsUrlOk returns a tuple with the SlsUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlsUrl
-
-`func (o *SAMLProvider) SetSlsUrl(v string)`
-
-SetSlsUrl sets SlsUrl field to given value.
-
-### HasSlsUrl
-
-`func (o *SAMLProvider) HasSlsUrl() bool`
-
-HasSlsUrl returns a boolean if a field has been set.
-
-### GetAudience
-
-`func (o *SAMLProvider) GetAudience() string`
-
-GetAudience returns the Audience field if non-nil, zero value otherwise.
-
-### GetAudienceOk
-
-`func (o *SAMLProvider) GetAudienceOk() (*string, bool)`
-
-GetAudienceOk returns a tuple with the Audience field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAudience
-
-`func (o *SAMLProvider) SetAudience(v string)`
-
-SetAudience sets Audience field to given value.
-
-### HasAudience
-
-`func (o *SAMLProvider) HasAudience() bool`
-
-HasAudience returns a boolean if a field has been set.
-
-### GetIssuer
-
-`func (o *SAMLProvider) GetIssuer() string`
-
-GetIssuer returns the Issuer field if non-nil, zero value otherwise.
-
-### GetIssuerOk
-
-`func (o *SAMLProvider) GetIssuerOk() (*string, bool)`
-
-GetIssuerOk returns a tuple with the Issuer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIssuer
-
-`func (o *SAMLProvider) SetIssuer(v string)`
-
-SetIssuer sets Issuer field to given value.
-
-### HasIssuer
-
-`func (o *SAMLProvider) HasIssuer() bool`
-
-HasIssuer returns a boolean if a field has been set.
 
 ### GetAssertionValidNotBefore
 
-`func (o *SAMLProvider) GetAssertionValidNotBefore() string`
+`func (o *WSFederationProvider) GetAssertionValidNotBefore() string`
 
 GetAssertionValidNotBefore returns the AssertionValidNotBefore field if non-nil, zero value otherwise.
 
 ### GetAssertionValidNotBeforeOk
 
-`func (o *SAMLProvider) GetAssertionValidNotBeforeOk() (*string, bool)`
+`func (o *WSFederationProvider) GetAssertionValidNotBeforeOk() (*string, bool)`
 
 GetAssertionValidNotBeforeOk returns a tuple with the AssertionValidNotBefore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssertionValidNotBefore
 
-`func (o *SAMLProvider) SetAssertionValidNotBefore(v string)`
+`func (o *WSFederationProvider) SetAssertionValidNotBefore(v string)`
 
 SetAssertionValidNotBefore sets AssertionValidNotBefore field to given value.
 
 ### HasAssertionValidNotBefore
 
-`func (o *SAMLProvider) HasAssertionValidNotBefore() bool`
+`func (o *WSFederationProvider) HasAssertionValidNotBefore() bool`
 
 HasAssertionValidNotBefore returns a boolean if a field has been set.
 
 ### GetAssertionValidNotOnOrAfter
 
-`func (o *SAMLProvider) GetAssertionValidNotOnOrAfter() string`
+`func (o *WSFederationProvider) GetAssertionValidNotOnOrAfter() string`
 
 GetAssertionValidNotOnOrAfter returns the AssertionValidNotOnOrAfter field if non-nil, zero value otherwise.
 
 ### GetAssertionValidNotOnOrAfterOk
 
-`func (o *SAMLProvider) GetAssertionValidNotOnOrAfterOk() (*string, bool)`
+`func (o *WSFederationProvider) GetAssertionValidNotOnOrAfterOk() (*string, bool)`
 
 GetAssertionValidNotOnOrAfterOk returns a tuple with the AssertionValidNotOnOrAfter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssertionValidNotOnOrAfter
 
-`func (o *SAMLProvider) SetAssertionValidNotOnOrAfter(v string)`
+`func (o *WSFederationProvider) SetAssertionValidNotOnOrAfter(v string)`
 
 SetAssertionValidNotOnOrAfter sets AssertionValidNotOnOrAfter field to given value.
 
 ### HasAssertionValidNotOnOrAfter
 
-`func (o *SAMLProvider) HasAssertionValidNotOnOrAfter() bool`
+`func (o *WSFederationProvider) HasAssertionValidNotOnOrAfter() bool`
 
 HasAssertionValidNotOnOrAfter returns a boolean if a field has been set.
 
 ### GetSessionValidNotOnOrAfter
 
-`func (o *SAMLProvider) GetSessionValidNotOnOrAfter() string`
+`func (o *WSFederationProvider) GetSessionValidNotOnOrAfter() string`
 
 GetSessionValidNotOnOrAfter returns the SessionValidNotOnOrAfter field if non-nil, zero value otherwise.
 
 ### GetSessionValidNotOnOrAfterOk
 
-`func (o *SAMLProvider) GetSessionValidNotOnOrAfterOk() (*string, bool)`
+`func (o *WSFederationProvider) GetSessionValidNotOnOrAfterOk() (*string, bool)`
 
 GetSessionValidNotOnOrAfterOk returns a tuple with the SessionValidNotOnOrAfter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSessionValidNotOnOrAfter
 
-`func (o *SAMLProvider) SetSessionValidNotOnOrAfter(v string)`
+`func (o *WSFederationProvider) SetSessionValidNotOnOrAfter(v string)`
 
 SetSessionValidNotOnOrAfter sets SessionValidNotOnOrAfter field to given value.
 
 ### HasSessionValidNotOnOrAfter
 
-`func (o *SAMLProvider) HasSessionValidNotOnOrAfter() bool`
+`func (o *WSFederationProvider) HasSessionValidNotOnOrAfter() bool`
 
 HasSessionValidNotOnOrAfter returns a boolean if a field has been set.
 
 ### GetNameIdMapping
 
-`func (o *SAMLProvider) GetNameIdMapping() string`
+`func (o *WSFederationProvider) GetNameIdMapping() string`
 
 GetNameIdMapping returns the NameIdMapping field if non-nil, zero value otherwise.
 
 ### GetNameIdMappingOk
 
-`func (o *SAMLProvider) GetNameIdMappingOk() (*string, bool)`
+`func (o *WSFederationProvider) GetNameIdMappingOk() (*string, bool)`
 
 GetNameIdMappingOk returns a tuple with the NameIdMapping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNameIdMapping
 
-`func (o *SAMLProvider) SetNameIdMapping(v string)`
+`func (o *WSFederationProvider) SetNameIdMapping(v string)`
 
 SetNameIdMapping sets NameIdMapping field to given value.
 
 ### HasNameIdMapping
 
-`func (o *SAMLProvider) HasNameIdMapping() bool`
+`func (o *WSFederationProvider) HasNameIdMapping() bool`
 
 HasNameIdMapping returns a boolean if a field has been set.
 
 ### SetNameIdMappingNil
 
-`func (o *SAMLProvider) SetNameIdMappingNil(b bool)`
+`func (o *WSFederationProvider) SetNameIdMappingNil(b bool)`
 
  SetNameIdMappingNil sets the value for NameIdMapping to be an explicit nil
 
 ### UnsetNameIdMapping
-`func (o *SAMLProvider) UnsetNameIdMapping()`
+`func (o *WSFederationProvider) UnsetNameIdMapping()`
 
 UnsetNameIdMapping ensures that no value is present for NameIdMapping, not even an explicit nil
 ### GetAuthnContextClassRefMapping
 
-`func (o *SAMLProvider) GetAuthnContextClassRefMapping() string`
+`func (o *WSFederationProvider) GetAuthnContextClassRefMapping() string`
 
 GetAuthnContextClassRefMapping returns the AuthnContextClassRefMapping field if non-nil, zero value otherwise.
 
 ### GetAuthnContextClassRefMappingOk
 
-`func (o *SAMLProvider) GetAuthnContextClassRefMappingOk() (*string, bool)`
+`func (o *WSFederationProvider) GetAuthnContextClassRefMappingOk() (*string, bool)`
 
 GetAuthnContextClassRefMappingOk returns a tuple with the AuthnContextClassRefMapping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthnContextClassRefMapping
 
-`func (o *SAMLProvider) SetAuthnContextClassRefMapping(v string)`
+`func (o *WSFederationProvider) SetAuthnContextClassRefMapping(v string)`
 
 SetAuthnContextClassRefMapping sets AuthnContextClassRefMapping field to given value.
 
 ### HasAuthnContextClassRefMapping
 
-`func (o *SAMLProvider) HasAuthnContextClassRefMapping() bool`
+`func (o *WSFederationProvider) HasAuthnContextClassRefMapping() bool`
 
 HasAuthnContextClassRefMapping returns a boolean if a field has been set.
 
 ### SetAuthnContextClassRefMappingNil
 
-`func (o *SAMLProvider) SetAuthnContextClassRefMappingNil(b bool)`
+`func (o *WSFederationProvider) SetAuthnContextClassRefMappingNil(b bool)`
 
  SetAuthnContextClassRefMappingNil sets the value for AuthnContextClassRefMapping to be an explicit nil
 
 ### UnsetAuthnContextClassRefMapping
-`func (o *SAMLProvider) UnsetAuthnContextClassRefMapping()`
+`func (o *WSFederationProvider) UnsetAuthnContextClassRefMapping()`
 
 UnsetAuthnContextClassRefMapping ensures that no value is present for AuthnContextClassRefMapping, not even an explicit nil
 ### GetDigestAlgorithm
 
-`func (o *SAMLProvider) GetDigestAlgorithm() DigestAlgorithmEnum`
+`func (o *WSFederationProvider) GetDigestAlgorithm() DigestAlgorithmEnum`
 
 GetDigestAlgorithm returns the DigestAlgorithm field if non-nil, zero value otherwise.
 
 ### GetDigestAlgorithmOk
 
-`func (o *SAMLProvider) GetDigestAlgorithmOk() (*DigestAlgorithmEnum, bool)`
+`func (o *WSFederationProvider) GetDigestAlgorithmOk() (*DigestAlgorithmEnum, bool)`
 
 GetDigestAlgorithmOk returns a tuple with the DigestAlgorithm field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDigestAlgorithm
 
-`func (o *SAMLProvider) SetDigestAlgorithm(v DigestAlgorithmEnum)`
+`func (o *WSFederationProvider) SetDigestAlgorithm(v DigestAlgorithmEnum)`
 
 SetDigestAlgorithm sets DigestAlgorithm field to given value.
 
 ### HasDigestAlgorithm
 
-`func (o *SAMLProvider) HasDigestAlgorithm() bool`
+`func (o *WSFederationProvider) HasDigestAlgorithm() bool`
 
 HasDigestAlgorithm returns a boolean if a field has been set.
 
 ### GetSignatureAlgorithm
 
-`func (o *SAMLProvider) GetSignatureAlgorithm() SignatureAlgorithmEnum`
+`func (o *WSFederationProvider) GetSignatureAlgorithm() SignatureAlgorithmEnum`
 
 GetSignatureAlgorithm returns the SignatureAlgorithm field if non-nil, zero value otherwise.
 
 ### GetSignatureAlgorithmOk
 
-`func (o *SAMLProvider) GetSignatureAlgorithmOk() (*SignatureAlgorithmEnum, bool)`
+`func (o *WSFederationProvider) GetSignatureAlgorithmOk() (*SignatureAlgorithmEnum, bool)`
 
 GetSignatureAlgorithmOk returns a tuple with the SignatureAlgorithm field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSignatureAlgorithm
 
-`func (o *SAMLProvider) SetSignatureAlgorithm(v SignatureAlgorithmEnum)`
+`func (o *WSFederationProvider) SetSignatureAlgorithm(v SignatureAlgorithmEnum)`
 
 SetSignatureAlgorithm sets SignatureAlgorithm field to given value.
 
 ### HasSignatureAlgorithm
 
-`func (o *SAMLProvider) HasSignatureAlgorithm() bool`
+`func (o *WSFederationProvider) HasSignatureAlgorithm() bool`
 
 HasSignatureAlgorithm returns a boolean if a field has been set.
 
 ### GetSigningKp
 
-`func (o *SAMLProvider) GetSigningKp() string`
+`func (o *WSFederationProvider) GetSigningKp() string`
 
 GetSigningKp returns the SigningKp field if non-nil, zero value otherwise.
 
 ### GetSigningKpOk
 
-`func (o *SAMLProvider) GetSigningKpOk() (*string, bool)`
+`func (o *WSFederationProvider) GetSigningKpOk() (*string, bool)`
 
 GetSigningKpOk returns a tuple with the SigningKp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSigningKp
 
-`func (o *SAMLProvider) SetSigningKp(v string)`
+`func (o *WSFederationProvider) SetSigningKp(v string)`
 
 SetSigningKp sets SigningKp field to given value.
 
 ### HasSigningKp
 
-`func (o *SAMLProvider) HasSigningKp() bool`
+`func (o *WSFederationProvider) HasSigningKp() bool`
 
 HasSigningKp returns a boolean if a field has been set.
 
 ### SetSigningKpNil
 
-`func (o *SAMLProvider) SetSigningKpNil(b bool)`
+`func (o *WSFederationProvider) SetSigningKpNil(b bool)`
 
  SetSigningKpNil sets the value for SigningKp to be an explicit nil
 
 ### UnsetSigningKp
-`func (o *SAMLProvider) UnsetSigningKp()`
+`func (o *WSFederationProvider) UnsetSigningKp()`
 
 UnsetSigningKp ensures that no value is present for SigningKp, not even an explicit nil
-### GetVerificationKp
-
-`func (o *SAMLProvider) GetVerificationKp() string`
-
-GetVerificationKp returns the VerificationKp field if non-nil, zero value otherwise.
-
-### GetVerificationKpOk
-
-`func (o *SAMLProvider) GetVerificationKpOk() (*string, bool)`
-
-GetVerificationKpOk returns a tuple with the VerificationKp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVerificationKp
-
-`func (o *SAMLProvider) SetVerificationKp(v string)`
-
-SetVerificationKp sets VerificationKp field to given value.
-
-### HasVerificationKp
-
-`func (o *SAMLProvider) HasVerificationKp() bool`
-
-HasVerificationKp returns a boolean if a field has been set.
-
-### SetVerificationKpNil
-
-`func (o *SAMLProvider) SetVerificationKpNil(b bool)`
-
- SetVerificationKpNil sets the value for VerificationKp to be an explicit nil
-
-### UnsetVerificationKp
-`func (o *SAMLProvider) UnsetVerificationKp()`
-
-UnsetVerificationKp ensures that no value is present for VerificationKp, not even an explicit nil
 ### GetEncryptionKp
 
-`func (o *SAMLProvider) GetEncryptionKp() string`
+`func (o *WSFederationProvider) GetEncryptionKp() string`
 
 GetEncryptionKp returns the EncryptionKp field if non-nil, zero value otherwise.
 
 ### GetEncryptionKpOk
 
-`func (o *SAMLProvider) GetEncryptionKpOk() (*string, bool)`
+`func (o *WSFederationProvider) GetEncryptionKpOk() (*string, bool)`
 
 GetEncryptionKpOk returns a tuple with the EncryptionKp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEncryptionKp
 
-`func (o *SAMLProvider) SetEncryptionKp(v string)`
+`func (o *WSFederationProvider) SetEncryptionKp(v string)`
 
 SetEncryptionKp sets EncryptionKp field to given value.
 
 ### HasEncryptionKp
 
-`func (o *SAMLProvider) HasEncryptionKp() bool`
+`func (o *WSFederationProvider) HasEncryptionKp() bool`
 
 HasEncryptionKp returns a boolean if a field has been set.
 
 ### SetEncryptionKpNil
 
-`func (o *SAMLProvider) SetEncryptionKpNil(b bool)`
+`func (o *WSFederationProvider) SetEncryptionKpNil(b bool)`
 
  SetEncryptionKpNil sets the value for EncryptionKp to be an explicit nil
 
 ### UnsetEncryptionKp
-`func (o *SAMLProvider) UnsetEncryptionKp()`
+`func (o *WSFederationProvider) UnsetEncryptionKp()`
 
 UnsetEncryptionKp ensures that no value is present for EncryptionKp, not even an explicit nil
 ### GetSignAssertion
 
-`func (o *SAMLProvider) GetSignAssertion() bool`
+`func (o *WSFederationProvider) GetSignAssertion() bool`
 
 GetSignAssertion returns the SignAssertion field if non-nil, zero value otherwise.
 
 ### GetSignAssertionOk
 
-`func (o *SAMLProvider) GetSignAssertionOk() (*bool, bool)`
+`func (o *WSFederationProvider) GetSignAssertionOk() (*bool, bool)`
 
 GetSignAssertionOk returns a tuple with the SignAssertion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSignAssertion
 
-`func (o *SAMLProvider) SetSignAssertion(v bool)`
+`func (o *WSFederationProvider) SetSignAssertion(v bool)`
 
 SetSignAssertion sets SignAssertion field to given value.
 
 ### HasSignAssertion
 
-`func (o *SAMLProvider) HasSignAssertion() bool`
+`func (o *WSFederationProvider) HasSignAssertion() bool`
 
 HasSignAssertion returns a boolean if a field has been set.
 
-### GetSignResponse
-
-`func (o *SAMLProvider) GetSignResponse() bool`
-
-GetSignResponse returns the SignResponse field if non-nil, zero value otherwise.
-
-### GetSignResponseOk
-
-`func (o *SAMLProvider) GetSignResponseOk() (*bool, bool)`
-
-GetSignResponseOk returns a tuple with the SignResponse field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSignResponse
-
-`func (o *SAMLProvider) SetSignResponse(v bool)`
-
-SetSignResponse sets SignResponse field to given value.
-
-### HasSignResponse
-
-`func (o *SAMLProvider) HasSignResponse() bool`
-
-HasSignResponse returns a boolean if a field has been set.
-
 ### GetSignLogoutRequest
 
-`func (o *SAMLProvider) GetSignLogoutRequest() bool`
+`func (o *WSFederationProvider) GetSignLogoutRequest() bool`
 
 GetSignLogoutRequest returns the SignLogoutRequest field if non-nil, zero value otherwise.
 
 ### GetSignLogoutRequestOk
 
-`func (o *SAMLProvider) GetSignLogoutRequestOk() (*bool, bool)`
+`func (o *WSFederationProvider) GetSignLogoutRequestOk() (*bool, bool)`
 
 GetSignLogoutRequestOk returns a tuple with the SignLogoutRequest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSignLogoutRequest
 
-`func (o *SAMLProvider) SetSignLogoutRequest(v bool)`
+`func (o *WSFederationProvider) SetSignLogoutRequest(v bool)`
 
 SetSignLogoutRequest sets SignLogoutRequest field to given value.
 
 ### HasSignLogoutRequest
 
-`func (o *SAMLProvider) HasSignLogoutRequest() bool`
+`func (o *WSFederationProvider) HasSignLogoutRequest() bool`
 
 HasSignLogoutRequest returns a boolean if a field has been set.
 
-### GetSpBinding
-
-`func (o *SAMLProvider) GetSpBinding() SAMLBindingsEnum`
-
-GetSpBinding returns the SpBinding field if non-nil, zero value otherwise.
-
-### GetSpBindingOk
-
-`func (o *SAMLProvider) GetSpBindingOk() (*SAMLBindingsEnum, bool)`
-
-GetSpBindingOk returns a tuple with the SpBinding field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSpBinding
-
-`func (o *SAMLProvider) SetSpBinding(v SAMLBindingsEnum)`
-
-SetSpBinding sets SpBinding field to given value.
-
-### HasSpBinding
-
-`func (o *SAMLProvider) HasSpBinding() bool`
-
-HasSpBinding returns a boolean if a field has been set.
-
-### GetSlsBinding
-
-`func (o *SAMLProvider) GetSlsBinding() SAMLBindingsEnum`
-
-GetSlsBinding returns the SlsBinding field if non-nil, zero value otherwise.
-
-### GetSlsBindingOk
-
-`func (o *SAMLProvider) GetSlsBindingOk() (*SAMLBindingsEnum, bool)`
-
-GetSlsBindingOk returns a tuple with the SlsBinding field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSlsBinding
-
-`func (o *SAMLProvider) SetSlsBinding(v SAMLBindingsEnum)`
-
-SetSlsBinding sets SlsBinding field to given value.
-
-### HasSlsBinding
-
-`func (o *SAMLProvider) HasSlsBinding() bool`
-
-HasSlsBinding returns a boolean if a field has been set.
-
-### GetLogoutMethod
-
-`func (o *SAMLProvider) GetLogoutMethod() SAMLLogoutMethods`
-
-GetLogoutMethod returns the LogoutMethod field if non-nil, zero value otherwise.
-
-### GetLogoutMethodOk
-
-`func (o *SAMLProvider) GetLogoutMethodOk() (*SAMLLogoutMethods, bool)`
-
-GetLogoutMethodOk returns a tuple with the LogoutMethod field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLogoutMethod
-
-`func (o *SAMLProvider) SetLogoutMethod(v SAMLLogoutMethods)`
-
-SetLogoutMethod sets LogoutMethod field to given value.
-
-### HasLogoutMethod
-
-`func (o *SAMLProvider) HasLogoutMethod() bool`
-
-HasLogoutMethod returns a boolean if a field has been set.
-
-### GetDefaultRelayState
-
-`func (o *SAMLProvider) GetDefaultRelayState() string`
-
-GetDefaultRelayState returns the DefaultRelayState field if non-nil, zero value otherwise.
-
-### GetDefaultRelayStateOk
-
-`func (o *SAMLProvider) GetDefaultRelayStateOk() (*string, bool)`
-
-GetDefaultRelayStateOk returns a tuple with the DefaultRelayState field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultRelayState
-
-`func (o *SAMLProvider) SetDefaultRelayState(v string)`
-
-SetDefaultRelayState sets DefaultRelayState field to given value.
-
-### HasDefaultRelayState
-
-`func (o *SAMLProvider) HasDefaultRelayState() bool`
-
-HasDefaultRelayState returns a boolean if a field has been set.
-
 ### GetDefaultNameIdPolicy
 
-`func (o *SAMLProvider) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum`
+`func (o *WSFederationProvider) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum`
 
 GetDefaultNameIdPolicy returns the DefaultNameIdPolicy field if non-nil, zero value otherwise.
 
 ### GetDefaultNameIdPolicyOk
 
-`func (o *SAMLProvider) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool)`
+`func (o *WSFederationProvider) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool)`
 
 GetDefaultNameIdPolicyOk returns a tuple with the DefaultNameIdPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultNameIdPolicy
 
-`func (o *SAMLProvider) SetDefaultNameIdPolicy(v SAMLNameIDPolicyEnum)`
+`func (o *WSFederationProvider) SetDefaultNameIdPolicy(v SAMLNameIDPolicyEnum)`
 
 SetDefaultNameIdPolicy sets DefaultNameIdPolicy field to given value.
 
 ### HasDefaultNameIdPolicy
 
-`func (o *SAMLProvider) HasDefaultNameIdPolicy() bool`
+`func (o *WSFederationProvider) HasDefaultNameIdPolicy() bool`
 
 HasDefaultNameIdPolicy returns a boolean if a field has been set.
 
 ### GetUrlDownloadMetadata
 
-`func (o *SAMLProvider) GetUrlDownloadMetadata() string`
+`func (o *WSFederationProvider) GetUrlDownloadMetadata() string`
 
 GetUrlDownloadMetadata returns the UrlDownloadMetadata field if non-nil, zero value otherwise.
 
 ### GetUrlDownloadMetadataOk
 
-`func (o *SAMLProvider) GetUrlDownloadMetadataOk() (*string, bool)`
+`func (o *WSFederationProvider) GetUrlDownloadMetadataOk() (*string, bool)`
 
 GetUrlDownloadMetadataOk returns a tuple with the UrlDownloadMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUrlDownloadMetadata
 
-`func (o *SAMLProvider) SetUrlDownloadMetadata(v string)`
+`func (o *WSFederationProvider) SetUrlDownloadMetadata(v string)`
 
 SetUrlDownloadMetadata sets UrlDownloadMetadata field to given value.
 
 
-### GetUrlSsoPost
+### GetUrlWsfed
 
-`func (o *SAMLProvider) GetUrlSsoPost() string`
+`func (o *WSFederationProvider) GetUrlWsfed() string`
 
-GetUrlSsoPost returns the UrlSsoPost field if non-nil, zero value otherwise.
+GetUrlWsfed returns the UrlWsfed field if non-nil, zero value otherwise.
 
-### GetUrlSsoPostOk
+### GetUrlWsfedOk
 
-`func (o *SAMLProvider) GetUrlSsoPostOk() (*string, bool)`
+`func (o *WSFederationProvider) GetUrlWsfedOk() (*string, bool)`
 
-GetUrlSsoPostOk returns a tuple with the UrlSsoPost field if it's non-nil, zero value otherwise
+GetUrlWsfedOk returns a tuple with the UrlWsfed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUrlSsoPost
+### SetUrlWsfed
 
-`func (o *SAMLProvider) SetUrlSsoPost(v string)`
+`func (o *WSFederationProvider) SetUrlWsfed(v string)`
 
-SetUrlSsoPost sets UrlSsoPost field to given value.
+SetUrlWsfed sets UrlWsfed field to given value.
 
 
-### GetUrlSsoRedirect
+### GetWtrealm
 
-`func (o *SAMLProvider) GetUrlSsoRedirect() string`
+`func (o *WSFederationProvider) GetWtrealm() string`
 
-GetUrlSsoRedirect returns the UrlSsoRedirect field if non-nil, zero value otherwise.
+GetWtrealm returns the Wtrealm field if non-nil, zero value otherwise.
 
-### GetUrlSsoRedirectOk
+### GetWtrealmOk
 
-`func (o *SAMLProvider) GetUrlSsoRedirectOk() (*string, bool)`
+`func (o *WSFederationProvider) GetWtrealmOk() (*string, bool)`
 
-GetUrlSsoRedirectOk returns a tuple with the UrlSsoRedirect field if it's non-nil, zero value otherwise
+GetWtrealmOk returns a tuple with the Wtrealm field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUrlSsoRedirect
+### SetWtrealm
 
-`func (o *SAMLProvider) SetUrlSsoRedirect(v string)`
+`func (o *WSFederationProvider) SetWtrealm(v string)`
 
-SetUrlSsoRedirect sets UrlSsoRedirect field to given value.
-
-
-### GetUrlSsoInit
-
-`func (o *SAMLProvider) GetUrlSsoInit() string`
-
-GetUrlSsoInit returns the UrlSsoInit field if non-nil, zero value otherwise.
-
-### GetUrlSsoInitOk
-
-`func (o *SAMLProvider) GetUrlSsoInitOk() (*string, bool)`
-
-GetUrlSsoInitOk returns a tuple with the UrlSsoInit field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUrlSsoInit
-
-`func (o *SAMLProvider) SetUrlSsoInit(v string)`
-
-SetUrlSsoInit sets UrlSsoInit field to given value.
-
-
-### GetUrlSloPost
-
-`func (o *SAMLProvider) GetUrlSloPost() string`
-
-GetUrlSloPost returns the UrlSloPost field if non-nil, zero value otherwise.
-
-### GetUrlSloPostOk
-
-`func (o *SAMLProvider) GetUrlSloPostOk() (*string, bool)`
-
-GetUrlSloPostOk returns a tuple with the UrlSloPost field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUrlSloPost
-
-`func (o *SAMLProvider) SetUrlSloPost(v string)`
-
-SetUrlSloPost sets UrlSloPost field to given value.
-
-
-### GetUrlSloRedirect
-
-`func (o *SAMLProvider) GetUrlSloRedirect() string`
-
-GetUrlSloRedirect returns the UrlSloRedirect field if non-nil, zero value otherwise.
-
-### GetUrlSloRedirectOk
-
-`func (o *SAMLProvider) GetUrlSloRedirectOk() (*string, bool)`
-
-GetUrlSloRedirectOk returns a tuple with the UrlSloRedirect field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUrlSloRedirect
-
-`func (o *SAMLProvider) SetUrlSloRedirect(v string)`
-
-SetUrlSloRedirect sets UrlSloRedirect field to given value.
+SetWtrealm sets Wtrealm field to given value.
 
 
 

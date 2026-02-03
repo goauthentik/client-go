@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
-**AssignedBackchannelApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
-**AssignedBackchannelApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
+**AssignedBackchannelApplicationSlug** | **NullableString** | Internal application name, used in URLs. | [readonly] 
+**AssignedBackchannelApplicationName** | **NullableString** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
@@ -23,16 +23,16 @@ Name | Type | Description | Notes
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **ServiceProviderConfigCacheTimeout** | Pointer to **string** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
-**FilterGroup** | Pointer to **NullableString** |  | [optional] 
 **SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
 **SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
+**GroupFilters** | Pointer to **[]string** | Group filters used to define sync-scope for groups. | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
 ## Methods
 
 ### NewSCIMProvider
 
-`func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, url string, ) *SCIMProvider`
+`func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, url string, ) *SCIMProvider`
 
 NewSCIMProvider instantiates a new SCIMProvider object
 This constructor will assign default values to properties that have it defined,
@@ -177,6 +177,16 @@ and a boolean to check if the value has been set.
 SetAssignedBackchannelApplicationSlug sets AssignedBackchannelApplicationSlug field to given value.
 
 
+### SetAssignedBackchannelApplicationSlugNil
+
+`func (o *SCIMProvider) SetAssignedBackchannelApplicationSlugNil(b bool)`
+
+ SetAssignedBackchannelApplicationSlugNil sets the value for AssignedBackchannelApplicationSlug to be an explicit nil
+
+### UnsetAssignedBackchannelApplicationSlug
+`func (o *SCIMProvider) UnsetAssignedBackchannelApplicationSlug()`
+
+UnsetAssignedBackchannelApplicationSlug ensures that no value is present for AssignedBackchannelApplicationSlug, not even an explicit nil
 ### GetAssignedBackchannelApplicationName
 
 `func (o *SCIMProvider) GetAssignedBackchannelApplicationName() string`
@@ -197,6 +207,16 @@ and a boolean to check if the value has been set.
 SetAssignedBackchannelApplicationName sets AssignedBackchannelApplicationName field to given value.
 
 
+### SetAssignedBackchannelApplicationNameNil
+
+`func (o *SCIMProvider) SetAssignedBackchannelApplicationNameNil(b bool)`
+
+ SetAssignedBackchannelApplicationNameNil sets the value for AssignedBackchannelApplicationName to be an explicit nil
+
+### UnsetAssignedBackchannelApplicationName
+`func (o *SCIMProvider) UnsetAssignedBackchannelApplicationName()`
+
+UnsetAssignedBackchannelApplicationName ensures that no value is present for AssignedBackchannelApplicationName, not even an explicit nil
 ### GetVerboseName
 
 `func (o *SCIMProvider) GetVerboseName() string`
@@ -487,41 +507,6 @@ SetExcludeUsersServiceAccount sets ExcludeUsersServiceAccount field to given val
 
 HasExcludeUsersServiceAccount returns a boolean if a field has been set.
 
-### GetFilterGroup
-
-`func (o *SCIMProvider) GetFilterGroup() string`
-
-GetFilterGroup returns the FilterGroup field if non-nil, zero value otherwise.
-
-### GetFilterGroupOk
-
-`func (o *SCIMProvider) GetFilterGroupOk() (*string, bool)`
-
-GetFilterGroupOk returns a tuple with the FilterGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilterGroup
-
-`func (o *SCIMProvider) SetFilterGroup(v string)`
-
-SetFilterGroup sets FilterGroup field to given value.
-
-### HasFilterGroup
-
-`func (o *SCIMProvider) HasFilterGroup() bool`
-
-HasFilterGroup returns a boolean if a field has been set.
-
-### SetFilterGroupNil
-
-`func (o *SCIMProvider) SetFilterGroupNil(b bool)`
-
- SetFilterGroupNil sets the value for FilterGroup to be an explicit nil
-
-### UnsetFilterGroup
-`func (o *SCIMProvider) UnsetFilterGroup()`
-
-UnsetFilterGroup ensures that no value is present for FilterGroup, not even an explicit nil
 ### GetSyncPageSize
 
 `func (o *SCIMProvider) GetSyncPageSize() int32`
@@ -571,6 +556,31 @@ SetSyncPageTimeout sets SyncPageTimeout field to given value.
 `func (o *SCIMProvider) HasSyncPageTimeout() bool`
 
 HasSyncPageTimeout returns a boolean if a field has been set.
+
+### GetGroupFilters
+
+`func (o *SCIMProvider) GetGroupFilters() []string`
+
+GetGroupFilters returns the GroupFilters field if non-nil, zero value otherwise.
+
+### GetGroupFiltersOk
+
+`func (o *SCIMProvider) GetGroupFiltersOk() (*[]string, bool)`
+
+GetGroupFiltersOk returns a tuple with the GroupFilters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupFilters
+
+`func (o *SCIMProvider) SetGroupFilters(v []string)`
+
+SetGroupFilters sets GroupFilters field to given value.
+
+### HasGroupFilters
+
+`func (o *SCIMProvider) HasGroupFilters() bool`
+
+HasGroupFilters returns a boolean if a field has been set.
 
 ### GetDryRun
 

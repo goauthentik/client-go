@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 **EncryptionKey** | Pointer to **NullableString** | Key used to encrypt the tokens. When set, tokens will be encrypted and returned as JWEs. | [optional] 
 **RedirectUris** | [**[]RedirectURIRequest**](RedirectURIRequest.md) |  | 
 **LogoutUri** | Pointer to **string** |  | [optional] 
-**LogoutMethod** | Pointer to [**SAMLProviderLogoutMethodEnum**](SAMLProviderLogoutMethodEnum.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] 
+**LogoutMethod** | Pointer to [**SAMLLogoutMethods**](SAMLLogoutMethods.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] 
 **SubMode** | Pointer to [**SubModeEnum**](SubModeEnum.md) | Configure what data should be used as unique User Identifier. For most cases, the default should be fine. | [optional] 
 **IssuerMode** | Pointer to [**IssuerModeEnum**](IssuerModeEnum.md) | Configure how the issuer field of the ID Token should be filled. | [optional] 
 **JwtFederationSources** | Pointer to **[]string** |  | [optional] 
@@ -91,14 +91,16 @@ Name | Type | Description | Notes
 **AuthOauthParams** | Pointer to **map[string]map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **ServiceProviderConfigCacheTimeout** | Pointer to **string** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] 
+**GroupFilters** | Pointer to **[]string** | Group filters used to define sync-scope for groups. | [optional] 
 **OidcAuthProviders** | Pointer to **[]int32** |  | [optional] 
 **EventRetention** | Pointer to **string** |  | [optional] 
+**ReplyUrl** | **string** |  | 
 
 ## Methods
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials map[string]map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials map[string]map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, replyUrl string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -1050,20 +1052,20 @@ HasLogoutUri returns a boolean if a field has been set.
 
 ### GetLogoutMethod
 
-`func (o *ModelRequest) GetLogoutMethod() SAMLProviderLogoutMethodEnum`
+`func (o *ModelRequest) GetLogoutMethod() SAMLLogoutMethods`
 
 GetLogoutMethod returns the LogoutMethod field if non-nil, zero value otherwise.
 
 ### GetLogoutMethodOk
 
-`func (o *ModelRequest) GetLogoutMethodOk() (*SAMLProviderLogoutMethodEnum, bool)`
+`func (o *ModelRequest) GetLogoutMethodOk() (*SAMLLogoutMethods, bool)`
 
 GetLogoutMethodOk returns a tuple with the LogoutMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogoutMethod
 
-`func (o *ModelRequest) SetLogoutMethod(v SAMLProviderLogoutMethodEnum)`
+`func (o *ModelRequest) SetLogoutMethod(v SAMLLogoutMethods)`
 
 SetLogoutMethod sets LogoutMethod field to given value.
 
@@ -2318,6 +2320,31 @@ SetServiceProviderConfigCacheTimeout sets ServiceProviderConfigCacheTimeout fiel
 
 HasServiceProviderConfigCacheTimeout returns a boolean if a field has been set.
 
+### GetGroupFilters
+
+`func (o *ModelRequest) GetGroupFilters() []string`
+
+GetGroupFilters returns the GroupFilters field if non-nil, zero value otherwise.
+
+### GetGroupFiltersOk
+
+`func (o *ModelRequest) GetGroupFiltersOk() (*[]string, bool)`
+
+GetGroupFiltersOk returns a tuple with the GroupFilters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupFilters
+
+`func (o *ModelRequest) SetGroupFilters(v []string)`
+
+SetGroupFilters sets GroupFilters field to given value.
+
+### HasGroupFilters
+
+`func (o *ModelRequest) HasGroupFilters() bool`
+
+HasGroupFilters returns a boolean if a field has been set.
+
 ### GetOidcAuthProviders
 
 `func (o *ModelRequest) GetOidcAuthProviders() []int32`
@@ -2367,6 +2394,26 @@ SetEventRetention sets EventRetention field to given value.
 `func (o *ModelRequest) HasEventRetention() bool`
 
 HasEventRetention returns a boolean if a field has been set.
+
+### GetReplyUrl
+
+`func (o *ModelRequest) GetReplyUrl() string`
+
+GetReplyUrl returns the ReplyUrl field if non-nil, zero value otherwise.
+
+### GetReplyUrlOk
+
+`func (o *ModelRequest) GetReplyUrlOk() (*string, bool)`
+
+GetReplyUrlOk returns a tuple with the ReplyUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReplyUrl
+
+`func (o *ModelRequest) SetReplyUrl(v string)`
+
+SetReplyUrl sets ReplyUrl field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -38,13 +38,14 @@ type SCIMProviderRequest struct {
 	// Alter authentik behavior for vendor-specific SCIM implementations.
 	CompatibilityMode *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
 	// Cache duration for ServiceProviderConfig responses. Set minutes=0 to disable.
-	ServiceProviderConfigCacheTimeout *string        `json:"service_provider_config_cache_timeout,omitempty"`
-	ExcludeUsersServiceAccount        *bool          `json:"exclude_users_service_account,omitempty"`
-	FilterGroup                       NullableString `json:"filter_group,omitempty"`
+	ServiceProviderConfigCacheTimeout *string `json:"service_provider_config_cache_timeout,omitempty"`
+	ExcludeUsersServiceAccount        *bool   `json:"exclude_users_service_account,omitempty"`
 	// Controls the number of objects synced in a single task
 	SyncPageSize *int32 `json:"sync_page_size,omitempty"`
 	// Timeout for synchronization of a single page
 	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
+	// Group filters used to define sync-scope for groups.
+	GroupFilters []string `json:"group_filters,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
 	DryRun               *bool `json:"dry_run,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -450,49 +451,6 @@ func (o *SCIMProviderRequest) SetExcludeUsersServiceAccount(v bool) {
 	o.ExcludeUsersServiceAccount = &v
 }
 
-// GetFilterGroup returns the FilterGroup field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SCIMProviderRequest) GetFilterGroup() string {
-	if o == nil || IsNil(o.FilterGroup.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.FilterGroup.Get()
-}
-
-// GetFilterGroupOk returns a tuple with the FilterGroup field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SCIMProviderRequest) GetFilterGroupOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.FilterGroup.Get(), o.FilterGroup.IsSet()
-}
-
-// HasFilterGroup returns a boolean if a field has been set.
-func (o *SCIMProviderRequest) HasFilterGroup() bool {
-	if o != nil && o.FilterGroup.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetFilterGroup gets a reference to the given NullableString and assigns it to the FilterGroup field.
-func (o *SCIMProviderRequest) SetFilterGroup(v string) {
-	o.FilterGroup.Set(&v)
-}
-
-// SetFilterGroupNil sets the value for FilterGroup to be an explicit nil
-func (o *SCIMProviderRequest) SetFilterGroupNil() {
-	o.FilterGroup.Set(nil)
-}
-
-// UnsetFilterGroup ensures that no value is present for FilterGroup, not even an explicit nil
-func (o *SCIMProviderRequest) UnsetFilterGroup() {
-	o.FilterGroup.Unset()
-}
-
 // GetSyncPageSize returns the SyncPageSize field value if set, zero value otherwise.
 func (o *SCIMProviderRequest) GetSyncPageSize() int32 {
 	if o == nil || IsNil(o.SyncPageSize) {
@@ -555,6 +513,38 @@ func (o *SCIMProviderRequest) HasSyncPageTimeout() bool {
 // SetSyncPageTimeout gets a reference to the given string and assigns it to the SyncPageTimeout field.
 func (o *SCIMProviderRequest) SetSyncPageTimeout(v string) {
 	o.SyncPageTimeout = &v
+}
+
+// GetGroupFilters returns the GroupFilters field value if set, zero value otherwise.
+func (o *SCIMProviderRequest) GetGroupFilters() []string {
+	if o == nil || IsNil(o.GroupFilters) {
+		var ret []string
+		return ret
+	}
+	return o.GroupFilters
+}
+
+// GetGroupFiltersOk returns a tuple with the GroupFilters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMProviderRequest) GetGroupFiltersOk() ([]string, bool) {
+	if o == nil || IsNil(o.GroupFilters) {
+		return nil, false
+	}
+	return o.GroupFilters, true
+}
+
+// HasGroupFilters returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasGroupFilters() bool {
+	if o != nil && !IsNil(o.GroupFilters) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupFilters gets a reference to the given []string and assigns it to the GroupFilters field.
+func (o *SCIMProviderRequest) SetGroupFilters(v []string) {
+	o.GroupFilters = v
 }
 
 // GetDryRun returns the DryRun field value if set, zero value otherwise.
@@ -631,14 +621,14 @@ func (o SCIMProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExcludeUsersServiceAccount) {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
 	}
-	if o.FilterGroup.IsSet() {
-		toSerialize["filter_group"] = o.FilterGroup.Get()
-	}
 	if !IsNil(o.SyncPageSize) {
 		toSerialize["sync_page_size"] = o.SyncPageSize
 	}
 	if !IsNil(o.SyncPageTimeout) {
 		toSerialize["sync_page_timeout"] = o.SyncPageTimeout
+	}
+	if !IsNil(o.GroupFilters) {
+		toSerialize["group_filters"] = o.GroupFilters
 	}
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
@@ -699,9 +689,9 @@ func (o *SCIMProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "compatibility_mode")
 		delete(additionalProperties, "service_provider_config_cache_timeout")
 		delete(additionalProperties, "exclude_users_service_account")
-		delete(additionalProperties, "filter_group")
 		delete(additionalProperties, "sync_page_size")
 		delete(additionalProperties, "sync_page_timeout")
+		delete(additionalProperties, "group_filters")
 		delete(additionalProperties, "dry_run")
 		o.AdditionalProperties = additionalProperties
 	}

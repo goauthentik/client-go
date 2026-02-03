@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | Pointer to **string** |  | [optional] 
 **IconUrl** | **string** |  | [readonly] 
+**IconThemedUrls** | [**NullableThemedUrls**](ThemedUrls.md) |  | [readonly] 
 **GroupMatchingMode** | Pointer to [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] 
 **ClientId** | Pointer to **string** | Client identifier used to talk to Plex. | [optional] 
 **AllowedServers** | Pointer to **[]string** | Which servers a user has to be a member of to be granted access. Empty list allows every server. | [optional] 
@@ -33,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewPlexSource
 
-`func NewPlexSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, plexToken string, ) *PlexSource`
+`func NewPlexSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl string, iconThemedUrls NullableThemedUrls, plexToken string, ) *PlexSource`
 
 NewPlexSource instantiates a new PlexSource object
 This constructor will assign default values to properties that have it defined,
@@ -508,6 +509,36 @@ and a boolean to check if the value has been set.
 SetIconUrl sets IconUrl field to given value.
 
 
+### GetIconThemedUrls
+
+`func (o *PlexSource) GetIconThemedUrls() ThemedUrls`
+
+GetIconThemedUrls returns the IconThemedUrls field if non-nil, zero value otherwise.
+
+### GetIconThemedUrlsOk
+
+`func (o *PlexSource) GetIconThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetIconThemedUrlsOk returns a tuple with the IconThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconThemedUrls
+
+`func (o *PlexSource) SetIconThemedUrls(v ThemedUrls)`
+
+SetIconThemedUrls sets IconThemedUrls field to given value.
+
+
+### SetIconThemedUrlsNil
+
+`func (o *PlexSource) SetIconThemedUrlsNil(b bool)`
+
+ SetIconThemedUrlsNil sets the value for IconThemedUrls to be an explicit nil
+
+### UnsetIconThemedUrls
+`func (o *PlexSource) UnsetIconThemedUrls()`
+
+UnsetIconThemedUrls ensures that no value is present for IconThemedUrls, not even an explicit nil
 ### GetGroupMatchingMode
 
 `func (o *PlexSource) GetGroupMatchingMode() GroupMatchingModeEnum`

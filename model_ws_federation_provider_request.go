@@ -16,11 +16,11 @@ import (
 	"fmt"
 )
 
-// checks if the SAMLProviderRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SAMLProviderRequest{}
+// checks if the WSFederationProviderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WSFederationProviderRequest{}
 
-// SAMLProviderRequest SAMLProvider Serializer
-type SAMLProviderRequest struct {
+// WSFederationProviderRequest WSFederationProvider Serializer
+type WSFederationProviderRequest struct {
 	Name string `json:"name"`
 	// Flow used for authentication when the associated application is accessed by an un-authenticated user.
 	AuthenticationFlow NullableString `json:"authentication_flow,omitempty"`
@@ -29,13 +29,7 @@ type SAMLProviderRequest struct {
 	// Flow used ending the session from a provider.
 	InvalidationFlow string   `json:"invalidation_flow"`
 	PropertyMappings []string `json:"property_mappings,omitempty"`
-	AcsUrl           string   `json:"acs_url"`
-	// Single Logout Service URL where the logout response should be sent.
-	SlsUrl *string `json:"sls_url,omitempty"`
-	// Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added.
-	Audience *string `json:"audience,omitempty"`
-	// Also known as EntityID
-	Issuer *string `json:"issuer,omitempty"`
+	ReplyUrl         string   `json:"reply_url"`
 	// Assertion valid not before current time + this value (Format: hours=-1;minutes=-2;seconds=-3).
 	AssertionValidNotBefore *string `json:"assertion_valid_not_before,omitempty"`
 	// Assertion not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -50,50 +44,39 @@ type SAMLProviderRequest struct {
 	SignatureAlgorithm          *SignatureAlgorithmEnum `json:"signature_algorithm,omitempty"`
 	// Keypair used to sign outgoing Responses going to the Service Provider.
 	SigningKp NullableString `json:"signing_kp,omitempty"`
-	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
-	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
-	EncryptionKp      NullableString `json:"encryption_kp,omitempty"`
-	SignAssertion     *bool          `json:"sign_assertion,omitempty"`
-	SignResponse      *bool          `json:"sign_response,omitempty"`
-	SignLogoutRequest *bool          `json:"sign_logout_request,omitempty"`
-	// This determines how authentik sends the response back to the Service Provider.
-	SpBinding *SAMLBindingsEnum `json:"sp_binding,omitempty"`
-	// This determines how authentik sends the logout response back to the Service Provider.
-	SlsBinding *SAMLBindingsEnum `json:"sls_binding,omitempty"`
-	// Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).
-	LogoutMethod *SAMLLogoutMethods `json:"logout_method,omitempty"`
-	// Default relay_state value for IDP-initiated logins
-	DefaultRelayState    *string               `json:"default_relay_state,omitempty"`
+	EncryptionKp         NullableString        `json:"encryption_kp,omitempty"`
+	SignAssertion        *bool                 `json:"sign_assertion,omitempty"`
+	SignLogoutRequest    *bool                 `json:"sign_logout_request,omitempty"`
 	DefaultNameIdPolicy  *SAMLNameIDPolicyEnum `json:"default_name_id_policy,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SAMLProviderRequest SAMLProviderRequest
+type _WSFederationProviderRequest WSFederationProviderRequest
 
-// NewSAMLProviderRequest instantiates a new SAMLProviderRequest object
+// NewWSFederationProviderRequest instantiates a new WSFederationProviderRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSAMLProviderRequest(name string, authorizationFlow string, invalidationFlow string, acsUrl string) *SAMLProviderRequest {
-	this := SAMLProviderRequest{}
+func NewWSFederationProviderRequest(name string, authorizationFlow string, invalidationFlow string, replyUrl string) *WSFederationProviderRequest {
+	this := WSFederationProviderRequest{}
 	this.Name = name
 	this.AuthorizationFlow = authorizationFlow
 	this.InvalidationFlow = invalidationFlow
-	this.AcsUrl = acsUrl
+	this.ReplyUrl = replyUrl
 	return &this
 }
 
-// NewSAMLProviderRequestWithDefaults instantiates a new SAMLProviderRequest object
+// NewWSFederationProviderRequestWithDefaults instantiates a new WSFederationProviderRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSAMLProviderRequestWithDefaults() *SAMLProviderRequest {
-	this := SAMLProviderRequest{}
+func NewWSFederationProviderRequestWithDefaults() *WSFederationProviderRequest {
+	this := WSFederationProviderRequest{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *SAMLProviderRequest) GetName() string {
+func (o *WSFederationProviderRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -104,7 +87,7 @@ func (o *SAMLProviderRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetNameOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,12 +95,12 @@ func (o *SAMLProviderRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *SAMLProviderRequest) SetName(v string) {
+func (o *WSFederationProviderRequest) SetName(v string) {
 	o.Name = v
 }
 
 // GetAuthenticationFlow returns the AuthenticationFlow field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SAMLProviderRequest) GetAuthenticationFlow() string {
+func (o *WSFederationProviderRequest) GetAuthenticationFlow() string {
 	if o == nil || IsNil(o.AuthenticationFlow.Get()) {
 		var ret string
 		return ret
@@ -128,7 +111,7 @@ func (o *SAMLProviderRequest) GetAuthenticationFlow() string {
 // GetAuthenticationFlowOk returns a tuple with the AuthenticationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SAMLProviderRequest) GetAuthenticationFlowOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetAuthenticationFlowOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -136,7 +119,7 @@ func (o *SAMLProviderRequest) GetAuthenticationFlowOk() (*string, bool) {
 }
 
 // HasAuthenticationFlow returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasAuthenticationFlow() bool {
+func (o *WSFederationProviderRequest) HasAuthenticationFlow() bool {
 	if o != nil && o.AuthenticationFlow.IsSet() {
 		return true
 	}
@@ -145,22 +128,22 @@ func (o *SAMLProviderRequest) HasAuthenticationFlow() bool {
 }
 
 // SetAuthenticationFlow gets a reference to the given NullableString and assigns it to the AuthenticationFlow field.
-func (o *SAMLProviderRequest) SetAuthenticationFlow(v string) {
+func (o *WSFederationProviderRequest) SetAuthenticationFlow(v string) {
 	o.AuthenticationFlow.Set(&v)
 }
 
 // SetAuthenticationFlowNil sets the value for AuthenticationFlow to be an explicit nil
-func (o *SAMLProviderRequest) SetAuthenticationFlowNil() {
+func (o *WSFederationProviderRequest) SetAuthenticationFlowNil() {
 	o.AuthenticationFlow.Set(nil)
 }
 
 // UnsetAuthenticationFlow ensures that no value is present for AuthenticationFlow, not even an explicit nil
-func (o *SAMLProviderRequest) UnsetAuthenticationFlow() {
+func (o *WSFederationProviderRequest) UnsetAuthenticationFlow() {
 	o.AuthenticationFlow.Unset()
 }
 
 // GetAuthorizationFlow returns the AuthorizationFlow field value
-func (o *SAMLProviderRequest) GetAuthorizationFlow() string {
+func (o *WSFederationProviderRequest) GetAuthorizationFlow() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -171,7 +154,7 @@ func (o *SAMLProviderRequest) GetAuthorizationFlow() string {
 
 // GetAuthorizationFlowOk returns a tuple with the AuthorizationFlow field value
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -179,12 +162,12 @@ func (o *SAMLProviderRequest) GetAuthorizationFlowOk() (*string, bool) {
 }
 
 // SetAuthorizationFlow sets field value
-func (o *SAMLProviderRequest) SetAuthorizationFlow(v string) {
+func (o *WSFederationProviderRequest) SetAuthorizationFlow(v string) {
 	o.AuthorizationFlow = v
 }
 
 // GetInvalidationFlow returns the InvalidationFlow field value
-func (o *SAMLProviderRequest) GetInvalidationFlow() string {
+func (o *WSFederationProviderRequest) GetInvalidationFlow() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -195,7 +178,7 @@ func (o *SAMLProviderRequest) GetInvalidationFlow() string {
 
 // GetInvalidationFlowOk returns a tuple with the InvalidationFlow field value
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetInvalidationFlowOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetInvalidationFlowOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -203,12 +186,12 @@ func (o *SAMLProviderRequest) GetInvalidationFlowOk() (*string, bool) {
 }
 
 // SetInvalidationFlow sets field value
-func (o *SAMLProviderRequest) SetInvalidationFlow(v string) {
+func (o *WSFederationProviderRequest) SetInvalidationFlow(v string) {
 	o.InvalidationFlow = v
 }
 
 // GetPropertyMappings returns the PropertyMappings field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetPropertyMappings() []string {
+func (o *WSFederationProviderRequest) GetPropertyMappings() []string {
 	if o == nil || IsNil(o.PropertyMappings) {
 		var ret []string
 		return ret
@@ -218,7 +201,7 @@ func (o *SAMLProviderRequest) GetPropertyMappings() []string {
 
 // GetPropertyMappingsOk returns a tuple with the PropertyMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
+func (o *WSFederationProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 	if o == nil || IsNil(o.PropertyMappings) {
 		return nil, false
 	}
@@ -226,7 +209,7 @@ func (o *SAMLProviderRequest) GetPropertyMappingsOk() ([]string, bool) {
 }
 
 // HasPropertyMappings returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasPropertyMappings() bool {
+func (o *WSFederationProviderRequest) HasPropertyMappings() bool {
 	if o != nil && !IsNil(o.PropertyMappings) {
 		return true
 	}
@@ -235,132 +218,36 @@ func (o *SAMLProviderRequest) HasPropertyMappings() bool {
 }
 
 // SetPropertyMappings gets a reference to the given []string and assigns it to the PropertyMappings field.
-func (o *SAMLProviderRequest) SetPropertyMappings(v []string) {
+func (o *WSFederationProviderRequest) SetPropertyMappings(v []string) {
 	o.PropertyMappings = v
 }
 
-// GetAcsUrl returns the AcsUrl field value
-func (o *SAMLProviderRequest) GetAcsUrl() string {
+// GetReplyUrl returns the ReplyUrl field value
+func (o *WSFederationProviderRequest) GetReplyUrl() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AcsUrl
+	return o.ReplyUrl
 }
 
-// GetAcsUrlOk returns a tuple with the AcsUrl field value
+// GetReplyUrlOk returns a tuple with the ReplyUrl field value
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetAcsUrlOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetReplyUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AcsUrl, true
+	return &o.ReplyUrl, true
 }
 
-// SetAcsUrl sets field value
-func (o *SAMLProviderRequest) SetAcsUrl(v string) {
-	o.AcsUrl = v
-}
-
-// GetSlsUrl returns the SlsUrl field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetSlsUrl() string {
-	if o == nil || IsNil(o.SlsUrl) {
-		var ret string
-		return ret
-	}
-	return *o.SlsUrl
-}
-
-// GetSlsUrlOk returns a tuple with the SlsUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetSlsUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.SlsUrl) {
-		return nil, false
-	}
-	return o.SlsUrl, true
-}
-
-// HasSlsUrl returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasSlsUrl() bool {
-	if o != nil && !IsNil(o.SlsUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetSlsUrl gets a reference to the given string and assigns it to the SlsUrl field.
-func (o *SAMLProviderRequest) SetSlsUrl(v string) {
-	o.SlsUrl = &v
-}
-
-// GetAudience returns the Audience field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetAudience() string {
-	if o == nil || IsNil(o.Audience) {
-		var ret string
-		return ret
-	}
-	return *o.Audience
-}
-
-// GetAudienceOk returns a tuple with the Audience field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetAudienceOk() (*string, bool) {
-	if o == nil || IsNil(o.Audience) {
-		return nil, false
-	}
-	return o.Audience, true
-}
-
-// HasAudience returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasAudience() bool {
-	if o != nil && !IsNil(o.Audience) {
-		return true
-	}
-
-	return false
-}
-
-// SetAudience gets a reference to the given string and assigns it to the Audience field.
-func (o *SAMLProviderRequest) SetAudience(v string) {
-	o.Audience = &v
-}
-
-// GetIssuer returns the Issuer field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetIssuer() string {
-	if o == nil || IsNil(o.Issuer) {
-		var ret string
-		return ret
-	}
-	return *o.Issuer
-}
-
-// GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetIssuerOk() (*string, bool) {
-	if o == nil || IsNil(o.Issuer) {
-		return nil, false
-	}
-	return o.Issuer, true
-}
-
-// HasIssuer returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasIssuer() bool {
-	if o != nil && !IsNil(o.Issuer) {
-		return true
-	}
-
-	return false
-}
-
-// SetIssuer gets a reference to the given string and assigns it to the Issuer field.
-func (o *SAMLProviderRequest) SetIssuer(v string) {
-	o.Issuer = &v
+// SetReplyUrl sets field value
+func (o *WSFederationProviderRequest) SetReplyUrl(v string) {
+	o.ReplyUrl = v
 }
 
 // GetAssertionValidNotBefore returns the AssertionValidNotBefore field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetAssertionValidNotBefore() string {
+func (o *WSFederationProviderRequest) GetAssertionValidNotBefore() string {
 	if o == nil || IsNil(o.AssertionValidNotBefore) {
 		var ret string
 		return ret
@@ -370,7 +257,7 @@ func (o *SAMLProviderRequest) GetAssertionValidNotBefore() string {
 
 // GetAssertionValidNotBeforeOk returns a tuple with the AssertionValidNotBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetAssertionValidNotBeforeOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetAssertionValidNotBeforeOk() (*string, bool) {
 	if o == nil || IsNil(o.AssertionValidNotBefore) {
 		return nil, false
 	}
@@ -378,7 +265,7 @@ func (o *SAMLProviderRequest) GetAssertionValidNotBeforeOk() (*string, bool) {
 }
 
 // HasAssertionValidNotBefore returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasAssertionValidNotBefore() bool {
+func (o *WSFederationProviderRequest) HasAssertionValidNotBefore() bool {
 	if o != nil && !IsNil(o.AssertionValidNotBefore) {
 		return true
 	}
@@ -387,12 +274,12 @@ func (o *SAMLProviderRequest) HasAssertionValidNotBefore() bool {
 }
 
 // SetAssertionValidNotBefore gets a reference to the given string and assigns it to the AssertionValidNotBefore field.
-func (o *SAMLProviderRequest) SetAssertionValidNotBefore(v string) {
+func (o *WSFederationProviderRequest) SetAssertionValidNotBefore(v string) {
 	o.AssertionValidNotBefore = &v
 }
 
 // GetAssertionValidNotOnOrAfter returns the AssertionValidNotOnOrAfter field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetAssertionValidNotOnOrAfter() string {
+func (o *WSFederationProviderRequest) GetAssertionValidNotOnOrAfter() string {
 	if o == nil || IsNil(o.AssertionValidNotOnOrAfter) {
 		var ret string
 		return ret
@@ -402,7 +289,7 @@ func (o *SAMLProviderRequest) GetAssertionValidNotOnOrAfter() string {
 
 // GetAssertionValidNotOnOrAfterOk returns a tuple with the AssertionValidNotOnOrAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetAssertionValidNotOnOrAfterOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetAssertionValidNotOnOrAfterOk() (*string, bool) {
 	if o == nil || IsNil(o.AssertionValidNotOnOrAfter) {
 		return nil, false
 	}
@@ -410,7 +297,7 @@ func (o *SAMLProviderRequest) GetAssertionValidNotOnOrAfterOk() (*string, bool) 
 }
 
 // HasAssertionValidNotOnOrAfter returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasAssertionValidNotOnOrAfter() bool {
+func (o *WSFederationProviderRequest) HasAssertionValidNotOnOrAfter() bool {
 	if o != nil && !IsNil(o.AssertionValidNotOnOrAfter) {
 		return true
 	}
@@ -419,12 +306,12 @@ func (o *SAMLProviderRequest) HasAssertionValidNotOnOrAfter() bool {
 }
 
 // SetAssertionValidNotOnOrAfter gets a reference to the given string and assigns it to the AssertionValidNotOnOrAfter field.
-func (o *SAMLProviderRequest) SetAssertionValidNotOnOrAfter(v string) {
+func (o *WSFederationProviderRequest) SetAssertionValidNotOnOrAfter(v string) {
 	o.AssertionValidNotOnOrAfter = &v
 }
 
 // GetSessionValidNotOnOrAfter returns the SessionValidNotOnOrAfter field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetSessionValidNotOnOrAfter() string {
+func (o *WSFederationProviderRequest) GetSessionValidNotOnOrAfter() string {
 	if o == nil || IsNil(o.SessionValidNotOnOrAfter) {
 		var ret string
 		return ret
@@ -434,7 +321,7 @@ func (o *SAMLProviderRequest) GetSessionValidNotOnOrAfter() string {
 
 // GetSessionValidNotOnOrAfterOk returns a tuple with the SessionValidNotOnOrAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetSessionValidNotOnOrAfterOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetSessionValidNotOnOrAfterOk() (*string, bool) {
 	if o == nil || IsNil(o.SessionValidNotOnOrAfter) {
 		return nil, false
 	}
@@ -442,7 +329,7 @@ func (o *SAMLProviderRequest) GetSessionValidNotOnOrAfterOk() (*string, bool) {
 }
 
 // HasSessionValidNotOnOrAfter returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasSessionValidNotOnOrAfter() bool {
+func (o *WSFederationProviderRequest) HasSessionValidNotOnOrAfter() bool {
 	if o != nil && !IsNil(o.SessionValidNotOnOrAfter) {
 		return true
 	}
@@ -451,12 +338,12 @@ func (o *SAMLProviderRequest) HasSessionValidNotOnOrAfter() bool {
 }
 
 // SetSessionValidNotOnOrAfter gets a reference to the given string and assigns it to the SessionValidNotOnOrAfter field.
-func (o *SAMLProviderRequest) SetSessionValidNotOnOrAfter(v string) {
+func (o *WSFederationProviderRequest) SetSessionValidNotOnOrAfter(v string) {
 	o.SessionValidNotOnOrAfter = &v
 }
 
 // GetNameIdMapping returns the NameIdMapping field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SAMLProviderRequest) GetNameIdMapping() string {
+func (o *WSFederationProviderRequest) GetNameIdMapping() string {
 	if o == nil || IsNil(o.NameIdMapping.Get()) {
 		var ret string
 		return ret
@@ -467,7 +354,7 @@ func (o *SAMLProviderRequest) GetNameIdMapping() string {
 // GetNameIdMappingOk returns a tuple with the NameIdMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SAMLProviderRequest) GetNameIdMappingOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetNameIdMappingOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -475,7 +362,7 @@ func (o *SAMLProviderRequest) GetNameIdMappingOk() (*string, bool) {
 }
 
 // HasNameIdMapping returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasNameIdMapping() bool {
+func (o *WSFederationProviderRequest) HasNameIdMapping() bool {
 	if o != nil && o.NameIdMapping.IsSet() {
 		return true
 	}
@@ -484,22 +371,22 @@ func (o *SAMLProviderRequest) HasNameIdMapping() bool {
 }
 
 // SetNameIdMapping gets a reference to the given NullableString and assigns it to the NameIdMapping field.
-func (o *SAMLProviderRequest) SetNameIdMapping(v string) {
+func (o *WSFederationProviderRequest) SetNameIdMapping(v string) {
 	o.NameIdMapping.Set(&v)
 }
 
 // SetNameIdMappingNil sets the value for NameIdMapping to be an explicit nil
-func (o *SAMLProviderRequest) SetNameIdMappingNil() {
+func (o *WSFederationProviderRequest) SetNameIdMappingNil() {
 	o.NameIdMapping.Set(nil)
 }
 
 // UnsetNameIdMapping ensures that no value is present for NameIdMapping, not even an explicit nil
-func (o *SAMLProviderRequest) UnsetNameIdMapping() {
+func (o *WSFederationProviderRequest) UnsetNameIdMapping() {
 	o.NameIdMapping.Unset()
 }
 
 // GetAuthnContextClassRefMapping returns the AuthnContextClassRefMapping field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SAMLProviderRequest) GetAuthnContextClassRefMapping() string {
+func (o *WSFederationProviderRequest) GetAuthnContextClassRefMapping() string {
 	if o == nil || IsNil(o.AuthnContextClassRefMapping.Get()) {
 		var ret string
 		return ret
@@ -510,7 +397,7 @@ func (o *SAMLProviderRequest) GetAuthnContextClassRefMapping() string {
 // GetAuthnContextClassRefMappingOk returns a tuple with the AuthnContextClassRefMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SAMLProviderRequest) GetAuthnContextClassRefMappingOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetAuthnContextClassRefMappingOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -518,7 +405,7 @@ func (o *SAMLProviderRequest) GetAuthnContextClassRefMappingOk() (*string, bool)
 }
 
 // HasAuthnContextClassRefMapping returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasAuthnContextClassRefMapping() bool {
+func (o *WSFederationProviderRequest) HasAuthnContextClassRefMapping() bool {
 	if o != nil && o.AuthnContextClassRefMapping.IsSet() {
 		return true
 	}
@@ -527,22 +414,22 @@ func (o *SAMLProviderRequest) HasAuthnContextClassRefMapping() bool {
 }
 
 // SetAuthnContextClassRefMapping gets a reference to the given NullableString and assigns it to the AuthnContextClassRefMapping field.
-func (o *SAMLProviderRequest) SetAuthnContextClassRefMapping(v string) {
+func (o *WSFederationProviderRequest) SetAuthnContextClassRefMapping(v string) {
 	o.AuthnContextClassRefMapping.Set(&v)
 }
 
 // SetAuthnContextClassRefMappingNil sets the value for AuthnContextClassRefMapping to be an explicit nil
-func (o *SAMLProviderRequest) SetAuthnContextClassRefMappingNil() {
+func (o *WSFederationProviderRequest) SetAuthnContextClassRefMappingNil() {
 	o.AuthnContextClassRefMapping.Set(nil)
 }
 
 // UnsetAuthnContextClassRefMapping ensures that no value is present for AuthnContextClassRefMapping, not even an explicit nil
-func (o *SAMLProviderRequest) UnsetAuthnContextClassRefMapping() {
+func (o *WSFederationProviderRequest) UnsetAuthnContextClassRefMapping() {
 	o.AuthnContextClassRefMapping.Unset()
 }
 
 // GetDigestAlgorithm returns the DigestAlgorithm field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetDigestAlgorithm() DigestAlgorithmEnum {
+func (o *WSFederationProviderRequest) GetDigestAlgorithm() DigestAlgorithmEnum {
 	if o == nil || IsNil(o.DigestAlgorithm) {
 		var ret DigestAlgorithmEnum
 		return ret
@@ -552,7 +439,7 @@ func (o *SAMLProviderRequest) GetDigestAlgorithm() DigestAlgorithmEnum {
 
 // GetDigestAlgorithmOk returns a tuple with the DigestAlgorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetDigestAlgorithmOk() (*DigestAlgorithmEnum, bool) {
+func (o *WSFederationProviderRequest) GetDigestAlgorithmOk() (*DigestAlgorithmEnum, bool) {
 	if o == nil || IsNil(o.DigestAlgorithm) {
 		return nil, false
 	}
@@ -560,7 +447,7 @@ func (o *SAMLProviderRequest) GetDigestAlgorithmOk() (*DigestAlgorithmEnum, bool
 }
 
 // HasDigestAlgorithm returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasDigestAlgorithm() bool {
+func (o *WSFederationProviderRequest) HasDigestAlgorithm() bool {
 	if o != nil && !IsNil(o.DigestAlgorithm) {
 		return true
 	}
@@ -569,12 +456,12 @@ func (o *SAMLProviderRequest) HasDigestAlgorithm() bool {
 }
 
 // SetDigestAlgorithm gets a reference to the given DigestAlgorithmEnum and assigns it to the DigestAlgorithm field.
-func (o *SAMLProviderRequest) SetDigestAlgorithm(v DigestAlgorithmEnum) {
+func (o *WSFederationProviderRequest) SetDigestAlgorithm(v DigestAlgorithmEnum) {
 	o.DigestAlgorithm = &v
 }
 
 // GetSignatureAlgorithm returns the SignatureAlgorithm field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetSignatureAlgorithm() SignatureAlgorithmEnum {
+func (o *WSFederationProviderRequest) GetSignatureAlgorithm() SignatureAlgorithmEnum {
 	if o == nil || IsNil(o.SignatureAlgorithm) {
 		var ret SignatureAlgorithmEnum
 		return ret
@@ -584,7 +471,7 @@ func (o *SAMLProviderRequest) GetSignatureAlgorithm() SignatureAlgorithmEnum {
 
 // GetSignatureAlgorithmOk returns a tuple with the SignatureAlgorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetSignatureAlgorithmOk() (*SignatureAlgorithmEnum, bool) {
+func (o *WSFederationProviderRequest) GetSignatureAlgorithmOk() (*SignatureAlgorithmEnum, bool) {
 	if o == nil || IsNil(o.SignatureAlgorithm) {
 		return nil, false
 	}
@@ -592,7 +479,7 @@ func (o *SAMLProviderRequest) GetSignatureAlgorithmOk() (*SignatureAlgorithmEnum
 }
 
 // HasSignatureAlgorithm returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasSignatureAlgorithm() bool {
+func (o *WSFederationProviderRequest) HasSignatureAlgorithm() bool {
 	if o != nil && !IsNil(o.SignatureAlgorithm) {
 		return true
 	}
@@ -601,12 +488,12 @@ func (o *SAMLProviderRequest) HasSignatureAlgorithm() bool {
 }
 
 // SetSignatureAlgorithm gets a reference to the given SignatureAlgorithmEnum and assigns it to the SignatureAlgorithm field.
-func (o *SAMLProviderRequest) SetSignatureAlgorithm(v SignatureAlgorithmEnum) {
+func (o *WSFederationProviderRequest) SetSignatureAlgorithm(v SignatureAlgorithmEnum) {
 	o.SignatureAlgorithm = &v
 }
 
 // GetSigningKp returns the SigningKp field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SAMLProviderRequest) GetSigningKp() string {
+func (o *WSFederationProviderRequest) GetSigningKp() string {
 	if o == nil || IsNil(o.SigningKp.Get()) {
 		var ret string
 		return ret
@@ -617,7 +504,7 @@ func (o *SAMLProviderRequest) GetSigningKp() string {
 // GetSigningKpOk returns a tuple with the SigningKp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SAMLProviderRequest) GetSigningKpOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetSigningKpOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -625,7 +512,7 @@ func (o *SAMLProviderRequest) GetSigningKpOk() (*string, bool) {
 }
 
 // HasSigningKp returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasSigningKp() bool {
+func (o *WSFederationProviderRequest) HasSigningKp() bool {
 	if o != nil && o.SigningKp.IsSet() {
 		return true
 	}
@@ -634,65 +521,22 @@ func (o *SAMLProviderRequest) HasSigningKp() bool {
 }
 
 // SetSigningKp gets a reference to the given NullableString and assigns it to the SigningKp field.
-func (o *SAMLProviderRequest) SetSigningKp(v string) {
+func (o *WSFederationProviderRequest) SetSigningKp(v string) {
 	o.SigningKp.Set(&v)
 }
 
 // SetSigningKpNil sets the value for SigningKp to be an explicit nil
-func (o *SAMLProviderRequest) SetSigningKpNil() {
+func (o *WSFederationProviderRequest) SetSigningKpNil() {
 	o.SigningKp.Set(nil)
 }
 
 // UnsetSigningKp ensures that no value is present for SigningKp, not even an explicit nil
-func (o *SAMLProviderRequest) UnsetSigningKp() {
+func (o *WSFederationProviderRequest) UnsetSigningKp() {
 	o.SigningKp.Unset()
 }
 
-// GetVerificationKp returns the VerificationKp field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SAMLProviderRequest) GetVerificationKp() string {
-	if o == nil || IsNil(o.VerificationKp.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.VerificationKp.Get()
-}
-
-// GetVerificationKpOk returns a tuple with the VerificationKp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SAMLProviderRequest) GetVerificationKpOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.VerificationKp.Get(), o.VerificationKp.IsSet()
-}
-
-// HasVerificationKp returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasVerificationKp() bool {
-	if o != nil && o.VerificationKp.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetVerificationKp gets a reference to the given NullableString and assigns it to the VerificationKp field.
-func (o *SAMLProviderRequest) SetVerificationKp(v string) {
-	o.VerificationKp.Set(&v)
-}
-
-// SetVerificationKpNil sets the value for VerificationKp to be an explicit nil
-func (o *SAMLProviderRequest) SetVerificationKpNil() {
-	o.VerificationKp.Set(nil)
-}
-
-// UnsetVerificationKp ensures that no value is present for VerificationKp, not even an explicit nil
-func (o *SAMLProviderRequest) UnsetVerificationKp() {
-	o.VerificationKp.Unset()
-}
-
 // GetEncryptionKp returns the EncryptionKp field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SAMLProviderRequest) GetEncryptionKp() string {
+func (o *WSFederationProviderRequest) GetEncryptionKp() string {
 	if o == nil || IsNil(o.EncryptionKp.Get()) {
 		var ret string
 		return ret
@@ -703,7 +547,7 @@ func (o *SAMLProviderRequest) GetEncryptionKp() string {
 // GetEncryptionKpOk returns a tuple with the EncryptionKp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SAMLProviderRequest) GetEncryptionKpOk() (*string, bool) {
+func (o *WSFederationProviderRequest) GetEncryptionKpOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -711,7 +555,7 @@ func (o *SAMLProviderRequest) GetEncryptionKpOk() (*string, bool) {
 }
 
 // HasEncryptionKp returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasEncryptionKp() bool {
+func (o *WSFederationProviderRequest) HasEncryptionKp() bool {
 	if o != nil && o.EncryptionKp.IsSet() {
 		return true
 	}
@@ -720,22 +564,22 @@ func (o *SAMLProviderRequest) HasEncryptionKp() bool {
 }
 
 // SetEncryptionKp gets a reference to the given NullableString and assigns it to the EncryptionKp field.
-func (o *SAMLProviderRequest) SetEncryptionKp(v string) {
+func (o *WSFederationProviderRequest) SetEncryptionKp(v string) {
 	o.EncryptionKp.Set(&v)
 }
 
 // SetEncryptionKpNil sets the value for EncryptionKp to be an explicit nil
-func (o *SAMLProviderRequest) SetEncryptionKpNil() {
+func (o *WSFederationProviderRequest) SetEncryptionKpNil() {
 	o.EncryptionKp.Set(nil)
 }
 
 // UnsetEncryptionKp ensures that no value is present for EncryptionKp, not even an explicit nil
-func (o *SAMLProviderRequest) UnsetEncryptionKp() {
+func (o *WSFederationProviderRequest) UnsetEncryptionKp() {
 	o.EncryptionKp.Unset()
 }
 
 // GetSignAssertion returns the SignAssertion field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetSignAssertion() bool {
+func (o *WSFederationProviderRequest) GetSignAssertion() bool {
 	if o == nil || IsNil(o.SignAssertion) {
 		var ret bool
 		return ret
@@ -745,7 +589,7 @@ func (o *SAMLProviderRequest) GetSignAssertion() bool {
 
 // GetSignAssertionOk returns a tuple with the SignAssertion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetSignAssertionOk() (*bool, bool) {
+func (o *WSFederationProviderRequest) GetSignAssertionOk() (*bool, bool) {
 	if o == nil || IsNil(o.SignAssertion) {
 		return nil, false
 	}
@@ -753,7 +597,7 @@ func (o *SAMLProviderRequest) GetSignAssertionOk() (*bool, bool) {
 }
 
 // HasSignAssertion returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasSignAssertion() bool {
+func (o *WSFederationProviderRequest) HasSignAssertion() bool {
 	if o != nil && !IsNil(o.SignAssertion) {
 		return true
 	}
@@ -762,44 +606,12 @@ func (o *SAMLProviderRequest) HasSignAssertion() bool {
 }
 
 // SetSignAssertion gets a reference to the given bool and assigns it to the SignAssertion field.
-func (o *SAMLProviderRequest) SetSignAssertion(v bool) {
+func (o *WSFederationProviderRequest) SetSignAssertion(v bool) {
 	o.SignAssertion = &v
 }
 
-// GetSignResponse returns the SignResponse field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetSignResponse() bool {
-	if o == nil || IsNil(o.SignResponse) {
-		var ret bool
-		return ret
-	}
-	return *o.SignResponse
-}
-
-// GetSignResponseOk returns a tuple with the SignResponse field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetSignResponseOk() (*bool, bool) {
-	if o == nil || IsNil(o.SignResponse) {
-		return nil, false
-	}
-	return o.SignResponse, true
-}
-
-// HasSignResponse returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasSignResponse() bool {
-	if o != nil && !IsNil(o.SignResponse) {
-		return true
-	}
-
-	return false
-}
-
-// SetSignResponse gets a reference to the given bool and assigns it to the SignResponse field.
-func (o *SAMLProviderRequest) SetSignResponse(v bool) {
-	o.SignResponse = &v
-}
-
 // GetSignLogoutRequest returns the SignLogoutRequest field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetSignLogoutRequest() bool {
+func (o *WSFederationProviderRequest) GetSignLogoutRequest() bool {
 	if o == nil || IsNil(o.SignLogoutRequest) {
 		var ret bool
 		return ret
@@ -809,7 +621,7 @@ func (o *SAMLProviderRequest) GetSignLogoutRequest() bool {
 
 // GetSignLogoutRequestOk returns a tuple with the SignLogoutRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetSignLogoutRequestOk() (*bool, bool) {
+func (o *WSFederationProviderRequest) GetSignLogoutRequestOk() (*bool, bool) {
 	if o == nil || IsNil(o.SignLogoutRequest) {
 		return nil, false
 	}
@@ -817,7 +629,7 @@ func (o *SAMLProviderRequest) GetSignLogoutRequestOk() (*bool, bool) {
 }
 
 // HasSignLogoutRequest returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasSignLogoutRequest() bool {
+func (o *WSFederationProviderRequest) HasSignLogoutRequest() bool {
 	if o != nil && !IsNil(o.SignLogoutRequest) {
 		return true
 	}
@@ -826,140 +638,12 @@ func (o *SAMLProviderRequest) HasSignLogoutRequest() bool {
 }
 
 // SetSignLogoutRequest gets a reference to the given bool and assigns it to the SignLogoutRequest field.
-func (o *SAMLProviderRequest) SetSignLogoutRequest(v bool) {
+func (o *WSFederationProviderRequest) SetSignLogoutRequest(v bool) {
 	o.SignLogoutRequest = &v
 }
 
-// GetSpBinding returns the SpBinding field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetSpBinding() SAMLBindingsEnum {
-	if o == nil || IsNil(o.SpBinding) {
-		var ret SAMLBindingsEnum
-		return ret
-	}
-	return *o.SpBinding
-}
-
-// GetSpBindingOk returns a tuple with the SpBinding field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetSpBindingOk() (*SAMLBindingsEnum, bool) {
-	if o == nil || IsNil(o.SpBinding) {
-		return nil, false
-	}
-	return o.SpBinding, true
-}
-
-// HasSpBinding returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasSpBinding() bool {
-	if o != nil && !IsNil(o.SpBinding) {
-		return true
-	}
-
-	return false
-}
-
-// SetSpBinding gets a reference to the given SAMLBindingsEnum and assigns it to the SpBinding field.
-func (o *SAMLProviderRequest) SetSpBinding(v SAMLBindingsEnum) {
-	o.SpBinding = &v
-}
-
-// GetSlsBinding returns the SlsBinding field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetSlsBinding() SAMLBindingsEnum {
-	if o == nil || IsNil(o.SlsBinding) {
-		var ret SAMLBindingsEnum
-		return ret
-	}
-	return *o.SlsBinding
-}
-
-// GetSlsBindingOk returns a tuple with the SlsBinding field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetSlsBindingOk() (*SAMLBindingsEnum, bool) {
-	if o == nil || IsNil(o.SlsBinding) {
-		return nil, false
-	}
-	return o.SlsBinding, true
-}
-
-// HasSlsBinding returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasSlsBinding() bool {
-	if o != nil && !IsNil(o.SlsBinding) {
-		return true
-	}
-
-	return false
-}
-
-// SetSlsBinding gets a reference to the given SAMLBindingsEnum and assigns it to the SlsBinding field.
-func (o *SAMLProviderRequest) SetSlsBinding(v SAMLBindingsEnum) {
-	o.SlsBinding = &v
-}
-
-// GetLogoutMethod returns the LogoutMethod field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetLogoutMethod() SAMLLogoutMethods {
-	if o == nil || IsNil(o.LogoutMethod) {
-		var ret SAMLLogoutMethods
-		return ret
-	}
-	return *o.LogoutMethod
-}
-
-// GetLogoutMethodOk returns a tuple with the LogoutMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetLogoutMethodOk() (*SAMLLogoutMethods, bool) {
-	if o == nil || IsNil(o.LogoutMethod) {
-		return nil, false
-	}
-	return o.LogoutMethod, true
-}
-
-// HasLogoutMethod returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasLogoutMethod() bool {
-	if o != nil && !IsNil(o.LogoutMethod) {
-		return true
-	}
-
-	return false
-}
-
-// SetLogoutMethod gets a reference to the given SAMLLogoutMethods and assigns it to the LogoutMethod field.
-func (o *SAMLProviderRequest) SetLogoutMethod(v SAMLLogoutMethods) {
-	o.LogoutMethod = &v
-}
-
-// GetDefaultRelayState returns the DefaultRelayState field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetDefaultRelayState() string {
-	if o == nil || IsNil(o.DefaultRelayState) {
-		var ret string
-		return ret
-	}
-	return *o.DefaultRelayState
-}
-
-// GetDefaultRelayStateOk returns a tuple with the DefaultRelayState field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetDefaultRelayStateOk() (*string, bool) {
-	if o == nil || IsNil(o.DefaultRelayState) {
-		return nil, false
-	}
-	return o.DefaultRelayState, true
-}
-
-// HasDefaultRelayState returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasDefaultRelayState() bool {
-	if o != nil && !IsNil(o.DefaultRelayState) {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultRelayState gets a reference to the given string and assigns it to the DefaultRelayState field.
-func (o *SAMLProviderRequest) SetDefaultRelayState(v string) {
-	o.DefaultRelayState = &v
-}
-
 // GetDefaultNameIdPolicy returns the DefaultNameIdPolicy field value if set, zero value otherwise.
-func (o *SAMLProviderRequest) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum {
+func (o *WSFederationProviderRequest) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum {
 	if o == nil || IsNil(o.DefaultNameIdPolicy) {
 		var ret SAMLNameIDPolicyEnum
 		return ret
@@ -969,7 +653,7 @@ func (o *SAMLProviderRequest) GetDefaultNameIdPolicy() SAMLNameIDPolicyEnum {
 
 // GetDefaultNameIdPolicyOk returns a tuple with the DefaultNameIdPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SAMLProviderRequest) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool) {
+func (o *WSFederationProviderRequest) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum, bool) {
 	if o == nil || IsNil(o.DefaultNameIdPolicy) {
 		return nil, false
 	}
@@ -977,7 +661,7 @@ func (o *SAMLProviderRequest) GetDefaultNameIdPolicyOk() (*SAMLNameIDPolicyEnum,
 }
 
 // HasDefaultNameIdPolicy returns a boolean if a field has been set.
-func (o *SAMLProviderRequest) HasDefaultNameIdPolicy() bool {
+func (o *WSFederationProviderRequest) HasDefaultNameIdPolicy() bool {
 	if o != nil && !IsNil(o.DefaultNameIdPolicy) {
 		return true
 	}
@@ -986,11 +670,11 @@ func (o *SAMLProviderRequest) HasDefaultNameIdPolicy() bool {
 }
 
 // SetDefaultNameIdPolicy gets a reference to the given SAMLNameIDPolicyEnum and assigns it to the DefaultNameIdPolicy field.
-func (o *SAMLProviderRequest) SetDefaultNameIdPolicy(v SAMLNameIDPolicyEnum) {
+func (o *WSFederationProviderRequest) SetDefaultNameIdPolicy(v SAMLNameIDPolicyEnum) {
 	o.DefaultNameIdPolicy = &v
 }
 
-func (o SAMLProviderRequest) MarshalJSON() ([]byte, error) {
+func (o WSFederationProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -998,7 +682,7 @@ func (o SAMLProviderRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SAMLProviderRequest) ToMap() (map[string]interface{}, error) {
+func (o WSFederationProviderRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	if o.AuthenticationFlow.IsSet() {
@@ -1009,16 +693,7 @@ func (o SAMLProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PropertyMappings) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
-	toSerialize["acs_url"] = o.AcsUrl
-	if !IsNil(o.SlsUrl) {
-		toSerialize["sls_url"] = o.SlsUrl
-	}
-	if !IsNil(o.Audience) {
-		toSerialize["audience"] = o.Audience
-	}
-	if !IsNil(o.Issuer) {
-		toSerialize["issuer"] = o.Issuer
-	}
+	toSerialize["reply_url"] = o.ReplyUrl
 	if !IsNil(o.AssertionValidNotBefore) {
 		toSerialize["assertion_valid_not_before"] = o.AssertionValidNotBefore
 	}
@@ -1043,32 +718,14 @@ func (o SAMLProviderRequest) ToMap() (map[string]interface{}, error) {
 	if o.SigningKp.IsSet() {
 		toSerialize["signing_kp"] = o.SigningKp.Get()
 	}
-	if o.VerificationKp.IsSet() {
-		toSerialize["verification_kp"] = o.VerificationKp.Get()
-	}
 	if o.EncryptionKp.IsSet() {
 		toSerialize["encryption_kp"] = o.EncryptionKp.Get()
 	}
 	if !IsNil(o.SignAssertion) {
 		toSerialize["sign_assertion"] = o.SignAssertion
 	}
-	if !IsNil(o.SignResponse) {
-		toSerialize["sign_response"] = o.SignResponse
-	}
 	if !IsNil(o.SignLogoutRequest) {
 		toSerialize["sign_logout_request"] = o.SignLogoutRequest
-	}
-	if !IsNil(o.SpBinding) {
-		toSerialize["sp_binding"] = o.SpBinding
-	}
-	if !IsNil(o.SlsBinding) {
-		toSerialize["sls_binding"] = o.SlsBinding
-	}
-	if !IsNil(o.LogoutMethod) {
-		toSerialize["logout_method"] = o.LogoutMethod
-	}
-	if !IsNil(o.DefaultRelayState) {
-		toSerialize["default_relay_state"] = o.DefaultRelayState
 	}
 	if !IsNil(o.DefaultNameIdPolicy) {
 		toSerialize["default_name_id_policy"] = o.DefaultNameIdPolicy
@@ -1081,7 +738,7 @@ func (o SAMLProviderRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SAMLProviderRequest) UnmarshalJSON(data []byte) (err error) {
+func (o *WSFederationProviderRequest) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -1089,7 +746,7 @@ func (o *SAMLProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"authorization_flow",
 		"invalidation_flow",
-		"acs_url",
+		"reply_url",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1106,15 +763,15 @@ func (o *SAMLProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSAMLProviderRequest := _SAMLProviderRequest{}
+	varWSFederationProviderRequest := _WSFederationProviderRequest{}
 
-	err = json.Unmarshal(data, &varSAMLProviderRequest)
+	err = json.Unmarshal(data, &varWSFederationProviderRequest)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SAMLProviderRequest(varSAMLProviderRequest)
+	*o = WSFederationProviderRequest(varWSFederationProviderRequest)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -1124,10 +781,7 @@ func (o *SAMLProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "authorization_flow")
 		delete(additionalProperties, "invalidation_flow")
 		delete(additionalProperties, "property_mappings")
-		delete(additionalProperties, "acs_url")
-		delete(additionalProperties, "sls_url")
-		delete(additionalProperties, "audience")
-		delete(additionalProperties, "issuer")
+		delete(additionalProperties, "reply_url")
 		delete(additionalProperties, "assertion_valid_not_before")
 		delete(additionalProperties, "assertion_valid_not_on_or_after")
 		delete(additionalProperties, "session_valid_not_on_or_after")
@@ -1136,15 +790,9 @@ func (o *SAMLProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "digest_algorithm")
 		delete(additionalProperties, "signature_algorithm")
 		delete(additionalProperties, "signing_kp")
-		delete(additionalProperties, "verification_kp")
 		delete(additionalProperties, "encryption_kp")
 		delete(additionalProperties, "sign_assertion")
-		delete(additionalProperties, "sign_response")
 		delete(additionalProperties, "sign_logout_request")
-		delete(additionalProperties, "sp_binding")
-		delete(additionalProperties, "sls_binding")
-		delete(additionalProperties, "logout_method")
-		delete(additionalProperties, "default_relay_state")
 		delete(additionalProperties, "default_name_id_policy")
 		o.AdditionalProperties = additionalProperties
 	}
@@ -1152,38 +800,38 @@ func (o *SAMLProviderRequest) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSAMLProviderRequest struct {
-	value *SAMLProviderRequest
+type NullableWSFederationProviderRequest struct {
+	value *WSFederationProviderRequest
 	isSet bool
 }
 
-func (v NullableSAMLProviderRequest) Get() *SAMLProviderRequest {
+func (v NullableWSFederationProviderRequest) Get() *WSFederationProviderRequest {
 	return v.value
 }
 
-func (v *NullableSAMLProviderRequest) Set(val *SAMLProviderRequest) {
+func (v *NullableWSFederationProviderRequest) Set(val *WSFederationProviderRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSAMLProviderRequest) IsSet() bool {
+func (v NullableWSFederationProviderRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSAMLProviderRequest) Unset() {
+func (v *NullableWSFederationProviderRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSAMLProviderRequest(val *SAMLProviderRequest) *NullableSAMLProviderRequest {
-	return &NullableSAMLProviderRequest{value: val, isSet: true}
+func NewNullableWSFederationProviderRequest(val *WSFederationProviderRequest) *NullableWSFederationProviderRequest {
+	return &NullableWSFederationProviderRequest{value: val, isSet: true}
 }
 
-func (v NullableSAMLProviderRequest) MarshalJSON() ([]byte, error) {
+func (v NullableWSFederationProviderRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSAMLProviderRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableWSFederationProviderRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

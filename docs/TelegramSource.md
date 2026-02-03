@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **UserPathTemplate** | Pointer to **string** |  | [optional] 
 **Icon** | Pointer to **string** |  | [optional] 
 **IconUrl** | **NullableString** |  | [readonly] 
+**IconThemedUrls** | [**NullableThemedUrls**](ThemedUrls.md) |  | [readonly] 
 **BotUsername** | **string** | Telegram bot username | 
 **RequestMessageAccess** | Pointer to **bool** | Request access to send messages from your bot. | [optional] 
 **PreAuthenticationFlow** | **string** | Flow used before authentication. | 
@@ -31,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewTelegramSource
 
-`func NewTelegramSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, botUsername string, preAuthenticationFlow string, ) *TelegramSource`
+`func NewTelegramSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, iconThemedUrls NullableThemedUrls, botUsername string, preAuthenticationFlow string, ) *TelegramSource`
 
 NewTelegramSource instantiates a new TelegramSource object
 This constructor will assign default values to properties that have it defined,
@@ -516,6 +517,36 @@ SetIconUrl sets IconUrl field to given value.
 `func (o *TelegramSource) UnsetIconUrl()`
 
 UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
+### GetIconThemedUrls
+
+`func (o *TelegramSource) GetIconThemedUrls() ThemedUrls`
+
+GetIconThemedUrls returns the IconThemedUrls field if non-nil, zero value otherwise.
+
+### GetIconThemedUrlsOk
+
+`func (o *TelegramSource) GetIconThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetIconThemedUrlsOk returns a tuple with the IconThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconThemedUrls
+
+`func (o *TelegramSource) SetIconThemedUrls(v ThemedUrls)`
+
+SetIconThemedUrls sets IconThemedUrls field to given value.
+
+
+### SetIconThemedUrlsNil
+
+`func (o *TelegramSource) SetIconThemedUrlsNil(b bool)`
+
+ SetIconThemedUrlsNil sets the value for IconThemedUrls to be an explicit nil
+
+### UnsetIconThemedUrls
+`func (o *TelegramSource) UnsetIconThemedUrls()`
+
+UnsetIconThemedUrls ensures that no value is present for IconThemedUrls, not even an explicit nil
 ### GetBotUsername
 
 `func (o *TelegramSource) GetBotUsername() string`

@@ -51,7 +51,8 @@ type Source struct {
 	UserPathTemplate *string        `json:"user_path_template,omitempty"`
 	Icon             *string        `json:"icon,omitempty"`
 	// Get the URL to the source icon
-	IconUrl              NullableString `json:"icon_url"`
+	IconUrl              NullableString     `json:"icon_url"`
+	IconThemedUrls       NullableThemedUrls `json:"icon_themed_urls"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -61,7 +62,7 @@ type _Source Source
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString) *Source {
+func NewSource(pk string, name string, slug string, component string, verboseName string, verboseNamePlural string, metaModelName string, managed NullableString, iconUrl NullableString, iconThemedUrls NullableThemedUrls) *Source {
 	this := Source{}
 	this.Pk = pk
 	this.Name = name
@@ -72,6 +73,7 @@ func NewSource(pk string, name string, slug string, component string, verboseNam
 	this.MetaModelName = metaModelName
 	this.Managed = managed
 	this.IconUrl = iconUrl
+	this.IconThemedUrls = iconThemedUrls
 	return &this
 }
 
@@ -645,6 +647,32 @@ func (o *Source) SetIconUrl(v string) {
 	o.IconUrl.Set(&v)
 }
 
+// GetIconThemedUrls returns the IconThemedUrls field value
+// If the value is explicit nil, the zero value for ThemedUrls will be returned
+func (o *Source) GetIconThemedUrls() ThemedUrls {
+	if o == nil || o.IconThemedUrls.Get() == nil {
+		var ret ThemedUrls
+		return ret
+	}
+
+	return *o.IconThemedUrls.Get()
+}
+
+// GetIconThemedUrlsOk returns a tuple with the IconThemedUrls field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Source) GetIconThemedUrlsOk() (*ThemedUrls, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IconThemedUrls.Get(), o.IconThemedUrls.IsSet()
+}
+
+// SetIconThemedUrls sets field value
+func (o *Source) SetIconThemedUrls(v ThemedUrls) {
+	o.IconThemedUrls.Set(&v)
+}
+
 func (o Source) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -694,6 +722,7 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 		toSerialize["icon"] = o.Icon
 	}
 	toSerialize["icon_url"] = o.IconUrl.Get()
+	toSerialize["icon_themed_urls"] = o.IconThemedUrls.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -716,6 +745,7 @@ func (o *Source) UnmarshalJSON(data []byte) (err error) {
 		"meta_model_name",
 		"managed",
 		"icon_url",
+		"icon_themed_urls",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -764,6 +794,7 @@ func (o *Source) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "user_path_template")
 		delete(additionalProperties, "icon")
 		delete(additionalProperties, "icon_url")
+		delete(additionalProperties, "icon_themed_urls")
 		o.AdditionalProperties = additionalProperties
 	}
 

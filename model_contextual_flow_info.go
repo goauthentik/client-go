@@ -23,6 +23,7 @@ var _ MappedNullable = &ContextualFlowInfo{}
 type ContextualFlowInfo struct {
 	Title                *string                      `json:"title,omitempty"`
 	Background           *string                      `json:"background,omitempty"`
+	BackgroundThemedUrls NullableThemedUrls           `json:"background_themed_urls,omitempty"`
 	CancelUrl            string                       `json:"cancel_url"`
 	Layout               ContextualFlowInfoLayoutEnum `json:"layout"`
 	AdditionalProperties map[string]interface{}
@@ -113,6 +114,49 @@ func (o *ContextualFlowInfo) SetBackground(v string) {
 	o.Background = &v
 }
 
+// GetBackgroundThemedUrls returns the BackgroundThemedUrls field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContextualFlowInfo) GetBackgroundThemedUrls() ThemedUrls {
+	if o == nil || IsNil(o.BackgroundThemedUrls.Get()) {
+		var ret ThemedUrls
+		return ret
+	}
+	return *o.BackgroundThemedUrls.Get()
+}
+
+// GetBackgroundThemedUrlsOk returns a tuple with the BackgroundThemedUrls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ContextualFlowInfo) GetBackgroundThemedUrlsOk() (*ThemedUrls, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BackgroundThemedUrls.Get(), o.BackgroundThemedUrls.IsSet()
+}
+
+// HasBackgroundThemedUrls returns a boolean if a field has been set.
+func (o *ContextualFlowInfo) HasBackgroundThemedUrls() bool {
+	if o != nil && o.BackgroundThemedUrls.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBackgroundThemedUrls gets a reference to the given NullableThemedUrls and assigns it to the BackgroundThemedUrls field.
+func (o *ContextualFlowInfo) SetBackgroundThemedUrls(v ThemedUrls) {
+	o.BackgroundThemedUrls.Set(&v)
+}
+
+// SetBackgroundThemedUrlsNil sets the value for BackgroundThemedUrls to be an explicit nil
+func (o *ContextualFlowInfo) SetBackgroundThemedUrlsNil() {
+	o.BackgroundThemedUrls.Set(nil)
+}
+
+// UnsetBackgroundThemedUrls ensures that no value is present for BackgroundThemedUrls, not even an explicit nil
+func (o *ContextualFlowInfo) UnsetBackgroundThemedUrls() {
+	o.BackgroundThemedUrls.Unset()
+}
+
 // GetCancelUrl returns the CancelUrl field value
 func (o *ContextualFlowInfo) GetCancelUrl() string {
 	if o == nil {
@@ -177,6 +221,9 @@ func (o ContextualFlowInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Background) {
 		toSerialize["background"] = o.Background
 	}
+	if o.BackgroundThemedUrls.IsSet() {
+		toSerialize["background_themed_urls"] = o.BackgroundThemedUrls.Get()
+	}
 	toSerialize["cancel_url"] = o.CancelUrl
 	toSerialize["layout"] = o.Layout
 
@@ -225,6 +272,7 @@ func (o *ContextualFlowInfo) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "title")
 		delete(additionalProperties, "background")
+		delete(additionalProperties, "background_themed_urls")
 		delete(additionalProperties, "cancel_url")
 		delete(additionalProperties, "layout")
 		o.AdditionalProperties = additionalProperties

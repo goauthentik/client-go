@@ -227,6 +227,8 @@
 
 * `AUTHENTIK_PROVIDERS_SSF_SSFPROVIDER` (value: `"authentik_providers_ssf.ssfprovider"`)
 
+* `AUTHENTIK_PROVIDERS_WS_FEDERATION_WSFEDERATIONPROVIDER` (value: `"authentik_providers_ws_federation.wsfederationprovider"`)
+
 * `AUTHENTIK_REPORTS_DATAEXPORT` (value: `"authentik_reports.dataexport"`)
 
 * `AUTHENTIK_STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE` (value: `"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"`)

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Component** | Pointer to **string** |  | [optional] [default to "ak-stage-identification"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **UserFields** | **[]string** |  | 
+**PendingUserIdentifier** | Pointer to **NullableString** |  | [optional] 
 **PasswordFields** | **bool** |  | 
 **AllowShowPassword** | Pointer to **bool** |  | [optional] [default to false]
 **ApplicationPre** | Pointer to **string** |  | [optional] 
@@ -146,6 +147,41 @@ SetUserFields sets UserFields field to given value.
 `func (o *IdentificationChallenge) UnsetUserFields()`
 
 UnsetUserFields ensures that no value is present for UserFields, not even an explicit nil
+### GetPendingUserIdentifier
+
+`func (o *IdentificationChallenge) GetPendingUserIdentifier() string`
+
+GetPendingUserIdentifier returns the PendingUserIdentifier field if non-nil, zero value otherwise.
+
+### GetPendingUserIdentifierOk
+
+`func (o *IdentificationChallenge) GetPendingUserIdentifierOk() (*string, bool)`
+
+GetPendingUserIdentifierOk returns a tuple with the PendingUserIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingUserIdentifier
+
+`func (o *IdentificationChallenge) SetPendingUserIdentifier(v string)`
+
+SetPendingUserIdentifier sets PendingUserIdentifier field to given value.
+
+### HasPendingUserIdentifier
+
+`func (o *IdentificationChallenge) HasPendingUserIdentifier() bool`
+
+HasPendingUserIdentifier returns a boolean if a field has been set.
+
+### SetPendingUserIdentifierNil
+
+`func (o *IdentificationChallenge) SetPendingUserIdentifierNil(b bool)`
+
+ SetPendingUserIdentifierNil sets the value for PendingUserIdentifier to be an explicit nil
+
+### UnsetPendingUserIdentifier
+`func (o *IdentificationChallenge) UnsetPendingUserIdentifier()`
+
+UnsetPendingUserIdentifier ensures that no value is present for PendingUserIdentifier, not even an explicit nil
 ### GetPasswordFields
 
 `func (o *IdentificationChallenge) GetPasswordFields() bool`

@@ -27,9 +27,9 @@ type Outpost struct {
 	Providers    []int32         `json:"providers"`
 	ProvidersObj []Provider      `json:"providers_obj"`
 	// Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment.
-	ServiceConnection    NullableString    `json:"service_connection,omitempty"`
-	ServiceConnectionObj ServiceConnection `json:"service_connection_obj"`
-	RefreshIntervalS     int32             `json:"refresh_interval_s"`
+	ServiceConnection    NullableString            `json:"service_connection,omitempty"`
+	ServiceConnectionObj NullableServiceConnection `json:"service_connection_obj"`
+	RefreshIntervalS     int32                     `json:"refresh_interval_s"`
 	// Get Token identifier
 	TokenIdentifier string                 `json:"token_identifier"`
 	Config          map[string]interface{} `json:"config"`
@@ -44,7 +44,7 @@ type _Outpost Outpost
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj ServiceConnection, refreshIntervalS int32, tokenIdentifier string, config map[string]interface{}) *Outpost {
+func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj NullableServiceConnection, refreshIntervalS int32, tokenIdentifier string, config map[string]interface{}) *Outpost {
 	this := Outpost{}
 	this.Pk = pk
 	this.Name = name
@@ -230,27 +230,29 @@ func (o *Outpost) UnsetServiceConnection() {
 }
 
 // GetServiceConnectionObj returns the ServiceConnectionObj field value
+// If the value is explicit nil, the zero value for ServiceConnection will be returned
 func (o *Outpost) GetServiceConnectionObj() ServiceConnection {
-	if o == nil {
+	if o == nil || o.ServiceConnectionObj.Get() == nil {
 		var ret ServiceConnection
 		return ret
 	}
 
-	return o.ServiceConnectionObj
+	return *o.ServiceConnectionObj.Get()
 }
 
 // GetServiceConnectionObjOk returns a tuple with the ServiceConnectionObj field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Outpost) GetServiceConnectionObjOk() (*ServiceConnection, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ServiceConnectionObj, true
+	return o.ServiceConnectionObj.Get(), o.ServiceConnectionObj.IsSet()
 }
 
 // SetServiceConnectionObj sets field value
 func (o *Outpost) SetServiceConnectionObj(v ServiceConnection) {
-	o.ServiceConnectionObj = v
+	o.ServiceConnectionObj.Set(&v)
 }
 
 // GetRefreshIntervalS returns the RefreshIntervalS field value
@@ -386,7 +388,7 @@ func (o Outpost) ToMap() (map[string]interface{}, error) {
 	if o.ServiceConnection.IsSet() {
 		toSerialize["service_connection"] = o.ServiceConnection.Get()
 	}
-	toSerialize["service_connection_obj"] = o.ServiceConnectionObj
+	toSerialize["service_connection_obj"] = o.ServiceConnectionObj.Get()
 	toSerialize["refresh_interval_s"] = o.RefreshIntervalS
 	toSerialize["token_identifier"] = o.TokenIdentifier
 	toSerialize["config"] = o.Config

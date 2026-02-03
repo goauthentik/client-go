@@ -1,4 +1,4 @@
-# SAMLProviderLogoutMethodEnum
+# SAMLLogoutMethods
 
 ## Enum
 

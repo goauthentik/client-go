@@ -45,6 +45,8 @@
 
 * `CONFIGURATION_ERROR` (value: `"configuration_error"`)
 
+* `CONFIGURATION_WARNING` (value: `"configuration_warning"`)
+
 * `MODEL_CREATED` (value: `"model_created"`)
 
 * `MODEL_UPDATED` (value: `"model_updated"`)

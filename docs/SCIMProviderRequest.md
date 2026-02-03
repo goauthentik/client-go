@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **ServiceProviderConfigCacheTimeout** | Pointer to **string** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
-**FilterGroup** | Pointer to **NullableString** |  | [optional] 
 **SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
 **SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
+**GroupFilters** | Pointer to **[]string** | Group filters used to define sync-scope for groups. | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
 ## Methods
@@ -340,41 +340,6 @@ SetExcludeUsersServiceAccount sets ExcludeUsersServiceAccount field to given val
 
 HasExcludeUsersServiceAccount returns a boolean if a field has been set.
 
-### GetFilterGroup
-
-`func (o *SCIMProviderRequest) GetFilterGroup() string`
-
-GetFilterGroup returns the FilterGroup field if non-nil, zero value otherwise.
-
-### GetFilterGroupOk
-
-`func (o *SCIMProviderRequest) GetFilterGroupOk() (*string, bool)`
-
-GetFilterGroupOk returns a tuple with the FilterGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilterGroup
-
-`func (o *SCIMProviderRequest) SetFilterGroup(v string)`
-
-SetFilterGroup sets FilterGroup field to given value.
-
-### HasFilterGroup
-
-`func (o *SCIMProviderRequest) HasFilterGroup() bool`
-
-HasFilterGroup returns a boolean if a field has been set.
-
-### SetFilterGroupNil
-
-`func (o *SCIMProviderRequest) SetFilterGroupNil(b bool)`
-
- SetFilterGroupNil sets the value for FilterGroup to be an explicit nil
-
-### UnsetFilterGroup
-`func (o *SCIMProviderRequest) UnsetFilterGroup()`
-
-UnsetFilterGroup ensures that no value is present for FilterGroup, not even an explicit nil
 ### GetSyncPageSize
 
 `func (o *SCIMProviderRequest) GetSyncPageSize() int32`
@@ -424,6 +389,31 @@ SetSyncPageTimeout sets SyncPageTimeout field to given value.
 `func (o *SCIMProviderRequest) HasSyncPageTimeout() bool`
 
 HasSyncPageTimeout returns a boolean if a field has been set.
+
+### GetGroupFilters
+
+`func (o *SCIMProviderRequest) GetGroupFilters() []string`
+
+GetGroupFilters returns the GroupFilters field if non-nil, zero value otherwise.
+
+### GetGroupFiltersOk
+
+`func (o *SCIMProviderRequest) GetGroupFiltersOk() (*[]string, bool)`
+
+GetGroupFiltersOk returns a tuple with the GroupFilters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupFilters
+
+`func (o *SCIMProviderRequest) SetGroupFilters(v []string)`
+
+SetGroupFilters sets GroupFilters field to given value.
+
+### HasGroupFilters
+
+`func (o *SCIMProviderRequest) HasGroupFilters() bool`
+
+HasGroupFilters returns a boolean if a field has been set.
 
 ### GetDryRun
 

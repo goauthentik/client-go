@@ -13698,7 +13698,7 @@ type ApiProvidersScimListRequest struct {
 	ctx                        context.Context
 	ApiService                 *ProvidersAPIService
 	excludeUsersServiceAccount *bool
-	filterGroup                *string
+	groupFilters               *[]string
 	name                       *string
 	ordering                   *string
 	page                       *int32
@@ -13712,8 +13712,8 @@ func (r ApiProvidersScimListRequest) ExcludeUsersServiceAccount(excludeUsersServ
 	return r
 }
 
-func (r ApiProvidersScimListRequest) FilterGroup(filterGroup string) ApiProvidersScimListRequest {
-	r.filterGroup = &filterGroup
+func (r ApiProvidersScimListRequest) GroupFilters(groupFilters []string) ApiProvidersScimListRequest {
+	r.groupFilters = &groupFilters
 	return r
 }
 
@@ -13795,8 +13795,16 @@ func (a *ProvidersAPIService) ProvidersScimListExecute(r ApiProvidersScimListReq
 	if r.excludeUsersServiceAccount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude_users_service_account", r.excludeUsersServiceAccount, "form", "")
 	}
-	if r.filterGroup != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter_group", r.filterGroup, "form", "")
+	if r.groupFilters != nil {
+		t := *r.groupFilters
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "group_filters", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "group_filters", t, "form", "multi")
+		}
 	}
 	if r.name != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
@@ -16216,6 +16224,1470 @@ func (a *ProvidersAPIService) ProvidersSsfUsedByListExecute(r ApiProvidersSsfUse
 	}
 
 	localVarPath := localBasePath + "/providers/ssf/{id}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersWsfedCreateRequest struct {
+	ctx                         context.Context
+	ApiService                  *ProvidersAPIService
+	wSFederationProviderRequest *WSFederationProviderRequest
+}
+
+func (r ApiProvidersWsfedCreateRequest) WSFederationProviderRequest(wSFederationProviderRequest WSFederationProviderRequest) ApiProvidersWsfedCreateRequest {
+	r.wSFederationProviderRequest = &wSFederationProviderRequest
+	return r
+}
+
+func (r ApiProvidersWsfedCreateRequest) Execute() (*WSFederationProvider, *http.Response, error) {
+	return r.ApiService.ProvidersWsfedCreateExecute(r)
+}
+
+/*
+ProvidersWsfedCreate Method for ProvidersWsfedCreate
+
+WSFederationProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersWsfedCreateRequest
+*/
+func (a *ProvidersAPIService) ProvidersWsfedCreate(ctx context.Context) ApiProvidersWsfedCreateRequest {
+	return ApiProvidersWsfedCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return WSFederationProvider
+func (a *ProvidersAPIService) ProvidersWsfedCreateExecute(r ApiProvidersWsfedCreateRequest) (*WSFederationProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WSFederationProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersWsfedCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/wsfed/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.wSFederationProviderRequest == nil {
+		return localVarReturnValue, nil, reportError("wSFederationProviderRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.wSFederationProviderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersWsfedDestroyRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersAPIService
+	id         int32
+}
+
+func (r ApiProvidersWsfedDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProvidersWsfedDestroyExecute(r)
+}
+
+/*
+ProvidersWsfedDestroy Method for ProvidersWsfedDestroy
+
+WSFederationProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WS-Federation Provider.
+	@return ApiProvidersWsfedDestroyRequest
+*/
+func (a *ProvidersAPIService) ProvidersWsfedDestroy(ctx context.Context, id int32) ApiProvidersWsfedDestroyRequest {
+	return ApiProvidersWsfedDestroyRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *ProvidersAPIService) ProvidersWsfedDestroyExecute(r ApiProvidersWsfedDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersWsfedDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/wsfed/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiProvidersWsfedListRequest struct {
+	ctx                         context.Context
+	ApiService                  *ProvidersAPIService
+	acsUrl                      *string
+	assertionValidNotBefore     *string
+	assertionValidNotOnOrAfter  *string
+	audience                    *string
+	authenticationFlow          *string
+	authnContextClassRefMapping *string
+	authorizationFlow           *string
+	backchannelApplication      *string
+	defaultNameIdPolicy         *string
+	defaultRelayState           *string
+	digestAlgorithm             *string
+	encryptionKp                *string
+	invalidationFlow            *string
+	isBackchannel               *bool
+	issuer                      *string
+	logoutMethod                *string
+	name                        *string
+	nameIdMapping               *string
+	ordering                    *string
+	page                        *int32
+	pageSize                    *int32
+	propertyMappings            *[]string
+	search                      *string
+	sessionValidNotOnOrAfter    *string
+	signAssertion               *bool
+	signLogoutRequest           *bool
+	signResponse                *bool
+	signatureAlgorithm          *string
+	signingKp                   *string
+	slsBinding                  *string
+	slsUrl                      *string
+	spBinding                   *string
+	verificationKp              *string
+}
+
+func (r ApiProvidersWsfedListRequest) AcsUrl(acsUrl string) ApiProvidersWsfedListRequest {
+	r.acsUrl = &acsUrl
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) AssertionValidNotBefore(assertionValidNotBefore string) ApiProvidersWsfedListRequest {
+	r.assertionValidNotBefore = &assertionValidNotBefore
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter string) ApiProvidersWsfedListRequest {
+	r.assertionValidNotOnOrAfter = &assertionValidNotOnOrAfter
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) Audience(audience string) ApiProvidersWsfedListRequest {
+	r.audience = &audience
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) AuthenticationFlow(authenticationFlow string) ApiProvidersWsfedListRequest {
+	r.authenticationFlow = &authenticationFlow
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) AuthnContextClassRefMapping(authnContextClassRefMapping string) ApiProvidersWsfedListRequest {
+	r.authnContextClassRefMapping = &authnContextClassRefMapping
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) AuthorizationFlow(authorizationFlow string) ApiProvidersWsfedListRequest {
+	r.authorizationFlow = &authorizationFlow
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) BackchannelApplication(backchannelApplication string) ApiProvidersWsfedListRequest {
+	r.backchannelApplication = &backchannelApplication
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) DefaultNameIdPolicy(defaultNameIdPolicy string) ApiProvidersWsfedListRequest {
+	r.defaultNameIdPolicy = &defaultNameIdPolicy
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) DefaultRelayState(defaultRelayState string) ApiProvidersWsfedListRequest {
+	r.defaultRelayState = &defaultRelayState
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) DigestAlgorithm(digestAlgorithm string) ApiProvidersWsfedListRequest {
+	r.digestAlgorithm = &digestAlgorithm
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) EncryptionKp(encryptionKp string) ApiProvidersWsfedListRequest {
+	r.encryptionKp = &encryptionKp
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) InvalidationFlow(invalidationFlow string) ApiProvidersWsfedListRequest {
+	r.invalidationFlow = &invalidationFlow
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) IsBackchannel(isBackchannel bool) ApiProvidersWsfedListRequest {
+	r.isBackchannel = &isBackchannel
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) Issuer(issuer string) ApiProvidersWsfedListRequest {
+	r.issuer = &issuer
+	return r
+}
+
+// Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).
+func (r ApiProvidersWsfedListRequest) LogoutMethod(logoutMethod string) ApiProvidersWsfedListRequest {
+	r.logoutMethod = &logoutMethod
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) Name(name string) ApiProvidersWsfedListRequest {
+	r.name = &name
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) NameIdMapping(nameIdMapping string) ApiProvidersWsfedListRequest {
+	r.nameIdMapping = &nameIdMapping
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiProvidersWsfedListRequest) Ordering(ordering string) ApiProvidersWsfedListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiProvidersWsfedListRequest) Page(page int32) ApiProvidersWsfedListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiProvidersWsfedListRequest) PageSize(pageSize int32) ApiProvidersWsfedListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) PropertyMappings(propertyMappings []string) ApiProvidersWsfedListRequest {
+	r.propertyMappings = &propertyMappings
+	return r
+}
+
+// A search term.
+func (r ApiProvidersWsfedListRequest) Search(search string) ApiProvidersWsfedListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) SessionValidNotOnOrAfter(sessionValidNotOnOrAfter string) ApiProvidersWsfedListRequest {
+	r.sessionValidNotOnOrAfter = &sessionValidNotOnOrAfter
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) SignAssertion(signAssertion bool) ApiProvidersWsfedListRequest {
+	r.signAssertion = &signAssertion
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) SignLogoutRequest(signLogoutRequest bool) ApiProvidersWsfedListRequest {
+	r.signLogoutRequest = &signLogoutRequest
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) SignResponse(signResponse bool) ApiProvidersWsfedListRequest {
+	r.signResponse = &signResponse
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) SignatureAlgorithm(signatureAlgorithm string) ApiProvidersWsfedListRequest {
+	r.signatureAlgorithm = &signatureAlgorithm
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) SigningKp(signingKp string) ApiProvidersWsfedListRequest {
+	r.signingKp = &signingKp
+	return r
+}
+
+// This determines how authentik sends the logout response back to the Service Provider.
+func (r ApiProvidersWsfedListRequest) SlsBinding(slsBinding string) ApiProvidersWsfedListRequest {
+	r.slsBinding = &slsBinding
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) SlsUrl(slsUrl string) ApiProvidersWsfedListRequest {
+	r.slsUrl = &slsUrl
+	return r
+}
+
+// This determines how authentik sends the response back to the Service Provider.
+func (r ApiProvidersWsfedListRequest) SpBinding(spBinding string) ApiProvidersWsfedListRequest {
+	r.spBinding = &spBinding
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) VerificationKp(verificationKp string) ApiProvidersWsfedListRequest {
+	r.verificationKp = &verificationKp
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) Execute() (*PaginatedWSFederationProviderList, *http.Response, error) {
+	return r.ApiService.ProvidersWsfedListExecute(r)
+}
+
+/*
+ProvidersWsfedList Method for ProvidersWsfedList
+
+WSFederationProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProvidersWsfedListRequest
+*/
+func (a *ProvidersAPIService) ProvidersWsfedList(ctx context.Context) ApiProvidersWsfedListRequest {
+	return ApiProvidersWsfedListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedWSFederationProviderList
+func (a *ProvidersAPIService) ProvidersWsfedListExecute(r ApiProvidersWsfedListRequest) (*PaginatedWSFederationProviderList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedWSFederationProviderList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersWsfedList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/wsfed/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.acsUrl != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "acs_url", r.acsUrl, "form", "")
+	}
+	if r.assertionValidNotBefore != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "assertion_valid_not_before", r.assertionValidNotBefore, "form", "")
+	}
+	if r.assertionValidNotOnOrAfter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "assertion_valid_not_on_or_after", r.assertionValidNotOnOrAfter, "form", "")
+	}
+	if r.audience != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "audience", r.audience, "form", "")
+	}
+	if r.authenticationFlow != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "authentication_flow", r.authenticationFlow, "form", "")
+	}
+	if r.authnContextClassRefMapping != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "authn_context_class_ref_mapping", r.authnContextClassRefMapping, "form", "")
+	}
+	if r.authorizationFlow != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "authorization_flow", r.authorizationFlow, "form", "")
+	}
+	if r.backchannelApplication != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "backchannel_application", r.backchannelApplication, "form", "")
+	}
+	if r.defaultNameIdPolicy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "default_name_id_policy", r.defaultNameIdPolicy, "form", "")
+	}
+	if r.defaultRelayState != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "default_relay_state", r.defaultRelayState, "form", "")
+	}
+	if r.digestAlgorithm != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "digest_algorithm", r.digestAlgorithm, "form", "")
+	}
+	if r.encryptionKp != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "encryption_kp", r.encryptionKp, "form", "")
+	}
+	if r.invalidationFlow != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "invalidation_flow", r.invalidationFlow, "form", "")
+	}
+	if r.isBackchannel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_backchannel", r.isBackchannel, "form", "")
+	}
+	if r.issuer != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "issuer", r.issuer, "form", "")
+	}
+	if r.logoutMethod != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "logout_method", r.logoutMethod, "form", "")
+	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	}
+	if r.nameIdMapping != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name_id_mapping", r.nameIdMapping, "form", "")
+	}
+	if r.ordering != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	}
+	if r.propertyMappings != nil {
+		t := *r.propertyMappings
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "property_mappings", t, "form", "multi")
+		}
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+	}
+	if r.sessionValidNotOnOrAfter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "session_valid_not_on_or_after", r.sessionValidNotOnOrAfter, "form", "")
+	}
+	if r.signAssertion != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_assertion", r.signAssertion, "form", "")
+	}
+	if r.signLogoutRequest != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_logout_request", r.signLogoutRequest, "form", "")
+	}
+	if r.signResponse != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_response", r.signResponse, "form", "")
+	}
+	if r.signatureAlgorithm != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "signature_algorithm", r.signatureAlgorithm, "form", "")
+	}
+	if r.signingKp != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "signing_kp", r.signingKp, "form", "")
+	}
+	if r.slsBinding != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sls_binding", r.slsBinding, "form", "")
+	}
+	if r.slsUrl != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sls_url", r.slsUrl, "form", "")
+	}
+	if r.spBinding != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sp_binding", r.spBinding, "form", "")
+	}
+	if r.verificationKp != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "verification_kp", r.verificationKp, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersWsfedMetadataRetrieveRequest struct {
+	ctx          context.Context
+	ApiService   *ProvidersAPIService
+	id           int32
+	download     *bool
+	forceBinding *string
+}
+
+func (r ApiProvidersWsfedMetadataRetrieveRequest) Download(download bool) ApiProvidersWsfedMetadataRetrieveRequest {
+	r.download = &download
+	return r
+}
+
+// Optionally force the metadata to only include one binding.
+func (r ApiProvidersWsfedMetadataRetrieveRequest) ForceBinding(forceBinding string) ApiProvidersWsfedMetadataRetrieveRequest {
+	r.forceBinding = &forceBinding
+	return r
+}
+
+func (r ApiProvidersWsfedMetadataRetrieveRequest) Execute() (*SAMLMetadata, *http.Response, error) {
+	return r.ApiService.ProvidersWsfedMetadataRetrieveExecute(r)
+}
+
+/*
+ProvidersWsfedMetadataRetrieve Method for ProvidersWsfedMetadataRetrieve
+
+Return metadata as XML string
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WS-Federation Provider.
+	@return ApiProvidersWsfedMetadataRetrieveRequest
+*/
+func (a *ProvidersAPIService) ProvidersWsfedMetadataRetrieve(ctx context.Context, id int32) ApiProvidersWsfedMetadataRetrieveRequest {
+	return ApiProvidersWsfedMetadataRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SAMLMetadata
+func (a *ProvidersAPIService) ProvidersWsfedMetadataRetrieveExecute(r ApiProvidersWsfedMetadataRetrieveRequest) (*SAMLMetadata, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SAMLMetadata
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersWsfedMetadataRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/wsfed/{id}/metadata/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.download != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "download", r.download, "form", "")
+	}
+	if r.forceBinding != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "force_binding", r.forceBinding, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/xml"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersWsfedPartialUpdateRequest struct {
+	ctx                                context.Context
+	ApiService                         *ProvidersAPIService
+	id                                 int32
+	patchedWSFederationProviderRequest *PatchedWSFederationProviderRequest
+}
+
+func (r ApiProvidersWsfedPartialUpdateRequest) PatchedWSFederationProviderRequest(patchedWSFederationProviderRequest PatchedWSFederationProviderRequest) ApiProvidersWsfedPartialUpdateRequest {
+	r.patchedWSFederationProviderRequest = &patchedWSFederationProviderRequest
+	return r
+}
+
+func (r ApiProvidersWsfedPartialUpdateRequest) Execute() (*WSFederationProvider, *http.Response, error) {
+	return r.ApiService.ProvidersWsfedPartialUpdateExecute(r)
+}
+
+/*
+ProvidersWsfedPartialUpdate Method for ProvidersWsfedPartialUpdate
+
+WSFederationProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WS-Federation Provider.
+	@return ApiProvidersWsfedPartialUpdateRequest
+*/
+func (a *ProvidersAPIService) ProvidersWsfedPartialUpdate(ctx context.Context, id int32) ApiProvidersWsfedPartialUpdateRequest {
+	return ApiProvidersWsfedPartialUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return WSFederationProvider
+func (a *ProvidersAPIService) ProvidersWsfedPartialUpdateExecute(r ApiProvidersWsfedPartialUpdateRequest) (*WSFederationProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WSFederationProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersWsfedPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/wsfed/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedWSFederationProviderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersWsfedPreviewUserRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersAPIService
+	id         int32
+	forUser    *int32
+}
+
+func (r ApiProvidersWsfedPreviewUserRetrieveRequest) ForUser(forUser int32) ApiProvidersWsfedPreviewUserRetrieveRequest {
+	r.forUser = &forUser
+	return r
+}
+
+func (r ApiProvidersWsfedPreviewUserRetrieveRequest) Execute() (*PropertyMappingPreview, *http.Response, error) {
+	return r.ApiService.ProvidersWsfedPreviewUserRetrieveExecute(r)
+}
+
+/*
+ProvidersWsfedPreviewUserRetrieve Method for ProvidersWsfedPreviewUserRetrieve
+
+Preview user data for provider
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WS-Federation Provider.
+	@return ApiProvidersWsfedPreviewUserRetrieveRequest
+*/
+func (a *ProvidersAPIService) ProvidersWsfedPreviewUserRetrieve(ctx context.Context, id int32) ApiProvidersWsfedPreviewUserRetrieveRequest {
+	return ApiProvidersWsfedPreviewUserRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PropertyMappingPreview
+func (a *ProvidersAPIService) ProvidersWsfedPreviewUserRetrieveExecute(r ApiProvidersWsfedPreviewUserRetrieveRequest) (*PropertyMappingPreview, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PropertyMappingPreview
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersWsfedPreviewUserRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/wsfed/{id}/preview_user/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.forUser != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "for_user", r.forUser, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersWsfedRetrieveRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersAPIService
+	id         int32
+}
+
+func (r ApiProvidersWsfedRetrieveRequest) Execute() (*WSFederationProvider, *http.Response, error) {
+	return r.ApiService.ProvidersWsfedRetrieveExecute(r)
+}
+
+/*
+ProvidersWsfedRetrieve Method for ProvidersWsfedRetrieve
+
+WSFederationProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WS-Federation Provider.
+	@return ApiProvidersWsfedRetrieveRequest
+*/
+func (a *ProvidersAPIService) ProvidersWsfedRetrieve(ctx context.Context, id int32) ApiProvidersWsfedRetrieveRequest {
+	return ApiProvidersWsfedRetrieveRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return WSFederationProvider
+func (a *ProvidersAPIService) ProvidersWsfedRetrieveExecute(r ApiProvidersWsfedRetrieveRequest) (*WSFederationProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WSFederationProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersWsfedRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/wsfed/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersWsfedUpdateRequest struct {
+	ctx                         context.Context
+	ApiService                  *ProvidersAPIService
+	id                          int32
+	wSFederationProviderRequest *WSFederationProviderRequest
+}
+
+func (r ApiProvidersWsfedUpdateRequest) WSFederationProviderRequest(wSFederationProviderRequest WSFederationProviderRequest) ApiProvidersWsfedUpdateRequest {
+	r.wSFederationProviderRequest = &wSFederationProviderRequest
+	return r
+}
+
+func (r ApiProvidersWsfedUpdateRequest) Execute() (*WSFederationProvider, *http.Response, error) {
+	return r.ApiService.ProvidersWsfedUpdateExecute(r)
+}
+
+/*
+ProvidersWsfedUpdate Method for ProvidersWsfedUpdate
+
+WSFederationProvider Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WS-Federation Provider.
+	@return ApiProvidersWsfedUpdateRequest
+*/
+func (a *ProvidersAPIService) ProvidersWsfedUpdate(ctx context.Context, id int32) ApiProvidersWsfedUpdateRequest {
+	return ApiProvidersWsfedUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return WSFederationProvider
+func (a *ProvidersAPIService) ProvidersWsfedUpdateExecute(r ApiProvidersWsfedUpdateRequest) (*WSFederationProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WSFederationProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersWsfedUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/wsfed/{id}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.wSFederationProviderRequest == nil {
+		return localVarReturnValue, nil, reportError("wSFederationProviderRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.wSFederationProviderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiProvidersWsfedUsedByListRequest struct {
+	ctx        context.Context
+	ApiService *ProvidersAPIService
+	id         int32
+}
+
+func (r ApiProvidersWsfedUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.ProvidersWsfedUsedByListExecute(r)
+}
+
+/*
+ProvidersWsfedUsedByList Method for ProvidersWsfedUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id A unique integer value identifying this WS-Federation Provider.
+	@return ApiProvidersWsfedUsedByListRequest
+*/
+func (a *ProvidersAPIService) ProvidersWsfedUsedByList(ctx context.Context, id int32) ApiProvidersWsfedUsedByListRequest {
+	return ApiProvidersWsfedUsedByListRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *ProvidersAPIService) ProvidersWsfedUsedByListExecute(r ApiProvidersWsfedUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersWsfedUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/providers/wsfed/{id}/used_by/"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)

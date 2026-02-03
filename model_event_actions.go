@@ -42,6 +42,7 @@ const (
 	EVENTACTIONS_SYSTEM_TASK_EXCEPTION      EventActions = "system_task_exception"
 	EVENTACTIONS_SYSTEM_EXCEPTION           EventActions = "system_exception"
 	EVENTACTIONS_CONFIGURATION_ERROR        EventActions = "configuration_error"
+	EVENTACTIONS_CONFIGURATION_WARNING      EventActions = "configuration_warning"
 	EVENTACTIONS_MODEL_CREATED              EventActions = "model_created"
 	EVENTACTIONS_MODEL_UPDATED              EventActions = "model_updated"
 	EVENTACTIONS_MODEL_DELETED              EventActions = "model_deleted"
@@ -74,6 +75,7 @@ var AllowedEventActionsEnumValues = []EventActions{
 	"system_task_exception",
 	"system_exception",
 	"configuration_error",
+	"configuration_warning",
 	"model_created",
 	"model_updated",
 	"model_deleted",

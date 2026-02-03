@@ -28,6 +28,7 @@ type ModelRequest struct {
 	SAMLProviderRequest            *SAMLProviderRequest
 	SCIMProviderRequest            *SCIMProviderRequest
 	SSFProviderRequest             *SSFProviderRequest
+	WSFederationProviderRequest    *WSFederationProviderRequest
 }
 
 // GoogleWorkspaceProviderRequestAsModelRequest is a convenience function that returns GoogleWorkspaceProviderRequest wrapped in ModelRequest
@@ -97,6 +98,13 @@ func SCIMProviderRequestAsModelRequest(v *SCIMProviderRequest) ModelRequest {
 func SSFProviderRequestAsModelRequest(v *SSFProviderRequest) ModelRequest {
 	return ModelRequest{
 		SSFProviderRequest: v,
+	}
+}
+
+// WSFederationProviderRequestAsModelRequest is a convenience function that returns WSFederationProviderRequest wrapped in ModelRequest
+func WSFederationProviderRequestAsModelRequest(v *WSFederationProviderRequest) ModelRequest {
+	return ModelRequest{
+		WSFederationProviderRequest: v,
 	}
 }
 
@@ -230,6 +238,18 @@ func (dst *ModelRequest) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'authentik_providers_ws_federation.wsfederationprovider'
+	if jsonDict["provider_model"] == "authentik_providers_ws_federation.wsfederationprovider" {
+		// try to unmarshal JSON data into WSFederationProviderRequest
+		err = json.Unmarshal(data, &dst.WSFederationProviderRequest)
+		if err == nil {
+			return nil // data stored in dst.WSFederationProviderRequest, return on the first match
+		} else {
+			dst.WSFederationProviderRequest = nil
+			return fmt.Errorf("failed to unmarshal ModelRequest as WSFederationProviderRequest: %s", err.Error())
+		}
+	}
+
 	return nil
 }
 
@@ -273,6 +293,10 @@ func (src ModelRequest) MarshalJSON() ([]byte, error) {
 
 	if src.SSFProviderRequest != nil {
 		return json.Marshal(&src.SSFProviderRequest)
+	}
+
+	if src.WSFederationProviderRequest != nil {
+		return json.Marshal(&src.WSFederationProviderRequest)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -323,6 +347,10 @@ func (obj *ModelRequest) GetActualInstance() interface{} {
 		return obj.SSFProviderRequest
 	}
 
+	if obj.WSFederationProviderRequest != nil {
+		return obj.WSFederationProviderRequest
+	}
+
 	// all schemas are nil
 	return nil
 }
@@ -367,6 +395,10 @@ func (obj ModelRequest) GetActualInstanceValue() interface{} {
 
 	if obj.SSFProviderRequest != nil {
 		return *obj.SSFProviderRequest
+	}
+
+	if obj.WSFederationProviderRequest != nil {
+		return *obj.WSFederationProviderRequest
 	}
 
 	// all schemas are nil

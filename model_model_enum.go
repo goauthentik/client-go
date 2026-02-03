@@ -133,6 +133,7 @@ const (
 	MODELENUM_AUTHENTIK_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDER                  ModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovider"
 	MODELENUM_AUTHENTIK_PROVIDERS_MICROSOFT_ENTRA_MICROSOFTENTRAPROVIDERMAPPING           ModelEnum = "authentik_providers_microsoft_entra.microsoftentraprovidermapping"
 	MODELENUM_AUTHENTIK_PROVIDERS_SSF_SSFPROVIDER                                         ModelEnum = "authentik_providers_ssf.ssfprovider"
+	MODELENUM_AUTHENTIK_PROVIDERS_WS_FEDERATION_WSFEDERATIONPROVIDER                      ModelEnum = "authentik_providers_ws_federation.wsfederationprovider"
 	MODELENUM_AUTHENTIK_REPORTS_DATAEXPORT                                                ModelEnum = "authentik_reports.dataexport"
 	MODELENUM_AUTHENTIK_STAGES_AUTHENTICATOR_ENDPOINT_GDTC_AUTHENTICATORENDPOINTGDTCSTAGE ModelEnum = "authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage"
 	MODELENUM_AUTHENTIK_STAGES_MTLS_MUTUALTLSSTAGE                                        ModelEnum = "authentik_stages_mtls.mutualtlsstage"
@@ -253,6 +254,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_providers_microsoft_entra.microsoftentraprovider",
 	"authentik_providers_microsoft_entra.microsoftentraprovidermapping",
 	"authentik_providers_ssf.ssfprovider",
+	"authentik_providers_ws_federation.wsfederationprovider",
 	"authentik_reports.dataexport",
 	"authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage",
 	"authentik_stages_mtls.mutualtlsstage",

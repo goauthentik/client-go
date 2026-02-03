@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Title** | Pointer to **string** |  | [optional] 
 **Background** | Pointer to **string** |  | [optional] 
+**BackgroundThemedUrls** | Pointer to [**NullableThemedUrls**](ThemedUrls.md) |  | [optional] 
 **CancelUrl** | **string** |  | 
 **Layout** | [**ContextualFlowInfoLayoutEnum**](ContextualFlowInfoLayoutEnum.md) |  | 
 
@@ -78,6 +79,41 @@ SetBackground sets Background field to given value.
 
 HasBackground returns a boolean if a field has been set.
 
+### GetBackgroundThemedUrls
+
+`func (o *ContextualFlowInfo) GetBackgroundThemedUrls() ThemedUrls`
+
+GetBackgroundThemedUrls returns the BackgroundThemedUrls field if non-nil, zero value otherwise.
+
+### GetBackgroundThemedUrlsOk
+
+`func (o *ContextualFlowInfo) GetBackgroundThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetBackgroundThemedUrlsOk returns a tuple with the BackgroundThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackgroundThemedUrls
+
+`func (o *ContextualFlowInfo) SetBackgroundThemedUrls(v ThemedUrls)`
+
+SetBackgroundThemedUrls sets BackgroundThemedUrls field to given value.
+
+### HasBackgroundThemedUrls
+
+`func (o *ContextualFlowInfo) HasBackgroundThemedUrls() bool`
+
+HasBackgroundThemedUrls returns a boolean if a field has been set.
+
+### SetBackgroundThemedUrlsNil
+
+`func (o *ContextualFlowInfo) SetBackgroundThemedUrlsNil(b bool)`
+
+ SetBackgroundThemedUrlsNil sets the value for BackgroundThemedUrls to be an explicit nil
+
+### UnsetBackgroundThemedUrls
+`func (o *ContextualFlowInfo) UnsetBackgroundThemedUrls()`
+
+UnsetBackgroundThemedUrls ensures that no value is present for BackgroundThemedUrls, not even an explicit nil
 ### GetCancelUrl
 
 `func (o *ContextualFlowInfo) GetCancelUrl() string`

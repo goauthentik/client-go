@@ -690,6 +690,15 @@ Class | Method | HTTP request | Description
 *ProvidersAPI* | [**ProvidersSsfRetrieve**](docs/ProvidersAPI.md#providersssfretrieve) | **Get** /providers/ssf/{id}/ | 
 *ProvidersAPI* | [**ProvidersSsfUpdate**](docs/ProvidersAPI.md#providersssfupdate) | **Put** /providers/ssf/{id}/ | 
 *ProvidersAPI* | [**ProvidersSsfUsedByList**](docs/ProvidersAPI.md#providersssfusedbylist) | **Get** /providers/ssf/{id}/used_by/ | 
+*ProvidersAPI* | [**ProvidersWsfedCreate**](docs/ProvidersAPI.md#providerswsfedcreate) | **Post** /providers/wsfed/ | 
+*ProvidersAPI* | [**ProvidersWsfedDestroy**](docs/ProvidersAPI.md#providerswsfeddestroy) | **Delete** /providers/wsfed/{id}/ | 
+*ProvidersAPI* | [**ProvidersWsfedList**](docs/ProvidersAPI.md#providerswsfedlist) | **Get** /providers/wsfed/ | 
+*ProvidersAPI* | [**ProvidersWsfedMetadataRetrieve**](docs/ProvidersAPI.md#providerswsfedmetadataretrieve) | **Get** /providers/wsfed/{id}/metadata/ | 
+*ProvidersAPI* | [**ProvidersWsfedPartialUpdate**](docs/ProvidersAPI.md#providerswsfedpartialupdate) | **Patch** /providers/wsfed/{id}/ | 
+*ProvidersAPI* | [**ProvidersWsfedPreviewUserRetrieve**](docs/ProvidersAPI.md#providerswsfedpreviewuserretrieve) | **Get** /providers/wsfed/{id}/preview_user/ | 
+*ProvidersAPI* | [**ProvidersWsfedRetrieve**](docs/ProvidersAPI.md#providerswsfedretrieve) | **Get** /providers/wsfed/{id}/ | 
+*ProvidersAPI* | [**ProvidersWsfedUpdate**](docs/ProvidersAPI.md#providerswsfedupdate) | **Put** /providers/wsfed/{id}/ | 
+*ProvidersAPI* | [**ProvidersWsfedUsedByList**](docs/ProvidersAPI.md#providerswsfedusedbylist) | **Get** /providers/wsfed/{id}/used_by/ | 
 *RacAPI* | [**RacConnectionTokensDestroy**](docs/RacAPI.md#racconnectiontokensdestroy) | **Delete** /rac/connection_tokens/{connection_token_uuid}/ | 
 *RacAPI* | [**RacConnectionTokensList**](docs/RacAPI.md#racconnectiontokenslist) | **Get** /rac/connection_tokens/ | 
 *RacAPI* | [**RacConnectionTokensPartialUpdate**](docs/RacAPI.md#racconnectiontokenspartialupdate) | **Patch** /rac/connection_tokens/{connection_token_uuid}/ | 
@@ -1618,6 +1627,7 @@ Class | Method | HTTP request | Description
  - [PaginatedUserSourceConnectionList](docs/PaginatedUserSourceConnectionList.md)
  - [PaginatedUserTelegramSourceConnectionList](docs/PaginatedUserTelegramSourceConnectionList.md)
  - [PaginatedUserWriteStageList](docs/PaginatedUserWriteStageList.md)
+ - [PaginatedWSFederationProviderList](docs/PaginatedWSFederationProviderList.md)
  - [PaginatedWebAuthnDeviceList](docs/PaginatedWebAuthnDeviceList.md)
  - [PaginatedWebAuthnDeviceTypeList](docs/PaginatedWebAuthnDeviceTypeList.md)
  - [Pagination](docs/Pagination.md)
@@ -1755,6 +1765,7 @@ Class | Method | HTTP request | Description
  - [PatchedUserSourceConnectionRequest](docs/PatchedUserSourceConnectionRequest.md)
  - [PatchedUserTelegramSourceConnectionRequest](docs/PatchedUserTelegramSourceConnectionRequest.md)
  - [PatchedUserWriteStageRequest](docs/PatchedUserWriteStageRequest.md)
+ - [PatchedWSFederationProviderRequest](docs/PatchedWSFederationProviderRequest.md)
  - [PatchedWebAuthnDeviceRequest](docs/PatchedWebAuthnDeviceRequest.md)
  - [Permission](docs/Permission.md)
  - [PermissionAssignRequest](docs/PermissionAssignRequest.md)
@@ -1823,12 +1834,12 @@ Class | Method | HTTP request | Description
  - [RoleObjectPermission](docs/RoleObjectPermission.md)
  - [RoleRequest](docs/RoleRequest.md)
  - [SAMLBindingsEnum](docs/SAMLBindingsEnum.md)
+ - [SAMLLogoutMethods](docs/SAMLLogoutMethods.md)
  - [SAMLMetadata](docs/SAMLMetadata.md)
  - [SAMLNameIDPolicyEnum](docs/SAMLNameIDPolicyEnum.md)
  - [SAMLPropertyMapping](docs/SAMLPropertyMapping.md)
  - [SAMLPropertyMappingRequest](docs/SAMLPropertyMappingRequest.md)
  - [SAMLProvider](docs/SAMLProvider.md)
- - [SAMLProviderLogoutMethodEnum](docs/SAMLProviderLogoutMethodEnum.md)
  - [SAMLProviderRequest](docs/SAMLProviderRequest.md)
  - [SAMLSource](docs/SAMLSource.md)
  - [SAMLSourcePropertyMapping](docs/SAMLSourcePropertyMapping.md)
@@ -1907,6 +1918,7 @@ Class | Method | HTTP request | Description
  - [TenantRecoveryKeyRequestRequest](docs/TenantRecoveryKeyRequestRequest.md)
  - [TenantRecoveryKeyResponse](docs/TenantRecoveryKeyResponse.md)
  - [TenantRequest](docs/TenantRequest.md)
+ - [ThemedUrls](docs/ThemedUrls.md)
  - [Token](docs/Token.md)
  - [TokenModel](docs/TokenModel.md)
  - [TokenRequest](docs/TokenRequest.md)
@@ -1968,6 +1980,8 @@ Class | Method | HTTP request | Description
  - [VendorEnum](docs/VendorEnum.md)
  - [Version](docs/Version.md)
  - [VersionHistory](docs/VersionHistory.md)
+ - [WSFederationProvider](docs/WSFederationProvider.md)
+ - [WSFederationProviderRequest](docs/WSFederationProviderRequest.md)
  - [WebAuthnDevice](docs/WebAuthnDevice.md)
  - [WebAuthnDeviceRequest](docs/WebAuthnDeviceRequest.md)
  - [WebAuthnDeviceType](docs/WebAuthnDeviceType.md)

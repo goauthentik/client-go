@@ -741,7 +741,7 @@ Name | Type | Description  | Notes
 
 ## RbacPermissionsList
 
-> PaginatedPermissionList RbacPermissionsList(ctx).Codename(codename).ContentTypeAppLabel(contentTypeAppLabel).ContentTypeModel(contentTypeModel).Ordering(ordering).Page(page).PageSize(pageSize).Role(role).Search(search).User(user).Execute()
+> PaginatedPermissionList RbacPermissionsList(ctx).Codename(codename).ContentTypeAppLabel(contentTypeAppLabel).ContentTypeModel(contentTypeModel).Ordering(ordering).Page(page).PageSize(pageSize).Role(role).Search(search).Execute()
 
 
 
@@ -768,11 +768,10 @@ func main() {
 	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
 	role := "role_example" // string |  (optional)
 	search := "search_example" // string | A search term. (optional)
-	user := int32(56) // int32 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RbacAPI.RbacPermissionsList(context.Background()).Codename(codename).ContentTypeAppLabel(contentTypeAppLabel).ContentTypeModel(contentTypeModel).Ordering(ordering).Page(page).PageSize(pageSize).Role(role).Search(search).User(user).Execute()
+	resp, r, err := apiClient.RbacAPI.RbacPermissionsList(context.Background()).Codename(codename).ContentTypeAppLabel(contentTypeAppLabel).ContentTypeModel(contentTypeModel).Ordering(ordering).Page(page).PageSize(pageSize).Role(role).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacPermissionsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -801,7 +800,6 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | Number of results to return per page. | 
  **role** | **string** |  | 
  **search** | **string** | A search term. | 
- **user** | **int32** |  | 
 
 ### Return type
 
@@ -1171,7 +1169,7 @@ Name | Type | Description  | Notes
 
 ## RbacRolesList
 
-> PaginatedRoleList RbacRolesList(ctx).AkGroups(akGroups).Inherited(inherited).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
+> PaginatedRoleList RbacRolesList(ctx).Groups(groups).Inherited(inherited).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
 
 
 
@@ -1190,8 +1188,8 @@ import (
 )
 
 func main() {
-	akGroups := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
-	inherited := true // bool | Include inherited roles (requires users or ak_groups filter) (optional)
+	groups := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	inherited := true // bool | Include inherited roles (requires users or groups filter) (optional)
 	managed := []string{"Inner_example"} // []string |  (optional)
 	managedIsnull := true // bool |  (optional)
 	name := "name_example" // string |  (optional)
@@ -1203,7 +1201,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RbacAPI.RbacRolesList(context.Background()).AkGroups(akGroups).Inherited(inherited).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
+	resp, r, err := apiClient.RbacAPI.RbacRolesList(context.Background()).Groups(groups).Inherited(inherited).Managed(managed).ManagedIsnull(managedIsnull).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Users(users).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RbacAPI.RbacRolesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1224,8 +1222,8 @@ Other parameters are passed through a pointer to a apiRbacRolesListRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **akGroups** | **string** |  | 
- **inherited** | **bool** | Include inherited roles (requires users or ak_groups filter) | 
+ **groups** | **string** |  | 
+ **inherited** | **bool** | Include inherited roles (requires users or groups filter) | 
  **managed** | **[]string** |  | 
  **managedIsnull** | **bool** |  | 
  **name** | **string** |  | 

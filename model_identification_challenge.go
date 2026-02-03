@@ -21,24 +21,25 @@ var _ MappedNullable = &IdentificationChallenge{}
 
 // IdentificationChallenge Identification challenges with all UI elements
 type IdentificationChallenge struct {
-	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
-	Component            *string                   `json:"component,omitempty"`
-	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	UserFields           []string                  `json:"user_fields"`
-	PasswordFields       bool                      `json:"password_fields"`
-	AllowShowPassword    *bool                     `json:"allow_show_password,omitempty"`
-	ApplicationPre       *string                   `json:"application_pre,omitempty"`
-	FlowDesignation      FlowDesignationEnum       `json:"flow_designation"`
-	CaptchaStage         NullableCaptchaChallenge  `json:"captcha_stage,omitempty"`
-	EnrollUrl            *string                   `json:"enroll_url,omitempty"`
-	RecoveryUrl          *string                   `json:"recovery_url,omitempty"`
-	PasswordlessUrl      *string                   `json:"passwordless_url,omitempty"`
-	PrimaryAction        string                    `json:"primary_action"`
-	Sources              []LoginSource             `json:"sources,omitempty"`
-	ShowSourceLabels     bool                      `json:"show_source_labels"`
-	EnableRememberMe     *bool                     `json:"enable_remember_me,omitempty"`
-	PasskeyChallenge     map[string]interface{}    `json:"passkey_challenge,omitempty"`
-	AdditionalProperties map[string]interface{}
+	FlowInfo              *ContextualFlowInfo       `json:"flow_info,omitempty"`
+	Component             *string                   `json:"component,omitempty"`
+	ResponseErrors        *map[string][]ErrorDetail `json:"response_errors,omitempty"`
+	UserFields            []string                  `json:"user_fields"`
+	PendingUserIdentifier NullableString            `json:"pending_user_identifier,omitempty"`
+	PasswordFields        bool                      `json:"password_fields"`
+	AllowShowPassword     *bool                     `json:"allow_show_password,omitempty"`
+	ApplicationPre        *string                   `json:"application_pre,omitempty"`
+	FlowDesignation       FlowDesignationEnum       `json:"flow_designation"`
+	CaptchaStage          NullableCaptchaChallenge  `json:"captcha_stage,omitempty"`
+	EnrollUrl             *string                   `json:"enroll_url,omitempty"`
+	RecoveryUrl           *string                   `json:"recovery_url,omitempty"`
+	PasswordlessUrl       *string                   `json:"passwordless_url,omitempty"`
+	PrimaryAction         string                    `json:"primary_action"`
+	Sources               []LoginSource             `json:"sources,omitempty"`
+	ShowSourceLabels      bool                      `json:"show_source_labels"`
+	EnableRememberMe      *bool                     `json:"enable_remember_me,omitempty"`
+	PasskeyChallenge      map[string]interface{}    `json:"passkey_challenge,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _IdentificationChallenge IdentificationChallenge
@@ -197,6 +198,49 @@ func (o *IdentificationChallenge) GetUserFieldsOk() ([]string, bool) {
 // SetUserFields sets field value
 func (o *IdentificationChallenge) SetUserFields(v []string) {
 	o.UserFields = v
+}
+
+// GetPendingUserIdentifier returns the PendingUserIdentifier field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IdentificationChallenge) GetPendingUserIdentifier() string {
+	if o == nil || IsNil(o.PendingUserIdentifier.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PendingUserIdentifier.Get()
+}
+
+// GetPendingUserIdentifierOk returns a tuple with the PendingUserIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IdentificationChallenge) GetPendingUserIdentifierOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PendingUserIdentifier.Get(), o.PendingUserIdentifier.IsSet()
+}
+
+// HasPendingUserIdentifier returns a boolean if a field has been set.
+func (o *IdentificationChallenge) HasPendingUserIdentifier() bool {
+	if o != nil && o.PendingUserIdentifier.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPendingUserIdentifier gets a reference to the given NullableString and assigns it to the PendingUserIdentifier field.
+func (o *IdentificationChallenge) SetPendingUserIdentifier(v string) {
+	o.PendingUserIdentifier.Set(&v)
+}
+
+// SetPendingUserIdentifierNil sets the value for PendingUserIdentifier to be an explicit nil
+func (o *IdentificationChallenge) SetPendingUserIdentifierNil() {
+	o.PendingUserIdentifier.Set(nil)
+}
+
+// UnsetPendingUserIdentifier ensures that no value is present for PendingUserIdentifier, not even an explicit nil
+func (o *IdentificationChallenge) UnsetPendingUserIdentifier() {
+	o.PendingUserIdentifier.Unset()
 }
 
 // GetPasswordFields returns the PasswordFields field value
@@ -617,6 +661,9 @@ func (o IdentificationChallenge) ToMap() (map[string]interface{}, error) {
 	if o.UserFields != nil {
 		toSerialize["user_fields"] = o.UserFields
 	}
+	if o.PendingUserIdentifier.IsSet() {
+		toSerialize["pending_user_identifier"] = o.PendingUserIdentifier.Get()
+	}
 	toSerialize["password_fields"] = o.PasswordFields
 	if !IsNil(o.AllowShowPassword) {
 		toSerialize["allow_show_password"] = o.AllowShowPassword
@@ -699,6 +746,7 @@ func (o *IdentificationChallenge) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "component")
 		delete(additionalProperties, "response_errors")
 		delete(additionalProperties, "user_fields")
+		delete(additionalProperties, "pending_user_identifier")
 		delete(additionalProperties, "password_fields")
 		delete(additionalProperties, "allow_show_password")
 		delete(additionalProperties, "application_pre")

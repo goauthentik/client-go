@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **MimeType** | **string** |  | 
 **Url** | **string** |  | 
+**ThemedUrls** | Pointer to [**NullableThemedUrls**](ThemedUrls.md) |  | [optional] 
 
 ## Methods
 
@@ -87,6 +88,41 @@ and a boolean to check if the value has been set.
 SetUrl sets Url field to given value.
 
 
+### GetThemedUrls
+
+`func (o *FileList) GetThemedUrls() ThemedUrls`
+
+GetThemedUrls returns the ThemedUrls field if non-nil, zero value otherwise.
+
+### GetThemedUrlsOk
+
+`func (o *FileList) GetThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetThemedUrlsOk returns a tuple with the ThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetThemedUrls
+
+`func (o *FileList) SetThemedUrls(v ThemedUrls)`
+
+SetThemedUrls sets ThemedUrls field to given value.
+
+### HasThemedUrls
+
+`func (o *FileList) HasThemedUrls() bool`
+
+HasThemedUrls returns a boolean if a field has been set.
+
+### SetThemedUrlsNil
+
+`func (o *FileList) SetThemedUrlsNil(b bool)`
+
+ SetThemedUrlsNil sets the value for ThemedUrls to be an explicit nil
+
+### UnsetThemedUrls
+`func (o *FileList) UnsetThemedUrls()`
+
+UnsetThemedUrls ensures that no value is present for ThemedUrls, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

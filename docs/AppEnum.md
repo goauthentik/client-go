@@ -147,6 +147,8 @@
 
 * `AUTHENTIK_ENTERPRISE_PROVIDERS_SSF` (value: `"authentik.enterprise.providers.ssf"`)
 
+* `AUTHENTIK_ENTERPRISE_PROVIDERS_WS_FEDERATION` (value: `"authentik.enterprise.providers.ws_federation"`)
+
 * `AUTHENTIK_ENTERPRISE_REPORTS` (value: `"authentik.enterprise.reports"`)
 
 * `AUTHENTIK_ENTERPRISE_SEARCH` (value: `"authentik.enterprise.search"`)

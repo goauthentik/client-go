@@ -1408,7 +1408,6 @@ type ApiRbacPermissionsListRequest struct {
 	pageSize            *int32
 	role                *string
 	search              *string
-	user                *int32
 }
 
 func (r ApiRbacPermissionsListRequest) Codename(codename string) ApiRbacPermissionsListRequest {
@@ -1452,11 +1451,6 @@ func (r ApiRbacPermissionsListRequest) Role(role string) ApiRbacPermissionsListR
 // A search term.
 func (r ApiRbacPermissionsListRequest) Search(search string) ApiRbacPermissionsListRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiRbacPermissionsListRequest) User(user int32) ApiRbacPermissionsListRequest {
-	r.user = &user
 	return r
 }
 
@@ -1524,9 +1518,6 @@ func (a *RbacAPIService) RbacPermissionsListExecute(r ApiRbacPermissionsListRequ
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
-	}
-	if r.user != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "user", r.user, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2270,7 +2261,7 @@ func (a *RbacAPIService) RbacRolesDestroyExecute(r ApiRbacRolesDestroyRequest) (
 type ApiRbacRolesListRequest struct {
 	ctx           context.Context
 	ApiService    *RbacAPIService
-	akGroups      *string
+	groups        *string
 	inherited     *bool
 	managed       *[]string
 	managedIsnull *bool
@@ -2282,12 +2273,12 @@ type ApiRbacRolesListRequest struct {
 	users         *int32
 }
 
-func (r ApiRbacRolesListRequest) AkGroups(akGroups string) ApiRbacRolesListRequest {
-	r.akGroups = &akGroups
+func (r ApiRbacRolesListRequest) Groups(groups string) ApiRbacRolesListRequest {
+	r.groups = &groups
 	return r
 }
 
-// Include inherited roles (requires users or ak_groups filter)
+// Include inherited roles (requires users or groups filter)
 func (r ApiRbacRolesListRequest) Inherited(inherited bool) ApiRbacRolesListRequest {
 	r.inherited = &inherited
 	return r
@@ -2378,8 +2369,8 @@ func (a *RbacAPIService) RbacRolesListExecute(r ApiRbacRolesListRequest) (*Pagin
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.akGroups != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ak_groups", r.akGroups, "form", "")
+	if r.groups != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "groups", r.groups, "form", "")
 	}
 	if r.inherited != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "inherited", r.inherited, "form", "")

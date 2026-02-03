@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **LoadingOverlay** | Pointer to **bool** |  | [optional] [default to false]
 **LoadingText** | **string** |  | 
 **UserFields** | **[]string** |  | 
+**PendingUserIdentifier** | Pointer to **NullableString** |  | [optional] 
 **PasswordFields** | **bool** |  | 
 **AllowShowPassword** | Pointer to **bool** |  | [optional] [default to false]
 **ApplicationPre** | Pointer to **string** |  | [optional] 
@@ -975,6 +976,41 @@ SetUserFields sets UserFields field to given value.
 `func (o *ChallengeTypes) UnsetUserFields()`
 
 UnsetUserFields ensures that no value is present for UserFields, not even an explicit nil
+### GetPendingUserIdentifier
+
+`func (o *ChallengeTypes) GetPendingUserIdentifier() string`
+
+GetPendingUserIdentifier returns the PendingUserIdentifier field if non-nil, zero value otherwise.
+
+### GetPendingUserIdentifierOk
+
+`func (o *ChallengeTypes) GetPendingUserIdentifierOk() (*string, bool)`
+
+GetPendingUserIdentifierOk returns a tuple with the PendingUserIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingUserIdentifier
+
+`func (o *ChallengeTypes) SetPendingUserIdentifier(v string)`
+
+SetPendingUserIdentifier sets PendingUserIdentifier field to given value.
+
+### HasPendingUserIdentifier
+
+`func (o *ChallengeTypes) HasPendingUserIdentifier() bool`
+
+HasPendingUserIdentifier returns a boolean if a field has been set.
+
+### SetPendingUserIdentifierNil
+
+`func (o *ChallengeTypes) SetPendingUserIdentifierNil(b bool)`
+
+ SetPendingUserIdentifierNil sets the value for PendingUserIdentifier to be an explicit nil
+
+### UnsetPendingUserIdentifier
+`func (o *ChallengeTypes) UnsetPendingUserIdentifier()`
+
+UnsetPendingUserIdentifier ensures that no value is present for PendingUserIdentifier, not even an explicit nil
 ### GetPasswordFields
 
 `func (o *ChallengeTypes) GetPasswordFields() bool`

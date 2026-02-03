@@ -120,6 +120,15 @@ Method | HTTP request | Description
 [**ProvidersSsfRetrieve**](ProvidersAPI.md#ProvidersSsfRetrieve) | **Get** /providers/ssf/{id}/ | 
 [**ProvidersSsfUpdate**](ProvidersAPI.md#ProvidersSsfUpdate) | **Put** /providers/ssf/{id}/ | 
 [**ProvidersSsfUsedByList**](ProvidersAPI.md#ProvidersSsfUsedByList) | **Get** /providers/ssf/{id}/used_by/ | 
+[**ProvidersWsfedCreate**](ProvidersAPI.md#ProvidersWsfedCreate) | **Post** /providers/wsfed/ | 
+[**ProvidersWsfedDestroy**](ProvidersAPI.md#ProvidersWsfedDestroy) | **Delete** /providers/wsfed/{id}/ | 
+[**ProvidersWsfedList**](ProvidersAPI.md#ProvidersWsfedList) | **Get** /providers/wsfed/ | 
+[**ProvidersWsfedMetadataRetrieve**](ProvidersAPI.md#ProvidersWsfedMetadataRetrieve) | **Get** /providers/wsfed/{id}/metadata/ | 
+[**ProvidersWsfedPartialUpdate**](ProvidersAPI.md#ProvidersWsfedPartialUpdate) | **Patch** /providers/wsfed/{id}/ | 
+[**ProvidersWsfedPreviewUserRetrieve**](ProvidersAPI.md#ProvidersWsfedPreviewUserRetrieve) | **Get** /providers/wsfed/{id}/preview_user/ | 
+[**ProvidersWsfedRetrieve**](ProvidersAPI.md#ProvidersWsfedRetrieve) | **Get** /providers/wsfed/{id}/ | 
+[**ProvidersWsfedUpdate**](ProvidersAPI.md#ProvidersWsfedUpdate) | **Put** /providers/wsfed/{id}/ | 
+[**ProvidersWsfedUsedByList**](ProvidersAPI.md#ProvidersWsfedUsedByList) | **Get** /providers/wsfed/{id}/used_by/ | 
 
 
 
@@ -7086,7 +7095,7 @@ Name | Type | Description  | Notes
 
 ## ProvidersScimList
 
-> PaginatedSCIMProviderList ProvidersScimList(ctx).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Url(url).Execute()
+> PaginatedSCIMProviderList ProvidersScimList(ctx).ExcludeUsersServiceAccount(excludeUsersServiceAccount).GroupFilters(groupFilters).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Url(url).Execute()
 
 
 
@@ -7106,7 +7115,7 @@ import (
 
 func main() {
 	excludeUsersServiceAccount := true // bool |  (optional)
-	filterGroup := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	groupFilters := []string{"Inner_example"} // []string |  (optional)
 	name := "name_example" // string |  (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -7116,7 +7125,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProvidersAPI.ProvidersScimList(context.Background()).ExcludeUsersServiceAccount(excludeUsersServiceAccount).FilterGroup(filterGroup).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Url(url).Execute()
+	resp, r, err := apiClient.ProvidersAPI.ProvidersScimList(context.Background()).ExcludeUsersServiceAccount(excludeUsersServiceAccount).GroupFilters(groupFilters).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Url(url).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersScimList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -7138,7 +7147,7 @@ Other parameters are passed through a pointer to a apiProvidersScimListRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **excludeUsersServiceAccount** | **bool** |  | 
- **filterGroup** | **string** |  | 
+ **groupFilters** | **[]string** |  | 
  **name** | **string** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -8412,6 +8421,700 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiProvidersSsfUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersWsfedCreate
+
+> WSFederationProvider ProvidersWsfedCreate(ctx).WSFederationProviderRequest(wSFederationProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	wSFederationProviderRequest := *openapiclient.NewWSFederationProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "ReplyUrl_example") // WSFederationProviderRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProvidersAPI.ProvidersWsfedCreate(context.Background()).WSFederationProviderRequest(wSFederationProviderRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersWsfedCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProvidersWsfedCreate`: WSFederationProvider
+	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersWsfedCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersWsfedCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **wSFederationProviderRequest** | [**WSFederationProviderRequest**](WSFederationProviderRequest.md) |  | 
+
+### Return type
+
+[**WSFederationProvider**](WSFederationProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersWsfedDestroy
+
+> ProvidersWsfedDestroy(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this WS-Federation Provider.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ProvidersAPI.ProvidersWsfedDestroy(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersWsfedDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WS-Federation Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersWsfedDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersWsfedList
+
+> PaginatedWSFederationProviderList ProvidersWsfedList(ctx).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultNameIdPolicy(defaultNameIdPolicy).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).LogoutMethod(logoutMethod).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignLogoutRequest(signLogoutRequest).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SlsBinding(slsBinding).SlsUrl(slsUrl).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	acsUrl := "acsUrl_example" // string |  (optional)
+	assertionValidNotBefore := "assertionValidNotBefore_example" // string |  (optional)
+	assertionValidNotOnOrAfter := "assertionValidNotOnOrAfter_example" // string |  (optional)
+	audience := "audience_example" // string |  (optional)
+	authenticationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	authnContextClassRefMapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	authorizationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	backchannelApplication := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	defaultNameIdPolicy := "defaultNameIdPolicy_example" // string |  (optional)
+	defaultRelayState := "defaultRelayState_example" // string |  (optional)
+	digestAlgorithm := "digestAlgorithm_example" // string |  (optional)
+	encryptionKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	invalidationFlow := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	isBackchannel := true // bool |  (optional)
+	issuer := "issuer_example" // string |  (optional)
+	logoutMethod := "logoutMethod_example" // string | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).   (optional)
+	name := "name_example" // string |  (optional)
+	nameIdMapping := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	propertyMappings := []string{"Inner_example"} // []string |  (optional)
+	search := "search_example" // string | A search term. (optional)
+	sessionValidNotOnOrAfter := "sessionValidNotOnOrAfter_example" // string |  (optional)
+	signAssertion := true // bool |  (optional)
+	signLogoutRequest := true // bool |  (optional)
+	signResponse := true // bool |  (optional)
+	signatureAlgorithm := "signatureAlgorithm_example" // string |  (optional)
+	signingKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+	slsBinding := "slsBinding_example" // string | This determines how authentik sends the logout response back to the Service Provider.   (optional)
+	slsUrl := "slsUrl_example" // string |  (optional)
+	spBinding := "spBinding_example" // string | This determines how authentik sends the response back to the Service Provider.   (optional)
+	verificationKp := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProvidersAPI.ProvidersWsfedList(context.Background()).AcsUrl(acsUrl).AssertionValidNotBefore(assertionValidNotBefore).AssertionValidNotOnOrAfter(assertionValidNotOnOrAfter).Audience(audience).AuthenticationFlow(authenticationFlow).AuthnContextClassRefMapping(authnContextClassRefMapping).AuthorizationFlow(authorizationFlow).BackchannelApplication(backchannelApplication).DefaultNameIdPolicy(defaultNameIdPolicy).DefaultRelayState(defaultRelayState).DigestAlgorithm(digestAlgorithm).EncryptionKp(encryptionKp).InvalidationFlow(invalidationFlow).IsBackchannel(isBackchannel).Issuer(issuer).LogoutMethod(logoutMethod).Name(name).NameIdMapping(nameIdMapping).Ordering(ordering).Page(page).PageSize(pageSize).PropertyMappings(propertyMappings).Search(search).SessionValidNotOnOrAfter(sessionValidNotOnOrAfter).SignAssertion(signAssertion).SignLogoutRequest(signLogoutRequest).SignResponse(signResponse).SignatureAlgorithm(signatureAlgorithm).SigningKp(signingKp).SlsBinding(slsBinding).SlsUrl(slsUrl).SpBinding(spBinding).VerificationKp(verificationKp).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersWsfedList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProvidersWsfedList`: PaginatedWSFederationProviderList
+	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersWsfedList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersWsfedListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acsUrl** | **string** |  | 
+ **assertionValidNotBefore** | **string** |  | 
+ **assertionValidNotOnOrAfter** | **string** |  | 
+ **audience** | **string** |  | 
+ **authenticationFlow** | **string** |  | 
+ **authnContextClassRefMapping** | **string** |  | 
+ **authorizationFlow** | **string** |  | 
+ **backchannelApplication** | **string** |  | 
+ **defaultNameIdPolicy** | **string** |  | 
+ **defaultRelayState** | **string** |  | 
+ **digestAlgorithm** | **string** |  | 
+ **encryptionKp** | **string** |  | 
+ **invalidationFlow** | **string** |  | 
+ **isBackchannel** | **bool** |  | 
+ **issuer** | **string** |  | 
+ **logoutMethod** | **string** | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).   | 
+ **name** | **string** |  | 
+ **nameIdMapping** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **propertyMappings** | **[]string** |  | 
+ **search** | **string** | A search term. | 
+ **sessionValidNotOnOrAfter** | **string** |  | 
+ **signAssertion** | **bool** |  | 
+ **signLogoutRequest** | **bool** |  | 
+ **signResponse** | **bool** |  | 
+ **signatureAlgorithm** | **string** |  | 
+ **signingKp** | **string** |  | 
+ **slsBinding** | **string** | This determines how authentik sends the logout response back to the Service Provider.   | 
+ **slsUrl** | **string** |  | 
+ **spBinding** | **string** | This determines how authentik sends the response back to the Service Provider.   | 
+ **verificationKp** | **string** |  | 
+
+### Return type
+
+[**PaginatedWSFederationProviderList**](PaginatedWSFederationProviderList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersWsfedMetadataRetrieve
+
+> SAMLMetadata ProvidersWsfedMetadataRetrieve(ctx, id).Download(download).ForceBinding(forceBinding).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this WS-Federation Provider.
+	download := true // bool |  (optional)
+	forceBinding := "forceBinding_example" // string | Optionally force the metadata to only include one binding. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProvidersAPI.ProvidersWsfedMetadataRetrieve(context.Background(), id).Download(download).ForceBinding(forceBinding).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersWsfedMetadataRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProvidersWsfedMetadataRetrieve`: SAMLMetadata
+	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersWsfedMetadataRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WS-Federation Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersWsfedMetadataRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **download** | **bool** |  | 
+ **forceBinding** | **string** | Optionally force the metadata to only include one binding. | 
+
+### Return type
+
+[**SAMLMetadata**](SAMLMetadata.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersWsfedPartialUpdate
+
+> WSFederationProvider ProvidersWsfedPartialUpdate(ctx, id).PatchedWSFederationProviderRequest(patchedWSFederationProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this WS-Federation Provider.
+	patchedWSFederationProviderRequest := *openapiclient.NewPatchedWSFederationProviderRequest() // PatchedWSFederationProviderRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProvidersAPI.ProvidersWsfedPartialUpdate(context.Background(), id).PatchedWSFederationProviderRequest(patchedWSFederationProviderRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersWsfedPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProvidersWsfedPartialUpdate`: WSFederationProvider
+	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersWsfedPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WS-Federation Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersWsfedPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedWSFederationProviderRequest** | [**PatchedWSFederationProviderRequest**](PatchedWSFederationProviderRequest.md) |  | 
+
+### Return type
+
+[**WSFederationProvider**](WSFederationProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersWsfedPreviewUserRetrieve
+
+> PropertyMappingPreview ProvidersWsfedPreviewUserRetrieve(ctx, id).ForUser(forUser).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this WS-Federation Provider.
+	forUser := int32(56) // int32 |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProvidersAPI.ProvidersWsfedPreviewUserRetrieve(context.Background(), id).ForUser(forUser).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersWsfedPreviewUserRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProvidersWsfedPreviewUserRetrieve`: PropertyMappingPreview
+	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersWsfedPreviewUserRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WS-Federation Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersWsfedPreviewUserRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **forUser** | **int32** |  | 
+
+### Return type
+
+[**PropertyMappingPreview**](PropertyMappingPreview.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersWsfedRetrieve
+
+> WSFederationProvider ProvidersWsfedRetrieve(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this WS-Federation Provider.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProvidersAPI.ProvidersWsfedRetrieve(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersWsfedRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProvidersWsfedRetrieve`: WSFederationProvider
+	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersWsfedRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WS-Federation Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersWsfedRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**WSFederationProvider**](WSFederationProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersWsfedUpdate
+
+> WSFederationProvider ProvidersWsfedUpdate(ctx, id).WSFederationProviderRequest(wSFederationProviderRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this WS-Federation Provider.
+	wSFederationProviderRequest := *openapiclient.NewWSFederationProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "ReplyUrl_example") // WSFederationProviderRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProvidersAPI.ProvidersWsfedUpdate(context.Background(), id).WSFederationProviderRequest(wSFederationProviderRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersWsfedUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProvidersWsfedUpdate`: WSFederationProvider
+	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersWsfedUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WS-Federation Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersWsfedUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **wSFederationProviderRequest** | [**WSFederationProviderRequest**](WSFederationProviderRequest.md) |  | 
+
+### Return type
+
+[**WSFederationProvider**](WSFederationProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProvidersWsfedUsedByList
+
+> []UsedBy ProvidersWsfedUsedByList(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | A unique integer value identifying this WS-Federation Provider.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProvidersAPI.ProvidersWsfedUsedByList(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersWsfedUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProvidersWsfedUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersWsfedUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | A unique integer value identifying this WS-Federation Provider. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProvidersWsfedUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

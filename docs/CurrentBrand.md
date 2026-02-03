@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 **MatchedDomain** | **string** |  | 
 **BrandingTitle** | **string** |  | 
 **BrandingLogo** | **string** |  | 
+**BrandingLogoThemedUrls** | [**NullableThemedUrls**](ThemedUrls.md) |  | [readonly] 
 **BrandingFavicon** | **string** |  | 
+**BrandingFaviconThemedUrls** | [**NullableThemedUrls**](ThemedUrls.md) |  | [readonly] 
 **BrandingCustomCss** | **string** |  | 
 **UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] 
 **UiTheme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] [default to UITHEMEENUM_AUTOMATIC]
@@ -24,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewCurrentBrand
 
-`func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingFavicon string, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags, ) *CurrentBrand`
+`func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingLogoThemedUrls NullableThemedUrls, brandingFavicon string, brandingFaviconThemedUrls NullableThemedUrls, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags, ) *CurrentBrand`
 
 NewCurrentBrand instantiates a new CurrentBrand object
 This constructor will assign default values to properties that have it defined,
@@ -99,6 +101,36 @@ and a boolean to check if the value has been set.
 SetBrandingLogo sets BrandingLogo field to given value.
 
 
+### GetBrandingLogoThemedUrls
+
+`func (o *CurrentBrand) GetBrandingLogoThemedUrls() ThemedUrls`
+
+GetBrandingLogoThemedUrls returns the BrandingLogoThemedUrls field if non-nil, zero value otherwise.
+
+### GetBrandingLogoThemedUrlsOk
+
+`func (o *CurrentBrand) GetBrandingLogoThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetBrandingLogoThemedUrlsOk returns a tuple with the BrandingLogoThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingLogoThemedUrls
+
+`func (o *CurrentBrand) SetBrandingLogoThemedUrls(v ThemedUrls)`
+
+SetBrandingLogoThemedUrls sets BrandingLogoThemedUrls field to given value.
+
+
+### SetBrandingLogoThemedUrlsNil
+
+`func (o *CurrentBrand) SetBrandingLogoThemedUrlsNil(b bool)`
+
+ SetBrandingLogoThemedUrlsNil sets the value for BrandingLogoThemedUrls to be an explicit nil
+
+### UnsetBrandingLogoThemedUrls
+`func (o *CurrentBrand) UnsetBrandingLogoThemedUrls()`
+
+UnsetBrandingLogoThemedUrls ensures that no value is present for BrandingLogoThemedUrls, not even an explicit nil
 ### GetBrandingFavicon
 
 `func (o *CurrentBrand) GetBrandingFavicon() string`
@@ -119,6 +151,36 @@ and a boolean to check if the value has been set.
 SetBrandingFavicon sets BrandingFavicon field to given value.
 
 
+### GetBrandingFaviconThemedUrls
+
+`func (o *CurrentBrand) GetBrandingFaviconThemedUrls() ThemedUrls`
+
+GetBrandingFaviconThemedUrls returns the BrandingFaviconThemedUrls field if non-nil, zero value otherwise.
+
+### GetBrandingFaviconThemedUrlsOk
+
+`func (o *CurrentBrand) GetBrandingFaviconThemedUrlsOk() (*ThemedUrls, bool)`
+
+GetBrandingFaviconThemedUrlsOk returns a tuple with the BrandingFaviconThemedUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingFaviconThemedUrls
+
+`func (o *CurrentBrand) SetBrandingFaviconThemedUrls(v ThemedUrls)`
+
+SetBrandingFaviconThemedUrls sets BrandingFaviconThemedUrls field to given value.
+
+
+### SetBrandingFaviconThemedUrlsNil
+
+`func (o *CurrentBrand) SetBrandingFaviconThemedUrlsNil(b bool)`
+
+ SetBrandingFaviconThemedUrlsNil sets the value for BrandingFaviconThemedUrls to be an explicit nil
+
+### UnsetBrandingFaviconThemedUrls
+`func (o *CurrentBrand) UnsetBrandingFaviconThemedUrls()`
+
+UnsetBrandingFaviconThemedUrls ensures that no value is present for BrandingFaviconThemedUrls, not even an explicit nil
 ### GetBrandingCustomCss
 
 `func (o *CurrentBrand) GetBrandingCustomCss() string`
