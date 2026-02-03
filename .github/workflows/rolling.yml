@@ -39,8 +39,9 @@ jobs:
           path: authentik
       - id: changes
         name: Check for changes
-        working-directory: authentik
+        working-directory: client-go
         run: |
+          cp ../authentik/schema.yml schema.yml
           if git diff --exit-code -- schema.yml > /dev/null; then
             echo "schema_has_changes=false" >> "$GITHUB_OUTPUT"
           else
