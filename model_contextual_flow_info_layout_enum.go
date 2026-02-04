@@ -21,11 +21,13 @@ type ContextualFlowInfoLayoutEnum string
 
 // List of ContextualFlowInfoLayoutEnum
 const (
-	CONTEXTUALFLOWINFOLAYOUTENUM_STACKED       ContextualFlowInfoLayoutEnum = "stacked"
-	CONTEXTUALFLOWINFOLAYOUTENUM_CONTENT_LEFT  ContextualFlowInfoLayoutEnum = "content_left"
-	CONTEXTUALFLOWINFOLAYOUTENUM_CONTENT_RIGHT ContextualFlowInfoLayoutEnum = "content_right"
-	CONTEXTUALFLOWINFOLAYOUTENUM_SIDEBAR_LEFT  ContextualFlowInfoLayoutEnum = "sidebar_left"
-	CONTEXTUALFLOWINFOLAYOUTENUM_SIDEBAR_RIGHT ContextualFlowInfoLayoutEnum = "sidebar_right"
+	CONTEXTUALFLOWINFOLAYOUTENUM_STACKED                        ContextualFlowInfoLayoutEnum = "stacked"
+	CONTEXTUALFLOWINFOLAYOUTENUM_CONTENT_LEFT                   ContextualFlowInfoLayoutEnum = "content_left"
+	CONTEXTUALFLOWINFOLAYOUTENUM_CONTENT_RIGHT                  ContextualFlowInfoLayoutEnum = "content_right"
+	CONTEXTUALFLOWINFOLAYOUTENUM_SIDEBAR_LEFT                   ContextualFlowInfoLayoutEnum = "sidebar_left"
+	CONTEXTUALFLOWINFOLAYOUTENUM_SIDEBAR_RIGHT                  ContextualFlowInfoLayoutEnum = "sidebar_right"
+	CONTEXTUALFLOWINFOLAYOUTENUM_SIDEBAR_LEFT_FRAME_BACKGROUND  ContextualFlowInfoLayoutEnum = "sidebar_left_frame_background"
+	CONTEXTUALFLOWINFOLAYOUTENUM_SIDEBAR_RIGHT_FRAME_BACKGROUND ContextualFlowInfoLayoutEnum = "sidebar_right_frame_background"
 )
 
 // All allowed values of ContextualFlowInfoLayoutEnum enum
@@ -35,6 +37,8 @@ var AllowedContextualFlowInfoLayoutEnumEnumValues = []ContextualFlowInfoLayoutEn
 	"content_right",
 	"sidebar_left",
 	"sidebar_right",
+	"sidebar_left_frame_background",
+	"sidebar_right_frame_background",
 }
 
 func (v *ContextualFlowInfoLayoutEnum) UnmarshalJSON(src []byte) error {

@@ -21,11 +21,13 @@ type FlowLayoutEnum string
 
 // List of FlowLayoutEnum
 const (
-	FLOWLAYOUTENUM_STACKED       FlowLayoutEnum = "stacked"
-	FLOWLAYOUTENUM_CONTENT_LEFT  FlowLayoutEnum = "content_left"
-	FLOWLAYOUTENUM_CONTENT_RIGHT FlowLayoutEnum = "content_right"
-	FLOWLAYOUTENUM_SIDEBAR_LEFT  FlowLayoutEnum = "sidebar_left"
-	FLOWLAYOUTENUM_SIDEBAR_RIGHT FlowLayoutEnum = "sidebar_right"
+	FLOWLAYOUTENUM_STACKED                        FlowLayoutEnum = "stacked"
+	FLOWLAYOUTENUM_CONTENT_LEFT                   FlowLayoutEnum = "content_left"
+	FLOWLAYOUTENUM_CONTENT_RIGHT                  FlowLayoutEnum = "content_right"
+	FLOWLAYOUTENUM_SIDEBAR_LEFT                   FlowLayoutEnum = "sidebar_left"
+	FLOWLAYOUTENUM_SIDEBAR_RIGHT                  FlowLayoutEnum = "sidebar_right"
+	FLOWLAYOUTENUM_SIDEBAR_LEFT_FRAME_BACKGROUND  FlowLayoutEnum = "sidebar_left_frame_background"
+	FLOWLAYOUTENUM_SIDEBAR_RIGHT_FRAME_BACKGROUND FlowLayoutEnum = "sidebar_right_frame_background"
 )
 
 // All allowed values of FlowLayoutEnum enum
@@ -35,6 +37,8 @@ var AllowedFlowLayoutEnumEnumValues = []FlowLayoutEnum{
 	"content_right",
 	"sidebar_left",
 	"sidebar_right",
+	"sidebar_left_frame_background",
+	"sidebar_right_frame_background",
 }
 
 func (v *FlowLayoutEnum) UnmarshalJSON(src []byte) error {
