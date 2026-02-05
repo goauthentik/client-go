@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **ReplyUrl** | **string** |  | 
+**Wtrealm** | **string** |  | 
 **AssertionValidNotBefore** | Pointer to **string** | Assertion valid not before current time + this value (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3). | [optional] 
 **AssertionValidNotOnOrAfter** | Pointer to **string** | Assertion not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **SessionValidNotOnOrAfter** | Pointer to **string** | Session not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewWSFederationProviderRequest
 
-`func NewWSFederationProviderRequest(name string, authorizationFlow string, invalidationFlow string, replyUrl string, ) *WSFederationProviderRequest`
+`func NewWSFederationProviderRequest(name string, authorizationFlow string, invalidationFlow string, replyUrl string, wtrealm string, ) *WSFederationProviderRequest`
 
 NewWSFederationProviderRequest instantiates a new WSFederationProviderRequest object
 This constructor will assign default values to properties that have it defined,
@@ -180,6 +181,26 @@ and a boolean to check if the value has been set.
 `func (o *WSFederationProviderRequest) SetReplyUrl(v string)`
 
 SetReplyUrl sets ReplyUrl field to given value.
+
+
+### GetWtrealm
+
+`func (o *WSFederationProviderRequest) GetWtrealm() string`
+
+GetWtrealm returns the Wtrealm field if non-nil, zero value otherwise.
+
+### GetWtrealmOk
+
+`func (o *WSFederationProviderRequest) GetWtrealmOk() (*string, bool)`
+
+GetWtrealmOk returns a tuple with the Wtrealm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWtrealm
+
+`func (o *WSFederationProviderRequest) SetWtrealm(v string)`
+
+SetWtrealm sets Wtrealm field to given value.
 
 
 ### GetAssertionValidNotBefore

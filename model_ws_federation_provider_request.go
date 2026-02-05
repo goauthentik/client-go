@@ -30,6 +30,7 @@ type WSFederationProviderRequest struct {
 	InvalidationFlow string   `json:"invalidation_flow"`
 	PropertyMappings []string `json:"property_mappings,omitempty"`
 	ReplyUrl         string   `json:"reply_url"`
+	Wtrealm          string   `json:"wtrealm"`
 	// Assertion valid not before current time + this value (Format: hours=-1;minutes=-2;seconds=-3).
 	AssertionValidNotBefore *string `json:"assertion_valid_not_before,omitempty"`
 	// Assertion not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -58,12 +59,13 @@ type _WSFederationProviderRequest WSFederationProviderRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWSFederationProviderRequest(name string, authorizationFlow string, invalidationFlow string, replyUrl string) *WSFederationProviderRequest {
+func NewWSFederationProviderRequest(name string, authorizationFlow string, invalidationFlow string, replyUrl string, wtrealm string) *WSFederationProviderRequest {
 	this := WSFederationProviderRequest{}
 	this.Name = name
 	this.AuthorizationFlow = authorizationFlow
 	this.InvalidationFlow = invalidationFlow
 	this.ReplyUrl = replyUrl
+	this.Wtrealm = wtrealm
 	return &this
 }
 
@@ -244,6 +246,30 @@ func (o *WSFederationProviderRequest) GetReplyUrlOk() (*string, bool) {
 // SetReplyUrl sets field value
 func (o *WSFederationProviderRequest) SetReplyUrl(v string) {
 	o.ReplyUrl = v
+}
+
+// GetWtrealm returns the Wtrealm field value
+func (o *WSFederationProviderRequest) GetWtrealm() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Wtrealm
+}
+
+// GetWtrealmOk returns a tuple with the Wtrealm field value
+// and a boolean to check if the value has been set.
+func (o *WSFederationProviderRequest) GetWtrealmOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Wtrealm, true
+}
+
+// SetWtrealm sets field value
+func (o *WSFederationProviderRequest) SetWtrealm(v string) {
+	o.Wtrealm = v
 }
 
 // GetAssertionValidNotBefore returns the AssertionValidNotBefore field value if set, zero value otherwise.
@@ -694,6 +720,7 @@ func (o WSFederationProviderRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["property_mappings"] = o.PropertyMappings
 	}
 	toSerialize["reply_url"] = o.ReplyUrl
+	toSerialize["wtrealm"] = o.Wtrealm
 	if !IsNil(o.AssertionValidNotBefore) {
 		toSerialize["assertion_valid_not_before"] = o.AssertionValidNotBefore
 	}
@@ -747,6 +774,7 @@ func (o *WSFederationProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		"authorization_flow",
 		"invalidation_flow",
 		"reply_url",
+		"wtrealm",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -782,6 +810,7 @@ func (o *WSFederationProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "invalidation_flow")
 		delete(additionalProperties, "property_mappings")
 		delete(additionalProperties, "reply_url")
+		delete(additionalProperties, "wtrealm")
 		delete(additionalProperties, "assertion_valid_not_before")
 		delete(additionalProperties, "assertion_valid_not_on_or_after")
 		delete(additionalProperties, "session_valid_not_on_or_after")

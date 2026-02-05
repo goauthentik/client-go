@@ -47,6 +47,7 @@ type WSFederationProvider struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	ReplyUrl      string `json:"reply_url"`
+	Wtrealm       string `json:"wtrealm"`
 	// Assertion valid not before current time + this value (Format: hours=-1;minutes=-2;seconds=-3).
 	AssertionValidNotBefore *string `json:"assertion_valid_not_before,omitempty"`
 	// Assertion not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -70,7 +71,6 @@ type WSFederationProvider struct {
 	UrlDownloadMetadata string `json:"url_download_metadata"`
 	// Get WS-Fed url
 	UrlWsfed             string `json:"url_wsfed"`
-	Wtrealm              string `json:"wtrealm"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,7 +80,7 @@ type _WSFederationProvider WSFederationProvider
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWSFederationProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, replyUrl string, urlDownloadMetadata string, urlWsfed string, wtrealm string) *WSFederationProvider {
+func NewWSFederationProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, replyUrl string, wtrealm string, urlDownloadMetadata string, urlWsfed string) *WSFederationProvider {
 	this := WSFederationProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -95,9 +95,9 @@ func NewWSFederationProvider(pk int32, name string, authorizationFlow string, in
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.ReplyUrl = replyUrl
+	this.Wtrealm = wtrealm
 	this.UrlDownloadMetadata = urlDownloadMetadata
 	this.UrlWsfed = urlWsfed
-	this.Wtrealm = wtrealm
 	return &this
 }
 
@@ -502,6 +502,30 @@ func (o *WSFederationProvider) GetReplyUrlOk() (*string, bool) {
 // SetReplyUrl sets field value
 func (o *WSFederationProvider) SetReplyUrl(v string) {
 	o.ReplyUrl = v
+}
+
+// GetWtrealm returns the Wtrealm field value
+func (o *WSFederationProvider) GetWtrealm() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Wtrealm
+}
+
+// GetWtrealmOk returns a tuple with the Wtrealm field value
+// and a boolean to check if the value has been set.
+func (o *WSFederationProvider) GetWtrealmOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Wtrealm, true
+}
+
+// SetWtrealm sets field value
+func (o *WSFederationProvider) SetWtrealm(v string) {
+	o.Wtrealm = v
 }
 
 // GetAssertionValidNotBefore returns the AssertionValidNotBefore field value if set, zero value otherwise.
@@ -980,30 +1004,6 @@ func (o *WSFederationProvider) SetUrlWsfed(v string) {
 	o.UrlWsfed = v
 }
 
-// GetWtrealm returns the Wtrealm field value
-func (o *WSFederationProvider) GetWtrealm() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Wtrealm
-}
-
-// GetWtrealmOk returns a tuple with the Wtrealm field value
-// and a boolean to check if the value has been set.
-func (o *WSFederationProvider) GetWtrealmOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Wtrealm, true
-}
-
-// SetWtrealm sets field value
-func (o *WSFederationProvider) SetWtrealm(v string) {
-	o.Wtrealm = v
-}
-
 func (o WSFederationProvider) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1033,6 +1033,7 @@ func (o WSFederationProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
 	toSerialize["reply_url"] = o.ReplyUrl
+	toSerialize["wtrealm"] = o.Wtrealm
 	if !IsNil(o.AssertionValidNotBefore) {
 		toSerialize["assertion_valid_not_before"] = o.AssertionValidNotBefore
 	}
@@ -1071,7 +1072,6 @@ func (o WSFederationProvider) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["url_download_metadata"] = o.UrlDownloadMetadata
 	toSerialize["url_wsfed"] = o.UrlWsfed
-	toSerialize["wtrealm"] = o.Wtrealm
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1098,9 +1098,9 @@ func (o *WSFederationProvider) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name_plural",
 		"meta_model_name",
 		"reply_url",
+		"wtrealm",
 		"url_download_metadata",
 		"url_wsfed",
-		"wtrealm",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1145,6 +1145,7 @@ func (o *WSFederationProvider) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "verbose_name_plural")
 		delete(additionalProperties, "meta_model_name")
 		delete(additionalProperties, "reply_url")
+		delete(additionalProperties, "wtrealm")
 		delete(additionalProperties, "assertion_valid_not_before")
 		delete(additionalProperties, "assertion_valid_not_on_or_after")
 		delete(additionalProperties, "session_valid_not_on_or_after")
@@ -1159,7 +1160,6 @@ func (o *WSFederationProvider) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "default_name_id_policy")
 		delete(additionalProperties, "url_download_metadata")
 		delete(additionalProperties, "url_wsfed")
-		delete(additionalProperties, "wtrealm")
 		o.AdditionalProperties = additionalProperties
 	}
 

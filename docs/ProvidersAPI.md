@@ -8466,7 +8466,7 @@ import (
 )
 
 func main() {
-	wSFederationProviderRequest := *openapiclient.NewWSFederationProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "ReplyUrl_example") // WSFederationProviderRequest | 
+	wSFederationProviderRequest := *openapiclient.NewWSFederationProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "ReplyUrl_example", "Wtrealm_example") // WSFederationProviderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -9019,7 +9019,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this WS-Federation Provider.
-	wSFederationProviderRequest := *openapiclient.NewWSFederationProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "ReplyUrl_example") // WSFederationProviderRequest | 
+	wSFederationProviderRequest := *openapiclient.NewWSFederationProviderRequest("Name_example", "AuthorizationFlow_example", "InvalidationFlow_example", "ReplyUrl_example", "Wtrealm_example") // WSFederationProviderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

@@ -79973,6 +79973,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        wtrealm: wtrealm
       properties:
         name:
           minLength: 1
@@ -79998,6 +79999,9 @@ components:
           type: array
         reply_url:
           format: uri
+          minLength: 1
+          type: string
+        wtrealm:
           minLength: 1
           type: string
         assertion_valid_not_before:
@@ -89162,6 +89166,8 @@ components:
         reply_url:
           format: uri
           type: string
+        wtrealm:
+          type: string
         assertion_valid_not_before:
           description: "Assertion valid not before current time + this value (Format:\
             \ hours=-1;minutes=-2;seconds=-3)."
@@ -89222,9 +89228,6 @@ components:
           description: Get WS-Fed url
           readOnly: true
           type: string
-        wtrealm:
-          readOnly: true
-          type: string
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -89266,6 +89269,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         signing_kp: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        wtrealm: wtrealm
       properties:
         name:
           minLength: 1
@@ -89291,6 +89295,9 @@ components:
           type: array
         reply_url:
           format: uri
+          minLength: 1
+          type: string
+        wtrealm:
           minLength: 1
           type: string
         assertion_valid_not_before:
@@ -89353,6 +89360,7 @@ components:
       - invalidation_flow
       - name
       - reply_url
+      - wtrealm
       type: object
     WebAuthnDevice:
       description: Serializer for WebAuthn authenticator devices

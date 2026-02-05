@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **ReplyUrl** | **string** |  | 
+**Wtrealm** | **string** |  | 
 **AssertionValidNotBefore** | Pointer to **string** | Assertion valid not before current time + this value (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3). | [optional] 
 **AssertionValidNotOnOrAfter** | Pointer to **string** | Assertion not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **SessionValidNotOnOrAfter** | Pointer to **string** | Session not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -33,13 +34,12 @@ Name | Type | Description | Notes
 **DefaultNameIdPolicy** | Pointer to [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] 
 **UrlDownloadMetadata** | **string** | Get metadata download URL | [readonly] 
 **UrlWsfed** | **string** | Get WS-Fed url | [readonly] 
-**Wtrealm** | **string** |  | [readonly] 
 
 ## Methods
 
 ### NewWSFederationProvider
 
-`func NewWSFederationProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, replyUrl string, urlDownloadMetadata string, urlWsfed string, wtrealm string, ) *WSFederationProvider`
+`func NewWSFederationProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, replyUrl string, wtrealm string, urlDownloadMetadata string, urlWsfed string, ) *WSFederationProvider`
 
 NewWSFederationProvider instantiates a new WSFederationProvider object
 This constructor will assign default values to properties that have it defined,
@@ -412,6 +412,26 @@ and a boolean to check if the value has been set.
 `func (o *WSFederationProvider) SetReplyUrl(v string)`
 
 SetReplyUrl sets ReplyUrl field to given value.
+
+
+### GetWtrealm
+
+`func (o *WSFederationProvider) GetWtrealm() string`
+
+GetWtrealm returns the Wtrealm field if non-nil, zero value otherwise.
+
+### GetWtrealmOk
+
+`func (o *WSFederationProvider) GetWtrealmOk() (*string, bool)`
+
+GetWtrealmOk returns a tuple with the Wtrealm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWtrealm
+
+`func (o *WSFederationProvider) SetWtrealm(v string)`
+
+SetWtrealm sets Wtrealm field to given value.
 
 
 ### GetAssertionValidNotBefore
@@ -792,26 +812,6 @@ and a boolean to check if the value has been set.
 `func (o *WSFederationProvider) SetUrlWsfed(v string)`
 
 SetUrlWsfed sets UrlWsfed field to given value.
-
-
-### GetWtrealm
-
-`func (o *WSFederationProvider) GetWtrealm() string`
-
-GetWtrealm returns the Wtrealm field if non-nil, zero value otherwise.
-
-### GetWtrealmOk
-
-`func (o *WSFederationProvider) GetWtrealmOk() (*string, bool)`
-
-GetWtrealmOk returns a tuple with the Wtrealm field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWtrealm
-
-`func (o *WSFederationProvider) SetWtrealm(v string)`
-
-SetWtrealm sets Wtrealm field to given value.
 
 
 

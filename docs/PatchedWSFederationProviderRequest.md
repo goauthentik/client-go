@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **InvalidationFlow** | Pointer to **string** | Flow used ending the session from a provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **ReplyUrl** | Pointer to **string** |  | [optional] 
+**Wtrealm** | Pointer to **string** |  | [optional] 
 **AssertionValidNotBefore** | Pointer to **string** | Assertion valid not before current time + this value (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3). | [optional] 
 **AssertionValidNotOnOrAfter** | Pointer to **string** | Assertion not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
 **SessionValidNotOnOrAfter** | Pointer to **string** | Session not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] 
@@ -201,6 +202,31 @@ SetReplyUrl sets ReplyUrl field to given value.
 `func (o *PatchedWSFederationProviderRequest) HasReplyUrl() bool`
 
 HasReplyUrl returns a boolean if a field has been set.
+
+### GetWtrealm
+
+`func (o *PatchedWSFederationProviderRequest) GetWtrealm() string`
+
+GetWtrealm returns the Wtrealm field if non-nil, zero value otherwise.
+
+### GetWtrealmOk
+
+`func (o *PatchedWSFederationProviderRequest) GetWtrealmOk() (*string, bool)`
+
+GetWtrealmOk returns a tuple with the Wtrealm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWtrealm
+
+`func (o *PatchedWSFederationProviderRequest) SetWtrealm(v string)`
+
+SetWtrealm sets Wtrealm field to given value.
+
+### HasWtrealm
+
+`func (o *PatchedWSFederationProviderRequest) HasWtrealm() bool`
+
+HasWtrealm returns a boolean if a field has been set.
 
 ### GetAssertionValidNotBefore
 

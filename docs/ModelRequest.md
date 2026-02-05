@@ -95,12 +95,13 @@ Name | Type | Description | Notes
 **OidcAuthProviders** | Pointer to **[]int32** |  | [optional] 
 **EventRetention** | Pointer to **string** |  | [optional] 
 **ReplyUrl** | **string** |  | 
+**Wtrealm** | **string** |  | 
 
 ## Methods
 
 ### NewModelRequest
 
-`func NewModelRequest(name string, delegatedSubject string, credentials map[string]map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, replyUrl string, ) *ModelRequest`
+`func NewModelRequest(name string, delegatedSubject string, credentials map[string]map[string]interface{}, defaultGroupEmailDomain string, authorizationFlow string, invalidationFlow string, clientId string, clientSecret string, tenantId string, signingKey string, redirectUris []RedirectURIRequest, externalHost string, acsUrl string, url string, replyUrl string, wtrealm string, ) *ModelRequest`
 
 NewModelRequest instantiates a new ModelRequest object
 This constructor will assign default values to properties that have it defined,
@@ -2413,6 +2414,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelRequest) SetReplyUrl(v string)`
 
 SetReplyUrl sets ReplyUrl field to given value.
+
+
+### GetWtrealm
+
+`func (o *ModelRequest) GetWtrealm() string`
+
+GetWtrealm returns the Wtrealm field if non-nil, zero value otherwise.
+
+### GetWtrealmOk
+
+`func (o *ModelRequest) GetWtrealmOk() (*string, bool)`
+
+GetWtrealmOk returns a tuple with the Wtrealm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWtrealm
+
+`func (o *ModelRequest) SetWtrealm(v string)`
+
+SetWtrealm sets Wtrealm field to given value.
 
 
 

@@ -29,6 +29,7 @@ type PatchedWSFederationProviderRequest struct {
 	InvalidationFlow *string  `json:"invalidation_flow,omitempty"`
 	PropertyMappings []string `json:"property_mappings,omitempty"`
 	ReplyUrl         *string  `json:"reply_url,omitempty"`
+	Wtrealm          *string  `json:"wtrealm,omitempty"`
 	// Assertion valid not before current time + this value (Format: hours=-1;minutes=-2;seconds=-3).
 	AssertionValidNotBefore *string `json:"assertion_valid_not_before,omitempty"`
 	// Assertion not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
@@ -271,6 +272,38 @@ func (o *PatchedWSFederationProviderRequest) HasReplyUrl() bool {
 // SetReplyUrl gets a reference to the given string and assigns it to the ReplyUrl field.
 func (o *PatchedWSFederationProviderRequest) SetReplyUrl(v string) {
 	o.ReplyUrl = &v
+}
+
+// GetWtrealm returns the Wtrealm field value if set, zero value otherwise.
+func (o *PatchedWSFederationProviderRequest) GetWtrealm() string {
+	if o == nil || IsNil(o.Wtrealm) {
+		var ret string
+		return ret
+	}
+	return *o.Wtrealm
+}
+
+// GetWtrealmOk returns a tuple with the Wtrealm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedWSFederationProviderRequest) GetWtrealmOk() (*string, bool) {
+	if o == nil || IsNil(o.Wtrealm) {
+		return nil, false
+	}
+	return o.Wtrealm, true
+}
+
+// HasWtrealm returns a boolean if a field has been set.
+func (o *PatchedWSFederationProviderRequest) HasWtrealm() bool {
+	if o != nil && !IsNil(o.Wtrealm) {
+		return true
+	}
+
+	return false
+}
+
+// SetWtrealm gets a reference to the given string and assigns it to the Wtrealm field.
+func (o *PatchedWSFederationProviderRequest) SetWtrealm(v string) {
+	o.Wtrealm = &v
 }
 
 // GetAssertionValidNotBefore returns the AssertionValidNotBefore field value if set, zero value otherwise.
@@ -729,6 +762,9 @@ func (o PatchedWSFederationProviderRequest) ToMap() (map[string]interface{}, err
 	if !IsNil(o.ReplyUrl) {
 		toSerialize["reply_url"] = o.ReplyUrl
 	}
+	if !IsNil(o.Wtrealm) {
+		toSerialize["wtrealm"] = o.Wtrealm
+	}
 	if !IsNil(o.AssertionValidNotBefore) {
 		toSerialize["assertion_valid_not_before"] = o.AssertionValidNotBefore
 	}
@@ -793,6 +829,7 @@ func (o *PatchedWSFederationProviderRequest) UnmarshalJSON(data []byte) (err err
 		delete(additionalProperties, "invalidation_flow")
 		delete(additionalProperties, "property_mappings")
 		delete(additionalProperties, "reply_url")
+		delete(additionalProperties, "wtrealm")
 		delete(additionalProperties, "assertion_valid_not_before")
 		delete(additionalProperties, "assertion_valid_not_on_or_after")
 		delete(additionalProperties, "session_valid_not_on_or_after")
