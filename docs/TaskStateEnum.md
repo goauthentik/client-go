@@ -1,4 +1,4 @@
-# StateEnum
+# TaskStateEnum
 
 ## Enum
 

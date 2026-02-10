@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **MessageId** | Pointer to **string** |  | [optional] 
 **QueueName** | Pointer to **string** | Queue name | [optional] 
 **ActorName** | **string** | Dramatiq actor name | 
-**State** | Pointer to [**StateEnum**](StateEnum.md) | Task status | [optional] 
+**State** | Pointer to [**TaskStateEnum**](TaskStateEnum.md) | Task status | [optional] 
 **Mtime** | Pointer to **time.Time** | Task last modified time | [optional] 
 **Retries** | Pointer to **int64** | Number of retries | [optional] 
 **Eta** | Pointer to **NullableTime** | Planned execution time | [optional] 
@@ -111,20 +111,20 @@ SetActorName sets ActorName field to given value.
 
 ### GetState
 
-`func (o *Task) GetState() StateEnum`
+`func (o *Task) GetState() TaskStateEnum`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *Task) GetStateOk() (*StateEnum, bool)`
+`func (o *Task) GetStateOk() (*TaskStateEnum, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *Task) SetState(v StateEnum)`
+`func (o *Task) SetState(v TaskStateEnum)`
 
 SetState sets State field to given value.
 

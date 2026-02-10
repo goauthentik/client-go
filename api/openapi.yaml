@@ -10565,6 +10565,10 @@ paths:
             - policy_exception
             - policy_execution
             - property_mapping_exception
+            - review_attested
+            - review_completed
+            - review_initiated
+            - review_overdue
             - secret_rotate
             - secret_view
             - source_linked
@@ -10944,6 +10948,10 @@ paths:
             - policy_exception
             - policy_execution
             - property_mapping_exception
+            - review_attested
+            - review_completed
+            - review_initiated
+            - review_overdue
             - secret_rotate
             - secret_view
             - source_linked
@@ -11133,6 +11141,10 @@ paths:
             - policy_exception
             - policy_execution
             - property_mapping_exception
+            - review_attested
+            - review_completed
+            - review_initiated
+            - review_overdue
             - secret_rotate
             - secret_view
             - source_linked
@@ -13248,6 +13260,436 @@ paths:
       - authentik: []
       tags:
       - flows
+  /lifecycle/iterations/:
+    post:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      operationId: lifecycle_iterations_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LifecycleIterationRequest"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LifecycleIteration"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
+  /lifecycle/iterations/latest/{content_type}/{object_id}/:
+    get:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      operationId: lifecycle_iterations_latest_retrieve
+      parameters:
+      - explode: false
+        in: path
+        name: content_type
+        required: true
+        schema:
+          pattern: "^[^/]+$"
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: object_id
+        required: true
+        schema:
+          pattern: "^[^/]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LifecycleIteration"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
+  /lifecycle/iterations/open/:
+    get:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      operationId: lifecycle_iterations_list_open
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: user_is_reviewer
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedLifecycleIterationList"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
+  /lifecycle/reviews/:
+    post:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      operationId: lifecycle_reviews_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewRequest"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
+  /lifecycle/rules/:
+    get:
+      operationId: lifecycle_rules_list
+      parameters:
+      - explode: true
+        in: query
+        name: content_type__model
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedLifecycleRuleList"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
+    post:
+      operationId: lifecycle_rules_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LifecycleRuleRequest"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LifecycleRule"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
+  /lifecycle/rules/{id}/:
+    delete:
+      operationId: lifecycle_rules_destroy
+      parameters:
+      - description: A UUID string identifying this lifecycle rule.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
+    get:
+      operationId: lifecycle_rules_retrieve
+      parameters:
+      - description: A UUID string identifying this lifecycle rule.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LifecycleRule"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
+    patch:
+      operationId: lifecycle_rules_partial_update
+      parameters:
+      - description: A UUID string identifying this lifecycle rule.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PatchedLifecycleRuleRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LifecycleRule"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
+    put:
+      operationId: lifecycle_rules_update
+      parameters:
+      - description: A UUID string identifying this lifecycle rule.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LifecycleRuleRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LifecycleRule"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - lifecycle
   /managed/blueprints/:
     get:
       description: Blueprint instances
@@ -16783,6 +17225,10 @@ paths:
           - policy_exception
           - policy_execution
           - property_mapping_exception
+          - review_attested
+          - review_completed
+          - review_initiated
+          - review_overdue
           - secret_rotate
           - secret_view
           - source_linked
@@ -31373,6 +31819,9 @@ paths:
           - authentik_events.notificationwebhookmapping
           - authentik_flows.flow
           - authentik_flows.flowstagebinding
+          - authentik_lifecycle.lifecycleiteration
+          - authentik_lifecycle.lifecyclerule
+          - authentik_lifecycle.review
           - authentik_outposts.dockerserviceconnection
           - authentik_outposts.kubernetesserviceconnection
           - authentik_outposts.outpost
@@ -51388,6 +51837,7 @@ components:
       - authentik.enterprise.audit
       - authentik.enterprise.endpoints.connectors.agent
       - authentik.enterprise.endpoints.connectors.fleet
+      - authentik.enterprise.lifecycle
       - authentik.enterprise.policies.unique_password
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
@@ -54403,6 +54853,12 @@ components:
       - model
       - verbose_name_plural
       type: object
+    ContentTypeEnum:
+      enum:
+      - authentik_core.application
+      - authentik_core.group
+      - authentik_rbac.role
+      type: string
     ContextualFlowInfo:
       description: Contextual flow information for a challenge
       example:
@@ -56914,6 +57370,10 @@ components:
       - email_sent
       - update_available
       - export_ready
+      - review_initiated
+      - review_overdue
+      - review_attested
+      - review_completed
       - custom_
       type: string
     EventMatcherPolicy:
@@ -61682,6 +62142,300 @@ components:
       - limit_exceeded_user
       - read_only
       type: string
+    LifecycleIteration:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        object_verbose: object_verbose
+        reviewer_groups:
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        object_id: object_id
+        opened_on: 2000-01-23
+        reviewers:
+        - name: name
+          pk: 6
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          username: username
+        - name: name
+          pk: 6
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          username: username
+        next_review_date: 2000-01-23
+        min_reviewers: 0
+        user_can_review: true
+        object_admin_url: object_admin_url
+        content_type: authentik_core.application
+        reviews:
+        - note: note
+          iteration: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          reviewer: ""
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - note: note
+          iteration: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          reviewer: ""
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        grace_period_end: 2000-01-23
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: ""
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        content_type:
+          $ref: "#/components/schemas/ContentTypeEnum"
+        object_id:
+          readOnly: true
+          type: string
+        object_verbose:
+          readOnly: true
+          type: string
+        object_admin_url:
+          readOnly: true
+          type: string
+        state:
+          allOf:
+          - $ref: "#/components/schemas/LifecycleIterationStateEnum"
+          readOnly: true
+        opened_on:
+          format: date
+          readOnly: true
+          type: string
+        grace_period_end:
+          format: date
+          readOnly: true
+          type: string
+        next_review_date:
+          format: date
+          readOnly: true
+          type: string
+        reviews:
+          items:
+            $ref: "#/components/schemas/Review"
+          readOnly: true
+          type: array
+        user_can_review:
+          readOnly: true
+          type: boolean
+        reviewer_groups:
+          items:
+            $ref: "#/components/schemas/ReviewerGroup"
+          readOnly: true
+          type: array
+        min_reviewers:
+          readOnly: true
+          type: integer
+        reviewers:
+          items:
+            $ref: "#/components/schemas/ReviewerUser"
+          readOnly: true
+          type: array
+      required:
+      - content_type
+      - grace_period_end
+      - id
+      - min_reviewers
+      - next_review_date
+      - object_admin_url
+      - object_id
+      - object_verbose
+      - opened_on
+      - reviewer_groups
+      - reviewers
+      - reviews
+      - state
+      - user_can_review
+      type: object
+    LifecycleIterationRequest:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        content_type: authentik_core.application
+      properties:
+        content_type:
+          $ref: "#/components/schemas/ContentTypeEnum"
+      required:
+      - content_type
+      type: object
+    LifecycleIterationStateEnum:
+      enum:
+      - REVIEWED
+      - PENDING
+      - OVERDUE
+      - CANCELED
+      type: string
+    LifecycleRule:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        reviewer_groups_obj:
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        reviewers_obj:
+        - name: name
+          pk: 6
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          username: username
+        - name: name
+          pk: 6
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          username: username
+        reviewer_groups:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        target_verbose: target_verbose
+        object_id: object_id
+        reviewers:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        grace_period: grace_period
+        min_reviewers: 2624
+        notification_transports:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        content_type: authentik_core.application
+        name: name
+        interval: interval
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        min_reviewers_is_per_group: true
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        name:
+          type: string
+        content_type:
+          $ref: "#/components/schemas/ContentTypeEnum"
+        object_id:
+          nullable: true
+          type: string
+        interval:
+          type: string
+        grace_period:
+          type: string
+        reviewer_groups:
+          items:
+            format: uuid
+            type: string
+          type: array
+        reviewer_groups_obj:
+          items:
+            $ref: "#/components/schemas/ReviewerGroup"
+          readOnly: true
+          type: array
+        min_reviewers:
+          maximum: 32767
+          minimum: 0
+          type: integer
+        min_reviewers_is_per_group:
+          type: boolean
+        reviewers:
+          items:
+            format: uuid
+            type: string
+          type: array
+        reviewers_obj:
+          items:
+            $ref: "#/components/schemas/ReviewerUser"
+          readOnly: true
+          type: array
+        notification_transports:
+          description: "Select which transports should be used to notify the reviewers.\
+            \ If none are selected, the notification will only be shown in the authentik\
+            \ UI."
+          items:
+            format: uuid
+            type: string
+          type: array
+        target_verbose:
+          readOnly: true
+          type: string
+      required:
+      - content_type
+      - id
+      - name
+      - reviewer_groups_obj
+      - reviewers
+      - reviewers_obj
+      - target_verbose
+      type: object
+    LifecycleRuleRequest:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        notification_transports:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        content_type: authentik_core.application
+        reviewer_groups:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        interval: interval
+        object_id: object_id
+        reviewers:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        grace_period: grace_period
+        min_reviewers: 2624
+        min_reviewers_is_per_group: true
+      properties:
+        name:
+          minLength: 1
+          type: string
+        content_type:
+          $ref: "#/components/schemas/ContentTypeEnum"
+        object_id:
+          minLength: 1
+          nullable: true
+          type: string
+        interval:
+          minLength: 1
+          type: string
+        grace_period:
+          minLength: 1
+          type: string
+        reviewer_groups:
+          items:
+            format: uuid
+            type: string
+          type: array
+        min_reviewers:
+          maximum: 32767
+          minimum: 0
+          type: integer
+        min_reviewers_is_per_group:
+          type: boolean
+        reviewers:
+          items:
+            format: uuid
+            type: string
+          type: array
+        notification_transports:
+          description: "Select which transports should be used to notify the reviewers.\
+            \ If none are selected, the notification will only be shown in the authentik\
+            \ UI."
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - content_type
+      - name
+      - reviewers
+      type: object
     Link:
       description: Returns a single link
       example:
@@ -62299,6 +63053,9 @@ components:
       - authentik_brands.brand
       - authentik_blueprints.blueprintinstance
       - authentik_endpoints_connectors_fleet.fleetconnector
+      - authentik_lifecycle.lifecyclerule
+      - authentik_lifecycle.lifecycleiteration
+      - authentik_lifecycle.review
       - authentik_policies_unique_password.uniquepasswordpolicy
       - authentik_providers_google_workspace.googleworkspaceprovider
       - authentik_providers_google_workspace.googleworkspaceprovidermapping
@@ -68882,6 +69639,198 @@ components:
         results:
           items:
             $ref: "#/components/schemas/License"
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
+    PaginatedLifecycleIterationList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - object_verbose: object_verbose
+          reviewer_groups:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          object_id: object_id
+          opened_on: 2000-01-23
+          reviewers:
+          - name: name
+            pk: 6
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            username: username
+          - name: name
+            pk: 6
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            username: username
+          next_review_date: 2000-01-23
+          min_reviewers: 0
+          user_can_review: true
+          object_admin_url: object_admin_url
+          content_type: authentik_core.application
+          reviews:
+          - note: note
+            iteration: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            reviewer: ""
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - note: note
+            iteration: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            reviewer: ""
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          grace_period_end: 2000-01-23
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: ""
+        - object_verbose: object_verbose
+          reviewer_groups:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          object_id: object_id
+          opened_on: 2000-01-23
+          reviewers:
+          - name: name
+            pk: 6
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            username: username
+          - name: name
+            pk: 6
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            username: username
+          next_review_date: 2000-01-23
+          min_reviewers: 0
+          user_can_review: true
+          object_admin_url: object_admin_url
+          content_type: authentik_core.application
+          reviews:
+          - note: note
+            iteration: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            reviewer: ""
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - note: note
+            iteration: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            reviewer: ""
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          grace_period_end: 2000-01-23
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: ""
+      properties:
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        results:
+          items:
+            $ref: "#/components/schemas/LifecycleIteration"
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
+    PaginatedLifecycleRuleList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          current: 5.962133916683182
+          previous: 6.027456183070403
+          start_index: 2.3021358869347655
+          count: 1.4658129805029452
+          end_index: 7.061401241503109
+          total_pages: 5.637376656633329
+        autocomplete:
+          key: ""
+        results:
+        - reviewer_groups_obj:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          reviewers_obj:
+          - name: name
+            pk: 6
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            username: username
+          - name: name
+            pk: 6
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            username: username
+          reviewer_groups:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          target_verbose: target_verbose
+          object_id: object_id
+          reviewers:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          grace_period: grace_period
+          min_reviewers: 2624
+          notification_transports:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          content_type: authentik_core.application
+          name: name
+          interval: interval
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          min_reviewers_is_per_group: true
+        - reviewer_groups_obj:
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          reviewers_obj:
+          - name: name
+            pk: 6
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            username: username
+          - name: name
+            pk: 6
+            uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            username: username
+          reviewer_groups:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          target_verbose: target_verbose
+          object_id: object_id
+          reviewers:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          grace_period: grace_period
+          min_reviewers: 2624
+          notification_transports:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          content_type: authentik_core.application
+          name: name
+          interval: interval
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          min_reviewers_is_per_group: true
+      properties:
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        results:
+          items:
+            $ref: "#/components/schemas/LifecycleRule"
           type: array
         autocomplete:
           additionalProperties: {}
@@ -77370,6 +78319,68 @@ components:
           minLength: 1
           type: string
       type: object
+    PatchedLifecycleRuleRequest:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        notification_transports:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        content_type: authentik_core.application
+        reviewer_groups:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        interval: interval
+        object_id: object_id
+        reviewers:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        grace_period: grace_period
+        min_reviewers: 2624
+        min_reviewers_is_per_group: true
+      properties:
+        name:
+          minLength: 1
+          type: string
+        content_type:
+          $ref: "#/components/schemas/ContentTypeEnum"
+        object_id:
+          minLength: 1
+          nullable: true
+          type: string
+        interval:
+          minLength: 1
+          type: string
+        grace_period:
+          minLength: 1
+          type: string
+        reviewer_groups:
+          items:
+            format: uuid
+            type: string
+          type: array
+        min_reviewers:
+          maximum: 32767
+          minimum: 0
+          type: integer
+        min_reviewers_is_per_group:
+          type: boolean
+        reviewers:
+          items:
+            format: uuid
+            type: string
+          type: array
+        notification_transports:
+          description: "Select which transports should be used to notify the reviewers.\
+            \ If none are selected, the notification will only be shown in the authentik\
+            \ UI."
+          items:
+            format: uuid
+            type: string
+          type: array
+      type: object
     PatchedMicrosoftEntraProviderMappingRequest:
       description: MicrosoftEntraProviderMapping Serializer
       example:
@@ -82855,6 +83866,105 @@ components:
       - preferred
       - required
       type: string
+    Review:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        note: note
+        iteration: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        reviewer: ""
+        timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        iteration:
+          format: uuid
+          type: string
+        reviewer:
+          allOf:
+          - $ref: "#/components/schemas/ReviewerUser"
+          readOnly: true
+        timestamp:
+          format: date-time
+          readOnly: true
+          type: string
+        note:
+          nullable: true
+          type: string
+      required:
+      - id
+      - iteration
+      - reviewer
+      - timestamp
+      type: object
+    ReviewRequest:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        note: note
+        iteration: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        iteration:
+          format: uuid
+          type: string
+        note:
+          minLength: 1
+          nullable: true
+          type: string
+      required:
+      - iteration
+      type: object
+    ReviewerGroup:
+      example:
+        name: name
+        pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pk:
+          format: uuid
+          readOnly: true
+          title: Group uuid
+          type: string
+        name:
+          type: string
+      required:
+      - name
+      - pk
+      type: object
+    ReviewerUser:
+      example:
+        name: name
+        pk: 6
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        username: username
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        username:
+          description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_\
+            \ only."
+          maxLength: 150
+          pattern: "^[\\w.@+-]+$"
+          type: string
+        name:
+          description: User's display name.
+          type: string
+      required:
+      - name
+      - pk
+      - username
+      - uuid
+      type: object
     Role:
       description: Role serializer
       example:
@@ -86000,16 +87110,6 @@ components:
       - sub_text
       - type
       type: object
-    StateEnum:
-      enum:
-      - queued
-      - consumed
-      - preprocess
-      - running
-      - postprocess
-      - rejected
-      - done
-      type: string
     StaticDevice:
       description: Serializer for static authenticator devices
       example:
@@ -86302,7 +87402,7 @@ components:
           type: string
         state:
           allOf:
-          - $ref: "#/components/schemas/StateEnum"
+          - $ref: "#/components/schemas/TaskStateEnum"
           description: Task status
         mtime:
           description: Task last modified time
@@ -86370,6 +87470,16 @@ components:
       - info
       - warning
       - error
+      type: string
+    TaskStateEnum:
+      enum:
+      - queued
+      - consumed
+      - preprocess
+      - running
+      - postprocess
+      - rejected
+      - done
       type: string
     TelegramAuthRequest:
       example:

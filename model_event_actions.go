@@ -49,6 +49,10 @@ const (
 	EVENTACTIONS_EMAIL_SENT                 EventActions = "email_sent"
 	EVENTACTIONS_UPDATE_AVAILABLE           EventActions = "update_available"
 	EVENTACTIONS_EXPORT_READY               EventActions = "export_ready"
+	EVENTACTIONS_REVIEW_INITIATED           EventActions = "review_initiated"
+	EVENTACTIONS_REVIEW_OVERDUE             EventActions = "review_overdue"
+	EVENTACTIONS_REVIEW_ATTESTED            EventActions = "review_attested"
+	EVENTACTIONS_REVIEW_COMPLETED           EventActions = "review_completed"
 	EVENTACTIONS_CUSTOM                     EventActions = "custom_"
 )
 
@@ -82,6 +86,10 @@ var AllowedEventActionsEnumValues = []EventActions{
 	"email_sent",
 	"update_available",
 	"export_ready",
+	"review_initiated",
+	"review_overdue",
+	"review_attested",
+	"review_completed",
 	"custom_",
 }
 

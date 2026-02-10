@@ -87,6 +87,7 @@ const (
 	APPENUM_AUTHENTIK_ENTERPRISE_AUDIT                              AppEnum = "authentik.enterprise.audit"
 	APPENUM_AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT         AppEnum = "authentik.enterprise.endpoints.connectors.agent"
 	APPENUM_AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_FLEET         AppEnum = "authentik.enterprise.endpoints.connectors.fleet"
+	APPENUM_AUTHENTIK_ENTERPRISE_LIFECYCLE                          AppEnum = "authentik.enterprise.lifecycle"
 	APPENUM_AUTHENTIK_ENTERPRISE_POLICIES_UNIQUE_PASSWORD           AppEnum = "authentik.enterprise.policies.unique_password"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE         AppEnum = "authentik.enterprise.providers.google_workspace"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA          AppEnum = "authentik.enterprise.providers.microsoft_entra"
@@ -169,6 +170,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.enterprise.audit",
 	"authentik.enterprise.endpoints.connectors.agent",
 	"authentik.enterprise.endpoints.connectors.fleet",
+	"authentik.enterprise.lifecycle",
 	"authentik.enterprise.policies.unique_password",
 	"authentik.enterprise.providers.google_workspace",
 	"authentik.enterprise.providers.microsoft_entra",

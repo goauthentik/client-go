@@ -10,6 +10,7 @@ api_endpoints.go
 api_enterprise.go
 api_events.go
 api_flows.go
+api_lifecycle.go
 api_managed.go
 api_oauth2.go
 api_outposts.go
@@ -127,6 +128,7 @@ docs/ConsentStage.md
 docs/ConsentStageModeEnum.md
 docs/ConsentStageRequest.md
 docs/ContentType.md
+docs/ContentTypeEnum.md
 docs/ContextualFlowInfo.md
 docs/ContextualFlowInfoLayoutEnum.md
 docs/CoreAPI.md
@@ -310,6 +312,12 @@ docs/LicenseRequest.md
 docs/LicenseStatusEnum.md
 docs/LicenseSummary.md
 docs/LicenseSummaryStatusEnum.md
+docs/LifecycleAPI.md
+docs/LifecycleIteration.md
+docs/LifecycleIterationRequest.md
+docs/LifecycleIterationStateEnum.md
+docs/LifecycleRule.md
+docs/LifecycleRuleRequest.md
 docs/Link.md
 docs/LogEvent.md
 docs/LogLevelEnum.md
@@ -442,6 +450,8 @@ docs/PaginatedLDAPProviderList.md
 docs/PaginatedLDAPSourceList.md
 docs/PaginatedLDAPSourcePropertyMappingList.md
 docs/PaginatedLicenseList.md
+docs/PaginatedLifecycleIterationList.md
+docs/PaginatedLifecycleRuleList.md
 docs/PaginatedMicrosoftEntraProviderGroupList.md
 docs/PaginatedMicrosoftEntraProviderList.md
 docs/PaginatedMicrosoftEntraProviderMappingList.md
@@ -596,6 +606,7 @@ docs/PatchedLDAPProviderRequest.md
 docs/PatchedLDAPSourcePropertyMappingRequest.md
 docs/PatchedLDAPSourceRequest.md
 docs/PatchedLicenseRequest.md
+docs/PatchedLifecycleRuleRequest.md
 docs/PatchedMicrosoftEntraProviderMappingRequest.md
 docs/PatchedMicrosoftEntraProviderRequest.md
 docs/PatchedMutualTLSStageRequest.md
@@ -729,6 +740,10 @@ docs/Reputation.md
 docs/ReputationPolicy.md
 docs/ReputationPolicyRequest.md
 docs/ResidentKeyRequirementEnum.md
+docs/Review.md
+docs/ReviewRequest.md
+docs/ReviewerGroup.md
+docs/ReviewerUser.md
 docs/Role.md
 docs/RoleAssignedObjectPermission.md
 docs/RoleModelPermission.md
@@ -796,7 +811,6 @@ docs/Stage.md
 docs/StageModeEnum.md
 docs/StagePrompt.md
 docs/StagesAPI.md
-docs/StateEnum.md
 docs/StaticDevice.md
 docs/StaticDeviceRequest.md
 docs/StaticDeviceToken.md
@@ -812,6 +826,7 @@ docs/TOTPDevice.md
 docs/TOTPDeviceRequest.md
 docs/Task.md
 docs/TaskAggregatedStatusEnum.md
+docs/TaskStateEnum.md
 docs/TasksAPI.md
 docs/TelegramAuthRequest.md
 docs/TelegramChallengeResponseRequest.md
@@ -996,6 +1011,7 @@ model_consent_stage.go
 model_consent_stage_mode_enum.go
 model_consent_stage_request.go
 model_content_type.go
+model_content_type_enum.go
 model_contextual_flow_info.go
 model_contextual_flow_info_layout_enum.go
 model_country_code_enum.go
@@ -1173,6 +1189,11 @@ model_license_request.go
 model_license_status_enum.go
 model_license_summary.go
 model_license_summary_status_enum.go
+model_lifecycle_iteration.go
+model_lifecycle_iteration_request.go
+model_lifecycle_iteration_state_enum.go
+model_lifecycle_rule.go
+model_lifecycle_rule_request.go
 model_link.go
 model_log_event.go
 model_log_level_enum.go
@@ -1301,6 +1322,8 @@ model_paginated_ldap_provider_list.go
 model_paginated_ldap_source_list.go
 model_paginated_ldap_source_property_mapping_list.go
 model_paginated_license_list.go
+model_paginated_lifecycle_iteration_list.go
+model_paginated_lifecycle_rule_list.go
 model_paginated_microsoft_entra_provider_group_list.go
 model_paginated_microsoft_entra_provider_list.go
 model_paginated_microsoft_entra_provider_mapping_list.go
@@ -1455,6 +1478,7 @@ model_patched_ldap_provider_request.go
 model_patched_ldap_source_property_mapping_request.go
 model_patched_ldap_source_request.go
 model_patched_license_request.go
+model_patched_lifecycle_rule_request.go
 model_patched_microsoft_entra_provider_mapping_request.go
 model_patched_microsoft_entra_provider_request.go
 model_patched_mutual_tls_stage_request.go
@@ -1583,6 +1607,10 @@ model_reputation.go
 model_reputation_policy.go
 model_reputation_policy_request.go
 model_resident_key_requirement_enum.go
+model_review.go
+model_review_request.go
+model_reviewer_group.go
+model_reviewer_user.go
 model_role.go
 model_role_assigned_object_permission.go
 model_role_model_permission.go
@@ -1645,7 +1673,6 @@ model_ssf_stream.go
 model_stage.go
 model_stage_mode_enum.go
 model_stage_prompt.go
-model_state_enum.go
 model_static_device.go
 model_static_device_request.go
 model_static_device_token.go
@@ -1659,6 +1686,7 @@ model_system_info.go
 model_system_info_runtime.go
 model_task.go
 model_task_aggregated_status_enum.go
+model_task_state_enum.go
 model_telegram_auth_request.go
 model_telegram_challenge_response_request.go
 model_telegram_login_challenge.go
@@ -1752,6 +1780,7 @@ test/api_endpoints_test.go
 test/api_enterprise_test.go
 test/api_events_test.go
 test/api_flows_test.go
+test/api_lifecycle_test.go
 test/api_managed_test.go
 test/api_oauth2_test.go
 test/api_outposts_test.go

@@ -65,6 +65,8 @@ type APIClient struct {
 
 	FlowsAPI *FlowsAPIService
 
+	LifecycleAPI *LifecycleAPIService
+
 	ManagedAPI *ManagedAPIService
 
 	Oauth2API *Oauth2APIService
@@ -122,6 +124,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EnterpriseAPI = (*EnterpriseAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)
 	c.FlowsAPI = (*FlowsAPIService)(&c.common)
+	c.LifecycleAPI = (*LifecycleAPIService)(&c.common)
 	c.ManagedAPI = (*ManagedAPIService)(&c.common)
 	c.Oauth2API = (*Oauth2APIService)(&c.common)
 	c.OutpostsAPI = (*OutpostsAPIService)(&c.common)

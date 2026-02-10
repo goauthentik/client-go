@@ -332,6 +332,16 @@ Class | Method | HTTP request | Description
 *FlowsAPI* | [**FlowsInstancesRetrieve**](docs/FlowsAPI.md#flowsinstancesretrieve) | **Get** /flows/instances/{slug}/ | 
 *FlowsAPI* | [**FlowsInstancesUpdate**](docs/FlowsAPI.md#flowsinstancesupdate) | **Put** /flows/instances/{slug}/ | 
 *FlowsAPI* | [**FlowsInstancesUsedByList**](docs/FlowsAPI.md#flowsinstancesusedbylist) | **Get** /flows/instances/{slug}/used_by/ | 
+*LifecycleAPI* | [**LifecycleIterationsCreate**](docs/LifecycleAPI.md#lifecycleiterationscreate) | **Post** /lifecycle/iterations/ | 
+*LifecycleAPI* | [**LifecycleIterationsLatestRetrieve**](docs/LifecycleAPI.md#lifecycleiterationslatestretrieve) | **Get** /lifecycle/iterations/latest/{content_type}/{object_id}/ | 
+*LifecycleAPI* | [**LifecycleIterationsListOpen**](docs/LifecycleAPI.md#lifecycleiterationslistopen) | **Get** /lifecycle/iterations/open/ | 
+*LifecycleAPI* | [**LifecycleReviewsCreate**](docs/LifecycleAPI.md#lifecyclereviewscreate) | **Post** /lifecycle/reviews/ | 
+*LifecycleAPI* | [**LifecycleRulesCreate**](docs/LifecycleAPI.md#lifecyclerulescreate) | **Post** /lifecycle/rules/ | 
+*LifecycleAPI* | [**LifecycleRulesDestroy**](docs/LifecycleAPI.md#lifecyclerulesdestroy) | **Delete** /lifecycle/rules/{id}/ | 
+*LifecycleAPI* | [**LifecycleRulesList**](docs/LifecycleAPI.md#lifecycleruleslist) | **Get** /lifecycle/rules/ | 
+*LifecycleAPI* | [**LifecycleRulesPartialUpdate**](docs/LifecycleAPI.md#lifecyclerulespartialupdate) | **Patch** /lifecycle/rules/{id}/ | 
+*LifecycleAPI* | [**LifecycleRulesRetrieve**](docs/LifecycleAPI.md#lifecyclerulesretrieve) | **Get** /lifecycle/rules/{id}/ | 
+*LifecycleAPI* | [**LifecycleRulesUpdate**](docs/LifecycleAPI.md#lifecyclerulesupdate) | **Put** /lifecycle/rules/{id}/ | 
 *ManagedAPI* | [**ManagedBlueprintsApplyCreate**](docs/ManagedAPI.md#managedblueprintsapplycreate) | **Post** /managed/blueprints/{instance_uuid}/apply/ | 
 *ManagedAPI* | [**ManagedBlueprintsAvailableList**](docs/ManagedAPI.md#managedblueprintsavailablelist) | **Get** /managed/blueprints/available/ | 
 *ManagedAPI* | [**ManagedBlueprintsCreate**](docs/ManagedAPI.md#managedblueprintscreate) | **Post** /managed/blueprints/ | 
@@ -1241,6 +1251,7 @@ Class | Method | HTTP request | Description
  - [ConsentStageModeEnum](docs/ConsentStageModeEnum.md)
  - [ConsentStageRequest](docs/ConsentStageRequest.md)
  - [ContentType](docs/ContentType.md)
+ - [ContentTypeEnum](docs/ContentTypeEnum.md)
  - [ContextualFlowInfo](docs/ContextualFlowInfo.md)
  - [ContextualFlowInfoLayoutEnum](docs/ContextualFlowInfoLayoutEnum.md)
  - [CountryCodeEnum](docs/CountryCodeEnum.md)
@@ -1418,6 +1429,11 @@ Class | Method | HTTP request | Description
  - [LicenseStatusEnum](docs/LicenseStatusEnum.md)
  - [LicenseSummary](docs/LicenseSummary.md)
  - [LicenseSummaryStatusEnum](docs/LicenseSummaryStatusEnum.md)
+ - [LifecycleIteration](docs/LifecycleIteration.md)
+ - [LifecycleIterationRequest](docs/LifecycleIterationRequest.md)
+ - [LifecycleIterationStateEnum](docs/LifecycleIterationStateEnum.md)
+ - [LifecycleRule](docs/LifecycleRule.md)
+ - [LifecycleRuleRequest](docs/LifecycleRuleRequest.md)
  - [Link](docs/Link.md)
  - [LogEvent](docs/LogEvent.md)
  - [LogLevelEnum](docs/LogLevelEnum.md)
@@ -1547,6 +1563,8 @@ Class | Method | HTTP request | Description
  - [PaginatedLDAPSourceList](docs/PaginatedLDAPSourceList.md)
  - [PaginatedLDAPSourcePropertyMappingList](docs/PaginatedLDAPSourcePropertyMappingList.md)
  - [PaginatedLicenseList](docs/PaginatedLicenseList.md)
+ - [PaginatedLifecycleIterationList](docs/PaginatedLifecycleIterationList.md)
+ - [PaginatedLifecycleRuleList](docs/PaginatedLifecycleRuleList.md)
  - [PaginatedMicrosoftEntraProviderGroupList](docs/PaginatedMicrosoftEntraProviderGroupList.md)
  - [PaginatedMicrosoftEntraProviderList](docs/PaginatedMicrosoftEntraProviderList.md)
  - [PaginatedMicrosoftEntraProviderMappingList](docs/PaginatedMicrosoftEntraProviderMappingList.md)
@@ -1701,6 +1719,7 @@ Class | Method | HTTP request | Description
  - [PatchedLDAPSourcePropertyMappingRequest](docs/PatchedLDAPSourcePropertyMappingRequest.md)
  - [PatchedLDAPSourceRequest](docs/PatchedLDAPSourceRequest.md)
  - [PatchedLicenseRequest](docs/PatchedLicenseRequest.md)
+ - [PatchedLifecycleRuleRequest](docs/PatchedLifecycleRuleRequest.md)
  - [PatchedMicrosoftEntraProviderMappingRequest](docs/PatchedMicrosoftEntraProviderMappingRequest.md)
  - [PatchedMicrosoftEntraProviderRequest](docs/PatchedMicrosoftEntraProviderRequest.md)
  - [PatchedMutualTLSStageRequest](docs/PatchedMutualTLSStageRequest.md)
@@ -1828,6 +1847,10 @@ Class | Method | HTTP request | Description
  - [ReputationPolicy](docs/ReputationPolicy.md)
  - [ReputationPolicyRequest](docs/ReputationPolicyRequest.md)
  - [ResidentKeyRequirementEnum](docs/ResidentKeyRequirementEnum.md)
+ - [Review](docs/Review.md)
+ - [ReviewRequest](docs/ReviewRequest.md)
+ - [ReviewerGroup](docs/ReviewerGroup.md)
+ - [ReviewerUser](docs/ReviewerUser.md)
  - [Role](docs/Role.md)
  - [RoleAssignedObjectPermission](docs/RoleAssignedObjectPermission.md)
  - [RoleModelPermission](docs/RoleModelPermission.md)
@@ -1890,7 +1913,6 @@ Class | Method | HTTP request | Description
  - [Stage](docs/Stage.md)
  - [StageModeEnum](docs/StageModeEnum.md)
  - [StagePrompt](docs/StagePrompt.md)
- - [StateEnum](docs/StateEnum.md)
  - [StaticDevice](docs/StaticDevice.md)
  - [StaticDeviceRequest](docs/StaticDeviceRequest.md)
  - [StaticDeviceToken](docs/StaticDeviceToken.md)
@@ -1906,6 +1928,7 @@ Class | Method | HTTP request | Description
  - [TOTPDeviceRequest](docs/TOTPDeviceRequest.md)
  - [Task](docs/Task.md)
  - [TaskAggregatedStatusEnum](docs/TaskAggregatedStatusEnum.md)
+ - [TaskStateEnum](docs/TaskStateEnum.md)
  - [TelegramAuthRequest](docs/TelegramAuthRequest.md)
  - [TelegramChallengeResponseRequest](docs/TelegramChallengeResponseRequest.md)
  - [TelegramLoginChallenge](docs/TelegramLoginChallenge.md)

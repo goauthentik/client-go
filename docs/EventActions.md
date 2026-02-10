@@ -59,6 +59,14 @@
 
 * `EXPORT_READY` (value: `"export_ready"`)
 
+* `REVIEW_INITIATED` (value: `"review_initiated"`)
+
+* `REVIEW_OVERDUE` (value: `"review_overdue"`)
+
+* `REVIEW_ATTESTED` (value: `"review_attested"`)
+
+* `REVIEW_COMPLETED` (value: `"review_completed"`)
+
 * `CUSTOM` (value: `"custom_"`)
 
 

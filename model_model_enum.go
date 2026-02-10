@@ -127,6 +127,9 @@ const (
 	MODELENUM_AUTHENTIK_BRANDS_BRAND                                                      ModelEnum = "authentik_brands.brand"
 	MODELENUM_AUTHENTIK_BLUEPRINTS_BLUEPRINTINSTANCE                                      ModelEnum = "authentik_blueprints.blueprintinstance"
 	MODELENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_FLEET_FLEETCONNECTOR                         ModelEnum = "authentik_endpoints_connectors_fleet.fleetconnector"
+	MODELENUM_AUTHENTIK_LIFECYCLE_LIFECYCLERULE                                           ModelEnum = "authentik_lifecycle.lifecyclerule"
+	MODELENUM_AUTHENTIK_LIFECYCLE_LIFECYCLEITERATION                                      ModelEnum = "authentik_lifecycle.lifecycleiteration"
+	MODELENUM_AUTHENTIK_LIFECYCLE_REVIEW                                                  ModelEnum = "authentik_lifecycle.review"
 	MODELENUM_AUTHENTIK_POLICIES_UNIQUE_PASSWORD_UNIQUEPASSWORDPOLICY                     ModelEnum = "authentik_policies_unique_password.uniquepasswordpolicy"
 	MODELENUM_AUTHENTIK_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER                ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovider"
 	MODELENUM_AUTHENTIK_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDERMAPPING         ModelEnum = "authentik_providers_google_workspace.googleworkspaceprovidermapping"
@@ -248,6 +251,9 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_brands.brand",
 	"authentik_blueprints.blueprintinstance",
 	"authentik_endpoints_connectors_fleet.fleetconnector",
+	"authentik_lifecycle.lifecyclerule",
+	"authentik_lifecycle.lifecycleiteration",
+	"authentik_lifecycle.review",
 	"authentik_policies_unique_password.uniquepasswordpolicy",
 	"authentik_providers_google_workspace.googleworkspaceprovider",
 	"authentik_providers_google_workspace.googleworkspaceprovidermapping",
