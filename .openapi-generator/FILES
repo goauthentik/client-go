@@ -323,6 +323,7 @@ docs/LogEvent.md
 docs/LogLevelEnum.md
 docs/LoginChallengeTypes.md
 docs/LoginSource.md
+docs/LogoutURL.md
 docs/MDMConfigRequest.md
 docs/MDMConfigResponse.md
 docs/ManagedAPI.md
@@ -1199,6 +1200,7 @@ model_log_event.go
 model_log_level_enum.go
 model_login_challenge_types.go
 model_login_source.go
+model_logout_url.go
 model_matching_mode_enum.go
 model_mdm_config_request.go
 model_mdm_config_response.go

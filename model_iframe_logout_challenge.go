@@ -23,7 +23,7 @@ type IframeLogoutChallenge struct {
 	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component            *string                   `json:"component,omitempty"`
 	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	LogoutUrls           []map[string]interface{}  `json:"logout_urls,omitempty"`
+	LogoutUrls           []LogoutURL               `json:"logout_urls,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -147,9 +147,9 @@ func (o *IframeLogoutChallenge) SetResponseErrors(v map[string][]ErrorDetail) {
 }
 
 // GetLogoutUrls returns the LogoutUrls field value if set, zero value otherwise.
-func (o *IframeLogoutChallenge) GetLogoutUrls() []map[string]interface{} {
+func (o *IframeLogoutChallenge) GetLogoutUrls() []LogoutURL {
 	if o == nil || IsNil(o.LogoutUrls) {
-		var ret []map[string]interface{}
+		var ret []LogoutURL
 		return ret
 	}
 	return o.LogoutUrls
@@ -157,7 +157,7 @@ func (o *IframeLogoutChallenge) GetLogoutUrls() []map[string]interface{} {
 
 // GetLogoutUrlsOk returns a tuple with the LogoutUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IframeLogoutChallenge) GetLogoutUrlsOk() ([]map[string]interface{}, bool) {
+func (o *IframeLogoutChallenge) GetLogoutUrlsOk() ([]LogoutURL, bool) {
 	if o == nil || IsNil(o.LogoutUrls) {
 		return nil, false
 	}
@@ -173,8 +173,8 @@ func (o *IframeLogoutChallenge) HasLogoutUrls() bool {
 	return false
 }
 
-// SetLogoutUrls gets a reference to the given []map[string]interface{} and assigns it to the LogoutUrls field.
-func (o *IframeLogoutChallenge) SetLogoutUrls(v []map[string]interface{}) {
+// SetLogoutUrls gets a reference to the given []LogoutURL and assigns it to the LogoutUrls field.
+func (o *IframeLogoutChallenge) SetLogoutUrls(v []LogoutURL) {
 	o.LogoutUrls = v
 }
 

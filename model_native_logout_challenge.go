@@ -23,13 +23,14 @@ type NativeLogoutChallenge struct {
 	FlowInfo             *ContextualFlowInfo       `json:"flow_info,omitempty"`
 	Component            *string                   `json:"component,omitempty"`
 	ResponseErrors       *map[string][]ErrorDetail `json:"response_errors,omitempty"`
-	PostUrl              *string                   `json:"post_url,omitempty"`
-	SamlRequest          *string                   `json:"saml_request,omitempty"`
-	RelayState           *string                   `json:"relay_state,omitempty"`
 	ProviderName         *string                   `json:"provider_name,omitempty"`
-	Binding              *string                   `json:"binding,omitempty"`
-	RedirectUrl          *string                   `json:"redirect_url,omitempty"`
 	IsComplete           *bool                     `json:"is_complete,omitempty"`
+	PostUrl              *string                   `json:"post_url,omitempty"`
+	RedirectUrl          *string                   `json:"redirect_url,omitempty"`
+	SamlBinding          *SAMLBindingsEnum         `json:"saml_binding,omitempty"`
+	SamlRequest          *string                   `json:"saml_request,omitempty"`
+	SamlResponse         *string                   `json:"saml_response,omitempty"`
+	SamlRelayState       *string                   `json:"saml_relay_state,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -156,102 +157,6 @@ func (o *NativeLogoutChallenge) SetResponseErrors(v map[string][]ErrorDetail) {
 	o.ResponseErrors = &v
 }
 
-// GetPostUrl returns the PostUrl field value if set, zero value otherwise.
-func (o *NativeLogoutChallenge) GetPostUrl() string {
-	if o == nil || IsNil(o.PostUrl) {
-		var ret string
-		return ret
-	}
-	return *o.PostUrl
-}
-
-// GetPostUrlOk returns a tuple with the PostUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NativeLogoutChallenge) GetPostUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.PostUrl) {
-		return nil, false
-	}
-	return o.PostUrl, true
-}
-
-// HasPostUrl returns a boolean if a field has been set.
-func (o *NativeLogoutChallenge) HasPostUrl() bool {
-	if o != nil && !IsNil(o.PostUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetPostUrl gets a reference to the given string and assigns it to the PostUrl field.
-func (o *NativeLogoutChallenge) SetPostUrl(v string) {
-	o.PostUrl = &v
-}
-
-// GetSamlRequest returns the SamlRequest field value if set, zero value otherwise.
-func (o *NativeLogoutChallenge) GetSamlRequest() string {
-	if o == nil || IsNil(o.SamlRequest) {
-		var ret string
-		return ret
-	}
-	return *o.SamlRequest
-}
-
-// GetSamlRequestOk returns a tuple with the SamlRequest field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NativeLogoutChallenge) GetSamlRequestOk() (*string, bool) {
-	if o == nil || IsNil(o.SamlRequest) {
-		return nil, false
-	}
-	return o.SamlRequest, true
-}
-
-// HasSamlRequest returns a boolean if a field has been set.
-func (o *NativeLogoutChallenge) HasSamlRequest() bool {
-	if o != nil && !IsNil(o.SamlRequest) {
-		return true
-	}
-
-	return false
-}
-
-// SetSamlRequest gets a reference to the given string and assigns it to the SamlRequest field.
-func (o *NativeLogoutChallenge) SetSamlRequest(v string) {
-	o.SamlRequest = &v
-}
-
-// GetRelayState returns the RelayState field value if set, zero value otherwise.
-func (o *NativeLogoutChallenge) GetRelayState() string {
-	if o == nil || IsNil(o.RelayState) {
-		var ret string
-		return ret
-	}
-	return *o.RelayState
-}
-
-// GetRelayStateOk returns a tuple with the RelayState field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NativeLogoutChallenge) GetRelayStateOk() (*string, bool) {
-	if o == nil || IsNil(o.RelayState) {
-		return nil, false
-	}
-	return o.RelayState, true
-}
-
-// HasRelayState returns a boolean if a field has been set.
-func (o *NativeLogoutChallenge) HasRelayState() bool {
-	if o != nil && !IsNil(o.RelayState) {
-		return true
-	}
-
-	return false
-}
-
-// SetRelayState gets a reference to the given string and assigns it to the RelayState field.
-func (o *NativeLogoutChallenge) SetRelayState(v string) {
-	o.RelayState = &v
-}
-
 // GetProviderName returns the ProviderName field value if set, zero value otherwise.
 func (o *NativeLogoutChallenge) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
@@ -282,70 +187,6 @@ func (o *NativeLogoutChallenge) HasProviderName() bool {
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *NativeLogoutChallenge) SetProviderName(v string) {
 	o.ProviderName = &v
-}
-
-// GetBinding returns the Binding field value if set, zero value otherwise.
-func (o *NativeLogoutChallenge) GetBinding() string {
-	if o == nil || IsNil(o.Binding) {
-		var ret string
-		return ret
-	}
-	return *o.Binding
-}
-
-// GetBindingOk returns a tuple with the Binding field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NativeLogoutChallenge) GetBindingOk() (*string, bool) {
-	if o == nil || IsNil(o.Binding) {
-		return nil, false
-	}
-	return o.Binding, true
-}
-
-// HasBinding returns a boolean if a field has been set.
-func (o *NativeLogoutChallenge) HasBinding() bool {
-	if o != nil && !IsNil(o.Binding) {
-		return true
-	}
-
-	return false
-}
-
-// SetBinding gets a reference to the given string and assigns it to the Binding field.
-func (o *NativeLogoutChallenge) SetBinding(v string) {
-	o.Binding = &v
-}
-
-// GetRedirectUrl returns the RedirectUrl field value if set, zero value otherwise.
-func (o *NativeLogoutChallenge) GetRedirectUrl() string {
-	if o == nil || IsNil(o.RedirectUrl) {
-		var ret string
-		return ret
-	}
-	return *o.RedirectUrl
-}
-
-// GetRedirectUrlOk returns a tuple with the RedirectUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NativeLogoutChallenge) GetRedirectUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.RedirectUrl) {
-		return nil, false
-	}
-	return o.RedirectUrl, true
-}
-
-// HasRedirectUrl returns a boolean if a field has been set.
-func (o *NativeLogoutChallenge) HasRedirectUrl() bool {
-	if o != nil && !IsNil(o.RedirectUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetRedirectUrl gets a reference to the given string and assigns it to the RedirectUrl field.
-func (o *NativeLogoutChallenge) SetRedirectUrl(v string) {
-	o.RedirectUrl = &v
 }
 
 // GetIsComplete returns the IsComplete field value if set, zero value otherwise.
@@ -380,6 +221,198 @@ func (o *NativeLogoutChallenge) SetIsComplete(v bool) {
 	o.IsComplete = &v
 }
 
+// GetPostUrl returns the PostUrl field value if set, zero value otherwise.
+func (o *NativeLogoutChallenge) GetPostUrl() string {
+	if o == nil || IsNil(o.PostUrl) {
+		var ret string
+		return ret
+	}
+	return *o.PostUrl
+}
+
+// GetPostUrlOk returns a tuple with the PostUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NativeLogoutChallenge) GetPostUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.PostUrl) {
+		return nil, false
+	}
+	return o.PostUrl, true
+}
+
+// HasPostUrl returns a boolean if a field has been set.
+func (o *NativeLogoutChallenge) HasPostUrl() bool {
+	if o != nil && !IsNil(o.PostUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetPostUrl gets a reference to the given string and assigns it to the PostUrl field.
+func (o *NativeLogoutChallenge) SetPostUrl(v string) {
+	o.PostUrl = &v
+}
+
+// GetRedirectUrl returns the RedirectUrl field value if set, zero value otherwise.
+func (o *NativeLogoutChallenge) GetRedirectUrl() string {
+	if o == nil || IsNil(o.RedirectUrl) {
+		var ret string
+		return ret
+	}
+	return *o.RedirectUrl
+}
+
+// GetRedirectUrlOk returns a tuple with the RedirectUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NativeLogoutChallenge) GetRedirectUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.RedirectUrl) {
+		return nil, false
+	}
+	return o.RedirectUrl, true
+}
+
+// HasRedirectUrl returns a boolean if a field has been set.
+func (o *NativeLogoutChallenge) HasRedirectUrl() bool {
+	if o != nil && !IsNil(o.RedirectUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetRedirectUrl gets a reference to the given string and assigns it to the RedirectUrl field.
+func (o *NativeLogoutChallenge) SetRedirectUrl(v string) {
+	o.RedirectUrl = &v
+}
+
+// GetSamlBinding returns the SamlBinding field value if set, zero value otherwise.
+func (o *NativeLogoutChallenge) GetSamlBinding() SAMLBindingsEnum {
+	if o == nil || IsNil(o.SamlBinding) {
+		var ret SAMLBindingsEnum
+		return ret
+	}
+	return *o.SamlBinding
+}
+
+// GetSamlBindingOk returns a tuple with the SamlBinding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NativeLogoutChallenge) GetSamlBindingOk() (*SAMLBindingsEnum, bool) {
+	if o == nil || IsNil(o.SamlBinding) {
+		return nil, false
+	}
+	return o.SamlBinding, true
+}
+
+// HasSamlBinding returns a boolean if a field has been set.
+func (o *NativeLogoutChallenge) HasSamlBinding() bool {
+	if o != nil && !IsNil(o.SamlBinding) {
+		return true
+	}
+
+	return false
+}
+
+// SetSamlBinding gets a reference to the given SAMLBindingsEnum and assigns it to the SamlBinding field.
+func (o *NativeLogoutChallenge) SetSamlBinding(v SAMLBindingsEnum) {
+	o.SamlBinding = &v
+}
+
+// GetSamlRequest returns the SamlRequest field value if set, zero value otherwise.
+func (o *NativeLogoutChallenge) GetSamlRequest() string {
+	if o == nil || IsNil(o.SamlRequest) {
+		var ret string
+		return ret
+	}
+	return *o.SamlRequest
+}
+
+// GetSamlRequestOk returns a tuple with the SamlRequest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NativeLogoutChallenge) GetSamlRequestOk() (*string, bool) {
+	if o == nil || IsNil(o.SamlRequest) {
+		return nil, false
+	}
+	return o.SamlRequest, true
+}
+
+// HasSamlRequest returns a boolean if a field has been set.
+func (o *NativeLogoutChallenge) HasSamlRequest() bool {
+	if o != nil && !IsNil(o.SamlRequest) {
+		return true
+	}
+
+	return false
+}
+
+// SetSamlRequest gets a reference to the given string and assigns it to the SamlRequest field.
+func (o *NativeLogoutChallenge) SetSamlRequest(v string) {
+	o.SamlRequest = &v
+}
+
+// GetSamlResponse returns the SamlResponse field value if set, zero value otherwise.
+func (o *NativeLogoutChallenge) GetSamlResponse() string {
+	if o == nil || IsNil(o.SamlResponse) {
+		var ret string
+		return ret
+	}
+	return *o.SamlResponse
+}
+
+// GetSamlResponseOk returns a tuple with the SamlResponse field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NativeLogoutChallenge) GetSamlResponseOk() (*string, bool) {
+	if o == nil || IsNil(o.SamlResponse) {
+		return nil, false
+	}
+	return o.SamlResponse, true
+}
+
+// HasSamlResponse returns a boolean if a field has been set.
+func (o *NativeLogoutChallenge) HasSamlResponse() bool {
+	if o != nil && !IsNil(o.SamlResponse) {
+		return true
+	}
+
+	return false
+}
+
+// SetSamlResponse gets a reference to the given string and assigns it to the SamlResponse field.
+func (o *NativeLogoutChallenge) SetSamlResponse(v string) {
+	o.SamlResponse = &v
+}
+
+// GetSamlRelayState returns the SamlRelayState field value if set, zero value otherwise.
+func (o *NativeLogoutChallenge) GetSamlRelayState() string {
+	if o == nil || IsNil(o.SamlRelayState) {
+		var ret string
+		return ret
+	}
+	return *o.SamlRelayState
+}
+
+// GetSamlRelayStateOk returns a tuple with the SamlRelayState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NativeLogoutChallenge) GetSamlRelayStateOk() (*string, bool) {
+	if o == nil || IsNil(o.SamlRelayState) {
+		return nil, false
+	}
+	return o.SamlRelayState, true
+}
+
+// HasSamlRelayState returns a boolean if a field has been set.
+func (o *NativeLogoutChallenge) HasSamlRelayState() bool {
+	if o != nil && !IsNil(o.SamlRelayState) {
+		return true
+	}
+
+	return false
+}
+
+// SetSamlRelayState gets a reference to the given string and assigns it to the SamlRelayState field.
+func (o *NativeLogoutChallenge) SetSamlRelayState(v string) {
+	o.SamlRelayState = &v
+}
+
 func (o NativeLogoutChallenge) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -399,26 +432,29 @@ func (o NativeLogoutChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResponseErrors) {
 		toSerialize["response_errors"] = o.ResponseErrors
 	}
-	if !IsNil(o.PostUrl) {
-		toSerialize["post_url"] = o.PostUrl
-	}
-	if !IsNil(o.SamlRequest) {
-		toSerialize["saml_request"] = o.SamlRequest
-	}
-	if !IsNil(o.RelayState) {
-		toSerialize["relay_state"] = o.RelayState
-	}
 	if !IsNil(o.ProviderName) {
 		toSerialize["provider_name"] = o.ProviderName
 	}
-	if !IsNil(o.Binding) {
-		toSerialize["binding"] = o.Binding
+	if !IsNil(o.IsComplete) {
+		toSerialize["is_complete"] = o.IsComplete
+	}
+	if !IsNil(o.PostUrl) {
+		toSerialize["post_url"] = o.PostUrl
 	}
 	if !IsNil(o.RedirectUrl) {
 		toSerialize["redirect_url"] = o.RedirectUrl
 	}
-	if !IsNil(o.IsComplete) {
-		toSerialize["is_complete"] = o.IsComplete
+	if !IsNil(o.SamlBinding) {
+		toSerialize["saml_binding"] = o.SamlBinding
+	}
+	if !IsNil(o.SamlRequest) {
+		toSerialize["saml_request"] = o.SamlRequest
+	}
+	if !IsNil(o.SamlResponse) {
+		toSerialize["saml_response"] = o.SamlResponse
+	}
+	if !IsNil(o.SamlRelayState) {
+		toSerialize["saml_relay_state"] = o.SamlRelayState
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -445,13 +481,14 @@ func (o *NativeLogoutChallenge) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "flow_info")
 		delete(additionalProperties, "component")
 		delete(additionalProperties, "response_errors")
-		delete(additionalProperties, "post_url")
-		delete(additionalProperties, "saml_request")
-		delete(additionalProperties, "relay_state")
 		delete(additionalProperties, "provider_name")
-		delete(additionalProperties, "binding")
-		delete(additionalProperties, "redirect_url")
 		delete(additionalProperties, "is_complete")
+		delete(additionalProperties, "post_url")
+		delete(additionalProperties, "redirect_url")
+		delete(additionalProperties, "saml_binding")
+		delete(additionalProperties, "saml_request")
+		delete(additionalProperties, "saml_response")
+		delete(additionalProperties, "saml_relay_state")
 		o.AdditionalProperties = additionalProperties
 	}
 

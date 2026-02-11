@@ -28601,6 +28601,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: sign_logout_response
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: sign_response
         required: false
         schema:
@@ -30385,6 +30392,13 @@ paths:
       - explode: true
         in: query
         name: sign_logout_request
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sign_logout_response
         required: false
         schema:
           type: boolean
@@ -60320,8 +60334,7 @@ components:
           type: object
         logout_urls:
           items:
-            additionalProperties: {}
-            type: object
+            $ref: "#/components/schemas/LogoutURL"
           type: array
       type: object
     IframeLogoutChallengeResponseRequest:
@@ -62516,6 +62529,29 @@ components:
       - challenge
       - name
       type: object
+    LogoutURL:
+      description: Data for a single logout URL
+      properties:
+        url:
+          type: string
+        provider_name:
+          nullable: true
+          type: string
+        binding:
+          nullable: true
+          type: string
+        saml_request:
+          nullable: true
+          type: string
+        saml_response:
+          nullable: true
+          type: string
+        saml_relay_state:
+          nullable: true
+          type: string
+      required:
+      - url
+      type: object
     MDMConfigRequest:
       description: Base serializer class which doesn't implement create/update methods
       example:
@@ -63211,21 +63247,23 @@ components:
               $ref: "#/components/schemas/ErrorDetail"
             type: array
           type: object
-        post_url:
-          type: string
-        saml_request:
-          type: string
-        relay_state:
-          type: string
         provider_name:
-          type: string
-        binding:
-          type: string
-        redirect_url:
           type: string
         is_complete:
           default: false
           type: boolean
+        post_url:
+          type: string
+        redirect_url:
+          type: string
+        saml_binding:
+          $ref: "#/components/schemas/SAMLBindingsEnum"
+        saml_request:
+          type: string
+        saml_response:
+          type: string
+        saml_relay_state:
+          type: string
       type: object
     NativeLogoutChallengeResponseRequest:
       description: Response for native browser logout
@@ -72484,6 +72522,7 @@ components:
           logout_method: ""
           signature_algorithm: http://www.w3.org/2000/09/xmldsig#rsa-sha1
           sign_logout_request: true
+          sign_logout_response: true
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -72528,6 +72567,7 @@ components:
           logout_method: ""
           signature_algorithm: http://www.w3.org/2000/09/xmldsig#rsa-sha1
           sign_logout_request: true
+          sign_logout_response: true
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -79730,6 +79770,7 @@ components:
         logout_method: ""
         signature_algorithm: http://www.w3.org/2000/09/xmldsig#rsa-sha1
         sign_logout_request: true
+        sign_logout_response: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -79849,6 +79890,8 @@ components:
         sign_response:
           type: boolean
         sign_logout_request:
+          type: boolean
+        sign_logout_response:
           type: boolean
         sp_binding:
           allOf:
@@ -84266,6 +84309,7 @@ components:
         logout_method: ""
         signature_algorithm: http://www.w3.org/2000/09/xmldsig#rsa-sha1
         sign_logout_request: true
+        sign_logout_response: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -84427,6 +84471,8 @@ components:
           type: boolean
         sign_logout_request:
           type: boolean
+        sign_logout_response:
+          type: boolean
         sp_binding:
           allOf:
           - $ref: "#/components/schemas/SAMLBindingsEnum"
@@ -84531,6 +84577,7 @@ components:
         logout_method: ""
         signature_algorithm: http://www.w3.org/2000/09/xmldsig#rsa-sha1
         sign_logout_request: true
+        sign_logout_response: true
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -84650,6 +84697,8 @@ components:
         sign_response:
           type: boolean
         sign_logout_request:
+          type: boolean
+        sign_logout_response:
           type: boolean
         sp_binding:
           allOf:

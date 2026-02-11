@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
 **Component** | Pointer to **string** |  | [optional] [default to "ak-provider-iframe-logout"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
-**LogoutUrls** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**LogoutUrls** | Pointer to [**[]LogoutURL**](LogoutURL.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasResponseErrors returns a boolean if a field has been set.
 
 ### GetLogoutUrls
 
-`func (o *IframeLogoutChallenge) GetLogoutUrls() []map[string]interface{}`
+`func (o *IframeLogoutChallenge) GetLogoutUrls() []LogoutURL`
 
 GetLogoutUrls returns the LogoutUrls field if non-nil, zero value otherwise.
 
 ### GetLogoutUrlsOk
 
-`func (o *IframeLogoutChallenge) GetLogoutUrlsOk() (*[]map[string]interface{}, bool)`
+`func (o *IframeLogoutChallenge) GetLogoutUrlsOk() (*[]LogoutURL, bool)`
 
 GetLogoutUrlsOk returns a tuple with the LogoutUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogoutUrls
 
-`func (o *IframeLogoutChallenge) SetLogoutUrls(v []map[string]interface{})`
+`func (o *IframeLogoutChallenge) SetLogoutUrls(v []LogoutURL)`
 
 SetLogoutUrls sets LogoutUrls field to given value.
 

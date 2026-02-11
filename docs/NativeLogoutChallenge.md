@@ -7,13 +7,14 @@ Name | Type | Description | Notes
 **FlowInfo** | Pointer to [**ContextualFlowInfo**](ContextualFlowInfo.md) |  | [optional] 
 **Component** | Pointer to **string** |  | [optional] [default to "ak-provider-saml-native-logout"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
-**PostUrl** | Pointer to **string** |  | [optional] 
-**SamlRequest** | Pointer to **string** |  | [optional] 
-**RelayState** | Pointer to **string** |  | [optional] 
 **ProviderName** | Pointer to **string** |  | [optional] 
-**Binding** | Pointer to **string** |  | [optional] 
-**RedirectUrl** | Pointer to **string** |  | [optional] 
 **IsComplete** | Pointer to **bool** |  | [optional] [default to false]
+**PostUrl** | Pointer to **string** |  | [optional] 
+**RedirectUrl** | Pointer to **string** |  | [optional] 
+**SamlBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) |  | [optional] 
+**SamlRequest** | Pointer to **string** |  | [optional] 
+**SamlResponse** | Pointer to **string** |  | [optional] 
+**SamlRelayState** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -109,81 +110,6 @@ SetResponseErrors sets ResponseErrors field to given value.
 
 HasResponseErrors returns a boolean if a field has been set.
 
-### GetPostUrl
-
-`func (o *NativeLogoutChallenge) GetPostUrl() string`
-
-GetPostUrl returns the PostUrl field if non-nil, zero value otherwise.
-
-### GetPostUrlOk
-
-`func (o *NativeLogoutChallenge) GetPostUrlOk() (*string, bool)`
-
-GetPostUrlOk returns a tuple with the PostUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPostUrl
-
-`func (o *NativeLogoutChallenge) SetPostUrl(v string)`
-
-SetPostUrl sets PostUrl field to given value.
-
-### HasPostUrl
-
-`func (o *NativeLogoutChallenge) HasPostUrl() bool`
-
-HasPostUrl returns a boolean if a field has been set.
-
-### GetSamlRequest
-
-`func (o *NativeLogoutChallenge) GetSamlRequest() string`
-
-GetSamlRequest returns the SamlRequest field if non-nil, zero value otherwise.
-
-### GetSamlRequestOk
-
-`func (o *NativeLogoutChallenge) GetSamlRequestOk() (*string, bool)`
-
-GetSamlRequestOk returns a tuple with the SamlRequest field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSamlRequest
-
-`func (o *NativeLogoutChallenge) SetSamlRequest(v string)`
-
-SetSamlRequest sets SamlRequest field to given value.
-
-### HasSamlRequest
-
-`func (o *NativeLogoutChallenge) HasSamlRequest() bool`
-
-HasSamlRequest returns a boolean if a field has been set.
-
-### GetRelayState
-
-`func (o *NativeLogoutChallenge) GetRelayState() string`
-
-GetRelayState returns the RelayState field if non-nil, zero value otherwise.
-
-### GetRelayStateOk
-
-`func (o *NativeLogoutChallenge) GetRelayStateOk() (*string, bool)`
-
-GetRelayStateOk returns a tuple with the RelayState field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRelayState
-
-`func (o *NativeLogoutChallenge) SetRelayState(v string)`
-
-SetRelayState sets RelayState field to given value.
-
-### HasRelayState
-
-`func (o *NativeLogoutChallenge) HasRelayState() bool`
-
-HasRelayState returns a boolean if a field has been set.
-
 ### GetProviderName
 
 `func (o *NativeLogoutChallenge) GetProviderName() string`
@@ -209,30 +135,55 @@ SetProviderName sets ProviderName field to given value.
 
 HasProviderName returns a boolean if a field has been set.
 
-### GetBinding
+### GetIsComplete
 
-`func (o *NativeLogoutChallenge) GetBinding() string`
+`func (o *NativeLogoutChallenge) GetIsComplete() bool`
 
-GetBinding returns the Binding field if non-nil, zero value otherwise.
+GetIsComplete returns the IsComplete field if non-nil, zero value otherwise.
 
-### GetBindingOk
+### GetIsCompleteOk
 
-`func (o *NativeLogoutChallenge) GetBindingOk() (*string, bool)`
+`func (o *NativeLogoutChallenge) GetIsCompleteOk() (*bool, bool)`
 
-GetBindingOk returns a tuple with the Binding field if it's non-nil, zero value otherwise
+GetIsCompleteOk returns a tuple with the IsComplete field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBinding
+### SetIsComplete
 
-`func (o *NativeLogoutChallenge) SetBinding(v string)`
+`func (o *NativeLogoutChallenge) SetIsComplete(v bool)`
 
-SetBinding sets Binding field to given value.
+SetIsComplete sets IsComplete field to given value.
 
-### HasBinding
+### HasIsComplete
 
-`func (o *NativeLogoutChallenge) HasBinding() bool`
+`func (o *NativeLogoutChallenge) HasIsComplete() bool`
 
-HasBinding returns a boolean if a field has been set.
+HasIsComplete returns a boolean if a field has been set.
+
+### GetPostUrl
+
+`func (o *NativeLogoutChallenge) GetPostUrl() string`
+
+GetPostUrl returns the PostUrl field if non-nil, zero value otherwise.
+
+### GetPostUrlOk
+
+`func (o *NativeLogoutChallenge) GetPostUrlOk() (*string, bool)`
+
+GetPostUrlOk returns a tuple with the PostUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostUrl
+
+`func (o *NativeLogoutChallenge) SetPostUrl(v string)`
+
+SetPostUrl sets PostUrl field to given value.
+
+### HasPostUrl
+
+`func (o *NativeLogoutChallenge) HasPostUrl() bool`
+
+HasPostUrl returns a boolean if a field has been set.
 
 ### GetRedirectUrl
 
@@ -259,30 +210,105 @@ SetRedirectUrl sets RedirectUrl field to given value.
 
 HasRedirectUrl returns a boolean if a field has been set.
 
-### GetIsComplete
+### GetSamlBinding
 
-`func (o *NativeLogoutChallenge) GetIsComplete() bool`
+`func (o *NativeLogoutChallenge) GetSamlBinding() SAMLBindingsEnum`
 
-GetIsComplete returns the IsComplete field if non-nil, zero value otherwise.
+GetSamlBinding returns the SamlBinding field if non-nil, zero value otherwise.
 
-### GetIsCompleteOk
+### GetSamlBindingOk
 
-`func (o *NativeLogoutChallenge) GetIsCompleteOk() (*bool, bool)`
+`func (o *NativeLogoutChallenge) GetSamlBindingOk() (*SAMLBindingsEnum, bool)`
 
-GetIsCompleteOk returns a tuple with the IsComplete field if it's non-nil, zero value otherwise
+GetSamlBindingOk returns a tuple with the SamlBinding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsComplete
+### SetSamlBinding
 
-`func (o *NativeLogoutChallenge) SetIsComplete(v bool)`
+`func (o *NativeLogoutChallenge) SetSamlBinding(v SAMLBindingsEnum)`
 
-SetIsComplete sets IsComplete field to given value.
+SetSamlBinding sets SamlBinding field to given value.
 
-### HasIsComplete
+### HasSamlBinding
 
-`func (o *NativeLogoutChallenge) HasIsComplete() bool`
+`func (o *NativeLogoutChallenge) HasSamlBinding() bool`
 
-HasIsComplete returns a boolean if a field has been set.
+HasSamlBinding returns a boolean if a field has been set.
+
+### GetSamlRequest
+
+`func (o *NativeLogoutChallenge) GetSamlRequest() string`
+
+GetSamlRequest returns the SamlRequest field if non-nil, zero value otherwise.
+
+### GetSamlRequestOk
+
+`func (o *NativeLogoutChallenge) GetSamlRequestOk() (*string, bool)`
+
+GetSamlRequestOk returns a tuple with the SamlRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamlRequest
+
+`func (o *NativeLogoutChallenge) SetSamlRequest(v string)`
+
+SetSamlRequest sets SamlRequest field to given value.
+
+### HasSamlRequest
+
+`func (o *NativeLogoutChallenge) HasSamlRequest() bool`
+
+HasSamlRequest returns a boolean if a field has been set.
+
+### GetSamlResponse
+
+`func (o *NativeLogoutChallenge) GetSamlResponse() string`
+
+GetSamlResponse returns the SamlResponse field if non-nil, zero value otherwise.
+
+### GetSamlResponseOk
+
+`func (o *NativeLogoutChallenge) GetSamlResponseOk() (*string, bool)`
+
+GetSamlResponseOk returns a tuple with the SamlResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamlResponse
+
+`func (o *NativeLogoutChallenge) SetSamlResponse(v string)`
+
+SetSamlResponse sets SamlResponse field to given value.
+
+### HasSamlResponse
+
+`func (o *NativeLogoutChallenge) HasSamlResponse() bool`
+
+HasSamlResponse returns a boolean if a field has been set.
+
+### GetSamlRelayState
+
+`func (o *NativeLogoutChallenge) GetSamlRelayState() string`
+
+GetSamlRelayState returns the SamlRelayState field if non-nil, zero value otherwise.
+
+### GetSamlRelayStateOk
+
+`func (o *NativeLogoutChallenge) GetSamlRelayStateOk() (*string, bool)`
+
+GetSamlRelayStateOk returns a tuple with the SamlRelayState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamlRelayState
+
+`func (o *NativeLogoutChallenge) SetSamlRelayState(v string)`
+
+SetSamlRelayState sets SamlRelayState field to given value.
+
+### HasSamlRelayState
+
+`func (o *NativeLogoutChallenge) HasSamlRelayState() bool`
+
+HasSamlRelayState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

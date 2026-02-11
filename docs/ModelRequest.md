@@ -79,6 +79,7 @@ Name | Type | Description | Notes
 **SignAssertion** | Pointer to **bool** |  | [optional] 
 **SignResponse** | Pointer to **bool** |  | [optional] 
 **SignLogoutRequest** | Pointer to **bool** |  | [optional] 
+**SignLogoutResponse** | Pointer to **bool** |  | [optional] 
 **SpBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
 **SlsBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the logout response back to the Service Provider. | [optional] 
 **DefaultRelayState** | Pointer to **string** | Default relay_state value for IDP-initiated logins | [optional] 
@@ -2015,6 +2016,31 @@ SetSignLogoutRequest sets SignLogoutRequest field to given value.
 `func (o *ModelRequest) HasSignLogoutRequest() bool`
 
 HasSignLogoutRequest returns a boolean if a field has been set.
+
+### GetSignLogoutResponse
+
+`func (o *ModelRequest) GetSignLogoutResponse() bool`
+
+GetSignLogoutResponse returns the SignLogoutResponse field if non-nil, zero value otherwise.
+
+### GetSignLogoutResponseOk
+
+`func (o *ModelRequest) GetSignLogoutResponseOk() (*bool, bool)`
+
+GetSignLogoutResponseOk returns a tuple with the SignLogoutResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignLogoutResponse
+
+`func (o *ModelRequest) SetSignLogoutResponse(v bool)`
+
+SetSignLogoutResponse sets SignLogoutResponse field to given value.
+
+### HasSignLogoutResponse
+
+`func (o *ModelRequest) HasSignLogoutResponse() bool`
+
+HasSignLogoutResponse returns a boolean if a field has been set.
 
 ### GetSpBinding
 

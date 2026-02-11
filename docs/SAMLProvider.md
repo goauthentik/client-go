@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **SignAssertion** | Pointer to **bool** |  | [optional] 
 **SignResponse** | Pointer to **bool** |  | [optional] 
 **SignLogoutRequest** | Pointer to **bool** |  | [optional] 
+**SignLogoutResponse** | Pointer to **bool** |  | [optional] 
 **SpBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] 
 **SlsBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the logout response back to the Service Provider. | [optional] 
 **LogoutMethod** | Pointer to [**SAMLLogoutMethods**](SAMLLogoutMethods.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] 
@@ -875,6 +876,31 @@ SetSignLogoutRequest sets SignLogoutRequest field to given value.
 `func (o *SAMLProvider) HasSignLogoutRequest() bool`
 
 HasSignLogoutRequest returns a boolean if a field has been set.
+
+### GetSignLogoutResponse
+
+`func (o *SAMLProvider) GetSignLogoutResponse() bool`
+
+GetSignLogoutResponse returns the SignLogoutResponse field if non-nil, zero value otherwise.
+
+### GetSignLogoutResponseOk
+
+`func (o *SAMLProvider) GetSignLogoutResponseOk() (*bool, bool)`
+
+GetSignLogoutResponseOk returns a tuple with the SignLogoutResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignLogoutResponse
+
+`func (o *SAMLProvider) SetSignLogoutResponse(v bool)`
+
+SetSignLogoutResponse sets SignLogoutResponse field to given value.
+
+### HasSignLogoutResponse
+
+`func (o *SAMLProvider) HasSignLogoutResponse() bool`
+
+HasSignLogoutResponse returns a boolean if a field has been set.
 
 ### GetSpBinding
 

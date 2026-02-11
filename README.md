@@ -1439,6 +1439,7 @@ Class | Method | HTTP request | Description
  - [LogLevelEnum](docs/LogLevelEnum.md)
  - [LoginChallengeTypes](docs/LoginChallengeTypes.md)
  - [LoginSource](docs/LoginSource.md)
+ - [LogoutURL](docs/LogoutURL.md)
  - [MDMConfigRequest](docs/MDMConfigRequest.md)
  - [MDMConfigResponse](docs/MDMConfigResponse.md)
  - [MatchingModeEnum](docs/MatchingModeEnum.md)

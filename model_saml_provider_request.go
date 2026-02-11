@@ -53,10 +53,11 @@ type SAMLProviderRequest struct {
 	// When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default.
 	VerificationKp NullableString `json:"verification_kp,omitempty"`
 	// When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
-	EncryptionKp      NullableString `json:"encryption_kp,omitempty"`
-	SignAssertion     *bool          `json:"sign_assertion,omitempty"`
-	SignResponse      *bool          `json:"sign_response,omitempty"`
-	SignLogoutRequest *bool          `json:"sign_logout_request,omitempty"`
+	EncryptionKp       NullableString `json:"encryption_kp,omitempty"`
+	SignAssertion      *bool          `json:"sign_assertion,omitempty"`
+	SignResponse       *bool          `json:"sign_response,omitempty"`
+	SignLogoutRequest  *bool          `json:"sign_logout_request,omitempty"`
+	SignLogoutResponse *bool          `json:"sign_logout_response,omitempty"`
 	// This determines how authentik sends the response back to the Service Provider.
 	SpBinding *SAMLBindingsEnum `json:"sp_binding,omitempty"`
 	// This determines how authentik sends the logout response back to the Service Provider.
@@ -830,6 +831,38 @@ func (o *SAMLProviderRequest) SetSignLogoutRequest(v bool) {
 	o.SignLogoutRequest = &v
 }
 
+// GetSignLogoutResponse returns the SignLogoutResponse field value if set, zero value otherwise.
+func (o *SAMLProviderRequest) GetSignLogoutResponse() bool {
+	if o == nil || IsNil(o.SignLogoutResponse) {
+		var ret bool
+		return ret
+	}
+	return *o.SignLogoutResponse
+}
+
+// GetSignLogoutResponseOk returns a tuple with the SignLogoutResponse field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLProviderRequest) GetSignLogoutResponseOk() (*bool, bool) {
+	if o == nil || IsNil(o.SignLogoutResponse) {
+		return nil, false
+	}
+	return o.SignLogoutResponse, true
+}
+
+// HasSignLogoutResponse returns a boolean if a field has been set.
+func (o *SAMLProviderRequest) HasSignLogoutResponse() bool {
+	if o != nil && !IsNil(o.SignLogoutResponse) {
+		return true
+	}
+
+	return false
+}
+
+// SetSignLogoutResponse gets a reference to the given bool and assigns it to the SignLogoutResponse field.
+func (o *SAMLProviderRequest) SetSignLogoutResponse(v bool) {
+	o.SignLogoutResponse = &v
+}
+
 // GetSpBinding returns the SpBinding field value if set, zero value otherwise.
 func (o *SAMLProviderRequest) GetSpBinding() SAMLBindingsEnum {
 	if o == nil || IsNil(o.SpBinding) {
@@ -1058,6 +1091,9 @@ func (o SAMLProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SignLogoutRequest) {
 		toSerialize["sign_logout_request"] = o.SignLogoutRequest
 	}
+	if !IsNil(o.SignLogoutResponse) {
+		toSerialize["sign_logout_response"] = o.SignLogoutResponse
+	}
 	if !IsNil(o.SpBinding) {
 		toSerialize["sp_binding"] = o.SpBinding
 	}
@@ -1141,6 +1177,7 @@ func (o *SAMLProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "sign_assertion")
 		delete(additionalProperties, "sign_response")
 		delete(additionalProperties, "sign_logout_request")
+		delete(additionalProperties, "sign_logout_response")
 		delete(additionalProperties, "sp_binding")
 		delete(additionalProperties, "sls_binding")
 		delete(additionalProperties, "logout_method")

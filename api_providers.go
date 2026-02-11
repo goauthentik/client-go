@@ -11576,6 +11576,7 @@ type ApiProvidersSamlListRequest struct {
 	sessionValidNotOnOrAfter    *string
 	signAssertion               *bool
 	signLogoutRequest           *bool
+	signLogoutResponse          *bool
 	signResponse                *bool
 	signatureAlgorithm          *string
 	signingKp                   *string
@@ -11717,6 +11718,11 @@ func (r ApiProvidersSamlListRequest) SignAssertion(signAssertion bool) ApiProvid
 
 func (r ApiProvidersSamlListRequest) SignLogoutRequest(signLogoutRequest bool) ApiProvidersSamlListRequest {
 	r.signLogoutRequest = &signLogoutRequest
+	return r
+}
+
+func (r ApiProvidersSamlListRequest) SignLogoutResponse(signLogoutResponse bool) ApiProvidersSamlListRequest {
+	r.signLogoutResponse = &signLogoutResponse
 	return r
 }
 
@@ -11883,6 +11889,9 @@ func (a *ProvidersAPIService) ProvidersSamlListExecute(r ApiProvidersSamlListReq
 	}
 	if r.signLogoutRequest != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_logout_request", r.signLogoutRequest, "form", "")
+	}
+	if r.signLogoutResponse != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_logout_response", r.signLogoutResponse, "form", "")
 	}
 	if r.signResponse != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_response", r.signResponse, "form", "")
@@ -16579,6 +16588,7 @@ type ApiProvidersWsfedListRequest struct {
 	sessionValidNotOnOrAfter    *string
 	signAssertion               *bool
 	signLogoutRequest           *bool
+	signLogoutResponse          *bool
 	signResponse                *bool
 	signatureAlgorithm          *string
 	signingKp                   *string
@@ -16720,6 +16730,11 @@ func (r ApiProvidersWsfedListRequest) SignAssertion(signAssertion bool) ApiProvi
 
 func (r ApiProvidersWsfedListRequest) SignLogoutRequest(signLogoutRequest bool) ApiProvidersWsfedListRequest {
 	r.signLogoutRequest = &signLogoutRequest
+	return r
+}
+
+func (r ApiProvidersWsfedListRequest) SignLogoutResponse(signLogoutResponse bool) ApiProvidersWsfedListRequest {
+	r.signLogoutResponse = &signLogoutResponse
 	return r
 }
 
@@ -16886,6 +16901,9 @@ func (a *ProvidersAPIService) ProvidersWsfedListExecute(r ApiProvidersWsfedListR
 	}
 	if r.signLogoutRequest != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_logout_request", r.signLogoutRequest, "form", "")
+	}
+	if r.signLogoutResponse != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_logout_response", r.signLogoutResponse, "form", "")
 	}
 	if r.signResponse != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sign_response", r.signResponse, "form", "")

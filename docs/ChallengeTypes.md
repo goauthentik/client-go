@@ -58,14 +58,15 @@ Name | Type | Description | Notes
 **ShowSourceLabels** | **bool** |  | 
 **EnableRememberMe** | Pointer to **bool** |  | [optional] [default to true]
 **PasskeyChallenge** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
-**LogoutUrls** | Pointer to **[]map[string]map[string]interface{}** |  | [optional] 
-**PostUrl** | Pointer to **string** |  | [optional] 
-**SamlRequest** | Pointer to **string** |  | [optional] 
-**RelayState** | Pointer to **string** |  | [optional] 
+**LogoutUrls** | Pointer to [**[]LogoutURL**](LogoutURL.md) |  | [optional] 
 **ProviderName** | Pointer to **string** |  | [optional] 
-**Binding** | Pointer to **string** |  | [optional] 
-**RedirectUrl** | Pointer to **string** |  | [optional] 
 **IsComplete** | Pointer to **bool** |  | [optional] [default to false]
+**PostUrl** | Pointer to **string** |  | [optional] 
+**RedirectUrl** | Pointer to **string** |  | [optional] 
+**SamlBinding** | Pointer to [**SAMLBindingsEnum**](SAMLBindingsEnum.md) |  | [optional] 
+**SamlRequest** | Pointer to **string** |  | [optional] 
+**SamlResponse** | Pointer to **string** |  | [optional] 
+**SamlRelayState** | Pointer to **string** |  | [optional] 
 **Slug** | **string** |  | 
 **Fields** | [**[]StagePrompt**](StagePrompt.md) |  | 
 **To** | **string** |  | 
@@ -1338,20 +1339,20 @@ HasPasskeyChallenge returns a boolean if a field has been set.
 UnsetPasskeyChallenge ensures that no value is present for PasskeyChallenge, not even an explicit nil
 ### GetLogoutUrls
 
-`func (o *ChallengeTypes) GetLogoutUrls() []map[string]map[string]interface{}`
+`func (o *ChallengeTypes) GetLogoutUrls() []LogoutURL`
 
 GetLogoutUrls returns the LogoutUrls field if non-nil, zero value otherwise.
 
 ### GetLogoutUrlsOk
 
-`func (o *ChallengeTypes) GetLogoutUrlsOk() (*[]map[string]map[string]interface{}, bool)`
+`func (o *ChallengeTypes) GetLogoutUrlsOk() (*[]LogoutURL, bool)`
 
 GetLogoutUrlsOk returns a tuple with the LogoutUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLogoutUrls
 
-`func (o *ChallengeTypes) SetLogoutUrls(v []map[string]map[string]interface{})`
+`func (o *ChallengeTypes) SetLogoutUrls(v []LogoutURL)`
 
 SetLogoutUrls sets LogoutUrls field to given value.
 
@@ -1360,81 +1361,6 @@ SetLogoutUrls sets LogoutUrls field to given value.
 `func (o *ChallengeTypes) HasLogoutUrls() bool`
 
 HasLogoutUrls returns a boolean if a field has been set.
-
-### GetPostUrl
-
-`func (o *ChallengeTypes) GetPostUrl() string`
-
-GetPostUrl returns the PostUrl field if non-nil, zero value otherwise.
-
-### GetPostUrlOk
-
-`func (o *ChallengeTypes) GetPostUrlOk() (*string, bool)`
-
-GetPostUrlOk returns a tuple with the PostUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPostUrl
-
-`func (o *ChallengeTypes) SetPostUrl(v string)`
-
-SetPostUrl sets PostUrl field to given value.
-
-### HasPostUrl
-
-`func (o *ChallengeTypes) HasPostUrl() bool`
-
-HasPostUrl returns a boolean if a field has been set.
-
-### GetSamlRequest
-
-`func (o *ChallengeTypes) GetSamlRequest() string`
-
-GetSamlRequest returns the SamlRequest field if non-nil, zero value otherwise.
-
-### GetSamlRequestOk
-
-`func (o *ChallengeTypes) GetSamlRequestOk() (*string, bool)`
-
-GetSamlRequestOk returns a tuple with the SamlRequest field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSamlRequest
-
-`func (o *ChallengeTypes) SetSamlRequest(v string)`
-
-SetSamlRequest sets SamlRequest field to given value.
-
-### HasSamlRequest
-
-`func (o *ChallengeTypes) HasSamlRequest() bool`
-
-HasSamlRequest returns a boolean if a field has been set.
-
-### GetRelayState
-
-`func (o *ChallengeTypes) GetRelayState() string`
-
-GetRelayState returns the RelayState field if non-nil, zero value otherwise.
-
-### GetRelayStateOk
-
-`func (o *ChallengeTypes) GetRelayStateOk() (*string, bool)`
-
-GetRelayStateOk returns a tuple with the RelayState field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRelayState
-
-`func (o *ChallengeTypes) SetRelayState(v string)`
-
-SetRelayState sets RelayState field to given value.
-
-### HasRelayState
-
-`func (o *ChallengeTypes) HasRelayState() bool`
-
-HasRelayState returns a boolean if a field has been set.
 
 ### GetProviderName
 
@@ -1461,30 +1387,55 @@ SetProviderName sets ProviderName field to given value.
 
 HasProviderName returns a boolean if a field has been set.
 
-### GetBinding
+### GetIsComplete
 
-`func (o *ChallengeTypes) GetBinding() string`
+`func (o *ChallengeTypes) GetIsComplete() bool`
 
-GetBinding returns the Binding field if non-nil, zero value otherwise.
+GetIsComplete returns the IsComplete field if non-nil, zero value otherwise.
 
-### GetBindingOk
+### GetIsCompleteOk
 
-`func (o *ChallengeTypes) GetBindingOk() (*string, bool)`
+`func (o *ChallengeTypes) GetIsCompleteOk() (*bool, bool)`
 
-GetBindingOk returns a tuple with the Binding field if it's non-nil, zero value otherwise
+GetIsCompleteOk returns a tuple with the IsComplete field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBinding
+### SetIsComplete
 
-`func (o *ChallengeTypes) SetBinding(v string)`
+`func (o *ChallengeTypes) SetIsComplete(v bool)`
 
-SetBinding sets Binding field to given value.
+SetIsComplete sets IsComplete field to given value.
 
-### HasBinding
+### HasIsComplete
 
-`func (o *ChallengeTypes) HasBinding() bool`
+`func (o *ChallengeTypes) HasIsComplete() bool`
 
-HasBinding returns a boolean if a field has been set.
+HasIsComplete returns a boolean if a field has been set.
+
+### GetPostUrl
+
+`func (o *ChallengeTypes) GetPostUrl() string`
+
+GetPostUrl returns the PostUrl field if non-nil, zero value otherwise.
+
+### GetPostUrlOk
+
+`func (o *ChallengeTypes) GetPostUrlOk() (*string, bool)`
+
+GetPostUrlOk returns a tuple with the PostUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPostUrl
+
+`func (o *ChallengeTypes) SetPostUrl(v string)`
+
+SetPostUrl sets PostUrl field to given value.
+
+### HasPostUrl
+
+`func (o *ChallengeTypes) HasPostUrl() bool`
+
+HasPostUrl returns a boolean if a field has been set.
 
 ### GetRedirectUrl
 
@@ -1511,30 +1462,105 @@ SetRedirectUrl sets RedirectUrl field to given value.
 
 HasRedirectUrl returns a boolean if a field has been set.
 
-### GetIsComplete
+### GetSamlBinding
 
-`func (o *ChallengeTypes) GetIsComplete() bool`
+`func (o *ChallengeTypes) GetSamlBinding() SAMLBindingsEnum`
 
-GetIsComplete returns the IsComplete field if non-nil, zero value otherwise.
+GetSamlBinding returns the SamlBinding field if non-nil, zero value otherwise.
 
-### GetIsCompleteOk
+### GetSamlBindingOk
 
-`func (o *ChallengeTypes) GetIsCompleteOk() (*bool, bool)`
+`func (o *ChallengeTypes) GetSamlBindingOk() (*SAMLBindingsEnum, bool)`
 
-GetIsCompleteOk returns a tuple with the IsComplete field if it's non-nil, zero value otherwise
+GetSamlBindingOk returns a tuple with the SamlBinding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsComplete
+### SetSamlBinding
 
-`func (o *ChallengeTypes) SetIsComplete(v bool)`
+`func (o *ChallengeTypes) SetSamlBinding(v SAMLBindingsEnum)`
 
-SetIsComplete sets IsComplete field to given value.
+SetSamlBinding sets SamlBinding field to given value.
 
-### HasIsComplete
+### HasSamlBinding
 
-`func (o *ChallengeTypes) HasIsComplete() bool`
+`func (o *ChallengeTypes) HasSamlBinding() bool`
 
-HasIsComplete returns a boolean if a field has been set.
+HasSamlBinding returns a boolean if a field has been set.
+
+### GetSamlRequest
+
+`func (o *ChallengeTypes) GetSamlRequest() string`
+
+GetSamlRequest returns the SamlRequest field if non-nil, zero value otherwise.
+
+### GetSamlRequestOk
+
+`func (o *ChallengeTypes) GetSamlRequestOk() (*string, bool)`
+
+GetSamlRequestOk returns a tuple with the SamlRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamlRequest
+
+`func (o *ChallengeTypes) SetSamlRequest(v string)`
+
+SetSamlRequest sets SamlRequest field to given value.
+
+### HasSamlRequest
+
+`func (o *ChallengeTypes) HasSamlRequest() bool`
+
+HasSamlRequest returns a boolean if a field has been set.
+
+### GetSamlResponse
+
+`func (o *ChallengeTypes) GetSamlResponse() string`
+
+GetSamlResponse returns the SamlResponse field if non-nil, zero value otherwise.
+
+### GetSamlResponseOk
+
+`func (o *ChallengeTypes) GetSamlResponseOk() (*string, bool)`
+
+GetSamlResponseOk returns a tuple with the SamlResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamlResponse
+
+`func (o *ChallengeTypes) SetSamlResponse(v string)`
+
+SetSamlResponse sets SamlResponse field to given value.
+
+### HasSamlResponse
+
+`func (o *ChallengeTypes) HasSamlResponse() bool`
+
+HasSamlResponse returns a boolean if a field has been set.
+
+### GetSamlRelayState
+
+`func (o *ChallengeTypes) GetSamlRelayState() string`
+
+GetSamlRelayState returns the SamlRelayState field if non-nil, zero value otherwise.
+
+### GetSamlRelayStateOk
+
+`func (o *ChallengeTypes) GetSamlRelayStateOk() (*string, bool)`
+
+GetSamlRelayStateOk returns a tuple with the SamlRelayState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamlRelayState
+
+`func (o *ChallengeTypes) SetSamlRelayState(v string)`
+
+SetSamlRelayState sets SamlRelayState field to given value.
+
+### HasSamlRelayState
+
+`func (o *ChallengeTypes) HasSamlRelayState() bool`
+
+HasSamlRelayState returns a boolean if a field has been set.
 
 ### GetSlug
 
