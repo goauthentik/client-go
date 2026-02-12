@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2025.10.3
+API version: 2025.10.4
 Contact: hello@goauthentik.io
 */
 
@@ -30,9 +30,9 @@ type GoogleWorkspaceProvider struct {
 	// Get object component so that we know how to edit the object
 	Component string `json:"component"`
 	// Internal application name, used in URLs.
-	AssignedBackchannelApplicationSlug string `json:"assigned_backchannel_application_slug"`
+	AssignedBackchannelApplicationSlug NullableString `json:"assigned_backchannel_application_slug"`
 	// Application's display Name.
-	AssignedBackchannelApplicationName string `json:"assigned_backchannel_application_name"`
+	AssignedBackchannelApplicationName NullableString `json:"assigned_backchannel_application_name"`
 	// Return object's verbose_name
 	VerboseName string `json:"verbose_name"`
 	// Return object's plural verbose_name
@@ -57,7 +57,7 @@ type _GoogleWorkspaceProvider GoogleWorkspaceProvider
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleWorkspaceProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string) *GoogleWorkspaceProvider {
+func NewGoogleWorkspaceProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string) *GoogleWorkspaceProvider {
 	this := GoogleWorkspaceProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -218,51 +218,55 @@ func (o *GoogleWorkspaceProvider) SetComponent(v string) {
 }
 
 // GetAssignedBackchannelApplicationSlug returns the AssignedBackchannelApplicationSlug field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *GoogleWorkspaceProvider) GetAssignedBackchannelApplicationSlug() string {
-	if o == nil {
+	if o == nil || o.AssignedBackchannelApplicationSlug.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedBackchannelApplicationSlug
+	return *o.AssignedBackchannelApplicationSlug.Get()
 }
 
 // GetAssignedBackchannelApplicationSlugOk returns a tuple with the AssignedBackchannelApplicationSlug field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleWorkspaceProvider) GetAssignedBackchannelApplicationSlugOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedBackchannelApplicationSlug, true
+	return o.AssignedBackchannelApplicationSlug.Get(), o.AssignedBackchannelApplicationSlug.IsSet()
 }
 
 // SetAssignedBackchannelApplicationSlug sets field value
 func (o *GoogleWorkspaceProvider) SetAssignedBackchannelApplicationSlug(v string) {
-	o.AssignedBackchannelApplicationSlug = v
+	o.AssignedBackchannelApplicationSlug.Set(&v)
 }
 
 // GetAssignedBackchannelApplicationName returns the AssignedBackchannelApplicationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *GoogleWorkspaceProvider) GetAssignedBackchannelApplicationName() string {
-	if o == nil {
+	if o == nil || o.AssignedBackchannelApplicationName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AssignedBackchannelApplicationName
+	return *o.AssignedBackchannelApplicationName.Get()
 }
 
 // GetAssignedBackchannelApplicationNameOk returns a tuple with the AssignedBackchannelApplicationName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleWorkspaceProvider) GetAssignedBackchannelApplicationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AssignedBackchannelApplicationName, true
+	return o.AssignedBackchannelApplicationName.Get(), o.AssignedBackchannelApplicationName.IsSet()
 }
 
 // SetAssignedBackchannelApplicationName sets field value
 func (o *GoogleWorkspaceProvider) SetAssignedBackchannelApplicationName(v string) {
-	o.AssignedBackchannelApplicationName = v
+	o.AssignedBackchannelApplicationName.Set(&v)
 }
 
 // GetVerboseName returns the VerboseName field value
@@ -631,8 +635,8 @@ func (o GoogleWorkspaceProvider) ToMap() (map[string]interface{}, error) {
 		toSerialize["property_mappings_group"] = o.PropertyMappingsGroup
 	}
 	toSerialize["component"] = o.Component
-	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug
-	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName
+	toSerialize["assigned_backchannel_application_slug"] = o.AssignedBackchannelApplicationSlug.Get()
+	toSerialize["assigned_backchannel_application_name"] = o.AssignedBackchannelApplicationName.Get()
 	toSerialize["verbose_name"] = o.VerboseName
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName

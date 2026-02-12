@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
-**AssignedBackchannelApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
-**AssignedBackchannelApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
+**AssignedBackchannelApplicationSlug** | **NullableString** | Internal application name, used in URLs. | [readonly] 
+**AssignedBackchannelApplicationName** | **NullableString** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewGoogleWorkspaceProvider
 
-`func NewGoogleWorkspaceProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string, ) *GoogleWorkspaceProvider`
+`func NewGoogleWorkspaceProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, delegatedSubject string, credentials map[string]interface{}, defaultGroupEmailDomain string, ) *GoogleWorkspaceProvider`
 
 NewGoogleWorkspaceProvider instantiates a new GoogleWorkspaceProvider object
 This constructor will assign default values to properties that have it defined,
@@ -173,6 +173,16 @@ and a boolean to check if the value has been set.
 SetAssignedBackchannelApplicationSlug sets AssignedBackchannelApplicationSlug field to given value.
 
 
+### SetAssignedBackchannelApplicationSlugNil
+
+`func (o *GoogleWorkspaceProvider) SetAssignedBackchannelApplicationSlugNil(b bool)`
+
+ SetAssignedBackchannelApplicationSlugNil sets the value for AssignedBackchannelApplicationSlug to be an explicit nil
+
+### UnsetAssignedBackchannelApplicationSlug
+`func (o *GoogleWorkspaceProvider) UnsetAssignedBackchannelApplicationSlug()`
+
+UnsetAssignedBackchannelApplicationSlug ensures that no value is present for AssignedBackchannelApplicationSlug, not even an explicit nil
 ### GetAssignedBackchannelApplicationName
 
 `func (o *GoogleWorkspaceProvider) GetAssignedBackchannelApplicationName() string`
@@ -193,6 +203,16 @@ and a boolean to check if the value has been set.
 SetAssignedBackchannelApplicationName sets AssignedBackchannelApplicationName field to given value.
 
 
+### SetAssignedBackchannelApplicationNameNil
+
+`func (o *GoogleWorkspaceProvider) SetAssignedBackchannelApplicationNameNil(b bool)`
+
+ SetAssignedBackchannelApplicationNameNil sets the value for AssignedBackchannelApplicationName to be an explicit nil
+
+### UnsetAssignedBackchannelApplicationName
+`func (o *GoogleWorkspaceProvider) UnsetAssignedBackchannelApplicationName()`
+
+UnsetAssignedBackchannelApplicationName ensures that no value is present for AssignedBackchannelApplicationName, not even an explicit nil
 ### GetVerboseName
 
 `func (o *GoogleWorkspaceProvider) GetVerboseName() string`

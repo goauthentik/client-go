@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **PropertyMappingsGroup** | Pointer to **[]string** | Property mappings used for group creation/updating. | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
-**AssignedBackchannelApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
-**AssignedBackchannelApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
+**AssignedBackchannelApplicationSlug** | **NullableString** | Internal application name, used in URLs. | [readonly] 
+**AssignedBackchannelApplicationName** | **NullableString** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMProvider
 
-`func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, url string, ) *SCIMProvider`
+`func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, url string, ) *SCIMProvider`
 
 NewSCIMProvider instantiates a new SCIMProvider object
 This constructor will assign default values to properties that have it defined,
@@ -174,6 +174,16 @@ and a boolean to check if the value has been set.
 SetAssignedBackchannelApplicationSlug sets AssignedBackchannelApplicationSlug field to given value.
 
 
+### SetAssignedBackchannelApplicationSlugNil
+
+`func (o *SCIMProvider) SetAssignedBackchannelApplicationSlugNil(b bool)`
+
+ SetAssignedBackchannelApplicationSlugNil sets the value for AssignedBackchannelApplicationSlug to be an explicit nil
+
+### UnsetAssignedBackchannelApplicationSlug
+`func (o *SCIMProvider) UnsetAssignedBackchannelApplicationSlug()`
+
+UnsetAssignedBackchannelApplicationSlug ensures that no value is present for AssignedBackchannelApplicationSlug, not even an explicit nil
 ### GetAssignedBackchannelApplicationName
 
 `func (o *SCIMProvider) GetAssignedBackchannelApplicationName() string`
@@ -194,6 +204,16 @@ and a boolean to check if the value has been set.
 SetAssignedBackchannelApplicationName sets AssignedBackchannelApplicationName field to given value.
 
 
+### SetAssignedBackchannelApplicationNameNil
+
+`func (o *SCIMProvider) SetAssignedBackchannelApplicationNameNil(b bool)`
+
+ SetAssignedBackchannelApplicationNameNil sets the value for AssignedBackchannelApplicationName to be an explicit nil
+
+### UnsetAssignedBackchannelApplicationName
+`func (o *SCIMProvider) UnsetAssignedBackchannelApplicationName()`
+
+UnsetAssignedBackchannelApplicationName ensures that no value is present for AssignedBackchannelApplicationName, not even an explicit nil
 ### GetVerboseName
 
 `func (o *SCIMProvider) GetVerboseName() string`
