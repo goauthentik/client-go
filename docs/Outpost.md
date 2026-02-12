@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Providers** | **[]int32** |  | 
 **ProvidersObj** | [**[]Provider**](Provider.md) |  | [readonly] 
 **ServiceConnection** | Pointer to **NullableString** | Select Service-Connection authentik should use to manage this outpost. Leave empty if authentik should not handle the deployment. | [optional] 
-**ServiceConnectionObj** | [**ServiceConnection**](ServiceConnection.md) |  | [readonly] 
+**ServiceConnectionObj** | [**NullableServiceConnection**](ServiceConnection.md) |  | [readonly] 
 **RefreshIntervalS** | **int32** |  | [readonly] 
 **TokenIdentifier** | **string** | Get Token identifier | [readonly] 
 **Config** | **map[string]interface{}** |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewOutpost
 
-`func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj ServiceConnection, refreshIntervalS int32, tokenIdentifier string, config map[string]interface{}, ) *Outpost`
+`func NewOutpost(pk string, name string, type_ OutpostTypeEnum, providers []int32, providersObj []Provider, serviceConnectionObj NullableServiceConnection, refreshIntervalS int32, tokenIdentifier string, config map[string]interface{}, ) *Outpost`
 
 NewOutpost instantiates a new Outpost object
 This constructor will assign default values to properties that have it defined,
@@ -190,6 +190,16 @@ and a boolean to check if the value has been set.
 SetServiceConnectionObj sets ServiceConnectionObj field to given value.
 
 
+### SetServiceConnectionObjNil
+
+`func (o *Outpost) SetServiceConnectionObjNil(b bool)`
+
+ SetServiceConnectionObjNil sets the value for ServiceConnectionObj to be an explicit nil
+
+### UnsetServiceConnectionObj
+`func (o *Outpost) UnsetServiceConnectionObj()`
+
+UnsetServiceConnectionObj ensures that no value is present for ServiceConnectionObj, not even an explicit nil
 ### GetRefreshIntervalS
 
 `func (o *Outpost) GetRefreshIntervalS() int32`

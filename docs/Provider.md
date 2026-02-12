@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
-**AssignedApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
-**AssignedApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
-**AssignedBackchannelApplicationSlug** | **string** | Internal application name, used in URLs. | [readonly] 
-**AssignedBackchannelApplicationName** | **string** | Application&#39;s display Name. | [readonly] 
+**AssignedApplicationSlug** | **NullableString** | Internal application name, used in URLs. | [readonly] 
+**AssignedApplicationName** | **NullableString** | Application&#39;s display Name. | [readonly] 
+**AssignedBackchannelApplicationSlug** | **NullableString** | Internal application name, used in URLs. | [readonly] 
+**AssignedBackchannelApplicationName** | **NullableString** | Application&#39;s display Name. | [readonly] 
 **VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewProvider
 
-`func NewProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug string, assignedApplicationName string, assignedBackchannelApplicationSlug string, assignedBackchannelApplicationName string, verboseName string, verboseNamePlural string, metaModelName string, ) *Provider`
+`func NewProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, ) *Provider`
 
 NewProvider instantiates a new Provider object
 This constructor will assign default values to properties that have it defined,
@@ -218,6 +218,16 @@ and a boolean to check if the value has been set.
 SetAssignedApplicationSlug sets AssignedApplicationSlug field to given value.
 
 
+### SetAssignedApplicationSlugNil
+
+`func (o *Provider) SetAssignedApplicationSlugNil(b bool)`
+
+ SetAssignedApplicationSlugNil sets the value for AssignedApplicationSlug to be an explicit nil
+
+### UnsetAssignedApplicationSlug
+`func (o *Provider) UnsetAssignedApplicationSlug()`
+
+UnsetAssignedApplicationSlug ensures that no value is present for AssignedApplicationSlug, not even an explicit nil
 ### GetAssignedApplicationName
 
 `func (o *Provider) GetAssignedApplicationName() string`
@@ -238,6 +248,16 @@ and a boolean to check if the value has been set.
 SetAssignedApplicationName sets AssignedApplicationName field to given value.
 
 
+### SetAssignedApplicationNameNil
+
+`func (o *Provider) SetAssignedApplicationNameNil(b bool)`
+
+ SetAssignedApplicationNameNil sets the value for AssignedApplicationName to be an explicit nil
+
+### UnsetAssignedApplicationName
+`func (o *Provider) UnsetAssignedApplicationName()`
+
+UnsetAssignedApplicationName ensures that no value is present for AssignedApplicationName, not even an explicit nil
 ### GetAssignedBackchannelApplicationSlug
 
 `func (o *Provider) GetAssignedBackchannelApplicationSlug() string`
@@ -258,6 +278,16 @@ and a boolean to check if the value has been set.
 SetAssignedBackchannelApplicationSlug sets AssignedBackchannelApplicationSlug field to given value.
 
 
+### SetAssignedBackchannelApplicationSlugNil
+
+`func (o *Provider) SetAssignedBackchannelApplicationSlugNil(b bool)`
+
+ SetAssignedBackchannelApplicationSlugNil sets the value for AssignedBackchannelApplicationSlug to be an explicit nil
+
+### UnsetAssignedBackchannelApplicationSlug
+`func (o *Provider) UnsetAssignedBackchannelApplicationSlug()`
+
+UnsetAssignedBackchannelApplicationSlug ensures that no value is present for AssignedBackchannelApplicationSlug, not even an explicit nil
 ### GetAssignedBackchannelApplicationName
 
 `func (o *Provider) GetAssignedBackchannelApplicationName() string`
@@ -278,6 +308,16 @@ and a boolean to check if the value has been set.
 SetAssignedBackchannelApplicationName sets AssignedBackchannelApplicationName field to given value.
 
 
+### SetAssignedBackchannelApplicationNameNil
+
+`func (o *Provider) SetAssignedBackchannelApplicationNameNil(b bool)`
+
+ SetAssignedBackchannelApplicationNameNil sets the value for AssignedBackchannelApplicationName to be an explicit nil
+
+### UnsetAssignedBackchannelApplicationName
+`func (o *Provider) UnsetAssignedBackchannelApplicationName()`
+
+UnsetAssignedBackchannelApplicationName ensures that no value is present for AssignedBackchannelApplicationName, not even an explicit nil
 ### GetVerboseName
 
 `func (o *Provider) GetVerboseName() string`

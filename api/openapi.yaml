@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2025.8.5
+  version: 2025.8.6
 servers:
 - url: /api/v3
 paths:
@@ -52431,10 +52431,12 @@ components:
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
@@ -54767,18 +54769,22 @@ components:
           type: string
         assigned_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
@@ -55665,10 +55671,12 @@ components:
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
@@ -56640,18 +56648,22 @@ components:
           type: string
         assigned_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
@@ -57492,6 +57504,7 @@ components:
         service_connection_obj:
           allOf:
           - $ref: "#/components/schemas/ServiceConnection"
+          nullable: true
           readOnly: true
         refresh_interval_s:
           readOnly: true
@@ -73824,18 +73837,22 @@ components:
           type: string
         assigned_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
@@ -74135,18 +74152,22 @@ components:
           type: string
         assigned_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
@@ -74521,18 +74542,22 @@ components:
           type: string
         assigned_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
@@ -74752,18 +74777,22 @@ components:
           type: string
         assigned_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
@@ -75597,18 +75626,22 @@ components:
           type: string
         assigned_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
@@ -76449,10 +76482,12 @@ components:
           type: string
         assigned_backchannel_application_slug:
           description: "Internal application name, used in URLs."
+          nullable: true
           readOnly: true
           type: string
         assigned_backchannel_application_name:
           description: Application's display Name.
+          nullable: true
           readOnly: true
           type: string
         verbose_name:
