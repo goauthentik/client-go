@@ -126,6 +126,7 @@ Method | HTTP request | Description
 [**StagesInvitationInvitationsList**](StagesAPI.md#StagesInvitationInvitationsList) | **Get** /stages/invitation/invitations/ | 
 [**StagesInvitationInvitationsPartialUpdate**](StagesAPI.md#StagesInvitationInvitationsPartialUpdate) | **Patch** /stages/invitation/invitations/{invite_uuid}/ | 
 [**StagesInvitationInvitationsRetrieve**](StagesAPI.md#StagesInvitationInvitationsRetrieve) | **Get** /stages/invitation/invitations/{invite_uuid}/ | 
+[**StagesInvitationInvitationsSendEmailCreate**](StagesAPI.md#StagesInvitationInvitationsSendEmailCreate) | **Post** /stages/invitation/invitations/{invite_uuid}/send_email/ | 
 [**StagesInvitationInvitationsUpdate**](StagesAPI.md#StagesInvitationInvitationsUpdate) | **Put** /stages/invitation/invitations/{invite_uuid}/ | 
 [**StagesInvitationInvitationsUsedByList**](StagesAPI.md#StagesInvitationInvitationsUsedByList) | **Get** /stages/invitation/invitations/{invite_uuid}/used_by/ | 
 [**StagesInvitationStagesCreate**](StagesAPI.md#StagesInvitationStagesCreate) | **Post** /stages/invitation/stages/ | 
@@ -8918,6 +8919,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StagesInvitationInvitationsSendEmailCreate
+
+> StagesInvitationInvitationsSendEmailCreate(ctx, inviteUuid).InvitationSendEmailRequest(invitationSendEmailRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	inviteUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Invitation.
+	invitationSendEmailRequest := *openapiclient.NewInvitationSendEmailRequest([]interface{}{nil}) // InvitationSendEmailRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.StagesAPI.StagesInvitationInvitationsSendEmailCreate(context.Background(), inviteUuid).InvitationSendEmailRequest(invitationSendEmailRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StagesAPI.StagesInvitationInvitationsSendEmailCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**inviteUuid** | **string** | A UUID string identifying this Invitation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStagesInvitationInvitationsSendEmailCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **invitationSendEmailRequest** | [**InvitationSendEmailRequest**](InvitationSendEmailRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

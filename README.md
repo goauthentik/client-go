@@ -1046,6 +1046,7 @@ Class | Method | HTTP request | Description
 *StagesAPI* | [**StagesInvitationInvitationsList**](docs/StagesAPI.md#stagesinvitationinvitationslist) | **Get** /stages/invitation/invitations/ | 
 *StagesAPI* | [**StagesInvitationInvitationsPartialUpdate**](docs/StagesAPI.md#stagesinvitationinvitationspartialupdate) | **Patch** /stages/invitation/invitations/{invite_uuid}/ | 
 *StagesAPI* | [**StagesInvitationInvitationsRetrieve**](docs/StagesAPI.md#stagesinvitationinvitationsretrieve) | **Get** /stages/invitation/invitations/{invite_uuid}/ | 
+*StagesAPI* | [**StagesInvitationInvitationsSendEmailCreate**](docs/StagesAPI.md#stagesinvitationinvitationssendemailcreate) | **Post** /stages/invitation/invitations/{invite_uuid}/send_email/ | 
 *StagesAPI* | [**StagesInvitationInvitationsUpdate**](docs/StagesAPI.md#stagesinvitationinvitationsupdate) | **Put** /stages/invitation/invitations/{invite_uuid}/ | 
 *StagesAPI* | [**StagesInvitationInvitationsUsedByList**](docs/StagesAPI.md#stagesinvitationinvitationsusedbylist) | **Get** /stages/invitation/invitations/{invite_uuid}/used_by/ | 
 *StagesAPI* | [**StagesInvitationStagesCreate**](docs/StagesAPI.md#stagesinvitationstagescreate) | **Post** /stages/invitation/stages/ | 
@@ -1400,6 +1401,7 @@ Class | Method | HTTP request | Description
  - [InvalidResponseActionEnum](docs/InvalidResponseActionEnum.md)
  - [Invitation](docs/Invitation.md)
  - [InvitationRequest](docs/InvitationRequest.md)
+ - [InvitationSendEmailRequest](docs/InvitationSendEmailRequest.md)
  - [InvitationStage](docs/InvitationStage.md)
  - [InvitationStageRequest](docs/InvitationStageRequest.md)
  - [IssuerModeEnum](docs/IssuerModeEnum.md)
