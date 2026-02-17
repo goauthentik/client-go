@@ -72,7 +72,6 @@ const (
 	COUNTRYCODEENUM_CO CountryCodeEnum = "CO"
 	COUNTRYCODEENUM_KM CountryCodeEnum = "KM"
 	COUNTRYCODEENUM_CG CountryCodeEnum = "CG"
-	COUNTRYCODEENUM_CD CountryCodeEnum = "CD"
 	COUNTRYCODEENUM_CK CountryCodeEnum = "CK"
 	COUNTRYCODEENUM_CR CountryCodeEnum = "CR"
 	COUNTRYCODEENUM_CI CountryCodeEnum = "CI"
@@ -81,6 +80,7 @@ const (
 	COUNTRYCODEENUM_CW CountryCodeEnum = "CW"
 	COUNTRYCODEENUM_CY CountryCodeEnum = "CY"
 	COUNTRYCODEENUM_CZ CountryCodeEnum = "CZ"
+	COUNTRYCODEENUM_CD CountryCodeEnum = "CD"
 	COUNTRYCODEENUM_DK CountryCodeEnum = "DK"
 	COUNTRYCODEENUM_DJ CountryCodeEnum = "DJ"
 	COUNTRYCODEENUM_DM CountryCodeEnum = "DM"
@@ -119,7 +119,6 @@ const (
 	COUNTRYCODEENUM_GY CountryCodeEnum = "GY"
 	COUNTRYCODEENUM_HT CountryCodeEnum = "HT"
 	COUNTRYCODEENUM_HM CountryCodeEnum = "HM"
-	COUNTRYCODEENUM_VA CountryCodeEnum = "VA"
 	COUNTRYCODEENUM_HN CountryCodeEnum = "HN"
 	COUNTRYCODEENUM_HK CountryCodeEnum = "HK"
 	COUNTRYCODEENUM_HU CountryCodeEnum = "HU"
@@ -261,6 +260,7 @@ const (
 	COUNTRYCODEENUM_UY CountryCodeEnum = "UY"
 	COUNTRYCODEENUM_UZ CountryCodeEnum = "UZ"
 	COUNTRYCODEENUM_VU CountryCodeEnum = "VU"
+	COUNTRYCODEENUM_VA CountryCodeEnum = "VA"
 	COUNTRYCODEENUM_VE CountryCodeEnum = "VE"
 	COUNTRYCODEENUM_VN CountryCodeEnum = "VN"
 	COUNTRYCODEENUM_VG CountryCodeEnum = "VG"
@@ -325,7 +325,6 @@ var AllowedCountryCodeEnumEnumValues = []CountryCodeEnum{
 	"CO",
 	"KM",
 	"CG",
-	"CD",
 	"CK",
 	"CR",
 	"CI",
@@ -334,6 +333,7 @@ var AllowedCountryCodeEnumEnumValues = []CountryCodeEnum{
 	"CW",
 	"CY",
 	"CZ",
+	"CD",
 	"DK",
 	"DJ",
 	"DM",
@@ -372,7 +372,6 @@ var AllowedCountryCodeEnumEnumValues = []CountryCodeEnum{
 	"GY",
 	"HT",
 	"HM",
-	"VA",
 	"HN",
 	"HK",
 	"HU",
@@ -514,6 +513,7 @@ var AllowedCountryCodeEnumEnumValues = []CountryCodeEnum{
 	"UY",
 	"UZ",
 	"VU",
+	"VA",
 	"VE",
 	"VN",
 	"VG",

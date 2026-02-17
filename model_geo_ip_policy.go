@@ -34,16 +34,16 @@ type GeoIPPolicy struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	// Return objects policy is bound to
-	BoundTo               int32                  `json:"bound_to"`
-	Asns                  []int32                `json:"asns,omitempty"`
-	Countries             []CountryCodeEnum      `json:"countries"`
-	CountriesObj          []DetailedCountryField `json:"countries_obj"`
-	CheckHistoryDistance  *bool                  `json:"check_history_distance,omitempty"`
-	HistoryMaxDistanceKm  *int64                 `json:"history_max_distance_km,omitempty"`
-	DistanceToleranceKm   *int32                 `json:"distance_tolerance_km,omitempty"`
-	HistoryLoginCount     *int32                 `json:"history_login_count,omitempty"`
-	CheckImpossibleTravel *bool                  `json:"check_impossible_travel,omitempty"`
-	ImpossibleToleranceKm *int32                 `json:"impossible_tolerance_km,omitempty"`
+	BoundTo               int32                          `json:"bound_to"`
+	Asns                  []int32                        `json:"asns,omitempty"`
+	Countries             []CountryCodeEnum              `json:"countries"`
+	CountriesObj          []GeoIPPolicyCountriesObjInner `json:"countries_obj"`
+	CheckHistoryDistance  *bool                          `json:"check_history_distance,omitempty"`
+	HistoryMaxDistanceKm  *int64                         `json:"history_max_distance_km,omitempty"`
+	DistanceToleranceKm   *int32                         `json:"distance_tolerance_km,omitempty"`
+	HistoryLoginCount     *int32                         `json:"history_login_count,omitempty"`
+	CheckImpossibleTravel *bool                          `json:"check_impossible_travel,omitempty"`
+	ImpossibleToleranceKm *int32                         `json:"impossible_tolerance_km,omitempty"`
 	AdditionalProperties  map[string]interface{}
 }
 
@@ -53,7 +53,7 @@ type _GeoIPPolicy GeoIPPolicy
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGeoIPPolicy(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, countries []CountryCodeEnum, countriesObj []DetailedCountryField) *GeoIPPolicy {
+func NewGeoIPPolicy(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, countries []CountryCodeEnum, countriesObj []GeoIPPolicyCountriesObjInner) *GeoIPPolicy {
 	this := GeoIPPolicy{}
 	this.Pk = pk
 	this.Name = name
@@ -332,9 +332,9 @@ func (o *GeoIPPolicy) SetCountries(v []CountryCodeEnum) {
 }
 
 // GetCountriesObj returns the CountriesObj field value
-func (o *GeoIPPolicy) GetCountriesObj() []DetailedCountryField {
+func (o *GeoIPPolicy) GetCountriesObj() []GeoIPPolicyCountriesObjInner {
 	if o == nil {
-		var ret []DetailedCountryField
+		var ret []GeoIPPolicyCountriesObjInner
 		return ret
 	}
 
@@ -343,7 +343,7 @@ func (o *GeoIPPolicy) GetCountriesObj() []DetailedCountryField {
 
 // GetCountriesObjOk returns a tuple with the CountriesObj field value
 // and a boolean to check if the value has been set.
-func (o *GeoIPPolicy) GetCountriesObjOk() ([]DetailedCountryField, bool) {
+func (o *GeoIPPolicy) GetCountriesObjOk() ([]GeoIPPolicyCountriesObjInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -351,7 +351,7 @@ func (o *GeoIPPolicy) GetCountriesObjOk() ([]DetailedCountryField, bool) {
 }
 
 // SetCountriesObj sets field value
-func (o *GeoIPPolicy) SetCountriesObj(v []DetailedCountryField) {
+func (o *GeoIPPolicy) SetCountriesObj(v []GeoIPPolicyCountriesObjInner) {
 	o.CountriesObj = v
 }
 

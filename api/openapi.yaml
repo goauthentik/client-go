@@ -55000,7 +55000,6 @@ components:
       - CO
       - KM
       - CG
-      - CD
       - CK
       - CR
       - CI
@@ -55009,6 +55008,7 @@ components:
       - CW
       - CY
       - CZ
+      - CD
       - DK
       - DJ
       - DM
@@ -55047,7 +55047,6 @@ components:
       - GY
       - HT
       - HM
-      - VA
       - HN
       - HK
       - HU
@@ -55189,6 +55188,7 @@ components:
       - UY
       - UZ
       - VU
+      - VA
       - VE
       - VN
       - VG
@@ -55438,19 +55438,6 @@ components:
     DetailedCountry:
       example:
         code: AF
-        name: name
-      properties:
-        code:
-          $ref: "#/components/schemas/CountryCodeEnum"
-        name:
-          type: string
-      required:
-      - code
-      - name
-      type: object
-    DetailedCountryField:
-      example:
-        code: null
         name: name
       properties:
         code:
@@ -58686,9 +58673,9 @@ components:
         - 441289069
         pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         countries_obj:
-        - code: null
+        - code: code
           name: name
-        - code: null
+        - code: code
           name: name
         impossible_tolerance_km: 494379917
       properties:
@@ -58736,7 +58723,7 @@ components:
           type: array
         countries_obj:
           items:
-            $ref: "#/components/schemas/DetailedCountryField"
+            $ref: "#/components/schemas/GeoIPPolicy_countries_obj_inner"
           readOnly: true
           type: array
         check_history_distance:
@@ -68125,9 +68112,9 @@ components:
           - 441289069
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           countries_obj:
-          - code: null
+          - code: code
             name: name
-          - code: null
+          - code: code
             name: name
           impossible_tolerance_km: 494379917
         - verbose_name_plural: verbose_name_plural
@@ -68153,9 +68140,9 @@ components:
           - 441289069
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           countries_obj:
-          - code: null
+          - code: code
             name: name
-          - code: null
+          - code: code
             name: name
           impossible_tolerance_km: 494379917
       properties:
@@ -90877,6 +90864,21 @@ components:
       - enterprise_audit_include_expanded_diff
       - flows_refresh_others
       - policies_buffered_access_view
+      type: object
+    GeoIPPolicy_countries_obj_inner:
+      example:
+        code: code
+        name: name
+      properties:
+        code:
+          maxLength: 2
+          minLength: 2
+          type: string
+        name:
+          type: string
+      required:
+      - code
+      - name
       type: object
     PatchedSettingsRequest_flags:
       example:

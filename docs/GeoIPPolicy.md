@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **BoundTo** | **int32** | Return objects policy is bound to | [readonly] 
 **Asns** | Pointer to **[]int32** |  | [optional] 
 **Countries** | [**[]CountryCodeEnum**](CountryCodeEnum.md) |  | 
-**CountriesObj** | [**[]DetailedCountryField**](DetailedCountryField.md) |  | [readonly] 
+**CountriesObj** | [**[]GeoIPPolicyCountriesObjInner**](GeoIPPolicyCountriesObjInner.md) |  | [readonly] 
 **CheckHistoryDistance** | Pointer to **bool** |  | [optional] 
 **HistoryMaxDistanceKm** | Pointer to **int64** |  | [optional] 
 **DistanceToleranceKm** | Pointer to **int32** |  | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewGeoIPPolicy
 
-`func NewGeoIPPolicy(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, countries []CountryCodeEnum, countriesObj []DetailedCountryField, ) *GeoIPPolicy`
+`func NewGeoIPPolicy(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, boundTo int32, countries []CountryCodeEnum, countriesObj []GeoIPPolicyCountriesObjInner, ) *GeoIPPolicy`
 
 NewGeoIPPolicy instantiates a new GeoIPPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -253,20 +253,20 @@ SetCountries sets Countries field to given value.
 
 ### GetCountriesObj
 
-`func (o *GeoIPPolicy) GetCountriesObj() []DetailedCountryField`
+`func (o *GeoIPPolicy) GetCountriesObj() []GeoIPPolicyCountriesObjInner`
 
 GetCountriesObj returns the CountriesObj field if non-nil, zero value otherwise.
 
 ### GetCountriesObjOk
 
-`func (o *GeoIPPolicy) GetCountriesObjOk() (*[]DetailedCountryField, bool)`
+`func (o *GeoIPPolicy) GetCountriesObjOk() (*[]GeoIPPolicyCountriesObjInner, bool)`
 
 GetCountriesObjOk returns a tuple with the CountriesObj field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCountriesObj
 
-`func (o *GeoIPPolicy) SetCountriesObj(v []DetailedCountryField)`
+`func (o *GeoIPPolicy) SetCountriesObj(v []GeoIPPolicyCountriesObjInner)`
 
 SetCountriesObj sets CountriesObj field to given value.
 

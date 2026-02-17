@@ -16,41 +16,41 @@ import (
 	"fmt"
 )
 
-// checks if the DetailedCountryField type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DetailedCountryField{}
+// checks if the GeoIPPolicyCountriesObjInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GeoIPPolicyCountriesObjInner{}
 
-// DetailedCountryField struct for DetailedCountryField
-type DetailedCountryField struct {
-	Code                 CountryCodeEnum `json:"code"`
-	Name                 string          `json:"name"`
+// GeoIPPolicyCountriesObjInner struct for GeoIPPolicyCountriesObjInner
+type GeoIPPolicyCountriesObjInner struct {
+	Code                 string `json:"code"`
+	Name                 string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _DetailedCountryField DetailedCountryField
+type _GeoIPPolicyCountriesObjInner GeoIPPolicyCountriesObjInner
 
-// NewDetailedCountryField instantiates a new DetailedCountryField object
+// NewGeoIPPolicyCountriesObjInner instantiates a new GeoIPPolicyCountriesObjInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDetailedCountryField(code CountryCodeEnum, name string) *DetailedCountryField {
-	this := DetailedCountryField{}
+func NewGeoIPPolicyCountriesObjInner(code string, name string) *GeoIPPolicyCountriesObjInner {
+	this := GeoIPPolicyCountriesObjInner{}
 	this.Code = code
 	this.Name = name
 	return &this
 }
 
-// NewDetailedCountryFieldWithDefaults instantiates a new DetailedCountryField object
+// NewGeoIPPolicyCountriesObjInnerWithDefaults instantiates a new GeoIPPolicyCountriesObjInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDetailedCountryFieldWithDefaults() *DetailedCountryField {
-	this := DetailedCountryField{}
+func NewGeoIPPolicyCountriesObjInnerWithDefaults() *GeoIPPolicyCountriesObjInner {
+	this := GeoIPPolicyCountriesObjInner{}
 	return &this
 }
 
 // GetCode returns the Code field value
-func (o *DetailedCountryField) GetCode() CountryCodeEnum {
+func (o *GeoIPPolicyCountriesObjInner) GetCode() string {
 	if o == nil {
-		var ret CountryCodeEnum
+		var ret string
 		return ret
 	}
 
@@ -59,7 +59,7 @@ func (o *DetailedCountryField) GetCode() CountryCodeEnum {
 
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *DetailedCountryField) GetCodeOk() (*CountryCodeEnum, bool) {
+func (o *GeoIPPolicyCountriesObjInner) GetCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,12 +67,12 @@ func (o *DetailedCountryField) GetCodeOk() (*CountryCodeEnum, bool) {
 }
 
 // SetCode sets field value
-func (o *DetailedCountryField) SetCode(v CountryCodeEnum) {
+func (o *GeoIPPolicyCountriesObjInner) SetCode(v string) {
 	o.Code = v
 }
 
 // GetName returns the Name field value
-func (o *DetailedCountryField) GetName() string {
+func (o *GeoIPPolicyCountriesObjInner) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -83,7 +83,7 @@ func (o *DetailedCountryField) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *DetailedCountryField) GetNameOk() (*string, bool) {
+func (o *GeoIPPolicyCountriesObjInner) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,11 +91,11 @@ func (o *DetailedCountryField) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *DetailedCountryField) SetName(v string) {
+func (o *GeoIPPolicyCountriesObjInner) SetName(v string) {
 	o.Name = v
 }
 
-func (o DetailedCountryField) MarshalJSON() ([]byte, error) {
+func (o GeoIPPolicyCountriesObjInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -103,7 +103,7 @@ func (o DetailedCountryField) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o DetailedCountryField) ToMap() (map[string]interface{}, error) {
+func (o GeoIPPolicyCountriesObjInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["code"] = o.Code
 	toSerialize["name"] = o.Name
@@ -115,7 +115,7 @@ func (o DetailedCountryField) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DetailedCountryField) UnmarshalJSON(data []byte) (err error) {
+func (o *GeoIPPolicyCountriesObjInner) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -138,15 +138,15 @@ func (o *DetailedCountryField) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varDetailedCountryField := _DetailedCountryField{}
+	varGeoIPPolicyCountriesObjInner := _GeoIPPolicyCountriesObjInner{}
 
-	err = json.Unmarshal(data, &varDetailedCountryField)
+	err = json.Unmarshal(data, &varGeoIPPolicyCountriesObjInner)
 
 	if err != nil {
 		return err
 	}
 
-	*o = DetailedCountryField(varDetailedCountryField)
+	*o = GeoIPPolicyCountriesObjInner(varGeoIPPolicyCountriesObjInner)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -159,38 +159,38 @@ func (o *DetailedCountryField) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableDetailedCountryField struct {
-	value *DetailedCountryField
+type NullableGeoIPPolicyCountriesObjInner struct {
+	value *GeoIPPolicyCountriesObjInner
 	isSet bool
 }
 
-func (v NullableDetailedCountryField) Get() *DetailedCountryField {
+func (v NullableGeoIPPolicyCountriesObjInner) Get() *GeoIPPolicyCountriesObjInner {
 	return v.value
 }
 
-func (v *NullableDetailedCountryField) Set(val *DetailedCountryField) {
+func (v *NullableGeoIPPolicyCountriesObjInner) Set(val *GeoIPPolicyCountriesObjInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDetailedCountryField) IsSet() bool {
+func (v NullableGeoIPPolicyCountriesObjInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDetailedCountryField) Unset() {
+func (v *NullableGeoIPPolicyCountriesObjInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDetailedCountryField(val *DetailedCountryField) *NullableDetailedCountryField {
-	return &NullableDetailedCountryField{value: val, isSet: true}
+func NewNullableGeoIPPolicyCountriesObjInner(val *GeoIPPolicyCountriesObjInner) *NullableGeoIPPolicyCountriesObjInner {
+	return &NullableGeoIPPolicyCountriesObjInner{value: val, isSet: true}
 }
 
-func (v NullableDetailedCountryField) MarshalJSON() ([]byte, error) {
+func (v NullableGeoIPPolicyCountriesObjInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDetailedCountryField) UnmarshalJSON(src []byte) error {
+func (v *NullableGeoIPPolicyCountriesObjInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -105,8 +105,6 @@
 
 * `CG` (value: `"CG"`)
 
-* `CD` (value: `"CD"`)
-
 * `CK` (value: `"CK"`)
 
 * `CR` (value: `"CR"`)
@@ -122,6 +120,8 @@
 * `CY` (value: `"CY"`)
 
 * `CZ` (value: `"CZ"`)
+
+* `CD` (value: `"CD"`)
 
 * `DK` (value: `"DK"`)
 
@@ -198,8 +198,6 @@
 * `HT` (value: `"HT"`)
 
 * `HM` (value: `"HM"`)
-
-* `VA` (value: `"VA"`)
 
 * `HN` (value: `"HN"`)
 
@@ -482,6 +480,8 @@
 * `UZ` (value: `"UZ"`)
 
 * `VU` (value: `"VU"`)
+
+* `VA` (value: `"VA"`)
 
 * `VE` (value: `"VE"`)
 

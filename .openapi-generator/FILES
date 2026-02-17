@@ -142,7 +142,6 @@ docs/DeniedActionEnum.md
 docs/DenyStage.md
 docs/DenyStageRequest.md
 docs/DetailedCountry.md
-docs/DetailedCountryField.md
 docs/Device.md
 docs/DeviceAccessGroup.md
 docs/DeviceAccessGroupRequest.md
@@ -237,6 +236,7 @@ docs/FrameChallenge.md
 docs/FrameChallengeResponseRequest.md
 docs/GenericError.md
 docs/GeoIPPolicy.md
+docs/GeoIPPolicyCountriesObjInner.md
 docs/GeoIPPolicyRequest.md
 docs/GeoipBindingEnum.md
 docs/GlobalTaskStatus.md
@@ -1025,7 +1025,6 @@ model_denied_action_enum.go
 model_deny_stage.go
 model_deny_stage_request.go
 model_detailed_country.go
-model_detailed_country_field.go
 model_device.go
 model_device_access_group.go
 model_device_access_group_request.go
@@ -1116,6 +1115,7 @@ model_frame_challenge.go
 model_frame_challenge_response_request.go
 model_generic_error.go
 model_geo_ip_policy.go
+model_geo_ip_policy_countries_obj_inner.go
 model_geo_ip_policy_request.go
 model_geoip_binding_enum.go
 model_global_task_status.go
