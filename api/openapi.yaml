@@ -62223,7 +62223,7 @@ components:
         - name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         object_id: object_id
-        opened_on: 2000-01-23
+        opened_on: 2000-01-23T04:56:07.000+00:00
         reviewers:
         - name: name
           pk: 6
@@ -62233,7 +62233,7 @@ components:
           pk: 6
           uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           username: username
-        next_review_date: 2000-01-23
+        next_review_date: 2000-01-23T04:56:07.000+00:00
         min_reviewers: 0
         user_can_review: true
         object_admin_url: object_admin_url
@@ -62249,7 +62249,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           reviewer: ""
           timestamp: 2000-01-23T04:56:07.000+00:00
-        grace_period_end: 2000-01-23
+        grace_period_end: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: ""
       properties:
@@ -62273,15 +62273,15 @@ components:
           - $ref: "#/components/schemas/LifecycleIterationStateEnum"
           readOnly: true
         opened_on:
-          format: date
+          format: date-time
           readOnly: true
           type: string
         grace_period_end:
-          format: date
+          format: date-time
           readOnly: true
           type: string
         next_review_date:
-          format: date
+          format: date-time
           readOnly: true
           type: string
         reviews:
@@ -69762,7 +69762,7 @@ components:
           - name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           object_id: object_id
-          opened_on: 2000-01-23
+          opened_on: 2000-01-23T04:56:07.000+00:00
           reviewers:
           - name: name
             pk: 6
@@ -69772,7 +69772,7 @@ components:
             pk: 6
             uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             username: username
-          next_review_date: 2000-01-23
+          next_review_date: 2000-01-23T04:56:07.000+00:00
           min_reviewers: 0
           user_can_review: true
           object_admin_url: object_admin_url
@@ -69788,7 +69788,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             reviewer: ""
             timestamp: 2000-01-23T04:56:07.000+00:00
-          grace_period_end: 2000-01-23
+          grace_period_end: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: ""
         - object_verbose: object_verbose
@@ -69798,7 +69798,7 @@ components:
           - name: name
             pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           object_id: object_id
-          opened_on: 2000-01-23
+          opened_on: 2000-01-23T04:56:07.000+00:00
           reviewers:
           - name: name
             pk: 6
@@ -69808,7 +69808,7 @@ components:
             pk: 6
             uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             username: username
-          next_review_date: 2000-01-23
+          next_review_date: 2000-01-23T04:56:07.000+00:00
           min_reviewers: 0
           user_can_review: true
           object_admin_url: object_admin_url
@@ -69824,7 +69824,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             reviewer: ""
             timestamp: 2000-01-23T04:56:07.000+00:00
-          grace_period_end: 2000-01-23
+          grace_period_end: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: ""
       properties:
