@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **ObjectVerbose** | **string** |  | [readonly] 
 **ObjectAdminUrl** | **string** |  | [readonly] 
 **State** | [**LifecycleIterationStateEnum**](LifecycleIterationStateEnum.md) |  | [readonly] 
-**OpenedOn** | **string** |  | [readonly] 
-**GracePeriodEnd** | **string** |  | [readonly] 
-**NextReviewDate** | **string** |  | [readonly] 
+**OpenedOn** | **time.Time** |  | [readonly] 
+**GracePeriodEnd** | **time.Time** |  | [readonly] 
+**NextReviewDate** | **time.Time** |  | [readonly] 
 **Reviews** | [**[]Review**](Review.md) |  | [readonly] 
 **UserCanReview** | **bool** |  | [readonly] 
 **ReviewerGroups** | [**[]ReviewerGroup**](ReviewerGroup.md) |  | [readonly] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewLifecycleIteration
 
-`func NewLifecycleIteration(id string, contentType ContentTypeEnum, objectId string, objectVerbose string, objectAdminUrl string, state LifecycleIterationStateEnum, openedOn string, gracePeriodEnd string, nextReviewDate string, reviews []Review, userCanReview bool, reviewerGroups []ReviewerGroup, minReviewers int32, reviewers []ReviewerUser, ) *LifecycleIteration`
+`func NewLifecycleIteration(id string, contentType ContentTypeEnum, objectId string, objectVerbose string, objectAdminUrl string, state LifecycleIterationStateEnum, openedOn time.Time, gracePeriodEnd time.Time, nextReviewDate time.Time, reviews []Review, userCanReview bool, reviewerGroups []ReviewerGroup, minReviewers int32, reviewers []ReviewerUser, ) *LifecycleIteration`
 
 NewLifecycleIteration instantiates a new LifecycleIteration object
 This constructor will assign default values to properties that have it defined,
@@ -160,60 +160,60 @@ SetState sets State field to given value.
 
 ### GetOpenedOn
 
-`func (o *LifecycleIteration) GetOpenedOn() string`
+`func (o *LifecycleIteration) GetOpenedOn() time.Time`
 
 GetOpenedOn returns the OpenedOn field if non-nil, zero value otherwise.
 
 ### GetOpenedOnOk
 
-`func (o *LifecycleIteration) GetOpenedOnOk() (*string, bool)`
+`func (o *LifecycleIteration) GetOpenedOnOk() (*time.Time, bool)`
 
 GetOpenedOnOk returns a tuple with the OpenedOn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOpenedOn
 
-`func (o *LifecycleIteration) SetOpenedOn(v string)`
+`func (o *LifecycleIteration) SetOpenedOn(v time.Time)`
 
 SetOpenedOn sets OpenedOn field to given value.
 
 
 ### GetGracePeriodEnd
 
-`func (o *LifecycleIteration) GetGracePeriodEnd() string`
+`func (o *LifecycleIteration) GetGracePeriodEnd() time.Time`
 
 GetGracePeriodEnd returns the GracePeriodEnd field if non-nil, zero value otherwise.
 
 ### GetGracePeriodEndOk
 
-`func (o *LifecycleIteration) GetGracePeriodEndOk() (*string, bool)`
+`func (o *LifecycleIteration) GetGracePeriodEndOk() (*time.Time, bool)`
 
 GetGracePeriodEndOk returns a tuple with the GracePeriodEnd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGracePeriodEnd
 
-`func (o *LifecycleIteration) SetGracePeriodEnd(v string)`
+`func (o *LifecycleIteration) SetGracePeriodEnd(v time.Time)`
 
 SetGracePeriodEnd sets GracePeriodEnd field to given value.
 
 
 ### GetNextReviewDate
 
-`func (o *LifecycleIteration) GetNextReviewDate() string`
+`func (o *LifecycleIteration) GetNextReviewDate() time.Time`
 
 GetNextReviewDate returns the NextReviewDate field if non-nil, zero value otherwise.
 
 ### GetNextReviewDateOk
 
-`func (o *LifecycleIteration) GetNextReviewDateOk() (*string, bool)`
+`func (o *LifecycleIteration) GetNextReviewDateOk() (*time.Time, bool)`
 
 GetNextReviewDateOk returns a tuple with the NextReviewDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNextReviewDate
 
-`func (o *LifecycleIteration) SetNextReviewDate(v string)`
+`func (o *LifecycleIteration) SetNextReviewDate(v time.Time)`
 
 SetNextReviewDate sets NextReviewDate field to given value.
 

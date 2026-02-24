@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: authentik
-  version: 2026.2.0-rc4
+  version: 2026.2.0-rc5
   description: Making authentication simple.
   contact:
     email: hello@goauthentik.io
@@ -42144,15 +42144,15 @@ components:
           readOnly: true
         opened_on:
           type: string
-          format: date
+          format: date-time
           readOnly: true
         grace_period_end:
           type: string
-          format: date
+          format: date-time
           readOnly: true
         next_review_date:
           type: string
-          format: date
+          format: date-time
           readOnly: true
         reviews:
           type: array

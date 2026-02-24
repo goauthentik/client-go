@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.0-rc4
+API version: 2026.2.0-rc5
 Contact: hello@goauthentik.io
 */
 
@@ -14,6 +14,7 @@ package api
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the LifecycleIteration type satisfies the MappedNullable interface at compile time
@@ -27,9 +28,9 @@ type LifecycleIteration struct {
 	ObjectVerbose        string                      `json:"object_verbose"`
 	ObjectAdminUrl       string                      `json:"object_admin_url"`
 	State                LifecycleIterationStateEnum `json:"state"`
-	OpenedOn             string                      `json:"opened_on"`
-	GracePeriodEnd       string                      `json:"grace_period_end"`
-	NextReviewDate       string                      `json:"next_review_date"`
+	OpenedOn             time.Time                   `json:"opened_on"`
+	GracePeriodEnd       time.Time                   `json:"grace_period_end"`
+	NextReviewDate       time.Time                   `json:"next_review_date"`
 	Reviews              []Review                    `json:"reviews"`
 	UserCanReview        bool                        `json:"user_can_review"`
 	ReviewerGroups       []ReviewerGroup             `json:"reviewer_groups"`
@@ -44,7 +45,7 @@ type _LifecycleIteration LifecycleIteration
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleIteration(id string, contentType ContentTypeEnum, objectId string, objectVerbose string, objectAdminUrl string, state LifecycleIterationStateEnum, openedOn string, gracePeriodEnd string, nextReviewDate string, reviews []Review, userCanReview bool, reviewerGroups []ReviewerGroup, minReviewers int32, reviewers []ReviewerUser) *LifecycleIteration {
+func NewLifecycleIteration(id string, contentType ContentTypeEnum, objectId string, objectVerbose string, objectAdminUrl string, state LifecycleIterationStateEnum, openedOn time.Time, gracePeriodEnd time.Time, nextReviewDate time.Time, reviews []Review, userCanReview bool, reviewerGroups []ReviewerGroup, minReviewers int32, reviewers []ReviewerUser) *LifecycleIteration {
 	this := LifecycleIteration{}
 	this.Id = id
 	this.ContentType = contentType
@@ -216,9 +217,9 @@ func (o *LifecycleIteration) SetState(v LifecycleIterationStateEnum) {
 }
 
 // GetOpenedOn returns the OpenedOn field value
-func (o *LifecycleIteration) GetOpenedOn() string {
+func (o *LifecycleIteration) GetOpenedOn() time.Time {
 	if o == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 
@@ -227,7 +228,7 @@ func (o *LifecycleIteration) GetOpenedOn() string {
 
 // GetOpenedOnOk returns a tuple with the OpenedOn field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleIteration) GetOpenedOnOk() (*string, bool) {
+func (o *LifecycleIteration) GetOpenedOnOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -235,14 +236,14 @@ func (o *LifecycleIteration) GetOpenedOnOk() (*string, bool) {
 }
 
 // SetOpenedOn sets field value
-func (o *LifecycleIteration) SetOpenedOn(v string) {
+func (o *LifecycleIteration) SetOpenedOn(v time.Time) {
 	o.OpenedOn = v
 }
 
 // GetGracePeriodEnd returns the GracePeriodEnd field value
-func (o *LifecycleIteration) GetGracePeriodEnd() string {
+func (o *LifecycleIteration) GetGracePeriodEnd() time.Time {
 	if o == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 
@@ -251,7 +252,7 @@ func (o *LifecycleIteration) GetGracePeriodEnd() string {
 
 // GetGracePeriodEndOk returns a tuple with the GracePeriodEnd field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleIteration) GetGracePeriodEndOk() (*string, bool) {
+func (o *LifecycleIteration) GetGracePeriodEndOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -259,14 +260,14 @@ func (o *LifecycleIteration) GetGracePeriodEndOk() (*string, bool) {
 }
 
 // SetGracePeriodEnd sets field value
-func (o *LifecycleIteration) SetGracePeriodEnd(v string) {
+func (o *LifecycleIteration) SetGracePeriodEnd(v time.Time) {
 	o.GracePeriodEnd = v
 }
 
 // GetNextReviewDate returns the NextReviewDate field value
-func (o *LifecycleIteration) GetNextReviewDate() string {
+func (o *LifecycleIteration) GetNextReviewDate() time.Time {
 	if o == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 
@@ -275,7 +276,7 @@ func (o *LifecycleIteration) GetNextReviewDate() string {
 
 // GetNextReviewDateOk returns a tuple with the NextReviewDate field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleIteration) GetNextReviewDateOk() (*string, bool) {
+func (o *LifecycleIteration) GetNextReviewDateOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -283,7 +284,7 @@ func (o *LifecycleIteration) GetNextReviewDateOk() (*string, bool) {
 }
 
 // SetNextReviewDate sets field value
-func (o *LifecycleIteration) SetNextReviewDate(v string) {
+func (o *LifecycleIteration) SetNextReviewDate(v time.Time) {
 	o.NextReviewDate = v
 }
 
