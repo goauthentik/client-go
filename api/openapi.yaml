@@ -55212,6 +55212,7 @@ components:
           policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
+          flows_continuous_login: true
         flow_device_code: flow_device_code
         matched_domain: matched_domain
         flow_authentication: flow_authentication
@@ -60037,6 +60038,8 @@ components:
           default: false
           type: boolean
         application_pre:
+          type: string
+        application_pre_launch:
           type: string
         flow_designation:
           $ref: "#/components/schemas/FlowDesignationEnum"
@@ -80479,6 +80482,7 @@ components:
           policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
+          flows_continuous_login: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -86575,6 +86579,7 @@ components:
           policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
+          flows_continuous_login: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -86659,6 +86664,7 @@ components:
           policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
+          flows_continuous_login: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -90852,16 +90858,20 @@ components:
         policies_buffered_access_view: true
         enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
+        flows_continuous_login: true
       properties:
         enterprise_audit_include_expanded_diff:
           type: boolean
         policies_buffered_access_view:
+          type: boolean
+        flows_continuous_login:
           type: boolean
         flows_refresh_others:
           type: boolean
       readOnly: true
       required:
       - enterprise_audit_include_expanded_diff
+      - flows_continuous_login
       - flows_refresh_others
       - policies_buffered_access_view
       type: object
@@ -90885,15 +90895,19 @@ components:
         policies_buffered_access_view: true
         enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
+        flows_continuous_login: true
       properties:
         enterprise_audit_include_expanded_diff:
           type: boolean
         policies_buffered_access_view:
           type: boolean
+        flows_continuous_login:
+          type: boolean
         flows_refresh_others:
           type: boolean
       required:
       - enterprise_audit_include_expanded_diff
+      - flows_continuous_login
       - flows_refresh_others
       - policies_buffered_access_view
       type: object

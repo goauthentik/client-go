@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnterpriseAuditIncludeExpandedDiff** | **bool** |  | 
 **PoliciesBufferedAccessView** | **bool** |  | 
+**FlowsContinuousLogin** | **bool** |  | 
 **FlowsRefreshOthers** | **bool** |  | 
 
 ## Methods
 
 ### NewCurrentBrandFlags
 
-`func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsRefreshOthers bool, ) *CurrentBrandFlags`
+`func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsContinuousLogin bool, flowsRefreshOthers bool, ) *CurrentBrandFlags`
 
 NewCurrentBrandFlags instantiates a new CurrentBrandFlags object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +66,26 @@ and a boolean to check if the value has been set.
 `func (o *CurrentBrandFlags) SetPoliciesBufferedAccessView(v bool)`
 
 SetPoliciesBufferedAccessView sets PoliciesBufferedAccessView field to given value.
+
+
+### GetFlowsContinuousLogin
+
+`func (o *CurrentBrandFlags) GetFlowsContinuousLogin() bool`
+
+GetFlowsContinuousLogin returns the FlowsContinuousLogin field if non-nil, zero value otherwise.
+
+### GetFlowsContinuousLoginOk
+
+`func (o *CurrentBrandFlags) GetFlowsContinuousLoginOk() (*bool, bool)`
+
+GetFlowsContinuousLoginOk returns a tuple with the FlowsContinuousLogin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowsContinuousLogin
+
+`func (o *CurrentBrandFlags) SetFlowsContinuousLogin(v bool)`
+
+SetFlowsContinuousLogin sets FlowsContinuousLogin field to given value.
 
 
 ### GetFlowsRefreshOthers

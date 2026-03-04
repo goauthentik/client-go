@@ -23,6 +23,7 @@ var _ MappedNullable = &CurrentBrandFlags{}
 type CurrentBrandFlags struct {
 	EnterpriseAuditIncludeExpandedDiff bool `json:"enterprise_audit_include_expanded_diff"`
 	PoliciesBufferedAccessView         bool `json:"policies_buffered_access_view"`
+	FlowsContinuousLogin               bool `json:"flows_continuous_login"`
 	FlowsRefreshOthers                 bool `json:"flows_refresh_others"`
 	AdditionalProperties               map[string]interface{}
 }
@@ -33,10 +34,11 @@ type _CurrentBrandFlags CurrentBrandFlags
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsRefreshOthers bool) *CurrentBrandFlags {
+func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsContinuousLogin bool, flowsRefreshOthers bool) *CurrentBrandFlags {
 	this := CurrentBrandFlags{}
 	this.EnterpriseAuditIncludeExpandedDiff = enterpriseAuditIncludeExpandedDiff
 	this.PoliciesBufferedAccessView = policiesBufferedAccessView
+	this.FlowsContinuousLogin = flowsContinuousLogin
 	this.FlowsRefreshOthers = flowsRefreshOthers
 	return &this
 }
@@ -97,6 +99,30 @@ func (o *CurrentBrandFlags) SetPoliciesBufferedAccessView(v bool) {
 	o.PoliciesBufferedAccessView = v
 }
 
+// GetFlowsContinuousLogin returns the FlowsContinuousLogin field value
+func (o *CurrentBrandFlags) GetFlowsContinuousLogin() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.FlowsContinuousLogin
+}
+
+// GetFlowsContinuousLoginOk returns a tuple with the FlowsContinuousLogin field value
+// and a boolean to check if the value has been set.
+func (o *CurrentBrandFlags) GetFlowsContinuousLoginOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FlowsContinuousLogin, true
+}
+
+// SetFlowsContinuousLogin sets field value
+func (o *CurrentBrandFlags) SetFlowsContinuousLogin(v bool) {
+	o.FlowsContinuousLogin = v
+}
+
 // GetFlowsRefreshOthers returns the FlowsRefreshOthers field value
 func (o *CurrentBrandFlags) GetFlowsRefreshOthers() bool {
 	if o == nil {
@@ -133,6 +159,7 @@ func (o CurrentBrandFlags) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enterprise_audit_include_expanded_diff"] = o.EnterpriseAuditIncludeExpandedDiff
 	toSerialize["policies_buffered_access_view"] = o.PoliciesBufferedAccessView
+	toSerialize["flows_continuous_login"] = o.FlowsContinuousLogin
 	toSerialize["flows_refresh_others"] = o.FlowsRefreshOthers
 
 	for key, value := range o.AdditionalProperties {
@@ -149,6 +176,7 @@ func (o *CurrentBrandFlags) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"enterprise_audit_include_expanded_diff",
 		"policies_buffered_access_view",
+		"flows_continuous_login",
 		"flows_refresh_others",
 	}
 
@@ -181,6 +209,7 @@ func (o *CurrentBrandFlags) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "enterprise_audit_include_expanded_diff")
 		delete(additionalProperties, "policies_buffered_access_view")
+		delete(additionalProperties, "flows_continuous_login")
 		delete(additionalProperties, "flows_refresh_others")
 		o.AdditionalProperties = additionalProperties
 	}
