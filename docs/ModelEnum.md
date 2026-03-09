@@ -215,6 +215,8 @@
 
 * `AUTHENTIK_ENDPOINTS_CONNECTORS_FLEET_FLEETCONNECTOR` (value: `"authentik_endpoints_connectors_fleet.fleetconnector"`)
 
+* `AUTHENTIK_ENDPOINTS_CONNECTORS_GOOGLE_CHROME_GOOGLECHROMECONNECTOR` (value: `"authentik_endpoints_connectors_google_chrome.googlechromeconnector"`)
+
 * `AUTHENTIK_LIFECYCLE_LIFECYCLERULE` (value: `"authentik_lifecycle.lifecyclerule"`)
 
 * `AUTHENTIK_LIFECYCLE_LIFECYCLEITERATION` (value: `"authentik_lifecycle.lifecycleiteration"`)

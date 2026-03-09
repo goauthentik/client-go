@@ -267,6 +267,13 @@ Class | Method | HTTP request | Description
 *EndpointsAPI* | [**EndpointsFleetConnectorsRetrieve**](docs/EndpointsAPI.md#endpointsfleetconnectorsretrieve) | **Get** /endpoints/fleet/connectors/{connector_uuid}/ | 
 *EndpointsAPI* | [**EndpointsFleetConnectorsUpdate**](docs/EndpointsAPI.md#endpointsfleetconnectorsupdate) | **Put** /endpoints/fleet/connectors/{connector_uuid}/ | 
 *EndpointsAPI* | [**EndpointsFleetConnectorsUsedByList**](docs/EndpointsAPI.md#endpointsfleetconnectorsusedbylist) | **Get** /endpoints/fleet/connectors/{connector_uuid}/used_by/ | 
+*EndpointsAPI* | [**EndpointsGoogleChromeConnectorsCreate**](docs/EndpointsAPI.md#endpointsgooglechromeconnectorscreate) | **Post** /endpoints/google_chrome/connectors/ | 
+*EndpointsAPI* | [**EndpointsGoogleChromeConnectorsDestroy**](docs/EndpointsAPI.md#endpointsgooglechromeconnectorsdestroy) | **Delete** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
+*EndpointsAPI* | [**EndpointsGoogleChromeConnectorsList**](docs/EndpointsAPI.md#endpointsgooglechromeconnectorslist) | **Get** /endpoints/google_chrome/connectors/ | 
+*EndpointsAPI* | [**EndpointsGoogleChromeConnectorsPartialUpdate**](docs/EndpointsAPI.md#endpointsgooglechromeconnectorspartialupdate) | **Patch** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
+*EndpointsAPI* | [**EndpointsGoogleChromeConnectorsRetrieve**](docs/EndpointsAPI.md#endpointsgooglechromeconnectorsretrieve) | **Get** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
+*EndpointsAPI* | [**EndpointsGoogleChromeConnectorsUpdate**](docs/EndpointsAPI.md#endpointsgooglechromeconnectorsupdate) | **Put** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
+*EndpointsAPI* | [**EndpointsGoogleChromeConnectorsUsedByList**](docs/EndpointsAPI.md#endpointsgooglechromeconnectorsusedbylist) | **Get** /endpoints/google_chrome/connectors/{connector_uuid}/used_by/ | 
 *EnterpriseAPI* | [**EnterpriseLicenseCreate**](docs/EnterpriseAPI.md#enterpriselicensecreate) | **Post** /enterprise/license/ | 
 *EnterpriseAPI* | [**EnterpriseLicenseDestroy**](docs/EnterpriseAPI.md#enterpriselicensedestroy) | **Delete** /enterprise/license/{license_uuid}/ | 
 *EnterpriseAPI* | [**EnterpriseLicenseForecastRetrieve**](docs/EnterpriseAPI.md#enterpriselicenseforecastretrieve) | **Get** /enterprise/license/forecast/ | 
@@ -1358,6 +1365,8 @@ Class | Method | HTTP request | Description
  - [GeoIPPolicyRequest](docs/GeoIPPolicyRequest.md)
  - [GeoipBindingEnum](docs/GeoipBindingEnum.md)
  - [GlobalTaskStatus](docs/GlobalTaskStatus.md)
+ - [GoogleChromeConnector](docs/GoogleChromeConnector.md)
+ - [GoogleChromeConnectorRequest](docs/GoogleChromeConnectorRequest.md)
  - [GoogleEndpointDevice](docs/GoogleEndpointDevice.md)
  - [GoogleEndpointDeviceRequest](docs/GoogleEndpointDeviceRequest.md)
  - [GoogleWorkspaceProvider](docs/GoogleWorkspaceProvider.md)
@@ -1541,6 +1550,7 @@ Class | Method | HTTP request | Description
  - [PaginatedFlowList](docs/PaginatedFlowList.md)
  - [PaginatedFlowStageBindingList](docs/PaginatedFlowStageBindingList.md)
  - [PaginatedGeoIPPolicyList](docs/PaginatedGeoIPPolicyList.md)
+ - [PaginatedGoogleChromeConnectorList](docs/PaginatedGoogleChromeConnectorList.md)
  - [PaginatedGoogleEndpointDeviceList](docs/PaginatedGoogleEndpointDeviceList.md)
  - [PaginatedGoogleWorkspaceProviderGroupList](docs/PaginatedGoogleWorkspaceProviderGroupList.md)
  - [PaginatedGoogleWorkspaceProviderList](docs/PaginatedGoogleWorkspaceProviderList.md)
@@ -1700,6 +1710,7 @@ Class | Method | HTTP request | Description
  - [PatchedFlowRequest](docs/PatchedFlowRequest.md)
  - [PatchedFlowStageBindingRequest](docs/PatchedFlowStageBindingRequest.md)
  - [PatchedGeoIPPolicyRequest](docs/PatchedGeoIPPolicyRequest.md)
+ - [PatchedGoogleChromeConnectorRequest](docs/PatchedGoogleChromeConnectorRequest.md)
  - [PatchedGoogleEndpointDeviceRequest](docs/PatchedGoogleEndpointDeviceRequest.md)
  - [PatchedGoogleWorkspaceProviderMappingRequest](docs/PatchedGoogleWorkspaceProviderMappingRequest.md)
  - [PatchedGoogleWorkspaceProviderRequest](docs/PatchedGoogleWorkspaceProviderRequest.md)

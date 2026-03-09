@@ -127,6 +127,7 @@ const (
 	MODELENUM_AUTHENTIK_BRANDS_BRAND                                                      ModelEnum = "authentik_brands.brand"
 	MODELENUM_AUTHENTIK_BLUEPRINTS_BLUEPRINTINSTANCE                                      ModelEnum = "authentik_blueprints.blueprintinstance"
 	MODELENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_FLEET_FLEETCONNECTOR                         ModelEnum = "authentik_endpoints_connectors_fleet.fleetconnector"
+	MODELENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_GOOGLE_CHROME_GOOGLECHROMECONNECTOR          ModelEnum = "authentik_endpoints_connectors_google_chrome.googlechromeconnector"
 	MODELENUM_AUTHENTIK_LIFECYCLE_LIFECYCLERULE                                           ModelEnum = "authentik_lifecycle.lifecyclerule"
 	MODELENUM_AUTHENTIK_LIFECYCLE_LIFECYCLEITERATION                                      ModelEnum = "authentik_lifecycle.lifecycleiteration"
 	MODELENUM_AUTHENTIK_LIFECYCLE_REVIEW                                                  ModelEnum = "authentik_lifecycle.review"
@@ -251,6 +252,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_brands.brand",
 	"authentik_blueprints.blueprintinstance",
 	"authentik_endpoints_connectors_fleet.fleetconnector",
+	"authentik_endpoints_connectors_google_chrome.googlechromeconnector",
 	"authentik_lifecycle.lifecyclerule",
 	"authentik_lifecycle.lifecycleiteration",
 	"authentik_lifecycle.review",

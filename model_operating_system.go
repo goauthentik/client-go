@@ -26,7 +26,7 @@ type OperatingSystem struct {
 	Name *string `json:"name,omitempty"`
 	// Operating System version, must always be the version number but may contain build name
 	Version              *string `json:"version,omitempty"`
-	Arch                 string  `json:"arch"`
+	Arch                 *string `json:"arch,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,10 +36,9 @@ type _OperatingSystem OperatingSystem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOperatingSystem(family DeviceFactsOSFamily, arch string) *OperatingSystem {
+func NewOperatingSystem(family DeviceFactsOSFamily) *OperatingSystem {
 	this := OperatingSystem{}
 	this.Family = family
-	this.Arch = arch
 	return &this
 }
 
@@ -139,28 +138,36 @@ func (o *OperatingSystem) SetVersion(v string) {
 	o.Version = &v
 }
 
-// GetArch returns the Arch field value
+// GetArch returns the Arch field value if set, zero value otherwise.
 func (o *OperatingSystem) GetArch() string {
-	if o == nil {
+	if o == nil || IsNil(o.Arch) {
 		var ret string
 		return ret
 	}
-
-	return o.Arch
+	return *o.Arch
 }
 
-// GetArchOk returns a tuple with the Arch field value
+// GetArchOk returns a tuple with the Arch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OperatingSystem) GetArchOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Arch) {
 		return nil, false
 	}
-	return &o.Arch, true
+	return o.Arch, true
 }
 
-// SetArch sets field value
+// HasArch returns a boolean if a field has been set.
+func (o *OperatingSystem) HasArch() bool {
+	if o != nil && !IsNil(o.Arch) {
+		return true
+	}
+
+	return false
+}
+
+// SetArch gets a reference to the given string and assigns it to the Arch field.
 func (o *OperatingSystem) SetArch(v string) {
-	o.Arch = v
+	o.Arch = &v
 }
 
 func (o OperatingSystem) MarshalJSON() ([]byte, error) {
@@ -180,7 +187,9 @@ func (o OperatingSystem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
-	toSerialize["arch"] = o.Arch
+	if !IsNil(o.Arch) {
+		toSerialize["arch"] = o.Arch
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -195,7 +204,6 @@ func (o *OperatingSystem) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"family",
-		"arch",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -240,6 +240,8 @@ docs/GeoIPPolicyCountriesObjInner.md
 docs/GeoIPPolicyRequest.md
 docs/GeoipBindingEnum.md
 docs/GlobalTaskStatus.md
+docs/GoogleChromeConnector.md
+docs/GoogleChromeConnectorRequest.md
 docs/GoogleEndpointDevice.md
 docs/GoogleEndpointDeviceRequest.md
 docs/GoogleWorkspaceProvider.md
@@ -427,6 +429,7 @@ docs/PaginatedFleetConnectorList.md
 docs/PaginatedFlowList.md
 docs/PaginatedFlowStageBindingList.md
 docs/PaginatedGeoIPPolicyList.md
+docs/PaginatedGoogleChromeConnectorList.md
 docs/PaginatedGoogleEndpointDeviceList.md
 docs/PaginatedGoogleWorkspaceProviderGroupList.md
 docs/PaginatedGoogleWorkspaceProviderList.md
@@ -586,6 +589,7 @@ docs/PatchedFleetConnectorRequest.md
 docs/PatchedFlowRequest.md
 docs/PatchedFlowStageBindingRequest.md
 docs/PatchedGeoIPPolicyRequest.md
+docs/PatchedGoogleChromeConnectorRequest.md
 docs/PatchedGoogleEndpointDeviceRequest.md
 docs/PatchedGoogleWorkspaceProviderMappingRequest.md
 docs/PatchedGoogleWorkspaceProviderRequest.md
@@ -1119,6 +1123,8 @@ model_geo_ip_policy_countries_obj_inner.go
 model_geo_ip_policy_request.go
 model_geoip_binding_enum.go
 model_global_task_status.go
+model_google_chrome_connector.go
+model_google_chrome_connector_request.go
 model_google_endpoint_device.go
 model_google_endpoint_device_request.go
 model_google_workspace_provider.go
@@ -1301,6 +1307,7 @@ model_paginated_fleet_connector_list.go
 model_paginated_flow_list.go
 model_paginated_flow_stage_binding_list.go
 model_paginated_geo_ip_policy_list.go
+model_paginated_google_chrome_connector_list.go
 model_paginated_google_endpoint_device_list.go
 model_paginated_google_workspace_provider_group_list.go
 model_paginated_google_workspace_provider_list.go
@@ -1460,6 +1467,7 @@ model_patched_fleet_connector_request.go
 model_patched_flow_request.go
 model_patched_flow_stage_binding_request.go
 model_patched_geo_ip_policy_request.go
+model_patched_google_chrome_connector_request.go
 model_patched_google_endpoint_device_request.go
 model_patched_google_workspace_provider_mapping_request.go
 model_patched_google_workspace_provider_request.go

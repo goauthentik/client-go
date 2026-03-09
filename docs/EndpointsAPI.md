@@ -60,6 +60,13 @@ Method | HTTP request | Description
 [**EndpointsFleetConnectorsRetrieve**](EndpointsAPI.md#EndpointsFleetConnectorsRetrieve) | **Get** /endpoints/fleet/connectors/{connector_uuid}/ | 
 [**EndpointsFleetConnectorsUpdate**](EndpointsAPI.md#EndpointsFleetConnectorsUpdate) | **Put** /endpoints/fleet/connectors/{connector_uuid}/ | 
 [**EndpointsFleetConnectorsUsedByList**](EndpointsAPI.md#EndpointsFleetConnectorsUsedByList) | **Get** /endpoints/fleet/connectors/{connector_uuid}/used_by/ | 
+[**EndpointsGoogleChromeConnectorsCreate**](EndpointsAPI.md#EndpointsGoogleChromeConnectorsCreate) | **Post** /endpoints/google_chrome/connectors/ | 
+[**EndpointsGoogleChromeConnectorsDestroy**](EndpointsAPI.md#EndpointsGoogleChromeConnectorsDestroy) | **Delete** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
+[**EndpointsGoogleChromeConnectorsList**](EndpointsAPI.md#EndpointsGoogleChromeConnectorsList) | **Get** /endpoints/google_chrome/connectors/ | 
+[**EndpointsGoogleChromeConnectorsPartialUpdate**](EndpointsAPI.md#EndpointsGoogleChromeConnectorsPartialUpdate) | **Patch** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
+[**EndpointsGoogleChromeConnectorsRetrieve**](EndpointsAPI.md#EndpointsGoogleChromeConnectorsRetrieve) | **Get** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
+[**EndpointsGoogleChromeConnectorsUpdate**](EndpointsAPI.md#EndpointsGoogleChromeConnectorsUpdate) | **Put** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
+[**EndpointsGoogleChromeConnectorsUsedByList**](EndpointsAPI.md#EndpointsGoogleChromeConnectorsUsedByList) | **Get** /endpoints/google_chrome/connectors/{connector_uuid}/used_by/ | 
 
 
 
@@ -3935,6 +3942,498 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiEndpointsFleetConnectorsUsedByListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]UsedBy**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsGoogleChromeConnectorsCreate
+
+> GoogleChromeConnector EndpointsGoogleChromeConnectorsCreate(ctx).GoogleChromeConnectorRequest(googleChromeConnectorRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	googleChromeConnectorRequest := *openapiclient.NewGoogleChromeConnectorRequest("Name_example", map[string]interface{}{"key": interface{}(123)}) // GoogleChromeConnectorRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EndpointsAPI.EndpointsGoogleChromeConnectorsCreate(context.Background()).GoogleChromeConnectorRequest(googleChromeConnectorRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.EndpointsGoogleChromeConnectorsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EndpointsGoogleChromeConnectorsCreate`: GoogleChromeConnector
+	fmt.Fprintf(os.Stdout, "Response from `EndpointsAPI.EndpointsGoogleChromeConnectorsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsGoogleChromeConnectorsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **googleChromeConnectorRequest** | [**GoogleChromeConnectorRequest**](GoogleChromeConnectorRequest.md) |  | 
+
+### Return type
+
+[**GoogleChromeConnector**](GoogleChromeConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsGoogleChromeConnectorsDestroy
+
+> EndpointsGoogleChromeConnectorsDestroy(ctx, connectorUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Device Trust Connector.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EndpointsAPI.EndpointsGoogleChromeConnectorsDestroy(context.Background(), connectorUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.EndpointsGoogleChromeConnectorsDestroy``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Google Device Trust Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsGoogleChromeConnectorsDestroyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsGoogleChromeConnectorsList
+
+> PaginatedGoogleChromeConnectorList EndpointsGoogleChromeConnectorsList(ctx).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	name := "name_example" // string |  (optional)
+	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
+	page := int32(56) // int32 | A page number within the paginated result set. (optional)
+	pageSize := int32(56) // int32 | Number of results to return per page. (optional)
+	search := "search_example" // string | A search term. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EndpointsAPI.EndpointsGoogleChromeConnectorsList(context.Background()).Name(name).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.EndpointsGoogleChromeConnectorsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EndpointsGoogleChromeConnectorsList`: PaginatedGoogleChromeConnectorList
+	fmt.Fprintf(os.Stdout, "Response from `EndpointsAPI.EndpointsGoogleChromeConnectorsList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsGoogleChromeConnectorsListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** |  | 
+ **ordering** | **string** | Which field to use when ordering the results. | 
+ **page** | **int32** | A page number within the paginated result set. | 
+ **pageSize** | **int32** | Number of results to return per page. | 
+ **search** | **string** | A search term. | 
+
+### Return type
+
+[**PaginatedGoogleChromeConnectorList**](PaginatedGoogleChromeConnectorList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsGoogleChromeConnectorsPartialUpdate
+
+> GoogleChromeConnector EndpointsGoogleChromeConnectorsPartialUpdate(ctx, connectorUuid).PatchedGoogleChromeConnectorRequest(patchedGoogleChromeConnectorRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Device Trust Connector.
+	patchedGoogleChromeConnectorRequest := *openapiclient.NewPatchedGoogleChromeConnectorRequest() // PatchedGoogleChromeConnectorRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EndpointsAPI.EndpointsGoogleChromeConnectorsPartialUpdate(context.Background(), connectorUuid).PatchedGoogleChromeConnectorRequest(patchedGoogleChromeConnectorRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.EndpointsGoogleChromeConnectorsPartialUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EndpointsGoogleChromeConnectorsPartialUpdate`: GoogleChromeConnector
+	fmt.Fprintf(os.Stdout, "Response from `EndpointsAPI.EndpointsGoogleChromeConnectorsPartialUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Google Device Trust Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsGoogleChromeConnectorsPartialUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchedGoogleChromeConnectorRequest** | [**PatchedGoogleChromeConnectorRequest**](PatchedGoogleChromeConnectorRequest.md) |  | 
+
+### Return type
+
+[**GoogleChromeConnector**](GoogleChromeConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsGoogleChromeConnectorsRetrieve
+
+> GoogleChromeConnector EndpointsGoogleChromeConnectorsRetrieve(ctx, connectorUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Device Trust Connector.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EndpointsAPI.EndpointsGoogleChromeConnectorsRetrieve(context.Background(), connectorUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.EndpointsGoogleChromeConnectorsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EndpointsGoogleChromeConnectorsRetrieve`: GoogleChromeConnector
+	fmt.Fprintf(os.Stdout, "Response from `EndpointsAPI.EndpointsGoogleChromeConnectorsRetrieve`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Google Device Trust Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsGoogleChromeConnectorsRetrieveRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GoogleChromeConnector**](GoogleChromeConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsGoogleChromeConnectorsUpdate
+
+> GoogleChromeConnector EndpointsGoogleChromeConnectorsUpdate(ctx, connectorUuid).GoogleChromeConnectorRequest(googleChromeConnectorRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Device Trust Connector.
+	googleChromeConnectorRequest := *openapiclient.NewGoogleChromeConnectorRequest("Name_example", map[string]interface{}{"key": interface{}(123)}) // GoogleChromeConnectorRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EndpointsAPI.EndpointsGoogleChromeConnectorsUpdate(context.Background(), connectorUuid).GoogleChromeConnectorRequest(googleChromeConnectorRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.EndpointsGoogleChromeConnectorsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EndpointsGoogleChromeConnectorsUpdate`: GoogleChromeConnector
+	fmt.Fprintf(os.Stdout, "Response from `EndpointsAPI.EndpointsGoogleChromeConnectorsUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Google Device Trust Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsGoogleChromeConnectorsUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **googleChromeConnectorRequest** | [**GoogleChromeConnectorRequest**](GoogleChromeConnectorRequest.md) |  | 
+
+### Return type
+
+[**GoogleChromeConnector**](GoogleChromeConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EndpointsGoogleChromeConnectorsUsedByList
+
+> []UsedBy EndpointsGoogleChromeConnectorsUsedByList(ctx, connectorUuid).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	connectorUuid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | A UUID string identifying this Google Device Trust Connector.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EndpointsAPI.EndpointsGoogleChromeConnectorsUsedByList(context.Background(), connectorUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.EndpointsGoogleChromeConnectorsUsedByList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EndpointsGoogleChromeConnectorsUsedByList`: []UsedBy
+	fmt.Fprintf(os.Stdout, "Response from `EndpointsAPI.EndpointsGoogleChromeConnectorsUsedByList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**connectorUuid** | **string** | A UUID string identifying this Google Device Trust Connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndpointsGoogleChromeConnectorsUsedByListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

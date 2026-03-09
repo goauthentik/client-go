@@ -7502,3 +7502,937 @@ func (a *EndpointsAPIService) EndpointsFleetConnectorsUsedByListExecute(r ApiEnd
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiEndpointsGoogleChromeConnectorsCreateRequest struct {
+	ctx                          context.Context
+	ApiService                   *EndpointsAPIService
+	googleChromeConnectorRequest *GoogleChromeConnectorRequest
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsCreateRequest) GoogleChromeConnectorRequest(googleChromeConnectorRequest GoogleChromeConnectorRequest) ApiEndpointsGoogleChromeConnectorsCreateRequest {
+	r.googleChromeConnectorRequest = &googleChromeConnectorRequest
+	return r
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsCreateRequest) Execute() (*GoogleChromeConnector, *http.Response, error) {
+	return r.ApiService.EndpointsGoogleChromeConnectorsCreateExecute(r)
+}
+
+/*
+EndpointsGoogleChromeConnectorsCreate Method for EndpointsGoogleChromeConnectorsCreate
+
+GoogleChromeConnector Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEndpointsGoogleChromeConnectorsCreateRequest
+*/
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsCreate(ctx context.Context) ApiEndpointsGoogleChromeConnectorsCreateRequest {
+	return ApiEndpointsGoogleChromeConnectorsCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleChromeConnector
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsCreateExecute(r ApiEndpointsGoogleChromeConnectorsCreateRequest) (*GoogleChromeConnector, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleChromeConnector
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsGoogleChromeConnectorsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/google_chrome/connectors/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleChromeConnectorRequest == nil {
+		return localVarReturnValue, nil, reportError("googleChromeConnectorRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleChromeConnectorRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsGoogleChromeConnectorsDestroyRequest struct {
+	ctx           context.Context
+	ApiService    *EndpointsAPIService
+	connectorUuid string
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsDestroyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EndpointsGoogleChromeConnectorsDestroyExecute(r)
+}
+
+/*
+EndpointsGoogleChromeConnectorsDestroy Method for EndpointsGoogleChromeConnectorsDestroy
+
+GoogleChromeConnector Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param connectorUuid A UUID string identifying this Google Device Trust Connector.
+	@return ApiEndpointsGoogleChromeConnectorsDestroyRequest
+*/
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsDestroy(ctx context.Context, connectorUuid string) ApiEndpointsGoogleChromeConnectorsDestroyRequest {
+	return ApiEndpointsGoogleChromeConnectorsDestroyRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		connectorUuid: connectorUuid,
+	}
+}
+
+// Execute executes the request
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsDestroyExecute(r ApiEndpointsGoogleChromeConnectorsDestroyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsGoogleChromeConnectorsDestroy")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/google_chrome/connectors/{connector_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiEndpointsGoogleChromeConnectorsListRequest struct {
+	ctx        context.Context
+	ApiService *EndpointsAPIService
+	name       *string
+	ordering   *string
+	page       *int32
+	pageSize   *int32
+	search     *string
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsListRequest) Name(name string) ApiEndpointsGoogleChromeConnectorsListRequest {
+	r.name = &name
+	return r
+}
+
+// Which field to use when ordering the results.
+func (r ApiEndpointsGoogleChromeConnectorsListRequest) Ordering(ordering string) ApiEndpointsGoogleChromeConnectorsListRequest {
+	r.ordering = &ordering
+	return r
+}
+
+// A page number within the paginated result set.
+func (r ApiEndpointsGoogleChromeConnectorsListRequest) Page(page int32) ApiEndpointsGoogleChromeConnectorsListRequest {
+	r.page = &page
+	return r
+}
+
+// Number of results to return per page.
+func (r ApiEndpointsGoogleChromeConnectorsListRequest) PageSize(pageSize int32) ApiEndpointsGoogleChromeConnectorsListRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// A search term.
+func (r ApiEndpointsGoogleChromeConnectorsListRequest) Search(search string) ApiEndpointsGoogleChromeConnectorsListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsListRequest) Execute() (*PaginatedGoogleChromeConnectorList, *http.Response, error) {
+	return r.ApiService.EndpointsGoogleChromeConnectorsListExecute(r)
+}
+
+/*
+EndpointsGoogleChromeConnectorsList Method for EndpointsGoogleChromeConnectorsList
+
+GoogleChromeConnector Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiEndpointsGoogleChromeConnectorsListRequest
+*/
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsList(ctx context.Context) ApiEndpointsGoogleChromeConnectorsListRequest {
+	return ApiEndpointsGoogleChromeConnectorsListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedGoogleChromeConnectorList
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsListExecute(r ApiEndpointsGoogleChromeConnectorsListRequest) (*PaginatedGoogleChromeConnectorList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedGoogleChromeConnectorList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsGoogleChromeConnectorsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/google_chrome/connectors/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	}
+	if r.ordering != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ordering", r.ordering, "form", "")
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsGoogleChromeConnectorsPartialUpdateRequest struct {
+	ctx                                 context.Context
+	ApiService                          *EndpointsAPIService
+	connectorUuid                       string
+	patchedGoogleChromeConnectorRequest *PatchedGoogleChromeConnectorRequest
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsPartialUpdateRequest) PatchedGoogleChromeConnectorRequest(patchedGoogleChromeConnectorRequest PatchedGoogleChromeConnectorRequest) ApiEndpointsGoogleChromeConnectorsPartialUpdateRequest {
+	r.patchedGoogleChromeConnectorRequest = &patchedGoogleChromeConnectorRequest
+	return r
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsPartialUpdateRequest) Execute() (*GoogleChromeConnector, *http.Response, error) {
+	return r.ApiService.EndpointsGoogleChromeConnectorsPartialUpdateExecute(r)
+}
+
+/*
+EndpointsGoogleChromeConnectorsPartialUpdate Method for EndpointsGoogleChromeConnectorsPartialUpdate
+
+GoogleChromeConnector Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param connectorUuid A UUID string identifying this Google Device Trust Connector.
+	@return ApiEndpointsGoogleChromeConnectorsPartialUpdateRequest
+*/
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsPartialUpdate(ctx context.Context, connectorUuid string) ApiEndpointsGoogleChromeConnectorsPartialUpdateRequest {
+	return ApiEndpointsGoogleChromeConnectorsPartialUpdateRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		connectorUuid: connectorUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleChromeConnector
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsPartialUpdateExecute(r ApiEndpointsGoogleChromeConnectorsPartialUpdateRequest) (*GoogleChromeConnector, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleChromeConnector
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsGoogleChromeConnectorsPartialUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/google_chrome/connectors/{connector_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchedGoogleChromeConnectorRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsGoogleChromeConnectorsRetrieveRequest struct {
+	ctx           context.Context
+	ApiService    *EndpointsAPIService
+	connectorUuid string
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsRetrieveRequest) Execute() (*GoogleChromeConnector, *http.Response, error) {
+	return r.ApiService.EndpointsGoogleChromeConnectorsRetrieveExecute(r)
+}
+
+/*
+EndpointsGoogleChromeConnectorsRetrieve Method for EndpointsGoogleChromeConnectorsRetrieve
+
+GoogleChromeConnector Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param connectorUuid A UUID string identifying this Google Device Trust Connector.
+	@return ApiEndpointsGoogleChromeConnectorsRetrieveRequest
+*/
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsRetrieve(ctx context.Context, connectorUuid string) ApiEndpointsGoogleChromeConnectorsRetrieveRequest {
+	return ApiEndpointsGoogleChromeConnectorsRetrieveRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		connectorUuid: connectorUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleChromeConnector
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsRetrieveExecute(r ApiEndpointsGoogleChromeConnectorsRetrieveRequest) (*GoogleChromeConnector, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleChromeConnector
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsGoogleChromeConnectorsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/google_chrome/connectors/{connector_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsGoogleChromeConnectorsUpdateRequest struct {
+	ctx                          context.Context
+	ApiService                   *EndpointsAPIService
+	connectorUuid                string
+	googleChromeConnectorRequest *GoogleChromeConnectorRequest
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsUpdateRequest) GoogleChromeConnectorRequest(googleChromeConnectorRequest GoogleChromeConnectorRequest) ApiEndpointsGoogleChromeConnectorsUpdateRequest {
+	r.googleChromeConnectorRequest = &googleChromeConnectorRequest
+	return r
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsUpdateRequest) Execute() (*GoogleChromeConnector, *http.Response, error) {
+	return r.ApiService.EndpointsGoogleChromeConnectorsUpdateExecute(r)
+}
+
+/*
+EndpointsGoogleChromeConnectorsUpdate Method for EndpointsGoogleChromeConnectorsUpdate
+
+GoogleChromeConnector Viewset
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param connectorUuid A UUID string identifying this Google Device Trust Connector.
+	@return ApiEndpointsGoogleChromeConnectorsUpdateRequest
+*/
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsUpdate(ctx context.Context, connectorUuid string) ApiEndpointsGoogleChromeConnectorsUpdateRequest {
+	return ApiEndpointsGoogleChromeConnectorsUpdateRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		connectorUuid: connectorUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GoogleChromeConnector
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsUpdateExecute(r ApiEndpointsGoogleChromeConnectorsUpdateRequest) (*GoogleChromeConnector, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleChromeConnector
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsGoogleChromeConnectorsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/google_chrome/connectors/{connector_uuid}/"
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.googleChromeConnectorRequest == nil {
+		return localVarReturnValue, nil, reportError("googleChromeConnectorRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.googleChromeConnectorRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEndpointsGoogleChromeConnectorsUsedByListRequest struct {
+	ctx           context.Context
+	ApiService    *EndpointsAPIService
+	connectorUuid string
+}
+
+func (r ApiEndpointsGoogleChromeConnectorsUsedByListRequest) Execute() ([]UsedBy, *http.Response, error) {
+	return r.ApiService.EndpointsGoogleChromeConnectorsUsedByListExecute(r)
+}
+
+/*
+EndpointsGoogleChromeConnectorsUsedByList Method for EndpointsGoogleChromeConnectorsUsedByList
+
+Get a list of all objects that use this object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param connectorUuid A UUID string identifying this Google Device Trust Connector.
+	@return ApiEndpointsGoogleChromeConnectorsUsedByListRequest
+*/
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsUsedByList(ctx context.Context, connectorUuid string) ApiEndpointsGoogleChromeConnectorsUsedByListRequest {
+	return ApiEndpointsGoogleChromeConnectorsUsedByListRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		connectorUuid: connectorUuid,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []UsedBy
+func (a *EndpointsAPIService) EndpointsGoogleChromeConnectorsUsedByListExecute(r ApiEndpointsGoogleChromeConnectorsUsedByListRequest) ([]UsedBy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UsedBy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EndpointsAPIService.EndpointsGoogleChromeConnectorsUsedByList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/endpoints/google_chrome/connectors/{connector_uuid}/used_by/"
+	localVarPath = strings.Replace(localVarPath, "{"+"connector_uuid"+"}", url.PathEscape(parameterValueToString(r.connectorUuid, "connectorUuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

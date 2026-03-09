@@ -24,6 +24,7 @@ const (
 	VENDORENUM_GOAUTHENTIK_IO_MERGED   VendorEnum = "goauthentik.io/@merged"
 	VENDORENUM_GOAUTHENTIK_IO_PLATFORM VendorEnum = "goauthentik.io/platform"
 	VENDORENUM_FLEETDM_COM             VendorEnum = "fleetdm.com"
+	VENDORENUM_CHROME_GOOGLE_COM       VendorEnum = "chrome.google.com"
 )
 
 // All allowed values of VendorEnum enum
@@ -31,6 +32,7 @@ var AllowedVendorEnumEnumValues = []VendorEnum{
 	"goauthentik.io/@merged",
 	"goauthentik.io/platform",
 	"fleetdm.com",
+	"chrome.google.com",
 }
 
 func (v *VendorEnum) UnmarshalJSON(src []byte) error {

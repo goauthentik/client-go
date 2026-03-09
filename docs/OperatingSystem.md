@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Family** | [**DeviceFactsOSFamily**](DeviceFactsOSFamily.md) |  | 
 **Name** | Pointer to **string** | Operating System name, such as &#39;Server 2022&#39; or &#39;Ubuntu&#39; | [optional] 
 **Version** | Pointer to **string** | Operating System version, must always be the version number but may contain build name | [optional] 
-**Arch** | **string** |  | 
+**Arch** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewOperatingSystem
 
-`func NewOperatingSystem(family DeviceFactsOSFamily, arch string, ) *OperatingSystem`
+`func NewOperatingSystem(family DeviceFactsOSFamily, ) *OperatingSystem`
 
 NewOperatingSystem instantiates a new OperatingSystem object
 This constructor will assign default values to properties that have it defined,
@@ -117,6 +117,11 @@ and a boolean to check if the value has been set.
 
 SetArch sets Arch field to given value.
 
+### HasArch
+
+`func (o *OperatingSystem) HasArch() bool`
+
+HasArch returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
