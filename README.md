@@ -2024,6 +2024,7 @@ Class | Method | HTTP request | Description
  - [WebAuthnDevice](docs/WebAuthnDevice.md)
  - [WebAuthnDeviceRequest](docs/WebAuthnDeviceRequest.md)
  - [WebAuthnDeviceType](docs/WebAuthnDeviceType.md)
+ - [WebAuthnHintEnum](docs/WebAuthnHintEnum.md)
  - [Worker](docs/Worker.md)
 
 

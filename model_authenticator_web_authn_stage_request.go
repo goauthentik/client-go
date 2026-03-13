@@ -28,6 +28,7 @@ type AuthenticatorWebAuthnStageRequest struct {
 	UserVerification        *UserVerificationEnum               `json:"user_verification,omitempty"`
 	AuthenticatorAttachment NullableAuthenticatorAttachmentEnum `json:"authenticator_attachment,omitempty"`
 	ResidentKeyRequirement  *ResidentKeyRequirementEnum         `json:"resident_key_requirement,omitempty"`
+	Hints                   []WebAuthnHintEnum                  `json:"hints,omitempty"`
 	DeviceTypeRestrictions  []string                            `json:"device_type_restrictions,omitempty"`
 	MaxAttempts             *int32                              `json:"max_attempts,omitempty"`
 	AdditionalProperties    map[string]interface{}
@@ -259,6 +260,38 @@ func (o *AuthenticatorWebAuthnStageRequest) SetResidentKeyRequirement(v Resident
 	o.ResidentKeyRequirement = &v
 }
 
+// GetHints returns the Hints field value if set, zero value otherwise.
+func (o *AuthenticatorWebAuthnStageRequest) GetHints() []WebAuthnHintEnum {
+	if o == nil || IsNil(o.Hints) {
+		var ret []WebAuthnHintEnum
+		return ret
+	}
+	return o.Hints
+}
+
+// GetHintsOk returns a tuple with the Hints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorWebAuthnStageRequest) GetHintsOk() ([]WebAuthnHintEnum, bool) {
+	if o == nil || IsNil(o.Hints) {
+		return nil, false
+	}
+	return o.Hints, true
+}
+
+// HasHints returns a boolean if a field has been set.
+func (o *AuthenticatorWebAuthnStageRequest) HasHints() bool {
+	if o != nil && !IsNil(o.Hints) {
+		return true
+	}
+
+	return false
+}
+
+// SetHints gets a reference to the given []WebAuthnHintEnum and assigns it to the Hints field.
+func (o *AuthenticatorWebAuthnStageRequest) SetHints(v []WebAuthnHintEnum) {
+	o.Hints = v
+}
+
 // GetDeviceTypeRestrictions returns the DeviceTypeRestrictions field value if set, zero value otherwise.
 func (o *AuthenticatorWebAuthnStageRequest) GetDeviceTypeRestrictions() []string {
 	if o == nil || IsNil(o.DeviceTypeRestrictions) {
@@ -349,6 +382,9 @@ func (o AuthenticatorWebAuthnStageRequest) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.ResidentKeyRequirement) {
 		toSerialize["resident_key_requirement"] = o.ResidentKeyRequirement
 	}
+	if !IsNil(o.Hints) {
+		toSerialize["hints"] = o.Hints
+	}
 	if !IsNil(o.DeviceTypeRestrictions) {
 		toSerialize["device_type_restrictions"] = o.DeviceTypeRestrictions
 	}
@@ -404,6 +440,7 @@ func (o *AuthenticatorWebAuthnStageRequest) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "user_verification")
 		delete(additionalProperties, "authenticator_attachment")
 		delete(additionalProperties, "resident_key_requirement")
+		delete(additionalProperties, "hints")
 		delete(additionalProperties, "device_type_restrictions")
 		delete(additionalProperties, "max_attempts")
 		o.AdditionalProperties = additionalProperties

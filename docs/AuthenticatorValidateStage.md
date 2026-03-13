@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **ConfigurationStages** | Pointer to **[]string** | Stages used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] 
 **LastAuthThreshold** | Pointer to **string** | If any of the user&#39;s device has been used within this threshold, this stage will be skipped | [optional] 
 **WebauthnUserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) | Enforce user verification for WebAuthn devices. | [optional] 
+**WebauthnHints** | Pointer to [**[]WebAuthnHintEnum**](WebAuthnHintEnum.md) |  | [optional] 
 **WebauthnAllowedDeviceTypes** | Pointer to **[]string** |  | [optional] 
 **WebauthnAllowedDeviceTypesObj** | [**[]WebAuthnDeviceType**](WebAuthnDeviceType.md) |  | [readonly] 
 
@@ -302,6 +303,31 @@ SetWebauthnUserVerification sets WebauthnUserVerification field to given value.
 `func (o *AuthenticatorValidateStage) HasWebauthnUserVerification() bool`
 
 HasWebauthnUserVerification returns a boolean if a field has been set.
+
+### GetWebauthnHints
+
+`func (o *AuthenticatorValidateStage) GetWebauthnHints() []WebAuthnHintEnum`
+
+GetWebauthnHints returns the WebauthnHints field if non-nil, zero value otherwise.
+
+### GetWebauthnHintsOk
+
+`func (o *AuthenticatorValidateStage) GetWebauthnHintsOk() (*[]WebAuthnHintEnum, bool)`
+
+GetWebauthnHintsOk returns a tuple with the WebauthnHints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebauthnHints
+
+`func (o *AuthenticatorValidateStage) SetWebauthnHints(v []WebAuthnHintEnum)`
+
+SetWebauthnHints sets WebauthnHints field to given value.
+
+### HasWebauthnHints
+
+`func (o *AuthenticatorValidateStage) HasWebauthnHints() bool`
+
+HasWebauthnHints returns a boolean if a field has been set.
 
 ### GetWebauthnAllowedDeviceTypes
 

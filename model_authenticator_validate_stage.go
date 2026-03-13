@@ -41,6 +41,7 @@ type AuthenticatorValidateStage struct {
 	LastAuthThreshold *string `json:"last_auth_threshold,omitempty"`
 	// Enforce user verification for WebAuthn devices.
 	WebauthnUserVerification      *UserVerificationEnum `json:"webauthn_user_verification,omitempty"`
+	WebauthnHints                 []WebAuthnHintEnum    `json:"webauthn_hints,omitempty"`
 	WebauthnAllowedDeviceTypes    []string              `json:"webauthn_allowed_device_types,omitempty"`
 	WebauthnAllowedDeviceTypesObj []WebAuthnDeviceType  `json:"webauthn_allowed_device_types_obj"`
 	AdditionalProperties          map[string]interface{}
@@ -401,6 +402,38 @@ func (o *AuthenticatorValidateStage) SetWebauthnUserVerification(v UserVerificat
 	o.WebauthnUserVerification = &v
 }
 
+// GetWebauthnHints returns the WebauthnHints field value if set, zero value otherwise.
+func (o *AuthenticatorValidateStage) GetWebauthnHints() []WebAuthnHintEnum {
+	if o == nil || IsNil(o.WebauthnHints) {
+		var ret []WebAuthnHintEnum
+		return ret
+	}
+	return o.WebauthnHints
+}
+
+// GetWebauthnHintsOk returns a tuple with the WebauthnHints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthenticatorValidateStage) GetWebauthnHintsOk() ([]WebAuthnHintEnum, bool) {
+	if o == nil || IsNil(o.WebauthnHints) {
+		return nil, false
+	}
+	return o.WebauthnHints, true
+}
+
+// HasWebauthnHints returns a boolean if a field has been set.
+func (o *AuthenticatorValidateStage) HasWebauthnHints() bool {
+	if o != nil && !IsNil(o.WebauthnHints) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebauthnHints gets a reference to the given []WebAuthnHintEnum and assigns it to the WebauthnHints field.
+func (o *AuthenticatorValidateStage) SetWebauthnHints(v []WebAuthnHintEnum) {
+	o.WebauthnHints = v
+}
+
 // GetWebauthnAllowedDeviceTypes returns the WebauthnAllowedDeviceTypes field value if set, zero value otherwise.
 func (o *AuthenticatorValidateStage) GetWebauthnAllowedDeviceTypes() []string {
 	if o == nil || IsNil(o.WebauthnAllowedDeviceTypes) {
@@ -489,6 +522,9 @@ func (o AuthenticatorValidateStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WebauthnUserVerification) {
 		toSerialize["webauthn_user_verification"] = o.WebauthnUserVerification
 	}
+	if !IsNil(o.WebauthnHints) {
+		toSerialize["webauthn_hints"] = o.WebauthnHints
+	}
 	if !IsNil(o.WebauthnAllowedDeviceTypes) {
 		toSerialize["webauthn_allowed_device_types"] = o.WebauthnAllowedDeviceTypes
 	}
@@ -555,6 +591,7 @@ func (o *AuthenticatorValidateStage) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "configuration_stages")
 		delete(additionalProperties, "last_auth_threshold")
 		delete(additionalProperties, "webauthn_user_verification")
+		delete(additionalProperties, "webauthn_hints")
 		delete(additionalProperties, "webauthn_allowed_device_types")
 		delete(additionalProperties, "webauthn_allowed_device_types_obj")
 		o.AdditionalProperties = additionalProperties

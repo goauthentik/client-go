@@ -8631,7 +8631,6 @@ type ApiStagesAuthenticatorWebauthnListRequest struct {
 	authenticatorAttachment *string
 	configureFlow           *string
 	deviceTypeRestrictions  *[]string
-	friendlyName            *string
 	maxAttempts             *int32
 	name                    *string
 	ordering                *string
@@ -8639,7 +8638,6 @@ type ApiStagesAuthenticatorWebauthnListRequest struct {
 	pageSize                *int32
 	residentKeyRequirement  *string
 	search                  *string
-	stageUuid               *string
 	userVerification        *string
 }
 
@@ -8655,11 +8653,6 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) ConfigureFlow(configureFlow s
 
 func (r ApiStagesAuthenticatorWebauthnListRequest) DeviceTypeRestrictions(deviceTypeRestrictions []string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.deviceTypeRestrictions = &deviceTypeRestrictions
-	return r
-}
-
-func (r ApiStagesAuthenticatorWebauthnListRequest) FriendlyName(friendlyName string) ApiStagesAuthenticatorWebauthnListRequest {
-	r.friendlyName = &friendlyName
 	return r
 }
 
@@ -8699,11 +8692,6 @@ func (r ApiStagesAuthenticatorWebauthnListRequest) ResidentKeyRequirement(reside
 // A search term.
 func (r ApiStagesAuthenticatorWebauthnListRequest) Search(search string) ApiStagesAuthenticatorWebauthnListRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiStagesAuthenticatorWebauthnListRequest) StageUuid(stageUuid string) ApiStagesAuthenticatorWebauthnListRequest {
-	r.stageUuid = &stageUuid
 	return r
 }
 
@@ -8770,9 +8758,6 @@ func (a *StagesAPIService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 			parameterAddToHeaderOrQuery(localVarQueryParams, "device_type_restrictions", t, "form", "multi")
 		}
 	}
-	if r.friendlyName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "friendly_name", r.friendlyName, "form", "")
-	}
 	if r.maxAttempts != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "max_attempts", r.maxAttempts, "form", "")
 	}
@@ -8793,9 +8778,6 @@ func (a *StagesAPIService) StagesAuthenticatorWebauthnListExecute(r ApiStagesAut
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "form", "")
-	}
-	if r.stageUuid != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "stage_uuid", r.stageUuid, "form", "")
 	}
 	if r.userVerification != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "user_verification", r.userVerification, "form", "")

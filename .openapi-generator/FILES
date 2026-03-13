@@ -916,6 +916,7 @@ docs/WSFederationProviderRequest.md
 docs/WebAuthnDevice.md
 docs/WebAuthnDeviceRequest.md
 docs/WebAuthnDeviceType.md
+docs/WebAuthnHintEnum.md
 docs/Worker.md
 git_push.sh
 go.mod
@@ -1780,6 +1781,7 @@ model_version_history.go
 model_web_authn_device.go
 model_web_authn_device_request.go
 model_web_authn_device_type.go
+model_web_authn_hint_enum.go
 model_worker.go
 model_ws_federation_provider.go
 model_ws_federation_provider_request.go

@@ -44006,13 +44006,6 @@ paths:
         style: form
       - explode: true
         in: query
-        name: friendly_name
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
         name: max_attempts
         required: false
         schema:
@@ -44066,14 +44059,6 @@ paths:
         name: search
         required: false
         schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: stage_uuid
-        required: false
-        schema:
-          format: uuid
           type: string
         style: form
       - explode: true
@@ -53653,6 +53638,9 @@ components:
           description: description
         - aaguid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           description: description
+        webauthn_hints:
+        - security-key
+        - security-key
         last_auth_threshold: last_auth_threshold
         flow_set:
         - policy_engine_mode: all
@@ -53740,6 +53728,10 @@ components:
           allOf:
           - $ref: "#/components/schemas/UserVerificationEnum"
           description: Enforce user verification for WebAuthn devices.
+        webauthn_hints:
+          items:
+            $ref: "#/components/schemas/WebAuthnHintEnum"
+          type: array
         webauthn_allowed_device_types:
           items:
             format: uuid
@@ -53772,6 +53764,9 @@ components:
         - static
         - static
         name: name
+        webauthn_hints:
+        - security-key
+        - security-key
         last_auth_threshold: last_auth_threshold
         configuration_stages:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53804,6 +53799,10 @@ components:
           allOf:
           - $ref: "#/components/schemas/UserVerificationEnum"
           description: Enforce user verification for WebAuthn devices.
+        webauthn_hints:
+          items:
+            $ref: "#/components/schemas/WebAuthnHintEnum"
+          type: array
         webauthn_allowed_device_types:
           items:
             format: uuid
@@ -53915,6 +53914,9 @@ components:
         - aaguid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           description: description
         verbose_name_plural: verbose_name_plural
+        hints:
+        - security-key
+        - security-key
         user_verification: required
         flow_set:
         - policy_engine_mode: all
@@ -53997,6 +53999,10 @@ components:
           nullable: true
         resident_key_requirement:
           $ref: "#/components/schemas/ResidentKeyRequirementEnum"
+        hints:
+          items:
+            $ref: "#/components/schemas/WebAuthnHintEnum"
+          type: array
         device_type_restrictions:
           items:
             format: uuid
@@ -54030,6 +54036,9 @@ components:
         device_type_restrictions:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        hints:
+        - security-key
+        - security-key
         max_attempts: 171976544
         name: name
         user_verification: required
@@ -54054,6 +54063,10 @@ components:
           nullable: true
         resident_key_requirement:
           $ref: "#/components/schemas/ResidentKeyRequirementEnum"
+        hints:
+          items:
+            $ref: "#/components/schemas/WebAuthnHintEnum"
+          type: array
         device_type_restrictions:
           items:
             format: uuid
@@ -66310,6 +66323,9 @@ components:
             description: description
           - aaguid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             description: description
+          webauthn_hints:
+          - security-key
+          - security-key
           last_auth_threshold: last_auth_threshold
           flow_set:
           - policy_engine_mode: all
@@ -66358,6 +66374,9 @@ components:
             description: description
           - aaguid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             description: description
+          webauthn_hints:
+          - security-key
+          - security-key
           last_auth_threshold: last_auth_threshold
           flow_set:
           - policy_engine_mode: all
@@ -66429,6 +66448,9 @@ components:
           - aaguid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             description: description
           verbose_name_plural: verbose_name_plural
+          hints:
+          - security-key
+          - security-key
           user_verification: required
           flow_set:
           - policy_engine_mode: all
@@ -66474,6 +66496,9 @@ components:
           - aaguid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             description: description
           verbose_name_plural: verbose_name_plural
+          hints:
+          - security-key
+          - security-key
           user_verification: required
           flow_set:
           - policy_engine_mode: all
@@ -76961,6 +76986,9 @@ components:
         - static
         - static
         name: name
+        webauthn_hints:
+        - security-key
+        - security-key
         last_auth_threshold: last_auth_threshold
         configuration_stages:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -76993,6 +77021,10 @@ components:
           allOf:
           - $ref: "#/components/schemas/UserVerificationEnum"
           description: Enforce user verification for WebAuthn devices.
+        webauthn_hints:
+          items:
+            $ref: "#/components/schemas/WebAuthnHintEnum"
+          type: array
         webauthn_allowed_device_types:
           items:
             format: uuid
@@ -77008,6 +77040,9 @@ components:
         device_type_restrictions:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        hints:
+        - security-key
+        - security-key
         max_attempts: 171976544
         name: name
         user_verification: required
@@ -77032,6 +77067,10 @@ components:
           nullable: true
         resident_key_requirement:
           $ref: "#/components/schemas/ResidentKeyRequirementEnum"
+        hints:
+          items:
+            $ref: "#/components/schemas/WebAuthnHintEnum"
+          type: array
         device_type_restrictions:
           items:
             format: uuid
@@ -91090,6 +91129,12 @@ components:
       - aaguid
       - description
       type: object
+    WebAuthnHintEnum:
+      enum:
+      - security-key
+      - client-device
+      - hybrid
+      type: string
     Worker:
       example:
         version: version

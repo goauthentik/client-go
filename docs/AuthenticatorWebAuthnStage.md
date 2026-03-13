@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **UserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] 
 **AuthenticatorAttachment** | Pointer to [**NullableAuthenticatorAttachmentEnum**](AuthenticatorAttachmentEnum.md) |  | [optional] 
 **ResidentKeyRequirement** | Pointer to [**ResidentKeyRequirementEnum**](ResidentKeyRequirementEnum.md) |  | [optional] 
+**Hints** | Pointer to [**[]WebAuthnHintEnum**](WebAuthnHintEnum.md) |  | [optional] 
 **DeviceTypeRestrictions** | Pointer to **[]string** |  | [optional] 
 **DeviceTypeRestrictionsObj** | [**[]WebAuthnDeviceType**](WebAuthnDeviceType.md) |  | [readonly] 
 **MaxAttempts** | Pointer to **int32** |  | [optional] 
@@ -323,6 +324,31 @@ SetResidentKeyRequirement sets ResidentKeyRequirement field to given value.
 `func (o *AuthenticatorWebAuthnStage) HasResidentKeyRequirement() bool`
 
 HasResidentKeyRequirement returns a boolean if a field has been set.
+
+### GetHints
+
+`func (o *AuthenticatorWebAuthnStage) GetHints() []WebAuthnHintEnum`
+
+GetHints returns the Hints field if non-nil, zero value otherwise.
+
+### GetHintsOk
+
+`func (o *AuthenticatorWebAuthnStage) GetHintsOk() (*[]WebAuthnHintEnum, bool)`
+
+GetHintsOk returns a tuple with the Hints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHints
+
+`func (o *AuthenticatorWebAuthnStage) SetHints(v []WebAuthnHintEnum)`
+
+SetHints sets Hints field to given value.
+
+### HasHints
+
+`func (o *AuthenticatorWebAuthnStage) HasHints() bool`
+
+HasHints returns a boolean if a field has been set.
 
 ### GetDeviceTypeRestrictions
 
