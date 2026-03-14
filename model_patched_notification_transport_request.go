@@ -23,6 +23,8 @@ type PatchedNotificationTransportRequest struct {
 	Name       *string                        `json:"name,omitempty"`
 	Mode       *NotificationTransportModeEnum `json:"mode,omitempty"`
 	WebhookUrl *string                        `json:"webhook_url,omitempty"`
+	// When set, the selected ceritifcate is used to validate the certificate of the webhook server.
+	WebhookCa NullableString `json:"webhook_ca,omitempty"`
 	// Customize the body of the request. Mapping should return data that is JSON-serializable.
 	WebhookMappingBody NullableString `json:"webhook_mapping_body,omitempty"`
 	// Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs
@@ -147,6 +149,49 @@ func (o *PatchedNotificationTransportRequest) HasWebhookUrl() bool {
 // SetWebhookUrl gets a reference to the given string and assigns it to the WebhookUrl field.
 func (o *PatchedNotificationTransportRequest) SetWebhookUrl(v string) {
 	o.WebhookUrl = &v
+}
+
+// GetWebhookCa returns the WebhookCa field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PatchedNotificationTransportRequest) GetWebhookCa() string {
+	if o == nil || IsNil(o.WebhookCa.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.WebhookCa.Get()
+}
+
+// GetWebhookCaOk returns a tuple with the WebhookCa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PatchedNotificationTransportRequest) GetWebhookCaOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.WebhookCa.Get(), o.WebhookCa.IsSet()
+}
+
+// HasWebhookCa returns a boolean if a field has been set.
+func (o *PatchedNotificationTransportRequest) HasWebhookCa() bool {
+	if o != nil && o.WebhookCa.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookCa gets a reference to the given NullableString and assigns it to the WebhookCa field.
+func (o *PatchedNotificationTransportRequest) SetWebhookCa(v string) {
+	o.WebhookCa.Set(&v)
+}
+
+// SetWebhookCaNil sets the value for WebhookCa to be an explicit nil
+func (o *PatchedNotificationTransportRequest) SetWebhookCaNil() {
+	o.WebhookCa.Set(nil)
+}
+
+// UnsetWebhookCa ensures that no value is present for WebhookCa, not even an explicit nil
+func (o *PatchedNotificationTransportRequest) UnsetWebhookCa() {
+	o.WebhookCa.Unset()
 }
 
 // GetWebhookMappingBody returns the WebhookMappingBody field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -350,6 +395,9 @@ func (o PatchedNotificationTransportRequest) ToMap() (map[string]interface{}, er
 	if !IsNil(o.WebhookUrl) {
 		toSerialize["webhook_url"] = o.WebhookUrl
 	}
+	if o.WebhookCa.IsSet() {
+		toSerialize["webhook_ca"] = o.WebhookCa.Get()
+	}
 	if o.WebhookMappingBody.IsSet() {
 		toSerialize["webhook_mapping_body"] = o.WebhookMappingBody.Get()
 	}
@@ -390,6 +438,7 @@ func (o *PatchedNotificationTransportRequest) UnmarshalJSON(data []byte) (err er
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "webhook_url")
+		delete(additionalProperties, "webhook_ca")
 		delete(additionalProperties, "webhook_mapping_body")
 		delete(additionalProperties, "webhook_mapping_headers")
 		delete(additionalProperties, "email_subject_prefix")

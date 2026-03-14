@@ -63988,6 +63988,7 @@ components:
       description: NotificationTransport Serializer
       example:
         mode: local
+        webhook_ca: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_url: https://openapi-generator.tech
         name: name
@@ -64013,6 +64014,12 @@ components:
           type: string
         webhook_url:
           format: uri
+          type: string
+        webhook_ca:
+          description: "When set, the selected ceritifcate is used to validate the\
+            \ certificate of the webhook server."
+          format: uuid
+          nullable: true
           type: string
         webhook_mapping_body:
           description: Customize the body of the request. Mapping should return data
@@ -64050,6 +64057,7 @@ components:
       description: NotificationTransport Serializer
       example:
         mode: local
+        webhook_ca: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_url: https://openapi-generator.tech
         name: name
@@ -64065,6 +64073,12 @@ components:
           $ref: "#/components/schemas/NotificationTransportModeEnum"
         webhook_url:
           format: uri
+          type: string
+        webhook_ca:
+          description: "When set, the selected ceritifcate is used to validate the\
+            \ certificate of the webhook server."
+          format: uuid
+          nullable: true
           type: string
         webhook_mapping_body:
           description: Customize the body of the request. Mapping should return data
@@ -70813,6 +70827,7 @@ components:
           key: ""
         results:
         - mode: local
+          webhook_ca: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook_url: https://openapi-generator.tech
           name: name
@@ -70823,6 +70838,7 @@ components:
           webhook_mapping_body: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           email_template: email_template
         - mode: local
+          webhook_ca: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook_url: https://openapi-generator.tech
           name: name
@@ -79150,6 +79166,7 @@ components:
       description: NotificationTransport Serializer
       example:
         mode: local
+        webhook_ca: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_mapping_headers: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook_url: https://openapi-generator.tech
         name: name
@@ -79165,6 +79182,12 @@ components:
           $ref: "#/components/schemas/NotificationTransportModeEnum"
         webhook_url:
           format: uri
+          type: string
+        webhook_ca:
+          description: "When set, the selected ceritifcate is used to validate the\
+            \ certificate of the webhook server."
+          format: uuid
+          nullable: true
           type: string
         webhook_mapping_body:
           description: Customize the body of the request. Mapping should return data

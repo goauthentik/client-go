@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Mode** | Pointer to [**NotificationTransportModeEnum**](NotificationTransportModeEnum.md) |  | [optional] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
+**WebhookCa** | Pointer to **NullableString** | When set, the selected ceritifcate is used to validate the certificate of the webhook server. | [optional] 
 **WebhookMappingBody** | Pointer to **NullableString** | Customize the body of the request. Mapping should return data that is JSON-serializable. | [optional] 
 **WebhookMappingHeaders** | Pointer to **NullableString** | Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs | [optional] 
 **EmailSubjectPrefix** | Pointer to **string** |  | [optional] 
@@ -102,6 +103,41 @@ SetWebhookUrl sets WebhookUrl field to given value.
 
 HasWebhookUrl returns a boolean if a field has been set.
 
+### GetWebhookCa
+
+`func (o *NotificationTransportRequest) GetWebhookCa() string`
+
+GetWebhookCa returns the WebhookCa field if non-nil, zero value otherwise.
+
+### GetWebhookCaOk
+
+`func (o *NotificationTransportRequest) GetWebhookCaOk() (*string, bool)`
+
+GetWebhookCaOk returns a tuple with the WebhookCa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookCa
+
+`func (o *NotificationTransportRequest) SetWebhookCa(v string)`
+
+SetWebhookCa sets WebhookCa field to given value.
+
+### HasWebhookCa
+
+`func (o *NotificationTransportRequest) HasWebhookCa() bool`
+
+HasWebhookCa returns a boolean if a field has been set.
+
+### SetWebhookCaNil
+
+`func (o *NotificationTransportRequest) SetWebhookCaNil(b bool)`
+
+ SetWebhookCaNil sets the value for WebhookCa to be an explicit nil
+
+### UnsetWebhookCa
+`func (o *NotificationTransportRequest) UnsetWebhookCa()`
+
+UnsetWebhookCa ensures that no value is present for WebhookCa, not even an explicit nil
 ### GetWebhookMappingBody
 
 `func (o *NotificationTransportRequest) GetWebhookMappingBody() string`
