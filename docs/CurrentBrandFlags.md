@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnterpriseAuditIncludeExpandedDiff** | **bool** |  | 
-**PoliciesBufferedAccessView** | **bool** |  | 
 **FlowsContinuousLogin** | **bool** |  | 
 **FlowsRefreshOthers** | **bool** |  | 
 
@@ -13,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewCurrentBrandFlags
 
-`func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsContinuousLogin bool, flowsRefreshOthers bool, ) *CurrentBrandFlags`
+`func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, flowsContinuousLogin bool, flowsRefreshOthers bool, ) *CurrentBrandFlags`
 
 NewCurrentBrandFlags instantiates a new CurrentBrandFlags object
 This constructor will assign default values to properties that have it defined,
@@ -46,26 +45,6 @@ and a boolean to check if the value has been set.
 `func (o *CurrentBrandFlags) SetEnterpriseAuditIncludeExpandedDiff(v bool)`
 
 SetEnterpriseAuditIncludeExpandedDiff sets EnterpriseAuditIncludeExpandedDiff field to given value.
-
-
-### GetPoliciesBufferedAccessView
-
-`func (o *CurrentBrandFlags) GetPoliciesBufferedAccessView() bool`
-
-GetPoliciesBufferedAccessView returns the PoliciesBufferedAccessView field if non-nil, zero value otherwise.
-
-### GetPoliciesBufferedAccessViewOk
-
-`func (o *CurrentBrandFlags) GetPoliciesBufferedAccessViewOk() (*bool, bool)`
-
-GetPoliciesBufferedAccessViewOk returns a tuple with the PoliciesBufferedAccessView field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPoliciesBufferedAccessView
-
-`func (o *CurrentBrandFlags) SetPoliciesBufferedAccessView(v bool)`
-
-SetPoliciesBufferedAccessView sets PoliciesBufferedAccessView field to given value.
 
 
 ### GetFlowsContinuousLogin

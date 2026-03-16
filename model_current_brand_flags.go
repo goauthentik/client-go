@@ -22,7 +22,6 @@ var _ MappedNullable = &CurrentBrandFlags{}
 // CurrentBrandFlags struct for CurrentBrandFlags
 type CurrentBrandFlags struct {
 	EnterpriseAuditIncludeExpandedDiff bool `json:"enterprise_audit_include_expanded_diff"`
-	PoliciesBufferedAccessView         bool `json:"policies_buffered_access_view"`
 	FlowsContinuousLogin               bool `json:"flows_continuous_login"`
 	FlowsRefreshOthers                 bool `json:"flows_refresh_others"`
 	AdditionalProperties               map[string]interface{}
@@ -34,10 +33,9 @@ type _CurrentBrandFlags CurrentBrandFlags
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsContinuousLogin bool, flowsRefreshOthers bool) *CurrentBrandFlags {
+func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, flowsContinuousLogin bool, flowsRefreshOthers bool) *CurrentBrandFlags {
 	this := CurrentBrandFlags{}
 	this.EnterpriseAuditIncludeExpandedDiff = enterpriseAuditIncludeExpandedDiff
-	this.PoliciesBufferedAccessView = policiesBufferedAccessView
 	this.FlowsContinuousLogin = flowsContinuousLogin
 	this.FlowsRefreshOthers = flowsRefreshOthers
 	return &this
@@ -73,30 +71,6 @@ func (o *CurrentBrandFlags) GetEnterpriseAuditIncludeExpandedDiffOk() (*bool, bo
 // SetEnterpriseAuditIncludeExpandedDiff sets field value
 func (o *CurrentBrandFlags) SetEnterpriseAuditIncludeExpandedDiff(v bool) {
 	o.EnterpriseAuditIncludeExpandedDiff = v
-}
-
-// GetPoliciesBufferedAccessView returns the PoliciesBufferedAccessView field value
-func (o *CurrentBrandFlags) GetPoliciesBufferedAccessView() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.PoliciesBufferedAccessView
-}
-
-// GetPoliciesBufferedAccessViewOk returns a tuple with the PoliciesBufferedAccessView field value
-// and a boolean to check if the value has been set.
-func (o *CurrentBrandFlags) GetPoliciesBufferedAccessViewOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PoliciesBufferedAccessView, true
-}
-
-// SetPoliciesBufferedAccessView sets field value
-func (o *CurrentBrandFlags) SetPoliciesBufferedAccessView(v bool) {
-	o.PoliciesBufferedAccessView = v
 }
 
 // GetFlowsContinuousLogin returns the FlowsContinuousLogin field value
@@ -158,7 +132,6 @@ func (o CurrentBrandFlags) MarshalJSON() ([]byte, error) {
 func (o CurrentBrandFlags) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enterprise_audit_include_expanded_diff"] = o.EnterpriseAuditIncludeExpandedDiff
-	toSerialize["policies_buffered_access_view"] = o.PoliciesBufferedAccessView
 	toSerialize["flows_continuous_login"] = o.FlowsContinuousLogin
 	toSerialize["flows_refresh_others"] = o.FlowsRefreshOthers
 
@@ -175,7 +148,6 @@ func (o *CurrentBrandFlags) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"enterprise_audit_include_expanded_diff",
-		"policies_buffered_access_view",
 		"flows_continuous_login",
 		"flows_refresh_others",
 	}
@@ -208,7 +180,6 @@ func (o *CurrentBrandFlags) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "enterprise_audit_include_expanded_diff")
-		delete(additionalProperties, "policies_buffered_access_view")
 		delete(additionalProperties, "flows_continuous_login")
 		delete(additionalProperties, "flows_refresh_others")
 		o.AdditionalProperties = additionalProperties

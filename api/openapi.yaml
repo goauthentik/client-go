@@ -55514,7 +55514,6 @@ components:
         - name: name
           href: href
         flags:
-          policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
           flows_continuous_login: true
@@ -80979,7 +80978,6 @@ components:
         pagination_max_page_size: 1210617418
         default_token_duration: default_token_duration
         flags:
-          policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
           flows_continuous_login: true
@@ -87076,7 +87074,6 @@ components:
         pagination_max_page_size: 1210617418
         default_token_duration: default_token_duration
         flags:
-          policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
           flows_continuous_login: true
@@ -87161,7 +87158,6 @@ components:
         pagination_max_page_size: 1210617418
         default_token_duration: default_token_duration
         flags:
-          policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
           flows_continuous_login: true
@@ -91362,14 +91358,11 @@ components:
       type: object
     CurrentBrand_flags:
       example:
-        policies_buffered_access_view: true
         enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
         flows_continuous_login: true
       properties:
         enterprise_audit_include_expanded_diff:
-          type: boolean
-        policies_buffered_access_view:
           type: boolean
         flows_continuous_login:
           type: boolean
@@ -91380,7 +91373,6 @@ components:
       - enterprise_audit_include_expanded_diff
       - flows_continuous_login
       - flows_refresh_others
-      - policies_buffered_access_view
       type: object
     GeoIPPolicy_countries_obj_inner:
       example:
@@ -91399,14 +91391,11 @@ components:
       type: object
     PatchedSettingsRequest_flags:
       example:
-        policies_buffered_access_view: true
         enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
         flows_continuous_login: true
       properties:
         enterprise_audit_include_expanded_diff:
-          type: boolean
-        policies_buffered_access_view:
           type: boolean
         flows_continuous_login:
           type: boolean
@@ -91416,7 +91405,6 @@ components:
       - enterprise_audit_include_expanded_diff
       - flows_continuous_login
       - flows_refresh_others
-      - policies_buffered_access_view
       type: object
     SystemInfo_runtime:
       description: Get versions
