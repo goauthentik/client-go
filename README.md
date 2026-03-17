@@ -1143,7 +1143,7 @@ Class | Method | HTTP request | Description
 *TasksAPI* | [**TasksTasksRetrieve**](docs/TasksAPI.md#taskstasksretrieve) | **Get** /tasks/tasks/{message_id}/ | 
 *TasksAPI* | [**TasksTasksRetryCreate**](docs/TasksAPI.md#taskstasksretrycreate) | **Post** /tasks/tasks/{message_id}/retry/ | 
 *TasksAPI* | [**TasksTasksStatusRetrieve**](docs/TasksAPI.md#taskstasksstatusretrieve) | **Get** /tasks/tasks/status/ | 
-*TasksAPI* | [**TasksWorkersList**](docs/TasksAPI.md#tasksworkerslist) | **Get** /tasks/workers | 
+*TasksAPI* | [**TasksWorkersList**](docs/TasksAPI.md#tasksworkerslist) | **Get** /tasks/workers/ | 
 *TenantsAPI* | [**TenantsDomainsCreate**](docs/TenantsAPI.md#tenantsdomainscreate) | **Post** /tenants/domains/ | 
 *TenantsAPI* | [**TenantsDomainsDestroy**](docs/TenantsAPI.md#tenantsdomainsdestroy) | **Delete** /tenants/domains/{id}/ | 
 *TenantsAPI* | [**TenantsDomainsList**](docs/TenantsAPI.md#tenantsdomainslist) | **Get** /tenants/domains/ | 

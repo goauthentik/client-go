@@ -51100,7 +51100,7 @@ paths:
       - authentik: []
       tags:
       - tasks
-  /tasks/workers:
+  /tasks/workers/:
     get:
       description: Get currently connected worker count.
       operationId: tasks_workers_list

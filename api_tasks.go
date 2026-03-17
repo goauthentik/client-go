@@ -1364,7 +1364,7 @@ func (a *TasksAPIService) TasksWorkersListExecute(r ApiTasksWorkersListRequest) 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/tasks/workers"
+	localVarPath := localBasePath + "/tasks/workers/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**TasksTasksRetrieve**](TasksAPI.md#TasksTasksRetrieve) | **Get** /tasks/tasks/{message_id}/ | 
 [**TasksTasksRetryCreate**](TasksAPI.md#TasksTasksRetryCreate) | **Post** /tasks/tasks/{message_id}/retry/ | 
 [**TasksTasksStatusRetrieve**](TasksAPI.md#TasksTasksStatusRetrieve) | **Get** /tasks/tasks/status/ | 
-[**TasksWorkersList**](TasksAPI.md#TasksWorkersList) | **Get** /tasks/workers | 
+[**TasksWorkersList**](TasksAPI.md#TasksWorkersList) | **Get** /tasks/workers/ | 
 
 
 
