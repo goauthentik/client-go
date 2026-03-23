@@ -55517,6 +55517,7 @@ components:
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
           flows_continuous_login: true
+          core_default_app_access: true
         flow_device_code: flow_device_code
         matched_domain: matched_domain
         flow_authentication: flow_authentication
@@ -80981,6 +80982,7 @@ components:
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
           flows_continuous_login: true
+          core_default_app_access: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -87077,6 +87079,7 @@ components:
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
           flows_continuous_login: true
+          core_default_app_access: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -87161,6 +87164,7 @@ components:
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
           flows_continuous_login: true
+          core_default_app_access: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -91361,15 +91365,26 @@ components:
         enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
         flows_continuous_login: true
+        core_default_app_access: true
       properties:
+        core_default_app_access:
+          description: Configure if applications without any policy/group/user bindings
+            should be accessible to any user.
+          type: boolean
         enterprise_audit_include_expanded_diff:
+          description: "Include additional information in audit logs, may incur a\
+            \ performance penalty."
           type: boolean
         flows_continuous_login:
+          description: "Upon successful authentication, re-start authentication in\
+            \ other open tabs."
           type: boolean
         flows_refresh_others:
+          description: Refresh other tabs after successful authentication.
           type: boolean
       readOnly: true
       required:
+      - core_default_app_access
       - enterprise_audit_include_expanded_diff
       - flows_continuous_login
       - flows_refresh_others
@@ -91394,14 +91409,25 @@ components:
         enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
         flows_continuous_login: true
+        core_default_app_access: true
       properties:
+        core_default_app_access:
+          description: Configure if applications without any policy/group/user bindings
+            should be accessible to any user.
+          type: boolean
         enterprise_audit_include_expanded_diff:
+          description: "Include additional information in audit logs, may incur a\
+            \ performance penalty."
           type: boolean
         flows_continuous_login:
+          description: "Upon successful authentication, re-start authentication in\
+            \ other open tabs."
           type: boolean
         flows_refresh_others:
+          description: Refresh other tabs after successful authentication.
           type: boolean
       required:
+      - core_default_app_access
       - enterprise_audit_include_expanded_diff
       - flows_continuous_login
       - flows_refresh_others

@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EnterpriseAuditIncludeExpandedDiff** | **bool** |  | 
-**FlowsContinuousLogin** | **bool** |  | 
-**FlowsRefreshOthers** | **bool** |  | 
+**CoreDefaultAppAccess** | **bool** | Configure if applications without any policy/group/user bindings should be accessible to any user. | 
+**EnterpriseAuditIncludeExpandedDiff** | **bool** | Include additional information in audit logs, may incur a performance penalty. | 
+**FlowsContinuousLogin** | **bool** | Upon successful authentication, re-start authentication in other open tabs. | 
+**FlowsRefreshOthers** | **bool** | Refresh other tabs after successful authentication. | 
 
 ## Methods
 
 ### NewCurrentBrandFlags
 
-`func NewCurrentBrandFlags(enterpriseAuditIncludeExpandedDiff bool, flowsContinuousLogin bool, flowsRefreshOthers bool, ) *CurrentBrandFlags`
+`func NewCurrentBrandFlags(coreDefaultAppAccess bool, enterpriseAuditIncludeExpandedDiff bool, flowsContinuousLogin bool, flowsRefreshOthers bool, ) *CurrentBrandFlags`
 
 NewCurrentBrandFlags instantiates a new CurrentBrandFlags object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,26 @@ will change when the set of required properties is changed
 NewCurrentBrandFlagsWithDefaults instantiates a new CurrentBrandFlags object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCoreDefaultAppAccess
+
+`func (o *CurrentBrandFlags) GetCoreDefaultAppAccess() bool`
+
+GetCoreDefaultAppAccess returns the CoreDefaultAppAccess field if non-nil, zero value otherwise.
+
+### GetCoreDefaultAppAccessOk
+
+`func (o *CurrentBrandFlags) GetCoreDefaultAppAccessOk() (*bool, bool)`
+
+GetCoreDefaultAppAccessOk returns a tuple with the CoreDefaultAppAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCoreDefaultAppAccess
+
+`func (o *CurrentBrandFlags) SetCoreDefaultAppAccess(v bool)`
+
+SetCoreDefaultAppAccess sets CoreDefaultAppAccess field to given value.
+
 
 ### GetEnterpriseAuditIncludeExpandedDiff
 
