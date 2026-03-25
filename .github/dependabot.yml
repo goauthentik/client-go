@@ -9,7 +9,7 @@ updates:
       - BeryJu
       - rissson
   - package-ecosystem: "docker-compose"
-    directory: "/scripts"
+    directory: "/"
     schedule:
       interval: "daily"
     assignees:
