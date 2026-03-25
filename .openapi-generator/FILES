@@ -745,7 +745,6 @@ docs/ReportsAPI.md
 docs/Reputation.md
 docs/ReputationPolicy.md
 docs/ReputationPolicyRequest.md
-docs/ResidentKeyRequirementEnum.md
 docs/Review.md
 docs/ReviewRequest.md
 docs/ReviewerGroup.md
@@ -1619,7 +1618,6 @@ model_related_group.go
 model_reputation.go
 model_reputation_policy.go
 model_reputation_policy_request.go
-model_resident_key_requirement_enum.go
 model_review.go
 model_review_request.go
 model_reviewer_group.go

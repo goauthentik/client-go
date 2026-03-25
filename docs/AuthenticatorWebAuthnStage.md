@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **FriendlyName** | Pointer to **string** |  | [optional] 
 **UserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] 
 **AuthenticatorAttachment** | Pointer to [**NullableAuthenticatorAttachmentEnum**](AuthenticatorAttachmentEnum.md) |  | [optional] 
-**ResidentKeyRequirement** | Pointer to [**ResidentKeyRequirementEnum**](ResidentKeyRequirementEnum.md) |  | [optional] 
+**ResidentKeyRequirement** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] 
 **Hints** | Pointer to [**[]WebAuthnHintEnum**](WebAuthnHintEnum.md) |  | [optional] 
 **DeviceTypeRestrictions** | Pointer to **[]string** |  | [optional] 
 **DeviceTypeRestrictionsObj** | [**[]WebAuthnDeviceType**](WebAuthnDeviceType.md) |  | [readonly] 
@@ -302,20 +302,20 @@ HasAuthenticatorAttachment returns a boolean if a field has been set.
 UnsetAuthenticatorAttachment ensures that no value is present for AuthenticatorAttachment, not even an explicit nil
 ### GetResidentKeyRequirement
 
-`func (o *AuthenticatorWebAuthnStage) GetResidentKeyRequirement() ResidentKeyRequirementEnum`
+`func (o *AuthenticatorWebAuthnStage) GetResidentKeyRequirement() UserVerificationEnum`
 
 GetResidentKeyRequirement returns the ResidentKeyRequirement field if non-nil, zero value otherwise.
 
 ### GetResidentKeyRequirementOk
 
-`func (o *AuthenticatorWebAuthnStage) GetResidentKeyRequirementOk() (*ResidentKeyRequirementEnum, bool)`
+`func (o *AuthenticatorWebAuthnStage) GetResidentKeyRequirementOk() (*UserVerificationEnum, bool)`
 
 GetResidentKeyRequirementOk returns a tuple with the ResidentKeyRequirement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResidentKeyRequirement
 
-`func (o *AuthenticatorWebAuthnStage) SetResidentKeyRequirement(v ResidentKeyRequirementEnum)`
+`func (o *AuthenticatorWebAuthnStage) SetResidentKeyRequirement(v UserVerificationEnum)`
 
 SetResidentKeyRequirement sets ResidentKeyRequirement field to given value.
 

@@ -1860,7 +1860,6 @@ Class | Method | HTTP request | Description
  - [Reputation](docs/Reputation.md)
  - [ReputationPolicy](docs/ReputationPolicy.md)
  - [ReputationPolicyRequest](docs/ReputationPolicyRequest.md)
- - [ResidentKeyRequirementEnum](docs/ResidentKeyRequirementEnum.md)
  - [Review](docs/Review.md)
  - [ReviewRequest](docs/ReviewRequest.md)
  - [ReviewerGroup](docs/ReviewerGroup.md)

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **FriendlyName** | Pointer to **string** |  | [optional] 
 **UserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] 
 **AuthenticatorAttachment** | Pointer to [**NullableAuthenticatorAttachmentEnum**](AuthenticatorAttachmentEnum.md) |  | [optional] 
-**ResidentKeyRequirement** | Pointer to [**ResidentKeyRequirementEnum**](ResidentKeyRequirementEnum.md) |  | [optional] 
+**ResidentKeyRequirement** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] 
 **Hints** | Pointer to [**[]WebAuthnHintEnum**](WebAuthnHintEnum.md) |  | [optional] 
 **DeviceTypeRestrictions** | Pointer to **[]string** |  | [optional] 
 **MaxAttempts** | Pointer to **int32** |  | [optional] 
@@ -175,20 +175,20 @@ HasAuthenticatorAttachment returns a boolean if a field has been set.
 UnsetAuthenticatorAttachment ensures that no value is present for AuthenticatorAttachment, not even an explicit nil
 ### GetResidentKeyRequirement
 
-`func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirement() ResidentKeyRequirementEnum`
+`func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirement() UserVerificationEnum`
 
 GetResidentKeyRequirement returns the ResidentKeyRequirement field if non-nil, zero value otherwise.
 
 ### GetResidentKeyRequirementOk
 
-`func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirementOk() (*ResidentKeyRequirementEnum, bool)`
+`func (o *AuthenticatorWebAuthnStageRequest) GetResidentKeyRequirementOk() (*UserVerificationEnum, bool)`
 
 GetResidentKeyRequirementOk returns a tuple with the ResidentKeyRequirement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResidentKeyRequirement
 
-`func (o *AuthenticatorWebAuthnStageRequest) SetResidentKeyRequirement(v ResidentKeyRequirementEnum)`
+`func (o *AuthenticatorWebAuthnStageRequest) SetResidentKeyRequirement(v UserVerificationEnum)`
 
 SetResidentKeyRequirement sets ResidentKeyRequirement field to given value.
 

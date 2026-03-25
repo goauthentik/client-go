@@ -53944,7 +53944,7 @@ components:
           title: title
           slug: slug
         authenticator_attachment: ""
-        resident_key_requirement: discouraged
+        resident_key_requirement: null
         component: component
         verbose_name: verbose_name
         meta_model_name: meta_model_name
@@ -53998,7 +53998,7 @@ components:
           - $ref: "#/components/schemas/AuthenticatorAttachmentEnum"
           nullable: true
         resident_key_requirement:
-          $ref: "#/components/schemas/ResidentKeyRequirementEnum"
+          $ref: "#/components/schemas/UserVerificationEnum"
         hints:
           items:
             $ref: "#/components/schemas/WebAuthnHintEnum"
@@ -54030,7 +54030,7 @@ components:
     AuthenticatorWebAuthnStageRequest:
       description: AuthenticatorWebAuthnStage Serializer
       example:
-        resident_key_requirement: discouraged
+        resident_key_requirement: null
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
         device_type_restrictions:
@@ -54062,7 +54062,7 @@ components:
           - $ref: "#/components/schemas/AuthenticatorAttachmentEnum"
           nullable: true
         resident_key_requirement:
-          $ref: "#/components/schemas/ResidentKeyRequirementEnum"
+          $ref: "#/components/schemas/UserVerificationEnum"
         hints:
           items:
             $ref: "#/components/schemas/WebAuthnHintEnum"
@@ -66492,7 +66492,7 @@ components:
             title: title
             slug: slug
           authenticator_attachment: ""
-          resident_key_requirement: discouraged
+          resident_key_requirement: null
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
@@ -66540,7 +66540,7 @@ components:
             title: title
             slug: slug
           authenticator_attachment: ""
-          resident_key_requirement: discouraged
+          resident_key_requirement: null
           component: component
           verbose_name: verbose_name
           meta_model_name: meta_model_name
@@ -77050,7 +77050,7 @@ components:
     PatchedAuthenticatorWebAuthnStageRequest:
       description: AuthenticatorWebAuthnStage Serializer
       example:
-        resident_key_requirement: discouraged
+        resident_key_requirement: null
         configure_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         friendly_name: friendly_name
         device_type_restrictions:
@@ -77082,7 +77082,7 @@ components:
           - $ref: "#/components/schemas/AuthenticatorAttachmentEnum"
           nullable: true
         resident_key_requirement:
-          $ref: "#/components/schemas/ResidentKeyRequirementEnum"
+          $ref: "#/components/schemas/UserVerificationEnum"
         hints:
           items:
             $ref: "#/components/schemas/WebAuthnHintEnum"
@@ -84463,12 +84463,6 @@ components:
       required:
       - name
       type: object
-    ResidentKeyRequirementEnum:
-      enum:
-      - discouraged
-      - preferred
-      - required
-      type: string
     Review:
       description: |-
         Mixin to validate that a valid enterprise license
