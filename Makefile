@@ -4,7 +4,7 @@ UID = $(shell id -u)
 GID = $(shell id -g)
 
 build:
-	rm "${PWD}"/*.go
+	rm -f "${PWD}"/*.go
 	docker compose -f compose.yml run --rm --user "${UID}:${GID}" gen \
 		generate \
 		-i /local/schema.yml \
