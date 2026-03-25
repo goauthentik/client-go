@@ -1,5 +1,5 @@
 ---
-name: Stable release
+name: Release
 
 on:
   workflow_dispatch:
@@ -30,8 +30,10 @@ jobs:
             tac |
             while read -r tag; do
               version="$(echo -n "$tag" | sed 's/version\///')"
-              IFS="." read -r year month patch <<< "${version}"
-              version="3.${year}$(printf '%02d' "${month}")0.${patch}"
+              version_base="${version%%-*}" # without -rc suffix
+              version_suffix="${version#"$version_base"}" # RC suffix
+              IFS="." read -r year month patch <<< "${version_base}"
+              version="3.${year}$(printf '%02d' "${month}")0.${patch}${version_suffix}"
               if ! git show "$version" >/dev/null 2>/dev/null; then
                 echo "$tag"
               fi
@@ -87,8 +89,10 @@ jobs:
         run: |
           tag="${{ matrix.tag }}"
           version="$(echo -n "$tag" | sed 's/version\///')"
-          IFS="." read -r year month patch <<< "${version}"
-          version="3.${year}$(printf '%02d' "${month}")0.${patch}"
+          version_base="${version%%-*}" # without -rc suffix
+          version_suffix="${version#"$version_base"}" # RC suffix
+          IFS="." read -r year month patch <<< "${version_base}"
+          version="3.${year}$(printf '%02d' "${month}")0.${patch}${version_suffix}"
           branch="$(echo -n "$tag" | sed 's/\//-/' | grep -oE "^version-[0-9]{4}\.[0-9]{1,2}")"
           if ! git ls-remote --heads origin "$branch" | grep -q "$branch"; then
             git checkout -b "$branch"
