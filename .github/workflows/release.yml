@@ -100,7 +100,7 @@ jobs:
             git checkout "$branch"
           fi
 
-          cp ../authentik/schema.yml
+          cp ../authentik/schema.yml .
           make build version="$version"
 
           git config --global user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
