@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Metadata** | **string** |  | [readonly] 
-**DownloadUrl** | **string** |  | [readonly] 
+**DownloadUrl** | **NullableString** |  | [readonly] 
 
 ## Methods
 
 ### NewSAMLMetadata
 
-`func NewSAMLMetadata(metadata string, downloadUrl string, ) *SAMLMetadata`
+`func NewSAMLMetadata(metadata string, downloadUrl NullableString, ) *SAMLMetadata`
 
 NewSAMLMetadata instantiates a new SAMLMetadata object
 This constructor will assign default values to properties that have it defined,
@@ -66,6 +66,16 @@ and a boolean to check if the value has been set.
 SetDownloadUrl sets DownloadUrl field to given value.
 
 
+### SetDownloadUrlNil
+
+`func (o *SAMLMetadata) SetDownloadUrlNil(b bool)`
+
+ SetDownloadUrlNil sets the value for DownloadUrl to be an explicit nil
+
+### UnsetDownloadUrl
+`func (o *SAMLMetadata) UnsetDownloadUrl()`
+
+UnsetDownloadUrl ensures that no value is present for DownloadUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

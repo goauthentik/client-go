@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.2.1
+  version: 2026.2.2-rc1
 servers:
 - url: /api/v3
 paths:
@@ -51963,6 +51963,7 @@ components:
         provider_obj:
           allOf:
           - $ref: "#/components/schemas/Provider"
+          nullable: true
           readOnly: true
         backchannel_providers:
           items:
@@ -55159,6 +55160,7 @@ components:
           policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
+          flows_continuous_login: true
         flow_device_code: flow_device_code
         matched_domain: matched_domain
         flow_authentication: flow_authentication
@@ -57198,6 +57200,7 @@ components:
         device_group_obj:
           allOf:
           - $ref: "#/components/schemas/DeviceAccessGroup"
+          nullable: true
           readOnly: true
         connector:
           format: uuid
@@ -59997,6 +60000,8 @@ components:
           default: false
           type: boolean
         application_pre:
+          type: string
+        application_pre_launch:
           type: string
         flow_designation:
           $ref: "#/components/schemas/FlowDesignationEnum"
@@ -80380,6 +80385,7 @@ components:
           policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
+          flows_continuous_login: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -84132,6 +84138,7 @@ components:
           readOnly: true
           type: string
         download_url:
+          nullable: true
           readOnly: true
           type: string
       required:
@@ -86470,6 +86477,7 @@ components:
           policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
+          flows_continuous_login: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -86554,6 +86562,7 @@ components:
           policies_buffered_access_view: true
           enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
+          flows_continuous_login: true
         default_token_length: 314780941
         event_retention: event_retention
         default_user_change_email: true
@@ -90747,16 +90756,20 @@ components:
         policies_buffered_access_view: true
         enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
+        flows_continuous_login: true
       properties:
         enterprise_audit_include_expanded_diff:
           type: boolean
         policies_buffered_access_view:
+          type: boolean
+        flows_continuous_login:
           type: boolean
         flows_refresh_others:
           type: boolean
       readOnly: true
       required:
       - enterprise_audit_include_expanded_diff
+      - flows_continuous_login
       - flows_refresh_others
       - policies_buffered_access_view
       type: object
@@ -90765,15 +90778,19 @@ components:
         policies_buffered_access_view: true
         enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
+        flows_continuous_login: true
       properties:
         enterprise_audit_include_expanded_diff:
           type: boolean
         policies_buffered_access_view:
           type: boolean
+        flows_continuous_login:
+          type: boolean
         flows_refresh_others:
           type: boolean
       required:
       - enterprise_audit_include_expanded_diff
+      - flows_continuous_login
       - flows_refresh_others
       - policies_buffered_access_view
       type: object

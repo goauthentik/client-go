@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: authentik
-  version: 2026.2.1
+  version: 2026.2.2-rc1
   description: Making authentication simple.
   contact:
     email: hello@goauthentik.io
@@ -34122,6 +34122,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/Provider'
           readOnly: true
+          nullable: true
         backchannel_providers:
           type: array
           items:
@@ -36768,10 +36769,13 @@ components:
               type: boolean
             policies_buffered_access_view:
               type: boolean
+            flows_continuous_login:
+              type: boolean
             flows_refresh_others:
               type: boolean
           required:
           - enterprise_audit_include_expanded_diff
+          - flows_continuous_login
           - flows_refresh_others
           - policies_buffered_access_view
           readOnly: true
@@ -38287,6 +38291,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DeviceAccessGroup'
           readOnly: true
+          nullable: true
         connector:
           type: string
           format: uuid
@@ -40442,6 +40447,8 @@ components:
           type: boolean
           default: false
         application_pre:
+          type: string
+        application_pre_launch:
           type: string
         flow_designation:
           $ref: '#/components/schemas/FlowDesignationEnum'
@@ -50379,10 +50386,13 @@ components:
               type: boolean
             policies_buffered_access_view:
               type: boolean
+            flows_continuous_login:
+              type: boolean
             flows_refresh_others:
               type: boolean
           required:
           - enterprise_audit_include_expanded_diff
+          - flows_continuous_login
           - flows_refresh_others
           - policies_buffered_access_view
     PatchedSourceStageRequest:
@@ -53166,6 +53176,7 @@ components:
         download_url:
           type: string
           readOnly: true
+          nullable: true
       required:
       - download_url
       - metadata
@@ -55074,10 +55085,13 @@ components:
               type: boolean
             policies_buffered_access_view:
               type: boolean
+            flows_continuous_login:
+              type: boolean
             flows_refresh_others:
               type: boolean
           required:
           - enterprise_audit_include_expanded_diff
+          - flows_continuous_login
           - flows_refresh_others
           - policies_buffered_access_view
       required:
@@ -55152,10 +55166,13 @@ components:
               type: boolean
             policies_buffered_access_view:
               type: boolean
+            flows_continuous_login:
+              type: boolean
             flows_refresh_others:
               type: boolean
           required:
           - enterprise_audit_include_expanded_diff
+          - flows_continuous_login
           - flows_refresh_others
           - policies_buffered_access_view
       required:

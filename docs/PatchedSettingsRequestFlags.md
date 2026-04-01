@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnterpriseAuditIncludeExpandedDiff** | **bool** |  | 
 **PoliciesBufferedAccessView** | **bool** |  | 
+**FlowsContinuousLogin** | **bool** |  | 
 **FlowsRefreshOthers** | **bool** |  | 
 
 ## Methods
 
 ### NewPatchedSettingsRequestFlags
 
-`func NewPatchedSettingsRequestFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsRefreshOthers bool, ) *PatchedSettingsRequestFlags`
+`func NewPatchedSettingsRequestFlags(enterpriseAuditIncludeExpandedDiff bool, policiesBufferedAccessView bool, flowsContinuousLogin bool, flowsRefreshOthers bool, ) *PatchedSettingsRequestFlags`
 
 NewPatchedSettingsRequestFlags instantiates a new PatchedSettingsRequestFlags object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +66,26 @@ and a boolean to check if the value has been set.
 `func (o *PatchedSettingsRequestFlags) SetPoliciesBufferedAccessView(v bool)`
 
 SetPoliciesBufferedAccessView sets PoliciesBufferedAccessView field to given value.
+
+
+### GetFlowsContinuousLogin
+
+`func (o *PatchedSettingsRequestFlags) GetFlowsContinuousLogin() bool`
+
+GetFlowsContinuousLogin returns the FlowsContinuousLogin field if non-nil, zero value otherwise.
+
+### GetFlowsContinuousLoginOk
+
+`func (o *PatchedSettingsRequestFlags) GetFlowsContinuousLoginOk() (*bool, bool)`
+
+GetFlowsContinuousLoginOk returns a tuple with the FlowsContinuousLogin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowsContinuousLogin
+
+`func (o *PatchedSettingsRequestFlags) SetFlowsContinuousLogin(v bool)`
+
+SetFlowsContinuousLogin sets FlowsContinuousLogin field to given value.
 
 
 ### GetFlowsRefreshOthers

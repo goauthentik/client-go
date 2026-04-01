@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Application&#39;s display Name. | 
 **Slug** | **string** | Internal application name, used in URLs. | 
 **Provider** | Pointer to **NullableInt32** |  | [optional] 
-**ProviderObj** | [**Provider**](Provider.md) |  | [readonly] 
+**ProviderObj** | [**NullableProvider**](Provider.md) |  | [readonly] 
 **BackchannelProviders** | Pointer to **[]int32** |  | [optional] 
 **BackchannelProvidersObj** | [**[]Provider**](Provider.md) |  | [readonly] 
 **LaunchUrl** | **NullableString** | Allow formatting of launch URL | [readonly] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication(pk string, name string, slug string, providerObj Provider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIconUrl NullableString, metaIconThemedUrls NullableThemedUrls, ) *Application`
+`func NewApplication(pk string, name string, slug string, providerObj NullableProvider, backchannelProvidersObj []Provider, launchUrl NullableString, metaIconUrl NullableString, metaIconThemedUrls NullableThemedUrls, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -156,6 +156,16 @@ and a boolean to check if the value has been set.
 SetProviderObj sets ProviderObj field to given value.
 
 
+### SetProviderObjNil
+
+`func (o *Application) SetProviderObjNil(b bool)`
+
+ SetProviderObjNil sets the value for ProviderObj to be an explicit nil
+
+### UnsetProviderObj
+`func (o *Application) UnsetProviderObj()`
+
+UnsetProviderObj ensures that no value is present for ProviderObj, not even an explicit nil
 ### GetBackchannelProviders
 
 `func (o *Application) GetBackchannelProviders() []int32`

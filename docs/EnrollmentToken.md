@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TokenUuid** | **string** |  | [readonly] 
 **DeviceGroup** | Pointer to **NullableString** |  | [optional] 
-**DeviceGroupObj** | [**DeviceAccessGroup**](DeviceAccessGroup.md) |  | [readonly] 
+**DeviceGroupObj** | [**NullableDeviceAccessGroup**](DeviceAccessGroup.md) |  | [readonly] 
 **Connector** | **string** |  | 
 **Name** | **string** |  | 
 **Expiring** | Pointer to **bool** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewEnrollmentToken
 
-`func NewEnrollmentToken(tokenUuid string, deviceGroupObj DeviceAccessGroup, connector string, name string, ) *EnrollmentToken`
+`func NewEnrollmentToken(tokenUuid string, deviceGroupObj NullableDeviceAccessGroup, connector string, name string, ) *EnrollmentToken`
 
 NewEnrollmentToken instantiates a new EnrollmentToken object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +106,16 @@ and a boolean to check if the value has been set.
 SetDeviceGroupObj sets DeviceGroupObj field to given value.
 
 
+### SetDeviceGroupObjNil
+
+`func (o *EnrollmentToken) SetDeviceGroupObjNil(b bool)`
+
+ SetDeviceGroupObjNil sets the value for DeviceGroupObj to be an explicit nil
+
+### UnsetDeviceGroupObj
+`func (o *EnrollmentToken) UnsetDeviceGroupObj()`
+
+UnsetDeviceGroupObj ensures that no value is present for DeviceGroupObj, not even an explicit nil
 ### GetConnector
 
 `func (o *EnrollmentToken) GetConnector() string`

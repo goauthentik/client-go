@@ -48,6 +48,7 @@ Name | Type | Description | Notes
 **PasswordFields** | **bool** |  | 
 **AllowShowPassword** | Pointer to **bool** |  | [optional] [default to false]
 **ApplicationPre** | Pointer to **string** |  | [optional] 
+**ApplicationPreLaunch** | Pointer to **string** |  | [optional] 
 **FlowDesignation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) |  | 
 **CaptchaStage** | Pointer to [**NullableCaptchaChallenge**](CaptchaChallenge.md) |  | [optional] 
 **EnrollUrl** | Pointer to **string** |  | [optional] 
@@ -1080,6 +1081,31 @@ SetApplicationPre sets ApplicationPre field to given value.
 `func (o *ChallengeTypes) HasApplicationPre() bool`
 
 HasApplicationPre returns a boolean if a field has been set.
+
+### GetApplicationPreLaunch
+
+`func (o *ChallengeTypes) GetApplicationPreLaunch() string`
+
+GetApplicationPreLaunch returns the ApplicationPreLaunch field if non-nil, zero value otherwise.
+
+### GetApplicationPreLaunchOk
+
+`func (o *ChallengeTypes) GetApplicationPreLaunchOk() (*string, bool)`
+
+GetApplicationPreLaunchOk returns a tuple with the ApplicationPreLaunch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplicationPreLaunch
+
+`func (o *ChallengeTypes) SetApplicationPreLaunch(v string)`
+
+SetApplicationPreLaunch sets ApplicationPreLaunch field to given value.
+
+### HasApplicationPreLaunch
+
+`func (o *ChallengeTypes) HasApplicationPreLaunch() bool`
+
+HasApplicationPreLaunch returns a boolean if a field has been set.
 
 ### GetFlowDesignation
 

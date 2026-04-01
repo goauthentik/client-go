@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.1
+API version: 2026.2.2-rc1
 Contact: hello@goauthentik.io
 */
 
@@ -29,6 +29,7 @@ type IdentificationChallenge struct {
 	PasswordFields        bool                      `json:"password_fields"`
 	AllowShowPassword     *bool                     `json:"allow_show_password,omitempty"`
 	ApplicationPre        *string                   `json:"application_pre,omitempty"`
+	ApplicationPreLaunch  *string                   `json:"application_pre_launch,omitempty"`
 	FlowDesignation       FlowDesignationEnum       `json:"flow_designation"`
 	CaptchaStage          NullableCaptchaChallenge  `json:"captcha_stage,omitempty"`
 	EnrollUrl             *string                   `json:"enroll_url,omitempty"`
@@ -329,6 +330,38 @@ func (o *IdentificationChallenge) HasApplicationPre() bool {
 // SetApplicationPre gets a reference to the given string and assigns it to the ApplicationPre field.
 func (o *IdentificationChallenge) SetApplicationPre(v string) {
 	o.ApplicationPre = &v
+}
+
+// GetApplicationPreLaunch returns the ApplicationPreLaunch field value if set, zero value otherwise.
+func (o *IdentificationChallenge) GetApplicationPreLaunch() string {
+	if o == nil || IsNil(o.ApplicationPreLaunch) {
+		var ret string
+		return ret
+	}
+	return *o.ApplicationPreLaunch
+}
+
+// GetApplicationPreLaunchOk returns a tuple with the ApplicationPreLaunch field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentificationChallenge) GetApplicationPreLaunchOk() (*string, bool) {
+	if o == nil || IsNil(o.ApplicationPreLaunch) {
+		return nil, false
+	}
+	return o.ApplicationPreLaunch, true
+}
+
+// HasApplicationPreLaunch returns a boolean if a field has been set.
+func (o *IdentificationChallenge) HasApplicationPreLaunch() bool {
+	if o != nil && !IsNil(o.ApplicationPreLaunch) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplicationPreLaunch gets a reference to the given string and assigns it to the ApplicationPreLaunch field.
+func (o *IdentificationChallenge) SetApplicationPreLaunch(v string) {
+	o.ApplicationPreLaunch = &v
 }
 
 // GetFlowDesignation returns the FlowDesignation field value
@@ -671,6 +704,9 @@ func (o IdentificationChallenge) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApplicationPre) {
 		toSerialize["application_pre"] = o.ApplicationPre
 	}
+	if !IsNil(o.ApplicationPreLaunch) {
+		toSerialize["application_pre_launch"] = o.ApplicationPreLaunch
+	}
 	toSerialize["flow_designation"] = o.FlowDesignation
 	if o.CaptchaStage.IsSet() {
 		toSerialize["captcha_stage"] = o.CaptchaStage.Get()
@@ -750,6 +786,7 @@ func (o *IdentificationChallenge) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "password_fields")
 		delete(additionalProperties, "allow_show_password")
 		delete(additionalProperties, "application_pre")
+		delete(additionalProperties, "application_pre_launch")
 		delete(additionalProperties, "flow_designation")
 		delete(additionalProperties, "captcha_stage")
 		delete(additionalProperties, "enroll_url")
