@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metadata** | **string** |  | [readonly] 
-**DownloadUrl** | **NullableString** |  | [readonly] 
+**Metadata** | **string** |  | 
+**DownloadUrl** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
 ### NewSAMLMetadata
 
-`func NewSAMLMetadata(metadata string, downloadUrl NullableString, ) *SAMLMetadata`
+`func NewSAMLMetadata(metadata string, ) *SAMLMetadata`
 
 NewSAMLMetadata instantiates a new SAMLMetadata object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetDownloadUrl sets DownloadUrl field to given value.
 
+### HasDownloadUrl
+
+`func (o *SAMLMetadata) HasDownloadUrl() bool`
+
+HasDownloadUrl returns a boolean if a field has been set.
 
 ### SetDownloadUrlNil
 

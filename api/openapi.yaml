@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.2.2
+  version: 2026.2.3-rc1
 servers:
 - url: /api/v3
 paths:
@@ -55864,14 +55864,17 @@ components:
         policy_obj:
           allOf:
           - $ref: "#/components/schemas/Policy"
+          nullable: true
           readOnly: true
         group_obj:
           allOf:
           - $ref: "#/components/schemas/PartialGroup"
+          nullable: true
           readOnly: true
         user_obj:
           allOf:
           - $ref: "#/components/schemas/PartialUser"
+          nullable: true
           readOnly: true
         target:
           format: uuid
@@ -81624,14 +81627,17 @@ components:
         policy_obj:
           allOf:
           - $ref: "#/components/schemas/Policy"
+          nullable: true
           readOnly: true
         group_obj:
           allOf:
           - $ref: "#/components/schemas/PartialGroup"
+          nullable: true
           readOnly: true
         user_obj:
           allOf:
           - $ref: "#/components/schemas/PartialUser"
+          nullable: true
           readOnly: true
         target:
           format: uuid
@@ -84135,14 +84141,11 @@ components:
         download_url: download_url
       properties:
         metadata:
-          readOnly: true
           type: string
         download_url:
           nullable: true
-          readOnly: true
           type: string
       required:
-      - download_url
       - metadata
       type: object
     SAMLNameIDPolicyEnum:

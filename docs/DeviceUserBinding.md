@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **Policy** | Pointer to **NullableString** |  | [optional] 
 **Group** | Pointer to **NullableString** |  | [optional] 
 **User** | Pointer to **NullableInt32** |  | [optional] 
-**PolicyObj** | [**Policy**](Policy.md) |  | [readonly] 
-**GroupObj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] 
-**UserObj** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**PolicyObj** | [**NullablePolicy**](Policy.md) |  | [readonly] 
+**GroupObj** | [**NullablePartialGroup**](PartialGroup.md) |  | [readonly] 
+**UserObj** | [**NullablePartialUser**](PartialUser.md) |  | [readonly] 
 **Target** | **string** |  | 
 **Negate** | Pointer to **bool** | Negates the outcome of the policy. Messages are unaffected. | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewDeviceUserBinding
 
-`func NewDeviceUserBinding(pk string, policyObj Policy, groupObj PartialGroup, userObj PartialUser, target string, order int32, connector NullableString, connectorObj Connector, ) *DeviceUserBinding`
+`func NewDeviceUserBinding(pk string, policyObj NullablePolicy, groupObj NullablePartialGroup, userObj NullablePartialUser, target string, order int32, connector NullableString, connectorObj Connector, ) *DeviceUserBinding`
 
 NewDeviceUserBinding instantiates a new DeviceUserBinding object
 This constructor will assign default values to properties that have it defined,
@@ -185,6 +185,16 @@ and a boolean to check if the value has been set.
 SetPolicyObj sets PolicyObj field to given value.
 
 
+### SetPolicyObjNil
+
+`func (o *DeviceUserBinding) SetPolicyObjNil(b bool)`
+
+ SetPolicyObjNil sets the value for PolicyObj to be an explicit nil
+
+### UnsetPolicyObj
+`func (o *DeviceUserBinding) UnsetPolicyObj()`
+
+UnsetPolicyObj ensures that no value is present for PolicyObj, not even an explicit nil
 ### GetGroupObj
 
 `func (o *DeviceUserBinding) GetGroupObj() PartialGroup`
@@ -205,6 +215,16 @@ and a boolean to check if the value has been set.
 SetGroupObj sets GroupObj field to given value.
 
 
+### SetGroupObjNil
+
+`func (o *DeviceUserBinding) SetGroupObjNil(b bool)`
+
+ SetGroupObjNil sets the value for GroupObj to be an explicit nil
+
+### UnsetGroupObj
+`func (o *DeviceUserBinding) UnsetGroupObj()`
+
+UnsetGroupObj ensures that no value is present for GroupObj, not even an explicit nil
 ### GetUserObj
 
 `func (o *DeviceUserBinding) GetUserObj() PartialUser`
@@ -225,6 +245,16 @@ and a boolean to check if the value has been set.
 SetUserObj sets UserObj field to given value.
 
 
+### SetUserObjNil
+
+`func (o *DeviceUserBinding) SetUserObjNil(b bool)`
+
+ SetUserObjNil sets the value for UserObj to be an explicit nil
+
+### UnsetUserObj
+`func (o *DeviceUserBinding) UnsetUserObj()`
+
+UnsetUserObj ensures that no value is present for UserObj, not even an explicit nil
 ### GetTarget
 
 `func (o *DeviceUserBinding) GetTarget() string`
