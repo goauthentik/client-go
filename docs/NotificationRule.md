@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **Transports** | Pointer to **[]string** | Select which transports should be used to notify the user. If none are selected, the notification will only be shown in the authentik UI. | [optional] 
 **Severity** | Pointer to [**SeverityEnum**](SeverityEnum.md) | Controls which severity level the created notifications will have. | [optional] 
 **DestinationGroup** | Pointer to **NullableString** | Define which group of users this notification should be sent and shown to. If left empty, Notification won&#39;t ben sent. | [optional] 
-**DestinationGroupObj** | [**Group**](Group.md) |  | [readonly] 
+**DestinationGroupObj** | [**NullableGroup**](Group.md) |  | [readonly] 
 **DestinationEventUser** | Pointer to **bool** | When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both. | [optional] 
 
 ## Methods
 
 ### NewNotificationRule
 
-`func NewNotificationRule(pk string, name string, destinationGroupObj Group, ) *NotificationRule`
+`func NewNotificationRule(pk string, name string, destinationGroupObj NullableGroup, ) *NotificationRule`
 
 NewNotificationRule instantiates a new NotificationRule object
 This constructor will assign default values to properties that have it defined,
@@ -176,6 +176,16 @@ and a boolean to check if the value has been set.
 SetDestinationGroupObj sets DestinationGroupObj field to given value.
 
 
+### SetDestinationGroupObjNil
+
+`func (o *NotificationRule) SetDestinationGroupObjNil(b bool)`
+
+ SetDestinationGroupObjNil sets the value for DestinationGroupObj to be an explicit nil
+
+### UnsetDestinationGroupObj
+`func (o *NotificationRule) UnsetDestinationGroupObj()`
+
+UnsetDestinationGroupObj ensures that no value is present for DestinationGroupObj, not even an explicit nil
 ### GetDestinationEventUser
 
 `func (o *NotificationRule) GetDestinationEventUser() bool`

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
-**Provider** | [**OAuth2Provider**](OAuth2Provider.md) |  | 
+**Provider** | [**Provider**](Provider.md) |  | 
 **User** | [**User**](User.md) |  | 
 **IsExpired** | **bool** | Check if token is expired yet. | [readonly] 
 **Expires** | Pointer to **NullableTime** |  | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewTokenModel
 
-`func NewTokenModel(pk int32, provider OAuth2Provider, user User, isExpired bool, scope []string, idToken string, ) *TokenModel`
+`func NewTokenModel(pk int32, provider Provider, user User, isExpired bool, scope []string, idToken string, ) *TokenModel`
 
 NewTokenModel instantiates a new TokenModel object
 This constructor will assign default values to properties that have it defined,
@@ -54,20 +54,20 @@ SetPk sets Pk field to given value.
 
 ### GetProvider
 
-`func (o *TokenModel) GetProvider() OAuth2Provider`
+`func (o *TokenModel) GetProvider() Provider`
 
 GetProvider returns the Provider field if non-nil, zero value otherwise.
 
 ### GetProviderOk
 
-`func (o *TokenModel) GetProviderOk() (*OAuth2Provider, bool)`
+`func (o *TokenModel) GetProviderOk() (*Provider, bool)`
 
 GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvider
 
-`func (o *TokenModel) SetProvider(v OAuth2Provider)`
+`func (o *TokenModel) SetProvider(v Provider)`
 
 SetProvider sets Provider field to given value.
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.3-rc1
+API version: 2026.2.3
 Contact: hello@goauthentik.io
 */
 
@@ -29,7 +29,7 @@ type NotificationRule struct {
 	Severity *SeverityEnum `json:"severity,omitempty"`
 	// Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
 	DestinationGroup    NullableString `json:"destination_group,omitempty"`
-	DestinationGroupObj Group          `json:"destination_group_obj"`
+	DestinationGroupObj NullableGroup  `json:"destination_group_obj"`
 	// When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both.
 	DestinationEventUser *bool `json:"destination_event_user,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -41,7 +41,7 @@ type _NotificationRule NotificationRule
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationRule(pk string, name string, destinationGroupObj Group) *NotificationRule {
+func NewNotificationRule(pk string, name string, destinationGroupObj NullableGroup) *NotificationRule {
 	this := NotificationRule{}
 	this.Pk = pk
 	this.Name = name
@@ -213,27 +213,29 @@ func (o *NotificationRule) UnsetDestinationGroup() {
 }
 
 // GetDestinationGroupObj returns the DestinationGroupObj field value
+// If the value is explicit nil, the zero value for Group will be returned
 func (o *NotificationRule) GetDestinationGroupObj() Group {
-	if o == nil {
+	if o == nil || o.DestinationGroupObj.Get() == nil {
 		var ret Group
 		return ret
 	}
 
-	return o.DestinationGroupObj
+	return *o.DestinationGroupObj.Get()
 }
 
 // GetDestinationGroupObjOk returns a tuple with the DestinationGroupObj field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationRule) GetDestinationGroupObjOk() (*Group, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.DestinationGroupObj, true
+	return o.DestinationGroupObj.Get(), o.DestinationGroupObj.IsSet()
 }
 
 // SetDestinationGroupObj sets field value
 func (o *NotificationRule) SetDestinationGroupObj(v Group) {
-	o.DestinationGroupObj = v
+	o.DestinationGroupObj.Set(&v)
 }
 
 // GetDestinationEventUser returns the DestinationEventUser field value if set, zero value otherwise.
@@ -289,7 +291,7 @@ func (o NotificationRule) ToMap() (map[string]interface{}, error) {
 	if o.DestinationGroup.IsSet() {
 		toSerialize["destination_group"] = o.DestinationGroup.Get()
 	}
-	toSerialize["destination_group_obj"] = o.DestinationGroupObj
+	toSerialize["destination_group_obj"] = o.DestinationGroupObj.Get()
 	if !IsNil(o.DestinationEventUser) {
 		toSerialize["destination_event_user"] = o.DestinationEventUser
 	}
