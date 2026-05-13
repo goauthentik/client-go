@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.5.0-rc1
+API version: 2026.5.0-rc2
 Contact: hello@goauthentik.io
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &TokenModel{}
 
 // TokenModel Serializer for BaseGrantModel and RefreshToken
 type TokenModel struct {
-	Pk       int32          `json:"pk"`
-	Provider OAuth2Provider `json:"provider"`
-	User     User           `json:"user"`
+	Pk       int32    `json:"pk"`
+	Provider Provider `json:"provider"`
+	User     User     `json:"user"`
 	// Check if token is expired yet.
 	IsExpired bool         `json:"is_expired"`
 	Expires   NullableTime `json:"expires,omitempty"`
@@ -41,7 +41,7 @@ type _TokenModel TokenModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenModel(pk int32, provider OAuth2Provider, user User, isExpired bool, scope []string, idToken string) *TokenModel {
+func NewTokenModel(pk int32, provider Provider, user User, isExpired bool, scope []string, idToken string) *TokenModel {
 	this := TokenModel{}
 	this.Pk = pk
 	this.Provider = provider
@@ -85,9 +85,9 @@ func (o *TokenModel) SetPk(v int32) {
 }
 
 // GetProvider returns the Provider field value
-func (o *TokenModel) GetProvider() OAuth2Provider {
+func (o *TokenModel) GetProvider() Provider {
 	if o == nil {
-		var ret OAuth2Provider
+		var ret Provider
 		return ret
 	}
 
@@ -96,7 +96,7 @@ func (o *TokenModel) GetProvider() OAuth2Provider {
 
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
-func (o *TokenModel) GetProviderOk() (*OAuth2Provider, bool) {
+func (o *TokenModel) GetProviderOk() (*Provider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -104,7 +104,7 @@ func (o *TokenModel) GetProviderOk() (*OAuth2Provider, bool) {
 }
 
 // SetProvider sets field value
-func (o *TokenModel) SetProvider(v OAuth2Provider) {
+func (o *TokenModel) SetProvider(v Provider) {
 	o.Provider = v
 }
 

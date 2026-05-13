@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.5.0-rc1
+  version: 2026.5.0-rc2
 servers:
 - url: /api/v3
 paths:
@@ -8254,6 +8254,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - {}
       tags:
       - endpoints
   /endpoints/agents/connectors/auth_fed/:
@@ -8316,6 +8318,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - {}
       tags:
       - endpoints
   /endpoints/agents/connectors/check_in/:
@@ -8343,6 +8347,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - {}
       tags:
       - endpoints
   /endpoints/agents/connectors/enroll/:
@@ -8375,6 +8381,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - {}
       tags:
       - endpoints
   /endpoints/agents/enrollment_tokens/:
@@ -58577,51 +58585,21 @@ components:
         is_expired: true
         provider:
           verbose_name_plural: verbose_name_plural
-          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
-          client_type: ""
-          sub_mode: ""
-          client_id: client_id
-          jwt_federation_sources:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          refresh_token_validity: refresh_token_validity
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          access_code_validity: access_code_validity
-          assigned_application_name: assigned_application_name
-          assigned_backchannel_application_name: assigned_backchannel_application_name
-          issuer_mode: ""
-          refresh_token_threshold: refresh_token_threshold
-          logout_method: ""
-          client_secret: client_secret
-          jwt_federation_providers:
-          - 1
-          - 1
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          grant_types:
-          - authorization_code
-          - authorization_code
-          redirect_uris:
-          - redirect_uri_type: ""
-            matching_mode: strict
-            url: url
-          - redirect_uri_type: ""
-            matching_mode: strict
-            url: url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
-          include_claims_in_id_token: true
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
-          access_token_validity: access_token_validity
+          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
-          encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          pk: 6
-          logout_uri: https://openapi-generator.tech
+          pk: 1
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
         - scope
         - scope
@@ -58674,7 +58652,7 @@ components:
           title: ID
           type: integer
         provider:
-          $ref: "#/components/schemas/OAuth2Provider"
+          $ref: "#/components/schemas/Provider"
         user:
           $ref: "#/components/schemas/User"
         is_expired:
@@ -64880,8 +64858,8 @@ components:
         logout_method: ""
         client_secret: client_secret
         jwt_federation_providers:
-        - 1
-        - 1
+        - 6
+        - 6
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -64904,7 +64882,7 @@ components:
         access_token_validity: access_token_validity
         name: name
         encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        pk: 6
+        pk: 0
         logout_uri: https://openapi-generator.tech
       properties:
         pk:
@@ -68914,51 +68892,21 @@ components:
           is_expired: true
           provider:
             verbose_name_plural: verbose_name_plural
-            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
-            client_type: ""
-            sub_mode: ""
-            client_id: client_id
-            jwt_federation_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            refresh_token_validity: refresh_token_validity
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
-            assigned_application_name: assigned_application_name
-            assigned_backchannel_application_name: assigned_backchannel_application_name
-            issuer_mode: ""
-            refresh_token_threshold: refresh_token_threshold
-            logout_method: ""
-            client_secret: client_secret
-            jwt_federation_providers:
-            - 1
-            - 1
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            grant_types:
-            - authorization_code
-            - authorization_code
-            redirect_uris:
-            - redirect_uri_type: ""
-              matching_mode: strict
-              url: url
-            - redirect_uri_type: ""
-              matching_mode: strict
-              url: url
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             meta_model_name: meta_model_name
-            include_claims_in_id_token: true
             assigned_backchannel_application_slug: assigned_backchannel_application_slug
-            access_token_validity: access_token_validity
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
             name: name
-            encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            pk: 6
-            logout_uri: https://openapi-generator.tech
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
           - scope
           - scope
@@ -69009,51 +68957,21 @@ components:
           is_expired: true
           provider:
             verbose_name_plural: verbose_name_plural
-            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
-            client_type: ""
-            sub_mode: ""
-            client_id: client_id
-            jwt_federation_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            refresh_token_validity: refresh_token_validity
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
-            assigned_application_name: assigned_application_name
-            assigned_backchannel_application_name: assigned_backchannel_application_name
-            issuer_mode: ""
-            refresh_token_threshold: refresh_token_threshold
-            logout_method: ""
-            client_secret: client_secret
-            jwt_federation_providers:
-            - 1
-            - 1
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            grant_types:
-            - authorization_code
-            - authorization_code
-            redirect_uris:
-            - redirect_uri_type: ""
-              matching_mode: strict
-              url: url
-            - redirect_uri_type: ""
-              matching_mode: strict
-              url: url
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             meta_model_name: meta_model_name
-            include_claims_in_id_token: true
             assigned_backchannel_application_slug: assigned_backchannel_application_slug
-            access_token_validity: access_token_validity
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
             name: name
-            encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            pk: 6
-            logout_uri: https://openapi-generator.tech
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
           - scope
           - scope
@@ -71794,8 +71712,8 @@ components:
           logout_method: ""
           client_secret: client_secret
           jwt_federation_providers:
-          - 1
-          - 1
+          - 6
+          - 6
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -71818,7 +71736,7 @@ components:
           access_token_validity: access_token_validity
           name: name
           encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          pk: 6
+          pk: 0
           logout_uri: https://openapi-generator.tech
         - verbose_name_plural: verbose_name_plural
           signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -71840,8 +71758,8 @@ components:
           logout_method: ""
           client_secret: client_secret
           jwt_federation_providers:
-          - 1
-          - 1
+          - 6
+          - 6
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -71864,7 +71782,7 @@ components:
           access_token_validity: access_token_validity
           name: name
           encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          pk: 6
+          pk: 0
           logout_uri: https://openapi-generator.tech
       properties:
         pagination:
@@ -75592,51 +75510,21 @@ components:
           is_expired: true
           provider:
             verbose_name_plural: verbose_name_plural
-            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
-            client_type: ""
-            sub_mode: ""
-            client_id: client_id
-            jwt_federation_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            refresh_token_validity: refresh_token_validity
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
-            assigned_application_name: assigned_application_name
-            assigned_backchannel_application_name: assigned_backchannel_application_name
-            issuer_mode: ""
-            refresh_token_threshold: refresh_token_threshold
-            logout_method: ""
-            client_secret: client_secret
-            jwt_federation_providers:
-            - 1
-            - 1
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            grant_types:
-            - authorization_code
-            - authorization_code
-            redirect_uris:
-            - redirect_uri_type: ""
-              matching_mode: strict
-              url: url
-            - redirect_uri_type: ""
-              matching_mode: strict
-              url: url
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             meta_model_name: meta_model_name
-            include_claims_in_id_token: true
             assigned_backchannel_application_slug: assigned_backchannel_application_slug
-            access_token_validity: access_token_validity
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
             name: name
-            encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            pk: 6
-            logout_uri: https://openapi-generator.tech
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
           - scope
           - scope
@@ -75689,51 +75577,21 @@ components:
           is_expired: true
           provider:
             verbose_name_plural: verbose_name_plural
-            signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             assigned_application_slug: assigned_application_slug
-            client_type: ""
-            sub_mode: ""
-            client_id: client_id
-            jwt_federation_sources:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            refresh_token_validity: refresh_token_validity
-            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            access_code_validity: access_code_validity
-            assigned_application_name: assigned_application_name
-            assigned_backchannel_application_name: assigned_backchannel_application_name
-            issuer_mode: ""
-            refresh_token_threshold: refresh_token_threshold
-            logout_method: ""
-            client_secret: client_secret
-            jwt_federation_providers:
-            - 1
-            - 1
-            property_mappings:
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            grant_types:
-            - authorization_code
-            - authorization_code
-            redirect_uris:
-            - redirect_uri_type: ""
-              matching_mode: strict
-              url: url
-            - redirect_uri_type: ""
-              matching_mode: strict
-              url: url
             authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             component: component
             verbose_name: verbose_name
+            authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             meta_model_name: meta_model_name
-            include_claims_in_id_token: true
             assigned_backchannel_application_slug: assigned_backchannel_application_slug
-            access_token_validity: access_token_validity
+            assigned_application_name: assigned_application_name
+            assigned_backchannel_application_name: assigned_backchannel_application_name
             name: name
-            encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            pk: 6
-            logout_uri: https://openapi-generator.tech
+            pk: 1
+            property_mappings:
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scope:
           - scope
           - scope
@@ -89861,51 +89719,21 @@ components:
         is_expired: true
         provider:
           verbose_name_plural: verbose_name_plural
-          signing_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           invalidation_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           assigned_application_slug: assigned_application_slug
-          client_type: ""
-          sub_mode: ""
-          client_id: client_id
-          jwt_federation_sources:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          refresh_token_validity: refresh_token_validity
-          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          access_code_validity: access_code_validity
-          assigned_application_name: assigned_application_name
-          assigned_backchannel_application_name: assigned_backchannel_application_name
-          issuer_mode: ""
-          refresh_token_threshold: refresh_token_threshold
-          logout_method: ""
-          client_secret: client_secret
-          jwt_federation_providers:
-          - 1
-          - 1
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          grant_types:
-          - authorization_code
-          - authorization_code
-          redirect_uris:
-          - redirect_uri_type: ""
-            matching_mode: strict
-            url: url
-          - redirect_uri_type: ""
-            matching_mode: strict
-            url: url
           authentication_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           component: component
           verbose_name: verbose_name
+          authorization_flow: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           meta_model_name: meta_model_name
-          include_claims_in_id_token: true
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
-          access_token_validity: access_token_validity
+          assigned_application_name: assigned_application_name
+          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
-          encryption_key: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          pk: 6
-          logout_uri: https://openapi-generator.tech
+          pk: 1
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope:
         - scope
         - scope
@@ -89960,7 +89788,7 @@ components:
           title: ID
           type: integer
         provider:
-          $ref: "#/components/schemas/OAuth2Provider"
+          $ref: "#/components/schemas/Provider"
         user:
           $ref: "#/components/schemas/User"
         is_expired:
