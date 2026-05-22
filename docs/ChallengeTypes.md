@@ -74,6 +74,7 @@ Name | Type | Description | Notes
 **ApplicationName** | Pointer to **string** |  | [optional] 
 **ApplicationLaunchUrl** | Pointer to **string** |  | [optional] 
 **InvalidationFlowUrl** | Pointer to **string** |  | [optional] 
+**OverviewUrl** | Pointer to **string** |  | [optional] 
 **BrandName** | **string** |  | 
 **Body** | **string** |  | 
 **BotUsername** | **string** | Telegram bot username | 
@@ -1722,6 +1723,31 @@ SetInvalidationFlowUrl sets InvalidationFlowUrl field to given value.
 `func (o *ChallengeTypes) HasInvalidationFlowUrl() bool`
 
 HasInvalidationFlowUrl returns a boolean if a field has been set.
+
+### GetOverviewUrl
+
+`func (o *ChallengeTypes) GetOverviewUrl() string`
+
+GetOverviewUrl returns the OverviewUrl field if non-nil, zero value otherwise.
+
+### GetOverviewUrlOk
+
+`func (o *ChallengeTypes) GetOverviewUrlOk() (*string, bool)`
+
+GetOverviewUrlOk returns a tuple with the OverviewUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverviewUrl
+
+`func (o *ChallengeTypes) SetOverviewUrl(v string)`
+
+SetOverviewUrl sets OverviewUrl field to given value.
+
+### HasOverviewUrl
+
+`func (o *ChallengeTypes) HasOverviewUrl() bool`
+
+HasOverviewUrl returns a boolean if a field has been set.
 
 ### GetBrandName
 

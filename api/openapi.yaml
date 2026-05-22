@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.5.0-rc2
+  version: 2026.5.0
 servers:
 - url: /api/v3
 paths:
@@ -64703,7 +64703,7 @@ components:
           format: uri
           type: string
         webhook_ca:
-          description: "When set, the selected ceritifcate is used to validate the\
+          description: "When set, the selected certificate is used to validate the\
             \ certificate of the webhook server."
           format: uuid
           nullable: true
@@ -64755,7 +64755,7 @@ components:
           format: uri
           type: string
         webhook_ca:
-          description: "When set, the selected ceritifcate is used to validate the\
+          description: "When set, the selected certificate is used to validate the\
             \ certificate of the webhook server."
           format: uuid
           nullable: true
@@ -74186,60 +74186,68 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
+          sync_page_size: 1294386359
+          auth_mode: token
+          exclude_users_service_account: true
+          auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_provider_config_cache_timeout: service_provider_config_cache_timeout
           group_filters:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           auth_oauth_params:
             key: ""
-          sync_page_size: 1294386359
-          auth_mode: token
+          auth_oauth_url_start: auth_oauth_url_start
+          auth_oauth_token_expires: 2000-01-23T04:56:07.000+00:00
           url: url
           token: token
-          exclude_users_service_account: true
-          auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          auth_oauth_url_callback: auth_oauth_url_callback
           component: component
           verbose_name: verbose_name
+          auth_oauth_token_last_updated: 2000-01-23T04:56:07.000+00:00
           meta_model_name: meta_model_name
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
-          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           dry_run: true
           pk: 0
           verify_certificates: true
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          service_provider_config_cache_timeout: service_provider_config_cache_timeout
         - compatibility_mode: ""
           sync_page_timeout: sync_page_timeout
           property_mappings_group:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
+          sync_page_size: 1294386359
+          auth_mode: token
+          exclude_users_service_account: true
+          auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          assigned_backchannel_application_name: assigned_backchannel_application_name
+          property_mappings:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_provider_config_cache_timeout: service_provider_config_cache_timeout
           group_filters:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           auth_oauth_params:
             key: ""
-          sync_page_size: 1294386359
-          auth_mode: token
+          auth_oauth_url_start: auth_oauth_url_start
+          auth_oauth_token_expires: 2000-01-23T04:56:07.000+00:00
           url: url
           token: token
-          exclude_users_service_account: true
-          auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          auth_oauth_url_callback: auth_oauth_url_callback
           component: component
           verbose_name: verbose_name
+          auth_oauth_token_last_updated: 2000-01-23T04:56:07.000+00:00
           meta_model_name: meta_model_name
           assigned_backchannel_application_slug: assigned_backchannel_application_slug
-          assigned_backchannel_application_name: assigned_backchannel_application_name
           name: name
           dry_run: true
           pk: 0
           verify_certificates: true
-          property_mappings:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          service_provider_config_cache_timeout: service_provider_config_cache_timeout
       properties:
         pagination:
           $ref: "#/components/schemas/Pagination"
@@ -80103,7 +80111,7 @@ components:
           format: uri
           type: string
         webhook_ca:
-          description: "When set, the selected ceritifcate is used to validate the\
+          description: "When set, the selected certificate is used to validate the\
             \ certificate of the webhook server."
           format: uuid
           nullable: true
@@ -86750,6 +86758,7 @@ components:
       enum:
       - token
       - oauth
+      - oauth_interactive
       type: string
     SCIMMapping:
       description: SCIMMapping Serializer
@@ -86840,30 +86849,34 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
+        sync_page_size: 1294386359
+        auth_mode: token
+        exclude_users_service_account: true
+        auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        assigned_backchannel_application_name: assigned_backchannel_application_name
+        property_mappings:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_provider_config_cache_timeout: service_provider_config_cache_timeout
         group_filters:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auth_oauth_params:
           key: ""
-        sync_page_size: 1294386359
-        auth_mode: token
+        auth_oauth_url_start: auth_oauth_url_start
+        auth_oauth_token_expires: 2000-01-23T04:56:07.000+00:00
         url: url
         token: token
-        exclude_users_service_account: true
-        auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auth_oauth_url_callback: auth_oauth_url_callback
         component: component
         verbose_name: verbose_name
+        auth_oauth_token_last_updated: 2000-01-23T04:56:07.000+00:00
         meta_model_name: meta_model_name
         assigned_backchannel_application_slug: assigned_backchannel_application_slug
-        assigned_backchannel_application_name: assigned_backchannel_application_name
         name: name
         dry_run: true
         pk: 0
         verify_certificates: true
-        property_mappings:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        service_provider_config_cache_timeout: service_provider_config_cache_timeout
       properties:
         pk:
           readOnly: true
@@ -86927,6 +86940,24 @@ components:
           additionalProperties: {}
           description: "Additional OAuth parameters, such as grant_type"
           type: object
+        auth_oauth_token_last_updated:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        auth_oauth_token_expires:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        auth_oauth_url_callback:
+          nullable: true
+          readOnly: true
+          type: string
+        auth_oauth_url_start:
+          nullable: true
+          readOnly: true
+          type: string
         compatibility_mode:
           allOf:
           - $ref: "#/components/schemas/CompatibilityModeEnum"
@@ -86959,6 +86990,10 @@ components:
       required:
       - assigned_backchannel_application_name
       - assigned_backchannel_application_slug
+      - auth_oauth_token_expires
+      - auth_oauth_token_last_updated
+      - auth_oauth_url_callback
+      - auth_oauth_url_start
       - component
       - meta_model_name
       - name
@@ -88060,6 +88095,8 @@ components:
         application_launch_url:
           type: string
         invalidation_flow_url:
+          type: string
+        overview_url:
           type: string
         brand_name:
           type: string

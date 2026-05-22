@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Mode** | Pointer to [**TransportModeEnum**](TransportModeEnum.md) |  | [optional] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
-**WebhookCa** | Pointer to **NullableString** | When set, the selected ceritifcate is used to validate the certificate of the webhook server. | [optional] 
+**WebhookCa** | Pointer to **NullableString** | When set, the selected certificate is used to validate the certificate of the webhook server. | [optional] 
 **WebhookMappingBody** | Pointer to **NullableString** | Customize the body of the request. Mapping should return data that is JSON-serializable. | [optional] 
 **WebhookMappingHeaders** | Pointer to **NullableString** | Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs | [optional] 
 **EmailSubjectPrefix** | Pointer to **string** |  | [optional] 

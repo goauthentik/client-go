@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.5.0-rc2
+API version: 2026.5.0
 Contact: hello@goauthentik.io
 */
 
@@ -24,7 +24,7 @@ type NotificationTransportRequest struct {
 	Name       string             `json:"name"`
 	Mode       *TransportModeEnum `json:"mode,omitempty"`
 	WebhookUrl *string            `json:"webhook_url,omitempty"`
-	// When set, the selected ceritifcate is used to validate the certificate of the webhook server.
+	// When set, the selected certificate is used to validate the certificate of the webhook server.
 	WebhookCa NullableString `json:"webhook_ca,omitempty"`
 	// Customize the body of the request. Mapping should return data that is JSON-serializable.
 	WebhookMappingBody NullableString `json:"webhook_mapping_body,omitempty"`

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.5.0-rc2
+API version: 2026.5.0
 Contact: hello@goauthentik.io
 */
 
@@ -14,6 +14,7 @@ package api
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the SCIMProvider type satisfies the MappedNullable interface at compile time
@@ -47,7 +48,11 @@ type SCIMProvider struct {
 	// OAuth Source used for authentication
 	AuthOauth NullableString `json:"auth_oauth,omitempty"`
 	// Additional OAuth parameters, such as grant_type
-	AuthOauthParams map[string]interface{} `json:"auth_oauth_params,omitempty"`
+	AuthOauthParams           map[string]interface{} `json:"auth_oauth_params,omitempty"`
+	AuthOauthTokenLastUpdated NullableTime           `json:"auth_oauth_token_last_updated"`
+	AuthOauthTokenExpires     NullableTime           `json:"auth_oauth_token_expires"`
+	AuthOauthUrlCallback      NullableString         `json:"auth_oauth_url_callback"`
+	AuthOauthUrlStart         NullableString         `json:"auth_oauth_url_start"`
 	// Alter authentik behavior for vendor-specific SCIM implementations.
 	CompatibilityMode *CompatibilityModeEnum `json:"compatibility_mode,omitempty"`
 	// Cache duration for ServiceProviderConfig responses. Set minutes=0 to disable.
@@ -70,7 +75,7 @@ type _SCIMProvider SCIMProvider
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, url string) *SCIMProvider {
+func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, url string, authOauthTokenLastUpdated NullableTime, authOauthTokenExpires NullableTime, authOauthUrlCallback NullableString, authOauthUrlStart NullableString) *SCIMProvider {
 	this := SCIMProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -81,6 +86,10 @@ func NewSCIMProvider(pk int32, name string, component string, assignedBackchanne
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.Url = url
+	this.AuthOauthTokenLastUpdated = authOauthTokenLastUpdated
+	this.AuthOauthTokenExpires = authOauthTokenExpires
+	this.AuthOauthUrlCallback = authOauthUrlCallback
+	this.AuthOauthUrlStart = authOauthUrlStart
 	return &this
 }
 
@@ -547,6 +556,110 @@ func (o *SCIMProvider) SetAuthOauthParams(v map[string]interface{}) {
 	o.AuthOauthParams = v
 }
 
+// GetAuthOauthTokenLastUpdated returns the AuthOauthTokenLastUpdated field value
+// If the value is explicit nil, the zero value for time.Time will be returned
+func (o *SCIMProvider) GetAuthOauthTokenLastUpdated() time.Time {
+	if o == nil || o.AuthOauthTokenLastUpdated.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return *o.AuthOauthTokenLastUpdated.Get()
+}
+
+// GetAuthOauthTokenLastUpdatedOk returns a tuple with the AuthOauthTokenLastUpdated field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMProvider) GetAuthOauthTokenLastUpdatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthOauthTokenLastUpdated.Get(), o.AuthOauthTokenLastUpdated.IsSet()
+}
+
+// SetAuthOauthTokenLastUpdated sets field value
+func (o *SCIMProvider) SetAuthOauthTokenLastUpdated(v time.Time) {
+	o.AuthOauthTokenLastUpdated.Set(&v)
+}
+
+// GetAuthOauthTokenExpires returns the AuthOauthTokenExpires field value
+// If the value is explicit nil, the zero value for time.Time will be returned
+func (o *SCIMProvider) GetAuthOauthTokenExpires() time.Time {
+	if o == nil || o.AuthOauthTokenExpires.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return *o.AuthOauthTokenExpires.Get()
+}
+
+// GetAuthOauthTokenExpiresOk returns a tuple with the AuthOauthTokenExpires field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMProvider) GetAuthOauthTokenExpiresOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthOauthTokenExpires.Get(), o.AuthOauthTokenExpires.IsSet()
+}
+
+// SetAuthOauthTokenExpires sets field value
+func (o *SCIMProvider) SetAuthOauthTokenExpires(v time.Time) {
+	o.AuthOauthTokenExpires.Set(&v)
+}
+
+// GetAuthOauthUrlCallback returns the AuthOauthUrlCallback field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *SCIMProvider) GetAuthOauthUrlCallback() string {
+	if o == nil || o.AuthOauthUrlCallback.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.AuthOauthUrlCallback.Get()
+}
+
+// GetAuthOauthUrlCallbackOk returns a tuple with the AuthOauthUrlCallback field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMProvider) GetAuthOauthUrlCallbackOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthOauthUrlCallback.Get(), o.AuthOauthUrlCallback.IsSet()
+}
+
+// SetAuthOauthUrlCallback sets field value
+func (o *SCIMProvider) SetAuthOauthUrlCallback(v string) {
+	o.AuthOauthUrlCallback.Set(&v)
+}
+
+// GetAuthOauthUrlStart returns the AuthOauthUrlStart field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *SCIMProvider) GetAuthOauthUrlStart() string {
+	if o == nil || o.AuthOauthUrlStart.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.AuthOauthUrlStart.Get()
+}
+
+// GetAuthOauthUrlStartOk returns a tuple with the AuthOauthUrlStart field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SCIMProvider) GetAuthOauthUrlStartOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthOauthUrlStart.Get(), o.AuthOauthUrlStart.IsSet()
+}
+
+// SetAuthOauthUrlStart sets field value
+func (o *SCIMProvider) SetAuthOauthUrlStart(v string) {
+	o.AuthOauthUrlStart.Set(&v)
+}
+
 // GetCompatibilityMode returns the CompatibilityMode field value if set, zero value otherwise.
 func (o *SCIMProvider) GetCompatibilityMode() CompatibilityModeEnum {
 	if o == nil || IsNil(o.CompatibilityMode) {
@@ -811,6 +924,10 @@ func (o SCIMProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AuthOauthParams) {
 		toSerialize["auth_oauth_params"] = o.AuthOauthParams
 	}
+	toSerialize["auth_oauth_token_last_updated"] = o.AuthOauthTokenLastUpdated.Get()
+	toSerialize["auth_oauth_token_expires"] = o.AuthOauthTokenExpires.Get()
+	toSerialize["auth_oauth_url_callback"] = o.AuthOauthUrlCallback.Get()
+	toSerialize["auth_oauth_url_start"] = o.AuthOauthUrlStart.Get()
 	if !IsNil(o.CompatibilityMode) {
 		toSerialize["compatibility_mode"] = o.CompatibilityMode
 	}
@@ -854,6 +971,10 @@ func (o *SCIMProvider) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name_plural",
 		"meta_model_name",
 		"url",
+		"auth_oauth_token_last_updated",
+		"auth_oauth_token_expires",
+		"auth_oauth_url_callback",
+		"auth_oauth_url_start",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -899,6 +1020,10 @@ func (o *SCIMProvider) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auth_mode")
 		delete(additionalProperties, "auth_oauth")
 		delete(additionalProperties, "auth_oauth_params")
+		delete(additionalProperties, "auth_oauth_token_last_updated")
+		delete(additionalProperties, "auth_oauth_token_expires")
+		delete(additionalProperties, "auth_oauth_url_callback")
+		delete(additionalProperties, "auth_oauth_url_start")
 		delete(additionalProperties, "compatibility_mode")
 		delete(additionalProperties, "service_provider_config_cache_timeout")
 		delete(additionalProperties, "exclude_users_service_account")

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.5.0-rc2
+API version: 2026.5.0
 Contact: hello@goauthentik.io
 */
 
@@ -21,14 +21,16 @@ type SCIMAuthenticationModeEnum string
 
 // List of SCIMAuthenticationModeEnum
 const (
-	SCIMAUTHENTICATIONMODEENUM_TOKEN SCIMAuthenticationModeEnum = "token"
-	SCIMAUTHENTICATIONMODEENUM_OAUTH SCIMAuthenticationModeEnum = "oauth"
+	SCIMAUTHENTICATIONMODEENUM_TOKEN             SCIMAuthenticationModeEnum = "token"
+	SCIMAUTHENTICATIONMODEENUM_OAUTH             SCIMAuthenticationModeEnum = "oauth"
+	SCIMAUTHENTICATIONMODEENUM_OAUTH_INTERACTIVE SCIMAuthenticationModeEnum = "oauth_interactive"
 )
 
 // All allowed values of SCIMAuthenticationModeEnum enum
 var AllowedSCIMAuthenticationModeEnumEnumValues = []SCIMAuthenticationModeEnum{
 	"token",
 	"oauth",
+	"oauth_interactive",
 }
 
 func (v *SCIMAuthenticationModeEnum) UnmarshalJSON(src []byte) error {

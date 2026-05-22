@@ -20,6 +20,10 @@ Name | Type | Description | Notes
 **AuthMode** | Pointer to [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] 
 **AuthOauth** | Pointer to **NullableString** | OAuth Source used for authentication | [optional] 
 **AuthOauthParams** | Pointer to **map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
+**AuthOauthTokenLastUpdated** | **NullableTime** |  | [readonly] 
+**AuthOauthTokenExpires** | **NullableTime** |  | [readonly] 
+**AuthOauthUrlCallback** | **NullableString** |  | [readonly] 
+**AuthOauthUrlStart** | **NullableString** |  | [readonly] 
 **CompatibilityMode** | Pointer to [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] 
 **ServiceProviderConfigCacheTimeout** | Pointer to **string** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
@@ -32,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewSCIMProvider
 
-`func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, url string, ) *SCIMProvider`
+`func NewSCIMProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, url string, authOauthTokenLastUpdated NullableTime, authOauthTokenExpires NullableTime, authOauthUrlCallback NullableString, authOauthUrlStart NullableString, ) *SCIMProvider`
 
 NewSCIMProvider instantiates a new SCIMProvider object
 This constructor will assign default values to properties that have it defined,
@@ -432,6 +436,126 @@ SetAuthOauthParams sets AuthOauthParams field to given value.
 
 HasAuthOauthParams returns a boolean if a field has been set.
 
+### GetAuthOauthTokenLastUpdated
+
+`func (o *SCIMProvider) GetAuthOauthTokenLastUpdated() time.Time`
+
+GetAuthOauthTokenLastUpdated returns the AuthOauthTokenLastUpdated field if non-nil, zero value otherwise.
+
+### GetAuthOauthTokenLastUpdatedOk
+
+`func (o *SCIMProvider) GetAuthOauthTokenLastUpdatedOk() (*time.Time, bool)`
+
+GetAuthOauthTokenLastUpdatedOk returns a tuple with the AuthOauthTokenLastUpdated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthOauthTokenLastUpdated
+
+`func (o *SCIMProvider) SetAuthOauthTokenLastUpdated(v time.Time)`
+
+SetAuthOauthTokenLastUpdated sets AuthOauthTokenLastUpdated field to given value.
+
+
+### SetAuthOauthTokenLastUpdatedNil
+
+`func (o *SCIMProvider) SetAuthOauthTokenLastUpdatedNil(b bool)`
+
+ SetAuthOauthTokenLastUpdatedNil sets the value for AuthOauthTokenLastUpdated to be an explicit nil
+
+### UnsetAuthOauthTokenLastUpdated
+`func (o *SCIMProvider) UnsetAuthOauthTokenLastUpdated()`
+
+UnsetAuthOauthTokenLastUpdated ensures that no value is present for AuthOauthTokenLastUpdated, not even an explicit nil
+### GetAuthOauthTokenExpires
+
+`func (o *SCIMProvider) GetAuthOauthTokenExpires() time.Time`
+
+GetAuthOauthTokenExpires returns the AuthOauthTokenExpires field if non-nil, zero value otherwise.
+
+### GetAuthOauthTokenExpiresOk
+
+`func (o *SCIMProvider) GetAuthOauthTokenExpiresOk() (*time.Time, bool)`
+
+GetAuthOauthTokenExpiresOk returns a tuple with the AuthOauthTokenExpires field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthOauthTokenExpires
+
+`func (o *SCIMProvider) SetAuthOauthTokenExpires(v time.Time)`
+
+SetAuthOauthTokenExpires sets AuthOauthTokenExpires field to given value.
+
+
+### SetAuthOauthTokenExpiresNil
+
+`func (o *SCIMProvider) SetAuthOauthTokenExpiresNil(b bool)`
+
+ SetAuthOauthTokenExpiresNil sets the value for AuthOauthTokenExpires to be an explicit nil
+
+### UnsetAuthOauthTokenExpires
+`func (o *SCIMProvider) UnsetAuthOauthTokenExpires()`
+
+UnsetAuthOauthTokenExpires ensures that no value is present for AuthOauthTokenExpires, not even an explicit nil
+### GetAuthOauthUrlCallback
+
+`func (o *SCIMProvider) GetAuthOauthUrlCallback() string`
+
+GetAuthOauthUrlCallback returns the AuthOauthUrlCallback field if non-nil, zero value otherwise.
+
+### GetAuthOauthUrlCallbackOk
+
+`func (o *SCIMProvider) GetAuthOauthUrlCallbackOk() (*string, bool)`
+
+GetAuthOauthUrlCallbackOk returns a tuple with the AuthOauthUrlCallback field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthOauthUrlCallback
+
+`func (o *SCIMProvider) SetAuthOauthUrlCallback(v string)`
+
+SetAuthOauthUrlCallback sets AuthOauthUrlCallback field to given value.
+
+
+### SetAuthOauthUrlCallbackNil
+
+`func (o *SCIMProvider) SetAuthOauthUrlCallbackNil(b bool)`
+
+ SetAuthOauthUrlCallbackNil sets the value for AuthOauthUrlCallback to be an explicit nil
+
+### UnsetAuthOauthUrlCallback
+`func (o *SCIMProvider) UnsetAuthOauthUrlCallback()`
+
+UnsetAuthOauthUrlCallback ensures that no value is present for AuthOauthUrlCallback, not even an explicit nil
+### GetAuthOauthUrlStart
+
+`func (o *SCIMProvider) GetAuthOauthUrlStart() string`
+
+GetAuthOauthUrlStart returns the AuthOauthUrlStart field if non-nil, zero value otherwise.
+
+### GetAuthOauthUrlStartOk
+
+`func (o *SCIMProvider) GetAuthOauthUrlStartOk() (*string, bool)`
+
+GetAuthOauthUrlStartOk returns a tuple with the AuthOauthUrlStart field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthOauthUrlStart
+
+`func (o *SCIMProvider) SetAuthOauthUrlStart(v string)`
+
+SetAuthOauthUrlStart sets AuthOauthUrlStart field to given value.
+
+
+### SetAuthOauthUrlStartNil
+
+`func (o *SCIMProvider) SetAuthOauthUrlStartNil(b bool)`
+
+ SetAuthOauthUrlStartNil sets the value for AuthOauthUrlStart to be an explicit nil
+
+### UnsetAuthOauthUrlStart
+`func (o *SCIMProvider) UnsetAuthOauthUrlStart()`
+
+UnsetAuthOauthUrlStart ensures that no value is present for AuthOauthUrlStart, not even an explicit nil
 ### GetCompatibilityMode
 
 `func (o *SCIMProvider) GetCompatibilityMode() CompatibilityModeEnum`
