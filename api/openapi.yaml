@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.2.3
+  version: 2026.2.4
 servers:
 - url: /api/v3
 paths:
@@ -59431,6 +59431,7 @@ components:
           type: integer
         group:
           format: uuid
+          readOnly: true
           type: string
         source:
           format: uuid
@@ -59463,11 +59464,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -59475,7 +59472,6 @@ components:
           minLength: 1
           type: string
       required:
-      - group
       - identifier
       - source
       type: object
@@ -59496,6 +59492,7 @@ components:
           type: integer
         group:
           format: uuid
+          readOnly: true
           type: string
         source:
           format: uuid
@@ -59528,11 +59525,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -59540,7 +59533,6 @@ components:
           minLength: 1
           type: string
       required:
-      - group
       - identifier
       - source
       type: object
@@ -59567,6 +59559,7 @@ components:
           type: integer
         group:
           format: uuid
+          readOnly: true
           type: string
         source:
           format: uuid
@@ -59599,11 +59592,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -59611,7 +59600,6 @@ components:
           minLength: 1
           type: string
       required:
-      - group
       - identifier
       - source
       type: object
@@ -59632,6 +59620,7 @@ components:
           type: integer
         group:
           format: uuid
+          readOnly: true
           type: string
         source:
           format: uuid
@@ -59664,11 +59653,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -59676,7 +59661,6 @@ components:
           minLength: 1
           type: string
       required:
-      - group
       - identifier
       - source
       type: object
@@ -59740,6 +59724,7 @@ components:
           type: integer
         group:
           format: uuid
+          readOnly: true
           type: string
         source:
           format: uuid
@@ -59772,11 +59757,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -59784,7 +59765,6 @@ components:
           minLength: 1
           type: string
       required:
-      - group
       - identifier
       - source
       type: object
@@ -59805,6 +59785,7 @@ components:
           type: integer
         group:
           format: uuid
+          readOnly: true
           type: string
         source:
           format: uuid
@@ -59837,11 +59818,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -59849,7 +59826,6 @@ components:
           minLength: 1
           type: string
       required:
-      - group
       - identifier
       - source
       type: object
@@ -59870,6 +59846,7 @@ components:
           type: integer
         group:
           format: uuid
+          readOnly: true
           type: string
         source:
           format: uuid
@@ -59902,11 +59879,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -59914,7 +59887,6 @@ components:
           minLength: 1
           type: string
       required:
-      - group
       - identifier
       - source
       type: object
@@ -77420,11 +77392,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -77437,11 +77405,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -77454,11 +77418,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -77471,11 +77431,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -77529,11 +77485,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -77546,11 +77498,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -77563,11 +77511,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        group:
-          format: uuid
-          type: string
         source:
           format: uuid
           type: string
@@ -80593,10 +80537,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -80609,10 +80550,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -80680,10 +80618,7 @@ components:
         identifier: identifier
         expires: 2000-01-23T04:56:07.000+00:00
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -80704,10 +80639,7 @@ components:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plex_token: plex_token
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -80783,10 +80715,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -80799,10 +80728,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -80815,10 +80741,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -88795,6 +88718,7 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           format: uuid
@@ -88827,10 +88751,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -88840,7 +88761,6 @@ components:
       required:
       - identifier
       - source
-      - user
       type: object
     UserLDAPSourceConnection:
       description: User source connection
@@ -88858,6 +88778,7 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           format: uuid
@@ -88890,10 +88811,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -88903,7 +88821,6 @@ components:
       required:
       - identifier
       - source
-      - user
       type: object
     UserLoginChallenge:
       description: Empty challenge
@@ -89197,6 +89114,7 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           format: uuid
@@ -89234,10 +89152,7 @@ components:
         identifier: identifier
         expires: 2000-01-23T04:56:07.000+00:00
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -89254,7 +89169,6 @@ components:
       required:
       - identifier
       - source
-      - user
       type: object
     UserPasswordSetRequest:
       description: Payload to set a users' password directly
@@ -89297,6 +89211,7 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           format: uuid
@@ -89330,10 +89245,7 @@ components:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plex_token: plex_token
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -89348,7 +89260,6 @@ components:
       - identifier
       - plex_token
       - source
-      - user
       type: object
     UserRecoveryEmailRequest:
       description: Payload to create and email a recovery link
@@ -89452,6 +89363,7 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           format: uuid
@@ -89484,10 +89396,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -89497,7 +89406,6 @@ components:
       required:
       - identifier
       - source
-      - user
       type: object
     UserSelf:
       description: User Serializer for information a user can retrieve about themselves
@@ -89715,6 +89623,7 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           format: uuid
@@ -89747,10 +89656,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -89760,7 +89666,6 @@ components:
       required:
       - identifier
       - source
-      - user
       type: object
     UserTelegramSourceConnection:
       description: User source connection
@@ -89778,6 +89683,7 @@ components:
           title: ID
           type: integer
         user:
+          readOnly: true
           type: integer
         source:
           format: uuid
@@ -89810,10 +89716,7 @@ components:
       example:
         identifier: identifier
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        user: 0
       properties:
-        user:
-          type: integer
         source:
           format: uuid
           type: string
@@ -89823,7 +89726,6 @@ components:
       required:
       - identifier
       - source
-      - user
       type: object
     UserTypeEnum:
       enum:

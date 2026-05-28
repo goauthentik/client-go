@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Group** | **string** |  | 
 **Source** | **string** |  | 
 **Identifier** | **string** |  | 
 
@@ -12,7 +11,7 @@ Name | Type | Description | Notes
 
 ### NewGroupLDAPSourceConnectionRequest
 
-`func NewGroupLDAPSourceConnectionRequest(group string, source string, identifier string, ) *GroupLDAPSourceConnectionRequest`
+`func NewGroupLDAPSourceConnectionRequest(source string, identifier string, ) *GroupLDAPSourceConnectionRequest`
 
 NewGroupLDAPSourceConnectionRequest instantiates a new GroupLDAPSourceConnectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +25,6 @@ will change when the set of required properties is changed
 NewGroupLDAPSourceConnectionRequestWithDefaults instantiates a new GroupLDAPSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetGroup
-
-`func (o *GroupLDAPSourceConnectionRequest) GetGroup() string`
-
-GetGroup returns the Group field if non-nil, zero value otherwise.
-
-### GetGroupOk
-
-`func (o *GroupLDAPSourceConnectionRequest) GetGroupOk() (*string, bool)`
-
-GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroup
-
-`func (o *GroupLDAPSourceConnectionRequest) SetGroup(v string)`
-
-SetGroup sets Group field to given value.
-
 
 ### GetSource
 

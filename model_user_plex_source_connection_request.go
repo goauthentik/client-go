@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.3
+API version: 2026.2.4
 Contact: hello@goauthentik.io
 */
 
@@ -21,7 +21,6 @@ var _ MappedNullable = &UserPlexSourceConnectionRequest{}
 
 // UserPlexSourceConnectionRequest User source connection
 type UserPlexSourceConnectionRequest struct {
-	User                 int32  `json:"user"`
 	Source               string `json:"source"`
 	Identifier           string `json:"identifier"`
 	PlexToken            string `json:"plex_token"`
@@ -34,9 +33,8 @@ type _UserPlexSourceConnectionRequest UserPlexSourceConnectionRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserPlexSourceConnectionRequest(user int32, source string, identifier string, plexToken string) *UserPlexSourceConnectionRequest {
+func NewUserPlexSourceConnectionRequest(source string, identifier string, plexToken string) *UserPlexSourceConnectionRequest {
 	this := UserPlexSourceConnectionRequest{}
-	this.User = user
 	this.Source = source
 	this.Identifier = identifier
 	this.PlexToken = plexToken
@@ -49,30 +47,6 @@ func NewUserPlexSourceConnectionRequest(user int32, source string, identifier st
 func NewUserPlexSourceConnectionRequestWithDefaults() *UserPlexSourceConnectionRequest {
 	this := UserPlexSourceConnectionRequest{}
 	return &this
-}
-
-// GetUser returns the User field value
-func (o *UserPlexSourceConnectionRequest) GetUser() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.User
-}
-
-// GetUserOk returns a tuple with the User field value
-// and a boolean to check if the value has been set.
-func (o *UserPlexSourceConnectionRequest) GetUserOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.User, true
-}
-
-// SetUser sets field value
-func (o *UserPlexSourceConnectionRequest) SetUser(v int32) {
-	o.User = v
 }
 
 // GetSource returns the Source field value
@@ -157,7 +131,6 @@ func (o UserPlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 
 func (o UserPlexSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["user"] = o.User
 	toSerialize["source"] = o.Source
 	toSerialize["identifier"] = o.Identifier
 	toSerialize["plex_token"] = o.PlexToken
@@ -174,7 +147,6 @@ func (o *UserPlexSourceConnectionRequest) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"user",
 		"source",
 		"identifier",
 		"plex_token",
@@ -207,7 +179,6 @@ func (o *UserPlexSourceConnectionRequest) UnmarshalJSON(data []byte) (err error)
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "user")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "identifier")
 		delete(additionalProperties, "plex_token")

@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**User** | Pointer to **int32** |  | [optional] 
 **Source** | Pointer to **string** |  | [optional] 
 **Identifier** | Pointer to **string** |  | [optional] 
 
@@ -26,31 +25,6 @@ will change when the set of required properties is changed
 NewPatchedUserTelegramSourceConnectionRequestWithDefaults instantiates a new PatchedUserTelegramSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetUser
-
-`func (o *PatchedUserTelegramSourceConnectionRequest) GetUser() int32`
-
-GetUser returns the User field if non-nil, zero value otherwise.
-
-### GetUserOk
-
-`func (o *PatchedUserTelegramSourceConnectionRequest) GetUserOk() (*int32, bool)`
-
-GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUser
-
-`func (o *PatchedUserTelegramSourceConnectionRequest) SetUser(v int32)`
-
-SetUser sets User field to given value.
-
-### HasUser
-
-`func (o *PatchedUserTelegramSourceConnectionRequest) HasUser() bool`
-
-HasUser returns a boolean if a field has been set.
 
 ### GetSource
 

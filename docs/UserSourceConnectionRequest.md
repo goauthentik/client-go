@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**User** | **int32** |  | 
 **Source** | **string** |  | 
 **Identifier** | **string** |  | 
 
@@ -12,7 +11,7 @@ Name | Type | Description | Notes
 
 ### NewUserSourceConnectionRequest
 
-`func NewUserSourceConnectionRequest(user int32, source string, identifier string, ) *UserSourceConnectionRequest`
+`func NewUserSourceConnectionRequest(source string, identifier string, ) *UserSourceConnectionRequest`
 
 NewUserSourceConnectionRequest instantiates a new UserSourceConnectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +25,6 @@ will change when the set of required properties is changed
 NewUserSourceConnectionRequestWithDefaults instantiates a new UserSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetUser
-
-`func (o *UserSourceConnectionRequest) GetUser() int32`
-
-GetUser returns the User field if non-nil, zero value otherwise.
-
-### GetUserOk
-
-`func (o *UserSourceConnectionRequest) GetUserOk() (*int32, bool)`
-
-GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUser
-
-`func (o *UserSourceConnectionRequest) SetUser(v int32)`
-
-SetUser sets User field to given value.
-
 
 ### GetSource
 

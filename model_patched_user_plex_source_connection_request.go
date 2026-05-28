@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.3
+API version: 2026.2.4
 Contact: hello@goauthentik.io
 */
 
@@ -20,7 +20,6 @@ var _ MappedNullable = &PatchedUserPlexSourceConnectionRequest{}
 
 // PatchedUserPlexSourceConnectionRequest User source connection
 type PatchedUserPlexSourceConnectionRequest struct {
-	User                 *int32  `json:"user,omitempty"`
 	Source               *string `json:"source,omitempty"`
 	Identifier           *string `json:"identifier,omitempty"`
 	PlexToken            *string `json:"plex_token,omitempty"`
@@ -44,38 +43,6 @@ func NewPatchedUserPlexSourceConnectionRequest() *PatchedUserPlexSourceConnectio
 func NewPatchedUserPlexSourceConnectionRequestWithDefaults() *PatchedUserPlexSourceConnectionRequest {
 	this := PatchedUserPlexSourceConnectionRequest{}
 	return &this
-}
-
-// GetUser returns the User field value if set, zero value otherwise.
-func (o *PatchedUserPlexSourceConnectionRequest) GetUser() int32 {
-	if o == nil || IsNil(o.User) {
-		var ret int32
-		return ret
-	}
-	return *o.User
-}
-
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedUserPlexSourceConnectionRequest) GetUserOk() (*int32, bool) {
-	if o == nil || IsNil(o.User) {
-		return nil, false
-	}
-	return o.User, true
-}
-
-// HasUser returns a boolean if a field has been set.
-func (o *PatchedUserPlexSourceConnectionRequest) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
-		return true
-	}
-
-	return false
-}
-
-// SetUser gets a reference to the given int32 and assigns it to the User field.
-func (o *PatchedUserPlexSourceConnectionRequest) SetUser(v int32) {
-	o.User = &v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -184,9 +151,6 @@ func (o PatchedUserPlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 
 func (o PatchedUserPlexSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.User) {
-		toSerialize["user"] = o.User
-	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
@@ -218,7 +182,6 @@ func (o *PatchedUserPlexSourceConnectionRequest) UnmarshalJSON(data []byte) (err
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "user")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "identifier")
 		delete(additionalProperties, "plex_token")

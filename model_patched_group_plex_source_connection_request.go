@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.3
+API version: 2026.2.4
 Contact: hello@goauthentik.io
 */
 
@@ -20,7 +20,6 @@ var _ MappedNullable = &PatchedGroupPlexSourceConnectionRequest{}
 
 // PatchedGroupPlexSourceConnectionRequest Group Source Connection
 type PatchedGroupPlexSourceConnectionRequest struct {
-	Group                *string `json:"group,omitempty"`
 	Source               *string `json:"source,omitempty"`
 	Identifier           *string `json:"identifier,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -43,38 +42,6 @@ func NewPatchedGroupPlexSourceConnectionRequest() *PatchedGroupPlexSourceConnect
 func NewPatchedGroupPlexSourceConnectionRequestWithDefaults() *PatchedGroupPlexSourceConnectionRequest {
 	this := PatchedGroupPlexSourceConnectionRequest{}
 	return &this
-}
-
-// GetGroup returns the Group field value if set, zero value otherwise.
-func (o *PatchedGroupPlexSourceConnectionRequest) GetGroup() string {
-	if o == nil || IsNil(o.Group) {
-		var ret string
-		return ret
-	}
-	return *o.Group
-}
-
-// GetGroupOk returns a tuple with the Group field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedGroupPlexSourceConnectionRequest) GetGroupOk() (*string, bool) {
-	if o == nil || IsNil(o.Group) {
-		return nil, false
-	}
-	return o.Group, true
-}
-
-// HasGroup returns a boolean if a field has been set.
-func (o *PatchedGroupPlexSourceConnectionRequest) HasGroup() bool {
-	if o != nil && !IsNil(o.Group) {
-		return true
-	}
-
-	return false
-}
-
-// SetGroup gets a reference to the given string and assigns it to the Group field.
-func (o *PatchedGroupPlexSourceConnectionRequest) SetGroup(v string) {
-	o.Group = &v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -151,9 +118,6 @@ func (o PatchedGroupPlexSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 
 func (o PatchedGroupPlexSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Group) {
-		toSerialize["group"] = o.Group
-	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
@@ -182,7 +146,6 @@ func (o *PatchedGroupPlexSourceConnectionRequest) UnmarshalJSON(data []byte) (er
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "group")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "identifier")
 		o.AdditionalProperties = additionalProperties

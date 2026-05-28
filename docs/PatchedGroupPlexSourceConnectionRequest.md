@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Group** | Pointer to **string** |  | [optional] 
 **Source** | Pointer to **string** |  | [optional] 
 **Identifier** | Pointer to **string** |  | [optional] 
 
@@ -26,31 +25,6 @@ will change when the set of required properties is changed
 NewPatchedGroupPlexSourceConnectionRequestWithDefaults instantiates a new PatchedGroupPlexSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetGroup
-
-`func (o *PatchedGroupPlexSourceConnectionRequest) GetGroup() string`
-
-GetGroup returns the Group field if non-nil, zero value otherwise.
-
-### GetGroupOk
-
-`func (o *PatchedGroupPlexSourceConnectionRequest) GetGroupOk() (*string, bool)`
-
-GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroup
-
-`func (o *PatchedGroupPlexSourceConnectionRequest) SetGroup(v string)`
-
-SetGroup sets Group field to given value.
-
-### HasGroup
-
-`func (o *PatchedGroupPlexSourceConnectionRequest) HasGroup() bool`
-
-HasGroup returns a boolean if a field has been set.
 
 ### GetSource
 

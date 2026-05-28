@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.3
+API version: 2026.2.4
 Contact: hello@goauthentik.io
 */
 
@@ -22,7 +22,6 @@ var _ MappedNullable = &UserOAuthSourceConnectionRequest{}
 
 // UserOAuthSourceConnectionRequest User source connection
 type UserOAuthSourceConnectionRequest struct {
-	User                 int32          `json:"user"`
 	Source               string         `json:"source"`
 	Identifier           string         `json:"identifier"`
 	AccessToken          NullableString `json:"access_token,omitempty"`
@@ -36,9 +35,8 @@ type _UserOAuthSourceConnectionRequest UserOAuthSourceConnectionRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserOAuthSourceConnectionRequest(user int32, source string, identifier string) *UserOAuthSourceConnectionRequest {
+func NewUserOAuthSourceConnectionRequest(source string, identifier string) *UserOAuthSourceConnectionRequest {
 	this := UserOAuthSourceConnectionRequest{}
-	this.User = user
 	this.Source = source
 	this.Identifier = identifier
 	return &this
@@ -50,30 +48,6 @@ func NewUserOAuthSourceConnectionRequest(user int32, source string, identifier s
 func NewUserOAuthSourceConnectionRequestWithDefaults() *UserOAuthSourceConnectionRequest {
 	this := UserOAuthSourceConnectionRequest{}
 	return &this
-}
-
-// GetUser returns the User field value
-func (o *UserOAuthSourceConnectionRequest) GetUser() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.User
-}
-
-// GetUserOk returns a tuple with the User field value
-// and a boolean to check if the value has been set.
-func (o *UserOAuthSourceConnectionRequest) GetUserOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.User, true
-}
-
-// SetUser sets field value
-func (o *UserOAuthSourceConnectionRequest) SetUser(v int32) {
-	o.User = v
 }
 
 // GetSource returns the Source field value
@@ -209,7 +183,6 @@ func (o UserOAuthSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 
 func (o UserOAuthSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["user"] = o.User
 	toSerialize["source"] = o.Source
 	toSerialize["identifier"] = o.Identifier
 	if o.AccessToken.IsSet() {
@@ -231,7 +204,6 @@ func (o *UserOAuthSourceConnectionRequest) UnmarshalJSON(data []byte) (err error
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"user",
 		"source",
 		"identifier",
 	}
@@ -263,7 +235,6 @@ func (o *UserOAuthSourceConnectionRequest) UnmarshalJSON(data []byte) (err error
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "user")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "identifier")
 		delete(additionalProperties, "access_token")
