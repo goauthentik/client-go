@@ -898,7 +898,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this group source connection.
-	groupSourceConnectionRequest := *openapiclient.NewGroupSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupSourceConnectionRequest | 
+	groupSourceConnectionRequest := *openapiclient.NewGroupSourceConnectionRequest("Source_example", "Identifier_example") // GroupSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1039,7 +1039,7 @@ import (
 )
 
 func main() {
-	groupKerberosSourceConnectionRequest := *openapiclient.NewGroupKerberosSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupKerberosSourceConnectionRequest | 
+	groupKerberosSourceConnectionRequest := *openapiclient.NewGroupKerberosSourceConnectionRequest("Source_example", "Identifier_example") // GroupKerberosSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1392,7 +1392,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this Group Kerberos Source Connection.
-	groupKerberosSourceConnectionRequest := *openapiclient.NewGroupKerberosSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupKerberosSourceConnectionRequest | 
+	groupKerberosSourceConnectionRequest := *openapiclient.NewGroupKerberosSourceConnectionRequest("Source_example", "Identifier_example") // GroupKerberosSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1533,7 +1533,7 @@ import (
 )
 
 func main() {
-	groupLDAPSourceConnectionRequest := *openapiclient.NewGroupLDAPSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupLDAPSourceConnectionRequest | 
+	groupLDAPSourceConnectionRequest := *openapiclient.NewGroupLDAPSourceConnectionRequest("Source_example", "Identifier_example") // GroupLDAPSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1886,7 +1886,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this Group LDAP Source Connection.
-	groupLDAPSourceConnectionRequest := *openapiclient.NewGroupLDAPSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupLDAPSourceConnectionRequest | 
+	groupLDAPSourceConnectionRequest := *openapiclient.NewGroupLDAPSourceConnectionRequest("Source_example", "Identifier_example") // GroupLDAPSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2027,7 +2027,7 @@ import (
 )
 
 func main() {
-	groupOAuthSourceConnectionRequest := *openapiclient.NewGroupOAuthSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupOAuthSourceConnectionRequest | 
+	groupOAuthSourceConnectionRequest := *openapiclient.NewGroupOAuthSourceConnectionRequest("Source_example", "Identifier_example") // GroupOAuthSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2380,7 +2380,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this Group OAuth Source Connection.
-	groupOAuthSourceConnectionRequest := *openapiclient.NewGroupOAuthSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupOAuthSourceConnectionRequest | 
+	groupOAuthSourceConnectionRequest := *openapiclient.NewGroupOAuthSourceConnectionRequest("Source_example", "Identifier_example") // GroupOAuthSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2521,7 +2521,7 @@ import (
 )
 
 func main() {
-	groupPlexSourceConnectionRequest := *openapiclient.NewGroupPlexSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupPlexSourceConnectionRequest | 
+	groupPlexSourceConnectionRequest := *openapiclient.NewGroupPlexSourceConnectionRequest("Source_example", "Identifier_example") // GroupPlexSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2874,7 +2874,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this Group Plex Source Connection.
-	groupPlexSourceConnectionRequest := *openapiclient.NewGroupPlexSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupPlexSourceConnectionRequest | 
+	groupPlexSourceConnectionRequest := *openapiclient.NewGroupPlexSourceConnectionRequest("Source_example", "Identifier_example") // GroupPlexSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3015,7 +3015,7 @@ import (
 )
 
 func main() {
-	groupSAMLSourceConnectionRequest := *openapiclient.NewGroupSAMLSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupSAMLSourceConnectionRequest | 
+	groupSAMLSourceConnectionRequest := *openapiclient.NewGroupSAMLSourceConnectionRequest("Source_example", "Identifier_example") // GroupSAMLSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3368,7 +3368,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this Group SAML Source Connection.
-	groupSAMLSourceConnectionRequest := *openapiclient.NewGroupSAMLSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupSAMLSourceConnectionRequest | 
+	groupSAMLSourceConnectionRequest := *openapiclient.NewGroupSAMLSourceConnectionRequest("Source_example", "Identifier_example") // GroupSAMLSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3509,7 +3509,7 @@ import (
 )
 
 func main() {
-	groupTelegramSourceConnectionRequest := *openapiclient.NewGroupTelegramSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupTelegramSourceConnectionRequest | 
+	groupTelegramSourceConnectionRequest := *openapiclient.NewGroupTelegramSourceConnectionRequest("Source_example", "Identifier_example") // GroupTelegramSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -3862,7 +3862,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this Group Telegram Source Connection.
-	groupTelegramSourceConnectionRequest := *openapiclient.NewGroupTelegramSourceConnectionRequest("Group_example", "Source_example", "Identifier_example") // GroupTelegramSourceConnectionRequest | 
+	groupTelegramSourceConnectionRequest := *openapiclient.NewGroupTelegramSourceConnectionRequest("Source_example", "Identifier_example") // GroupTelegramSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -9472,7 +9472,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this user source connection.
-	userSourceConnectionRequest := *openapiclient.NewUserSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserSourceConnectionRequest | 
+	userSourceConnectionRequest := *openapiclient.NewUserSourceConnectionRequest("Source_example", "Identifier_example") // UserSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -9613,7 +9613,7 @@ import (
 )
 
 func main() {
-	userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserKerberosSourceConnectionRequest | 
+	userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest("Source_example", "Identifier_example") // UserKerberosSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -9966,7 +9966,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this User Kerberos Source Connection.
-	userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserKerberosSourceConnectionRequest | 
+	userKerberosSourceConnectionRequest := *openapiclient.NewUserKerberosSourceConnectionRequest("Source_example", "Identifier_example") // UserKerberosSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -10107,7 +10107,7 @@ import (
 )
 
 func main() {
-	userLDAPSourceConnectionRequest := *openapiclient.NewUserLDAPSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserLDAPSourceConnectionRequest | 
+	userLDAPSourceConnectionRequest := *openapiclient.NewUserLDAPSourceConnectionRequest("Source_example", "Identifier_example") // UserLDAPSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -10460,7 +10460,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this User LDAP Source Connection.
-	userLDAPSourceConnectionRequest := *openapiclient.NewUserLDAPSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserLDAPSourceConnectionRequest | 
+	userLDAPSourceConnectionRequest := *openapiclient.NewUserLDAPSourceConnectionRequest("Source_example", "Identifier_example") // UserLDAPSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -10601,7 +10601,7 @@ import (
 )
 
 func main() {
-	userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
+	userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -10954,7 +10954,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this User OAuth Source Connection.
-	userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
+	userOAuthSourceConnectionRequest := *openapiclient.NewUserOAuthSourceConnectionRequest("Source_example", "Identifier_example") // UserOAuthSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -11095,7 +11095,7 @@ import (
 )
 
 func main() {
-	userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest(int32(123), "Source_example", "Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
+	userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Source_example", "Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -11448,7 +11448,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this User Plex Source Connection.
-	userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest(int32(123), "Source_example", "Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
+	userPlexSourceConnectionRequest := *openapiclient.NewUserPlexSourceConnectionRequest("Source_example", "Identifier_example", "PlexToken_example") // UserPlexSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -11589,7 +11589,7 @@ import (
 )
 
 func main() {
-	userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserSAMLSourceConnectionRequest | 
+	userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest("Source_example", "Identifier_example") // UserSAMLSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -11942,7 +11942,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this User SAML Source Connection.
-	userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserSAMLSourceConnectionRequest | 
+	userSAMLSourceConnectionRequest := *openapiclient.NewUserSAMLSourceConnectionRequest("Source_example", "Identifier_example") // UserSAMLSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -12083,7 +12083,7 @@ import (
 )
 
 func main() {
-	userTelegramSourceConnectionRequest := *openapiclient.NewUserTelegramSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserTelegramSourceConnectionRequest | 
+	userTelegramSourceConnectionRequest := *openapiclient.NewUserTelegramSourceConnectionRequest("Source_example", "Identifier_example") // UserTelegramSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -12436,7 +12436,7 @@ import (
 
 func main() {
 	id := int32(56) // int32 | A unique integer value identifying this User Telegram Source Connection.
-	userTelegramSourceConnectionRequest := *openapiclient.NewUserTelegramSourceConnectionRequest(int32(123), "Source_example", "Identifier_example") // UserTelegramSourceConnectionRequest | 
+	userTelegramSourceConnectionRequest := *openapiclient.NewUserTelegramSourceConnectionRequest("Source_example", "Identifier_example") // UserTelegramSourceConnectionRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

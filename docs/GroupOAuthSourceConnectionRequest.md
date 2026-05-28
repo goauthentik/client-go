@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Group** | **string** |  | 
 **Source** | **string** |  | 
 **Identifier** | **string** |  | 
 
@@ -12,7 +11,7 @@ Name | Type | Description | Notes
 
 ### NewGroupOAuthSourceConnectionRequest
 
-`func NewGroupOAuthSourceConnectionRequest(group string, source string, identifier string, ) *GroupOAuthSourceConnectionRequest`
+`func NewGroupOAuthSourceConnectionRequest(source string, identifier string, ) *GroupOAuthSourceConnectionRequest`
 
 NewGroupOAuthSourceConnectionRequest instantiates a new GroupOAuthSourceConnectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +25,6 @@ will change when the set of required properties is changed
 NewGroupOAuthSourceConnectionRequestWithDefaults instantiates a new GroupOAuthSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetGroup
-
-`func (o *GroupOAuthSourceConnectionRequest) GetGroup() string`
-
-GetGroup returns the Group field if non-nil, zero value otherwise.
-
-### GetGroupOk
-
-`func (o *GroupOAuthSourceConnectionRequest) GetGroupOk() (*string, bool)`
-
-GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroup
-
-`func (o *GroupOAuthSourceConnectionRequest) SetGroup(v string)`
-
-SetGroup sets Group field to given value.
-
 
 ### GetSource
 

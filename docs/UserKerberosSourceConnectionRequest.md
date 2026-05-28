@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**User** | **int32** |  | 
 **Source** | **string** |  | 
 **Identifier** | **string** |  | 
 
@@ -12,7 +11,7 @@ Name | Type | Description | Notes
 
 ### NewUserKerberosSourceConnectionRequest
 
-`func NewUserKerberosSourceConnectionRequest(user int32, source string, identifier string, ) *UserKerberosSourceConnectionRequest`
+`func NewUserKerberosSourceConnectionRequest(source string, identifier string, ) *UserKerberosSourceConnectionRequest`
 
 NewUserKerberosSourceConnectionRequest instantiates a new UserKerberosSourceConnectionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +25,6 @@ will change when the set of required properties is changed
 NewUserKerberosSourceConnectionRequestWithDefaults instantiates a new UserKerberosSourceConnectionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetUser
-
-`func (o *UserKerberosSourceConnectionRequest) GetUser() int32`
-
-GetUser returns the User field if non-nil, zero value otherwise.
-
-### GetUserOk
-
-`func (o *UserKerberosSourceConnectionRequest) GetUserOk() (*int32, bool)`
-
-GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUser
-
-`func (o *UserKerberosSourceConnectionRequest) SetUser(v int32)`
-
-SetUser sets User field to given value.
-
 
 ### GetSource
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pk** | **int32** |  | [readonly] 
-**Group** | **string** |  | 
+**Group** | **string** |  | [readonly] 
 **Source** | **string** |  | 
 **SourceObj** | [**Source**](Source.md) |  | [readonly] 
 **Identifier** | **string** |  | 

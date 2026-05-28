@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.5.0
+API version: 2026.5.2
 Contact: hello@goauthentik.io
 */
 
@@ -21,7 +21,6 @@ var _ MappedNullable = &GroupLDAPSourceConnectionRequest{}
 
 // GroupLDAPSourceConnectionRequest Group Source Connection
 type GroupLDAPSourceConnectionRequest struct {
-	Group                string `json:"group"`
 	Source               string `json:"source"`
 	Identifier           string `json:"identifier"`
 	AdditionalProperties map[string]interface{}
@@ -33,9 +32,8 @@ type _GroupLDAPSourceConnectionRequest GroupLDAPSourceConnectionRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupLDAPSourceConnectionRequest(group string, source string, identifier string) *GroupLDAPSourceConnectionRequest {
+func NewGroupLDAPSourceConnectionRequest(source string, identifier string) *GroupLDAPSourceConnectionRequest {
 	this := GroupLDAPSourceConnectionRequest{}
-	this.Group = group
 	this.Source = source
 	this.Identifier = identifier
 	return &this
@@ -47,30 +45,6 @@ func NewGroupLDAPSourceConnectionRequest(group string, source string, identifier
 func NewGroupLDAPSourceConnectionRequestWithDefaults() *GroupLDAPSourceConnectionRequest {
 	this := GroupLDAPSourceConnectionRequest{}
 	return &this
-}
-
-// GetGroup returns the Group field value
-func (o *GroupLDAPSourceConnectionRequest) GetGroup() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Group
-}
-
-// GetGroupOk returns a tuple with the Group field value
-// and a boolean to check if the value has been set.
-func (o *GroupLDAPSourceConnectionRequest) GetGroupOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Group, true
-}
-
-// SetGroup sets field value
-func (o *GroupLDAPSourceConnectionRequest) SetGroup(v string) {
-	o.Group = v
 }
 
 // GetSource returns the Source field value
@@ -131,7 +105,6 @@ func (o GroupLDAPSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 
 func (o GroupLDAPSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["group"] = o.Group
 	toSerialize["source"] = o.Source
 	toSerialize["identifier"] = o.Identifier
 
@@ -147,7 +120,6 @@ func (o *GroupLDAPSourceConnectionRequest) UnmarshalJSON(data []byte) (err error
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"group",
 		"source",
 		"identifier",
 	}
@@ -179,7 +151,6 @@ func (o *GroupLDAPSourceConnectionRequest) UnmarshalJSON(data []byte) (err error
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "group")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "identifier")
 		o.AdditionalProperties = additionalProperties

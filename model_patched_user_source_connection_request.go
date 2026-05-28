@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.5.0
+API version: 2026.5.2
 Contact: hello@goauthentik.io
 */
 
@@ -20,7 +20,6 @@ var _ MappedNullable = &PatchedUserSourceConnectionRequest{}
 
 // PatchedUserSourceConnectionRequest User source connection
 type PatchedUserSourceConnectionRequest struct {
-	User                 *int32  `json:"user,omitempty"`
 	Source               *string `json:"source,omitempty"`
 	Identifier           *string `json:"identifier,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -43,38 +42,6 @@ func NewPatchedUserSourceConnectionRequest() *PatchedUserSourceConnectionRequest
 func NewPatchedUserSourceConnectionRequestWithDefaults() *PatchedUserSourceConnectionRequest {
 	this := PatchedUserSourceConnectionRequest{}
 	return &this
-}
-
-// GetUser returns the User field value if set, zero value otherwise.
-func (o *PatchedUserSourceConnectionRequest) GetUser() int32 {
-	if o == nil || IsNil(o.User) {
-		var ret int32
-		return ret
-	}
-	return *o.User
-}
-
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchedUserSourceConnectionRequest) GetUserOk() (*int32, bool) {
-	if o == nil || IsNil(o.User) {
-		return nil, false
-	}
-	return o.User, true
-}
-
-// HasUser returns a boolean if a field has been set.
-func (o *PatchedUserSourceConnectionRequest) HasUser() bool {
-	if o != nil && !IsNil(o.User) {
-		return true
-	}
-
-	return false
-}
-
-// SetUser gets a reference to the given int32 and assigns it to the User field.
-func (o *PatchedUserSourceConnectionRequest) SetUser(v int32) {
-	o.User = &v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -151,9 +118,6 @@ func (o PatchedUserSourceConnectionRequest) MarshalJSON() ([]byte, error) {
 
 func (o PatchedUserSourceConnectionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.User) {
-		toSerialize["user"] = o.User
-	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
@@ -182,7 +146,6 @@ func (o *PatchedUserSourceConnectionRequest) UnmarshalJSON(data []byte) (err err
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "user")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "identifier")
 		o.AdditionalProperties = additionalProperties
