@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.5.2
+  version: 2026.5.3
 servers:
 - url: /api/v3
 paths:
@@ -8254,8 +8254,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
-      security:
-      - {}
       tags:
       - endpoints
   /endpoints/agents/connectors/auth_fed/:
@@ -8347,8 +8345,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
-      security:
-      - {}
       tags:
       - endpoints
   /endpoints/agents/connectors/enroll/:
@@ -8381,8 +8377,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
-      security:
-      - {}
       tags:
       - endpoints
   /endpoints/agents/enrollment_tokens/:
