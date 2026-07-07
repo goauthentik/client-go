@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Component** | Pointer to **string** |  | [optional] [default to "ak-source-telegram"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **To** | **string** |  | 
+**FinalRedirect** | Pointer to **bool** |  | [optional] [default to false]
 **ClientId** | **string** |  | 
 **Scope** | **string** |  | 
 **RedirectUri** | **string** |  | 
@@ -129,6 +130,31 @@ and a boolean to check if the value has been set.
 
 SetTo sets To field to given value.
 
+
+### GetFinalRedirect
+
+`func (o *LoginChallengeTypes) GetFinalRedirect() bool`
+
+GetFinalRedirect returns the FinalRedirect field if non-nil, zero value otherwise.
+
+### GetFinalRedirectOk
+
+`func (o *LoginChallengeTypes) GetFinalRedirectOk() (*bool, bool)`
+
+GetFinalRedirectOk returns a tuple with the FinalRedirect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFinalRedirect
+
+`func (o *LoginChallengeTypes) SetFinalRedirect(v bool)`
+
+SetFinalRedirect sets FinalRedirect field to given value.
+
+### HasFinalRedirect
+
+`func (o *LoginChallengeTypes) HasFinalRedirect() bool`
+
+HasFinalRedirect returns a boolean if a field has been set.
 
 ### GetClientId
 

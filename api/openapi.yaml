@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.2.4
+  version: 2026.2.5
 servers:
 - url: /api/v3
 paths:
@@ -8199,8 +8199,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
-      security:
-      - {}
       tags:
       - endpoints
   /endpoints/agents/connectors/auth_fed/:
@@ -8292,8 +8290,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
-      security:
-      - {}
       tags:
       - endpoints
   /endpoints/agents/connectors/enroll/:
@@ -8326,8 +8322,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
-      security:
-      - {}
       tags:
       - endpoints
   /endpoints/agents/enrollment_tokens/:
@@ -83325,6 +83319,7 @@ components:
       description: Challenge type to redirect the client
       example:
         component: xak-flow-redirect
+        final_redirect: false
         response_errors:
           key:
           - code: code
@@ -83352,6 +83347,9 @@ components:
           type: object
         to:
           type: string
+        final_redirect:
+          default: false
+          type: boolean
       required:
       - to
       type: object
