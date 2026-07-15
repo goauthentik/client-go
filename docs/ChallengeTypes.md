@@ -71,6 +71,7 @@ Name | Type | Description | Notes
 **Slug** | **string** |  | 
 **Fields** | [**[]StagePrompt**](StagePrompt.md) |  | 
 **To** | **string** |  | 
+**FinalRedirect** | Pointer to **bool** |  | [optional] [default to false]
 **ApplicationName** | Pointer to **string** |  | [optional] 
 **ApplicationLaunchUrl** | Pointer to **string** |  | [optional] 
 **InvalidationFlowUrl** | Pointer to **string** |  | [optional] 
@@ -1648,6 +1649,31 @@ and a boolean to check if the value has been set.
 
 SetTo sets To field to given value.
 
+
+### GetFinalRedirect
+
+`func (o *ChallengeTypes) GetFinalRedirect() bool`
+
+GetFinalRedirect returns the FinalRedirect field if non-nil, zero value otherwise.
+
+### GetFinalRedirectOk
+
+`func (o *ChallengeTypes) GetFinalRedirectOk() (*bool, bool)`
+
+GetFinalRedirectOk returns a tuple with the FinalRedirect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFinalRedirect
+
+`func (o *ChallengeTypes) SetFinalRedirect(v bool)`
+
+SetFinalRedirect sets FinalRedirect field to given value.
+
+### HasFinalRedirect
+
+`func (o *ChallengeTypes) HasFinalRedirect() bool`
+
+HasFinalRedirect returns a boolean if a field has been set.
 
 ### GetApplicationName
 

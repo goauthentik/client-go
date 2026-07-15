@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: authentik
-  version: 2026.5.4
+  version: 2026.5.5
   description: Making authentication simple.
   contact:
     email: hello@goauthentik.io
@@ -52663,8 +52663,8 @@ components:
       type: string
     ProviderTypeEnum:
       enum:
-      - apple
       - openidconnect
+      - apple
       - entraid
       - azuread
       - discord
@@ -53521,6 +53521,9 @@ components:
               $ref: '#/components/schemas/ErrorDetail'
         to:
           type: string
+        final_redirect:
+          type: boolean
+          default: false
       required:
       - to
     RedirectChallengeResponseRequest:

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.5.4
+API version: 2026.5.5
 Contact: hello@goauthentik.io
 */
 
@@ -21,8 +21,8 @@ type ProviderTypeEnum string
 
 // List of ProviderTypeEnum
 const (
-	PROVIDERTYPEENUM_APPLE         ProviderTypeEnum = "apple"
 	PROVIDERTYPEENUM_OPENIDCONNECT ProviderTypeEnum = "openidconnect"
+	PROVIDERTYPEENUM_APPLE         ProviderTypeEnum = "apple"
 	PROVIDERTYPEENUM_ENTRAID       ProviderTypeEnum = "entraid"
 	PROVIDERTYPEENUM_AZUREAD       ProviderTypeEnum = "azuread"
 	PROVIDERTYPEENUM_DISCORD       ProviderTypeEnum = "discord"
@@ -42,8 +42,8 @@ const (
 
 // All allowed values of ProviderTypeEnum enum
 var AllowedProviderTypeEnumEnumValues = []ProviderTypeEnum{
-	"apple",
 	"openidconnect",
+	"apple",
 	"entraid",
 	"azuread",
 	"discord",

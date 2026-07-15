@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Component** | Pointer to **string** |  | [optional] [default to "xak-flow-redirect"]
 **ResponseErrors** | Pointer to [**map[string][]ErrorDetail**](array.md) |  | [optional] 
 **To** | **string** |  | 
+**FinalRedirect** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -122,6 +123,31 @@ and a boolean to check if the value has been set.
 
 SetTo sets To field to given value.
 
+
+### GetFinalRedirect
+
+`func (o *RedirectChallenge) GetFinalRedirect() bool`
+
+GetFinalRedirect returns the FinalRedirect field if non-nil, zero value otherwise.
+
+### GetFinalRedirectOk
+
+`func (o *RedirectChallenge) GetFinalRedirectOk() (*bool, bool)`
+
+GetFinalRedirectOk returns a tuple with the FinalRedirect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFinalRedirect
+
+`func (o *RedirectChallenge) SetFinalRedirect(v bool)`
+
+SetFinalRedirect sets FinalRedirect field to given value.
+
+### HasFinalRedirect
+
+`func (o *RedirectChallenge) HasFinalRedirect() bool`
+
+HasFinalRedirect returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
