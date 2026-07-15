@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.2.5
+  version: 2026.2.6
 servers:
 - url: /api/v3
 paths:
@@ -64060,7 +64060,7 @@ components:
     OAuthSource:
       description: OAuth Source Serializer
       example:
-        provider_type: apple
+        provider_type: openidconnect
         user_matching_mode: ""
         verbose_name_plural: verbose_name_plural
         request_token_url: request_token_url
@@ -64337,7 +64337,7 @@ components:
     OAuthSourceRequest:
       description: OAuth Source Serializer
       example:
-        provider_type: apple
+        provider_type: openidconnect
         user_matching_mode: ""
         consumer_secret: consumer_secret
         request_token_url: request_token_url
@@ -70373,7 +70373,7 @@ components:
         autocomplete:
           key: ""
         results:
-        - provider_type: apple
+        - provider_type: openidconnect
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
@@ -70413,7 +70413,7 @@ components:
           icon_themed_urls: ""
           name: name
           pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - provider_type: apple
+        - provider_type: openidconnect
           user_matching_mode: ""
           verbose_name_plural: verbose_name_plural
           request_token_url: request_token_url
@@ -78621,7 +78621,7 @@ components:
     PatchedOAuthSourceRequest:
       description: OAuth Source Serializer
       example:
-        provider_type: apple
+        provider_type: openidconnect
         user_matching_mode: ""
         consumer_secret: consumer_secret
         request_token_url: request_token_url
@@ -82249,8 +82249,8 @@ components:
       type: string
     ProviderTypeEnum:
       enum:
-      - apple
       - openidconnect
+      - apple
       - entraid
       - azuread
       - discord

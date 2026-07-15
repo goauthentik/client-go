@@ -3,9 +3,9 @@
 ## Enum
 
 
-* `APPLE` (value: `"apple"`)
-
 * `OPENIDCONNECT` (value: `"openidconnect"`)
+
+* `APPLE` (value: `"apple"`)
 
 * `ENTRAID` (value: `"entraid"`)
 
