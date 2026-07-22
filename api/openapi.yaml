@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.5.5
+  version: 2026.5.6
 servers:
 - url: /api/v3
 paths:
@@ -8254,6 +8254,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - authentik_device_auth: []
       tags:
       - endpoints
   /endpoints/agents/connectors/auth_fed/:
@@ -8290,6 +8292,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - authentik_device_federation: []
       tags:
       - endpoints
   /endpoints/agents/connectors/auth_ia/:
@@ -8345,6 +8349,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - authentik_device_auth: []
       tags:
       - endpoints
   /endpoints/agents/connectors/enroll/:
@@ -8377,6 +8383,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - authentik_device_enroll: []
       tags:
       - endpoints
   /endpoints/agents/enrollment_tokens/:
