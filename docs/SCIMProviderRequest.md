@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
 **SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
+**DiscoveryEnabled** | Pointer to **bool** | When enabled, authentik will attempt to discover existing resources in the remote system. | [optional] 
 **GroupFilters** | Pointer to **[]string** | Group filters used to define sync-scope for groups. | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
@@ -389,6 +390,31 @@ SetSyncPageTimeout sets SyncPageTimeout field to given value.
 `func (o *SCIMProviderRequest) HasSyncPageTimeout() bool`
 
 HasSyncPageTimeout returns a boolean if a field has been set.
+
+### GetDiscoveryEnabled
+
+`func (o *SCIMProviderRequest) GetDiscoveryEnabled() bool`
+
+GetDiscoveryEnabled returns the DiscoveryEnabled field if non-nil, zero value otherwise.
+
+### GetDiscoveryEnabledOk
+
+`func (o *SCIMProviderRequest) GetDiscoveryEnabledOk() (*bool, bool)`
+
+GetDiscoveryEnabledOk returns a tuple with the DiscoveryEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscoveryEnabled
+
+`func (o *SCIMProviderRequest) SetDiscoveryEnabled(v bool)`
+
+SetDiscoveryEnabled sets DiscoveryEnabled field to given value.
+
+### HasDiscoveryEnabled
+
+`func (o *SCIMProviderRequest) HasDiscoveryEnabled() bool`
+
+HasDiscoveryEnabled returns a boolean if a field has been set.
 
 ### GetGroupFilters
 

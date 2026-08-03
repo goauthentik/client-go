@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
 **SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
+**DiscoveryEnabled** | Pointer to **bool** | When enabled, authentik will attempt to discover existing resources in the remote system. | [optional] 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
 **AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
 **InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
@@ -459,6 +460,31 @@ SetDryRun sets DryRun field to given value.
 `func (o *ModelRequest) HasDryRun() bool`
 
 HasDryRun returns a boolean if a field has been set.
+
+### GetDiscoveryEnabled
+
+`func (o *ModelRequest) GetDiscoveryEnabled() bool`
+
+GetDiscoveryEnabled returns the DiscoveryEnabled field if non-nil, zero value otherwise.
+
+### GetDiscoveryEnabledOk
+
+`func (o *ModelRequest) GetDiscoveryEnabledOk() (*bool, bool)`
+
+GetDiscoveryEnabledOk returns a tuple with the DiscoveryEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscoveryEnabled
+
+`func (o *ModelRequest) SetDiscoveryEnabled(v bool)`
+
+SetDiscoveryEnabled sets DiscoveryEnabled field to given value.
+
+### HasDiscoveryEnabled
+
+`func (o *ModelRequest) HasDiscoveryEnabled() bool`
+
+HasDiscoveryEnabled returns a boolean if a field has been set.
 
 ### GetAuthenticationFlow
 

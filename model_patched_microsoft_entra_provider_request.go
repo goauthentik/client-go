@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc2
+API version: 2026.8.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -33,6 +33,8 @@ type PatchedMicrosoftEntraProviderRequest struct {
 	GroupDeleteAction          *OutgoingSyncDeleteAction `json:"group_delete_action,omitempty"`
 	// Controls the number of objects synced in a single task
 	SyncPageSize *int32 `json:"sync_page_size,omitempty"`
+	// When enabled, authentik will attempt to discover existing resources in the remote system.
+	DiscoveryEnabled *bool `json:"discovery_enabled,omitempty"`
 	// Timeout for synchronization of a single page
 	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
@@ -422,6 +424,38 @@ func (o *PatchedMicrosoftEntraProviderRequest) SetSyncPageSize(v int32) {
 	o.SyncPageSize = &v
 }
 
+// GetDiscoveryEnabled returns the DiscoveryEnabled field value if set, zero value otherwise.
+func (o *PatchedMicrosoftEntraProviderRequest) GetDiscoveryEnabled() bool {
+	if o == nil || IsNil(o.DiscoveryEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.DiscoveryEnabled
+}
+
+// GetDiscoveryEnabledOk returns a tuple with the DiscoveryEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedMicrosoftEntraProviderRequest) GetDiscoveryEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.DiscoveryEnabled) {
+		return nil, false
+	}
+	return o.DiscoveryEnabled, true
+}
+
+// HasDiscoveryEnabled returns a boolean if a field has been set.
+func (o *PatchedMicrosoftEntraProviderRequest) HasDiscoveryEnabled() bool {
+	if o != nil && !IsNil(o.DiscoveryEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscoveryEnabled gets a reference to the given bool and assigns it to the DiscoveryEnabled field.
+func (o *PatchedMicrosoftEntraProviderRequest) SetDiscoveryEnabled(v bool) {
+	o.DiscoveryEnabled = &v
+}
+
 // GetSyncPageTimeout returns the SyncPageTimeout field value if set, zero value otherwise.
 func (o *PatchedMicrosoftEntraProviderRequest) GetSyncPageTimeout() string {
 	if o == nil || IsNil(o.SyncPageTimeout) {
@@ -529,6 +563,9 @@ func (o PatchedMicrosoftEntraProviderRequest) ToMap() (map[string]interface{}, e
 	if !IsNil(o.SyncPageSize) {
 		toSerialize["sync_page_size"] = o.SyncPageSize
 	}
+	if !IsNil(o.DiscoveryEnabled) {
+		toSerialize["discovery_enabled"] = o.DiscoveryEnabled
+	}
 	if !IsNil(o.SyncPageTimeout) {
 		toSerialize["sync_page_timeout"] = o.SyncPageTimeout
 	}
@@ -568,6 +605,7 @@ func (o *PatchedMicrosoftEntraProviderRequest) UnmarshalJSON(data []byte) (err e
 		delete(additionalProperties, "user_delete_action")
 		delete(additionalProperties, "group_delete_action")
 		delete(additionalProperties, "sync_page_size")
+		delete(additionalProperties, "discovery_enabled")
 		delete(additionalProperties, "sync_page_timeout")
 		delete(additionalProperties, "dry_run")
 		o.AdditionalProperties = additionalProperties

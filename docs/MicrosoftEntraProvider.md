@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **UserDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **GroupDeleteAction** | Pointer to [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] 
 **SyncPageSize** | Pointer to **int32** | Controls the number of objects synced in a single task | [optional] 
+**DiscoveryEnabled** | Pointer to **bool** | When enabled, authentik will attempt to discover existing resources in the remote system. | [optional] 
 **SyncPageTimeout** | Pointer to **string** | Timeout for synchronization of a single page | [optional] 
 **DryRun** | Pointer to **bool** | When enabled, provider will not modify or create objects in the remote system. | [optional] 
 
@@ -468,6 +469,31 @@ SetSyncPageSize sets SyncPageSize field to given value.
 `func (o *MicrosoftEntraProvider) HasSyncPageSize() bool`
 
 HasSyncPageSize returns a boolean if a field has been set.
+
+### GetDiscoveryEnabled
+
+`func (o *MicrosoftEntraProvider) GetDiscoveryEnabled() bool`
+
+GetDiscoveryEnabled returns the DiscoveryEnabled field if non-nil, zero value otherwise.
+
+### GetDiscoveryEnabledOk
+
+`func (o *MicrosoftEntraProvider) GetDiscoveryEnabledOk() (*bool, bool)`
+
+GetDiscoveryEnabledOk returns a tuple with the DiscoveryEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscoveryEnabled
+
+`func (o *MicrosoftEntraProvider) SetDiscoveryEnabled(v bool)`
+
+SetDiscoveryEnabled sets DiscoveryEnabled field to given value.
+
+### HasDiscoveryEnabled
+
+`func (o *MicrosoftEntraProvider) HasDiscoveryEnabled() bool`
+
+HasDiscoveryEnabled returns a boolean if a field has been set.
 
 ### GetSyncPageTimeout
 

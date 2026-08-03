@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc2
+API version: 2026.8.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -44,6 +44,8 @@ type SCIMProviderRequest struct {
 	SyncPageSize *int32 `json:"sync_page_size,omitempty"`
 	// Timeout for synchronization of a single page
 	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
+	// When enabled, authentik will attempt to discover existing resources in the remote system.
+	DiscoveryEnabled *bool `json:"discovery_enabled,omitempty"`
 	// Group filters used to define sync-scope for groups.
 	GroupFilters []string `json:"group_filters,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
@@ -515,6 +517,38 @@ func (o *SCIMProviderRequest) SetSyncPageTimeout(v string) {
 	o.SyncPageTimeout = &v
 }
 
+// GetDiscoveryEnabled returns the DiscoveryEnabled field value if set, zero value otherwise.
+func (o *SCIMProviderRequest) GetDiscoveryEnabled() bool {
+	if o == nil || IsNil(o.DiscoveryEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.DiscoveryEnabled
+}
+
+// GetDiscoveryEnabledOk returns a tuple with the DiscoveryEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SCIMProviderRequest) GetDiscoveryEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.DiscoveryEnabled) {
+		return nil, false
+	}
+	return o.DiscoveryEnabled, true
+}
+
+// HasDiscoveryEnabled returns a boolean if a field has been set.
+func (o *SCIMProviderRequest) HasDiscoveryEnabled() bool {
+	if o != nil && !IsNil(o.DiscoveryEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscoveryEnabled gets a reference to the given bool and assigns it to the DiscoveryEnabled field.
+func (o *SCIMProviderRequest) SetDiscoveryEnabled(v bool) {
+	o.DiscoveryEnabled = &v
+}
+
 // GetGroupFilters returns the GroupFilters field value if set, zero value otherwise.
 func (o *SCIMProviderRequest) GetGroupFilters() []string {
 	if o == nil || IsNil(o.GroupFilters) {
@@ -627,6 +661,9 @@ func (o SCIMProviderRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SyncPageTimeout) {
 		toSerialize["sync_page_timeout"] = o.SyncPageTimeout
 	}
+	if !IsNil(o.DiscoveryEnabled) {
+		toSerialize["discovery_enabled"] = o.DiscoveryEnabled
+	}
 	if !IsNil(o.GroupFilters) {
 		toSerialize["group_filters"] = o.GroupFilters
 	}
@@ -691,6 +728,7 @@ func (o *SCIMProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "exclude_users_service_account")
 		delete(additionalProperties, "sync_page_size")
 		delete(additionalProperties, "sync_page_timeout")
+		delete(additionalProperties, "discovery_enabled")
 		delete(additionalProperties, "group_filters")
 		delete(additionalProperties, "dry_run")
 		o.AdditionalProperties = additionalProperties

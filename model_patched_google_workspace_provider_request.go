@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc2
+API version: 2026.8.0-rc3
 Contact: hello@goauthentik.io
 */
 
@@ -37,7 +37,9 @@ type PatchedGoogleWorkspaceProviderRequest struct {
 	// Timeout for synchronization of a single page
 	SyncPageTimeout *string `json:"sync_page_timeout,omitempty"`
 	// When enabled, provider will not modify or create objects in the remote system.
-	DryRun               *bool `json:"dry_run,omitempty"`
+	DryRun *bool `json:"dry_run,omitempty"`
+	// When enabled, authentik will attempt to discover existing resources in the remote system.
+	DiscoveryEnabled     *bool `json:"discovery_enabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -519,6 +521,38 @@ func (o *PatchedGoogleWorkspaceProviderRequest) SetDryRun(v bool) {
 	o.DryRun = &v
 }
 
+// GetDiscoveryEnabled returns the DiscoveryEnabled field value if set, zero value otherwise.
+func (o *PatchedGoogleWorkspaceProviderRequest) GetDiscoveryEnabled() bool {
+	if o == nil || IsNil(o.DiscoveryEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.DiscoveryEnabled
+}
+
+// GetDiscoveryEnabledOk returns a tuple with the DiscoveryEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedGoogleWorkspaceProviderRequest) GetDiscoveryEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.DiscoveryEnabled) {
+		return nil, false
+	}
+	return o.DiscoveryEnabled, true
+}
+
+// HasDiscoveryEnabled returns a boolean if a field has been set.
+func (o *PatchedGoogleWorkspaceProviderRequest) HasDiscoveryEnabled() bool {
+	if o != nil && !IsNil(o.DiscoveryEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscoveryEnabled gets a reference to the given bool and assigns it to the DiscoveryEnabled field.
+func (o *PatchedGoogleWorkspaceProviderRequest) SetDiscoveryEnabled(v bool) {
+	o.DiscoveryEnabled = &v
+}
+
 func (o PatchedGoogleWorkspaceProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -571,6 +605,9 @@ func (o PatchedGoogleWorkspaceProviderRequest) ToMap() (map[string]interface{}, 
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
 	}
+	if !IsNil(o.DiscoveryEnabled) {
+		toSerialize["discovery_enabled"] = o.DiscoveryEnabled
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -607,6 +644,7 @@ func (o *PatchedGoogleWorkspaceProviderRequest) UnmarshalJSON(data []byte) (err 
 		delete(additionalProperties, "sync_page_size")
 		delete(additionalProperties, "sync_page_timeout")
 		delete(additionalProperties, "dry_run")
+		delete(additionalProperties, "discovery_enabled")
 		o.AdditionalProperties = additionalProperties
 	}
 

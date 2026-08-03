@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.8.0-rc2
+  version: 2026.8.0-rc3
 servers:
 - url: /api/v3
 paths:
@@ -62321,6 +62321,7 @@ components:
         sync_page_size: 1294386359
         sync_page_timeout: sync_page_timeout
         dry_run: true
+        discovery_enabled: true
       properties:
         pk:
           readOnly: true
@@ -62397,6 +62398,10 @@ components:
         dry_run:
           description: "When enabled, provider will not modify or create objects in\
             \ the remote system."
+          type: boolean
+        discovery_enabled:
+          description: "When enabled, authentik will attempt to discover existing\
+            \ resources in the remote system."
           type: boolean
       required:
       - assigned_backchannel_application_name
@@ -62571,6 +62576,7 @@ components:
         sync_page_size: 171976545
         sync_page_timeout: sync_page_timeout
         dry_run: true
+        discovery_enabled: true
       properties:
         name:
           minLength: 1
@@ -62622,6 +62628,10 @@ components:
         dry_run:
           description: "When enabled, provider will not modify or create objects in\
             \ the remote system."
+          type: boolean
+        discovery_enabled:
+          description: "When enabled, authentik will attempt to discover existing\
+            \ resources in the remote system."
           type: boolean
       required:
       - credentials
@@ -66256,6 +66266,7 @@ components:
         user_delete_action: do_nothing
         group_delete_action: null
         sync_page_size: 1294386359
+        discovery_enabled: true
         sync_page_timeout: sync_page_timeout
         dry_run: true
       properties:
@@ -66323,6 +66334,10 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
+        discovery_enabled:
+          description: "When enabled, authentik will attempt to discover existing\
+            \ resources in the remote system."
+          type: boolean
         sync_page_timeout:
           description: Timeout for synchronization of a single page
           type: string
@@ -66499,6 +66514,7 @@ components:
         user_delete_action: do_nothing
         group_delete_action: null
         sync_page_size: 171976545
+        discovery_enabled: true
         sync_page_timeout: sync_page_timeout
         dry_run: true
       properties:
@@ -66540,6 +66556,10 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
+        discovery_enabled:
+          description: "When enabled, authentik will attempt to discover existing\
+            \ resources in the remote system."
+          type: boolean
         sync_page_timeout:
           description: Timeout for synchronization of a single page
           minLength: 1
@@ -72320,6 +72340,7 @@ components:
           sync_page_size: 1294386359
           sync_page_timeout: sync_page_timeout
           dry_run: true
+          discovery_enabled: true
         - pk: 0
           name: name
           property_mappings:
@@ -72346,6 +72367,7 @@ components:
           sync_page_size: 1294386359
           sync_page_timeout: sync_page_timeout
           dry_run: true
+          discovery_enabled: true
         autocomplete:
           key: ""
       properties:
@@ -74152,6 +74174,7 @@ components:
           user_delete_action: do_nothing
           group_delete_action: null
           sync_page_size: 1294386359
+          discovery_enabled: true
           sync_page_timeout: sync_page_timeout
           dry_run: true
         - pk: 0
@@ -74176,6 +74199,7 @@ components:
           user_delete_action: do_nothing
           group_delete_action: null
           sync_page_size: 1294386359
+          discovery_enabled: true
           sync_page_timeout: sync_page_timeout
           dry_run: true
         autocomplete:
@@ -77430,6 +77454,7 @@ components:
           exclude_users_service_account: true
           sync_page_size: 1294386359
           sync_page_timeout: sync_page_timeout
+          discovery_enabled: true
           group_filters:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -77464,6 +77489,7 @@ components:
           exclude_users_service_account: true
           sync_page_size: 1294386359
           sync_page_timeout: sync_page_timeout
+          discovery_enabled: true
           group_filters:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -82284,6 +82310,7 @@ components:
         sync_page_size: 171976545
         sync_page_timeout: sync_page_timeout
         dry_run: true
+        discovery_enabled: true
       properties:
         name:
           minLength: 1
@@ -82335,6 +82362,10 @@ components:
         dry_run:
           description: "When enabled, provider will not modify or create objects in\
             \ the remote system."
+          type: boolean
+        discovery_enabled:
+          description: "When enabled, authentik will attempt to discover existing\
+            \ resources in the remote system."
           type: boolean
       type: object
     PatchedGrantRequestFulfillRequest:
@@ -83225,6 +83256,7 @@ components:
         user_delete_action: do_nothing
         group_delete_action: null
         sync_page_size: 171976545
+        discovery_enabled: true
         sync_page_timeout: sync_page_timeout
         dry_run: true
       properties:
@@ -83266,6 +83298,10 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
+        discovery_enabled:
+          description: "When enabled, authentik will attempt to discover existing\
+            \ resources in the remote system."
+          type: boolean
         sync_page_timeout:
           description: Timeout for synchronization of a single page
           minLength: 1
@@ -85112,6 +85148,7 @@ components:
         exclude_users_service_account: true
         sync_page_size: 171976545
         sync_page_timeout: sync_page_timeout
+        discovery_enabled: true
         group_filters:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -85172,6 +85209,10 @@ components:
           description: Timeout for synchronization of a single page
           minLength: 1
           type: string
+        discovery_enabled:
+          description: "When enabled, authentik will attempt to discover existing\
+            \ resources in the remote system."
+          type: boolean
         group_filters:
           description: Group filters used to define sync-scope for groups.
           items:
@@ -90657,6 +90698,7 @@ components:
         exclude_users_service_account: true
         sync_page_size: 1294386359
         sync_page_timeout: sync_page_timeout
+        discovery_enabled: true
         group_filters:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -90761,6 +90803,10 @@ components:
         sync_page_timeout:
           description: Timeout for synchronization of a single page
           type: string
+        discovery_enabled:
+          description: "When enabled, authentik will attempt to discover existing\
+            \ resources in the remote system."
+          type: boolean
         group_filters:
           description: Group filters used to define sync-scope for groups.
           items:
@@ -90866,6 +90912,7 @@ components:
         exclude_users_service_account: true
         sync_page_size: 171976545
         sync_page_timeout: sync_page_timeout
+        discovery_enabled: true
         group_filters:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -90926,6 +90973,10 @@ components:
           description: Timeout for synchronization of a single page
           minLength: 1
           type: string
+        discovery_enabled:
+          description: "When enabled, authentik will attempt to discover existing\
+            \ resources in the remote system."
+          type: boolean
         group_filters:
           description: Group filters used to define sync-scope for groups.
           items:
@@ -93824,6 +93875,7 @@ components:
           sync_page_size: 171976545
           sync_page_timeout: sync_page_timeout
           dry_run: true
+          discovery_enabled: true
         policy_bindings:
         - policy: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
