@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc1
+API version: 2026.8.0-rc2
 Contact: hello@goauthentik.io
 */
 
@@ -22,22 +22,24 @@ var _ MappedNullable = &BrandRequest{}
 // BrandRequest Brand Serializer
 type BrandRequest struct {
 	// Domain that activates this brand. Can be a superset, i.e. `a.b` for `aa.b` and `ba.b`
-	Domain                        string         `json:"domain"`
-	Default                       *bool          `json:"default,omitempty"`
-	BrandingTitle                 *string        `json:"branding_title,omitempty"`
-	BrandingLogo                  *string        `json:"branding_logo,omitempty"`
-	BrandingFavicon               *string        `json:"branding_favicon,omitempty"`
-	BrandingCustomCss             *string        `json:"branding_custom_css,omitempty"`
-	BrandingDefaultFlowBackground *string        `json:"branding_default_flow_background,omitempty"`
-	FlowAuthentication            NullableString `json:"flow_authentication,omitempty"`
-	FlowUserSwitch                NullableString `json:"flow_user_switch,omitempty"`
-	FlowInvalidation              NullableString `json:"flow_invalidation,omitempty"`
-	FlowRecovery                  NullableString `json:"flow_recovery,omitempty"`
-	FlowUnenrollment              NullableString `json:"flow_unenrollment,omitempty"`
-	FlowUserSettings              NullableString `json:"flow_user_settings,omitempty"`
-	FlowDeviceCode                NullableString `json:"flow_device_code,omitempty"`
-	FlowLockdown                  NullableString `json:"flow_lockdown,omitempty"`
-	FlowRequest                   NullableString `json:"flow_request,omitempty"`
+	Domain                        string  `json:"domain"`
+	Default                       *bool   `json:"default,omitempty"`
+	BrandingTitle                 *string `json:"branding_title,omitempty"`
+	BrandingLogo                  *string `json:"branding_logo,omitempty"`
+	BrandingFavicon               *string `json:"branding_favicon,omitempty"`
+	BrandingCustomCss             *string `json:"branding_custom_css,omitempty"`
+	BrandingDefaultFlowBackground *string `json:"branding_default_flow_background,omitempty"`
+	// URL template for the vector tile source used by the events map. Supports XYZ templates with {z}, {x} and {y} placeholders, or pmtiles:// archive URLs. When empty, the frontend uses the bundled hexworld basemap. This value is part of the brand information served to unauthenticated clients; do not embed API keys or other credentials in it.
+	BrandingMapTiles   *string        `json:"branding_map_tiles,omitempty"`
+	FlowAuthentication NullableString `json:"flow_authentication,omitempty"`
+	FlowUserSwitch     NullableString `json:"flow_user_switch,omitempty"`
+	FlowInvalidation   NullableString `json:"flow_invalidation,omitempty"`
+	FlowRecovery       NullableString `json:"flow_recovery,omitempty"`
+	FlowUnenrollment   NullableString `json:"flow_unenrollment,omitempty"`
+	FlowUserSettings   NullableString `json:"flow_user_settings,omitempty"`
+	FlowDeviceCode     NullableString `json:"flow_device_code,omitempty"`
+	FlowLockdown       NullableString `json:"flow_lockdown,omitempty"`
+	FlowRequest        NullableString `json:"flow_request,omitempty"`
 	// When set, external users will be redirected to this application after authenticating.
 	DefaultApplication NullableString `json:"default_application,omitempty"`
 	// Web Certificate used by the authentik Core webserver.
@@ -282,6 +284,38 @@ func (o *BrandRequest) HasBrandingDefaultFlowBackground() bool {
 // SetBrandingDefaultFlowBackground gets a reference to the given string and assigns it to the BrandingDefaultFlowBackground field.
 func (o *BrandRequest) SetBrandingDefaultFlowBackground(v string) {
 	o.BrandingDefaultFlowBackground = &v
+}
+
+// GetBrandingMapTiles returns the BrandingMapTiles field value if set, zero value otherwise.
+func (o *BrandRequest) GetBrandingMapTiles() string {
+	if o == nil || IsNil(o.BrandingMapTiles) {
+		var ret string
+		return ret
+	}
+	return *o.BrandingMapTiles
+}
+
+// GetBrandingMapTilesOk returns a tuple with the BrandingMapTiles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandRequest) GetBrandingMapTilesOk() (*string, bool) {
+	if o == nil || IsNil(o.BrandingMapTiles) {
+		return nil, false
+	}
+	return o.BrandingMapTiles, true
+}
+
+// HasBrandingMapTiles returns a boolean if a field has been set.
+func (o *BrandRequest) HasBrandingMapTiles() bool {
+	if o != nil && !IsNil(o.BrandingMapTiles) {
+		return true
+	}
+
+	return false
+}
+
+// SetBrandingMapTiles gets a reference to the given string and assigns it to the BrandingMapTiles field.
+func (o *BrandRequest) SetBrandingMapTiles(v string) {
+	o.BrandingMapTiles = &v
 }
 
 // GetFlowAuthentication returns the FlowAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -850,6 +884,9 @@ func (o BrandRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BrandingDefaultFlowBackground) {
 		toSerialize["branding_default_flow_background"] = o.BrandingDefaultFlowBackground
 	}
+	if !IsNil(o.BrandingMapTiles) {
+		toSerialize["branding_map_tiles"] = o.BrandingMapTiles
+	}
 	if o.FlowAuthentication.IsSet() {
 		toSerialize["flow_authentication"] = o.FlowAuthentication.Get()
 	}
@@ -939,6 +976,7 @@ func (o *BrandRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "branding_favicon")
 		delete(additionalProperties, "branding_custom_css")
 		delete(additionalProperties, "branding_default_flow_background")
+		delete(additionalProperties, "branding_map_tiles")
 		delete(additionalProperties, "flow_authentication")
 		delete(additionalProperties, "flow_user_switch")
 		delete(additionalProperties, "flow_invalidation")

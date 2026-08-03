@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc1
+API version: 2026.8.0-rc2
 Contact: hello@goauthentik.io
 */
 
@@ -28,6 +28,7 @@ type CurrentBrand struct {
 	BrandingFavicon           string             `json:"branding_favicon"`
 	BrandingFaviconThemedUrls NullableThemedUrls `json:"branding_favicon_themed_urls"`
 	BrandingCustomCss         string             `json:"branding_custom_css"`
+	BrandingMapTiles          string             `json:"branding_map_tiles"`
 	UiFooterLinks             []FooterLink       `json:"ui_footer_links"`
 	UiTheme                   UiThemeEnum        `json:"ui_theme"`
 	FlowAuthentication        *string            `json:"flow_authentication,omitempty"`
@@ -50,7 +51,7 @@ type _CurrentBrand CurrentBrand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingLogoThemedUrls NullableThemedUrls, brandingFavicon string, brandingFaviconThemedUrls NullableThemedUrls, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags) *CurrentBrand {
+func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingLogoThemedUrls NullableThemedUrls, brandingFavicon string, brandingFaviconThemedUrls NullableThemedUrls, brandingCustomCss string, brandingMapTiles string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags) *CurrentBrand {
 	this := CurrentBrand{}
 	this.MatchedDomain = matchedDomain
 	this.BrandingTitle = brandingTitle
@@ -59,6 +60,7 @@ func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo st
 	this.BrandingFavicon = brandingFavicon
 	this.BrandingFaviconThemedUrls = brandingFaviconThemedUrls
 	this.BrandingCustomCss = brandingCustomCss
+	this.BrandingMapTiles = brandingMapTiles
 	this.UiFooterLinks = uiFooterLinks
 	this.UiTheme = uiTheme
 	this.DefaultLocale = defaultLocale
@@ -244,6 +246,30 @@ func (o *CurrentBrand) GetBrandingCustomCssOk() (*string, bool) {
 // SetBrandingCustomCss sets field value
 func (o *CurrentBrand) SetBrandingCustomCss(v string) {
 	o.BrandingCustomCss = v
+}
+
+// GetBrandingMapTiles returns the BrandingMapTiles field value
+func (o *CurrentBrand) GetBrandingMapTiles() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BrandingMapTiles
+}
+
+// GetBrandingMapTilesOk returns a tuple with the BrandingMapTiles field value
+// and a boolean to check if the value has been set.
+func (o *CurrentBrand) GetBrandingMapTilesOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BrandingMapTiles, true
+}
+
+// SetBrandingMapTiles sets field value
+func (o *CurrentBrand) SetBrandingMapTiles(v string) {
+	o.BrandingMapTiles = v
 }
 
 // GetUiFooterLinks returns the UiFooterLinks field value
@@ -647,6 +673,7 @@ func (o CurrentBrand) ToMap() (map[string]interface{}, error) {
 	toSerialize["branding_favicon"] = o.BrandingFavicon
 	toSerialize["branding_favicon_themed_urls"] = o.BrandingFaviconThemedUrls.Get()
 	toSerialize["branding_custom_css"] = o.BrandingCustomCss
+	toSerialize["branding_map_tiles"] = o.BrandingMapTiles
 	toSerialize["ui_footer_links"] = o.UiFooterLinks
 	toSerialize["ui_theme"] = o.UiTheme
 	if !IsNil(o.FlowAuthentication) {
@@ -698,6 +725,7 @@ func (o *CurrentBrand) UnmarshalJSON(data []byte) (err error) {
 		"branding_favicon",
 		"branding_favicon_themed_urls",
 		"branding_custom_css",
+		"branding_map_tiles",
 		"ui_footer_links",
 		"ui_theme",
 		"default_locale",
@@ -738,6 +766,7 @@ func (o *CurrentBrand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "branding_favicon")
 		delete(additionalProperties, "branding_favicon_themed_urls")
 		delete(additionalProperties, "branding_custom_css")
+		delete(additionalProperties, "branding_map_tiles")
 		delete(additionalProperties, "ui_footer_links")
 		delete(additionalProperties, "ui_theme")
 		delete(additionalProperties, "flow_authentication")

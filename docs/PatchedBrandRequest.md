@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **BrandingFavicon** | Pointer to **string** |  | [optional] 
 **BrandingCustomCss** | Pointer to **string** |  | [optional] 
 **BrandingDefaultFlowBackground** | Pointer to **string** |  | [optional] 
+**BrandingMapTiles** | Pointer to **string** | URL template for the vector tile source used by the events map. Supports XYZ templates with {z}, {x} and {y} placeholders, or pmtiles:// archive URLs. When empty, the frontend uses the bundled hexworld basemap. This value is part of the brand information served to unauthenticated clients; do not embed API keys or other credentials in it. | [optional] 
 **FlowAuthentication** | Pointer to **NullableString** |  | [optional] 
 **FlowUserSwitch** | Pointer to **NullableString** |  | [optional] 
 **FlowInvalidation** | Pointer to **NullableString** |  | [optional] 
@@ -218,6 +219,31 @@ SetBrandingDefaultFlowBackground sets BrandingDefaultFlowBackground field to giv
 `func (o *PatchedBrandRequest) HasBrandingDefaultFlowBackground() bool`
 
 HasBrandingDefaultFlowBackground returns a boolean if a field has been set.
+
+### GetBrandingMapTiles
+
+`func (o *PatchedBrandRequest) GetBrandingMapTiles() string`
+
+GetBrandingMapTiles returns the BrandingMapTiles field if non-nil, zero value otherwise.
+
+### GetBrandingMapTilesOk
+
+`func (o *PatchedBrandRequest) GetBrandingMapTilesOk() (*string, bool)`
+
+GetBrandingMapTilesOk returns a tuple with the BrandingMapTiles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingMapTiles
+
+`func (o *PatchedBrandRequest) SetBrandingMapTiles(v string)`
+
+SetBrandingMapTiles sets BrandingMapTiles field to given value.
+
+### HasBrandingMapTiles
+
+`func (o *PatchedBrandRequest) HasBrandingMapTiles() bool`
+
+HasBrandingMapTiles returns a boolean if a field has been set.
 
 ### GetFlowAuthentication
 

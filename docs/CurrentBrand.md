@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **BrandingFavicon** | **string** |  | 
 **BrandingFaviconThemedUrls** | [**NullableThemedUrls**](ThemedUrls.md) |  | [readonly] 
 **BrandingCustomCss** | **string** |  | 
+**BrandingMapTiles** | **string** |  | 
 **UiFooterLinks** | [**[]FooterLink**](FooterLink.md) |  | [readonly] 
 **UiTheme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] [default to UITHEMEENUM_AUTOMATIC]
 **FlowAuthentication** | Pointer to **string** |  | [optional] 
@@ -29,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewCurrentBrand
 
-`func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingLogoThemedUrls NullableThemedUrls, brandingFavicon string, brandingFaviconThemedUrls NullableThemedUrls, brandingCustomCss string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags, ) *CurrentBrand`
+`func NewCurrentBrand(matchedDomain string, brandingTitle string, brandingLogo string, brandingLogoThemedUrls NullableThemedUrls, brandingFavicon string, brandingFaviconThemedUrls NullableThemedUrls, brandingCustomCss string, brandingMapTiles string, uiFooterLinks []FooterLink, uiTheme UiThemeEnum, defaultLocale string, flags CurrentBrandFlags, ) *CurrentBrand`
 
 NewCurrentBrand instantiates a new CurrentBrand object
 This constructor will assign default values to properties that have it defined,
@@ -202,6 +203,26 @@ and a boolean to check if the value has been set.
 `func (o *CurrentBrand) SetBrandingCustomCss(v string)`
 
 SetBrandingCustomCss sets BrandingCustomCss field to given value.
+
+
+### GetBrandingMapTiles
+
+`func (o *CurrentBrand) GetBrandingMapTiles() string`
+
+GetBrandingMapTiles returns the BrandingMapTiles field if non-nil, zero value otherwise.
+
+### GetBrandingMapTilesOk
+
+`func (o *CurrentBrand) GetBrandingMapTilesOk() (*string, bool)`
+
+GetBrandingMapTilesOk returns a tuple with the BrandingMapTiles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandingMapTiles
+
+`func (o *CurrentBrand) SetBrandingMapTiles(v string)`
+
+SetBrandingMapTiles sets BrandingMapTiles field to given value.
 
 
 ### GetUiFooterLinks
