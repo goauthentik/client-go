@@ -1,0 +1,484 @@
+# AuthenticatorValidateStage
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Pk** | **string** |  | [readonly] 
+**Name** | **string** |  | 
+**Component** | **string** | Get object type so that we know how to edit the object | [readonly] 
+**VerboseName** | **string** | Return object&#39;s verbose_name | [readonly] 
+**VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
+**MetaModelName** | **string** | Return internal model name | [readonly] 
+**FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
+**NotConfiguredAction** | Pointer to [**NotConfiguredActionEnum**](NotConfiguredActionEnum.md) |  | [optional] 
+**DeviceClasses** | Pointer to [**[]DeviceClassesEnum**](DeviceClassesEnum.md) | Device classes which can be used to authenticate | [optional] 
+**ConfigurationStages** | Pointer to **[]string** | Stages used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] 
+**LastAuthThreshold** | Pointer to **string** | If any of the user&#39;s device has been used within this threshold, this stage will be skipped | [optional] 
+**WebauthnUserVerification** | Pointer to [**UserVerificationEnum**](UserVerificationEnum.md) | Enforce user verification for WebAuthn devices. | [optional] 
+**WebauthnHints** | Pointer to [**[]WebAuthnHintEnum**](WebAuthnHintEnum.md) |  | [optional] 
+**WebauthnAllowedDeviceTypes** | Pointer to **[]string** |  | [optional] 
+**WebauthnAllowedDeviceTypesObj** | [**[]WebAuthnDeviceType**](WebAuthnDeviceType.md) |  | [readonly] 
+**EmailOtpThrottlingFactor** | Pointer to **float64** |  | [optional] 
+**SmsOtpThrottlingFactor** | Pointer to **float64** |  | [optional] 
+**TotpOtpThrottlingFactor** | Pointer to **float64** |  | [optional] 
+**StaticOtpThrottlingFactor** | Pointer to **float64** |  | [optional] 
+
+## Methods
+
+### NewAuthenticatorValidateStage
+
+`func NewAuthenticatorValidateStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, webauthnAllowedDeviceTypesObj []WebAuthnDeviceType, ) *AuthenticatorValidateStage`
+
+NewAuthenticatorValidateStage instantiates a new AuthenticatorValidateStage object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewAuthenticatorValidateStageWithDefaults
+
+`func NewAuthenticatorValidateStageWithDefaults() *AuthenticatorValidateStage`
+
+NewAuthenticatorValidateStageWithDefaults instantiates a new AuthenticatorValidateStage object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetPk
+
+`func (o *AuthenticatorValidateStage) GetPk() string`
+
+GetPk returns the Pk field if non-nil, zero value otherwise.
+
+### GetPkOk
+
+`func (o *AuthenticatorValidateStage) GetPkOk() (*string, bool)`
+
+GetPkOk returns a tuple with the Pk field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPk
+
+`func (o *AuthenticatorValidateStage) SetPk(v string)`
+
+SetPk sets Pk field to given value.
+
+
+### GetName
+
+`func (o *AuthenticatorValidateStage) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *AuthenticatorValidateStage) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *AuthenticatorValidateStage) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetComponent
+
+`func (o *AuthenticatorValidateStage) GetComponent() string`
+
+GetComponent returns the Component field if non-nil, zero value otherwise.
+
+### GetComponentOk
+
+`func (o *AuthenticatorValidateStage) GetComponentOk() (*string, bool)`
+
+GetComponentOk returns a tuple with the Component field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComponent
+
+`func (o *AuthenticatorValidateStage) SetComponent(v string)`
+
+SetComponent sets Component field to given value.
+
+
+### GetVerboseName
+
+`func (o *AuthenticatorValidateStage) GetVerboseName() string`
+
+GetVerboseName returns the VerboseName field if non-nil, zero value otherwise.
+
+### GetVerboseNameOk
+
+`func (o *AuthenticatorValidateStage) GetVerboseNameOk() (*string, bool)`
+
+GetVerboseNameOk returns a tuple with the VerboseName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerboseName
+
+`func (o *AuthenticatorValidateStage) SetVerboseName(v string)`
+
+SetVerboseName sets VerboseName field to given value.
+
+
+### GetVerboseNamePlural
+
+`func (o *AuthenticatorValidateStage) GetVerboseNamePlural() string`
+
+GetVerboseNamePlural returns the VerboseNamePlural field if non-nil, zero value otherwise.
+
+### GetVerboseNamePluralOk
+
+`func (o *AuthenticatorValidateStage) GetVerboseNamePluralOk() (*string, bool)`
+
+GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerboseNamePlural
+
+`func (o *AuthenticatorValidateStage) SetVerboseNamePlural(v string)`
+
+SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetMetaModelName
+
+`func (o *AuthenticatorValidateStage) GetMetaModelName() string`
+
+GetMetaModelName returns the MetaModelName field if non-nil, zero value otherwise.
+
+### GetMetaModelNameOk
+
+`func (o *AuthenticatorValidateStage) GetMetaModelNameOk() (*string, bool)`
+
+GetMetaModelNameOk returns a tuple with the MetaModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetaModelName
+
+`func (o *AuthenticatorValidateStage) SetMetaModelName(v string)`
+
+SetMetaModelName sets MetaModelName field to given value.
+
+
+### GetFlowSet
+
+`func (o *AuthenticatorValidateStage) GetFlowSet() []FlowSet`
+
+GetFlowSet returns the FlowSet field if non-nil, zero value otherwise.
+
+### GetFlowSetOk
+
+`func (o *AuthenticatorValidateStage) GetFlowSetOk() (*[]FlowSet, bool)`
+
+GetFlowSetOk returns a tuple with the FlowSet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowSet
+
+`func (o *AuthenticatorValidateStage) SetFlowSet(v []FlowSet)`
+
+SetFlowSet sets FlowSet field to given value.
+
+
+### GetNotConfiguredAction
+
+`func (o *AuthenticatorValidateStage) GetNotConfiguredAction() NotConfiguredActionEnum`
+
+GetNotConfiguredAction returns the NotConfiguredAction field if non-nil, zero value otherwise.
+
+### GetNotConfiguredActionOk
+
+`func (o *AuthenticatorValidateStage) GetNotConfiguredActionOk() (*NotConfiguredActionEnum, bool)`
+
+GetNotConfiguredActionOk returns a tuple with the NotConfiguredAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotConfiguredAction
+
+`func (o *AuthenticatorValidateStage) SetNotConfiguredAction(v NotConfiguredActionEnum)`
+
+SetNotConfiguredAction sets NotConfiguredAction field to given value.
+
+### HasNotConfiguredAction
+
+`func (o *AuthenticatorValidateStage) HasNotConfiguredAction() bool`
+
+HasNotConfiguredAction returns a boolean if a field has been set.
+
+### GetDeviceClasses
+
+`func (o *AuthenticatorValidateStage) GetDeviceClasses() []DeviceClassesEnum`
+
+GetDeviceClasses returns the DeviceClasses field if non-nil, zero value otherwise.
+
+### GetDeviceClassesOk
+
+`func (o *AuthenticatorValidateStage) GetDeviceClassesOk() (*[]DeviceClassesEnum, bool)`
+
+GetDeviceClassesOk returns a tuple with the DeviceClasses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceClasses
+
+`func (o *AuthenticatorValidateStage) SetDeviceClasses(v []DeviceClassesEnum)`
+
+SetDeviceClasses sets DeviceClasses field to given value.
+
+### HasDeviceClasses
+
+`func (o *AuthenticatorValidateStage) HasDeviceClasses() bool`
+
+HasDeviceClasses returns a boolean if a field has been set.
+
+### GetConfigurationStages
+
+`func (o *AuthenticatorValidateStage) GetConfigurationStages() []string`
+
+GetConfigurationStages returns the ConfigurationStages field if non-nil, zero value otherwise.
+
+### GetConfigurationStagesOk
+
+`func (o *AuthenticatorValidateStage) GetConfigurationStagesOk() (*[]string, bool)`
+
+GetConfigurationStagesOk returns a tuple with the ConfigurationStages field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigurationStages
+
+`func (o *AuthenticatorValidateStage) SetConfigurationStages(v []string)`
+
+SetConfigurationStages sets ConfigurationStages field to given value.
+
+### HasConfigurationStages
+
+`func (o *AuthenticatorValidateStage) HasConfigurationStages() bool`
+
+HasConfigurationStages returns a boolean if a field has been set.
+
+### GetLastAuthThreshold
+
+`func (o *AuthenticatorValidateStage) GetLastAuthThreshold() string`
+
+GetLastAuthThreshold returns the LastAuthThreshold field if non-nil, zero value otherwise.
+
+### GetLastAuthThresholdOk
+
+`func (o *AuthenticatorValidateStage) GetLastAuthThresholdOk() (*string, bool)`
+
+GetLastAuthThresholdOk returns a tuple with the LastAuthThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastAuthThreshold
+
+`func (o *AuthenticatorValidateStage) SetLastAuthThreshold(v string)`
+
+SetLastAuthThreshold sets LastAuthThreshold field to given value.
+
+### HasLastAuthThreshold
+
+`func (o *AuthenticatorValidateStage) HasLastAuthThreshold() bool`
+
+HasLastAuthThreshold returns a boolean if a field has been set.
+
+### GetWebauthnUserVerification
+
+`func (o *AuthenticatorValidateStage) GetWebauthnUserVerification() UserVerificationEnum`
+
+GetWebauthnUserVerification returns the WebauthnUserVerification field if non-nil, zero value otherwise.
+
+### GetWebauthnUserVerificationOk
+
+`func (o *AuthenticatorValidateStage) GetWebauthnUserVerificationOk() (*UserVerificationEnum, bool)`
+
+GetWebauthnUserVerificationOk returns a tuple with the WebauthnUserVerification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebauthnUserVerification
+
+`func (o *AuthenticatorValidateStage) SetWebauthnUserVerification(v UserVerificationEnum)`
+
+SetWebauthnUserVerification sets WebauthnUserVerification field to given value.
+
+### HasWebauthnUserVerification
+
+`func (o *AuthenticatorValidateStage) HasWebauthnUserVerification() bool`
+
+HasWebauthnUserVerification returns a boolean if a field has been set.
+
+### GetWebauthnHints
+
+`func (o *AuthenticatorValidateStage) GetWebauthnHints() []WebAuthnHintEnum`
+
+GetWebauthnHints returns the WebauthnHints field if non-nil, zero value otherwise.
+
+### GetWebauthnHintsOk
+
+`func (o *AuthenticatorValidateStage) GetWebauthnHintsOk() (*[]WebAuthnHintEnum, bool)`
+
+GetWebauthnHintsOk returns a tuple with the WebauthnHints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebauthnHints
+
+`func (o *AuthenticatorValidateStage) SetWebauthnHints(v []WebAuthnHintEnum)`
+
+SetWebauthnHints sets WebauthnHints field to given value.
+
+### HasWebauthnHints
+
+`func (o *AuthenticatorValidateStage) HasWebauthnHints() bool`
+
+HasWebauthnHints returns a boolean if a field has been set.
+
+### GetWebauthnAllowedDeviceTypes
+
+`func (o *AuthenticatorValidateStage) GetWebauthnAllowedDeviceTypes() []string`
+
+GetWebauthnAllowedDeviceTypes returns the WebauthnAllowedDeviceTypes field if non-nil, zero value otherwise.
+
+### GetWebauthnAllowedDeviceTypesOk
+
+`func (o *AuthenticatorValidateStage) GetWebauthnAllowedDeviceTypesOk() (*[]string, bool)`
+
+GetWebauthnAllowedDeviceTypesOk returns a tuple with the WebauthnAllowedDeviceTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebauthnAllowedDeviceTypes
+
+`func (o *AuthenticatorValidateStage) SetWebauthnAllowedDeviceTypes(v []string)`
+
+SetWebauthnAllowedDeviceTypes sets WebauthnAllowedDeviceTypes field to given value.
+
+### HasWebauthnAllowedDeviceTypes
+
+`func (o *AuthenticatorValidateStage) HasWebauthnAllowedDeviceTypes() bool`
+
+HasWebauthnAllowedDeviceTypes returns a boolean if a field has been set.
+
+### GetWebauthnAllowedDeviceTypesObj
+
+`func (o *AuthenticatorValidateStage) GetWebauthnAllowedDeviceTypesObj() []WebAuthnDeviceType`
+
+GetWebauthnAllowedDeviceTypesObj returns the WebauthnAllowedDeviceTypesObj field if non-nil, zero value otherwise.
+
+### GetWebauthnAllowedDeviceTypesObjOk
+
+`func (o *AuthenticatorValidateStage) GetWebauthnAllowedDeviceTypesObjOk() (*[]WebAuthnDeviceType, bool)`
+
+GetWebauthnAllowedDeviceTypesObjOk returns a tuple with the WebauthnAllowedDeviceTypesObj field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebauthnAllowedDeviceTypesObj
+
+`func (o *AuthenticatorValidateStage) SetWebauthnAllowedDeviceTypesObj(v []WebAuthnDeviceType)`
+
+SetWebauthnAllowedDeviceTypesObj sets WebauthnAllowedDeviceTypesObj field to given value.
+
+
+### GetEmailOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) GetEmailOtpThrottlingFactor() float64`
+
+GetEmailOtpThrottlingFactor returns the EmailOtpThrottlingFactor field if non-nil, zero value otherwise.
+
+### GetEmailOtpThrottlingFactorOk
+
+`func (o *AuthenticatorValidateStage) GetEmailOtpThrottlingFactorOk() (*float64, bool)`
+
+GetEmailOtpThrottlingFactorOk returns a tuple with the EmailOtpThrottlingFactor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmailOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) SetEmailOtpThrottlingFactor(v float64)`
+
+SetEmailOtpThrottlingFactor sets EmailOtpThrottlingFactor field to given value.
+
+### HasEmailOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) HasEmailOtpThrottlingFactor() bool`
+
+HasEmailOtpThrottlingFactor returns a boolean if a field has been set.
+
+### GetSmsOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) GetSmsOtpThrottlingFactor() float64`
+
+GetSmsOtpThrottlingFactor returns the SmsOtpThrottlingFactor field if non-nil, zero value otherwise.
+
+### GetSmsOtpThrottlingFactorOk
+
+`func (o *AuthenticatorValidateStage) GetSmsOtpThrottlingFactorOk() (*float64, bool)`
+
+GetSmsOtpThrottlingFactorOk returns a tuple with the SmsOtpThrottlingFactor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSmsOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) SetSmsOtpThrottlingFactor(v float64)`
+
+SetSmsOtpThrottlingFactor sets SmsOtpThrottlingFactor field to given value.
+
+### HasSmsOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) HasSmsOtpThrottlingFactor() bool`
+
+HasSmsOtpThrottlingFactor returns a boolean if a field has been set.
+
+### GetTotpOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) GetTotpOtpThrottlingFactor() float64`
+
+GetTotpOtpThrottlingFactor returns the TotpOtpThrottlingFactor field if non-nil, zero value otherwise.
+
+### GetTotpOtpThrottlingFactorOk
+
+`func (o *AuthenticatorValidateStage) GetTotpOtpThrottlingFactorOk() (*float64, bool)`
+
+GetTotpOtpThrottlingFactorOk returns a tuple with the TotpOtpThrottlingFactor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotpOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) SetTotpOtpThrottlingFactor(v float64)`
+
+SetTotpOtpThrottlingFactor sets TotpOtpThrottlingFactor field to given value.
+
+### HasTotpOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) HasTotpOtpThrottlingFactor() bool`
+
+HasTotpOtpThrottlingFactor returns a boolean if a field has been set.
+
+### GetStaticOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) GetStaticOtpThrottlingFactor() float64`
+
+GetStaticOtpThrottlingFactor returns the StaticOtpThrottlingFactor field if non-nil, zero value otherwise.
+
+### GetStaticOtpThrottlingFactorOk
+
+`func (o *AuthenticatorValidateStage) GetStaticOtpThrottlingFactorOk() (*float64, bool)`
+
+GetStaticOtpThrottlingFactorOk returns a tuple with the StaticOtpThrottlingFactor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStaticOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) SetStaticOtpThrottlingFactor(v float64)`
+
+SetStaticOtpThrottlingFactor sets StaticOtpThrottlingFactor field to given value.
+
+### HasStaticOtpThrottlingFactor
+
+`func (o *AuthenticatorValidateStage) HasStaticOtpThrottlingFactor() bool`
+
+HasStaticOtpThrottlingFactor returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

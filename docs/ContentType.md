@@ -1,0 +1,135 @@
+# ContentType
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id** | **int32** |  | [readonly] 
+**AppLabel** | **string** |  | [readonly] 
+**Model** | **string** |  | [readonly] 
+**VerboseNamePlural** | **string** |  | [readonly] 
+**FullyQualifiedModel** | **string** |  | [readonly] 
+
+## Methods
+
+### NewContentType
+
+`func NewContentType(id int32, appLabel string, model string, verboseNamePlural string, fullyQualifiedModel string, ) *ContentType`
+
+NewContentType instantiates a new ContentType object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewContentTypeWithDefaults
+
+`func NewContentTypeWithDefaults() *ContentType`
+
+NewContentTypeWithDefaults instantiates a new ContentType object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *ContentType) GetId() int32`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ContentType) GetIdOk() (*int32, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ContentType) SetId(v int32)`
+
+SetId sets Id field to given value.
+
+
+### GetAppLabel
+
+`func (o *ContentType) GetAppLabel() string`
+
+GetAppLabel returns the AppLabel field if non-nil, zero value otherwise.
+
+### GetAppLabelOk
+
+`func (o *ContentType) GetAppLabelOk() (*string, bool)`
+
+GetAppLabelOk returns a tuple with the AppLabel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppLabel
+
+`func (o *ContentType) SetAppLabel(v string)`
+
+SetAppLabel sets AppLabel field to given value.
+
+
+### GetModel
+
+`func (o *ContentType) GetModel() string`
+
+GetModel returns the Model field if non-nil, zero value otherwise.
+
+### GetModelOk
+
+`func (o *ContentType) GetModelOk() (*string, bool)`
+
+GetModelOk returns a tuple with the Model field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModel
+
+`func (o *ContentType) SetModel(v string)`
+
+SetModel sets Model field to given value.
+
+
+### GetVerboseNamePlural
+
+`func (o *ContentType) GetVerboseNamePlural() string`
+
+GetVerboseNamePlural returns the VerboseNamePlural field if non-nil, zero value otherwise.
+
+### GetVerboseNamePluralOk
+
+`func (o *ContentType) GetVerboseNamePluralOk() (*string, bool)`
+
+GetVerboseNamePluralOk returns a tuple with the VerboseNamePlural field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerboseNamePlural
+
+`func (o *ContentType) SetVerboseNamePlural(v string)`
+
+SetVerboseNamePlural sets VerboseNamePlural field to given value.
+
+
+### GetFullyQualifiedModel
+
+`func (o *ContentType) GetFullyQualifiedModel() string`
+
+GetFullyQualifiedModel returns the FullyQualifiedModel field if non-nil, zero value otherwise.
+
+### GetFullyQualifiedModelOk
+
+`func (o *ContentType) GetFullyQualifiedModelOk() (*string, bool)`
+
+GetFullyQualifiedModelOk returns a tuple with the FullyQualifiedModel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFullyQualifiedModel
+
+`func (o *ContentType) SetFullyQualifiedModel(v string)`
+
+SetFullyQualifiedModel sets FullyQualifiedModel field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
