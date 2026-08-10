@@ -17,6 +17,10 @@
 
 * `IS_ENTERPRISE` (value: `"is_enterprise"`)
 
+* `CAN_REQUEST` (value: `"can_request"`)
+
+* `CAN_AGENT_SELF_SERVICE` (value: `"can_agent_self_service"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc6
+API version: 2026.8.0-rc7
 Contact: hello@goauthentik.io
 */
 
@@ -22,6 +22,144 @@ import (
 
 // RequestsAPIService RequestsAPI service
 type RequestsAPIService service
+
+type ApiRequestsGrantRequestsAgentCreateRequest struct {
+	ctx                            context.Context
+	ApiService                     *RequestsAPIService
+	agentGrantRequestCreateRequest *AgentGrantRequestCreateRequest
+}
+
+func (r ApiRequestsGrantRequestsAgentCreateRequest) AgentGrantRequestCreateRequest(agentGrantRequestCreateRequest AgentGrantRequestCreateRequest) ApiRequestsGrantRequestsAgentCreateRequest {
+	r.agentGrantRequestCreateRequest = &agentGrantRequestCreateRequest
+	return r
+}
+
+func (r ApiRequestsGrantRequestsAgentCreateRequest) Execute() (*AgentGrantRequestCreated, *http.Response, error) {
+	return r.ApiService.RequestsGrantRequestsAgentCreateExecute(r)
+}
+
+/*
+RequestsGrantRequestsAgentCreate Method for RequestsGrantRequestsAgentCreate
+
+Delegate access an agent's owner already holds to the agent, time-boxed. Unlike
+`create` this persists the request directly instead of returning a flow link -- an agent
+authenticates with an API token and has no browser to run a flow in, so no justification
+is ever collected. That is why the agent may only ask for what its owner already has:
+the owner's approval is then the whole decision, and no reviewer is asked to judge a
+request with nothing in it. The returned `fulfill_url` is what the agent hands to its
+owner so they can act on it.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiRequestsGrantRequestsAgentCreateRequest
+*/
+func (a *RequestsAPIService) RequestsGrantRequestsAgentCreate(ctx context.Context) ApiRequestsGrantRequestsAgentCreateRequest {
+	return ApiRequestsGrantRequestsAgentCreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AgentGrantRequestCreated
+func (a *RequestsAPIService) RequestsGrantRequestsAgentCreateExecute(r ApiRequestsGrantRequestsAgentCreateRequest) (*AgentGrantRequestCreated, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AgentGrantRequestCreated
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestsAPIService.RequestsGrantRequestsAgentCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/requests/grant-requests/agent/"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.agentGrantRequestCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("agentGrantRequestCreateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.agentGrantRequestCreateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v GenericError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiRequestsGrantRequestsCreateRequest struct {
 	ctx                       context.Context
@@ -386,12 +524,18 @@ func (a *RequestsAPIService) RequestsGrantRequestsFulfillPartialUpdateExecute(r 
 type ApiRequestsGrantRequestsListRequest struct {
 	ctx        context.Context
 	ApiService *RequestsAPIService
+	agentOwner *int32
 	createdBy  *int32
 	ordering   *string
 	page       *int32
 	pageSize   *int32
 	search     *string
 	status     *RequestStatus
+}
+
+func (r ApiRequestsGrantRequestsListRequest) AgentOwner(agentOwner int32) ApiRequestsGrantRequestsListRequest {
+	r.agentOwner = &agentOwner
+	return r
 }
 
 func (r ApiRequestsGrantRequestsListRequest) CreatedBy(createdBy int32) ApiRequestsGrantRequestsListRequest {
@@ -467,6 +611,9 @@ func (a *RequestsAPIService) RequestsGrantRequestsListExecute(r ApiRequestsGrant
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.agentOwner != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "agent_owner", r.agentOwner, "form", "")
+	}
 	if r.createdBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_by", r.createdBy, "form", "")
 	}
@@ -563,12 +710,18 @@ func (a *RequestsAPIService) RequestsGrantRequestsListExecute(r ApiRequestsGrant
 type ApiRequestsGrantRequestsPendingReviewListRequest struct {
 	ctx        context.Context
 	ApiService *RequestsAPIService
+	agentOwner *int32
 	createdBy  *int32
 	ordering   *string
 	page       *int32
 	pageSize   *int32
 	search     *string
 	status     *RequestStatus
+}
+
+func (r ApiRequestsGrantRequestsPendingReviewListRequest) AgentOwner(agentOwner int32) ApiRequestsGrantRequestsPendingReviewListRequest {
+	r.agentOwner = &agentOwner
+	return r
 }
 
 func (r ApiRequestsGrantRequestsPendingReviewListRequest) CreatedBy(createdBy int32) ApiRequestsGrantRequestsPendingReviewListRequest {
@@ -646,6 +799,9 @@ func (a *RequestsAPIService) RequestsGrantRequestsPendingReviewListExecute(r Api
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.agentOwner != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "agent_owner", r.agentOwner, "form", "")
+	}
 	if r.createdBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_by", r.createdBy, "form", "")
 	}

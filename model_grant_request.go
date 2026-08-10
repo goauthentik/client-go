@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc6
+API version: 2026.8.0-rc7
 Contact: hello@goauthentik.io
 */
 
@@ -27,6 +27,7 @@ type GrantRequest struct {
 	RequesterData        map[string]interface{} `json:"requester_data,omitempty"`
 	FulfillerData        map[string]interface{} `json:"fulfiller_data,omitempty"`
 	RevokedBy            PartialUser            `json:"revoked_by"`
+	AgentOwner           PartialUser            `json:"agent_owner"`
 	IsActive             bool                   `json:"is_active"`
 	Expires              NullableTime           `json:"expires,omitempty"`
 	Status               RequestStatus          `json:"status"`
@@ -42,11 +43,12 @@ type _GrantRequest GrantRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGrantRequest(created time.Time, createdBy PartialUser, revokedBy PartialUser, isActive bool, status RequestStatus, targets []string, targetObjs []RequestableTarget) *GrantRequest {
+func NewGrantRequest(created time.Time, createdBy PartialUser, revokedBy PartialUser, agentOwner PartialUser, isActive bool, status RequestStatus, targets []string, targetObjs []RequestableTarget) *GrantRequest {
 	this := GrantRequest{}
 	this.Created = created
 	this.CreatedBy = createdBy
 	this.RevokedBy = revokedBy
+	this.AgentOwner = agentOwner
 	this.IsActive = isActive
 	this.Status = status
 	this.Targets = targets
@@ -196,6 +198,30 @@ func (o *GrantRequest) GetRevokedByOk() (*PartialUser, bool) {
 // SetRevokedBy sets field value
 func (o *GrantRequest) SetRevokedBy(v PartialUser) {
 	o.RevokedBy = v
+}
+
+// GetAgentOwner returns the AgentOwner field value
+func (o *GrantRequest) GetAgentOwner() PartialUser {
+	if o == nil {
+		var ret PartialUser
+		return ret
+	}
+
+	return o.AgentOwner
+}
+
+// GetAgentOwnerOk returns a tuple with the AgentOwner field value
+// and a boolean to check if the value has been set.
+func (o *GrantRequest) GetAgentOwnerOk() (*PartialUser, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AgentOwner, true
+}
+
+// SetAgentOwner sets field value
+func (o *GrantRequest) SetAgentOwner(v PartialUser) {
+	o.AgentOwner = v
 }
 
 // GetIsActive returns the IsActive field value
@@ -388,6 +414,7 @@ func (o GrantRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["fulfiller_data"] = o.FulfillerData
 	}
 	toSerialize["revoked_by"] = o.RevokedBy
+	toSerialize["agent_owner"] = o.AgentOwner
 	toSerialize["is_active"] = o.IsActive
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
@@ -414,6 +441,7 @@ func (o *GrantRequest) UnmarshalJSON(data []byte) (err error) {
 		"created",
 		"created_by",
 		"revoked_by",
+		"agent_owner",
 		"is_active",
 		"status",
 		"targets",
@@ -452,6 +480,7 @@ func (o *GrantRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requester_data")
 		delete(additionalProperties, "fulfiller_data")
 		delete(additionalProperties, "revoked_by")
+		delete(additionalProperties, "agent_owner")
 		delete(additionalProperties, "is_active")
 		delete(additionalProperties, "expires")
 		delete(additionalProperties, "status")

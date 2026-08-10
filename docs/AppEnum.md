@@ -129,6 +129,8 @@
 
 * `AUTHENTIK_BLUEPRINTS` (value: `"authentik.blueprints"`)
 
+* `AUTHENTIK_ENTERPRISE_AGENTS` (value: `"authentik.enterprise.agents"`)
+
 * `AUTHENTIK_ENTERPRISE_AUDIT` (value: `"authentik.enterprise.audit"`)
 
 * `AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT` (value: `"authentik.enterprise.endpoints.connectors.agent"`)
@@ -144,8 +146,6 @@
 * `AUTHENTIK_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE` (value: `"authentik.enterprise.providers.google_workspace"`)
 
 * `AUTHENTIK_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA` (value: `"authentik.enterprise.providers.microsoft_entra"`)
-
-* `AUTHENTIK_ENTERPRISE_PROVIDERS_OAUTH2` (value: `"authentik.enterprise.providers.oauth2"`)
 
 * `AUTHENTIK_ENTERPRISE_PROVIDERS_RADIUS` (value: `"authentik.enterprise.providers.radius"`)
 

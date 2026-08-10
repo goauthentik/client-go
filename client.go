@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc6
+API version: 2026.8.0-rc7
 Contact: hello@goauthentik.io
 */
 
@@ -41,7 +41,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the authentik API v2026.8.0-rc6
+// APIClient manages communication with the authentik API v2026.8.0-rc7
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -50,6 +50,8 @@ type APIClient struct {
 	// API Services
 
 	AdminAPI *AdminAPIService
+
+	AgentsAPI *AgentsAPIService
 
 	AuthenticatorsAPI *AuthenticatorsAPIService
 
@@ -119,6 +121,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.AdminAPI = (*AdminAPIService)(&c.common)
+	c.AgentsAPI = (*AgentsAPIService)(&c.common)
 	c.AuthenticatorsAPI = (*AuthenticatorsAPIService)(&c.common)
 	c.CoreAPI = (*CoreAPIService)(&c.common)
 	c.CryptoAPI = (*CryptoAPIService)(&c.common)

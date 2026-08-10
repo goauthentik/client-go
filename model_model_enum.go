@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc6
+API version: 2026.8.0-rc7
 Contact: hello@goauthentik.io
 */
 
@@ -28,6 +28,7 @@ const (
 	MODELENUM_AUTHENTIK_CORE_APPLICATIONENTITLEMENT                                       ModelEnum = "authentik_core.applicationentitlement"
 	MODELENUM_AUTHENTIK_CORE_TOKEN                                                        ModelEnum = "authentik_core.token"
 	MODELENUM_AUTHENTIK_CORE_OBJECTATTRIBUTE                                              ModelEnum = "authentik_core.objectattribute"
+	MODELENUM_AUTHENTIK_CORE_ACTOR                                                        ModelEnum = "authentik_core.actor"
 	MODELENUM_AUTHENTIK_CRYPTO_CERTIFICATEKEYPAIR                                         ModelEnum = "authentik_crypto.certificatekeypair"
 	MODELENUM_AUTHENTIK_ENDPOINTS_DEVICEUSERBINDING                                       ModelEnum = "authentik_endpoints.deviceuserbinding"
 	MODELENUM_AUTHENTIK_ENDPOINTS_DEVICEACCESSGROUP                                       ModelEnum = "authentik_endpoints.deviceaccessgroup"
@@ -128,6 +129,7 @@ const (
 	MODELENUM_AUTHENTIK_TASKS_SCHEDULES_SCHEDULE                                          ModelEnum = "authentik_tasks_schedules.schedule"
 	MODELENUM_AUTHENTIK_BRANDS_BRAND                                                      ModelEnum = "authentik_brands.brand"
 	MODELENUM_AUTHENTIK_BLUEPRINTS_BLUEPRINTINSTANCE                                      ModelEnum = "authentik_blueprints.blueprintinstance"
+	MODELENUM_AUTHENTIK_AGENTS_AGENT                                                      ModelEnum = "authentik_agents.agent"
 	MODELENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_FLEET_FLEETCONNECTOR                         ModelEnum = "authentik_endpoints_connectors_fleet.fleetconnector"
 	MODELENUM_AUTHENTIK_ENDPOINTS_CONNECTORS_GOOGLE_CHROME_GOOGLECHROMECONNECTOR          ModelEnum = "authentik_endpoints_connectors_google_chrome.googlechromeconnector"
 	MODELENUM_AUTHENTIK_LIFECYCLE_LIFECYCLERULE                                           ModelEnum = "authentik_lifecycle.lifecyclerule"
@@ -161,6 +163,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_core.applicationentitlement",
 	"authentik_core.token",
 	"authentik_core.objectattribute",
+	"authentik_core.actor",
 	"authentik_crypto.certificatekeypair",
 	"authentik_endpoints.deviceuserbinding",
 	"authentik_endpoints.deviceaccessgroup",
@@ -261,6 +264,7 @@ var AllowedModelEnumEnumValues = []ModelEnum{
 	"authentik_tasks_schedules.schedule",
 	"authentik_brands.brand",
 	"authentik_blueprints.blueprintinstance",
+	"authentik_agents.agent",
 	"authentik_endpoints_connectors_fleet.fleetconnector",
 	"authentik_endpoints_connectors_google_chrome.googlechromeconnector",
 	"authentik_lifecycle.lifecyclerule",

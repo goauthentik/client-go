@@ -3,6 +3,7 @@
 README.md
 api/openapi.yaml
 api_admin.go
+api_agents.go
 api_authenticators.go
 api_core.go
 api_crypto.go
@@ -34,14 +35,21 @@ docs/AccessDeniedChallenge.md
 docs/AccountLockdownStage.md
 docs/AccountLockdownStageRequest.md
 docs/AdminAPI.md
+docs/Agent.md
 docs/AgentAuthenticationResponse.md
 docs/AgentConfig.md
 docs/AgentConnector.md
 docs/AgentConnectorRequest.md
+docs/AgentCreateRequest.md
+docs/AgentCreated.md
+docs/AgentGrantRequestCreateRequest.md
+docs/AgentGrantRequestCreated.md
 docs/AgentPSSODeviceRegistrationRequest.md
 docs/AgentPSSODeviceRegistrationResponse.md
 docs/AgentPSSOUserRegistrationRequest.md
+docs/AgentRequest.md
 docs/AgentTokenResponse.md
+docs/AgentsAPI.md
 docs/AlgEnum.md
 docs/App.md
 docs/AppEnum.md
@@ -408,6 +416,7 @@ docs/OutpostsAPI.md
 docs/PKCEMethodEnum.md
 docs/PaginatedAccountLockdownStageList.md
 docs/PaginatedAgentConnectorList.md
+docs/PaginatedAgentList.md
 docs/PaginatedAppleIndependentSecureEnclaveList.md
 docs/PaginatedApplicationEntitlementList.md
 docs/PaginatedApplicationList.md
@@ -583,6 +592,7 @@ docs/PasswordStage.md
 docs/PasswordStageRequest.md
 docs/PatchedAccountLockdownStageRequest.md
 docs/PatchedAgentConnectorRequest.md
+docs/PatchedAgentRequest.md
 docs/PatchedAppleIndependentSecureEnclaveRequest.md
 docs/PatchedApplicationEntitlementRequest.md
 docs/PatchedApplicationRequest.md
@@ -729,6 +739,7 @@ docs/PlexSourceRequest.md
 docs/PlexTokenRedeemRequest.md
 docs/PoliciesAPI.md
 docs/Policy.md
+docs/PolicyBehaviorEnum.md
 docs/PolicyBinding.md
 docs/PolicyBindingRequest.md
 docs/PolicyEngineMode.md
@@ -981,13 +992,19 @@ git_push.sh
 model_access_denied_challenge.go
 model_account_lockdown_stage.go
 model_account_lockdown_stage_request.go
+model_agent.go
 model_agent_authentication_response.go
 model_agent_config.go
 model_agent_connector.go
 model_agent_connector_request.go
+model_agent_create_request.go
+model_agent_created.go
+model_agent_grant_request_create_request.go
+model_agent_grant_request_created.go
 model_agent_psso_device_registration_request.go
 model_agent_psso_device_registration_response.go
 model_agent_psso_user_registration_request.go
+model_agent_request.go
 model_agent_token_response.go
 model_alg_enum.go
 model_app.go
@@ -1343,6 +1360,7 @@ model_outpost_request.go
 model_outpost_type_enum.go
 model_paginated_account_lockdown_stage_list.go
 model_paginated_agent_connector_list.go
+model_paginated_agent_list.go
 model_paginated_apple_independent_secure_enclave_list.go
 model_paginated_application_entitlement_list.go
 model_paginated_application_list.go
@@ -1518,6 +1536,7 @@ model_password_stage.go
 model_password_stage_request.go
 model_patched_account_lockdown_stage_request.go
 model_patched_agent_connector_request.go
+model_patched_agent_request.go
 model_patched_apple_independent_secure_enclave_request.go
 model_patched_application_entitlement_request.go
 model_patched_application_request.go
@@ -1664,6 +1683,7 @@ model_plex_source_property_mapping_request.go
 model_plex_source_request.go
 model_plex_token_redeem_request.go
 model_policy.go
+model_policy_behavior_enum.go
 model_policy_binding.go
 model_policy_binding_request.go
 model_policy_engine_mode.go
@@ -1901,6 +1921,7 @@ model_ws_federation_provider.go
 model_ws_federation_provider_request.go
 response.go
 test/api_admin_test.go
+test/api_agents_test.go
 test/api_authenticators_test.go
 test/api_core_test.go
 test/api_crypto_test.go

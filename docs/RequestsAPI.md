@@ -4,6 +4,7 @@ All URIs are relative to */api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**RequestsGrantRequestsAgentCreate**](RequestsAPI.md#RequestsGrantRequestsAgentCreate) | **Post** /requests/grant-requests/agent/ | 
 [**RequestsGrantRequestsCreate**](RequestsAPI.md#RequestsGrantRequestsCreate) | **Post** /requests/grant-requests/ | 
 [**RequestsGrantRequestsDestroy**](RequestsAPI.md#RequestsGrantRequestsDestroy) | **Delete** /requests/grant-requests/{uuid}/ | 
 [**RequestsGrantRequestsFulfillPartialUpdate**](RequestsAPI.md#RequestsGrantRequestsFulfillPartialUpdate) | **Patch** /requests/grant-requests/{uuid}/fulfill/ | 
@@ -33,6 +34,72 @@ Method | HTTP request | Description
 [**RequestsRulesUpdate**](RequestsAPI.md#RequestsRulesUpdate) | **Put** /requests/rules/{uuid}/ | 
 [**RequestsRulesUsedByList**](RequestsAPI.md#RequestsRulesUsedByList) | **Get** /requests/rules/{uuid}/used_by/ | 
 
+
+
+## RequestsGrantRequestsAgentCreate
+
+> AgentGrantRequestCreated RequestsGrantRequestsAgentCreate(ctx).AgentGrantRequestCreateRequest(agentGrantRequestCreateRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	agentGrantRequestCreateRequest := *openapiclient.NewAgentGrantRequestCreateRequest([]string{"Pbms_example"}) // AgentGrantRequestCreateRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RequestsAPI.RequestsGrantRequestsAgentCreate(context.Background()).AgentGrantRequestCreateRequest(agentGrantRequestCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.RequestsGrantRequestsAgentCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RequestsGrantRequestsAgentCreate`: AgentGrantRequestCreated
+	fmt.Fprintf(os.Stdout, "Response from `RequestsAPI.RequestsGrantRequestsAgentCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRequestsGrantRequestsAgentCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **agentGrantRequestCreateRequest** | [**AgentGrantRequestCreateRequest**](AgentGrantRequestCreateRequest.md) |  | 
+
+### Return type
+
+[**AgentGrantRequestCreated**](AgentGrantRequestCreated.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## RequestsGrantRequestsCreate
@@ -235,7 +302,7 @@ Name | Type | Description  | Notes
 
 ## RequestsGrantRequestsList
 
-> PaginatedGrantRequestList RequestsGrantRequestsList(ctx).CreatedBy(createdBy).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
+> PaginatedGrantRequestList RequestsGrantRequestsList(ctx).AgentOwner(agentOwner).CreatedBy(createdBy).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
 
 
 
@@ -252,6 +319,7 @@ import (
 )
 
 func main() {
+	agentOwner := int32(56) // int32 |  (optional)
 	createdBy := int32(56) // int32 |  (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -261,7 +329,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.RequestsGrantRequestsList(context.Background()).CreatedBy(createdBy).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
+	resp, r, err := apiClient.RequestsAPI.RequestsGrantRequestsList(context.Background()).AgentOwner(agentOwner).CreatedBy(createdBy).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.RequestsGrantRequestsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,6 +350,7 @@ Other parameters are passed through a pointer to a apiRequestsGrantRequestsListR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **agentOwner** | **int32** |  | 
  **createdBy** | **int32** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 
@@ -309,7 +378,7 @@ Name | Type | Description  | Notes
 
 ## RequestsGrantRequestsPendingReviewList
 
-> PaginatedGrantRequestList RequestsGrantRequestsPendingReviewList(ctx).CreatedBy(createdBy).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
+> PaginatedGrantRequestList RequestsGrantRequestsPendingReviewList(ctx).AgentOwner(agentOwner).CreatedBy(createdBy).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
 
 
 
@@ -328,6 +397,7 @@ import (
 )
 
 func main() {
+	agentOwner := int32(56) // int32 |  (optional)
 	createdBy := int32(56) // int32 |  (optional)
 	ordering := "ordering_example" // string | Which field to use when ordering the results. (optional)
 	page := int32(56) // int32 | A page number within the paginated result set. (optional)
@@ -337,7 +407,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RequestsAPI.RequestsGrantRequestsPendingReviewList(context.Background()).CreatedBy(createdBy).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
+	resp, r, err := apiClient.RequestsAPI.RequestsGrantRequestsPendingReviewList(context.Background()).AgentOwner(agentOwner).CreatedBy(createdBy).Ordering(ordering).Page(page).PageSize(pageSize).Search(search).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RequestsAPI.RequestsGrantRequestsPendingReviewList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -358,6 +428,7 @@ Other parameters are passed through a pointer to a apiRequestsGrantRequestsPendi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **agentOwner** | **int32** |  | 
  **createdBy** | **int32** |  | 
  **ordering** | **string** | Which field to use when ordering the results. | 
  **page** | **int32** | A page number within the paginated result set. | 

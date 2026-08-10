@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc6
+API version: 2026.8.0-rc7
 Contact: hello@goauthentik.io
 */
 
@@ -84,6 +84,7 @@ const (
 	APPENUM_AUTHENTIK_TASKS_SCHEDULES                               AppEnum = "authentik.tasks.schedules"
 	APPENUM_AUTHENTIK_BRANDS                                        AppEnum = "authentik.brands"
 	APPENUM_AUTHENTIK_BLUEPRINTS                                    AppEnum = "authentik.blueprints"
+	APPENUM_AUTHENTIK_ENTERPRISE_AGENTS                             AppEnum = "authentik.enterprise.agents"
 	APPENUM_AUTHENTIK_ENTERPRISE_AUDIT                              AppEnum = "authentik.enterprise.audit"
 	APPENUM_AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_AGENT         AppEnum = "authentik.enterprise.endpoints.connectors.agent"
 	APPENUM_AUTHENTIK_ENTERPRISE_ENDPOINTS_CONNECTORS_FLEET         AppEnum = "authentik.enterprise.endpoints.connectors.fleet"
@@ -92,7 +93,6 @@ const (
 	APPENUM_AUTHENTIK_ENTERPRISE_POLICIES_UNIQUE_PASSWORD           AppEnum = "authentik.enterprise.policies.unique_password"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_GOOGLE_WORKSPACE         AppEnum = "authentik.enterprise.providers.google_workspace"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_MICROSOFT_ENTRA          AppEnum = "authentik.enterprise.providers.microsoft_entra"
-	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_OAUTH2                   AppEnum = "authentik.enterprise.providers.oauth2"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_RADIUS                   AppEnum = "authentik.enterprise.providers.radius"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_SCIM                     AppEnum = "authentik.enterprise.providers.scim"
 	APPENUM_AUTHENTIK_ENTERPRISE_PROVIDERS_SSF                      AppEnum = "authentik.enterprise.providers.ssf"
@@ -170,6 +170,7 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.tasks.schedules",
 	"authentik.brands",
 	"authentik.blueprints",
+	"authentik.enterprise.agents",
 	"authentik.enterprise.audit",
 	"authentik.enterprise.endpoints.connectors.agent",
 	"authentik.enterprise.endpoints.connectors.fleet",
@@ -178,7 +179,6 @@ var AllowedAppEnumEnumValues = []AppEnum{
 	"authentik.enterprise.policies.unique_password",
 	"authentik.enterprise.providers.google_workspace",
 	"authentik.enterprise.providers.microsoft_entra",
-	"authentik.enterprise.providers.oauth2",
 	"authentik.enterprise.providers.radius",
 	"authentik.enterprise.providers.scim",
 	"authentik.enterprise.providers.ssf",

@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.8.0-rc6
+  version: 2026.8.0-rc7
 servers:
 - url: /api/v3
 paths:
@@ -504,6 +504,270 @@ paths:
       - authentik: []
       tags:
       - admin
+  /agents/agents/:
+    get:
+      description: |-
+        Admin-provisioned delegate identities. An admin creates a Agent for a given
+        parent user, then grants it access the same way as any other User -- ordinary
+        PolicyBindings pointed at whatever it needs.
+      operationId: agents_agents_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        explode: true
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A page number within the paginated result set.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: parent
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: A search term.
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedAgentList"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - agents
+    post:
+      description: |-
+        Admin-provisioned delegate identities. An admin creates a Agent for a given
+        parent user, then grants it access the same way as any other User -- ordinary
+        PolicyBindings pointed at whatever it needs.
+      operationId: agents_agents_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AgentCreateRequest"
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AgentCreated"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - agents
+  /agents/agents/{id}/:
+    delete:
+      description: |-
+        Admin-provisioned delegate identities. An admin creates a Agent for a given
+        parent user, then grants it access the same way as any other User -- ordinary
+        PolicyBindings pointed at whatever it needs.
+      operationId: agents_agents_destroy
+      parameters:
+      - description: A unique integer value identifying this Agent.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - agents
+    get:
+      description: |-
+        Admin-provisioned delegate identities. An admin creates a Agent for a given
+        parent user, then grants it access the same way as any other User -- ordinary
+        PolicyBindings pointed at whatever it needs.
+      operationId: agents_agents_retrieve
+      parameters:
+      - description: A unique integer value identifying this Agent.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Agent"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - agents
+    patch:
+      description: |-
+        Admin-provisioned delegate identities. An admin creates a Agent for a given
+        parent user, then grants it access the same way as any other User -- ordinary
+        PolicyBindings pointed at whatever it needs.
+      operationId: agents_agents_partial_update
+      parameters:
+      - description: A unique integer value identifying this Agent.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PatchedAgentRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Agent"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - agents
+    put:
+      description: |-
+        Admin-provisioned delegate identities. An admin creates a Agent for a given
+        parent user, then grants it access the same way as any other User -- ordinary
+        PolicyBindings pointed at whatever it needs.
+      operationId: agents_agents_update
+      parameters:
+      - description: A unique integer value identifying this Agent.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AgentRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Agent"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - agents
   /authenticators/admin/all/:
     get:
       description: Get all devices for current user
@@ -34263,6 +34527,13 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: agent_owner
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: created_by
         required: false
         schema:
@@ -34500,11 +34771,58 @@ paths:
       - authentik: []
       tags:
       - requests
+  /requests/grant-requests/agent/:
+    post:
+      description: |-
+        Delegate access an agent's owner already holds to the agent, time-boxed. Unlike
+        `create` this persists the request directly instead of returning a flow link -- an agent
+        authenticates with an API token and has no browser to run a flow in, so no justification
+        is ever collected. That is why the agent may only ask for what its owner already has:
+        the owner's approval is then the whole decision, and no reviewer is asked to judge a
+        request with nothing in it. The returned `fulfill_url` is what the agent hands to its
+        owner so they can act on it.
+      operationId: requests_grant_requests_agent_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AgentGrantRequestCreateRequest"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AgentGrantRequestCreated"
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenericError"
+          description: ""
+      security:
+      - authentik: []
+      tags:
+      - requests
   /requests/grant-requests/pending_review/:
     get:
       description: List pending grant requests the current user is eligible to review.
       operationId: requests_grant_requests_pending_review_list
       parameters:
+      - explode: true
+        in: query
+        name: agent_owner
+        required: false
+        schema:
+          type: integer
+        style: form
       - explode: true
         in: query
         name: created_by
@@ -54528,6 +54846,94 @@ components:
       required:
       - name
       type: object
+    Agent:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        pk: 9
+        username: username
+        name: name
+        is_active: true
+        last_login: 2000-01-23T04:56:07.000+00:00
+        email: email
+        attributes:
+          key: ""
+        uid: uid
+        uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+        parent: ""
+        policy_behavior: ""
+        token_identifier: token_identifier
+      properties:
+        pk:
+          readOnly: true
+          title: ID
+          type: integer
+        username:
+          description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_\
+            \ only."
+          maxLength: 150
+          pattern: "^[\\w.@+-]+$"
+          type: string
+        name:
+          description: User's display name.
+          type: string
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+          title: Active
+          type: boolean
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        attributes:
+          additionalProperties: {}
+          type: object
+        uid:
+          readOnly: true
+          type: string
+        uuid:
+          format: uuid
+          readOnly: true
+          type: string
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+        parent:
+          allOf:
+          - $ref: "#/components/schemas/PartialUser"
+          readOnly: true
+        policy_behavior:
+          allOf:
+          - $ref: "#/components/schemas/PolicyBehaviorEnum"
+          readOnly: true
+        token_identifier:
+          description: "Identifier of the agent's API token, so its key can be retrieved/copied\
+            \ later."
+          nullable: true
+          readOnly: true
+          type: string
+      required:
+      - name
+      - parent
+      - pk
+      - policy_behavior
+      - token_identifier
+      - uid
+      - username
+      - uuid
+      type: object
     AgentAuthenticationResponse:
       description: Base serializer class which doesn't implement create/update methods
       example:
@@ -54751,6 +55157,87 @@ components:
       required:
       - name
       type: object
+    AgentCreateRequest:
+      description: Base serializer class which doesn't implement create/update methods
+      example:
+        parent: 0
+        label: label
+        expiring: false
+        expires: 2000-01-23T04:56:07.000+00:00
+        policy_behavior: ""
+      properties:
+        parent:
+          type: integer
+        label:
+          type: string
+        expiring:
+          default: false
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+        policy_behavior:
+          allOf:
+          - $ref: "#/components/schemas/PolicyBehaviorEnum"
+          default: mirror
+      type: object
+    AgentCreated:
+      description: "Response returned once when an agent is created, carrying the\
+        \ one-time API token."
+      example:
+        agent: ""
+        token: token
+      properties:
+        agent:
+          allOf:
+          - $ref: "#/components/schemas/Agent"
+          readOnly: true
+        token:
+          readOnly: true
+          type: string
+      required:
+      - agent
+      - token
+      type: object
+    AgentGrantRequestCreateRequest:
+      description: |-
+        Body for an agent requesting access for itself. Deliberately narrower than
+        `GrantRequestCreateSerializer`: an agent may not pick its own expiry, which is
+        derived from the granting rules and capped by the agent's own lifetime.
+      example:
+        pbms:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        pbms:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - pbms
+      type: object
+    AgentGrantRequestCreated:
+      description: |-
+        Response to an agent's access request: the request it created, plus the URL to hand to
+        the human it acts for. An agent has no browser, so it cannot run the approval itself --
+        `fulfill_url` is what its owner opens to approve or deny.
+      example:
+        grant_request: ""
+        fulfill_url: fulfill_url
+      properties:
+        grant_request:
+          allOf:
+          - $ref: "#/components/schemas/GrantRequest"
+          readOnly: true
+        fulfill_url:
+          readOnly: true
+          type: string
+      required:
+      - fulfill_url
+      - grant_request
+      type: object
     AgentPSSODeviceRegistrationRequest:
       description: Register Apple device via Platform SSO
       example:
@@ -54827,6 +55314,59 @@ components:
       - enclave_key_id
       - user_auth
       - user_secure_enclave_key
+      type: object
+    AgentRequest:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        username: username
+        name: name
+        is_active: true
+        last_login: 2000-01-23T04:56:07.000+00:00
+        email: email
+        attributes:
+          key: ""
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+      properties:
+        username:
+          description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_\
+            \ only."
+          maxLength: 150
+          minLength: 1
+          pattern: "^[\\w.@+-]+$"
+          type: string
+        name:
+          description: User's display name.
+          minLength: 1
+          type: string
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+          title: Active
+          type: boolean
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        attributes:
+          additionalProperties: {}
+          type: object
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - name
+      - username
       type: object
     AgentTokenResponse:
       description: Base serializer class which doesn't implement create/update methods
@@ -54927,6 +55467,7 @@ components:
       - authentik.tasks.schedules
       - authentik.brands
       - authentik.blueprints
+      - authentik.enterprise.agents
       - authentik.enterprise.audit
       - authentik.enterprise.endpoints.connectors.agent
       - authentik.enterprise.endpoints.connectors.fleet
@@ -54935,7 +55476,6 @@ components:
       - authentik.enterprise.policies.unique_password
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
-      - authentik.enterprise.providers.oauth2
       - authentik.enterprise.providers.radius
       - authentik.enterprise.providers.scim
       - authentik.enterprise.providers.ssf
@@ -57428,6 +57968,8 @@ components:
       - can_impersonate
       - can_debug
       - is_enterprise
+      - can_request
+      - can_agent_self_service
       type: string
     CaptchaChallenge:
       description: Site public key
@@ -59761,7 +60303,7 @@ components:
     DuoDevice:
       description: Serializer for Duo authenticator devices
       example:
-        pk: 9
+        pk: 0
         name: name
         user: ""
       properties:
@@ -62707,6 +63249,7 @@ components:
         fulfiller_data:
           key: ""
         revoked_by: ""
+        agent_owner: ""
         is_active: true
         expires: 2000-01-23T04:56:07.000+00:00
         status: ""
@@ -62746,6 +63289,10 @@ components:
           allOf:
           - $ref: "#/components/schemas/PartialUser"
           readOnly: true
+        agent_owner:
+          allOf:
+          - $ref: "#/components/schemas/PartialUser"
+          readOnly: true
         is_active:
           readOnly: true
           type: boolean
@@ -62772,6 +63319,7 @@ components:
           format: uuid
           type: string
       required:
+      - agent_owner
       - created
       - created_by
       - is_active
@@ -66639,6 +67187,7 @@ components:
       - authentik_core.applicationentitlement
       - authentik_core.token
       - authentik_core.objectattribute
+      - authentik_core.actor
       - authentik_crypto.certificatekeypair
       - authentik_endpoints.deviceuserbinding
       - authentik_endpoints.deviceaccessgroup
@@ -66739,6 +67288,7 @@ components:
       - authentik_tasks_schedules.schedule
       - authentik_brands.brand
       - authentik_blueprints.blueprintinstance
+      - authentik_agents.agent
       - authentik_endpoints_connectors_fleet.fleetconnector
       - authentik_endpoints_connectors_google_chrome.googlechromeconnector
       - authentik_lifecycle.lifecyclerule
@@ -69015,6 +69565,64 @@ components:
       - pagination
       - results
       type: object
+    PaginatedAgentList:
+      example:
+        pagination:
+          next: 0.8008281904610115
+          previous: 6.027456183070403
+          count: 1.4658129805029452
+          current: 5.962133916683182
+          total_pages: 5.637376656633329
+          start_index: 2.3021358869347655
+          end_index: 7.061401241503109
+        results:
+        - pk: 9
+          username: username
+          name: name
+          is_active: true
+          last_login: 2000-01-23T04:56:07.000+00:00
+          email: email
+          attributes:
+            key: ""
+          uid: uid
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          expiring: true
+          expires: 2000-01-23T04:56:07.000+00:00
+          parent: ""
+          policy_behavior: ""
+          token_identifier: token_identifier
+        - pk: 9
+          username: username
+          name: name
+          is_active: true
+          last_login: 2000-01-23T04:56:07.000+00:00
+          email: email
+          attributes:
+            key: ""
+          uid: uid
+          uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          expiring: true
+          expires: 2000-01-23T04:56:07.000+00:00
+          parent: ""
+          policy_behavior: ""
+          token_identifier: token_identifier
+        autocomplete:
+          key: ""
+      properties:
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        results:
+          items:
+            $ref: "#/components/schemas/Agent"
+          type: array
+        autocomplete:
+          additionalProperties: {}
+          type: object
+      required:
+      - autocomplete
+      - pagination
+      - results
+      type: object
     PaginatedAppleIndependentSecureEnclaveList:
       example:
         pagination:
@@ -71144,10 +71752,10 @@ components:
           start_index: 2.3021358869347655
           end_index: 7.061401241503109
         results:
-        - pk: 9
+        - pk: 0
           name: name
           user: ""
-        - pk: 9
+        - pk: 0
           name: name
           user: ""
         autocomplete:
@@ -72489,6 +73097,7 @@ components:
           fulfiller_data:
             key: ""
           revoked_by: ""
+          agent_owner: ""
           is_active: true
           expires: 2000-01-23T04:56:07.000+00:00
           status: ""
@@ -72516,6 +73125,7 @@ components:
           fulfiller_data:
             key: ""
           revoked_by: ""
+          agent_owner: ""
           is_active: true
           expires: 2000-01-23T04:56:07.000+00:00
           status: ""
@@ -80860,6 +81470,56 @@ components:
             type: integer
           type: array
       type: object
+    PatchedAgentRequest:
+      description: |-
+        Mixin to validate that a valid enterprise license
+        exists before allowing to save the object
+      example:
+        username: username
+        name: name
+        is_active: true
+        last_login: 2000-01-23T04:56:07.000+00:00
+        email: email
+        attributes:
+          key: ""
+        expiring: true
+        expires: 2000-01-23T04:56:07.000+00:00
+      properties:
+        username:
+          description: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_\
+            \ only."
+          maxLength: 150
+          minLength: 1
+          pattern: "^[\\w.@+-]+$"
+          type: string
+        name:
+          description: User's display name.
+          minLength: 1
+          type: string
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+          title: Active
+          type: boolean
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        attributes:
+          additionalProperties: {}
+          type: object
+        expiring:
+          type: boolean
+        expires:
+          format: date-time
+          nullable: true
+          type: string
+      type: object
     PatchedAppleIndependentSecureEnclaveRequest:
       example:
         uuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -86635,6 +87295,12 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
+    PolicyBehaviorEnum:
+      enum:
+      - mirror
+      - copy
+      - none
+      type: string
     PolicyBinding:
       description: PolicyBinding Serializer
       example:

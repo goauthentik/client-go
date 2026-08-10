@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **RequesterData** | Pointer to **map[string]interface{}** |  | [optional] 
 **FulfillerData** | Pointer to **map[string]interface{}** |  | [optional] 
 **RevokedBy** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**AgentOwner** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 **IsActive** | **bool** |  | [readonly] 
 **Expires** | Pointer to **NullableTime** |  | [optional] 
 **Status** | [**RequestStatus**](RequestStatus.md) |  | [readonly] 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewGrantRequest
 
-`func NewGrantRequest(created time.Time, createdBy PartialUser, revokedBy PartialUser, isActive bool, status RequestStatus, targets []string, targetObjs []RequestableTarget, ) *GrantRequest`
+`func NewGrantRequest(created time.Time, createdBy PartialUser, revokedBy PartialUser, agentOwner PartialUser, isActive bool, status RequestStatus, targets []string, targetObjs []RequestableTarget, ) *GrantRequest`
 
 NewGrantRequest instantiates a new GrantRequest object
 This constructor will assign default values to properties that have it defined,
@@ -143,6 +144,26 @@ and a boolean to check if the value has been set.
 `func (o *GrantRequest) SetRevokedBy(v PartialUser)`
 
 SetRevokedBy sets RevokedBy field to given value.
+
+
+### GetAgentOwner
+
+`func (o *GrantRequest) GetAgentOwner() PartialUser`
+
+GetAgentOwner returns the AgentOwner field if non-nil, zero value otherwise.
+
+### GetAgentOwnerOk
+
+`func (o *GrantRequest) GetAgentOwnerOk() (*PartialUser, bool)`
+
+GetAgentOwnerOk returns a tuple with the AgentOwner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgentOwner
+
+`func (o *GrantRequest) SetAgentOwner(v PartialUser)`
+
+SetAgentOwner sets AgentOwner field to given value.
 
 
 ### GetIsActive
