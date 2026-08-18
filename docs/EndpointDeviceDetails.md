@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **AccessGroupObj** | Pointer to [**DeviceAccessGroup**](DeviceAccessGroup.md) |  | [optional] 
 **Expiring** | Pointer to **bool** |  | [optional] 
 **Expires** | Pointer to **NullableTime** |  | [optional] 
-**Facts** | [**DeviceFactSnapshot**](DeviceFactSnapshot.md) |  | [readonly] 
+**Facts** | [**NullableDeviceFactSnapshot**](DeviceFactSnapshot.md) |  | [readonly] 
 **Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **ConnectionsObj** | [**[]DeviceConnection**](DeviceConnection.md) |  | 
 **Policies** | **[]string** |  | [readonly] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewEndpointDeviceDetails
 
-`func NewEndpointDeviceDetails(pbmUuid string, name string, facts DeviceFactSnapshot, connectionsObj []DeviceConnection, policies []string, connections []string, ) *EndpointDeviceDetails`
+`func NewEndpointDeviceDetails(pbmUuid string, name string, facts NullableDeviceFactSnapshot, connectionsObj []DeviceConnection, policies []string, connections []string, ) *EndpointDeviceDetails`
 
 NewEndpointDeviceDetails instantiates a new EndpointDeviceDetails object
 This constructor will assign default values to properties that have it defined,
@@ -241,6 +241,16 @@ and a boolean to check if the value has been set.
 SetFacts sets Facts field to given value.
 
 
+### SetFactsNil
+
+`func (o *EndpointDeviceDetails) SetFactsNil(b bool)`
+
+ SetFactsNil sets the value for Facts to be an explicit nil
+
+### UnsetFacts
+`func (o *EndpointDeviceDetails) UnsetFacts()`
+
+UnsetFacts ensures that no value is present for Facts, not even an explicit nil
 ### GetAttributes
 
 `func (o *EndpointDeviceDetails) GetAttributes() map[string]interface{}`

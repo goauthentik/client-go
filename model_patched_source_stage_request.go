@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc7
+API version: 2026.8.0
 Contact: hello@goauthentik.io
 */
 
@@ -23,8 +23,10 @@ type PatchedSourceStageRequest struct {
 	Name   *string `json:"name,omitempty"`
 	Source *string `json:"source,omitempty"`
 	// Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
-	ResumeTimeout        *string `json:"resume_timeout,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ResumeTimeout *string `json:"resume_timeout,omitempty"`
+	// Source matching failure reasons for which the flow should resume.
+	ResumeOnMatchFailures []ResumeOnMatchFailuresEnum `json:"resume_on_match_failures,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _PatchedSourceStageRequest PatchedSourceStageRequest
@@ -142,6 +144,38 @@ func (o *PatchedSourceStageRequest) SetResumeTimeout(v string) {
 	o.ResumeTimeout = &v
 }
 
+// GetResumeOnMatchFailures returns the ResumeOnMatchFailures field value if set, zero value otherwise.
+func (o *PatchedSourceStageRequest) GetResumeOnMatchFailures() []ResumeOnMatchFailuresEnum {
+	if o == nil || IsNil(o.ResumeOnMatchFailures) {
+		var ret []ResumeOnMatchFailuresEnum
+		return ret
+	}
+	return o.ResumeOnMatchFailures
+}
+
+// GetResumeOnMatchFailuresOk returns a tuple with the ResumeOnMatchFailures field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PatchedSourceStageRequest) GetResumeOnMatchFailuresOk() ([]ResumeOnMatchFailuresEnum, bool) {
+	if o == nil || IsNil(o.ResumeOnMatchFailures) {
+		return nil, false
+	}
+	return o.ResumeOnMatchFailures, true
+}
+
+// HasResumeOnMatchFailures returns a boolean if a field has been set.
+func (o *PatchedSourceStageRequest) HasResumeOnMatchFailures() bool {
+	if o != nil && !IsNil(o.ResumeOnMatchFailures) {
+		return true
+	}
+
+	return false
+}
+
+// SetResumeOnMatchFailures gets a reference to the given []ResumeOnMatchFailuresEnum and assigns it to the ResumeOnMatchFailures field.
+func (o *PatchedSourceStageRequest) SetResumeOnMatchFailures(v []ResumeOnMatchFailuresEnum) {
+	o.ResumeOnMatchFailures = v
+}
+
 func (o PatchedSourceStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -160,6 +194,9 @@ func (o PatchedSourceStageRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ResumeTimeout) {
 		toSerialize["resume_timeout"] = o.ResumeTimeout
+	}
+	if !IsNil(o.ResumeOnMatchFailures) {
+		toSerialize["resume_on_match_failures"] = o.ResumeOnMatchFailures
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -186,6 +223,7 @@ func (o *PatchedSourceStageRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "resume_timeout")
+		delete(additionalProperties, "resume_on_match_failures")
 		o.AdditionalProperties = additionalProperties
 	}
 

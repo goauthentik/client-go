@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ## EndpointsAgentsConnectorsAuthIaCreate
 
-> AgentAuthenticationResponse EndpointsAgentsConnectorsAuthIaCreate(ctx).Execute()
+> AgentAuthenticationResponse EndpointsAgentsConnectorsAuthIaCreate(ctx).LoginHint(loginHint).Execute()
 
 
 
@@ -225,10 +225,11 @@ import (
 )
 
 func main() {
+	loginHint := "loginHint_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EndpointsAPI.EndpointsAgentsConnectorsAuthIaCreate(context.Background()).Execute()
+	resp, r, err := apiClient.EndpointsAPI.EndpointsAgentsConnectorsAuthIaCreate(context.Background()).LoginHint(loginHint).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.EndpointsAgentsConnectorsAuthIaCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -240,12 +241,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiEndpointsAgentsConnectorsAuthIaCreateRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loginHint** | **string** |  | 
 
 ### Return type
 

@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc7
+API version: 2026.8.0
 Contact: hello@goauthentik.io
 */
 
@@ -22,18 +22,18 @@ var _ MappedNullable = &EndpointDeviceDetails{}
 
 // EndpointDeviceDetails struct for EndpointDeviceDetails
 type EndpointDeviceDetails struct {
-	DeviceUuid           *string                `json:"device_uuid,omitempty"`
-	PbmUuid              string                 `json:"pbm_uuid"`
-	Name                 string                 `json:"name"`
-	AccessGroup          NullableString         `json:"access_group,omitempty"`
-	AccessGroupObj       *DeviceAccessGroup     `json:"access_group_obj,omitempty"`
-	Expiring             *bool                  `json:"expiring,omitempty"`
-	Expires              NullableTime           `json:"expires,omitempty"`
-	Facts                DeviceFactSnapshot     `json:"facts"`
-	Attributes           map[string]interface{} `json:"attributes,omitempty"`
-	ConnectionsObj       []DeviceConnection     `json:"connections_obj"`
-	Policies             []string               `json:"policies"`
-	Connections          []string               `json:"connections"`
+	DeviceUuid           *string                    `json:"device_uuid,omitempty"`
+	PbmUuid              string                     `json:"pbm_uuid"`
+	Name                 string                     `json:"name"`
+	AccessGroup          NullableString             `json:"access_group,omitempty"`
+	AccessGroupObj       *DeviceAccessGroup         `json:"access_group_obj,omitempty"`
+	Expiring             *bool                      `json:"expiring,omitempty"`
+	Expires              NullableTime               `json:"expires,omitempty"`
+	Facts                NullableDeviceFactSnapshot `json:"facts"`
+	Attributes           map[string]interface{}     `json:"attributes,omitempty"`
+	ConnectionsObj       []DeviceConnection         `json:"connections_obj"`
+	Policies             []string                   `json:"policies"`
+	Connections          []string                   `json:"connections"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,7 +43,7 @@ type _EndpointDeviceDetails EndpointDeviceDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEndpointDeviceDetails(pbmUuid string, name string, facts DeviceFactSnapshot, connectionsObj []DeviceConnection, policies []string, connections []string) *EndpointDeviceDetails {
+func NewEndpointDeviceDetails(pbmUuid string, name string, facts NullableDeviceFactSnapshot, connectionsObj []DeviceConnection, policies []string, connections []string) *EndpointDeviceDetails {
 	this := EndpointDeviceDetails{}
 	this.PbmUuid = pbmUuid
 	this.Name = name
@@ -293,27 +293,29 @@ func (o *EndpointDeviceDetails) UnsetExpires() {
 }
 
 // GetFacts returns the Facts field value
+// If the value is explicit nil, the zero value for DeviceFactSnapshot will be returned
 func (o *EndpointDeviceDetails) GetFacts() DeviceFactSnapshot {
-	if o == nil {
+	if o == nil || o.Facts.Get() == nil {
 		var ret DeviceFactSnapshot
 		return ret
 	}
 
-	return o.Facts
+	return *o.Facts.Get()
 }
 
 // GetFactsOk returns a tuple with the Facts field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EndpointDeviceDetails) GetFactsOk() (*DeviceFactSnapshot, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Facts, true
+	return o.Facts.Get(), o.Facts.IsSet()
 }
 
 // SetFacts sets field value
 func (o *EndpointDeviceDetails) SetFacts(v DeviceFactSnapshot) {
-	o.Facts = v
+	o.Facts.Set(&v)
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -447,7 +449,7 @@ func (o EndpointDeviceDetails) ToMap() (map[string]interface{}, error) {
 	if o.Expires.IsSet() {
 		toSerialize["expires"] = o.Expires.Get()
 	}
-	toSerialize["facts"] = o.Facts
+	toSerialize["facts"] = o.Facts.Get()
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}

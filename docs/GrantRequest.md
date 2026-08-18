@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **CreatedBy** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 **RequesterData** | Pointer to **map[string]interface{}** |  | [optional] 
 **FulfillerData** | Pointer to **map[string]interface{}** |  | [optional] 
-**RevokedBy** | [**PartialUser**](PartialUser.md) |  | [readonly] 
-**AgentOwner** | [**PartialUser**](PartialUser.md) |  | [readonly] 
+**RevokedBy** | [**NullablePartialUser**](PartialUser.md) |  | [readonly] 
+**AgentOwner** | [**NullablePartialUser**](PartialUser.md) |  | [readonly] 
 **IsActive** | **bool** |  | [readonly] 
 **Expires** | Pointer to **NullableTime** |  | [optional] 
 **Status** | [**RequestStatus**](RequestStatus.md) |  | [readonly] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewGrantRequest
 
-`func NewGrantRequest(created time.Time, createdBy PartialUser, revokedBy PartialUser, agentOwner PartialUser, isActive bool, status RequestStatus, targets []string, targetObjs []RequestableTarget, ) *GrantRequest`
+`func NewGrantRequest(created time.Time, createdBy PartialUser, revokedBy NullablePartialUser, agentOwner NullablePartialUser, isActive bool, status RequestStatus, targets []string, targetObjs []RequestableTarget, ) *GrantRequest`
 
 NewGrantRequest instantiates a new GrantRequest object
 This constructor will assign default values to properties that have it defined,
@@ -146,6 +146,16 @@ and a boolean to check if the value has been set.
 SetRevokedBy sets RevokedBy field to given value.
 
 
+### SetRevokedByNil
+
+`func (o *GrantRequest) SetRevokedByNil(b bool)`
+
+ SetRevokedByNil sets the value for RevokedBy to be an explicit nil
+
+### UnsetRevokedBy
+`func (o *GrantRequest) UnsetRevokedBy()`
+
+UnsetRevokedBy ensures that no value is present for RevokedBy, not even an explicit nil
 ### GetAgentOwner
 
 `func (o *GrantRequest) GetAgentOwner() PartialUser`
@@ -166,6 +176,16 @@ and a boolean to check if the value has been set.
 SetAgentOwner sets AgentOwner field to given value.
 
 
+### SetAgentOwnerNil
+
+`func (o *GrantRequest) SetAgentOwnerNil(b bool)`
+
+ SetAgentOwnerNil sets the value for AgentOwner to be an explicit nil
+
+### UnsetAgentOwner
+`func (o *GrantRequest) UnsetAgentOwner()`
+
+UnsetAgentOwner ensures that no value is present for AgentOwner, not even an explicit nil
 ### GetIsActive
 
 `func (o *GrantRequest) GetIsActive() bool`

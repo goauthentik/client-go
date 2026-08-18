@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.0-rc7
+API version: 2026.8.0
 Contact: hello@goauthentik.io
 */
 
@@ -279,6 +279,12 @@ func (a *EndpointsAPIService) EndpointsAgentsConnectorsAuthFedCreateExecute(r Ap
 type ApiEndpointsAgentsConnectorsAuthIaCreateRequest struct {
 	ctx        context.Context
 	ApiService *EndpointsAPIService
+	loginHint  *string
+}
+
+func (r ApiEndpointsAgentsConnectorsAuthIaCreateRequest) LoginHint(loginHint string) ApiEndpointsAgentsConnectorsAuthIaCreateRequest {
+	r.loginHint = &loginHint
+	return r
 }
 
 func (r ApiEndpointsAgentsConnectorsAuthIaCreateRequest) Execute() (*AgentAuthenticationResponse, *http.Response, error) {
@@ -322,6 +328,9 @@ func (a *EndpointsAPIService) EndpointsAgentsConnectorsAuthIaCreateExecute(r Api
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.loginHint != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "login_hint", r.loginHint, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

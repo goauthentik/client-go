@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **FlowSet** | [**[]FlowSet**](FlowSet.md) |  | [readonly] 
 **Source** | **string** |  | 
 **ResumeTimeout** | Pointer to **string** | Amount of time a user can take to return from the source to continue the flow (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] 
+**ResumeOnMatchFailures** | Pointer to [**[]ResumeOnMatchFailuresEnum**](ResumeOnMatchFailuresEnum.md) | Source matching failure reasons for which the flow should resume. | [optional] 
 
 ## Methods
 
@@ -217,6 +218,31 @@ SetResumeTimeout sets ResumeTimeout field to given value.
 `func (o *SourceStage) HasResumeTimeout() bool`
 
 HasResumeTimeout returns a boolean if a field has been set.
+
+### GetResumeOnMatchFailures
+
+`func (o *SourceStage) GetResumeOnMatchFailures() []ResumeOnMatchFailuresEnum`
+
+GetResumeOnMatchFailures returns the ResumeOnMatchFailures field if non-nil, zero value otherwise.
+
+### GetResumeOnMatchFailuresOk
+
+`func (o *SourceStage) GetResumeOnMatchFailuresOk() (*[]ResumeOnMatchFailuresEnum, bool)`
+
+GetResumeOnMatchFailuresOk returns a tuple with the ResumeOnMatchFailures field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResumeOnMatchFailures
+
+`func (o *SourceStage) SetResumeOnMatchFailures(v []ResumeOnMatchFailuresEnum)`
+
+SetResumeOnMatchFailures sets ResumeOnMatchFailures field to given value.
+
+### HasResumeOnMatchFailures
+
+`func (o *SourceStage) HasResumeOnMatchFailures() bool`
+
+HasResumeOnMatchFailures returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

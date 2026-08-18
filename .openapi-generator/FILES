@@ -807,6 +807,7 @@ docs/RequestRuleRequest.md
 docs/RequestStatus.md
 docs/RequestableTarget.md
 docs/RequestsAPI.md
+docs/ResumeOnMatchFailuresEnum.md
 docs/Review.md
 docs/ReviewRequest.md
 docs/Role.md
@@ -1745,6 +1746,7 @@ model_request_rule_child_binding_request.go
 model_request_rule_request.go
 model_request_status.go
 model_requestable_target.go
+model_resume_on_match_failures_enum.go
 model_review.go
 model_review_request.go
 model_role.go

@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.8.0-rc7
+  version: 2026.8.0
 servers:
 - url: /api/v3
 paths:
@@ -9103,6 +9103,14 @@ paths:
       description: Mixin to add a used_by endpoint to return a list of all objects
         using this object
       operationId: endpoints_agents_connectors_auth_ia_create
+      parameters:
+      - explode: true
+        in: query
+        name: login_hint
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -60773,6 +60781,7 @@ components:
         facts:
           allOf:
           - $ref: "#/components/schemas/DeviceFactSnapshot"
+          nullable: true
           readOnly: true
         attributes:
           additionalProperties: {}
@@ -60838,6 +60847,7 @@ components:
         facts:
           allOf:
           - $ref: "#/components/schemas/DeviceFactSnapshot"
+          nullable: true
           readOnly: true
         attributes:
           additionalProperties: {}
@@ -63288,10 +63298,12 @@ components:
         revoked_by:
           allOf:
           - $ref: "#/components/schemas/PartialUser"
+          nullable: true
           readOnly: true
         agent_owner:
           allOf:
           - $ref: "#/components/schemas/PartialUser"
+          nullable: true
           readOnly: true
         is_active:
           readOnly: true
@@ -78831,6 +78843,9 @@ components:
             denied_action: ""
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           resume_timeout: resume_timeout
+          resume_on_match_failures:
+          - missing_property
+          - missing_property
         - pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           component: component
@@ -78864,6 +78879,9 @@ components:
             denied_action: ""
           source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           resume_timeout: resume_timeout
+          resume_on_match_failures:
+          - missing_property
+          - missing_property
         autocomplete:
           key: ""
       properties:
@@ -86186,6 +86204,9 @@ components:
         name: name
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         resume_timeout: resume_timeout
+        resume_on_match_failures:
+        - missing_property
+        - missing_property
       properties:
         name:
           minLength: 1
@@ -86198,6 +86219,11 @@ components:
             \ continue the flow (Format: hours=-1;minutes=-2;seconds=-3)"
           minLength: 1
           type: string
+        resume_on_match_failures:
+          description: Source matching failure reasons for which the flow should resume.
+          items:
+            $ref: "#/components/schemas/ResumeOnMatchFailuresEnum"
+          type: array
       type: object
     PatchedStaticDeviceRequest:
       description: Serializer for static authenticator devices
@@ -89989,6 +90015,10 @@ components:
       - verbose_name
       - verbose_name_plural
       type: object
+    ResumeOnMatchFailuresEnum:
+      enum:
+      - missing_property
+      type: string
     Review:
       description: |-
         Mixin to validate that a valid enterprise license
@@ -93152,6 +93182,9 @@ components:
           denied_action: ""
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         resume_timeout: resume_timeout
+        resume_on_match_failures:
+        - missing_property
+        - missing_property
       properties:
         pk:
           format: uuid
@@ -93188,6 +93221,11 @@ components:
           description: "Amount of time a user can take to return from the source to\
             \ continue the flow (Format: hours=-1;minutes=-2;seconds=-3)"
           type: string
+        resume_on_match_failures:
+          description: Source matching failure reasons for which the flow should resume.
+          items:
+            $ref: "#/components/schemas/ResumeOnMatchFailuresEnum"
+          type: array
       required:
       - component
       - flow_set
@@ -93204,6 +93242,9 @@ components:
         name: name
         source: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         resume_timeout: resume_timeout
+        resume_on_match_failures:
+        - missing_property
+        - missing_property
       properties:
         name:
           minLength: 1
@@ -93216,6 +93257,11 @@ components:
             \ continue the flow (Format: hours=-1;minutes=-2;seconds=-3)"
           minLength: 1
           type: string
+        resume_on_match_failures:
+          description: Source matching failure reasons for which the flow should resume.
+          items:
+            $ref: "#/components/schemas/ResumeOnMatchFailuresEnum"
+          type: array
       required:
       - name
       - source
