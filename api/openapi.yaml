@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.8.0
+  version: 2026.8.1
 servers:
 - url: /api/v3
 paths:
@@ -88118,10 +88118,12 @@ components:
         authorization_flow:
           description: Flow used when authorizing this provider.
           format: uuid
+          nullable: true
           type: string
         invalidation_flow:
           description: Flow used ending the session from a provider.
           format: uuid
+          nullable: true
           type: string
         property_mappings:
           items:
@@ -88169,9 +88171,7 @@ components:
       - assigned_application_slug
       - assigned_backchannel_application_name
       - assigned_backchannel_application_slug
-      - authorization_flow
       - component
-      - invalidation_flow
       - meta_model_name
       - name
       - pk

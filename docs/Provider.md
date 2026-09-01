@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Pk** | **int32** |  | [readonly] 
 **Name** | **string** |  | 
 **AuthenticationFlow** | Pointer to **NullableString** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] 
-**AuthorizationFlow** | **string** | Flow used when authorizing this provider. | 
-**InvalidationFlow** | **string** | Flow used ending the session from a provider. | 
+**AuthorizationFlow** | Pointer to **NullableString** | Flow used when authorizing this provider. | [optional] 
+**InvalidationFlow** | Pointer to **NullableString** | Flow used ending the session from a provider. | [optional] 
 **PropertyMappings** | Pointer to **[]string** |  | [optional] 
 **Component** | **string** | Get object component so that we know how to edit the object | [readonly] 
 **AssignedApplicationSlug** | **NullableString** | Internal application name, used in URLs. | [readonly] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewProvider
 
-`func NewProvider(pk int32, name string, authorizationFlow string, invalidationFlow string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, ) *Provider`
+`func NewProvider(pk int32, name string, component string, assignedApplicationSlug NullableString, assignedApplicationName NullableString, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, ) *Provider`
 
 NewProvider instantiates a new Provider object
 This constructor will assign default values to properties that have it defined,
@@ -132,7 +132,22 @@ and a boolean to check if the value has been set.
 
 SetAuthorizationFlow sets AuthorizationFlow field to given value.
 
+### HasAuthorizationFlow
 
+`func (o *Provider) HasAuthorizationFlow() bool`
+
+HasAuthorizationFlow returns a boolean if a field has been set.
+
+### SetAuthorizationFlowNil
+
+`func (o *Provider) SetAuthorizationFlowNil(b bool)`
+
+ SetAuthorizationFlowNil sets the value for AuthorizationFlow to be an explicit nil
+
+### UnsetAuthorizationFlow
+`func (o *Provider) UnsetAuthorizationFlow()`
+
+UnsetAuthorizationFlow ensures that no value is present for AuthorizationFlow, not even an explicit nil
 ### GetInvalidationFlow
 
 `func (o *Provider) GetInvalidationFlow() string`
@@ -152,7 +167,22 @@ and a boolean to check if the value has been set.
 
 SetInvalidationFlow sets InvalidationFlow field to given value.
 
+### HasInvalidationFlow
 
+`func (o *Provider) HasInvalidationFlow() bool`
+
+HasInvalidationFlow returns a boolean if a field has been set.
+
+### SetInvalidationFlowNil
+
+`func (o *Provider) SetInvalidationFlowNil(b bool)`
+
+ SetInvalidationFlowNil sets the value for InvalidationFlow to be an explicit nil
+
+### UnsetInvalidationFlow
+`func (o *Provider) UnsetInvalidationFlow()`
+
+UnsetInvalidationFlow ensures that no value is present for InvalidationFlow, not even an explicit nil
 ### GetPropertyMappings
 
 `func (o *Provider) GetPropertyMappings() []string`
