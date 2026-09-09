@@ -2145,7 +2145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2211,7 +2211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2279,7 +2279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2369,7 +2369,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2441,7 +2441,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2511,7 +2511,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2589,7 +2589,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2661,7 +2661,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2731,7 +2731,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -3792,7 +3792,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -3858,7 +3858,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -3926,7 +3926,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4043,7 +4043,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4113,7 +4113,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4172,7 +4172,7 @@ Other parameters are passed through a pointer to a apiCoreUsersImpersonateEndRet
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4297,7 +4297,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4358,7 +4358,7 @@ Other parameters are passed through a pointer to a apiCoreUsersMeRetrieveRequest
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4430,7 +4430,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4496,7 +4496,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4568,7 +4568,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4638,7 +4638,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4708,7 +4708,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4774,7 +4774,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4844,7 +4844,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4914,7 +4914,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4986,7 +4986,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5056,7 +5056,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 

@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.5.6
+  version: 2026.5.7
 servers:
 - url: /api/v3
 paths:
@@ -5436,6 +5436,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
     post:
@@ -5468,6 +5469,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/groups/{group_uuid}/:
@@ -5501,6 +5503,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
     get:
@@ -5569,6 +5572,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
     patch:
@@ -5610,6 +5614,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
     put:
@@ -5652,6 +5657,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/groups/{group_uuid}/add_user/:
@@ -5693,6 +5699,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/groups/{group_uuid}/remove_user/:
@@ -5734,6 +5741,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/groups/{group_uuid}/used_by/:
@@ -5773,6 +5781,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/tokens/:
@@ -6650,6 +6659,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
     post:
@@ -6682,6 +6692,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/{id}/:
@@ -6714,6 +6725,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
     get:
@@ -6749,6 +6761,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
     patch:
@@ -6789,6 +6802,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
     put:
@@ -6830,6 +6844,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/{id}/impersonate/:
@@ -6868,6 +6883,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/{id}/recovery/:
@@ -6909,6 +6925,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/{id}/recovery_email/:
@@ -6948,6 +6965,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/{id}/set_password/:
@@ -6982,6 +7000,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/{id}/set_password_hash/:
@@ -7023,6 +7042,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/{id}/used_by/:
@@ -7061,6 +7081,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/account_lockdown/:
@@ -7090,6 +7111,7 @@ paths:
           description: Permission denied (when targeting another user)
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/export/:
@@ -7330,6 +7352,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/impersonate_end/:
@@ -7353,6 +7376,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/me/:
@@ -7380,6 +7404,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/paths/:
@@ -7416,6 +7441,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /core/users/service_account/:
@@ -7449,6 +7475,7 @@ paths:
           description: ""
       security:
       - authentik: []
+      - authentik_device_auth: []
       tags:
       - core
   /crypto/certificatekeypairs/:
@@ -8321,7 +8348,7 @@ paths:
                 $ref: "#/components/schemas/GenericError"
           description: ""
       security:
-      - {}
+      - authentik_device_auth: []
       tags:
       - endpoints
   /endpoints/agents/connectors/check_in/:
@@ -9062,6 +9089,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - authentik_device_auth: []
       tags:
       - endpoints
   /endpoints/agents/psso/register/user/:
@@ -9092,6 +9121,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
           description: ""
+      security:
+      - authentik_device_auth: []
       tags:
       - endpoints
   /endpoints/connectors/:
@@ -53335,7 +53366,6 @@ components:
         use_tls: true
         component: component
         verbose_name: verbose_name
-        password: password
         meta_model_name: meta_model_name
         port: -1803530559
         name: name
@@ -53391,8 +53421,6 @@ components:
           minimum: -2147483648
           type: integer
         username:
-          type: string
-        password:
           type: string
         use_tls:
           type: boolean
@@ -53467,6 +53495,7 @@ components:
           type: string
         password:
           type: string
+          writeOnly: true
         use_tls:
           type: boolean
         use_ssl:
@@ -53655,8 +53684,6 @@ components:
         auth_type: basic
         mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         verbose_name_plural: verbose_name_plural
-        auth: auth
-        auth_password: auth_password
         flow_set:
         - policy_engine_mode: all
           compatibility_mode: true
@@ -53734,10 +53761,6 @@ components:
           type: string
         account_sid:
           type: string
-        auth:
-          type: string
-        auth_password:
-          type: string
         auth_type:
           $ref: "#/components/schemas/AuthTypeEnum"
         verify_only:
@@ -53752,7 +53775,6 @@ components:
           type: string
       required:
       - account_sid
-      - auth
       - component
       - flow_set
       - from_number
@@ -53800,8 +53822,10 @@ components:
         auth:
           minLength: 1
           type: string
+          writeOnly: true
         auth_password:
           type: string
+          writeOnly: true
         auth_type:
           $ref: "#/components/schemas/AuthTypeEnum"
         verify_only:
@@ -56122,10 +56146,8 @@ components:
         - name: name
           href: href
         flags:
-          enterprise_audit_include_expanded_diff: true
           flows_refresh_others: true
           flows_continuous_login: true
-          core_default_app_access: true
         flow_device_code: flow_device_code
         matched_domain: matched_domain
         flow_lockdown: flow_lockdown
@@ -57841,6 +57863,7 @@ components:
         facts:
           allOf:
           - $ref: "#/components/schemas/DeviceFactSnapshot"
+          nullable: true
           readOnly: true
         attributes:
           additionalProperties: {}
@@ -57906,6 +57929,7 @@ components:
         facts:
           allOf:
           - $ref: "#/components/schemas/DeviceFactSnapshot"
+          nullable: true
           readOnly: true
         attributes:
           additionalProperties: {}
@@ -61673,7 +61697,6 @@ components:
         sync_users: true
         icon: icon
         promoted: true
-        sync_ccache: sync_ccache
         enabled: true
         kadmin_type: ""
         spnego_server_name: spnego_server_name
@@ -61684,7 +61707,6 @@ components:
         user_property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        spnego_ccache: spnego_ccache
         slug: slug
         sync_principal: sync_principal
         icon_url: icon_url
@@ -61810,10 +61832,6 @@ components:
         sync_principal:
           description: Principal to authenticate to kadmin for sync.
           type: string
-        sync_ccache:
-          description: Credentials cache to authenticate to kadmin for sync. Must
-            be in the form TYPE:residual
-          type: string
         connectivity:
           additionalProperties:
             type: string
@@ -61824,9 +61842,6 @@ components:
         spnego_server_name:
           description: Force the use of a specific server name for SPNEGO. Must be
             in the form HTTP@hostname
-          type: string
-        spnego_ccache:
-          description: Credential cache to use for SPNEGO in form type:residual
           type: string
         password_login_update_internal_password:
           description: "If enabled, the authentik-stored password will be updated\
@@ -62050,6 +62065,7 @@ components:
           description: Credentials cache to authenticate to kadmin for sync. Must
             be in the form TYPE:residual
           type: string
+          writeOnly: true
         spnego_server_name:
           description: Force the use of a specific server name for SPNEGO. Must be
             in the form HTTP@hostname
@@ -62062,6 +62078,7 @@ components:
         spnego_ccache:
           description: Credential cache to use for SPNEGO in form type:residual
           type: string
+          writeOnly: true
         password_login_update_internal_password:
           description: "If enabled, the authentik-stored password will be updated\
             \ upon login with the Kerberos password backend"
@@ -63725,7 +63742,6 @@ components:
         name: name
         dry_run: true
         pk: 0
-        client_secret: client_secret
         property_mappings:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -63776,8 +63792,6 @@ components:
           type: string
         client_id:
           type: string
-        client_secret:
-          type: string
         tenant_id:
           type: string
         exclude_users_service_account:
@@ -63806,7 +63820,6 @@ components:
       - assigned_backchannel_application_name
       - assigned_backchannel_application_slug
       - client_id
-      - client_secret
       - component
       - meta_model_name
       - name
@@ -63994,6 +64007,7 @@ components:
         client_secret:
           minLength: 1
           type: string
+          writeOnly: true
         tenant_id:
           minLength: 1
           type: string
@@ -66653,7 +66667,6 @@ components:
           use_tls: true
           component: component
           verbose_name: verbose_name
-          password: password
           meta_model_name: meta_model_name
           port: -1803530559
           name: name
@@ -66698,7 +66711,6 @@ components:
           use_tls: true
           component: component
           verbose_name: verbose_name
-          password: password
           meta_model_name: meta_model_name
           port: -1803530559
           name: name
@@ -66837,8 +66849,6 @@ components:
           auth_type: basic
           mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
-          auth: auth
-          auth_password: auth_password
           flow_set:
           - policy_engine_mode: all
             compatibility_mode: true
@@ -66878,8 +66888,6 @@ components:
           auth_type: basic
           mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           verbose_name_plural: verbose_name_plural
-          auth: auth
-          auth_password: auth_password
           flow_set:
           - policy_engine_mode: all
             compatibility_mode: true
@@ -70464,7 +70472,6 @@ components:
           sync_users: true
           icon: icon
           promoted: true
-          sync_ccache: sync_ccache
           enabled: true
           kadmin_type: ""
           spnego_server_name: spnego_server_name
@@ -70475,7 +70482,6 @@ components:
           user_property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          spnego_ccache: spnego_ccache
           slug: slug
           sync_principal: sync_principal
           icon_url: icon_url
@@ -70502,7 +70508,6 @@ components:
           sync_users: true
           icon: icon
           promoted: true
-          sync_ccache: sync_ccache
           enabled: true
           kadmin_type: ""
           spnego_server_name: spnego_server_name
@@ -70513,7 +70518,6 @@ components:
           user_property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          spnego_ccache: spnego_ccache
           slug: slug
           sync_principal: sync_principal
           icon_url: icon_url
@@ -71223,7 +71227,6 @@ components:
           name: name
           dry_run: true
           pk: 0
-          client_secret: client_secret
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -71247,7 +71250,6 @@ components:
           name: name
           dry_run: true
           pk: 0
-          client_secret: client_secret
           property_mappings:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -74177,7 +74179,6 @@ components:
           auth_oauth_url_start: auth_oauth_url_start
           auth_oauth_token_expires: 2000-01-23T04:56:07.000+00:00
           url: url
-          token: token
           auth_oauth_url_callback: auth_oauth_url_callback
           component: component
           verbose_name: verbose_name
@@ -74211,7 +74212,6 @@ components:
           auth_oauth_url_start: auth_oauth_url_start
           auth_oauth_token_expires: 2000-01-23T04:56:07.000+00:00
           url: url
-          token: token
           auth_oauth_url_callback: auth_oauth_url_callback
           component: component
           verbose_name: verbose_name
@@ -77710,6 +77710,7 @@ components:
           type: string
         password:
           type: string
+          writeOnly: true
         use_tls:
           type: boolean
         use_ssl:
@@ -77795,8 +77796,10 @@ components:
         auth:
           minLength: 1
           type: string
+          writeOnly: true
         auth_password:
           type: string
+          writeOnly: true
         auth_type:
           $ref: "#/components/schemas/AuthTypeEnum"
         verify_only:
@@ -79450,6 +79453,7 @@ components:
           description: Credentials cache to authenticate to kadmin for sync. Must
             be in the form TYPE:residual
           type: string
+          writeOnly: true
         spnego_server_name:
           description: Force the use of a specific server name for SPNEGO. Must be
             in the form HTTP@hostname
@@ -79462,6 +79466,7 @@ components:
         spnego_ccache:
           description: Credential cache to use for SPNEGO in form type:residual
           type: string
+          writeOnly: true
         password_login_update_internal_password:
           description: "If enabled, the authentik-stored password will be updated\
             \ upon login with the Kerberos password backend"
@@ -79910,6 +79915,7 @@ components:
         client_secret:
           minLength: 1
           type: string
+          writeOnly: true
         tenant_id:
           minLength: 1
           type: string
@@ -81614,6 +81620,7 @@ components:
         token:
           description: Authentication token
           type: string
+          writeOnly: true
         auth_mode:
           $ref: "#/components/schemas/SCIMAuthenticationModeEnum"
         auth_oauth:
@@ -86795,7 +86802,6 @@ components:
         auth_oauth_url_start: auth_oauth_url_start
         auth_oauth_token_expires: 2000-01-23T04:56:07.000+00:00
         url: url
-        token: token
         auth_oauth_url_callback: auth_oauth_url_callback
         component: component
         verbose_name: verbose_name
@@ -86855,9 +86861,6 @@ components:
           type: string
         verify_certificates:
           type: boolean
-        token:
-          description: Authentication token
-          type: string
         auth_mode:
           $ref: "#/components/schemas/SCIMAuthenticationModeEnum"
         auth_oauth:
@@ -87039,6 +87042,7 @@ components:
         token:
           description: Authentication token
           type: string
+          writeOnly: true
         auth_mode:
           $ref: "#/components/schemas/SCIMAuthenticationModeEnum"
         auth_oauth:
@@ -92392,19 +92396,9 @@ components:
       type: object
     CurrentBrand_flags:
       example:
-        enterprise_audit_include_expanded_diff: true
         flows_refresh_others: true
         flows_continuous_login: true
-        core_default_app_access: true
       properties:
-        core_default_app_access:
-          description: Configure if applications without any policy/group/user bindings
-            should be accessible to any user.
-          type: boolean
-        enterprise_audit_include_expanded_diff:
-          description: "Include additional information in audit logs, may incur a\
-            \ performance penalty."
-          type: boolean
         flows_continuous_login:
           description: "Upon successful authentication, re-start authentication in\
             \ other open tabs."
@@ -92415,8 +92409,6 @@ components:
           type: boolean
       readOnly: true
       required:
-      - core_default_app_access
-      - enterprise_audit_include_expanded_diff
       - flows_continuous_login
       - flows_refresh_others
       type: object
@@ -92506,5 +92498,14 @@ components:
       type: object
   securitySchemes:
     authentik:
+      scheme: bearer
+      type: http
+    authentik_device_auth:
+      scheme: bearer+agent
+      type: http
+    authentik_device_enroll:
+      scheme: bearer
+      type: http
+    authentik_device_federation:
       scheme: bearer
       type: http

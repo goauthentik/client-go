@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.5.6
+API version: 2026.5.7
 Contact: hello@goauthentik.io
 */
 
@@ -21,10 +21,6 @@ var _ MappedNullable = &CurrentBrandFlags{}
 
 // CurrentBrandFlags struct for CurrentBrandFlags
 type CurrentBrandFlags struct {
-	// Configure if applications without any policy/group/user bindings should be accessible to any user.
-	CoreDefaultAppAccess bool `json:"core_default_app_access"`
-	// Include additional information in audit logs, may incur a performance penalty.
-	EnterpriseAuditIncludeExpandedDiff bool `json:"enterprise_audit_include_expanded_diff"`
 	// Upon successful authentication, re-start authentication in other open tabs.
 	FlowsContinuousLogin bool `json:"flows_continuous_login"`
 	// Refresh other tabs after successful authentication.
@@ -39,10 +35,8 @@ type _CurrentBrandFlags CurrentBrandFlags
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCurrentBrandFlags(coreDefaultAppAccess bool, enterpriseAuditIncludeExpandedDiff bool, flowsContinuousLogin bool, flowsRefreshOthers bool) *CurrentBrandFlags {
+func NewCurrentBrandFlags(flowsContinuousLogin bool, flowsRefreshOthers bool) *CurrentBrandFlags {
 	this := CurrentBrandFlags{}
-	this.CoreDefaultAppAccess = coreDefaultAppAccess
-	this.EnterpriseAuditIncludeExpandedDiff = enterpriseAuditIncludeExpandedDiff
 	this.FlowsContinuousLogin = flowsContinuousLogin
 	this.FlowsRefreshOthers = flowsRefreshOthers
 	return &this
@@ -54,54 +48,6 @@ func NewCurrentBrandFlags(coreDefaultAppAccess bool, enterpriseAuditIncludeExpan
 func NewCurrentBrandFlagsWithDefaults() *CurrentBrandFlags {
 	this := CurrentBrandFlags{}
 	return &this
-}
-
-// GetCoreDefaultAppAccess returns the CoreDefaultAppAccess field value
-func (o *CurrentBrandFlags) GetCoreDefaultAppAccess() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.CoreDefaultAppAccess
-}
-
-// GetCoreDefaultAppAccessOk returns a tuple with the CoreDefaultAppAccess field value
-// and a boolean to check if the value has been set.
-func (o *CurrentBrandFlags) GetCoreDefaultAppAccessOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CoreDefaultAppAccess, true
-}
-
-// SetCoreDefaultAppAccess sets field value
-func (o *CurrentBrandFlags) SetCoreDefaultAppAccess(v bool) {
-	o.CoreDefaultAppAccess = v
-}
-
-// GetEnterpriseAuditIncludeExpandedDiff returns the EnterpriseAuditIncludeExpandedDiff field value
-func (o *CurrentBrandFlags) GetEnterpriseAuditIncludeExpandedDiff() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.EnterpriseAuditIncludeExpandedDiff
-}
-
-// GetEnterpriseAuditIncludeExpandedDiffOk returns a tuple with the EnterpriseAuditIncludeExpandedDiff field value
-// and a boolean to check if the value has been set.
-func (o *CurrentBrandFlags) GetEnterpriseAuditIncludeExpandedDiffOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EnterpriseAuditIncludeExpandedDiff, true
-}
-
-// SetEnterpriseAuditIncludeExpandedDiff sets field value
-func (o *CurrentBrandFlags) SetEnterpriseAuditIncludeExpandedDiff(v bool) {
-	o.EnterpriseAuditIncludeExpandedDiff = v
 }
 
 // GetFlowsContinuousLogin returns the FlowsContinuousLogin field value
@@ -165,8 +111,6 @@ func (o CurrentBrandFlags) MarshalJSON() ([]byte, error) {
 
 func (o CurrentBrandFlags) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["core_default_app_access"] = o.CoreDefaultAppAccess
-	toSerialize["enterprise_audit_include_expanded_diff"] = o.EnterpriseAuditIncludeExpandedDiff
 	toSerialize["flows_continuous_login"] = o.FlowsContinuousLogin
 	toSerialize["flows_refresh_others"] = o.FlowsRefreshOthers
 
@@ -182,8 +126,6 @@ func (o *CurrentBrandFlags) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"core_default_app_access",
-		"enterprise_audit_include_expanded_diff",
 		"flows_continuous_login",
 		"flows_refresh_others",
 	}
@@ -215,8 +157,6 @@ func (o *CurrentBrandFlags) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "core_default_app_access")
-		delete(additionalProperties, "enterprise_audit_include_expanded_diff")
 		delete(additionalProperties, "flows_continuous_login")
 		delete(additionalProperties, "flows_refresh_others")
 		o.AdditionalProperties = additionalProperties

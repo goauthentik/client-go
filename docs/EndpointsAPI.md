@@ -126,7 +126,7 @@ Other parameters are passed through a pointer to a apiEndpointsAgentsConnectorsA
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[authentik_device_federation](../README.md#authentik_device_federation)
 
 ### HTTP request headers
 
@@ -253,7 +253,7 @@ Other parameters are passed through a pointer to a apiEndpointsAgentsConnectorsA
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -317,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[authentik_device_enroll](../README.md#authentik_device_enroll)
 
 ### HTTP request headers
 
@@ -2071,7 +2071,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2135,7 +2135,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 

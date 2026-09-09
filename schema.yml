@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: authentik
-  version: 2026.5.6
+  version: 2026.5.7
   description: Making authentication simple.
   contact:
     email: hello@goauthentik.io
@@ -3462,6 +3462,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -3486,6 +3487,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '201':
           content:
@@ -3533,6 +3535,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -3565,6 +3568,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -3596,6 +3600,7 @@ paths:
               $ref: '#/components/schemas/PatchedGroupRequest'
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -3622,6 +3627,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '204':
           description: No response body
@@ -3651,6 +3657,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '204':
           description: User added
@@ -3682,6 +3689,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '204':
           description: User removed
@@ -3707,6 +3715,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4268,6 +4277,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4292,6 +4302,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '201':
           content:
@@ -4318,6 +4329,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4349,6 +4361,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4379,6 +4392,7 @@ paths:
               $ref: '#/components/schemas/PatchedUserRequest'
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4404,6 +4418,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '204':
           description: No response body
@@ -4432,6 +4447,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '204':
           description: Successfully started impersonation
@@ -4459,6 +4475,7 @@ paths:
               $ref: '#/components/schemas/UserRecoveryLinkRequest'
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4492,6 +4509,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '204':
           description: Successfully sent recover email
@@ -4520,6 +4538,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '204':
           description: Successfully changed password
@@ -4555,6 +4574,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '204':
           description: Successfully changed password
@@ -4577,6 +4597,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4603,6 +4624,7 @@ paths:
               $ref: '#/components/schemas/UserAccountLockdownRequest'
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4761,6 +4783,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '201':
           content:
@@ -4780,6 +4803,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '204':
           description: Successfully ended impersonation
@@ -4795,6 +4819,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4816,6 +4841,7 @@ paths:
       - core
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -4841,6 +4867,7 @@ paths:
         required: true
       security:
       - authentik: []
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -5435,7 +5462,7 @@ paths:
       tags:
       - endpoints
       security:
-      - {}
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -5942,6 +5969,8 @@ paths:
             schema:
               $ref: '#/components/schemas/AgentPSSODeviceRegistrationRequest'
         required: true
+      security:
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -5964,6 +5993,8 @@ paths:
             schema:
               $ref: '#/components/schemas/AgentPSSOUserRegistrationRequest'
         required: true
+      security:
+      - authentik_device_auth: []
       responses:
         '200':
           content:
@@ -35009,8 +35040,6 @@ components:
           minimum: -2147483648
         username:
           type: string
-        password:
-          type: string
         use_tls:
           type: boolean
         use_ssl:
@@ -35068,6 +35097,7 @@ components:
           type: string
         password:
           type: string
+          writeOnly: true
         use_tls:
           type: boolean
         use_ssl:
@@ -35251,10 +35281,6 @@ components:
           type: string
         account_sid:
           type: string
-        auth:
-          type: string
-        auth_password:
-          type: string
         auth_type:
           $ref: '#/components/schemas/AuthTypeEnum'
         verify_only:
@@ -35269,7 +35295,6 @@ components:
           description: Optionally modify the payload being sent to custom providers.
       required:
       - account_sid
-      - auth
       - component
       - flow_set
       - from_number
@@ -35304,9 +35329,11 @@ components:
           minLength: 1
         auth:
           type: string
+          writeOnly: true
           minLength: 1
         auth_password:
           type: string
+          writeOnly: true
         auth_type:
           $ref: '#/components/schemas/AuthTypeEnum'
         verify_only:
@@ -37206,14 +37233,6 @@ components:
         flags:
           type: object
           properties:
-            core_default_app_access:
-              type: boolean
-              description: Configure if applications without any policy/group/user
-                bindings should be accessible to any user.
-            enterprise_audit_include_expanded_diff:
-              type: boolean
-              description: Include additional information in audit logs, may incur
-                a performance penalty.
             flows_continuous_login:
               type: boolean
               description: Upon successful authentication, re-start authentication
@@ -37223,8 +37242,6 @@ components:
               description: Refresh other tabs after successful authentication.
               deprecated: true
           required:
-          - core_default_app_access
-          - enterprise_audit_include_expanded_diff
           - flows_continuous_login
           - flows_refresh_others
           readOnly: true
@@ -38520,6 +38537,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DeviceFactSnapshot'
           readOnly: true
+          nullable: true
         attributes:
           type: object
           additionalProperties: {}
@@ -38555,6 +38573,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DeviceFactSnapshot'
           readOnly: true
+          nullable: true
         attributes:
           type: object
           additionalProperties: {}
@@ -41569,10 +41588,6 @@ components:
         sync_principal:
           type: string
           description: Principal to authenticate to kadmin for sync.
-        sync_ccache:
-          type: string
-          description: Credentials cache to authenticate to kadmin for sync. Must
-            be in the form TYPE:residual
         connectivity:
           type: object
           additionalProperties:
@@ -41584,9 +41599,6 @@ components:
           type: string
           description: Force the use of a specific server name for SPNEGO. Must be
             in the form HTTP@hostname
-        spnego_ccache:
-          type: string
-          description: Credential cache to use for SPNEGO in form type:residual
         password_login_update_internal_password:
           type: boolean
           description: If enabled, the authentik-stored password will be updated upon
@@ -41762,6 +41774,7 @@ components:
             or in the form TYPE:residual
         sync_ccache:
           type: string
+          writeOnly: true
           description: Credentials cache to authenticate to kadmin for sync. Must
             be in the form TYPE:residual
         spnego_server_name:
@@ -41775,6 +41788,7 @@ components:
             FILE:path
         spnego_ccache:
           type: string
+          writeOnly: true
           description: Credential cache to use for SPNEGO in form type:residual
         password_login_update_internal_password:
           type: boolean
@@ -43144,8 +43158,6 @@ components:
           readOnly: true
         client_id:
           type: string
-        client_secret:
-          type: string
         tenant_id:
           type: string
         exclude_users_service_account:
@@ -43174,7 +43186,6 @@ components:
       - assigned_backchannel_application_name
       - assigned_backchannel_application_slug
       - client_id
-      - client_secret
       - component
       - meta_model_name
       - name
@@ -43318,6 +43329,7 @@ components:
           minLength: 1
         client_secret:
           type: string
+          writeOnly: true
           minLength: 1
         tenant_id:
           type: string
@@ -47944,6 +47956,7 @@ components:
           type: string
         password:
           type: string
+          writeOnly: true
         use_tls:
           type: boolean
         use_ssl:
@@ -48010,9 +48023,11 @@ components:
           minLength: 1
         auth:
           type: string
+          writeOnly: true
           minLength: 1
         auth_password:
           type: string
+          writeOnly: true
         auth_type:
           $ref: '#/components/schemas/AuthTypeEnum'
         verify_only:
@@ -49265,6 +49280,7 @@ components:
             or in the form TYPE:residual
         sync_ccache:
           type: string
+          writeOnly: true
           description: Credentials cache to authenticate to kadmin for sync. Must
             be in the form TYPE:residual
         spnego_server_name:
@@ -49278,6 +49294,7 @@ components:
             FILE:path
         spnego_ccache:
           type: string
+          writeOnly: true
           description: Credential cache to use for SPNEGO in form type:residual
         password_login_update_internal_password:
           type: boolean
@@ -49619,6 +49636,7 @@ components:
           minLength: 1
         client_secret:
           type: string
+          writeOnly: true
           minLength: 1
         tenant_id:
           type: string
@@ -50925,6 +50943,7 @@ components:
           type: boolean
         token:
           type: string
+          writeOnly: true
           description: Authentication token
         auth_mode:
           $ref: '#/components/schemas/SCIMAuthenticationModeEnum'
@@ -54986,9 +55005,6 @@ components:
           description: Base URL to SCIM requests, usually ends in /v2
         verify_certificates:
           type: boolean
-        token:
-          type: string
-          description: Authentication token
         auth_mode:
           $ref: '#/components/schemas/SCIMAuthenticationModeEnum'
         auth_oauth:
@@ -55133,6 +55149,7 @@ components:
           type: boolean
         token:
           type: string
+          writeOnly: true
           description: Authentication token
         auth_mode:
           $ref: '#/components/schemas/SCIMAuthenticationModeEnum'
@@ -59045,6 +59062,15 @@ components:
           authentik_providers_ws_federation.wsfederationprovider: '#/components/schemas/WSFederationProviderRequest'
   securitySchemes:
     authentik:
+      type: http
+      scheme: bearer
+    authentik_device_auth:
+      type: http
+      scheme: bearer+agent
+    authentik_device_enroll:
+      type: http
+      scheme: bearer
+    authentik_device_federation:
       type: http
       scheme: bearer
 servers:
