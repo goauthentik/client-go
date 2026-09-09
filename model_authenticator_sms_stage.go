@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.6
+API version: 2026.2.7
 Contact: hello@goauthentik.io
 */
 
@@ -38,8 +38,6 @@ type AuthenticatorSMSStage struct {
 	Provider      ProviderEnum   `json:"provider"`
 	FromNumber    string         `json:"from_number"`
 	AccountSid    string         `json:"account_sid"`
-	Auth          string         `json:"auth"`
-	AuthPassword  *string        `json:"auth_password,omitempty"`
 	AuthType      *AuthTypeEnum  `json:"auth_type,omitempty"`
 	// When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not reused in the future.
 	VerifyOnly *bool `json:"verify_only,omitempty"`
@@ -54,7 +52,7 @@ type _AuthenticatorSMSStage AuthenticatorSMSStage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, provider ProviderEnum, fromNumber string, accountSid string, auth string) *AuthenticatorSMSStage {
+func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, provider ProviderEnum, fromNumber string, accountSid string) *AuthenticatorSMSStage {
 	this := AuthenticatorSMSStage{}
 	this.Pk = pk
 	this.Name = name
@@ -66,7 +64,6 @@ func NewAuthenticatorSMSStage(pk string, name string, component string, verboseN
 	this.Provider = provider
 	this.FromNumber = fromNumber
 	this.AccountSid = accountSid
-	this.Auth = auth
 	return &this
 }
 
@@ -393,62 +390,6 @@ func (o *AuthenticatorSMSStage) SetAccountSid(v string) {
 	o.AccountSid = v
 }
 
-// GetAuth returns the Auth field value
-func (o *AuthenticatorSMSStage) GetAuth() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Auth
-}
-
-// GetAuthOk returns a tuple with the Auth field value
-// and a boolean to check if the value has been set.
-func (o *AuthenticatorSMSStage) GetAuthOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Auth, true
-}
-
-// SetAuth sets field value
-func (o *AuthenticatorSMSStage) SetAuth(v string) {
-	o.Auth = v
-}
-
-// GetAuthPassword returns the AuthPassword field value if set, zero value otherwise.
-func (o *AuthenticatorSMSStage) GetAuthPassword() string {
-	if o == nil || IsNil(o.AuthPassword) {
-		var ret string
-		return ret
-	}
-	return *o.AuthPassword
-}
-
-// GetAuthPasswordOk returns a tuple with the AuthPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthenticatorSMSStage) GetAuthPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.AuthPassword) {
-		return nil, false
-	}
-	return o.AuthPassword, true
-}
-
-// HasAuthPassword returns a boolean if a field has been set.
-func (o *AuthenticatorSMSStage) HasAuthPassword() bool {
-	if o != nil && !IsNil(o.AuthPassword) {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthPassword gets a reference to the given string and assigns it to the AuthPassword field.
-func (o *AuthenticatorSMSStage) SetAuthPassword(v string) {
-	o.AuthPassword = &v
-}
-
 // GetAuthType returns the AuthType field value if set, zero value otherwise.
 func (o *AuthenticatorSMSStage) GetAuthType() AuthTypeEnum {
 	if o == nil || IsNil(o.AuthType) {
@@ -582,10 +523,6 @@ func (o AuthenticatorSMSStage) ToMap() (map[string]interface{}, error) {
 	toSerialize["provider"] = o.Provider
 	toSerialize["from_number"] = o.FromNumber
 	toSerialize["account_sid"] = o.AccountSid
-	toSerialize["auth"] = o.Auth
-	if !IsNil(o.AuthPassword) {
-		toSerialize["auth_password"] = o.AuthPassword
-	}
 	if !IsNil(o.AuthType) {
 		toSerialize["auth_type"] = o.AuthType
 	}
@@ -618,7 +555,6 @@ func (o *AuthenticatorSMSStage) UnmarshalJSON(data []byte) (err error) {
 		"provider",
 		"from_number",
 		"account_sid",
-		"auth",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -660,8 +596,6 @@ func (o *AuthenticatorSMSStage) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "provider")
 		delete(additionalProperties, "from_number")
 		delete(additionalProperties, "account_sid")
-		delete(additionalProperties, "auth")
-		delete(additionalProperties, "auth_password")
 		delete(additionalProperties, "auth_type")
 		delete(additionalProperties, "verify_only")
 		delete(additionalProperties, "mapping")

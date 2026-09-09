@@ -31,10 +31,8 @@ Name | Type | Description | Notes
 **SyncUsers** | Pointer to **bool** | Sync users from Kerberos into authentik | [optional] 
 **SyncUsersPassword** | Pointer to **bool** | When a user changes their password, sync it back to Kerberos | [optional] 
 **SyncPrincipal** | Pointer to **string** | Principal to authenticate to kadmin for sync. | [optional] 
-**SyncCcache** | Pointer to **string** | Credentials cache to authenticate to kadmin for sync. Must be in the form TYPE:residual | [optional] 
 **Connectivity** | **map[string]string** | Get cached source connectivity | [readonly] 
 **SpnegoServerName** | Pointer to **string** | Force the use of a specific server name for SPNEGO. Must be in the form HTTP@hostname | [optional] 
-**SpnegoCcache** | Pointer to **string** | Credential cache to use for SPNEGO in form type:residual | [optional] 
 **PasswordLoginUpdateInternalPassword** | Pointer to **bool** | If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend | [optional] 
 **SyncOutgoingTriggerMode** | Pointer to [**SyncOutgoingTriggerModeEnum**](SyncOutgoingTriggerModeEnum.md) | When to trigger sync for outgoing providers | [optional] 
 
@@ -717,31 +715,6 @@ SetSyncPrincipal sets SyncPrincipal field to given value.
 
 HasSyncPrincipal returns a boolean if a field has been set.
 
-### GetSyncCcache
-
-`func (o *KerberosSource) GetSyncCcache() string`
-
-GetSyncCcache returns the SyncCcache field if non-nil, zero value otherwise.
-
-### GetSyncCcacheOk
-
-`func (o *KerberosSource) GetSyncCcacheOk() (*string, bool)`
-
-GetSyncCcacheOk returns a tuple with the SyncCcache field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSyncCcache
-
-`func (o *KerberosSource) SetSyncCcache(v string)`
-
-SetSyncCcache sets SyncCcache field to given value.
-
-### HasSyncCcache
-
-`func (o *KerberosSource) HasSyncCcache() bool`
-
-HasSyncCcache returns a boolean if a field has been set.
-
 ### GetConnectivity
 
 `func (o *KerberosSource) GetConnectivity() map[string]string`
@@ -796,31 +769,6 @@ SetSpnegoServerName sets SpnegoServerName field to given value.
 `func (o *KerberosSource) HasSpnegoServerName() bool`
 
 HasSpnegoServerName returns a boolean if a field has been set.
-
-### GetSpnegoCcache
-
-`func (o *KerberosSource) GetSpnegoCcache() string`
-
-GetSpnegoCcache returns the SpnegoCcache field if non-nil, zero value otherwise.
-
-### GetSpnegoCcacheOk
-
-`func (o *KerberosSource) GetSpnegoCcacheOk() (*string, bool)`
-
-GetSpnegoCcacheOk returns a tuple with the SpnegoCcache field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSpnegoCcache
-
-`func (o *KerberosSource) SetSpnegoCcache(v string)`
-
-SetSpnegoCcache sets SpnegoCcache field to given value.
-
-### HasSpnegoCcache
-
-`func (o *KerberosSource) HasSpnegoCcache() bool`
-
-HasSpnegoCcache returns a boolean if a field has been set.
 
 ### GetPasswordLoginUpdateInternalPassword
 

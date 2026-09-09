@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **Url** | **string** | Base URL to SCIM requests, usually ends in /v2 | 
 **VerifyCertificates** | Pointer to **bool** |  | [optional] 
-**Token** | Pointer to **string** | Authentication token | [optional] 
 **AuthMode** | Pointer to [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] 
 **AuthOauth** | Pointer to **NullableString** | OAuth Source used for authentication | [optional] 
 **AuthOauthParams** | Pointer to **map[string]interface{}** | Additional OAuth parameters, such as grant_type | [optional] 
@@ -321,31 +320,6 @@ SetVerifyCertificates sets VerifyCertificates field to given value.
 `func (o *SCIMProvider) HasVerifyCertificates() bool`
 
 HasVerifyCertificates returns a boolean if a field has been set.
-
-### GetToken
-
-`func (o *SCIMProvider) GetToken() string`
-
-GetToken returns the Token field if non-nil, zero value otherwise.
-
-### GetTokenOk
-
-`func (o *SCIMProvider) GetTokenOk() (*string, bool)`
-
-GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetToken
-
-`func (o *SCIMProvider) SetToken(v string)`
-
-SetToken sets Token field to given value.
-
-### HasToken
-
-`func (o *SCIMProvider) HasToken() bool`
-
-HasToken returns a boolean if a field has been set.
 
 ### GetAuthMode
 

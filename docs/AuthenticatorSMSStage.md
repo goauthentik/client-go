@@ -16,8 +16,6 @@ Name | Type | Description | Notes
 **Provider** | [**ProviderEnum**](ProviderEnum.md) |  | 
 **FromNumber** | **string** |  | 
 **AccountSid** | **string** |  | 
-**Auth** | **string** |  | 
-**AuthPassword** | Pointer to **string** |  | [optional] 
 **AuthType** | Pointer to [**AuthTypeEnum**](AuthTypeEnum.md) |  | [optional] 
 **VerifyOnly** | Pointer to **bool** | When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not reused in the future. | [optional] 
 **Mapping** | Pointer to **NullableString** | Optionally modify the payload being sent to custom providers. | [optional] 
@@ -26,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewAuthenticatorSMSStage
 
-`func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, provider ProviderEnum, fromNumber string, accountSid string, auth string, ) *AuthenticatorSMSStage`
+`func NewAuthenticatorSMSStage(pk string, name string, component string, verboseName string, verboseNamePlural string, metaModelName string, flowSet []FlowSet, provider ProviderEnum, fromNumber string, accountSid string, ) *AuthenticatorSMSStage`
 
 NewAuthenticatorSMSStage instantiates a new AuthenticatorSMSStage object
 This constructor will assign default values to properties that have it defined,
@@ -300,51 +298,6 @@ and a boolean to check if the value has been set.
 
 SetAccountSid sets AccountSid field to given value.
 
-
-### GetAuth
-
-`func (o *AuthenticatorSMSStage) GetAuth() string`
-
-GetAuth returns the Auth field if non-nil, zero value otherwise.
-
-### GetAuthOk
-
-`func (o *AuthenticatorSMSStage) GetAuthOk() (*string, bool)`
-
-GetAuthOk returns a tuple with the Auth field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuth
-
-`func (o *AuthenticatorSMSStage) SetAuth(v string)`
-
-SetAuth sets Auth field to given value.
-
-
-### GetAuthPassword
-
-`func (o *AuthenticatorSMSStage) GetAuthPassword() string`
-
-GetAuthPassword returns the AuthPassword field if non-nil, zero value otherwise.
-
-### GetAuthPasswordOk
-
-`func (o *AuthenticatorSMSStage) GetAuthPasswordOk() (*string, bool)`
-
-GetAuthPasswordOk returns a tuple with the AuthPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthPassword
-
-`func (o *AuthenticatorSMSStage) SetAuthPassword(v string)`
-
-SetAuthPassword sets AuthPassword field to given value.
-
-### HasAuthPassword
-
-`func (o *AuthenticatorSMSStage) HasAuthPassword() bool`
-
-HasAuthPassword returns a boolean if a field has been set.
 
 ### GetAuthType
 

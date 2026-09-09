@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
-**Password** | Pointer to **string** |  | [optional] 
 **UseTls** | Pointer to **bool** |  | [optional] 
 **UseSsl** | Pointer to **bool** |  | [optional] 
 **Timeout** | Pointer to **int32** |  | [optional] 
@@ -344,31 +343,6 @@ SetUsername sets Username field to given value.
 `func (o *AuthenticatorEmailStage) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *AuthenticatorEmailStage) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *AuthenticatorEmailStage) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *AuthenticatorEmailStage) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *AuthenticatorEmailStage) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetUseTls
 

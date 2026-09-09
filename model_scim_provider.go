@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.6
+API version: 2026.2.7
 Contact: hello@goauthentik.io
 */
 
@@ -39,11 +39,9 @@ type SCIMProvider struct {
 	// Return internal model name
 	MetaModelName string `json:"meta_model_name"`
 	// Base URL to SCIM requests, usually ends in /v2
-	Url                string `json:"url"`
-	VerifyCertificates *bool  `json:"verify_certificates,omitempty"`
-	// Authentication token
-	Token    *string                     `json:"token,omitempty"`
-	AuthMode *SCIMAuthenticationModeEnum `json:"auth_mode,omitempty"`
+	Url                string                      `json:"url"`
+	VerifyCertificates *bool                       `json:"verify_certificates,omitempty"`
+	AuthMode           *SCIMAuthenticationModeEnum `json:"auth_mode,omitempty"`
 	// OAuth Source used for authentication
 	AuthOauth NullableString `json:"auth_oauth,omitempty"`
 	// Additional OAuth parameters, such as grant_type
@@ -408,38 +406,6 @@ func (o *SCIMProvider) SetVerifyCertificates(v bool) {
 	o.VerifyCertificates = &v
 }
 
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *SCIMProvider) GetToken() string {
-	if o == nil || IsNil(o.Token) {
-		var ret string
-		return ret
-	}
-	return *o.Token
-}
-
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SCIMProvider) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
-		return nil, false
-	}
-	return o.Token, true
-}
-
-// HasToken returns a boolean if a field has been set.
-func (o *SCIMProvider) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *SCIMProvider) SetToken(v string) {
-	o.Token = &v
-}
-
 // GetAuthMode returns the AuthMode field value if set, zero value otherwise.
 func (o *SCIMProvider) GetAuthMode() SCIMAuthenticationModeEnum {
 	if o == nil || IsNil(o.AuthMode) {
@@ -799,9 +765,6 @@ func (o SCIMProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VerifyCertificates) {
 		toSerialize["verify_certificates"] = o.VerifyCertificates
 	}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
-	}
 	if !IsNil(o.AuthMode) {
 		toSerialize["auth_mode"] = o.AuthMode
 	}
@@ -895,7 +858,6 @@ func (o *SCIMProvider) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "meta_model_name")
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "verify_certificates")
-		delete(additionalProperties, "token")
 		delete(additionalProperties, "auth_mode")
 		delete(additionalProperties, "auth_oauth")
 		delete(additionalProperties, "auth_oauth_params")

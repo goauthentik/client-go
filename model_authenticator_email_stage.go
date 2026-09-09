@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.2.6
+API version: 2026.2.7
 Contact: hello@goauthentik.io
 */
 
@@ -40,7 +40,6 @@ type AuthenticatorEmailStage struct {
 	Host              *string `json:"host,omitempty"`
 	Port              *int32  `json:"port,omitempty"`
 	Username          *string `json:"username,omitempty"`
-	Password          *string `json:"password,omitempty"`
 	UseTls            *bool   `json:"use_tls,omitempty"`
 	UseSsl            *bool   `json:"use_ssl,omitempty"`
 	Timeout           *int32  `json:"timeout,omitempty"`
@@ -449,38 +448,6 @@ func (o *AuthenticatorEmailStage) SetUsername(v string) {
 	o.Username = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *AuthenticatorEmailStage) GetPassword() string {
-	if o == nil || IsNil(o.Password) {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AuthenticatorEmailStage) GetPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Password) {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *AuthenticatorEmailStage) HasPassword() bool {
-	if o != nil && !IsNil(o.Password) {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *AuthenticatorEmailStage) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetUseTls returns the UseTls field value if set, zero value otherwise.
 func (o *AuthenticatorEmailStage) GetUseTls() bool {
 	if o == nil || IsNil(o.UseTls) {
@@ -740,9 +707,6 @@ func (o AuthenticatorEmailStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username
 	}
-	if !IsNil(o.Password) {
-		toSerialize["password"] = o.Password
-	}
 	if !IsNil(o.UseTls) {
 		toSerialize["use_tls"] = o.UseTls
 	}
@@ -826,7 +790,6 @@ func (o *AuthenticatorEmailStage) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "host")
 		delete(additionalProperties, "port")
 		delete(additionalProperties, "username")
-		delete(additionalProperties, "password")
 		delete(additionalProperties, "use_tls")
 		delete(additionalProperties, "use_ssl")
 		delete(additionalProperties, "timeout")
