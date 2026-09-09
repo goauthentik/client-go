@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.1
+API version: 2026.8.2
 Contact: hello@goauthentik.io
 */
 
@@ -66,14 +66,10 @@ type KerberosSource struct {
 	SyncUsersPassword *bool `json:"sync_users_password,omitempty"`
 	// Principal to authenticate to kadmin for sync.
 	SyncPrincipal *string `json:"sync_principal,omitempty"`
-	// Credentials cache to authenticate to kadmin for sync. Must be in the form TYPE:residual
-	SyncCcache *string `json:"sync_ccache,omitempty"`
 	// Get cached source connectivity
 	Connectivity map[string]string `json:"connectivity"`
 	// Force the use of a specific server name for SPNEGO. Must be in the form HTTP@hostname
 	SpnegoServerName *string `json:"spnego_server_name,omitempty"`
-	// Credential cache to use for SPNEGO in form type:residual
-	SpnegoCcache *string `json:"spnego_ccache,omitempty"`
 	// If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend
 	PasswordLoginUpdateInternalPassword *bool `json:"password_login_update_internal_password,omitempty"`
 	// When to trigger sync for outgoing providers
@@ -914,38 +910,6 @@ func (o *KerberosSource) SetSyncPrincipal(v string) {
 	o.SyncPrincipal = &v
 }
 
-// GetSyncCcache returns the SyncCcache field value if set, zero value otherwise.
-func (o *KerberosSource) GetSyncCcache() string {
-	if o == nil || IsNil(o.SyncCcache) {
-		var ret string
-		return ret
-	}
-	return *o.SyncCcache
-}
-
-// GetSyncCcacheOk returns a tuple with the SyncCcache field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KerberosSource) GetSyncCcacheOk() (*string, bool) {
-	if o == nil || IsNil(o.SyncCcache) {
-		return nil, false
-	}
-	return o.SyncCcache, true
-}
-
-// HasSyncCcache returns a boolean if a field has been set.
-func (o *KerberosSource) HasSyncCcache() bool {
-	if o != nil && !IsNil(o.SyncCcache) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncCcache gets a reference to the given string and assigns it to the SyncCcache field.
-func (o *KerberosSource) SetSyncCcache(v string) {
-	o.SyncCcache = &v
-}
-
 // GetConnectivity returns the Connectivity field value
 // If the value is explicit nil, the zero value for map[string]string will be returned
 func (o *KerberosSource) GetConnectivity() map[string]string {
@@ -1002,38 +966,6 @@ func (o *KerberosSource) HasSpnegoServerName() bool {
 // SetSpnegoServerName gets a reference to the given string and assigns it to the SpnegoServerName field.
 func (o *KerberosSource) SetSpnegoServerName(v string) {
 	o.SpnegoServerName = &v
-}
-
-// GetSpnegoCcache returns the SpnegoCcache field value if set, zero value otherwise.
-func (o *KerberosSource) GetSpnegoCcache() string {
-	if o == nil || IsNil(o.SpnegoCcache) {
-		var ret string
-		return ret
-	}
-	return *o.SpnegoCcache
-}
-
-// GetSpnegoCcacheOk returns a tuple with the SpnegoCcache field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KerberosSource) GetSpnegoCcacheOk() (*string, bool) {
-	if o == nil || IsNil(o.SpnegoCcache) {
-		return nil, false
-	}
-	return o.SpnegoCcache, true
-}
-
-// HasSpnegoCcache returns a boolean if a field has been set.
-func (o *KerberosSource) HasSpnegoCcache() bool {
-	if o != nil && !IsNil(o.SpnegoCcache) {
-		return true
-	}
-
-	return false
-}
-
-// SetSpnegoCcache gets a reference to the given string and assigns it to the SpnegoCcache field.
-func (o *KerberosSource) SetSpnegoCcache(v string) {
-	o.SpnegoCcache = &v
 }
 
 // GetPasswordLoginUpdateInternalPassword returns the PasswordLoginUpdateInternalPassword field value if set, zero value otherwise.
@@ -1169,17 +1101,11 @@ func (o KerberosSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SyncPrincipal) {
 		toSerialize["sync_principal"] = o.SyncPrincipal
 	}
-	if !IsNil(o.SyncCcache) {
-		toSerialize["sync_ccache"] = o.SyncCcache
-	}
 	if o.Connectivity != nil {
 		toSerialize["connectivity"] = o.Connectivity
 	}
 	if !IsNil(o.SpnegoServerName) {
 		toSerialize["spnego_server_name"] = o.SpnegoServerName
-	}
-	if !IsNil(o.SpnegoCcache) {
-		toSerialize["spnego_ccache"] = o.SpnegoCcache
 	}
 	if !IsNil(o.PasswordLoginUpdateInternalPassword) {
 		toSerialize["password_login_update_internal_password"] = o.PasswordLoginUpdateInternalPassword
@@ -1268,10 +1194,8 @@ func (o *KerberosSource) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "sync_users")
 		delete(additionalProperties, "sync_users_password")
 		delete(additionalProperties, "sync_principal")
-		delete(additionalProperties, "sync_ccache")
 		delete(additionalProperties, "connectivity")
 		delete(additionalProperties, "spnego_server_name")
-		delete(additionalProperties, "spnego_ccache")
 		delete(additionalProperties, "password_login_update_internal_password")
 		delete(additionalProperties, "sync_outgoing_trigger_mode")
 		o.AdditionalProperties = additionalProperties

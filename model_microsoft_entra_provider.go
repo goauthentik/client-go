@@ -3,7 +3,7 @@ authentik
 
 Making authentication simple.
 
-API version: 2026.8.1
+API version: 2026.8.2
 Contact: hello@goauthentik.io
 */
 
@@ -39,7 +39,6 @@ type MicrosoftEntraProvider struct {
 	// Return internal model name
 	MetaModelName              string                    `json:"meta_model_name"`
 	ClientId                   string                    `json:"client_id"`
-	ClientSecret               string                    `json:"client_secret"`
 	TenantId                   string                    `json:"tenant_id"`
 	ExcludeUsersServiceAccount *bool                     `json:"exclude_users_service_account,omitempty"`
 	FilterGroup                NullableString            `json:"filter_group,omitempty"`
@@ -62,7 +61,7 @@ type _MicrosoftEntraProvider MicrosoftEntraProvider
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMicrosoftEntraProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, clientId string, clientSecret string, tenantId string) *MicrosoftEntraProvider {
+func NewMicrosoftEntraProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, clientId string, tenantId string) *MicrosoftEntraProvider {
 	this := MicrosoftEntraProvider{}
 	this.Pk = pk
 	this.Name = name
@@ -73,7 +72,6 @@ func NewMicrosoftEntraProvider(pk int32, name string, component string, assigned
 	this.VerboseNamePlural = verboseNamePlural
 	this.MetaModelName = metaModelName
 	this.ClientId = clientId
-	this.ClientSecret = clientSecret
 	this.TenantId = tenantId
 	return &this
 }
@@ -368,30 +366,6 @@ func (o *MicrosoftEntraProvider) GetClientIdOk() (*string, bool) {
 // SetClientId sets field value
 func (o *MicrosoftEntraProvider) SetClientId(v string) {
 	o.ClientId = v
-}
-
-// GetClientSecret returns the ClientSecret field value
-func (o *MicrosoftEntraProvider) GetClientSecret() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ClientSecret
-}
-
-// GetClientSecretOk returns a tuple with the ClientSecret field value
-// and a boolean to check if the value has been set.
-func (o *MicrosoftEntraProvider) GetClientSecretOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ClientSecret, true
-}
-
-// SetClientSecret sets field value
-func (o *MicrosoftEntraProvider) SetClientSecret(v string) {
-	o.ClientSecret = v
 }
 
 // GetTenantId returns the TenantId field value
@@ -710,7 +684,6 @@ func (o MicrosoftEntraProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize["verbose_name_plural"] = o.VerboseNamePlural
 	toSerialize["meta_model_name"] = o.MetaModelName
 	toSerialize["client_id"] = o.ClientId
-	toSerialize["client_secret"] = o.ClientSecret
 	toSerialize["tenant_id"] = o.TenantId
 	if !IsNil(o.ExcludeUsersServiceAccount) {
 		toSerialize["exclude_users_service_account"] = o.ExcludeUsersServiceAccount
@@ -758,7 +731,6 @@ func (o *MicrosoftEntraProvider) UnmarshalJSON(data []byte) (err error) {
 		"verbose_name_plural",
 		"meta_model_name",
 		"client_id",
-		"client_secret",
 		"tenant_id",
 	}
 
@@ -800,7 +772,6 @@ func (o *MicrosoftEntraProvider) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "verbose_name_plural")
 		delete(additionalProperties, "meta_model_name")
 		delete(additionalProperties, "client_id")
-		delete(additionalProperties, "client_secret")
 		delete(additionalProperties, "tenant_id")
 		delete(additionalProperties, "exclude_users_service_account")
 		delete(additionalProperties, "filter_group")

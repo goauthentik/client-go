@@ -7,7 +7,7 @@ info:
     name: MIT
     url: https://github.com/goauthentik/authentik/blob/main/LICENSE
   title: authentik
-  version: 2026.8.1
+  version: 2026.8.2
 servers:
 - url: /api/v3
 paths:
@@ -56214,7 +56214,6 @@ components:
         host: host
         port: -1803530559
         username: username
-        password: password
         use_tls: true
         use_ssl: true
         timeout: 441289069
@@ -56270,8 +56269,6 @@ components:
           minimum: -2147483648
           type: integer
         username:
-          type: string
-        password:
           type: string
         use_tls:
           type: boolean
@@ -56346,6 +56343,7 @@ components:
           type: string
         password:
           type: string
+          writeOnly: true
         use_tls:
           type: boolean
         use_ssl:
@@ -56565,8 +56563,6 @@ components:
         provider: twilio
         from_number: from_number
         account_sid: account_sid
-        auth: auth
-        auth_password: auth_password
         auth_type: basic
         verify_only: true
         mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -56613,10 +56609,6 @@ components:
           type: string
         account_sid:
           type: string
-        auth:
-          type: string
-        auth_password:
-          type: string
         auth_type:
           $ref: "#/components/schemas/AuthTypeEnum"
         verify_only:
@@ -56631,7 +56623,6 @@ components:
           type: string
       required:
       - account_sid
-      - auth
       - component
       - flow_set
       - from_number
@@ -56679,8 +56670,10 @@ components:
         auth:
           minLength: 1
           type: string
+          writeOnly: true
         auth_password:
           type: string
+          writeOnly: true
         auth_type:
           $ref: "#/components/schemas/AuthTypeEnum"
         verify_only:
@@ -64767,11 +64760,9 @@ components:
         sync_users: true
         sync_users_password: true
         sync_principal: sync_principal
-        sync_ccache: sync_ccache
         connectivity:
           key: connectivity
         spnego_server_name: spnego_server_name
-        spnego_ccache: spnego_ccache
         password_login_update_internal_password: true
         sync_outgoing_trigger_mode: ""
       properties:
@@ -64881,10 +64872,6 @@ components:
         sync_principal:
           description: Principal to authenticate to kadmin for sync.
           type: string
-        sync_ccache:
-          description: Credentials cache to authenticate to kadmin for sync. Must
-            be in the form TYPE:residual
-          type: string
         connectivity:
           additionalProperties:
             type: string
@@ -64895,9 +64882,6 @@ components:
         spnego_server_name:
           description: Force the use of a specific server name for SPNEGO. Must be
             in the form HTTP@hostname
-          type: string
-        spnego_ccache:
-          description: Credential cache to use for SPNEGO in form type:residual
           type: string
         password_login_update_internal_password:
           description: "If enabled, the authentik-stored password will be updated\
@@ -65121,6 +65105,7 @@ components:
           description: Credentials cache to authenticate to kadmin for sync. Must
             be in the form TYPE:residual
           type: string
+          writeOnly: true
         spnego_server_name:
           description: Force the use of a specific server name for SPNEGO. Must be
             in the form HTTP@hostname
@@ -65133,6 +65118,7 @@ components:
         spnego_ccache:
           description: Credential cache to use for SPNEGO in form type:residual
           type: string
+          writeOnly: true
         password_login_update_internal_password:
           description: "If enabled, the authentik-stored password will be updated\
             \ upon login with the Kerberos password backend"
@@ -66819,7 +66805,6 @@ components:
         verbose_name_plural: verbose_name_plural
         meta_model_name: meta_model_name
         client_id: client_id
-        client_secret: client_secret
         tenant_id: tenant_id
         exclude_users_service_account: true
         filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -66875,8 +66860,6 @@ components:
           type: string
         client_id:
           type: string
-        client_secret:
-          type: string
         tenant_id:
           type: string
         exclude_users_service_account:
@@ -66909,7 +66892,6 @@ components:
       - assigned_backchannel_application_name
       - assigned_backchannel_application_slug
       - client_id
-      - client_secret
       - component
       - meta_model_name
       - name
@@ -67098,6 +67080,7 @@ components:
         client_secret:
           minLength: 1
           type: string
+          writeOnly: true
         tenant_id:
           minLength: 1
           type: string
@@ -70089,7 +70072,6 @@ components:
           host: host
           port: -1803530559
           username: username
-          password: password
           use_tls: true
           use_ssl: true
           timeout: 441289069
@@ -70134,7 +70116,6 @@ components:
           host: host
           port: -1803530559
           username: username
-          password: password
           use_tls: true
           use_ssl: true
           timeout: 441289069
@@ -70304,8 +70285,6 @@ components:
           provider: twilio
           from_number: from_number
           account_sid: account_sid
-          auth: auth
-          auth_password: auth_password
           auth_type: basic
           verify_only: true
           mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -70345,8 +70324,6 @@ components:
           provider: twilio
           from_number: from_number
           account_sid: account_sid
-          auth: auth
-          auth_password: auth_password
           auth_type: basic
           verify_only: true
           mapping: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -74019,11 +73996,9 @@ components:
           sync_users: true
           sync_users_password: true
           sync_principal: sync_principal
-          sync_ccache: sync_ccache
           connectivity:
             key: connectivity
           spnego_server_name: spnego_server_name
-          spnego_ccache: spnego_ccache
           password_login_update_internal_password: true
           sync_outgoing_trigger_mode: ""
         - pk: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -74057,11 +74032,9 @@ components:
           sync_users: true
           sync_users_password: true
           sync_principal: sync_principal
-          sync_ccache: sync_ccache
           connectivity:
             key: connectivity
           spnego_server_name: spnego_server_name
-          spnego_ccache: spnego_ccache
           password_login_update_internal_password: true
           sync_outgoing_trigger_mode: ""
         autocomplete:
@@ -74789,7 +74762,6 @@ components:
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           client_id: client_id
-          client_secret: client_secret
           tenant_id: tenant_id
           exclude_users_service_account: true
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -74814,7 +74786,6 @@ components:
           verbose_name_plural: verbose_name_plural
           meta_model_name: meta_model_name
           client_id: client_id
-          client_secret: client_secret
           tenant_id: tenant_id
           exclude_users_service_account: true
           filter_group: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -78062,7 +78033,6 @@ components:
           meta_model_name: meta_model_name
           url: url
           verify_certificates: true
-          token: token
           auth_mode: token
           auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           auth_oauth_params:
@@ -78097,7 +78067,6 @@ components:
           meta_model_name: meta_model_name
           url: url
           verify_certificates: true
-          token: token
           auth_mode: token
           auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           auth_oauth_params:
@@ -81718,6 +81687,7 @@ components:
           type: string
         password:
           type: string
+          writeOnly: true
         use_tls:
           type: boolean
         use_ssl:
@@ -81803,8 +81773,10 @@ components:
         auth:
           minLength: 1
           type: string
+          writeOnly: true
         auth_password:
           type: string
+          writeOnly: true
         auth_type:
           $ref: "#/components/schemas/AuthTypeEnum"
         verify_only:
@@ -83493,6 +83465,7 @@ components:
           description: Credentials cache to authenticate to kadmin for sync. Must
             be in the form TYPE:residual
           type: string
+          writeOnly: true
         spnego_server_name:
           description: Force the use of a specific server name for SPNEGO. Must be
             in the form HTTP@hostname
@@ -83505,6 +83478,7 @@ components:
         spnego_ccache:
           description: Credential cache to use for SPNEGO in form type:residual
           type: string
+          writeOnly: true
         password_login_update_internal_password:
           description: "If enabled, the authentik-stored password will be updated\
             \ upon login with the Kerberos password backend"
@@ -83958,6 +83932,7 @@ components:
         client_secret:
           minLength: 1
           type: string
+          writeOnly: true
         tenant_id:
           minLength: 1
           type: string
@@ -85855,6 +85830,7 @@ components:
         token:
           description: Authentication token
           type: string
+          writeOnly: true
         auth_mode:
           $ref: "#/components/schemas/SCIMAuthenticationModeEnum"
         auth_oauth:
@@ -91380,7 +91356,6 @@ components:
         meta_model_name: meta_model_name
         url: url
         verify_certificates: true
-        token: token
         auth_mode: token
         auth_oauth: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auth_oauth_params:
@@ -91448,9 +91423,6 @@ components:
           type: string
         verify_certificates:
           type: boolean
-        token:
-          description: Authentication token
-          type: string
         auth_mode:
           $ref: "#/components/schemas/SCIMAuthenticationModeEnum"
         auth_oauth:
@@ -91637,6 +91609,7 @@ components:
         token:
           description: Authentication token
           type: string
+          writeOnly: true
         auth_mode:
           $ref: "#/components/schemas/SCIMAuthenticationModeEnum"
         auth_oauth:

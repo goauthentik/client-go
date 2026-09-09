@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **VerboseNamePlural** | **string** | Return object&#39;s plural verbose_name | [readonly] 
 **MetaModelName** | **string** | Return internal model name | [readonly] 
 **ClientId** | **string** |  | 
-**ClientSecret** | **string** |  | 
 **TenantId** | **string** |  | 
 **ExcludeUsersServiceAccount** | Pointer to **bool** |  | [optional] 
 **FilterGroup** | Pointer to **NullableString** |  | [optional] 
@@ -30,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewMicrosoftEntraProvider
 
-`func NewMicrosoftEntraProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, clientId string, clientSecret string, tenantId string, ) *MicrosoftEntraProvider`
+`func NewMicrosoftEntraProvider(pk int32, name string, component string, assignedBackchannelApplicationSlug NullableString, assignedBackchannelApplicationName NullableString, verboseName string, verboseNamePlural string, metaModelName string, clientId string, tenantId string, ) *MicrosoftEntraProvider`
 
 NewMicrosoftEntraProvider instantiates a new MicrosoftEntraProvider object
 This constructor will assign default values to properties that have it defined,
@@ -293,26 +292,6 @@ and a boolean to check if the value has been set.
 `func (o *MicrosoftEntraProvider) SetClientId(v string)`
 
 SetClientId sets ClientId field to given value.
-
-
-### GetClientSecret
-
-`func (o *MicrosoftEntraProvider) GetClientSecret() string`
-
-GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
-
-### GetClientSecretOk
-
-`func (o *MicrosoftEntraProvider) GetClientSecretOk() (*string, bool)`
-
-GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientSecret
-
-`func (o *MicrosoftEntraProvider) SetClientSecret(v string)`
-
-SetClientSecret sets ClientSecret field to given value.
 
 
 ### GetTenantId
