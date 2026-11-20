@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Action** | Pointer to [**OffboardingActionEnum**](OffboardingActionEnum.md) |  | [optional] 
 **RevokeSessions** | Pointer to **bool** | Revoke all of the user&#39;s sessions when offboarding. | [optional] 
 **RevokeTokens** | Pointer to **bool** | Revoke all of the user&#39;s tokens when offboarding. | [optional] 
-**Status** | [**OffboardingStatusEnum**](OffboardingStatusEnum.md) |  | [readonly] 
+**Status** | [**OffboardingStatusEnum**](OffboardingStatusEnum.md) |  | [readonly] [default to OFFBOARDINGSTATUSENUM_PENDING]
 **CreatedByObj** | [**PartialUser**](PartialUser.md) |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **ExecutedAt** | **NullableTime** |  | [readonly] 
