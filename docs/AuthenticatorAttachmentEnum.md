@@ -1,0 +1,13 @@
+# AuthenticatorAttachmentEnum
+
+## Enum
+
+
+* `PLATFORM` (value: `"platform"`)
+
+* `CROSS_PLATFORM` (value: `"cross-platform"`)
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
